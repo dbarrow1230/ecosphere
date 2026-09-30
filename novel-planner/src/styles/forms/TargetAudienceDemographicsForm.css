@@ -1,0 +1,339 @@
+.demographic-form {
+  display: grid;
+  gap: 1rem;
+  color: var(--text);
+  font-family: var(--font-body);
+}
+
+.demographic-form-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: .75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.demographic-form-toolbar h3 {
+  margin: 0;
+  color: var(--heading);
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+}
+
+.demographic-form-toolbar p {
+  margin: .2rem 0 0;
+  color: var(--text-soft);
+}
+
+.demographic-add,
+.demographic-remove,
+.demographic-line-row button,
+.demographic-add-line {
+  flex: 0 0 auto;
+  width: auto;
+  min-width: 0;
+  min-height: 0;
+  padding: .3rem .55rem;
+  font-size: .8rem;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.demographic-profile-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.demographic-profile {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0 0 1.25rem;
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  background: transparent;
+}
+
+.demographic-profile legend {
+  float: none;
+  width: auto;
+  margin: 0;
+  padding: 0;
+  color: var(--heading);
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.demographic-profile-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin: -.35rem 0 .65rem;
+}
+
+.demographic-identity-table {
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  gap: .65rem;
+  width: 100%;
+}
+
+.demographic-identity-row {
+  display: grid;
+  grid-template-columns: 8rem 14rem;
+  align-items: center;
+  gap: .55rem;
+  width: fit-content;
+}
+
+.demographic-identity-row label,
+.demographic-identity-location label,
+.demographic-list-label,
+.demographic-reading-section > label,
+.demographic-notes-section > label,
+.demographic-general-notes > label {
+  margin: 0;
+  color: var(--heading);
+  font-family: var(--font-heading);
+  font-size: .95rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.demographic-identity-row input,
+.demographic-identity-row select,
+.demographic-line-row input {
+  height: 2.15rem;
+  min-width: 0;
+  padding: .35rem .55rem;
+  color: var(--text);
+  font-family: var(--font-body);
+}
+
+.demographic-identity-row input,
+.demographic-identity-row select {
+  width: 100%;
+}
+
+.demographic-identity-row select {
+  appearance: auto;
+}
+
+.demographic-identity-location,
+.demographic-list-section,
+.demographic-reading-section,
+.demographic-notes-section,
+.demographic-general-notes {
+  display: grid;
+  grid-template-columns: 10rem minmax(0, 1fr);
+  align-items: start;
+  gap: .75rem;
+  width: 100%;
+  max-width: 100%;
+  margin-top: 1rem;
+}
+
+.demographic-identity-location {
+  grid-template-columns: 8rem minmax(0, 1fr);
+  align-items: center;
+  gap: .55rem;
+  margin-top: .65rem;
+}
+
+.demographic-identity-location textarea,
+.demographic-reading-section textarea,
+.demographic-notes-section textarea,
+.demographic-general-notes textarea {
+  width: 100%;
+  min-width: 0;
+  min-height: 4.75rem;
+  padding: .45rem .55rem;
+  color: var(--text);
+  font-family: var(--font-body);
+  resize: vertical;
+}
+
+.demographic-identity-location textarea {
+  min-height: 3.5rem;
+  padding: .35rem .55rem;
+}
+
+.demographic-line-editor {
+  display: grid;
+  gap: .5rem;
+  width: 100%;
+  max-width: 100%;
+}
+
+.demographic-line-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) max-content;
+  align-items: center;
+  gap: .5rem;
+}
+
+.demographic-line-row input {
+  width: 100%;
+}
+
+.demographic-add-line {
+  justify-self: start;
+}
+
+.demographic-general-notes {
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.demographic-empty {
+  display: grid;
+  justify-items: center;
+  gap: .75rem;
+  padding: 1.5rem;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-md);
+  color: var(--text-soft);
+  text-align: center;
+}
+
+.demographic-empty p {
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .demographic-identity-table {
+    grid-template-columns: max-content;
+  }
+}
+
+@media (max-width: 640px) {
+  .demographic-form-toolbar {
+    align-items: flex-start;
+  }
+
+  .demographic-identity-row,
+  .demographic-identity-location,
+  .demographic-list-section,
+  .demographic-reading-section,
+  .demographic-notes-section,
+  .demographic-general-notes {
+    grid-template-columns: max-content minmax(0, 1fr);
+    width: 100%;
+  }
+}
+
+.demographic-display {
+  color: var(--text);
+}
+
+.demographic-display-profile {
+  padding: 0 0 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.demographic-display-profile + .demographic-display-profile {
+  padding-top: 1.5rem;
+}
+
+.demographic-display-header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.demographic-display-header p,
+.demographic-display-header h3,
+.demographic-display h4,
+.demographic-display p,
+.demographic-display dl,
+.demographic-display dd {
+  margin: 0;
+}
+
+.demographic-display-header > div > p {
+  color: var(--text-soft);
+  font-size: .82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.demographic-display-header h3,
+.demographic-display-general h3 {
+  color: var(--heading);
+  font-family: var(--font-heading);
+}
+
+.demographic-display-header dl {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.demographic-display-header dl div {
+  display: grid;
+  gap: .15rem;
+}
+
+.demographic-display dt,
+.demographic-display h4 {
+  color: var(--heading);
+  font-family: var(--font-heading);
+  font-size: .88rem;
+  font-weight: 700;
+}
+
+.demographic-display-location,
+.demographic-display-text,
+.demographic-display-general {
+  display: grid;
+  gap: .35rem;
+  padding: .85rem 0;
+}
+
+.demographic-display-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+  padding: .85rem 0;
+}
+
+.demographic-display-columns section {
+  min-width: 0;
+}
+
+.demographic-display ul {
+  margin: .4rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.demographic-display li + li {
+  margin-top: .3rem;
+}
+
+.demographic-display-text p,
+.demographic-display-location p,
+.demographic-display-general p {
+  max-width: 80ch;
+  white-space: pre-wrap;
+}
+
+.demographic-display-general {
+  padding-top: 1.5rem;
+}
+
+@media (max-width: 700px) {
+  .demographic-display-header,
+  .demographic-display-header dl {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: .75rem;
+  }
+
+  .demographic-display-columns {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}

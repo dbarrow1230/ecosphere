@@ -1,0 +1,24 @@
+.revision-editor,.revision-project,.revision-checklist,.revision-rows{display:grid;gap:.75rem;color:var(--text)}
+.revision-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem 1rem}
+.revision-field{display:grid;grid-template-columns:minmax(9rem,12rem) minmax(0,1fr);gap:.5rem;align-items:start;margin:0}
+.revision-field>span,.revision-editor h3,.revision-editor h4{color:var(--heading);font-family:var(--font-heading);font-weight:700;white-space:nowrap}
+.revision-question{display:grid;grid-template-columns:minmax(9rem,12rem) minmax(0,1fr);gap:.5rem;align-items:start}.revision-question>span{color:var(--heading);font-family:var(--font-heading);font-weight:700;white-space:nowrap}.revision-question>p{margin:0;padding:.45rem .6rem;min-height:2.2rem;color:var(--text);white-space:pre-wrap}
+.revision-checklist .revision-grid{grid-template-columns:minmax(0,1fr) auto;gap:.75rem;max-width:52rem;align-items:start}.revision-checklist .revision-field{grid-template-columns:auto minmax(8rem,12rem);align-items:center}.revision-question{grid-template-columns:minmax(5rem,7rem) minmax(0,1fr)}.revision-question>p{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.revision-tabs{display:flex;flex-wrap:wrap;gap:.35rem;border-bottom:1px solid var(--border);padding-bottom:.5rem}.revision-tabs button{width:auto;padding:.35rem .65rem;color:var(--text);background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-sm);font:inherit;cursor:pointer}.revision-tabs button.active{color:var(--selectionText);background:var(--selectionBg);border-color:var(--selectionBg)}
+.revision-field input,.revision-field textarea,.revision-field select,.revision-lines input{width:100%;min-width:0;color:var(--text);background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:.45rem .6rem}
+.revision-field textarea{min-height:5rem;resize:vertical}.revision-lines{display:grid;gap:.5rem}
+.revision-image-field>div{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}.revision-image-field input[type=file]{flex:1 1 12rem;min-width:0}.revision-image-field img{display:block;width:5rem;height:5rem;object-fit:cover;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--surface)}.revision-image-field .btn{flex:0 0 auto}
+.revision-lines header,.revision-checklist>header,.revision-rows>header{display:flex;align-items:center;justify-content:space-between;gap:.75rem}
+.revision-lines h4,.revision-editor h3{margin:0;font-size:1rem}.revision-lines>div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.5rem}
+.revision-checklist,.revision-project,.revision-rows{border-top:1px solid var(--border);padding-top:.75rem}
+.revision-checklist fieldset,.revision-rows fieldset{display:grid;gap:.75rem;border:1px solid var(--border);border-radius:var(--radius-md);padding:.75rem}
+.revision-checklist legend,.revision-rows legend{float:none;width:auto;padding:0 .5rem;color:var(--heading);font-family:var(--font-heading);font-size:1rem;font-weight:700}
+.revision-editor .btn{width:auto;justify-self:start;padding:.35rem .7rem}.revision-view{display:grid;gap:1rem;color:var(--text)}
+.revision-view-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.75rem;margin:0}.revision-view-facts>div{border-bottom:1px solid var(--border);padding:.5rem}
+.revision-view-facts dt,.revision-view h3,.revision-view h4{color:var(--heading);font-family:var(--font-heading)}.revision-view-facts dd{margin:0;white-space:pre-wrap}
+.revision-view-table-head,.revision-view-table-row{display:grid;grid-template-columns:minmax(6rem,10rem) minmax(0,1fr);border-bottom:1px solid var(--border)}
+.revision-view-table-head{color:var(--heading);font-family:var(--font-heading);font-weight:700}.revision-view-table-head span,.revision-view-table-row span{padding:.5rem}
+.revision-view-group{display:grid;gap:.5rem;border:1px solid var(--border);padding:.75rem}.revision-view-group h3{margin:0;text-align:center}
+.revision-view-group article{display:grid;grid-template-columns:minmax(7rem,10rem) minmax(0,1fr);gap:.5rem;border-top:1px solid var(--border);padding-top:.5rem}.revision-view-group h4{margin:0}
+.revision-status{color:var(--text)}
+@media(max-width:850px){.revision-grid,.revision-view-facts{grid-template-columns:1fr}.revision-field,.revision-question,.revision-view-group article{grid-template-columns:1fr}.revision-field>span,.revision-question>span{white-space:normal}}

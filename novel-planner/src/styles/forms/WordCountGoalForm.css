@@ -1,0 +1,256 @@
+.word-count-form {
+  display: grid;
+  gap: 1.25rem;
+  color: var(--text);
+  font-family: var(--font-body);
+}
+
+.word-count-goals {
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  gap: .75rem 1.25rem;
+  align-items: end;
+}
+
+.word-count-field {
+  display: grid;
+  grid-template-columns: max-content 8rem;
+  align-items: center;
+  gap: .6rem;
+}
+
+.word-count-field label,
+.word-count-daily-note label {
+  margin: 0;
+  color: var(--heading);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.word-count-field input,
+.word-count-tracker-values input {
+  height: 2.15rem;
+  min-width: 0;
+  padding: .35rem .55rem;
+}
+
+.word-count-deadline {
+  grid-column: 1 / -1;
+  grid-template-columns: max-content 11rem;
+}
+
+.word-count-tracker-editor {
+  display: grid;
+  gap: .75rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.word-count-section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.word-count-section-heading h3,
+.word-count-section-heading p,
+.word-count-empty {
+  margin: 0;
+}
+
+.word-count-section-heading h3 {
+  color: var(--heading);
+  font-family: var(--font-heading);
+  font-size: 1rem;
+}
+
+.word-count-section-heading p,
+.word-count-empty {
+  color: var(--text-soft);
+}
+
+.word-count-section-heading button,
+.word-count-tracker-values button {
+  width: auto;
+  min-width: 0;
+  min-height: 0;
+  padding: .3rem .55rem;
+  font-size: .8rem;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.word-count-tracker-rows {
+  display: grid;
+  gap: .85rem;
+  width: 100%;
+}
+
+.word-count-tracker-entry {
+  min-width: 0;
+  margin: 0;
+  padding: .75rem 0;
+  border: 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.word-count-tracker-entry legend {
+  float: none;
+  width: auto;
+  margin: 0 0 .5rem;
+  padding: 0;
+  color: var(--heading);
+  font-family: var(--font-heading);
+  font-size: .9rem;
+  font-weight: 700;
+}
+
+.word-count-tracker-head,
+.word-count-tracker-values {
+  display: grid;
+  grid-template-columns: 12rem 10rem 10rem max-content;
+  align-items: center;
+  gap: .6rem;
+}
+
+.word-count-tracker-values output {
+  display: flex;
+  align-items: center;
+  height: 2.15rem;
+  padding: .35rem .55rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
+
+.word-count-tracker-head {
+  color: var(--heading);
+  font-family: var(--font-heading);
+  font-size: .85rem;
+  font-weight: 700;
+}
+
+.word-count-daily-note {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  align-items: start;
+  gap: .75rem;
+  width: 100%;
+  margin-top: .7rem;
+}
+
+.word-count-daily-note textarea {
+  width: 100%;
+  min-width: 0;
+  min-height: 3.5rem;
+  padding: .35rem .55rem;
+  resize: vertical;
+}
+
+.word-count-display {
+  display: grid;
+  gap: 1.25rem;
+  color: var(--text);
+}
+
+.word-count-display-metrics {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: .75rem;
+  margin: 0;
+}
+
+.word-count-display-metrics div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: .75rem;
+  min-width: 0;
+  padding: .65rem .75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.word-count-display-metrics dt,
+.word-count-display-metrics dd,
+.word-count-display-entry dd {
+  margin: 0;
+}
+
+.word-count-display-metrics dt,
+.word-count-display h3 {
+  color: var(--heading);
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
+
+.word-count-display-metrics dt {
+  font-size: .82rem;
+}
+
+.word-count-display-metrics dd {
+  color: var(--text);
+  font-size: 1.05rem;
+  white-space: nowrap;
+}
+
+.word-count-display-tracker,
+.word-count-display-entries,
+.word-count-display-entry {
+  display: grid;
+  gap: .65rem;
+}
+
+.word-count-display h3,
+.word-count-display p {
+  margin: 0;
+}
+
+.word-count-display-entry-head,
+.word-count-display-entry {
+  display: grid;
+  grid-template-columns: 9rem 9rem 9rem minmax(18rem, 1fr);
+  gap: .75rem;
+  align-items: start;
+  padding: .55rem .25rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.word-count-display-entry-head {
+  color: var(--heading);
+  font-family: var(--font-heading);
+  font-size: .82rem;
+  font-weight: 700;
+}
+
+.word-count-display-entry span:last-child {
+  white-space: pre-wrap;
+}
+
+@media (max-width: 900px) {
+  .word-count-goals {
+    grid-template-columns: max-content;
+  }
+
+  .word-count-deadline {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 800px) {
+  .word-count-display-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .word-count-tracker-entry {
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 500px) {
+  .word-count-display-metrics {
+    grid-template-columns: 1fr;
+  }
+}

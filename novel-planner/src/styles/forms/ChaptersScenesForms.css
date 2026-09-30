@@ -1,0 +1,16 @@
+.chapter-editor,.chapter-lines,.chapter-rows,.chapter-view{display:grid;gap:.7rem}
+.chapter-editor>section,.chapter-rows fieldset,.chapter-view-card,.chapter-view-block,.chapter-view-table{display:grid;gap:.65rem;border:1px solid var(--border);border-radius:.35rem;background:var(--surface);padding:.75rem}
+.chapter-lines>header,.chapter-rows>header{display:flex;align-items:center;justify-content:space-between;gap:1rem;border-bottom:1px solid var(--border);padding-bottom:.4rem}
+.chapter-lines h4,.chapter-rows h3,.chapter-view h3,.chapter-view h4{margin:0;color:var(--heading);font-family:var(--font-heading)}
+.chapter-rows legend{float:none;width:auto;margin:0;padding:0 .3rem;color:var(--heading);font-family:var(--font-heading)}
+.chapter-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem 1rem;align-items:start}
+.chapter-field{display:grid;grid-template-columns:minmax(9rem,max-content) minmax(0,1fr);gap:.55rem;align-items:start;color:var(--heading);white-space:nowrap}
+.chapter-field input,.chapter-field textarea,.chapter-lines input{min-width:0;width:100%;padding:.4rem .55rem;border:1px solid var(--border);border-radius:.3rem;background:var(--surface-2);color:var(--text)}
+.chapter-lines>div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.5rem;align-items:center}
+.chapter-view-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.chapter-view-card header p,.chapter-view-card header h3,.chapter-view-block h4{margin:0}
+.chapter-view-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.65rem;margin:0}
+.chapter-view-facts div{border-bottom:1px solid var(--border);padding-bottom:.35rem}.chapter-view-facts dt{color:var(--heading);font-family:var(--font-heading)}.chapter-view-facts dd{margin:.15rem 0 0;color:var(--text);white-space:pre-wrap}
+.chapter-view-table{overflow-x:auto}.chapter-view-table-head,.chapter-view-table-row{display:grid;gap:.65rem;padding:.45rem;min-width:50rem}.chapter-view-table-head{color:var(--heading);font-family:var(--font-heading);border-bottom:1px solid var(--border-strong)}.chapter-view-table-row{border-bottom:1px solid var(--border)}
+.chapter-list-columns{grid-template-columns:.5fr 1fr 1.7fr 1.2fr .6fr}.chapter-summary-columns{grid-template-columns:1fr 3fr}
+@media(max-width:900px){.chapter-grid,.chapter-view-grid,.chapter-view-facts{grid-template-columns:1fr}.chapter-field{grid-template-columns:minmax(8rem,35%) minmax(0,1fr)}}
