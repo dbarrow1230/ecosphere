@@ -1,0 +1,130 @@
+/* src/styles/login.css */
+
+.login-container{
+ min-height:70vh;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ background:var(--bg);
+ padding:2rem;
+ overflow:hidden;
+}
+
+.login-card{
+ width:420px;
+ max-width:100%;
+ background:var(--surface);
+ border:1px solid var(--border);
+ box-shadow:0 4px 12px rgba(33,22,18,.08);
+ border-radius:var(--radius-md);
+ padding:1.5rem;
+ overflow:hidden;
+}
+
+.login-form-brand{
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ justify-content:center;
+ margin-bottom:1rem;
+ text-align:center;
+}
+
+.login-form-logo{
+ width:120px;
+ max-width:120px;
+ height:auto;
+ object-fit:contain;
+ display:block;
+ margin:0 auto .75rem auto;
+}
+
+.login-form-subtitle{
+ margin:0;
+ color:var(--text-soft);
+ font-size:.95rem;
+ line-height:1.4;
+ text-align:center;
+}
+
+.login-logo-wrapper{
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ margin-bottom:.75rem;
+}
+
+.login-logo{
+ width:80px;
+ max-width:80px;
+ height:auto;
+ object-fit:contain;
+ display:block;
+}
+
+.login-title{
+ text-align:center;
+ margin-bottom:1.5rem;
+ color:var(--heading);
+ font-family:var(--font-heading);
+}
+
+.login-button,
+.login-form-button{
+ width:100%;
+ margin-top:1rem;
+ background:var(--primary);
+ border:1px solid var(--primary);
+ color:var(--surface);
+}
+
+.login-button:hover,
+.login-form-button:hover{
+ background:var(--primary-hover);
+ border-color:var(--primary-hover);
+}
+
+.login-forgot{
+ text-align:right;
+ font-size:.9rem;
+ margin-top:-.25rem;
+}
+
+.login-forgot a,
+.login-back-link a,
+.login-form-link{
+ text-decoration:none;
+ color:var(--accent);
+}
+
+.login-forgot a:hover,
+.login-back-link a:hover,
+.login-form-link:hover{
+ color:var(--accent-hover);
+}
+
+.login-back-link{
+ text-align:center;
+ font-size:.95rem;
+ margin-top:1rem;
+}
+
+.login-form-options{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:1rem;
+}
+
+.reset-link-box{
+ word-break:break-all;
+}
+
+.reset-link-box a{
+ color:var(--accent);
+ text-decoration:none;
+}
+
+.reset-link-box a:hover{
+ color:var(--accent-hover);
+}
