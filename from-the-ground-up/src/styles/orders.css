@@ -1,0 +1,48 @@
+.orders-page .metrics-card{
+ border:1px solid rgba(15,23,42,.12);
+}
+
+.orders-page .metrics-grid{
+ display:grid;
+ grid-template-columns:repeat(3,minmax(0,1fr));
+ gap:.75rem;
+}
+
+.orders-page .metric-item{
+ border:1px solid rgba(15,23,42,.1);
+ border-radius:.5rem;
+ padding:.75rem;
+ background:#fff;
+ text-align:center;
+}
+
+.orders-page .metric-label{
+ color:#64748b;
+ font-size:.8rem;
+ margin-bottom:.25rem;
+}
+
+.orders-page .metric-value{
+ color:#0f172a;
+ font-size:1.35rem;
+ font-weight:700;
+ line-height:1.1;
+}
+
+.orders-page .metric-info{
+ background:#eff6ff;
+}
+
+.orders-page .metric-warning{
+ background:#fffbeb;
+}
+
+.orders-page .metric-success{
+ background:#ecfdf5;
+}
+
+@media (max-width:575.98px){
+ .orders-page .metrics-grid{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+ }
+}

@@ -1,0 +1,777 @@
+/* src/styles/BookDashboard.css */
+
+.book-desk-page,
+.book-dashboard-page{
+ min-height:100vh;
+ padding:clamp(1rem,3vw,2rem);
+ background:
+  radial-gradient(circle at 15% 12%,color-mix(in srgb,var(--accent) 16%,transparent),transparent 28rem),
+  radial-gradient(circle at 88% 10%,color-mix(in srgb,var(--accent-2) 18%,transparent),transparent 30rem),
+  linear-gradient(145deg,var(--bg),var(--bg-alt));
+ color:var(--text);
+}
+
+.book-desk-kicker,
+.book-dashboard-kicker,
+.book-dashboard-card-kicker,
+.book-dashboard-panel-label,
+.notion-label{
+ margin:0 0 .4rem;
+ color:var(--accent);
+ font-size:.72rem;
+ font-weight:900;
+ letter-spacing:.11em;
+ text-transform:uppercase;
+}
+
+.book-dashboard-header{
+ display:flex;
+ gap:1.25rem;
+ align-items:flex-start;
+ margin-bottom:1.5rem;
+}
+
+.book-dashboard-header-main{
+ position:relative;
+ flex:1 1 auto;
+ overflow:hidden;
+ min-height:230px;
+ padding:clamp(1.35rem,3vw,3rem);
+ border:1px solid var(--border);
+ border-radius:2rem;
+ background:
+  linear-gradient(135deg,color-mix(in srgb,var(--surface) 96%,transparent),color-mix(in srgb,var(--surface-2) 88%,transparent));
+ box-shadow:var(--shadow);
+}
+
+.book-dashboard-header-main::after{
+ content:"";
+ position:absolute;
+ right:-6rem;
+ bottom:-8rem;
+ width:24rem;
+ height:24rem;
+ border-radius:50%;
+ background:color-mix(in srgb,var(--accent) 20%,transparent);
+}
+
+.book-dashboard-title{
+ position:relative;
+ z-index:1;
+ max-width:calc(100% - 14rem);
+ margin:0;
+ color:var(--heading);
+ font-size:clamp(2.5rem,4.2vw,4.9rem);
+ font-weight:900;
+ line-height:1.02;
+ white-space:nowrap;
+}
+
+.book-dashboard-text{
+ position:relative;
+ z-index:1;
+ max-width:calc(100% - 14rem);
+ margin:1rem 0 0;
+ color:var(--text-soft);
+ font-size:1.05rem;
+ line-height:1.6;
+}
+
+.book-desk-hero-actions{
+ position:relative;
+ z-index:1;
+ display:flex;
+ flex-wrap:wrap;
+ gap:.75rem;
+ margin-top:1.25rem;
+}
+
+.book-desk-hero-actions .btn{
+ display:inline-flex;
+ align-items:center;
+ gap:.5rem;
+ border-radius:0;
+ font-weight:900;
+}
+
+.book-dashboard-header-panel{
+ flex:0 0 260px;
+ display:flex;
+ flex-direction:column;
+ justify-content:center;
+ min-height:145px;
+ padding:1rem;
+ border-radius:1.4rem;
+ background:
+  linear-gradient(145deg,color-mix(in srgb,var(--primary) 94%,black),var(--primary));
+ color:var(--text-inverse);
+ box-shadow:var(--shadow);
+}
+
+.book-dashboard-header-panel .book-dashboard-panel-label{
+ margin-bottom:.35rem;
+ color:color-mix(in srgb,var(--text-inverse) 85%,var(--accent));
+ white-space:nowrap;
+}
+
+.book-dashboard-header-panel h2{
+ margin:0;
+ color:var(--text-inverse);
+ font-size:1rem;
+ font-weight:900;
+ line-height:1.15;
+ white-space:nowrap;
+ overflow:hidden;
+ text-overflow:ellipsis;
+}
+
+.book-dashboard-header-panel p:not(.book-dashboard-panel-label){
+ width:fit-content;
+ max-width:100%;
+ margin:.8rem 0 0;
+ padding:.5rem .7rem;
+ border-radius:999px;
+ background:color-mix(in srgb,var(--accent) 90%,white);
+ color:var(--selection-text);
+ font-size:.9rem;
+ font-weight:900;
+ white-space:nowrap;
+}
+
+.notion-dashboard{
+ display:flex;
+ align-items:flex-start;
+ gap:1.25rem;
+ width:100%;
+}
+
+.notion-sidebar{
+ flex:0 0 285px;
+ display:flex;
+ flex-direction:column;
+ gap:1rem;
+ position:sticky;
+ top:1rem;
+}
+
+.notion-main{
+ flex:1 1 auto;
+ min-width:0;
+ display:flex;
+ flex-direction:column;
+ gap:1.15rem;
+}
+
+.notion-rightbar{
+ flex:0 0 420px;
+ display:flex;
+ flex-direction:column;
+ gap:1rem;
+ position:sticky;
+ top:1rem;
+}
+
+.notion-panel,
+.notion-command-center,
+.notion-section,
+.book-dashboard-card{
+ border:1px solid var(--border);
+ border-radius:1.2rem;
+ background:
+  linear-gradient(180deg,var(--surface),color-mix(in srgb,var(--surface-2) 34%,var(--surface)));
+ box-shadow:var(--shadow);
+}
+
+.notion-panel,
+.notion-section{
+ padding:1rem;
+}
+
+.notion-panel-head p,
+.notion-section-title p,
+.notion-control-block p{
+ margin:0 0 .35rem;
+ color:var(--accent);
+ font-size:.72rem;
+ font-weight:900;
+ letter-spacing:.1em;
+ text-transform:uppercase;
+}
+
+.notion-panel-head h2,
+.notion-section-title h2{
+ margin:0;
+ color:var(--heading);
+ font-size:1.25rem;
+ font-weight:900;
+ line-height:1.15;
+}
+
+.notion-muted{
+ margin:.75rem 0 0;
+ color:var(--text-soft);
+}
+
+.notion-book-list{
+ display:flex;
+ flex-direction:column;
+ gap:.55rem;
+ margin-top:.75rem;
+ padding-top:.75rem;
+ border-top:1px solid color-mix(in srgb,var(--primary) 16%,var(--border));
+}
+
+.notion-book-row{
+ position:relative;
+ display:flex;
+ flex-direction:column;
+ align-items:flex-start;
+ gap:.18rem;
+ width:100%;
+ min-height:4.2rem;
+ padding:.72rem 5.8rem .72rem .8rem;
+ border:1px solid color-mix(in srgb,var(--primary) 16%,var(--border));
+ border-radius:.8rem;
+ background:transparent;
+ color:var(--text);
+ text-align:left;
+}
+
+.notion-book-row.active,
+.notion-book-row:hover,
+.notion-book-row:focus{
+ border-color:color-mix(in srgb,var(--primary) 32%,var(--border));
+ background:color-mix(in srgb,var(--primary) 8%,transparent);
+ outline:none;
+}
+
+.notion-book-row span{
+ color:var(--heading);
+ font-size:.95rem;
+ font-weight:900;
+ line-height:1.15;
+}
+
+.notion-book-row small{
+ max-width:100%;
+ color:var(--text-soft);
+ font-size:.8rem;
+ overflow:hidden;
+ text-overflow:ellipsis;
+ white-space:nowrap;
+}
+
+.notion-book-row b{
+ position:absolute;
+ top:50%;
+ right:.72rem;
+ transform:translateY(-50%);
+ max-width:5rem;
+ padding:.34rem .58rem;
+ border-radius:999px;
+ background:var(--primary);
+ color:var(--text-inverse);
+ font-size:.65rem;
+ line-height:1;
+ text-transform:uppercase;
+ white-space:nowrap;
+ overflow:hidden;
+ text-overflow:ellipsis;
+}
+
+.notion-mini-stack{
+ display:flex;
+ flex-direction:column;
+ gap:.85rem;
+}
+
+.notion-mini-stack div{
+ padding:.75rem;
+ border:1px solid color-mix(in srgb,var(--primary) 14%,var(--border));
+ border-radius:.8rem;
+ background:color-mix(in srgb,var(--surface-2) 45%,transparent);
+}
+
+.notion-mini-stack strong{
+ display:block;
+ color:var(--primary);
+ font-size:1.3rem;
+ font-weight:900;
+}
+
+.notion-mini-stack span{
+ color:var(--text-soft);
+ font-size:.86rem;
+}
+
+.notion-command-center{
+ padding:1.25rem;
+}
+
+.notion-command-copy h2{
+ margin:0;
+ color:var(--heading);
+ font-size:clamp(2rem,3vw,3.5rem);
+ font-weight:900;
+ line-height:1.05;
+}
+
+.notion-command-copy p:not(.notion-label){
+ max-width:760px;
+ margin:.7rem 0 0;
+ color:var(--text-soft);
+ line-height:1.55;
+}
+
+.notion-command-stats{
+ display:flex;
+ flex-wrap:wrap;
+ gap:.75rem;
+ margin:1.25rem 0 1rem;
+}
+
+.notion-command-stats div{
+ flex:1 1 11rem;
+ min-width:11rem;
+ display:flex;
+ align-items:center;
+ gap:.75rem;
+ padding:.75rem .85rem;
+ border:1px solid color-mix(in srgb,var(--primary) 14%,var(--border));
+ border-radius:999px;
+ background:color-mix(in srgb,var(--surface-2) 50%,transparent);
+}
+
+.notion-command-stats svg{
+ color:var(--primary);
+}
+
+.notion-command-stats strong{
+ color:var(--heading);
+ font-size:1rem;
+ font-weight:900;
+}
+
+.notion-command-stats span{
+ color:var(--text-soft);
+ font-size:.8rem;
+}
+
+.notion-progress{
+ height:.85rem;
+ overflow:hidden;
+ border:1px solid var(--border);
+ border-radius:999px;
+ background:var(--surface-2);
+}
+
+.notion-progress div{
+ height:100%;
+ border-radius:inherit;
+ background:linear-gradient(90deg,var(--primary),var(--accent));
+}
+
+.notion-section-title{
+ margin-bottom:1rem;
+}
+
+.notion-control-row{
+ display:flex;
+ gap:.85rem;
+ align-items:stretch;
+}
+
+.notion-control-block{
+ flex:1 1 0;
+ min-width:0;
+ padding:1rem;
+ border:1px solid color-mix(in srgb,var(--primary) 14%,var(--border));
+ border-radius:1rem;
+ background:color-mix(in srgb,var(--surface-2) 40%,transparent);
+}
+
+.notion-control-block svg{
+ color:var(--primary);
+ margin-bottom:.75rem;
+}
+
+.notion-control-block h3{
+ margin:0;
+ color:var(--primary);
+ font-size:1.25rem;
+ font-weight:900;
+ line-height:1.15;
+}
+
+.notion-control-block span{
+ display:block;
+ margin:.5rem 0 1rem;
+ color:var(--text-soft);
+ line-height:1.45;
+}
+
+.notion-control-block button,
+.notion-control-block a{
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ width:100%;
+ border:0;
+ border-radius:.45rem;
+ padding:.7rem .9rem;
+ background:var(--primary);
+ color:var(--text-inverse);
+ font-weight:900;
+ text-decoration:none;
+}
+
+.notion-database-list,
+.notion-workflow-list,
+.notion-snapshot-list{
+ display:flex;
+ flex-direction:column;
+ gap:.55rem;
+}
+
+.notion-database-row,
+.notion-workflow-row,
+.notion-snapshot-list div{
+ display:flex;
+ align-items:center;
+ gap:.8rem;
+ padding:.8rem;
+ border:1px solid color-mix(in srgb,var(--primary) 14%,var(--border));
+ border-radius:.85rem;
+ background:color-mix(in srgb,var(--surface-2) 40%,transparent);
+ text-decoration:none;
+}
+
+.notion-db-icon,
+.notion-workflow-row span{
+ flex:0 0 2.25rem;
+ width:2.25rem;
+ height:2.25rem;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ border-radius:.65rem;
+ background:var(--surface);
+ border:1px solid var(--border);
+ color:var(--primary);
+}
+
+.notion-database-row div:nth-child(2),
+.notion-workflow-row div{
+ flex:1 1 auto;
+ min-width:0;
+}
+
+.notion-database-row h3,
+.notion-workflow-row h3{
+ margin:0;
+ color:var(--heading);
+ font-size:1rem;
+ font-weight:900;
+ line-height:1.15;
+}
+
+.notion-database-row p,
+.notion-workflow-row p{
+ margin:.25rem 0 0;
+ color:var(--text-soft);
+ line-height:1.35;
+}
+
+.notion-database-row strong,
+.notion-workflow-row strong,
+.notion-snapshot-list strong{
+ flex:0 0 auto;
+ color:var(--primary);
+ font-weight:900;
+}
+
+.notion-workflow-row.disabled{
+ opacity:.7;
+}
+
+.notion-snapshot-list div{
+ justify-content:space-between;
+}
+
+.notion-snapshot-list span{
+ color:var(--text-soft);
+}
+
+.book-dashboard-card{
+ min-width:0;
+ padding:1rem;
+}
+
+.book-dashboard-card-header{
+ margin-bottom:1rem;
+}
+
+.book-dashboard-card-title{
+ margin:0;
+ color:var(--heading);
+ font-size:1.25rem;
+ font-weight:900;
+ line-height:1.15;
+}
+
+.book-dashboard-calendar-wrap{
+ height:360px;
+ overflow:hidden;
+ border:1px solid color-mix(in srgb,var(--primary) 14%,var(--border));
+ border-radius:1rem;
+ background:var(--surface);
+}
+
+.book-dashboard-calendar-wrap .rbc-calendar{
+ height:100%;
+ color:var(--text);
+ font-family:inherit;
+}
+
+.book-dashboard-calendar-wrap .rbc-toolbar{
+ display:flex;
+ flex-wrap:wrap;
+ gap:.5rem;
+ padding:.65rem;
+}
+
+.book-dashboard-calendar-wrap .rbc-toolbar-label{
+ color:var(--heading);
+ font-weight:900;
+}
+
+.book-dashboard-calendar-wrap .rbc-btn-group{
+ display:inline-flex;
+ gap:.25rem;
+}
+
+.book-dashboard-calendar-wrap .rbc-btn-group button{
+ border:1px solid color-mix(in srgb,var(--primary) 22%,var(--border));
+ border-radius:999px;
+ background:var(--surface-2);
+ color:var(--primary);
+ font-weight:900;
+}
+
+.book-dashboard-calendar-wrap .rbc-btn-group button.rbc-active,
+.book-dashboard-calendar-wrap .rbc-btn-group button:hover{
+ background:var(--primary);
+ color:var(--text-inverse);
+}
+
+.book-dashboard-calendar-wrap .rbc-month-view,
+.book-dashboard-calendar-wrap .rbc-time-view,
+.book-dashboard-calendar-wrap .rbc-agenda-view,
+.book-dashboard-calendar-wrap .rbc-header,
+.book-dashboard-calendar-wrap .rbc-day-bg,
+.book-dashboard-calendar-wrap .rbc-month-row{
+ border-color:color-mix(in srgb,var(--primary) 14%,var(--border));
+}
+
+.book-dashboard-calendar-wrap .rbc-header{
+ padding:.45rem;
+ color:var(--primary);
+ font-weight:900;
+}
+
+.book-dashboard-calendar-wrap .rbc-date-cell{
+ padding:.25rem .35rem;
+ color:var(--text-soft);
+}
+
+.book-dashboard-calendar-wrap .rbc-today{
+ background:color-mix(in srgb,var(--accent) 18%,transparent);
+}
+
+.book-dashboard-calendar-wrap .rbc-event{
+ border:0;
+ border-radius:.65rem;
+ background:var(--primary);
+ color:var(--text-inverse);
+ font-weight:900;
+}
+
+.book-desk-alert{
+ max-width:1180px;
+ margin:0 auto 1rem;
+}
+
+.book-desk-form-grid{
+ display:flex;
+ gap:1rem;
+}
+
+.book-desk-form-grid .mb-3{
+ flex:1 1 0;
+}
+
+.book-desk-book-modal .modal-dialog{
+ max-width:min(900px,calc(100vw - 2rem));
+}
+
+.book-desk-book-modal .modal-body{
+ padding:1.25rem 1.5rem 1.5rem;
+}
+
+.book-desk-book-modal form{
+ width:100%;
+}
+
+.book-desk-book-modal .mb-3{
+ display:block;
+ min-width:0;
+}
+
+.book-desk-book-modal .form-label{
+ display:block;
+ width:100%;
+ margin-bottom:.4rem;
+ color:var(--primary);
+ font-weight:900;
+}
+
+.book-desk-book-modal .form-control,
+.book-desk-book-modal .form-select{
+ display:block;
+ width:100%;
+ min-width:0;
+ max-width:none;
+}
+
+.book-desk-book-modal textarea.form-control{
+ min-height:7rem;
+}
+
+.book-desk-modal-actions{
+ display:flex;
+ justify-content:flex-end;
+ gap:.75rem;
+}
+
+.tiptap-editor{
+ border:1px solid var(--border);
+ border-radius:1rem;
+ overflow:hidden;
+ background:var(--surface);
+}
+
+.tiptap-toolbar{
+ display:flex;
+ flex-wrap:wrap;
+ gap:.4rem;
+ padding:.55rem;
+ border-bottom:1px solid var(--border);
+ background:var(--surface-2);
+}
+
+.tiptap-toolbar button{
+ border:1px solid color-mix(in srgb,var(--primary) 22%,var(--border));
+ border-radius:999px;
+ padding:.35rem .7rem;
+ background:var(--surface);
+ color:var(--primary);
+ font-weight:900;
+}
+
+.tiptap-toolbar button.active,
+.tiptap-toolbar button:hover{
+ background:var(--primary);
+ color:var(--text-inverse);
+}
+
+.tiptap-editor-content{
+ min-height:11rem;
+ padding:1rem;
+ color:var(--text);
+ outline:none;
+}
+
+.tiptap-editor-content p{
+ margin:0 0 .75rem;
+}
+
+.tiptap-editor-content ul,
+.tiptap-editor-content ol{
+ padding-left:1.25rem;
+}
+
+.tiptap-editor-content p.is-editor-empty:first-child::before{
+ content:attr(data-placeholder);
+ float:left;
+ height:0;
+ color:var(--text-soft);
+ pointer-events:none;
+}
+
+@media (max-width:1450px){
+ .notion-dashboard{
+  flex-wrap:wrap;
+ }
+
+ .notion-sidebar{
+  flex:0 0 285px;
+  position:static;
+ }
+
+ .notion-main{
+  flex:1 1 calc(100% - 310px);
+ }
+
+ .notion-rightbar{
+  flex:1 1 100%;
+  position:static;
+ }
+
+ .notion-rightbar .book-dashboard-calendar-wrap{
+  height:360px;
+ }
+}
+
+@media (max-width:1000px){
+ .book-dashboard-header,
+ .notion-dashboard,
+ .notion-control-row{
+  flex-direction:column;
+ }
+
+ .book-dashboard-header-panel,
+ .notion-sidebar,
+ .notion-main,
+ .notion-rightbar{
+  flex:1 1 auto;
+  width:100%;
+ }
+
+ .book-dashboard-title,
+ .book-dashboard-text{
+  max-width:none;
+  white-space:normal;
+ }
+
+ .book-dashboard-header-panel{
+  min-height:auto;
+ }
+
+ .book-dashboard-header-panel h2{
+  white-space:normal;
+  overflow:visible;
+  text-overflow:clip;
+ }
+}
+
+@media (max-width:650px){
+ .book-desk-page,
+ .book-dashboard-page{
+  padding:1rem;
+ }
+
+ .book-desk-form-grid{
+  flex-direction:column;
+  gap:0;
+ }
+}
