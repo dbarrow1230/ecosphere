@@ -1,0 +1,416 @@
+/* frontend/styles/GenresIndexPage.css */
+.genres-index-page{
+ padding:1rem;
+ background:var(--bg);
+ color:var(--text);
+ min-height:100%;
+ font-family:inherit;
+}
+
+.genres-index-toolbar{
+ display:flex;
+ align-items:flex-start;
+ justify-content:space-between;
+ gap:1rem;
+ flex-wrap:wrap;
+ margin-bottom:1rem;
+}
+
+.genres-index-heading h1{
+ margin:0;
+ color:var(--heading);
+ font-family:var(--font-heading);
+ font-size:2rem;
+ line-height:1.1;
+}
+
+.genres-index-subtitle{
+ margin-top:.35rem;
+ color:var(--text-soft);
+ font-family:inherit;
+}
+
+.genres-index-filters{
+ margin-bottom:1rem;
+}
+
+.genres-index-filter{
+ max-width:520px;
+}
+
+.genres-index-filter label{
+ display:block;
+ margin-bottom:.5rem;
+ color:var(--heading);
+ font-weight:600;
+ font-family:inherit;
+}
+
+.genres-index-layout{
+ display:grid;
+ grid-template-columns:minmax(320px,380px) minmax(460px,620px) minmax(460px,1fr);
+ gap:1rem;
+ align-items:start;
+}
+
+.genres-index-left,
+.genres-index-center,
+.genres-index-books{
+ background:var(--surface);
+ border:1px solid var(--border);
+ border-radius:12px;
+ padding:1rem;
+ box-shadow:var(--shadow);
+ min-height:520px;
+}
+
+.genres-index-panel-title{
+ margin-bottom:1rem;
+ color:var(--heading);
+ font-family:var(--font-heading);
+ font-size:1.05rem;
+ font-weight:700;
+}
+
+.genres-index-center-header{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:1rem;
+ flex-wrap:wrap;
+ margin-bottom:1rem;
+}
+
+.genres-index-books-header{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:1rem;
+ margin-bottom:1rem;
+}
+
+.genres-index-books-count{
+ min-width:2rem;
+ height:2rem;
+ display:inline-grid;
+ place-items:center;
+ border-radius:999px;
+ padding:0 .45rem;
+ background:var(--primary);
+ color:var(--text-inverse);
+ font-size:.8rem;
+ font-weight:800;
+}
+
+.genres-index-list{
+ display:flex;
+ flex-direction:column;
+ gap:.5rem;
+ max-height:70vh;
+ overflow:auto;
+ padding-right:.25rem;
+}
+
+.genres-index-item{
+ width:100%;
+ display:grid;
+ grid-template-columns:minmax(0,1fr) auto;
+ align-items:center;
+ gap:1rem;
+ text-align:left;
+ background:var(--bg-alt);
+ color:var(--text);
+ border:1px solid var(--border);
+ border-radius:10px;
+ padding:.75rem .875rem;
+ cursor:pointer;
+ transition:background .2s ease,border-color .2s ease,color .2s ease,transform .2s ease;
+}
+
+.genres-index-item:hover{
+ background:var(--surface-2);
+ border-color:var(--border-strong);
+ color:var(--heading);
+}
+
+.genres-index-item.is-active{
+ background:color-mix(in srgb,var(--primary) 12%,var(--surface));
+ color:var(--heading);
+ border-color:var(--primary);
+}
+
+.genres-index-name{
+ font-weight:600;
+ font-family:inherit;
+ word-break:break-word;
+}
+
+.genres-index-count{
+ min-width:1.9rem;
+ height:1.9rem;
+ display:inline-grid;
+ place-items:center;
+ border-radius:999px;
+ background:var(--primary);
+ color:var(--text-inverse);
+ font-size:.78rem;
+ font-weight:800;
+ white-space:nowrap;
+ padding:0 .35rem;
+}
+
+.genres-index-item.is-active .genres-index-count{
+ background:var(--primary-hover);
+ color:var(--text-inverse);
+}
+
+.genres-index-details-card{
+ background:var(--bg-alt);
+ border:1px solid var(--border);
+ border-radius:12px;
+ overflow:hidden;
+}
+
+.genres-index-details-table{
+ color:var(--text);
+ margin:0;
+}
+
+.genres-index-details-table th,
+.genres-index-details-table td{
+ background:transparent!important;
+ border-color:var(--border)!important;
+ padding:.875rem 1rem!important;
+ vertical-align:top;
+}
+
+.genres-index-details-table th{
+ width:170px;
+ color:var(--heading);
+ font-weight:700;
+ font-family:var(--font-heading);
+ background:var(--surface-2)!important;
+ white-space:nowrap;
+}
+
+.genres-index-details-table td{
+ color:var(--text);
+ font-family:inherit;
+ word-break:break-word;
+}
+
+.genres-index-books-table-wrap{
+ max-height:62vh;
+ overflow:auto;
+ border:1px solid var(--border);
+ border-radius:10px;
+}
+
+.genres-index-books-table{
+ width:100%;
+ border-collapse:collapse;
+ color:var(--text);
+}
+
+.genres-index-books-table th,
+.genres-index-books-table td{
+ padding:.65rem .75rem;
+ border-bottom:1px solid var(--border);
+ text-align:left;
+ vertical-align:top;
+}
+
+.genres-index-books-table th{
+ position:sticky;
+ top:0;
+ z-index:1;
+ background:var(--surface-2);
+ color:var(--heading);
+ font-weight:800;
+ white-space:nowrap;
+}
+
+.genres-index-books-table td{
+ font-size:.9rem;
+ line-height:1.35;
+}
+
+.genres-index-books-table tr:last-child td{
+ border-bottom:0;
+}
+
+.genres-index-empty{
+ color:var(--text-soft);
+ font-family:inherit;
+ padding:.5rem 0;
+}
+
+.genres-index-delete-name{
+ color:var(--heading);
+ font-weight:700;
+ font-family:var(--font-heading);
+ margin-bottom:.5rem;
+}
+
+.genres-index-delete-note{
+ color:var(--danger);
+ margin-top:.5rem;
+}
+
+.genres-index-page .form-control,
+.genres-index-page .form-select{
+ background:var(--surface);
+ color:var(--text);
+ border-color:var(--border);
+ font-family:inherit;
+}
+
+.genres-index-page .form-control:focus,
+.genres-index-page .form-select:focus{
+ background:var(--surface);
+ color:var(--text);
+ border-color:var(--primary);
+ box-shadow:0 0 0 .2rem color-mix(in srgb,var(--primary) 20%,transparent);
+}
+
+.genres-index-page .input-group-text{
+ background:var(--surface-2);
+ color:var(--text-soft);
+ border-color:var(--border);
+}
+
+.genres-index-page .btn-primary{
+ background:var(--primary);
+ border-color:var(--primary);
+ color:var(--text-inverse)!important;
+}
+
+.genres-index-page .btn-primary svg{
+ color:currentColor;
+ fill:currentColor;
+}
+
+.genres-index-page .btn-primary:hover,
+.genres-index-page .btn-primary:focus,
+.genres-index-page .btn-primary:active{
+ background:var(--primary-hover)!important;
+ border-color:var(--primary-hover)!important;
+ color:var(--text-inverse)!important;
+}
+
+.genres-index-page .btn-outline-primary{
+ color:var(--primary);
+ border-color:var(--primary);
+}
+
+.genres-index-page .btn-outline-primary:hover,
+.genres-index-page .btn-outline-primary:focus,
+.genres-index-page .btn-outline-primary:active{
+ background:var(--primary);
+ border-color:var(--primary);
+ color:var(--text-inverse);
+}
+
+.genres-index-page .btn-outline-secondary{
+ color:var(--secondary);
+ border-color:var(--secondary);
+}
+
+.genres-index-page .btn-outline-secondary:hover,
+.genres-index-page .btn-outline-secondary:focus,
+.genres-index-page .btn-outline-secondary:active{
+ background:var(--secondary);
+ border-color:var(--secondary);
+ color:var(--text-inverse);
+}
+
+.genres-index-page .btn-outline-danger,
+.genres-index-page .btn-danger{
+ color:var(--danger);
+ border-color:var(--danger);
+}
+
+.genres-index-page .btn-danger{
+ background:var(--danger);
+ color:var(--text-inverse);
+}
+
+.genres-index-page .btn-outline-danger:hover,
+.genres-index-page .btn-outline-danger:focus,
+.genres-index-page .btn-outline-danger:active{
+ background:var(--danger);
+ border-color:var(--danger);
+ color:var(--text-inverse);
+}
+
+.genres-index-page .btn-danger:hover,
+.genres-index-page .btn-danger:focus,
+.genres-index-page .btn-danger:active{
+ background:var(--danger);
+ border-color:var(--danger);
+ color:var(--text-inverse);
+ filter:brightness(.95);
+}
+
+.genres-index-page .alert-danger{
+ background:color-mix(in srgb,var(--danger) 10%,var(--surface));
+ color:var(--danger);
+ border:1px solid color-mix(in srgb,var(--danger) 30%,var(--border));
+}
+
+.genres-index-page .modal-content{
+ background:var(--surface);
+ color:var(--text);
+ border:1px solid var(--border-strong);
+}
+
+.genres-index-page .modal-header,
+.genres-index-page .modal-footer{
+ border-color:var(--border);
+}
+
+.genres-index-page .modal-title{
+ color:var(--heading);
+ font-family:var(--font-heading);
+}
+
+@media (max-width:991.98px){
+ .genres-index-layout{
+  grid-template-columns:1fr;
+ }
+
+ .genres-index-left,
+ .genres-index-center,
+ .genres-index-books{
+  min-height:auto;
+ }
+
+ .genres-index-list{
+  max-height:320px;
+ }
+}
+
+@media (max-width:575.98px){
+ .genres-index-page{
+  padding:.75rem;
+ }
+
+ .genres-index-heading h1{
+  font-size:1.65rem;
+ }
+
+ .genres-index-left,
+ .genres-index-center,
+ .genres-index-books{
+  padding:.75rem;
+ }
+
+ .genres-index-details-table th,
+ .genres-index-details-table td{
+  padding:.75rem!important;
+ }
+
+ .genres-index-details-table th{
+  width:120px;
+ }
+}

@@ -1,0 +1,46 @@
+/* src/components/books/BookCatalogCard.css */
+
+.catalog-card{
+ background:var(--surface-2);
+ border:1px solid var(--border);
+ box-shadow:var(--shadow-sm);
+ color:var(--text);
+}
+
+.catalog-card-image{
+ padding:12px 12px 0 12px;
+}
+
+.catalog-card-image img{
+ width:80px;
+ height:120px;
+ object-fit:cover;
+ border:1px solid var(--border);
+ background:var(--surface);
+}
+
+.catalog-card-body{
+ padding:12px;
+}
+
+.catalog-card-title{
+ color:var(--heading);
+ margin-bottom:4px;
+}
+
+.catalog-card-authors{
+ color:var(--text-soft);
+ margin-bottom:8px;
+}
+
+.catalog-card-meta{
+ font-size:0.9rem;
+ display:grid;
+ gap:3px;
+}
+
+.catalog-card-meta .label{
+ font-weight:600;
+ color:var(--text-soft);
+ margin-right:4px;
+}
