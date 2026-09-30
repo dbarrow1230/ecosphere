@@ -1,0 +1,87 @@
+.modal-body .mb-3:has(> .form-label){
+ display:grid;
+ grid-template-columns:125px minmax(0,1fr);
+ column-gap:12px;
+ row-gap:5px;
+ align-items:center;
+}
+
+.modal-body .mb-3:has(> .form-label) > .form-label{
+ grid-column:1;
+ margin:0;
+ width:auto;
+ white-space:normal;
+ line-height:1.2;
+}
+
+.modal-body .mb-3:has(> .form-label) > .form-control,
+.modal-body .mb-3:has(> .form-label) > .form-select{
+ grid-column:2;
+ width:100%;
+ min-width:0;
+ margin:0;
+}
+
+.modal-body .mb-3:has(> .form-label) > textarea.form-control{
+ grid-column:2;
+ width:100%;
+ min-width:0;
+}
+
+.modal-body .mb-3:has(> .form-label) > .form-text{
+ grid-column:2;
+ margin:0;
+}
+
+.modal-body .mb-3:has(> .form-label) > .border{
+ grid-column:2;
+ width:100%;
+}
+
+.modal-body .row{
+ --bs-gutter-x:1.5rem;
+}
+
+.modal-body [class*="col-"]{
+ min-width:0;
+}
+
+.modal-body input[type="file"]{
+ min-width:0;
+}
+
+.product-form-dialog .modal-content > form{display:flex;flex:1;flex-direction:column;min-height:0;overflow:hidden}
+.product-form-dialog .modal-body{flex:1;min-height:0;overflow-y:auto}
+.product-form-tabs{position:sticky;top:-1rem;z-index:2;display:flex;flex-wrap:nowrap;overflow-x:auto;background:var(--surface);padding-top:1rem;border-color:var(--border)}
+.product-barcode-preview{overflow-x:auto}
+.product-form-image-thumbnail{width:140px;height:140px;object-fit:cover;border-radius:var(--radius-sm)}
+.product-form-tabs .nav-link{flex-shrink:0;color:var(--text)}
+.product-form-tabs .nav-link.active{color:var(--heading);background:var(--surface);border-color:var(--border) var(--border) var(--surface)}
+.product-category-create{grid-column:2;display:flex;gap:.5rem;min-width:0}
+.product-category-create .form-control{min-width:0;flex:1}
+.product-category-create .btn{flex-shrink:0}
+.product-category-hint{grid-column:2;color:var(--text-muted)}
+.parsed-fields-form{display:flex;flex-direction:column;gap:.75rem;min-width:0}
+.parsed-field-row{display:grid;grid-template-columns:11rem minmax(0,1fr);gap:1rem;align-items:start;min-width:0}
+.parsed-field-row .form-label{margin:.45rem 0 0;font-weight:600;overflow-wrap:anywhere}
+.parsed-field-control{min-width:0}
+.parsed-field-control .form-control{width:100%;max-width:100%;min-width:0;overflow-wrap:anywhere}
+.parsed-field-control textarea.form-control{resize:vertical;white-space:pre-wrap;overflow-x:hidden}
+
+@media(max-width:767.98px){
+ .parsed-field-row{grid-template-columns:7rem minmax(0,1fr);gap:.5rem}
+ .modal-body .mb-3:has(> .form-label){
+  grid-template-columns:7rem minmax(0,1fr);
+  row-gap:6px;
+ }
+
+ .modal-body .mb-3:has(> .form-label) > .form-control,
+ .modal-body .mb-3:has(> .form-label) > .form-select,
+ .modal-body .mb-3:has(> .form-label) > textarea.form-control,
+ .modal-body .mb-3:has(> .form-label) > .form-text,
+ .modal-body .mb-3:has(> .form-label) > .border{
+  grid-column:2;
+ }
+ .modal-body .mb-3:has(> .form-label) > .form-label{grid-column:1}
+ .product-category-create{flex-wrap:wrap}
+}
