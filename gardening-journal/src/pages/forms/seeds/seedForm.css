@@ -1,0 +1,518 @@
+/* src/pages/forms/seeds/seedForm.css */
+
+.seed-form-modal .modal-dialog {
+	max-width:min(98vw,1680px);
+	width:98vw;
+}
+
+.seed-form-modal .modal-content {
+	height:92vh;
+	min-height:760px;
+	background:var(--app-page-background,var(--app-background,var(--bg)));
+	border:1px solid var(--borderStrong);
+	border-radius:16px;
+	box-shadow:0 18px 45px var(--overlay);
+	overflow:hidden;
+	color:var(--text);
+	font-family:var(--fontBody);
+}
+
+.seed-form-modal .modal-header {
+	background:var(--surface);
+	border-bottom:1px solid var(--border);
+	color:var(--heading);
+}
+
+.seed-form-modal .modal-title {
+	color:var(--heading);
+	font-family:var(--fontHeading);
+	font-weight:800;
+}
+
+.seed-form-modal .modal-body {
+	max-height:none;
+	overflow:hidden;
+	background:var(--bgAlt);
+	padding:1rem;
+}
+
+.seed-form-modal .modal-footer {
+	background:var(--surface);
+	border-top:1px solid var(--border);
+}
+
+.seed-form-modal .btn-close {
+	opacity:.75;
+}
+
+.seed-form-modal .btn-close:hover {
+	opacity:1;
+}
+
+.seed-form-shell {
+	background:transparent;
+	border:0;
+	border-radius:0;
+	box-shadow:none;
+	color:var(--text);
+	font-family:var(--fontBody);
+	height:100%;
+	display:flex;
+	flex-direction:column;
+	overflow:hidden;
+}
+
+.seed-form-shell .card-header {
+	background:var(--bg-alt,var(--bgAlt,#cfdcc8)) !important;
+	border-bottom:1px solid var(--border);
+	border-radius:14px 14px 0 0;
+	padding:.75rem .85rem;
+	color:var(--heading);
+}
+
+.seed-form-shell .card-body {
+	background:var(--bgAlt);
+}
+
+.seed-form-shell .card-footer {
+	background:var(--surface);
+	border-top:1px solid var(--border);
+	border-radius:0 0 14px 14px;
+}
+
+.seed-form-shell h1,
+.seed-form-shell h2,
+.seed-form-shell h3,
+.seed-form-shell h4,
+.seed-form-shell h5,
+.seed-form-shell h6 {
+	color:var(--heading);
+	font-family:var(--fontHeading);
+	font-weight:800;
+}
+
+.seed-form-tabs {
+	display:flex;
+	flex-wrap:wrap;
+	align-items:flex-end;
+	gap:.35rem .4rem;
+	overflow-y:visible;
+	overflow-x:hidden;
+	padding:.75rem .75rem 0;
+	border:0;
+	border-bottom:1px solid var(--border);
+}
+
+.seed-form-tabs .nav-item {
+	flex:0 0 auto;
+}
+
+.seed-form-tabs .nav-link {
+	min-height:36px;
+	padding:.45rem .7rem;
+	border:1px solid var(--border);
+	border-bottom-color:var(--borderStrong);
+	border-radius:9px 9px 0 0;
+	background:var(--surface2);
+	color:var(--primary);
+	font-family:var(--fontBody);
+	font-weight:700;
+	font-size:.84rem;
+	line-height:1.1;
+	white-space:nowrap;
+	box-shadow:none;
+	margin-bottom:-1px;
+	transition:background .18s ease,border-color .18s ease,color .18s ease,transform .18s ease;
+}
+
+.seed-form-tabs .nav-link svg {
+	color:var(--primary);
+}
+
+.seed-form-tabs .nav-link:hover {
+	background:var(--surface);
+	border-color:var(--primary);
+	color:var(--primaryHover);
+}
+
+.seed-form-tabs .nav-link.active {
+	position:relative;
+	z-index:2;
+	background:var(--surface);
+	border-color:var(--borderStrong);
+	border-bottom-color:var(--surface);
+	color:var(--heading);
+	box-shadow:0 -2px 8px var(--overlay);
+	transform:translateY(1px);
+}
+
+.seed-form-tabs .nav-link.active svg {
+	color:var(--primary);
+}
+
+.seed-form-content-card {
+	background:var(--surface);
+	border:0;
+	border-radius:10px;
+	box-shadow:none;
+	flex:1 1 auto;
+	min-height:0;
+	overflow:hidden;
+}
+
+.seed-form-layout {
+	display:flex;
+	flex-direction:column;
+	height:100%;
+	min-height:0;
+}
+
+.seed-import-panel {
+	flex:0 0 auto;
+	background:var(--surface);
+	border-bottom:1px solid var(--border);
+	padding:.85rem 1rem;
+}
+
+.seed-import-panel-header {
+	display:flex;
+	align-items:flex-start;
+	justify-content:space-between;
+	gap:1rem;
+	margin-bottom:.65rem;
+}
+
+.seed-import-panel h2 {
+	font-size:1rem;
+	margin:0 0 .2rem;
+}
+
+.seed-import-panel p {
+	color:var(--textSoft);
+	font-size:.86rem;
+	margin:0;
+}
+
+.seed-import-panel textarea {
+	min-height:120px;
+	resize:vertical;
+}
+
+.seed-form-tabs-wrap {
+	background:var(--surface2);
+	flex:0 0 auto;
+}
+
+.seed-form-workspace {
+	display:flex;
+	flex-direction:column;
+	min-width:0;
+	min-height:0;
+}
+
+.seed-form-content-card .card-body {
+	background:var(--surface);
+	border-radius:0;
+	padding:1.25rem;
+	overflow-y:auto;
+	min-height:0;
+	flex:1 1 auto;
+}
+
+.seed-form-workspace > .card-body > .card {
+	background:transparent;
+	border:0 !important;
+	box-shadow:none !important;
+}
+
+.seed-form-workspace > .card-body > .card > .card-body {
+	background:transparent;
+	padding:0;
+}
+
+.seed-guide-editor-card .card-header {
+	background:var(--bg-alt,var(--bgAlt,#cfdcc8)) !important;
+	gap:.75rem;
+}
+
+.seed-guide-editor-card .card-body {
+	background:var(--surface);
+}
+
+.seed-guide-editor-row {
+	align-items:stretch;
+	box-shadow:none;
+}
+
+.seed-guide-editor-row .input-group-text {
+	min-width:125px;
+	max-width:160px;
+}
+
+.seed-guide-editor-row textarea.form-control {
+	min-height:72px;
+	resize:vertical;
+}
+
+.seed-form-section-card {
+	background:var(--surface);
+	border:1px solid var(--border);
+	border-radius:12px;
+	box-shadow:0 4px 12px var(--overlay);
+}
+
+.seed-form-section-card .card-header {
+	background:var(--surface2);
+	border-bottom:1px solid var(--border);
+	border-radius:12px 12px 0 0;
+	font-weight:800;
+	color:var(--heading);
+}
+
+.seed-form-section-card .card-body {
+	background:var(--surface);
+	border-radius:0 0 12px 12px;
+}
+
+.seed-form-shell .input-group {
+	border-radius:8px;
+	box-shadow:none;
+	flex-wrap:nowrap;
+	align-items:flex-start;
+	gap:.25rem;
+}
+
+.seed-form-shell .input-group-text {
+	background:var(--bg-alt,var(--bgAlt,#cfdcc8));
+	border-color:var(--border);
+	color:var(--heading);
+	font-weight:650;
+	font-size:.82rem;
+	border-radius:6px !important;
+	align-items:center;
+	justify-content:flex-start;
+	min-width:clamp(84px,16%,126px);
+	min-height:32px;
+	height:32px;
+	padding:.28rem .45rem;
+	white-space:normal;
+	text-align:left;
+	line-height:1.1;
+	align-self:flex-start;
+}
+
+.seed-form-shell .input-group-text.fw-bold {
+	font-weight:650 !important;
+}
+
+.seed-form-shell .form-control,
+.seed-form-shell .form-select {
+	border-color:var(--border);
+	background:var(--surface);
+	color:var(--text);
+	border-radius:6px !important;
+	min-width:0;
+	min-height:32px;
+	padding:.32rem .55rem;
+	user-select:text;
+	-webkit-user-select:text;
+}
+
+.seed-form-shell input,
+.seed-form-shell textarea {
+	caret-color:var(--text);
+	cursor:text;
+	user-select:text;
+	-webkit-user-select:text;
+}
+
+.seed-form-shell input::selection,
+.seed-form-shell textarea::selection {
+	background:color-mix(in srgb,var(--info,#2f7d70) 36%,white);
+	color:var(--text);
+}
+
+.seed-form-shell .form-control:focus,
+.seed-form-shell .form-select:focus {
+	border-color:var(--primary);
+	box-shadow:0 0 0 .2rem var(--selectionBg);
+	background:var(--surface);
+	color:var(--text);
+}
+
+.seed-form-shell textarea.form-control {
+	min-height:50px;
+}
+
+.seed-cover-image-editor {
+	display:flex;
+	align-items:flex-start;
+	justify-content:flex-start;
+	width:100%;
+}
+
+.seed-cover-image-preview {
+	display:block;
+	width:min(100%,240px);
+	max-height:260px;
+	object-fit:contain;
+	border:1px solid var(--borderStrong);
+	border-radius:12px;
+	box-shadow:0 6px 16px var(--overlay);
+	background:transparent;
+}
+
+.seed-cover-image-placeholder {
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	width:min(100%,240px);
+	aspect-ratio:3 / 4;
+	min-height:180px;
+	border:1px dashed var(--borderStrong);
+	border-radius:12px;
+	background:color-mix(in srgb,var(--info,#2f7d70) 10%,var(--surface));
+	color:var(--textSoft);
+}
+
+.seed-form-shell .form-check-input {
+	border-color:var(--borderStrong);
+	background-color:var(--surface);
+}
+
+.seed-form-shell .form-check-input:checked {
+	background-color:var(--primary);
+	border-color:var(--primary);
+}
+
+.seed-form-shell .form-check-label {
+	color:var(--text);
+	font-weight:600;
+}
+
+.seed-form-shell .text-muted {
+	color:var(--textSoft) !important;
+}
+
+.seed-form-shell .btn-success {
+	background:var(--success);
+	border-color:var(--success);
+	color:var(--textInverse);
+	border-radius:9px;
+	font-weight:800;
+	box-shadow:0 3px 8px var(--overlay);
+}
+
+.seed-form-shell .btn-success:hover {
+	background:var(--primaryHover);
+	border-color:var(--primaryHover);
+	color:var(--textInverse);
+}
+
+.seed-form-shell .btn-outline-success {
+	color:var(--success);
+	border-color:var(--success);
+	border-radius:9px;
+	font-weight:800;
+	background:var(--surface);
+}
+
+.seed-form-shell .btn-outline-success:hover {
+	background:var(--success);
+	border-color:var(--success);
+	color:var(--textInverse);
+}
+
+.seed-form-shell .btn-outline-danger {
+	color:var(--danger);
+	border-color:var(--danger);
+	border-radius:9px;
+	font-weight:800;
+	background:var(--surface);
+}
+
+.seed-form-shell .btn-outline-danger:hover {
+	background:var(--danger);
+	border-color:var(--danger);
+	color:var(--textInverse);
+}
+
+.seed-form-shell .btn-outline-secondary {
+	color:var(--secondary);
+	border-color:var(--secondary);
+	border-radius:9px;
+	font-weight:800;
+	background:var(--surface);
+}
+
+.seed-form-shell .btn-outline-secondary:hover {
+	background:var(--secondaryHover);
+	border-color:var(--secondaryHover);
+	color:var(--textInverse);
+}
+
+.seed-form-shell .table {
+	color:var(--text);
+	border-color:var(--border);
+}
+
+.seed-form-shell .table-striped tbody tr:nth-of-type(odd) {
+	background:var(--tableStripe);
+}
+
+.seed-form-shell ::selection {
+	background:var(--selectionBg);
+	color:var(--selectionText);
+}
+
+@media (max-width:991.98px) {
+	.seed-form-modal .modal-dialog {
+		max-width:98vw;
+		width:98vw;
+		margin:.5rem auto;
+	}
+
+	.seed-form-modal .modal-content {
+		height:92vh;
+		min-height:0;
+	}
+
+	.seed-form-modal .modal-body {
+		padding:.75rem;
+	}
+
+	.seed-form-layout {
+		display:flex;
+	}
+
+	.seed-form-shell .input-group {
+		flex-direction:row;
+		align-items:flex-start;
+	}
+
+	.seed-form-shell .input-group-text {
+		width:auto;
+		min-width:clamp(84px,20%,120px);
+		border-radius:6px !important;
+		border-bottom:1px solid var(--border);
+	}
+
+	.seed-form-shell .form-control,
+	.seed-form-shell .form-select {
+		width:auto;
+		border-radius:6px !important;
+	}
+}
+
+@media (max-width:767.98px) {
+	.seed-form-tabs {
+		gap:.3rem;
+		padding:.6rem .6rem 0;
+	}
+
+	.seed-form-tabs .nav-link {
+		min-height:38px;
+		padding:.42rem .55rem;
+		font-size:.78rem;
+	}
+}

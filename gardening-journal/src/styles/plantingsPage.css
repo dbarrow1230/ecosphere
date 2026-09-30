@@ -1,0 +1,257 @@
+.plantings-page{
+ display:grid;
+ gap:1rem;
+ padding:1.5rem 2rem 2.5rem;
+ color:var(--text);
+}
+
+.plantings-header,
+.plantings-card,
+.plantings-metric-card,
+.planting-card{
+ border:1px solid var(--border);
+ border-radius:14px;
+ background:var(--surface);
+ box-shadow:0 12px 32px rgba(17,24,39,.08);
+}
+
+.plantings-header{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:1rem;
+ padding:1.25rem;
+}
+
+.plantings-header h1{
+ margin:0;
+ color:var(--heading);
+ font-family:var(--fontHeading);
+ line-height:1.1;
+}
+
+.plantings-header p{
+ margin:.35rem 0 0;
+ color:var(--textSoft);
+ max-width:62rem;
+}
+
+.plantings-kicker{
+ margin:0;
+ color:var(--primary);
+ font-size:.72rem;
+ font-weight:900;
+ letter-spacing:.08em;
+ text-transform:uppercase;
+}
+
+.plantings-header-actions{
+ display:flex;
+ align-items:center;
+ gap:.65rem;
+ flex-wrap:wrap;
+}
+
+.plantings-header-actions .btn,
+.planting-card .btn,
+.modal-footer .btn{
+ display:inline-flex;
+ align-items:center;
+ gap:.4rem;
+}
+
+.plantings-reference-dashboard{
+ display:grid;
+ grid-template-columns:minmax(0,.78fr) minmax(360px,1.22fr);
+ align-items:center;
+ gap:1.25rem;
+ padding:1rem;
+ border:1px solid var(--border);
+ border-radius:18px;
+ background:var(--surface);
+ box-shadow:0 12px 32px rgba(17,24,39,.08);
+ overflow:hidden;
+}
+
+.plantings-reference-dashboard h2{
+ margin:.2rem 0 .45rem;
+ color:var(--heading);
+ font-family:var(--fontHeading);
+ line-height:1.15;
+}
+
+.plantings-reference-dashboard p{
+ margin:0;
+ color:var(--textSoft);
+ line-height:1.55;
+}
+
+.plantings-care-summary{
+ display:grid;
+ grid-template-columns:repeat(3,minmax(0,1fr));
+ gap:.75rem;
+}
+
+.plantings-care-summary article{
+ display:grid;
+ gap:.25rem;
+ min-height:150px;
+ align-content:center;
+ padding:1rem;
+ border:1px solid var(--border);
+ border-radius:16px;
+ background:linear-gradient(145deg,var(--surface2),var(--surface));
+}
+
+.plantings-care-summary span{
+ color:var(--textSoft);
+ font-size:.78rem;
+ font-weight:900;
+ text-transform:uppercase;
+}
+
+.plantings-care-summary strong{
+ color:var(--heading);
+ font-family:var(--fontHeading);
+ font-size:2.4rem;
+ line-height:1;
+}
+
+.plantings-care-summary small{
+ color:var(--textSoft);
+ line-height:1.35;
+}
+
+.plantings-metrics{
+ display:grid;
+ grid-template-columns:repeat(4,minmax(0,1fr));
+ gap:1rem;
+}
+
+.plantings-metric-card .card-body{
+ display:flex;
+ align-items:center;
+ gap:.8rem;
+}
+
+.plantings-metric-icon{
+ width:2.4rem;
+ height:2.4rem;
+ display:grid;
+ place-items:center;
+ border-radius:.85rem;
+ background:var(--surface2);
+ color:var(--primary);
+ flex:0 0 auto;
+}
+
+.plantings-metric-card p{
+ margin:0;
+ color:var(--textSoft);
+ font-weight:800;
+}
+
+.plantings-metric-card strong{
+ color:var(--heading);
+ font-family:var(--fontHeading);
+ font-size:1.4rem;
+ line-height:1;
+}
+
+.plantings-filter-grid{
+ display:grid;
+ grid-template-columns:minmax(280px,1fr) minmax(170px,.25fr) minmax(130px,.18fr) minmax(170px,.2fr);
+ gap:.75rem;
+}
+
+.plantings-loading,
+.plantings-empty{
+ display:flex;
+ align-items:center;
+ gap:.65rem;
+ padding:1rem;
+ border:1px solid var(--border);
+ border-radius:14px;
+ background:var(--surface);
+ color:var(--textSoft);
+ font-weight:800;
+}
+
+.plantings-list{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+ gap:1rem;
+}
+
+.planting-card{
+ display:grid;
+ gap:1rem;
+ padding:1rem;
+}
+
+.planting-card-head{
+ display:flex;
+ align-items:flex-start;
+ justify-content:space-between;
+ gap:1rem;
+}
+
+.planting-card h2{
+ margin:0;
+ color:var(--heading);
+ font-family:var(--fontHeading);
+ font-size:1.15rem;
+ line-height:1.2;
+}
+
+.planting-card p{
+ margin:.25rem 0 0;
+ color:var(--textSoft);
+}
+
+.planting-card-details{
+ display:grid;
+ grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:.45rem .85rem;
+ color:var(--textSoft);
+}
+
+.planting-card-details strong{
+ color:var(--heading);
+}
+
+.planting-outcome{
+ padding:.75rem;
+ border:1px solid var(--border);
+ border-radius:10px;
+ background:var(--surface2);
+}
+
+@media (max-width:900px){
+ .plantings-header{
+  align-items:stretch;
+  flex-direction:column;
+ }
+
+ .plantings-metrics,
+ .plantings-reference-dashboard,
+ .plantings-care-summary,
+ .plantings-filter-grid{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+ }
+}
+
+@media (max-width:650px){
+ .plantings-page{
+  padding:1rem;
+ }
+
+ .plantings-metrics,
+ .plantings-reference-dashboard,
+ .plantings-care-summary,
+ .plantings-filter-grid,
+ .plantings-list,
+ .planting-card-details{
+  grid-template-columns:1fr;
+ }
+}

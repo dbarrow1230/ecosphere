@@ -1,0 +1,120 @@
+/* src/pages/plants/plants.css */
+.plant-page{
+ background:var(--bs-body-bg);
+}
+
+.plant-sidebar-card,
+.plant-hero-card,
+.plant-info-card{
+ border-radius:14px;
+ overflow:hidden;
+}
+
+.plant-sidebar-card .list-group-item.active{
+ background-color:#198754;
+ border-color:#198754;
+}
+
+.plant-title{
+ font-size:2rem;
+ font-weight:700;
+}
+
+.plant-hero-row{
+ display:flex;
+ gap:1.5rem;
+ align-items:flex-start;
+}
+
+.plant-hero-image{
+ width:220px;
+ height:220px;
+ object-fit:cover;
+ border-radius:12px;
+ border:1px solid rgba(0,0,0,.125);
+}
+
+.plant-hero-placeholder{
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ background:#f8f9fa;
+ color:#6c757d;
+}
+
+.plant-hero-text{
+ flex:1;
+ min-width:0;
+}
+
+.plant-lead{
+ font-size:1.05rem;
+ line-height:1.6;
+}
+
+.plant-header-details{
+ padding:.75rem;
+ background:#f8f9fa;
+ border-radius:10px;
+ margin-bottom:.75rem;
+}
+
+.plant-image-hover-wrap{
+ position:relative;
+ display:inline-block;
+}
+
+.plant-image-preview{
+ display:none;
+ position:absolute;
+ z-index:20;
+ left:100%;
+ top:0;
+ margin-left:1rem;
+ background:#fff;
+ padding:.5rem;
+ border:1px solid rgba(0,0,0,.125);
+ border-radius:12px;
+ box-shadow:0 .5rem 1rem rgba(0,0,0,.15);
+}
+
+.plant-image-preview img{
+ max-width:420px;
+ max-height:420px;
+ object-fit:contain;
+}
+
+.plant-image-hover-wrap:hover .plant-image-preview{
+ display:block;
+}
+
+.text-scientific{
+ color:#0d6efd;
+}
+
+.text-family{
+ color:#198754;
+}
+
+.text-type{
+ color:#6f42c1;
+}
+
+.text-seed{
+ color:#fd7e14;
+}
+
+@media(max-width:768px){
+ .plant-hero-row{
+  flex-direction:column;
+ }
+
+ .plant-hero-image{
+  width:100%;
+  height:260px;
+ }
+
+ .plant-image-preview{
+  display:none!important;
+ }
+}

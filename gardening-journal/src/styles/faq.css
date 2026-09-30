@@ -1,0 +1,63 @@
+/* src/styles/FAQ.css */
+.faq-page{
+ background:var(--app-page-background,var(--app-background,var(--bg)));
+ min-height:100vh;
+}
+
+.faq-page-eyebrow{
+ font-size:.95rem;
+ font-weight:600;
+ letter-spacing:.08em;
+ text-transform:uppercase;
+ color:var(--text-soft);
+ font-family:var(--font-accent);
+}
+
+.faq-page-title{
+ font-size:clamp(2rem,4vw,3rem);
+ font-weight:700;
+ line-height:1.2;
+ color:var(--heading);
+ font-family:var(--font-heading);
+}
+
+.faq-page-lead{
+ font-size:1.05rem;
+ line-height:1.8;
+ color:var(--text-soft);
+ font-family:var(--font-body);
+}
+
+.faq-page-card{
+ border:1px solid var(--border);
+ border-radius:var(--radius-md);
+ box-shadow:var(--shadow-md);
+ background:var(--surface);
+ transition:var(--transition);
+}
+
+.faq-page-card .card-body{
+ padding:1.75rem;
+}
+
+.faq-page-question{
+ margin:0 0 .85rem;
+ font-size:1.2rem;
+ font-weight:700;
+ line-height:1.4;
+ color:var(--heading);
+ font-family:var(--font-heading);
+}
+
+.faq-page-answer{
+ font-size:1rem;
+ line-height:1.75;
+ color:var(--text-soft);
+ font-family:var(--font-body);
+}
+
+@media (max-width:576px){
+ .faq-page-card .card-body{
+  padding:1.25rem;
+ }
+}

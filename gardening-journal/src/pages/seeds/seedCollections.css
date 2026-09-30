@@ -1,0 +1,184 @@
+.seed-collections-page {
+	color:var(--text);
+	font-family:var(--fontBody);
+}
+
+.seed-collections-header,
+.seed-collection-detail {
+	background:var(--surface);
+	border:1px solid var(--border);
+	border-radius:8px;
+	box-shadow:0 6px 18px var(--overlay);
+}
+
+.seed-collections-header {
+	display:flex;
+	align-items:center;
+	justify-content:space-between;
+	gap:1rem;
+	padding:1rem 1.25rem;
+}
+
+.seed-collections-header p,
+.seed-collection-detail-header p {
+	margin:0 0 .15rem;
+	color:var(--primary);
+	font-weight:800;
+	text-transform:uppercase;
+	font-size:.78rem;
+	letter-spacing:0;
+}
+
+.seed-collections-header h1,
+.seed-collection-detail-header h2 {
+	margin:0;
+	color:var(--heading);
+	font-family:var(--fontHeading);
+	font-weight:800;
+}
+
+.seed-collection-list-card,
+.seed-collection-info-card {
+	border:1px solid var(--border);
+	border-radius:8px;
+	overflow:hidden;
+	box-shadow:0 4px 14px var(--overlay);
+}
+
+.seed-collection-list-card .card-header,
+.seed-collection-info-card .card-header {
+	display:flex;
+	align-items:center;
+	gap:.45rem;
+	background:var(--surface2);
+	border-bottom:1px solid var(--border);
+	color:var(--heading);
+	font-family:var(--fontHeading);
+	font-weight:800;
+}
+
+.seed-collection-detail {
+	padding:1rem;
+}
+
+.seed-collection-detail-header {
+	display:flex;
+	align-items:flex-start;
+	justify-content:space-between;
+	gap:1rem;
+	margin-bottom:1rem;
+}
+
+.seed-collection-summary,
+.seed-collection-table-actions {
+	display:flex;
+	align-items:center;
+	gap:.5rem;
+	flex-wrap:wrap;
+}
+
+.seed-collection-table {
+	margin-bottom:0;
+	background:var(--surface2);
+	color:var(--text);
+	border:1px solid var(--border);
+}
+
+.seed-collection-table th {
+	background:var(--surface2);
+	color:var(--heading);
+	border-color:var(--border);
+	font-family:var(--fontHeading);
+	white-space:nowrap;
+}
+
+.seed-collection-table td {
+	vertical-align:middle;
+	border-color:var(--border);
+}
+
+.seed-collection-table tbody tr:nth-child(even) {
+	background:var(--tableStripe);
+}
+
+.seed-collection-modal-detail {
+	box-shadow:none;
+}
+
+.seed-collection-stat {
+	height:100%;
+	padding:.9rem;
+	background:var(--surface2);
+	border:1px solid var(--border);
+	border-radius:8px;
+}
+
+.seed-collection-stat span {
+	display:block;
+	color:var(--textSoft);
+	font-size:.82rem;
+	font-weight:700;
+	margin-bottom:.25rem;
+}
+
+.seed-collection-stat strong {
+	color:var(--heading);
+	font-size:1.05rem;
+}
+
+.seed-collection-color-stat {
+	border-left:6px solid var(--primary);
+}
+
+.seed-collection-list-row {
+	display:grid;
+	grid-template-columns:14px 1fr;
+	gap:.55rem;
+	align-items:start;
+}
+
+.seed-collection-color-dot {
+	width:12px;
+	height:12px;
+	border:1px solid var(--border);
+	border-radius:50%;
+	margin-top:.28rem;
+}
+
+.seed-collection-color-control {
+	display:grid;
+	grid-template-columns:3.5rem 1fr;
+	gap:.5rem;
+}
+
+.seed-collection-info-card dl,
+.seed-collection-info-card ul,
+.seed-collection-info-card p {
+	margin-bottom:0;
+}
+
+.seed-collection-info-card dt {
+	color:var(--textSoft);
+	font-size:.78rem;
+	text-transform:uppercase;
+	letter-spacing:0;
+}
+
+.seed-collection-info-card dd {
+	margin-bottom:.75rem;
+	color:var(--text);
+	font-weight:700;
+}
+
+@media (max-width:767.98px) {
+	.seed-collections-header,
+	.seed-collection-detail-header {
+		align-items:stretch;
+		flex-direction:column;
+	}
+
+	.seed-collection-table-actions {
+		align-items:stretch;
+		flex-direction:column;
+	}
+}

@@ -1,0 +1,897 @@
+.hydro-page{
+ display:grid;
+ gap:1rem;
+ padding:1.5rem 2rem 2.5rem;
+ color:var(--text);
+ min-width:0;
+}
+
+.hydro-garden-back{
+ justify-self:start;
+ display:inline-flex;
+ align-items:center;
+ gap:.4rem;
+ padding:0;
+ font-weight:800;
+ text-decoration:none;
+}
+
+.hydro-header{
+ display:flex;
+ align-items:flex-end;
+ justify-content:space-between;
+ gap:1rem;
+ padding:1.25rem;
+ border:1px solid var(--border);
+ border-radius:14px;
+ background:var(--surface);
+ box-shadow:0 12px 32px rgba(17,24,39,.08);
+}
+
+.hydro-header h1,
+.hydro-device-head h2{
+ margin:0;
+ font-family:var(--fontHeading);
+ color:var(--heading);
+ line-height:1.1;
+}
+
+.hydro-header p,
+.hydro-device-head p{
+ margin:.35rem 0 0;
+ color:var(--textSoft);
+}
+
+.hydro-device-head .hydro-started-date{
+ color:var(--primary);
+ font-weight:900;
+}
+
+.hydro-kicker{
+ margin:0;
+ color:var(--primary);
+ font-size:.72rem;
+ font-weight:900;
+ letter-spacing:.08em;
+ text-transform:uppercase;
+}
+
+.hydro-reading-heading{
+ padding:.65rem .8rem;
+ border-radius:.5rem;
+ background:var(--surface2);
+ color:var(--heading);
+ font-weight:800;
+}
+
+.hydro-add-button{
+ display:inline-flex;
+ align-items:center;
+ gap:.45rem;
+ white-space:nowrap;
+}
+
+.hydro-loading{
+ display:flex;
+ align-items:center;
+ gap:.65rem;
+ padding:1rem;
+ border:1px solid var(--border);
+ border-radius:14px;
+ background:var(--surface);
+ color:var(--textSoft);
+ font-weight:800;
+}
+
+.hydro-overview{
+ display:grid;
+ gap:1rem;
+}
+
+.hydro-overview-hero{
+ position:relative;
+ display:grid;
+ grid-template-columns:minmax(0,1fr) auto;
+ align-items:end;
+ gap:1.25rem;
+ min-height:260px;
+ padding:1.35rem;
+ border:1px solid color-mix(in srgb,var(--primary) 45%,var(--border));
+ border-radius:24px;
+ background:
+  radial-gradient(circle at 80% 15%,rgba(255,255,255,.18),transparent 22rem),
+  linear-gradient(135deg,var(--primary) 0%,var(--primaryHover) 62%,#082d1b 100%);
+ box-shadow:0 20px 50px rgba(7,47,31,.22);
+ overflow:hidden;
+ isolation:isolate;
+}
+
+.hydro-overview-hero::after{
+ content:"";
+ position:absolute;
+ inset:auto -5% -24% 38%;
+ height:62%;
+ border-radius:999px 0 0 0;
+ background:color-mix(in srgb,var(--surface) 84%,transparent);
+ opacity:.9;
+ z-index:-1;
+}
+
+.hydro-overview-art{
+ position:absolute;
+ right:0;
+ top:0;
+ width:min(48%,520px);
+ height:100%;
+ object-fit:cover;
+ object-position:right center;
+ opacity:.28;
+ mix-blend-mode:screen;
+ z-index:-2;
+}
+
+.hydro-overview-copy{
+ max-width:560px;
+ color:var(--textInverse);
+}
+
+.hydro-overview-copy .hydro-kicker{
+ color:color-mix(in srgb,var(--accent) 72%,white);
+}
+
+.hydro-overview-copy h2{
+ margin:.25rem 0 .45rem;
+ color:var(--textInverse);
+ font-family:var(--fontHeading);
+ font-size:clamp(2rem,4vw,4.4rem);
+ line-height:.98;
+}
+
+.hydro-overview-copy p{
+ margin:0;
+ max-width:48rem;
+ color:color-mix(in srgb,var(--textInverse) 86%,transparent);
+ font-size:1rem;
+ line-height:1.55;
+}
+
+.hydro-overview-metrics{
+ display:grid;
+ grid-template-columns:repeat(2,minmax(130px,1fr));
+ gap:.7rem;
+ min-width:320px;
+}
+
+.hydro-metric-tile{
+ display:grid;
+ gap:.15rem;
+ padding:.9rem;
+ border:1px solid rgba(255,255,255,.2);
+ border-radius:18px;
+ background:rgba(255,255,255,.12);
+ color:var(--textInverse);
+ backdrop-filter:blur(12px);
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.12);
+}
+
+.hydro-metric-tile span{
+ color:color-mix(in srgb,var(--accent) 75%,white);
+}
+
+.hydro-metric-tile small{
+ color:color-mix(in srgb,var(--textInverse) 76%,transparent);
+ font-weight:900;
+}
+
+.hydro-metric-tile strong{
+ font-family:var(--fontHeading);
+ font-size:1.55rem;
+ line-height:1;
+}
+
+.hydro-overview-panels{
+ display:grid;
+ grid-template-columns:1.05fr 1fr 1.15fr;
+ gap:1rem;
+ align-items:stretch;
+}
+
+.hydro-overview-panel,
+.hydro-containers-panel{
+ display:grid;
+ gap:.85rem;
+ padding:1rem;
+ border:1px solid var(--border);
+ border-radius:18px;
+ background:var(--surface);
+ box-shadow:0 12px 32px rgba(17,24,39,.08);
+ min-width:0;
+}
+
+.hydro-analytics-panel{
+ background:linear-gradient(145deg,var(--primaryHover),var(--primary));
+ color:var(--textInverse);
+}
+
+.hydro-alert-panel{
+ background:linear-gradient(145deg,#ffe66a,var(--accent));
+ color:#173f2a;
+ border-color:color-mix(in srgb,var(--accentHover) 52%,var(--border));
+}
+
+.hydro-activity-panel{
+ background:color-mix(in srgb,var(--surface) 88%,white);
+}
+
+.hydro-panel-head{
+ display:flex;
+ align-items:flex-start;
+ justify-content:space-between;
+ gap:1rem;
+}
+
+.hydro-panel-head h3{
+ margin:0;
+ color:inherit;
+ font-family:var(--fontHeading);
+ font-size:1.05rem;
+ line-height:1.1;
+}
+
+.hydro-panel-head span{
+ color:inherit;
+ font-size:.82rem;
+ font-weight:900;
+ opacity:.82;
+ white-space:nowrap;
+}
+
+.hydro-mini-chart{
+ width:100%;
+ min-height:120px;
+}
+
+.hydro-chart-grid{
+ fill:none;
+ stroke:currentColor;
+ stroke-width:.8;
+ opacity:.14;
+}
+
+.hydro-chart-line{
+ fill:none;
+ stroke:color-mix(in srgb,var(--accent) 65%,white);
+ stroke-width:4;
+ stroke-linecap:round;
+ stroke-linejoin:round;
+}
+
+.hydro-chart-dot{
+ fill:var(--surface);
+ stroke:color-mix(in srgb,var(--accent) 65%,white);
+ stroke-width:4;
+}
+
+.hydro-analytics-foot{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ color:color-mix(in srgb,var(--textInverse) 86%,transparent);
+ font-weight:900;
+}
+
+.hydro-alert-list,
+.hydro-activity-list{
+ display:grid;
+ gap:.55rem;
+}
+
+.hydro-alert-item,
+.hydro-activity-item{
+ display:grid;
+ grid-template-columns:auto 1fr;
+ align-items:center;
+ gap:.65rem;
+ min-width:0;
+ padding:.65rem;
+ border-radius:14px;
+ background:rgba(255,255,255,.34);
+}
+
+.hydro-alert-item svg{
+ color:var(--primary);
+}
+
+.hydro-alert-item.danger svg{
+ color:var(--danger);
+}
+
+.hydro-alert-item.warning svg{
+ color:var(--accentHover);
+}
+
+.hydro-alert-item span,
+.hydro-activity-item span:last-child{
+ display:grid;
+ gap:.1rem;
+ min-width:0;
+}
+
+.hydro-alert-item strong,
+.hydro-activity-item strong{
+ color:inherit;
+ overflow-wrap:anywhere;
+}
+
+.hydro-alert-item small,
+.hydro-activity-item small{
+ color:inherit;
+ opacity:.78;
+ line-height:1.3;
+}
+
+.hydro-activity-dot{
+ width:.8rem;
+ height:.8rem;
+ border-radius:999px;
+ background:var(--success);
+ box-shadow:0 0 0 6px color-mix(in srgb,var(--success) 16%,transparent);
+}
+
+.hydro-container-table{
+ display:grid;
+ gap:.2rem;
+ overflow:auto;
+}
+
+.hydro-container-row{
+ display:grid;
+ grid-template-columns:minmax(180px,1.3fr) repeat(6,minmax(86px,.7fr));
+ align-items:center;
+ gap:.5rem;
+ padding:.75rem .8rem;
+ border-radius:12px;
+ background:var(--surface2);
+ color:var(--text);
+ min-width:850px;
+}
+
+.hydro-container-head{
+ background:color-mix(in srgb,var(--primary) 10%,var(--surface2));
+ color:var(--heading);
+ font-size:.72rem;
+ font-weight:900;
+ letter-spacing:.04em;
+ text-transform:uppercase;
+}
+
+.hydro-container-row span{
+ min-width:0;
+}
+
+.hydro-container-row strong,
+.hydro-container-row small{
+ display:block;
+ overflow:hidden;
+ text-overflow:ellipsis;
+ white-space:nowrap;
+}
+
+.hydro-container-row strong{
+ color:var(--heading);
+}
+
+.hydro-container-row small{
+ color:var(--textSoft);
+}
+
+.hydro-grid{
+ display:grid;
+ grid-template-columns:280px minmax(0,1fr) 320px;
+ gap:1rem;
+ align-items:start;
+ min-width:0;
+}
+
+.hydro-sidebar,
+.hydro-seed-tray{
+ display:grid;
+ gap:1rem;
+ min-width:0;
+}
+
+.hydro-card{
+ border:1px solid var(--border);
+ border-radius:14px;
+ background:var(--surface);
+ box-shadow:0 12px 32px rgba(17,24,39,.08);
+ overflow:hidden;
+}
+
+.hydro-card .card-header{
+ background:var(--primary);
+ color:var(--textInverse);
+ font-weight:900;
+ border:0;
+}
+
+.hydro-system-list{
+ display:grid;
+ gap:.55rem;
+ max-height:420px;
+ overflow:auto;
+}
+
+.hydro-system-button{
+ width:100%;
+ display:grid;
+ gap:.18rem;
+ text-align:left;
+ padding:.8rem;
+ border:1px solid var(--border);
+ border-radius:12px;
+ background:var(--surface2);
+ color:var(--text);
+ cursor:pointer;
+}
+
+.hydro-system-button:hover,
+.hydro-system-button.active{
+ border-color:var(--primary);
+ background:var(--selectionBg);
+}
+
+.hydro-system-name{
+ color:var(--heading);
+ font-weight:900;
+}
+
+.hydro-system-meta{
+ color:var(--textSoft);
+ font-size:.82rem;
+}
+
+.hydro-device-card .card-body{
+ display:grid;
+ gap:1rem;
+}
+
+.hydro-device-head{
+ display:flex;
+ justify-content:space-between;
+ gap:1rem;
+ align-items:flex-start;
+}
+
+.hydro-device-stats{
+ width:86px;
+ min-height:74px;
+ display:grid;
+ place-items:center;
+ padding:.6rem;
+ border:1px solid var(--border);
+ border-radius:14px;
+ background:var(--surface2);
+ color:var(--heading);
+}
+
+.hydro-device-stats span{
+ font-family:var(--fontHeading);
+ font-size:2rem;
+ font-weight:900;
+ line-height:1;
+}
+
+.hydro-device-stats small{
+ color:var(--textSoft);
+ font-weight:900;
+ text-transform:uppercase;
+}
+
+.hydro-toolbar{
+ display:flex;
+ align-items:center;
+ justify-content:flex-end;
+ gap:.5rem;
+ flex-wrap:wrap;
+}
+
+.hydro-toolbar .btn{
+ display:inline-flex;
+ align-items:center;
+ gap:.35rem;
+}
+
+.hydro-product-link{
+ margin-right:auto;
+ color:var(--primary);
+ font-weight:900;
+ text-decoration:none;
+}
+
+.hydro-pod-grid{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+ gap:.8rem;
+ min-width:0;
+}
+
+.hydro-device-stack{
+ display:grid;
+ gap:1rem;
+}
+
+.hydro-device-section{
+ display:grid;
+ gap:1rem;
+ padding:1rem;
+ border:1px solid var(--border);
+ border-radius:16px;
+ background:var(--surface2);
+}
+
+.hydro-device-section-head{
+ display:flex;
+ align-items:flex-start;
+ justify-content:space-between;
+ gap:1rem;
+ flex-wrap:wrap;
+}
+
+.hydro-device-section-head h3{
+ margin:0;
+ color:var(--heading);
+ font-family:var(--fontHeading);
+ line-height:1.15;
+}
+
+.hydro-device-section-head p{
+ margin:.25rem 0 0;
+ color:var(--textSoft);
+}
+
+.hydro-device-actions{
+ display:flex;
+ align-items:center;
+ justify-content:flex-end;
+ gap:.5rem;
+ flex-wrap:wrap;
+ color:var(--textSoft);
+ font-weight:900;
+}
+
+.hydro-device-actions .hydro-product-link{
+ margin-right:0;
+}
+
+.hydro-pod{
+ position:relative;
+ min-height:150px;
+ display:grid;
+ align-content:center;
+ padding:1rem;
+ border:2px dashed var(--borderStrong);
+ border-radius:16px;
+ background:var(--surface2);
+ transition:border-color .2s ease,background .2s ease,transform .2s ease;
+}
+
+.hydro-pod:hover{
+ transform:translateY(-2px);
+ border-color:var(--primary);
+}
+
+.hydro-pod.filled{
+ border-style:solid;
+ background:var(--surface);
+}
+
+.hydro-pod-number{
+ position:absolute;
+ top:.65rem;
+ left:.65rem;
+ width:1.75rem;
+ height:1.75rem;
+ display:grid;
+ place-items:center;
+ border-radius:999px;
+ background:var(--primary);
+ color:var(--textInverse);
+ font-weight:900;
+ font-size:.8rem;
+}
+
+.hydro-pod-empty,
+.hydro-pod-seed{
+ display:grid;
+ justify-items:center;
+ gap:.35rem;
+ text-align:center;
+ color:var(--textSoft);
+}
+
+.hydro-pod-seed{
+ color:var(--text);
+}
+
+.hydro-pod-seed svg{
+ color:var(--success);
+}
+
+.hydro-pod-seed strong{
+ color:var(--heading);
+ font-weight:900;
+ overflow-wrap:anywhere;
+}
+
+.hydro-pod-seed span{
+ font-size:.78rem;
+ color:var(--textSoft);
+ overflow-wrap:anywhere;
+}
+
+.hydro-pod-date{
+ width:100%;
+ display:grid;
+ gap:.2rem;
+ margin-top:.25rem;
+}
+
+.hydro-pod-date small{
+ color:var(--textSoft);
+ font-weight:900;
+ text-transform:uppercase;
+}
+
+.hydro-pod-date input{
+ width:100%;
+ min-height:34px;
+ border:1px solid var(--border);
+ border-radius:8px;
+ background:var(--surface2);
+ color:var(--text);
+ padding:.25rem .4rem;
+ text-align:center;
+}
+
+.hydro-pod-seed button{
+ border:0;
+ background:transparent;
+ color:var(--danger);
+ font-weight:900;
+ cursor:pointer;
+}
+
+.hydro-seed-list{
+ display:grid;
+ gap:.6rem;
+ max-height:620px;
+ overflow:auto;
+}
+
+.hydro-seed-filter{
+ display:grid;
+ gap:.35rem;
+ margin-bottom:.8rem;
+ padding:.75rem;
+ border:1px solid var(--border);
+ border-radius:12px;
+ background:var(--surface2);
+}
+
+.hydro-seed-filter label{
+ color:var(--heading);
+ font-weight:900;
+}
+
+.hydro-seed-filter small{
+ color:var(--textSoft);
+ line-height:1.35;
+}
+
+.hydro-match-reference{
+ display:grid;
+ gap:.2rem;
+ padding:.65rem;
+ border:1px solid var(--border);
+ border-radius:10px;
+ background:var(--surface);
+}
+
+.hydro-match-reference strong{
+ color:var(--heading);
+}
+
+.hydro-match-reference span{
+ color:var(--textSoft);
+ font-size:.8rem;
+}
+
+.hydro-match-reference.is-draggable{
+ cursor:grab;
+}
+
+.hydro-match-reference.is-draggable:active{
+ cursor:grabbing;
+}
+
+.hydro-match-reference-title{
+ display:flex;
+ align-items:center;
+ gap:.45rem;
+}
+
+.hydro-match-reference-title svg{
+ color:var(--primary);
+ flex:0 0 auto;
+}
+
+.hydro-seed-chip{
+ display:grid;
+ grid-template-columns:auto 1fr;
+ align-items:center;
+ gap:.65rem;
+ padding:.75rem;
+ border:1px solid var(--border);
+ border-radius:12px;
+ background:var(--surface2);
+ cursor:grab;
+}
+
+.hydro-seed-chip.compatibility-match{
+ border-color:var(--success);
+}
+
+.hydro-seed-chip.compatibility-reference{
+ border-color:var(--primary);
+ box-shadow:inset 0 0 0 1px var(--primary);
+}
+
+.hydro-seed-chip.compatibility-avoid{
+ border-color:var(--danger);
+}
+
+.hydro-seed-chip:active{
+ cursor:grabbing;
+}
+
+.hydro-seed-chip svg{
+ color:var(--primary);
+}
+
+.hydro-seed-chip span{
+ display:grid;
+ gap:.12rem;
+ min-width:0;
+}
+
+.hydro-seed-chip-title{
+ display:flex!important;
+ align-items:flex-start;
+ justify-content:space-between;
+ gap:.4rem;
+}
+
+.hydro-compatibility-badge{
+ flex:0 0 auto;
+ padding:.15rem .38rem;
+ border-radius:999px;
+ font-size:.65rem;
+ font-style:normal;
+ font-weight:900;
+ white-space:nowrap;
+}
+
+.hydro-compatibility-badge.match{
+ background:color-mix(in srgb,var(--success) 18%,var(--surface));
+ color:var(--success);
+}
+
+.hydro-compatibility-badge.reference{
+ background:var(--primary);
+ color:var(--textInverse);
+}
+
+.hydro-compatibility-badge.review{
+ background:color-mix(in srgb,var(--warning) 22%,var(--surface));
+ color:var(--text);
+}
+
+.hydro-compatibility-badge.avoid{
+ background:color-mix(in srgb,var(--danger) 16%,var(--surface));
+ color:var(--danger);
+}
+
+.hydro-compatibility-details{
+ display:grid!important;
+ gap:.18rem;
+ margin-top:.3rem;
+}
+
+.hydro-compatibility-details .is-positive{
+ color:var(--success);
+}
+
+.hydro-compatibility-details .is-warning{
+ color:var(--danger);
+}
+
+.hydro-seed-chip strong{
+ color:var(--heading);
+ overflow-wrap:anywhere;
+}
+
+.hydro-seed-chip small{
+ color:var(--textSoft);
+ overflow-wrap:anywhere;
+}
+
+.hydro-empty{
+ padding:.85rem;
+ border:1px solid var(--border);
+ border-radius:12px;
+ background:var(--tableStripe);
+ color:var(--textSoft);
+ line-height:1.45;
+}
+
+.hydro-empty-large{
+ min-height:260px;
+ display:grid;
+ place-items:center;
+ text-align:center;
+}
+
+@media (max-width:1200px){
+ .hydro-overview-hero,
+ .hydro-overview-panels{
+  grid-template-columns:1fr;
+ }
+
+ .hydro-overview-metrics{
+  min-width:0;
+  width:100%;
+ }
+
+ .hydro-grid{
+  grid-template-columns:260px minmax(0,1fr);
+ }
+
+ .hydro-seed-tray{
+  grid-column:1/-1;
+ }
+
+ .hydro-seed-list{
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  max-height:none;
+ }
+}
+
+@media (max-width:800px){
+ .hydro-page{
+  padding:1rem;
+ }
+
+ .hydro-overview-hero{
+  min-height:auto;
+  padding:1rem;
+ }
+
+ .hydro-overview-art{
+  width:100%;
+  opacity:.14;
+ }
+
+ .hydro-overview-metrics{
+  grid-template-columns:1fr;
+ }
+
+ .hydro-header,
+ .hydro-device-head{
+  display:grid;
+ }
+
+ .hydro-grid{
+  grid-template-columns:1fr;
+ }
+}

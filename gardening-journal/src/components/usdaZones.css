@@ -1,0 +1,23 @@
+.growing-zone-finder {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 1rem;
+  font-family: Arial, sans-serif;
+}
+
+.growing-zone-finder input {
+  display: block;
+  margin: 0.75rem 0;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.growing-zone-finder button {
+  padding: 0.5rem 1rem;
+}
+
+.zoneDisplay {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border: 1px solid #ccc;
+}
