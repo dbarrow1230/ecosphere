@@ -1,0 +1,7 @@
+.service-tracking-page #service-report p { white-space: pre-wrap; }
+@media print {
+ body:has(#service-report) * { visibility: hidden; }
+ body #service-report, body #service-report * { visibility: visible; }
+ body #service-report { position: absolute; inset: 0 auto auto 0; width: 100%; border: 0; background: white; color: black; }
+ #service-report tr { break-inside: avoid; }
+}
