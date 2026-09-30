@@ -1,0 +1,10 @@
+import {useState} from "react";
+import {BookOpen,Check,Search} from "lucide-react";
+import {bookAuthorNames,bookCoverUrl,idOf} from "../../utils/publishingApi.js";
+
+export default function BookPicker({books=[],loading,error,value,onSelect}){
+ const [query,setQuery]=useState("");
+ const selected=books.find(book=>idOf(book)===idOf(value));
+ const matches=books.filter(book=>`${book.title} ${book.subtitle||""} ${bookAuthorNames(book)}`.toLowerCase().includes(query.trim().toLowerCase())).slice(0,40);
+ return <div className="publishing-book-picker"><div className="publishing-book-picker-heading"><div><span className="publishing-form-eyebrow">Book Management catalog</span><h3>Choose a book</h3></div>{selected&&<span className="publishing-book-picker-selected"><Check size={15}/> Selected</span>}</div><label className="publishing-book-search"><Search size={17}/><input type="search" aria-label="Search Book Management books" placeholder="Search title or author" value={query} onChange={event=>setQuery(event.target.value)}/></label>{error&&<p className="publishing-book-error" role="alert">Books could not load: {error}</p>}{loading?<p role="status">Loading books…</p>:<div className="publishing-book-grid">{matches.map(book=>{const cover=bookCoverUrl(book);return <button type="button" className={`publishing-book-option${idOf(book)===idOf(value)?" is-selected":""}`} key={idOf(book)} onClick={()=>onSelect(book)}><span className="publishing-book-cover">{cover?<img src={cover} alt="" loading="lazy"/>:<BookOpen size={24}/>}</span><span className="publishing-book-copy"><strong>{book.title}</strong><small>{bookAuthorNames(book)||"Author not listed"}</small></span>{idOf(book)===idOf(value)&&<Check size={17}/>}</button>;})}{!matches.length&&!error&&<p className="publishing-records-empty">No books match. Add the book in Book Management first.</p>}</div>}{selected&&<p className="publishing-book-choice"><strong>Using:</strong> {selected.title} · {bookAuthorNames(selected)||"Author not listed"}</p>}</div>;
+}
