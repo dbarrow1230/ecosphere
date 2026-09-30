@@ -1,0 +1,238 @@
+.archive-page{
+ min-height:100%;
+ padding:clamp(2rem,4vw,3.75rem) var(--page-x);
+ background:
+  radial-gradient(circle at 92% 2%,color-mix(in srgb,var(--accent) 10%,transparent),transparent 28rem),
+  var(--bg);
+}
+
+.archive-page-inner{
+ width:min(1180px,100%);
+ margin:0 auto;
+}
+
+.archive-page-loading{
+ display:grid;
+ place-items:center;
+ min-height:22rem;
+}
+
+.archive-page-header{
+ display:flex;
+ align-items:flex-end;
+ justify-content:space-between;
+ gap:2rem;
+ margin-bottom:2rem;
+ padding-bottom:1.75rem;
+ border-bottom:1px solid var(--border);
+}
+
+.archive-page-eyebrow,
+.archive-record-kicker{
+ margin:0 0 .55rem;
+ color:var(--accent);
+ font-size:.75rem;
+ font-weight:800;
+ letter-spacing:.14em;
+ text-transform:uppercase;
+}
+
+.archive-page-title{
+ margin:0;
+ font-size:clamp(2.5rem,5vw,4.5rem);
+ letter-spacing:-.055em;
+}
+
+.archive-page-lead{
+ max-width:660px;
+ margin:.75rem 0 0;
+ color:var(--text-soft);
+ font-size:1rem;
+ line-height:1.65;
+}
+
+.archive-total{
+ flex:0 0 auto;
+ display:flex;
+ flex-direction:column;
+ align-items:flex-end;
+ padding-left:2rem;
+ border-left:1px solid var(--border);
+}
+
+.archive-total strong{
+ color:var(--heading);
+ font-family:var(--font-heading);
+ font-size:2.25rem;
+ line-height:1;
+}
+
+.archive-total span{
+ margin-top:.4rem;
+ color:var(--text-muted);
+ font-size:.82rem;
+ font-weight:600;
+}
+
+.archive-summary{
+ display:grid;
+ grid-template-columns:repeat(4,minmax(0,1fr));
+ gap:.75rem;
+ margin-bottom:2rem;
+}
+
+.archive-summary-card{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:1rem;
+ min-height:4.25rem;
+ padding:1rem 1.15rem;
+ background:color-mix(in srgb,var(--surface) 76%,transparent);
+ border:1px solid color-mix(in srgb,var(--border) 72%,transparent);
+ border-radius:var(--radius-md);
+}
+
+.archive-summary-card span{
+ color:var(--text-muted);
+ font-size:.88rem;
+ font-weight:600;
+}
+
+.archive-summary-card strong{
+ color:var(--heading);
+ font-family:var(--font-heading);
+ font-size:1.35rem;
+}
+
+.archive-summary-card.has-records{
+ background:var(--surface);
+ border-color:var(--accent);
+ box-shadow:var(--shadow-sm);
+}
+
+.archive-records{
+ display:grid;
+ gap:1.5rem;
+}
+
+.archive-record-group{
+ overflow:hidden;
+ background:var(--surface);
+ border:1px solid var(--border);
+ border-radius:var(--radius-lg);
+ box-shadow:var(--shadow-sm);
+}
+
+.archive-record-heading{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:1rem;
+ padding:1.25rem 1.4rem;
+}
+
+.archive-record-heading h2{
+ margin:0;
+ font-size:1.45rem;
+}
+
+.archive-record-heading > span{
+ color:var(--text-muted);
+ font-size:.82rem;
+ font-weight:700;
+}
+
+.archive-record-kicker{
+ margin-bottom:.25rem;
+ font-size:.65rem;
+}
+
+.archive-table{
+ border:0;
+ border-top:1px solid var(--border);
+ border-radius:0;
+ box-shadow:none;
+}
+
+.archive-table th:first-child,
+.archive-table td:first-child{
+ width:32%;
+}
+
+.archive-table th:last-child,
+.archive-table td:last-child{
+ width:9rem;
+}
+
+.archive-table code{
+ overflow-wrap:anywhere;
+ white-space:normal;
+}
+
+.archive-status{
+ display:inline-flex;
+ align-items:center;
+ padding:.3rem .65rem;
+ color:var(--text);
+ background:var(--bg-alt);
+ border:1px solid var(--border);
+ border-radius:999px;
+ font-size:.75rem;
+ font-weight:700;
+ line-height:1;
+ text-transform:capitalize;
+}
+
+.archive-empty{
+ padding:3rem 1.5rem;
+ text-align:center;
+ background:var(--surface);
+ border:1px dashed var(--border);
+ border-radius:var(--radius-lg);
+}
+
+.archive-empty h2{
+ margin-bottom:.5rem;
+}
+
+.archive-empty p{
+ margin:0;
+}
+
+@media (max-width:900px){
+ .archive-summary{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+ }
+}
+
+@media (max-width:600px){
+ .archive-page{
+  padding:2rem 1rem;
+ }
+
+ .archive-page-header{
+  align-items:flex-start;
+  flex-direction:column;
+  gap:1.25rem;
+ }
+
+ .archive-total{
+  align-items:flex-start;
+  padding-left:0;
+  border-left:0;
+ }
+
+ .archive-summary{
+  grid-template-columns:1fr;
+ }
+
+ .archive-summary-card{
+  min-height:3.5rem;
+ }
+
+ .archive-record-heading{
+  align-items:flex-start;
+  flex-direction:column;
+ }
+}

@@ -1,0 +1,12 @@
+.rich-text-editor{border:1px solid #ced4da;border-radius:.375rem;background:#fff;overflow:hidden}.rich-text-editor:focus-within{border-color:#86b7fe;box-shadow:0 0 0 .25rem rgba(13,110,253,.25)}.rich-text-editor.is-disabled{background:#e9ecef}.rich-text-editor__toolbar{display:flex;flex-wrap:wrap;gap:.25rem;padding:.5rem;border-bottom:1px solid #dee2e6;background:#f8f9fa}.rich-text-editor__toolbar button{width:auto;min-width:2rem;padding:.25rem .5rem;border:1px solid #ced4da;border-radius:.25rem;background:#fff;color:#24364b}.rich-text-editor__toolbar button.is-active{border-color:#0d6efd;background:#0d6efd;color:#fff}.rich-text-editor__content{min-height:var(--rich-text-min-height);padding:.75rem 1rem;outline:0}.rich-text-editor__content p:last-child,.rich-text-content p:last-child{margin-bottom:0}.rich-text-editor__content:empty:before{content:attr(data-placeholder);float:left;color:#6c757d;pointer-events:none;height:0}.rich-text-content{overflow-wrap:anywhere;line-height:1.65}.rich-text-content img{max-width:100%;height:auto}.rich-text-content blockquote{padding-left:1rem;border-left:.25rem solid #9ab3c7;color:#52677d}.rich-text-content pre{padding:1rem;border-radius:.35rem;background:#17212b;color:#f8f9fa;white-space:pre-wrap}.rich-text-content a{color:#0d6efd;text-decoration:underline}
+
+.rich-text-content p{margin:0 0 .9rem}
+.rich-text-content h1,.rich-text-content h2,.rich-text-content h3,.rich-text-content h4{margin:1.25rem 0 .65rem;line-height:1.25}
+.rich-text-content h1:first-child,.rich-text-content h2:first-child,.rich-text-content h3:first-child{margin-top:0}
+.rich-text-content ul{margin:.75rem 0 1rem;padding-left:1.8rem;list-style:disc}
+.rich-text-content ol{margin:.75rem 0 1rem;padding-left:1.8rem;list-style:decimal}
+.rich-text-content li{display:list-item;margin:.3rem 0;padding-left:.25rem}
+.rich-text-content li::marker{color:var(--text);font-weight:800}
+.rich-text-content mark{padding:.08rem .2rem;border-radius:.18rem}
+.rich-text-content code:not(pre code){padding:.08rem .3rem;border-radius:.2rem;background:rgba(80,100,120,.12);color:var(--text)}
+.rich-text-content hr{margin:1.25rem 0;border-color:#9ab3c7}
