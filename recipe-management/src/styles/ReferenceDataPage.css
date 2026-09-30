@@ -1,0 +1,17 @@
+.reference-data-page .table{
+ --bs-table-bg:var(--surface);
+ --bs-table-color:var(--text-soft);
+ --bs-table-border-color:var(--border);
+ --bs-table-hover-bg:var(--bg-alt);
+ --bs-table-hover-color:var(--text);
+ background:var(--surface);
+}
+
+.reference-data-page .table > thead{
+ --bs-table-bg:var(--surface-2);
+ --bs-table-color:var(--heading);
+}
+
+.reference-data-page .table > tbody > tr:nth-child(even) > *{
+ --bs-table-bg:color-mix(in srgb,var(--surface) 82%,var(--bg-alt));
+}
