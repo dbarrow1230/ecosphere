@@ -1,0 +1,166 @@
+.employee-page {
+ padding: 1.25rem 0;
+}
+
+.employee-page-title {
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ gap: 1rem;
+ margin-bottom: 1rem;
+}
+
+.employee-page-title h2 {
+ margin: 0;
+ color: var(--business-primary, #1f2933);
+ font-weight: 800;
+}
+
+.employee-actions {
+ display: flex;
+ justify-content: flex-end;
+ margin-bottom: 1rem;
+}
+
+.employee-metrics {
+ display: grid;
+ grid-template-columns: repeat(4, minmax(0, 1fr));
+ gap: 1rem;
+ margin-bottom: 1rem;
+}
+
+.employee-metrics-small {
+ grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.employee-metrics article,
+.employee-card {
+ background: #fff;
+ border: 1px solid rgba(15, 23, 42, .12);
+ border-radius: .75rem;
+ box-shadow: 0 .5rem 1.25rem rgba(15, 23, 42, .06);
+}
+
+.employee-metrics article {
+ padding: 1rem;
+}
+
+.employee-metrics span {
+ display: block;
+ color: #64748b;
+ font-size: .8rem;
+ font-weight: 700;
+ text-transform: uppercase;
+}
+
+.employee-metrics strong {
+ display: block;
+ color: #0f172a;
+ font-size: 1.65rem;
+ line-height: 1.1;
+ margin-top: .4rem;
+}
+
+.employee-grid {
+ display: grid;
+ grid-template-columns: repeat(2, minmax(0, 1fr));
+ gap: 1rem;
+}
+
+.employee-grid-wide {
+ grid-template-columns: minmax(28rem, 1.25fr) minmax(20rem, .75fr);
+}
+
+.employee-card {
+ padding: 1rem;
+ overflow: hidden;
+}
+
+.employee-card h3 {
+ font-size: 1rem;
+ font-weight: 800;
+ margin-bottom: .85rem;
+}
+
+.employee-list-item {
+ display: grid;
+ gap: .25rem;
+ border: 1px solid rgba(15, 23, 42, .1);
+ border-radius: .65rem;
+ padding: .75rem;
+ margin-bottom: .6rem;
+}
+
+.employee-list-item span {
+ color: #64748b;
+}
+
+.employee-form {
+ display: grid;
+ grid-template-columns: repeat(2, minmax(0, 1fr));
+ gap: .85rem;
+ margin-bottom: 1rem;
+}
+
+.employee-form label {
+ display: grid;
+ gap: .35rem;
+ color: #475569;
+ font-size: .78rem;
+ font-weight: 800;
+ text-transform: uppercase;
+}
+
+.employee-form input,
+.employee-form select {
+ min-height: 2.35rem;
+ border: 1px solid #cbd5e1;
+ border-radius: .5rem;
+ padding: .45rem .65rem;
+ color: #0f172a;
+}
+
+.employee-card table {
+ width: 100%;
+ border-collapse: collapse;
+ font-size: .9rem;
+}
+
+.employee-card th,
+.employee-card td {
+ border-bottom: 1px solid #e2e8f0;
+ padding: .65rem .55rem;
+ text-align: left;
+ vertical-align: top;
+}
+
+.employee-card th {
+ background: #f8fafc;
+ color: #475569;
+ font-size: .75rem;
+ text-transform: uppercase;
+}
+
+.employee-card tbody tr:hover {
+ background: #f8fafc;
+}
+
+@media (max-width: 992px) {
+ .employee-metrics,
+ .employee-grid,
+ .employee-grid-wide {
+  grid-template-columns: 1fr;
+ }
+}
+
+@media (max-width: 640px) {
+ .employee-form {
+  grid-template-columns: 1fr;
+ }
+
+ .employee-card table {
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+ }
+}

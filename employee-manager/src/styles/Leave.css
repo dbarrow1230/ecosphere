@@ -1,0 +1,97 @@
+.leave-page .employee-page-title{
+ background:var(--theme-bg);
+ padding:1rem 0 .75rem;
+}
+
+.leave-page .employee-page-title h2{
+ color:var(--theme-textInverse);
+ font-family:var(--theme-fontHeading);
+ font-weight:800;
+ margin:0;
+}
+
+.leave-page .employee-card.card{
+ background:var(--theme-surface);
+ border:1px solid var(--theme-border);
+ color:var(--theme-text);
+ border-radius:.75rem;
+ margin:0 0 1rem;
+}
+
+.leave-page .employee-card .card-body{
+ background:var(--theme-surface);
+ color:var(--theme-text);
+}
+
+.leave-page .employee-form .form-label{
+ color:var(--theme-heading);
+ font-family:var(--theme-fontHeading);
+ font-weight:700;
+ text-transform:uppercase;
+}
+
+.leave-page .employee-form .form-control,
+.leave-page .employee-form .form-select{
+ background-color:var(--theme-surface2);
+ border:1px solid var(--theme-border);
+ color:var(--theme-text);
+}
+
+.leave-page .employee-form .form-control:focus,
+.leave-page .employee-form .form-select:focus{
+ background-color:var(--theme-surface2);
+ border-color:var(--theme-borderStrong);
+ color:var(--theme-text);
+ box-shadow:0 0 0 .2rem color-mix(in srgb,var(--theme-accent) 25%,transparent);
+}
+
+.leave-page .employee-form .form-control::placeholder{
+ color:var(--theme-textSoft);
+}
+
+.leave-page .employee-form .btn-primary,
+.leave-page .employee-card .btn-primary{
+ background-color:var(--theme-primary);
+ border-color:var(--theme-primary);
+ color:var(--theme-textInverse);
+ font-family:var(--theme-fontHeading);
+ font-weight:700;
+}
+
+.leave-page .employee-form .btn-primary:hover,
+.leave-page .employee-card .btn-primary:hover{
+ background-color:var(--theme-primaryHover);
+ border-color:var(--theme-primaryHover);
+ color:var(--theme-textInverse);
+}
+
+.leave-page .employee-table.table{
+ background:var(--theme-surface);
+ border-color:var(--theme-border);
+ color:var(--theme-text);
+ margin-bottom:0;
+}
+
+.leave-page .employee-table.table > thead > tr > th{
+ background-color:var(--theme-surface2);
+ border-color:var(--theme-border);
+ color:var(--theme-heading);
+ font-family:var(--theme-fontHeading);
+ font-weight:800;
+ text-transform:uppercase;
+}
+
+.leave-page .employee-table.table > tbody > tr > td{
+ background-color:var(--theme-surface);
+ border-color:var(--theme-border);
+ color:var(--theme-text);
+}
+
+.leave-page .employee-table.table > tbody > tr:nth-child(even) > td{
+ background-color:var(--theme-tableStripe);
+}
+
+.leave-page .employee-table.table-hover > tbody > tr:hover > td{
+ background-color:var(--theme-selectionBg);
+ color:var(--theme-selectionText);
+}
