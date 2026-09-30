@@ -1,0 +1,43 @@
+// backend/models/users/userDepartmentAssignmentModel.js
+import mongoose from "mongoose";
+import businessInfoConnection from "../../db/businessInfoConnection.js";
+import BusinessDepartment from "./businessDepartmentModel.js";
+import Role from "./roleModel.js";
+
+const userDepartmentAssignmentSchema=new mongoose.Schema(
+{
+ user:{type:mongoose.Schema.Types.ObjectId,ref:"User",required:true,index:true},
+ business:{type:mongoose.Schema.Types.ObjectId,ref:"Business",required:true,index:true},
+ department:{type:mongoose.Schema.Types.ObjectId,ref:"BusinessDepartment",required:true,index:true},
+ roleOverride:{type:mongoose.Schema.Types.ObjectId,ref:"Role",default:null},
+ isPrimary:{type:Boolean,default:false},
+ isActive:{type:Boolean,default:true}
+},
+{timestamps:true,collection:"user_department_assignments"}
+);
+
+userDepartmentAssignmentSchema.index({user:1,business:1,department:1},{unique:true});
+userDepartmentAssignmentSchema.index({business:1,department:1});
+userDepartmentAssignmentSchema.index({user:1,business:1});
+userDepartmentAssignmentSchema.index({business:1,isActive:1});
+
+userDepartmentAssignmentSchema.pre("validate",async function(){
+ if(!this.business||!this.department)return;
+
+ const departmentDoc=await BusinessDepartment.findById(this.department).select("business defaultRole").lean();
+
+ if(!departmentDoc)throw new Error("Invalid department.");
+ if(String(departmentDoc.business)!==String(this.business))throw new Error("Department does not belong to the selected business.");
+
+ if(this.roleOverride)
+ {
+  const roleDoc=await Role.findById(this.roleOverride).select("business").lean();
+
+  if(!roleDoc)throw new Error("Invalid role override.");
+  if(String(roleDoc.business)!==String(this.business))throw new Error("Role override does not belong to the selected business.");
+ }
+});
+
+const UserDepartmentAssignment=businessInfoConnection.models.UserDepartmentAssignment||businessInfoConnection.model("UserDepartmentAssignment",userDepartmentAssignmentSchema);
+
+export default UserDepartmentAssignment;

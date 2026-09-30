@@ -1,0 +1,211 @@
+.recipe-costing-page{
+ width:100%;
+ max-width:none;
+ padding:24px 28px 40px;
+}
+
+.recipe-costing-header{
+ display:flex;
+ align-items:flex-start;
+ justify-content:space-between;
+ gap:20px;
+ margin-bottom:18px;
+}
+
+.recipe-costing-header h1{
+ margin:0 0 6px;
+}
+
+.recipe-costing-header p{
+ margin:0;
+}
+
+.recipe-costing-alert{
+ margin-bottom:16px;
+}
+
+.recipe-costing-panel{
+ width:100%;
+ min-width:0;
+ background:var(--surface,#fff);
+ border:1px solid var(--border,#dfe3e8);
+ border-radius:10px;
+ box-shadow:0 3px 14px rgba(0,0,0,.06);
+}
+
+.recipe-costing-scroll{
+ width:100%;
+ overflow-x:auto;
+}
+
+.recipe-costing-table{
+ width:100%;
+ min-width:1120px;
+ margin:0;
+}
+
+.recipe-costing-table th,
+.recipe-costing-table td{
+ white-space:nowrap;
+ vertical-align:middle;
+}
+
+.recipe-costing-table th{
+ padding:12px 14px;
+}
+
+.recipe-costing-table td{
+ padding:10px 14px;
+}
+
+.recipe-costing-table .form-control,
+.recipe-costing-table .form-select{
+ min-width:110px;
+ white-space:nowrap;
+}
+
+.ingredient-cost-table th:nth-child(1),
+.ingredient-cost-table td:nth-child(1){
+ min-width:190px;
+}
+
+.ingredient-cost-table th:nth-child(4),
+.ingredient-cost-table td:nth-child(4){
+ min-width:360px;
+}
+
+.ingredient-cost-table tfoot td{
+ font-size:1rem;
+ text-align:right;
+ background:var(--surface-muted,#f5f7f8);
+}
+
+.recipe-costing-actions{
+ display:flex;
+ flex-wrap:nowrap;
+ gap:8px;
+}
+
+.empty-cell{
+ text-align:center;
+ padding:30px!important;
+}
+
+.recipe-costing-loading{
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ gap:10px;
+ min-height:300px;
+}
+
+.recipe-costing-editor{
+ display:grid;
+ gap:18px;
+}
+
+.recipe-costing-setup{
+ display:grid;
+ grid-template-columns:minmax(240px,1fr) minmax(300px,1.5fr) 180px minmax(220px,1fr);
+ gap:16px;
+ padding:18px;
+}
+
+.recipe-costing-setup label,
+.cost-inputs label{
+ white-space:nowrap;
+}
+
+.recipe-costing-section-heading{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:16px;
+ padding:16px 18px;
+ border-bottom:1px solid var(--border,#dfe3e8);
+}
+
+.recipe-costing-section-heading h2,
+.recipe-costing-bottom h2{
+ margin:0;
+ font-size:1.2rem;
+ white-space:nowrap;
+}
+
+.recipe-costing-bottom{
+ display:grid;
+ grid-template-columns:minmax(0,1fr) 370px;
+ align-items:start;
+ gap:18px;
+}
+
+.cost-inputs,
+.costing-summary{
+ padding:18px;
+}
+
+.cost-input-grid{
+ display:grid;
+ grid-template-columns:repeat(4,minmax(150px,1fr));
+ gap:14px;
+ margin-top:16px;
+}
+
+.costing-summary dl{
+ margin:16px 0;
+}
+
+.costing-summary dl div{
+ display:flex;
+ justify-content:space-between;
+ gap:20px;
+ padding:9px 0;
+ border-bottom:1px solid var(--border,#e3e6e8);
+ white-space:nowrap;
+}
+
+.costing-summary dd{
+ margin:0;
+ font-variant-numeric:tabular-nums;
+}
+
+.costing-summary .summary-total{
+ margin-top:5px;
+ font-size:1.08rem;
+ font-weight:700;
+}
+
+.costing-summary .btn{
+ width:100%;
+ white-space:nowrap;
+}
+
+@media (max-width:1100px){
+ .recipe-costing-setup{
+  grid-template-columns:repeat(2,minmax(240px,1fr));
+ }
+
+ .recipe-costing-bottom{
+  grid-template-columns:1fr;
+ }
+
+ .costing-summary{
+  width:100%;
+ }
+}
+
+@media (max-width:700px){
+ .recipe-costing-page{
+  padding:16px 12px 28px;
+ }
+
+ .recipe-costing-header{
+  align-items:stretch;
+  flex-direction:column;
+ }
+
+ .recipe-costing-setup,
+ .cost-input-grid{
+  grid-template-columns:1fr;
+ }
+}
