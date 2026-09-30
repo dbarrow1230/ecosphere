@@ -1,0 +1,47 @@
+.reference-directory-page{width:min(1180px,calc(100% - 2rem));margin:0 auto;padding:2rem 0 4rem;color:var(--text)}
+.reference-directory-hero{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;align-items:center;gap:1.25rem;padding:1.4rem 1.5rem;margin-bottom:1.25rem;border:1px solid var(--border);border-radius:18px;background:linear-gradient(135deg,var(--surface),color-mix(in srgb,var(--primary) 10%,var(--surface)));box-shadow:var(--shadow)}
+.reference-directory-hero-icon{display:grid;place-items:center;width:64px;height:64px;border-radius:18px;background:var(--primary);color:var(--text-inverse)}
+.reference-directory-kicker{display:block;color:var(--accent);font-size:.76rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase}
+.reference-directory-hero h1{margin:.25rem 0 .35rem;color:var(--text);font-size:clamp(1.8rem,4vw,2.8rem)}
+.reference-directory-hero p,.reference-directory-summary span{margin:0;color:var(--text-soft)}
+.reference-directory-summary{display:grid;max-width:170px;padding-left:1.2rem;border-left:1px solid var(--border)}
+.reference-directory-summary strong{color:var(--accent);font-size:2rem;line-height:1}
+.reference-directory-summary span{font-size:.78rem;line-height:1.3}
+.reference-directory-add{white-space:nowrap}
+.reference-directory-tools{display:grid;gap:1rem;padding:1rem 1.15rem;margin-bottom:1.25rem;border-block:1px solid var(--border);background:color-mix(in srgb,var(--surface) 65%,transparent)}
+.reference-directory-search{display:flex;align-items:center;gap:.7rem;padding:0 .9rem;border:1px solid var(--border);border-radius:999px;background:var(--surface-2);color:var(--text-soft)}
+.reference-directory-search input{padding:.7rem 0;border:0;background:transparent;box-shadow:none;color:var(--text)}
+.reference-directory-tabs,.reference-directory-alphabet{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap}
+.reference-directory-tabs button,.reference-directory-alphabet button{min-height:34px;padding:.4rem .75rem;border:1px solid var(--border);border-radius:999px;background:var(--surface);color:var(--text);font-size:.82rem}
+.reference-directory-tabs button.active,.reference-directory-alphabet button.active{background:var(--primary);border-color:var(--primary);color:var(--text-inverse)}
+.reference-directory-list{border:1px solid var(--border);border-radius:18px;background:var(--surface);overflow:hidden;box-shadow:var(--shadow)}
+.reference-directory-heading{display:flex;align-items:center;gap:.75rem;padding:1rem 1.25rem;border-bottom:1px solid var(--border);background:var(--surface-2)}
+.reference-directory-heading h2{margin:0;color:var(--text);font-size:1.2rem}
+.reference-directory-heading p{margin:.15rem 0 0;color:var(--text-soft);font-size:.8rem}
+.reference-directory-group{display:grid;grid-template-columns:72px minmax(0,1fr);border-bottom:1px solid var(--border)}
+.reference-directory-group:last-child{border-bottom:0}
+.reference-directory-letter{display:flex;justify-content:center;padding:1.1rem .5rem;background:color-mix(in srgb,var(--primary) 10%,var(--surface));color:var(--accent);font-family:var(--font-heading);font-size:1.8rem;font-weight:900}
+.reference-directory-items{min-width:0}
+.reference-directory-entry{padding:1rem 1.25rem;border-bottom:1px solid color-mix(in srgb,var(--border) 60%,transparent)}
+.reference-directory-entry:last-child{border-bottom:0}
+.reference-directory-entry:hover{background:color-mix(in srgb,var(--surface-2) 35%,var(--surface))}
+.reference-directory-entry-head{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem}
+.reference-directory-entry h3{display:inline;margin:0;color:var(--text);font-size:1.08rem}
+.reference-directory-summary-text{margin-left:.55rem;color:var(--text-soft);font-size:.82rem}
+.reference-directory-actions{display:flex;align-items:center;justify-content:flex-end;gap:.4rem;flex-wrap:wrap}
+.reference-directory-actions button{min-height:28px;padding:.28rem .55rem;border:1px solid var(--border);background:transparent;color:var(--primary);font-size:.72rem}
+.reference-directory-actions button.danger{color:var(--danger)}
+.reference-directory-badge,.reference-directory-source{display:inline-flex;padding:.24rem .5rem;border-radius:999px;font-size:.68rem;font-weight:800}
+.reference-directory-badge{background:var(--primary);color:var(--text-inverse)}
+.reference-directory-source{border:1px solid var(--border);color:var(--text-soft)}
+.reference-directory-source-custom{color:var(--accent)}
+.reference-directory-definition{margin:.55rem 0 .25rem;color:var(--text);line-height:1.55}
+.reference-directory-example,.reference-directory-aliases{margin:.25rem 0 0;color:var(--text-soft);font-size:.84rem}
+.reference-directory-empty{padding:3rem;text-align:center;color:var(--text-soft)}
+.reference-directory-loading{display:flex;align-items:center;justify-content:center;gap:.75rem;min-height:40vh;color:var(--text)}
+.reference-directory-form-grid{display:grid;grid-template-columns:2fr 1fr;gap:1rem}
+.reference-directory-form-grid .full{grid-column:1/-1}
+.reference-directory-modal .modal-content,.reference-directory-modal .modal-header,.reference-directory-modal .modal-body,.reference-directory-modal .modal-footer{background:var(--surface);color:var(--text);border-color:var(--border)}
+.reference-directory-modal .modal-title{color:var(--text)}
+@media(max-width:800px){.reference-directory-hero{grid-template-columns:auto 1fr}.reference-directory-summary,.reference-directory-add{grid-column:1/-1}.reference-directory-summary{max-width:none;padding:0;border:0}.reference-directory-group{grid-template-columns:48px minmax(0,1fr)}.reference-directory-entry-head{display:grid}.reference-directory-actions{justify-content:flex-start}}
+@media(max-width:520px){.reference-directory-page{width:min(100% - 1rem,1180px)}.reference-directory-hero{grid-template-columns:1fr}.reference-directory-hero-icon{width:52px;height:52px}.reference-directory-group{grid-template-columns:1fr}.reference-directory-letter{justify-content:flex-start;padding:.55rem 1rem}.reference-directory-form-grid{grid-template-columns:1fr}.reference-directory-form-grid .full{grid-column:auto}}

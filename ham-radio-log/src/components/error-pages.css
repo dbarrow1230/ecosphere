@@ -1,0 +1,68 @@
+/* src/styles/error-pages.css */
+.error-page{
+min-height:100vh;
+padding:40px 16px;
+background:linear-gradient(180deg,var(--bg) 0%,var(--bg-alt) 100%);
+}
+
+.error-card{
+background:var(--surface);
+border-radius:var(--radius-lg);
+padding:48px 32px;
+border:1px solid color-mix(in srgb,var(--text) 8%,transparent);
+box-shadow:var(--shadow);
+}
+
+.error-code{
+font-size:clamp(4rem,12vw,8rem);
+font-weight:800;
+line-height:1;
+margin:0 0 12px;
+color:var(--text);
+letter-spacing:2px;
+animation:error-float 3s ease-in-out 10s infinite;
+will-change:transform;
+}
+
+.error-title{
+font-size:clamp(1.5rem,3vw,2.5rem);
+font-weight:700;
+margin-bottom:14px;
+color:var(--text);
+}
+
+.error-text{
+font-size:1rem;
+line-height:1.7;
+color:var(--text-soft);
+max-width:560px;
+margin:0 auto 28px;
+}
+
+.error-btn{
+min-width:140px;
+border-radius:999px;
+padding:12px 20px;
+font-weight:600;
+}
+
+@keyframes error-float{
+ 0%,100%{
+  transform:translateY(0);
+ }
+ 50%{
+  transform:translateY(-12px);
+ }
+}
+
+@media (prefers-reduced-motion:reduce){
+ .error-code{
+  animation:none;
+ }
+}
+
+@media (max-width:576px){
+.error-card{
+padding:36px 22px;
+}
+}

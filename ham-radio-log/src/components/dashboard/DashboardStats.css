@@ -1,0 +1,54 @@
+.hero,
+.home-hero{
+ background-color:var(--bg);
+ color:var(--text);
+}
+
+.hero::before,
+.home-hero::before{
+ background:var(--overlay);
+}
+
+.hero h1,
+.home-hero h1,
+.hero-title,
+.home-hero-title{
+ color:var(--heading) !important;
+ text-shadow:0 2px 12px var(--bg);
+}
+
+.hero p,
+.home-hero p,
+.hero-lead,
+.home-hero-lead{
+ color:var(--text) !important;
+ text-shadow:0 2px 10px var(--bg);
+}
+
+.hero .btn-primary,
+.home-hero .btn-primary{
+ background:var(--primary);
+ border-color:var(--primary);
+ color:var(--text-inverse);
+}
+
+.hero .btn-primary:hover,
+.home-hero .btn-primary:hover{
+ background:var(--primaryHover);
+ border-color:var(--primaryHover);
+ color:var(--text-inverse);
+}
+
+.hero .btn-secondary,
+.home-hero .btn-secondary{
+ background:var(--accent);
+ border-color:var(--accent);
+ color:var(--text-inverse);
+}
+
+.hero .btn-secondary:hover,
+.home-hero .btn-secondary:hover{
+ background:var(--accentHover);
+ border-color:var(--accentHover);
+ color:var(--text-inverse);
+}
