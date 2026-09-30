@@ -1,0 +1,276 @@
+.admin-content{
+ background:var(--bg);
+ color:var(--text);
+}
+
+.admin-back-row{
+ width:min(var(--container-max,1600px),94%);
+ margin:0 auto;
+ padding:var(--space-4,1rem) 0 0;
+}
+
+.admin-content > .py-4,
+.admin-content > .container,
+.admin-content > .container-fluid{
+ width:min(var(--container-max,1600px),94%);
+ max-width:min(var(--container-max,1600px),94%);
+ margin-inline:auto;
+ padding-top:var(--space-5,1.5rem)!important;
+ padding-bottom:var(--space-8,3rem)!important;
+ padding-left:0!important;
+ padding-right:0!important;
+}
+
+.admin-content h1,
+.admin-content h2,
+.admin-content h3,
+.admin-content h4{
+ color:var(--heading);
+ font-family:var(--font-heading);
+}
+
+.admin-content .text-muted{
+ color:var(--text-soft)!important;
+}
+
+.admin-content .btn,
+.admin-content button.btn,
+.admin-content .btn.btn-primary{
+ display:inline-flex;
+ align-items:center;
+ justify-content:center;
+ gap:.5rem;
+ background:var(--primary);
+ border:1px solid var(--primary);
+ border-radius:var(--radius-md);
+ color:var(--text-inverse);
+ font-family:var(--font-body);
+ font-weight:700;
+ box-shadow:none;
+}
+
+.admin-content .btn-sm{
+ padding:.45rem .82rem;
+ border-radius:var(--radius-md);
+}
+
+.admin-content .btn:hover,
+.admin-content .btn:focus,
+.admin-content button.btn:hover,
+.admin-content button.btn:focus,
+.admin-content .btn.btn-primary:hover,
+.admin-content .btn.btn-primary:focus{
+ background:var(--primary-hover);
+ border-color:var(--primary-hover);
+ color:var(--text-inverse);
+ box-shadow:none;
+}
+
+.admin-content .btn.btn-outline-primary,
+.admin-content .btn.btn-outline-secondary{
+ background:var(--surface);
+ border-color:var(--primary);
+ color:var(--primary);
+}
+
+.admin-content .btn.btn-outline-primary:hover,
+.admin-content .btn.btn-outline-primary:focus,
+.admin-content .btn.btn-outline-secondary:hover,
+.admin-content .btn.btn-outline-secondary:focus{
+ background:var(--primary);
+ border-color:var(--primary);
+ color:var(--text-inverse);
+}
+
+.admin-content .btn.btn-outline-danger{
+ background:var(--surface);
+ border-color:var(--danger);
+ color:var(--danger);
+}
+
+.admin-content .btn.btn-outline-warning{
+ background:var(--surface);
+ border-color:var(--warning);
+ color:var(--warning);
+}
+
+.admin-content .btn.btn-outline-warning:hover,
+.admin-content .btn.btn-outline-warning:focus{
+ background:var(--warning);
+ border-color:var(--warning);
+ color:var(--text-inverse);
+}
+
+.admin-content .btn.btn-danger,
+.admin-content .btn.btn-outline-danger:hover,
+.admin-content .btn.btn-outline-danger:focus{
+ background:var(--danger);
+ border-color:var(--danger);
+ color:var(--text-inverse);
+}
+
+.admin-content .btn:disabled,
+.admin-content .btn.disabled{
+ opacity:.55;
+ background:var(--surface-2);
+ border-color:var(--border);
+ color:var(--text-soft);
+}
+
+.admin-content .badge,
+.admin-content .badge.bg-primary,
+.admin-content .badge.bg-success{
+ border-radius:var(--radius-pill);
+ background:var(--primary)!important;
+ border:1px solid var(--primary-hover);
+ color:var(--text-inverse)!important;
+ font-family:var(--font-body);
+ font-weight:800;
+ padding:.38rem .72rem;
+}
+
+.admin-content .badge.bg-secondary{
+ border-radius:var(--radius-pill);
+ background:var(--surface-2)!important;
+ border:1px solid var(--border);
+ color:var(--text)!important;
+}
+
+.admin-content .card{
+ background:var(--surface);
+ border:1px solid var(--border);
+ border-radius:var(--radius-lg);
+ box-shadow:var(--shadow-sm,var(--shadow));
+ color:var(--text);
+}
+
+.admin-content .card-header{
+ background:var(--primary);
+ border-bottom:1px solid var(--border);
+ color:var(--text-inverse);
+ font-family:var(--font-heading);
+ font-weight:800;
+}
+
+.admin-content .card-body{
+ color:var(--text);
+}
+
+.admin-content .nav-tabs{
+ border-color:var(--border);
+}
+
+.admin-content .nav-tabs .nav-link{
+ background:var(--surface);
+ border-color:var(--border);
+ border-radius:var(--radius-md) var(--radius-md) 0 0;
+ color:var(--primary);
+ font-weight:700;
+}
+
+.admin-content .nav-tabs .nav-link.active{
+ background:var(--primary);
+ border-color:var(--primary);
+ color:var(--text-inverse);
+}
+
+.admin-content .table{
+ --bs-table-bg:var(--surface);
+ --bs-table-color:var(--text);
+ --bs-table-striped-bg:var(--table-stripe);
+ --bs-table-striped-color:var(--text);
+ --bs-table-hover-bg:var(--bg-alt);
+ --bs-table-hover-color:var(--text);
+ color:var(--text);
+ border-color:var(--border);
+}
+
+.admin-content .table thead th{
+ background:var(--surface-2);
+ color:var(--heading);
+ border-color:var(--border);
+ font-weight:800;
+}
+
+.admin-content .table td,
+.admin-content .table th{
+ border-color:var(--border);
+}
+
+.admin-content .admin-users-table{
+ --bs-table-bg:var(--surface);
+ --bs-table-color:var(--text);
+ --bs-table-border-color:var(--border);
+ --bs-table-hover-bg:var(--bg-alt);
+ --bs-table-hover-color:var(--text);
+ background:var(--surface);
+ color:var(--text);
+ border:1px solid var(--border);
+}
+
+.admin-content .admin-users-table thead th{
+ background:var(--surface-2)!important;
+ color:var(--heading)!important;
+ border-color:var(--border)!important;
+}
+
+.admin-content .admin-users-table tbody td{
+ background:var(--surface)!important;
+ color:var(--text)!important;
+ border-color:var(--border)!important;
+}
+
+.admin-content .admin-users-table tbody tr:nth-child(even) td{
+ background:var(--table-stripe)!important;
+}
+
+.admin-content .admin-users-table tbody tr:hover td{
+ background:var(--bg-alt)!important;
+ color:var(--text)!important;
+}
+
+.admin-content .form-control,
+.admin-content .form-select{
+ background:var(--surface);
+ border:1px solid var(--border);
+ border-radius:var(--radius-md);
+ color:var(--text);
+ box-shadow:none;
+}
+
+.admin-content .form-control:focus,
+.admin-content .form-select:focus{
+ border-color:var(--accent);
+ box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 42%,transparent 58%);
+}
+
+.admin-content .alert{
+ border-radius:var(--radius-lg);
+ border:1px solid var(--border);
+ background:var(--surface);
+ color:var(--text);
+}
+
+.admin-reference-page{
+ width:min(var(--container-max,1600px),94%);
+ margin:0 auto;
+ padding:var(--space-5,1.5rem) 0 var(--space-8,3rem);
+}
+
+.admin-reference-card{
+ overflow:hidden;
+}
+
+.admin-reference-card-header{
+ padding:16px 18px;
+ border-bottom:1px solid var(--border);
+ font-size:16px;
+ font-weight:800;
+ font-family:var(--font-heading);
+ color:var(--text-inverse);
+ background:var(--primary);
+}
+
+.admin-reference-card-body{
+ padding:18px;
+}
