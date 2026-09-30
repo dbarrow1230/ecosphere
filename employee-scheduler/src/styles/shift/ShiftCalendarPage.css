@@ -1,0 +1,95 @@
+/* pages/styles/shift/ShiftCalendarPage.css */
+
+/* overall calendar container */
+.rbc-calendar{
+ font-family:inherit;
+ background:#fff;
+ border-radius:8px;
+}
+
+/* toolbar (month / week / nav) */
+.rbc-toolbar{
+ margin-bottom:1rem;
+ padding:0.5rem 0;
+}
+
+.rbc-toolbar button{
+ border-radius:6px !important;
+ border:1px solid #dee2e6;
+ background:#f8f9fa;
+}
+
+.rbc-toolbar button:hover{
+ background:#e9ecef;
+}
+
+.rbc-toolbar button.rbc-active{
+ background:#198754;
+ color:#fff;
+ border-color:#198754;
+}
+
+/* headers */
+.rbc-header{
+ font-weight:600;
+ padding:0.5rem 0;
+ background:#f8f9fa;
+ border-bottom:1px solid #dee2e6;
+}
+
+/* time grid lines */
+.rbc-time-slot{
+ border-top:1px solid #f1f3f5;
+}
+
+/* events */
+.rbc-event{
+ border:none !important;
+ border-radius:6px !important;
+ padding:2px 6px !important;
+ font-size:0.8rem;
+}
+
+/* event content */
+.rbc-event-content{
+ line-height:1.2;
+}
+
+/* selected event */
+.rbc-selected{
+ box-shadow:0 0 0 2px rgba(0,0,0,0.15) inset;
+}
+
+/* today highlight */
+.rbc-today{
+ background:#e7f5ff;
+}
+
+/* month cell */
+.rbc-day-bg{
+ transition:background 0.2s ease;
+}
+
+.rbc-day-bg:hover{
+ background:#f1f3f5;
+}
+
+/* agenda view */
+.rbc-agenda-view table{
+ border:1px solid #dee2e6;
+}
+
+.rbc-agenda-view td,
+.rbc-agenda-view th{
+ padding:0.5rem;
+}
+
+/* scroll container */
+.rbc-time-content{
+ border-top:1px solid #dee2e6;
+}
+
+/* custom tweak for tighter layout */
+.rbc-row-content{
+ padding:2px 4px;
+}
