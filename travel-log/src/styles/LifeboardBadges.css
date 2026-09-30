@@ -1,0 +1,79 @@
+/* src/styles/LifeboardBadges.css */
+
+.lifeboard-page-notice{
+ margin:1rem;
+ padding:1rem;
+ border:1px solid var(--success);
+ border-radius:12px;
+ background:var(--surface2);
+ color:var(--success);
+}
+
+.lifeboard-muted-text{
+ color:var(--textSoft);
+ margin-bottom:0;
+}
+
+.lifeboard-badge{
+ display:inline-flex;
+ align-items:center;
+ justify-content:center;
+ width:max-content;
+ max-width:100%;
+ padding:.35rem .55rem;
+ border:1px solid var(--border);
+ border-radius:999px;
+ background:var(--surface2);
+ color:var(--text);
+ font-size:.75rem;
+ font-weight:600;
+ line-height:1;
+ white-space:nowrap;
+}
+
+.lifeboard-badge-primary{
+ border-color:var(--primary);
+ background:var(--selectionBg);
+ color:var(--primary);
+}
+
+.lifeboard-badge-secondary{
+ border-color:var(--secondary);
+ background:var(--surface2);
+ color:var(--secondary);
+}
+
+.lifeboard-badge-success{
+ border-color:var(--success);
+ background:var(--surface2);
+ color:var(--success);
+}
+
+.lifeboard-badge-warning{
+ border-color:var(--warning);
+ background:var(--surface2);
+ color:var(--warning);
+}
+
+.lifeboard-badge-danger{
+ border-color:var(--danger);
+ background:var(--surface2);
+ color:var(--danger);
+}
+
+.lifeboard-badge-info{
+ border-color:var(--info);
+ background:var(--surface2);
+ color:var(--info);
+}
+
+.lifeboard-tag-list{
+ display:flex;
+ align-items:center;
+ gap:.35rem;
+ flex-wrap:wrap;
+}
+
+.lifeboard-tag-badge{
+ font-size:.72rem;
+}
