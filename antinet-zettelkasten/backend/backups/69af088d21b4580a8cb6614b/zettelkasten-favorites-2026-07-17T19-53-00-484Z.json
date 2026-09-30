@@ -1,0 +1,137 @@
+{
+  "backupId": "af39b3eb-ac99-44f9-92a6-b280c670802e",
+  "backupType": "favorites",
+  "userId": "69af088d21b4580a8cb6614b",
+  "createdAt": "2026-07-17T19:53:00.489Z",
+  "recordCount": 3,
+  "sourceCollections": {
+    "zettels": "zettels"
+  },
+  "data": {
+    "zettels": [
+      {
+        "_id": "6a5223410e9c0b30be5b3b2b",
+        "userId": "69af088d21b4580a8cb6614b",
+        "projectId": "6a57b72d846787abfc73e219",
+        "zettelId": "ZTL-INBOX-IDEA-SUSTAINABILI-001",
+        "title": "Sustainability",
+        "mainIdea": "Water conservation matters in controlled food production.",
+        "body": "",
+        "subtype": "6a4fd2476f1b448a362fb30c",
+        "sourceIds": [
+          "6a5220a10e9c0b30be5b3b23"
+        ],
+        "entityIds": [
+          "6a5221170e9c0b30be5b3b25",
+          "6a5221750e9c0b30be5b3b27",
+          "6a5221bf0e9c0b30be5b3b28"
+        ],
+        "originFleetingNoteId": null,
+        "futureUse": [],
+        "questions": [],
+        "tags": [
+          "Sustainability"
+        ],
+        "status": "active",
+        "isFavorite": true,
+        "createdAt": "2026-07-11T11:04:33.491Z",
+        "updatedAt": "2026-07-15T16:41:35.720Z",
+        "__v": 0,
+        "subjectCode": "SUSTAINABILITY"
+      },
+      {
+        "_id": "6a5822ea79af19ae0d194185",
+        "userId": "69af088d21b4580a8cb6614b",
+        "projectId": "6a559639cd932fdce44da3e7",
+        "zettelId": "ZTL-RESTAURANT-IDEA-ASIGDISCOUES-001",
+        "subjectCode": "BIGPICTURESIGNATUREDISH",
+        "title": "A Signature Dish Could Establish the Culinary Identity",
+        "mainIdea": "A carefully developed signature dish could present the Bajan–Japanese fusion as chef-driven rather than gimmicky and help establish a recognizable culinary identity.",
+        "body": "The fusion is not overdone yet.\n\nA signature dish could demonstrate the concept clearly and show that the approach is intentional, chef-driven, and grounded in technique rather than novelty.\n\nThe dish could fit a modern restaurant menu or a pop-up setting.\n\nIf the concept is developed internationally, the signature dish could become part of a larger culinary identity rather than remain only an experiment.\n\nRelated Zettel\nZTL-BUSINESS-CONCEPT",
+        "subtype": "6a4fd2476f1b448a362fb30c",
+        "sourceIds": [],
+        "entityIds": [],
+        "originFleetingNoteId": "6a58201979af19ae0d19417f",
+        "futureUse": [
+          "Signature dish development",
+          "modern menu",
+          "pop-up menu",
+          "restaurant concept",
+          "culinary identity",
+          "international development",
+          "brand development"
+        ],
+        "questions": [
+          "What dish best represents the Bajan–Japanese dialogue?",
+          "What makes the dish recognizable as chef-driven rather than gimmicky?",
+          "Which elements must remain consistent if the dish is adapted?",
+          "How could the dish work in both a restaurant and a pop-up?",
+          "What would allow the dish to represent a broader culinary identity?"
+        ],
+        "tags": [
+          "signature dish",
+          "Bajan Japanese fusion",
+          "culinary identity",
+          "chef-driven",
+          "modern menu",
+          "pop-up",
+          "restaurant concept",
+          "international development",
+          "brand development",
+          "fusion cuisine"
+        ],
+        "status": "active",
+        "isFavorite": true,
+        "createdAt": "2026-07-16T00:16:42.759Z",
+        "updatedAt": "2026-07-16T00:17:33.442Z",
+        "__v": 0
+      },
+      {
+        "_id": "6a5a376ccd3ebfe65c4408b8",
+        "userId": "69af088d21b4580a8cb6614b",
+        "projectId": "6a559639cd932fdce44da3e7",
+        "projectIds": [
+          "6a559639cd932fdce44da3e7"
+        ],
+        "zettelId": "ZTL-RESTAURANT-IDEA-SCALLIONOIL-001",
+        "subjectCode": "SCALLIONOIL",
+        "title": "Scallion Oil",
+        "mainIdea": "<p>A fragrant Chinese condiment made by slowly cooking fresh scallions in neutral oil until their flavor concentrates and the solids become lightly crisp.</p>",
+        "body": "<h3>Recipe Information</h3><p>Recipe Name: Scallion Oil</p><p>Cuisine: Chinese</p><p>Course: Condiment</p><p>Category: Infused Oil</p><p>Dietary Considerations: Vegan, vegetarian, gluten-free, dairy-free</p><p>Yield: 1 cup / 240 milliliters</p><p>Serving Size: 1 tablespoon / 15 milliliters</p><p>Prep Time: 10 minutes</p><p>Cook Time: 12 minutes</p><p>Chill Time: 20 minutes</p><p>Rest Time: 10 minutes</p><p>Total Time: 52 minutes</p><h3>Flavor Profile</h3><p>Taste: Savory, gently sweet, and deeply scallion-forward</p><p>Aroma: Toasted allium with clean, fragrant oil notes</p><p>Mouthfeel: Silky, rich, and lightly textured</p><h3>General Description</h3><p>Scallion oil is a fragrant infused condiment made by slowly cooking fresh scallions in neutral oil until their flavor concentrates and the solids become lightly crisp. It adds aromatic depth to noodles, rice, dumplings, vegetables, eggs, seafood, and grilled meats.</p><h3>Suggested Price</h3><p>$1.00–$1.50 per 1-ounce / 30-milliliter portion</p><h3>Menu Description</h3><p>Fragrant scallions gently infused in neutral oil for a savory, aromatic finish suited to noodles, rice, dumplings, and vegetables.</p><h3>Origins</h3><p>Scallion oil is closely associated with Chinese cooking, particularly the cuisines of Shanghai, Jiangsu, Zhejiang, and surrounding eastern regions. Similar allium-infused oils are prepared throughout China and across many East and Southeast Asian culinary traditions.</p><h3>History</h3><p>Infusing cooking oil with scallions developed as a practical method for preserving and concentrating the aroma of fresh alliums. The preparation became especially prominent in dishes such as Shanghai-style scallion oil noodles, where the seasoned oil serves as the primary flavoring.</p><h3>Cultural Significance</h3><p>Scallion oil reflects the Chinese culinary principle of transforming a small number of ingredients through controlled heat and careful timing. It is valued as both a household staple and a versatile restaurant condiment that provides immediate aroma, richness, and savory complexity.</p><h3>Techniques</h3><p>Washing and thoroughly drying fresh scallions</p><p>Separating white and green scallion sections</p><p>Low-temperature oil infusion</p><p>Controlled shallow frying</p><p>Carryover-cooking management</p><p>Fine-mesh straining</p><p>Rapid cooling and refrigerated storage</p><h3>Equipment</h3><p>Chef’s knife</p><p>Cutting board</p><p>Digital kitchen scale</p><p>Measuring cups and spoons</p><p>Small heavy-bottomed saucepan</p><p>Heat-resistant spatula or wooden spoon</p><p>Instant-read thermometer</p><p>Fine-mesh strainer</p><p>Heatproof bowl</p><p>Clean, sanitized glass jar with lid</p><h3>HACCP</h3><p>HACCP-1: Wash scallions under clean running water and prevent cross-contamination from raw animal products or contaminated surfaces.</p><p>HACCP-2: Dry scallions thoroughly before adding them to oil to reduce dangerous splattering and moisture retention.</p><p>HACCP-3: Use a clean, sanitized container and refrigerate the finished oil at or below 41°F / 5°C.</p><p>HACCP-4: Discard the oil if mold, gas production, cloudiness unrelated to refrigeration, off odors, or other signs of spoilage develop.</p><h3>Critical Control Points</h3><p>CCP Code: N/A</p><p>Critical Control Point: No true critical control point identified for immediate service under the stated process</p><p>Hazard: N/A</p><p>Critical Limit: N/A</p><p>Monitoring: Follow sanitation, moisture-control, cooling, and refrigerated-storage procedures.</p><p>Corrective Action: Discard any product subjected to contamination, improper handling, or uncertain storage conditions.</p><p>Verification: Supervisor reviews preparation and storage practices.</p><p>Records: Preparation-date label and refrigeration checklist.</p><h3>Ingredients</h3><p>2 packed cups / 150 grams scallions, washed, dried thoroughly, trimmed, and cut into 2-inch pieces — 8 minutes preparation</p><p>1 cup / 240 milliliters canola oil or another neutral high-heat oil, measured — 1 minute preparation</p><p>½ teaspoon / 3 grams fine sea salt, measured — 1 minute preparation</p><h3>Instructions</h3><ol><li><p>Wash the scallions thoroughly under clean running water, remove any damaged portions, and pat completely dry with clean towels.</p></li><li><p>Separate the pale scallion whites from the green tops, then cut all sections into approximately 2-inch / 5-centimeter pieces.</p></li><li><p>Place the scallion whites and neutral oil in a small heavy-bottomed saucepan.</p></li><li><p>Heat over medium-low heat until gentle bubbling begins, maintaining the oil between 250°F and 275°F / 121°C and 135°C.</p></li><li><p>Cook the scallion whites for 4 minutes, stirring occasionally to promote even infusion without excessive browning.</p></li><li><p>Add the green scallion sections and continue cooking for 6–8 minutes, stirring regularly, until the scallions are wilted, aromatic, and golden at the edges.</p></li><li><p>Remove the saucepan from the heat immediately when the scallions become golden, as carryover heat will continue cooking the solids.</p></li><li><p>Stir in the fine sea salt and allow the mixture to rest for 10 minutes.</p></li><li><p>Strain the oil through a fine-mesh strainer into a clean, heatproof bowl. Reserve the crisp scallion solids for garnish when desired.</p></li><li><p>Cool the oil promptly for approximately 20 minutes, then transfer it to a clean, sanitized glass jar.</p></li><li><p>Label the jar with the preparation date and refrigerate at or below 41°F / 5°C.</p></li><li><p>Stir or shake gently before portioning, then serve with noodles, rice, dumplings, vegetables, eggs, seafood, or grilled meats.</p></li></ol><h3>Plating</h3><p>Spoon 1 tablespoon / 15 milliliters over the finished dish immediately before service.</p><p>Garnish with a small amount of the reserved crisp scallion solids for additional color, texture, and aroma.</p><h3>Notes</h3><p>Use scallions that are firm, brightly colored, and free from slime or discoloration.</p><p>The scallions must be thoroughly dried because residual water can cause severe oil splattering.</p><p>Maintain gentle heat throughout cooking. Dark brown or burned scallions will make the oil bitter.</p><p>For a clear oil, strain without pressing the solids.</p><p>For a stronger flavor, lightly press the cooked scallions against the strainer.</p><h3>Storage</h3><p>Store in a clean, tightly sealed container under refrigeration at or below 41°F / 5°C for up to 7 days.</p><p>Always use a clean, dry utensil when portioning.</p><p>Do not store at room temperature.</p><p>Discard immediately if the oil develops mold, gas, unusual cloudiness, off odors, or other signs of spoilage.</p><h3>Nutritional Information</h3><p>Calories: 122 kcal</p><p>Total Fat: 14 g</p><p>Saturated Fat: 1 g</p><p>Trans Fat: 0 g</p><p>Polyunsaturated Fat: 4 g</p><p>Monounsaturated Fat: 9 g</p><p>Cholesterol: 0 mg</p><p>Sodium: 74 mg</p><p>Potassium: 12 mg</p><p>Total Carbohydrate: 0.3 g</p><p>Dietary Fiber: 0.1 g</p><p>Sugars: 0.1 g</p><p>Protein: 0.1 g</p><p>Vitamin A: 1% DV</p><p>Vitamin B6: 0% DV</p><p>Vitamin B12: 0% DV</p><p>Vitamin C: 1% DV</p><p>Vitamin D: 0% DV</p><p>Vitamin E: 14% DV</p><p>Calcium: 0% DV</p><p>Magnesium: 0% DV</p><p>Iron: 0% DV</p>",
+        "subtype": "6a4fd2476f1b448a362fb30c",
+        "sourceIds": [],
+        "entityIds": [
+          "6a56279e5eccfb2fbef06800"
+        ],
+        "originFleetingNoteId": null,
+        "futureUse": [
+          "Noodles, rice, dumplings, vegetables, eggs, seafood, grilled meats, ramen finishing oil, restaurant condiment, recipe costing, menu development"
+        ],
+        "questions": [
+          "Does the finished recipe yield a full 1 cup / 240 milliliters after straining?, Is 250°F–275°F the best temperature range for clean scallion flavor without bitterness?, Should the scallion solids be reserved as a standard garnish or only when needed?, Does pressing the solids create the preferred flavor without making the oil cloudy?, Is the 7-day refrigerated storage period appropriate for the final tested process?, How does the oil perform in ramen, noodles, dumplings, and finishing applications?, What is the actual cost per 1-tablespoon and 1-ounce portion?"
+        ],
+        "tags": [
+          "scallion oil",
+          "Chinese cuisine",
+          "infused oil",
+          "scallions",
+          "neutral oil",
+          "aromatic oil",
+          "condiment",
+          "noodles",
+          "dumplings",
+          "ramen finishing oil",
+          "vegan",
+          "vegetarian",
+          "gluten-free",
+          "dairy-free"
+        ],
+        "status": "active",
+        "isFavorite": true,
+        "createdAt": "2026-07-17T14:08:44.938Z",
+        "updatedAt": "2026-07-17T14:08:44.938Z",
+        "__v": 0
+      }
+    ]
+  }
+}
