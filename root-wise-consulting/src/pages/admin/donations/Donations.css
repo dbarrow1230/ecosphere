@@ -1,0 +1,252 @@
+/* src/pages/admin/donations/Donations.css */
+
+.admin-donations-page{
+ background:var(--bg);
+ min-height:100%;
+ padding:2rem 0;
+ color:var(--text);
+}
+
+.admin-donations-inner{
+ width:100%;
+ max-width:1400px;
+ margin:0 auto;
+ padding:0 1rem;
+}
+
+.admin-donations-header{
+ display:flex;
+ align-items:flex-start;
+ justify-content:space-between;
+ gap:1rem;
+ margin-bottom:1.5rem;
+}
+
+.admin-donations-eyebrow{
+ margin:0 0 .35rem 0;
+ color:var(--accent);
+ font-size:.85rem;
+ font-weight:700;
+ text-transform:uppercase;
+ letter-spacing:.05em;
+}
+
+.admin-donations-title{
+ margin:0 0 .35rem 0;
+ color:var(--primary);
+ font-family:var(--fontHeading,inherit);
+ font-size:clamp(1.8rem,3vw,2.4rem);
+ line-height:1.1;
+}
+
+.admin-donations-text{
+ margin:0;
+ color:var(--textSoft);
+ line-height:1.5;
+}
+
+.admin-donations-stats{
+ display:grid;
+ grid-template-columns:repeat(5,minmax(0,1fr));
+ gap:1rem;
+ margin-bottom:1.5rem;
+}
+
+.admin-donations-stat-card{
+ background:var(--surface);
+ border:1px solid var(--border);
+ border-radius:14px;
+ box-shadow:var(--shadow);
+ padding:1rem;
+}
+
+.admin-donations-stat-label{
+ display:block;
+ color:var(--textSoft);
+ font-size:.85rem;
+ margin-bottom:.35rem;
+}
+
+.admin-donations-stat-value{
+ display:block;
+ color:var(--primary);
+ font-size:1.4rem;
+ line-height:1.2;
+}
+
+.admin-donations-toolbar{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:1rem;
+ margin-bottom:1rem;
+}
+
+.admin-donations-tabs{
+ display:flex;
+ gap:.5rem;
+ flex-wrap:wrap;
+}
+
+.admin-donations-tab{
+ border:1px solid var(--border);
+ background:var(--surface);
+ color:var(--text);
+ border-radius:999px;
+ padding:.65rem 1rem;
+ font:inherit;
+ font-weight:700;
+ cursor:pointer;
+ transition:.2s ease;
+}
+
+.admin-donations-tab:hover{
+ border-color:var(--accent);
+ color:var(--primary);
+}
+
+.admin-donations-tab.active{
+ background:var(--primary);
+ color:var(--textInverse);
+ border-color:var(--primary);
+}
+
+.admin-donations-search-wrap{
+ width:100%;
+ max-width:340px;
+}
+
+.admin-donations-search{
+ width:100%;
+ min-height:42px;
+ border:1px solid var(--border);
+ border-radius:10px;
+ background:var(--surface);
+ color:var(--text);
+ padding:.7rem .9rem;
+ font:inherit;
+}
+
+.admin-donations-search:focus{
+ outline:none;
+ border-color:var(--accent);
+ box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 22%,transparent);
+}
+
+.admin-donations-table-wrap{
+ overflow:auto;
+ background:var(--surface);
+ border:1px solid var(--border);
+ border-radius:16px;
+ box-shadow:var(--shadow);
+}
+
+.admin-donations-table{
+ width:100%;
+ border-collapse:collapse;
+ min-width:980px;
+}
+
+.admin-donations-table th,
+.admin-donations-table td{
+ padding:.9rem .95rem;
+ text-align:left;
+ vertical-align:top;
+ border-bottom:1px solid var(--border);
+}
+
+.admin-donations-table th{
+ background:var(--surface2);
+ color:var(--primary);
+ font-size:.88rem;
+ font-weight:700;
+ white-space:nowrap;
+}
+
+.admin-donations-table td{
+ color:var(--textSoft);
+ font-size:.92rem;
+ line-height:1.4;
+}
+
+.admin-donations-table tbody tr:hover{
+ background:color-mix(in srgb,var(--bgAlt) 55%,white);
+}
+
+.admin-donations-status{
+ display:inline-flex;
+ align-items:center;
+ justify-content:center;
+ min-width:86px;
+ padding:.28rem .6rem;
+ border-radius:999px;
+ font-size:.78rem;
+ font-weight:700;
+ text-transform:capitalize;
+}
+
+.admin-donations-status.completed{
+ background:color-mix(in srgb,var(--success) 16%,transparent);
+ color:var(--success);
+}
+
+.admin-donations-status.failed{
+ background:color-mix(in srgb,var(--danger) 16%,transparent);
+ color:var(--danger);
+}
+
+.admin-donations-status.pending{
+ background:color-mix(in srgb,var(--accent) 18%,transparent);
+ color:var(--accent2);
+}
+
+.admin-donations-empty{
+ text-align:center;
+ color:var(--textSoft);
+ padding:1.5rem 1rem;
+}
+
+.admin-donations-state{
+ background:var(--surface);
+ border:1px solid var(--border);
+ border-radius:14px;
+ padding:1rem;
+ color:var(--textSoft);
+ box-shadow:var(--shadow);
+}
+
+.admin-donations-state.error{
+ color:var(--danger);
+ border-color:var(--danger);
+}
+
+@media (max-width:1199.98px){
+ .admin-donations-stats{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+ }
+}
+
+@media (max-width:767.98px){
+ .admin-donations-page{
+  padding:1.5rem 0;
+ }
+
+ .admin-donations-stats{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+ }
+
+ .admin-donations-toolbar{
+  flex-direction:column;
+  align-items:stretch;
+ }
+
+ .admin-donations-search-wrap{
+  max-width:none;
+ }
+}
+
+@media (max-width:575.98px){
+ .admin-donations-stats{
+  grid-template-columns:1fr;
+ }
+}
