@@ -1,0 +1,257 @@
+﻿.music-page{width:100%;margin:0;padding:1.5rem clamp(1rem,3vw,3rem) 2.5rem;color:var(--text)}
+.music-page-header{display:flex;align-items:center;justify-content:space-between;gap:2rem;margin-bottom:1.25rem;padding-bottom:1rem;border-bottom:1px solid var(--border)}
+.music-page-header span{color:var(--accent-2);font-size:.76rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.music-page-header h1,.music-page-header p{margin:0}
+.music-page-header h1{font-family:var(--font-heading);font-size:clamp(2rem,4vw,3rem)}
+.music-page-header p{color:var(--text-soft)}
+.music-page-header>button,.music-dialog-footer button{display:inline-flex;align-items:center;gap:.45rem;padding:.6rem .9rem;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--surface);color:var(--text);font-weight:700}
+.music-page-header>button,.music-dialog-footer button.is-primary{border-color:var(--primary);background:var(--primary);color:var(--text-inverse)}
+.music-empty{display:grid;min-height:12rem;place-content:center;justify-items:center;gap:.4rem;color:var(--text-soft);text-align:center}
+.music-empty h2,.music-empty p{margin:0}
+.music-error{padding:.65rem;border:1px solid var(--danger);border-radius:var(--radius-sm);color:var(--danger)}
+button{cursor:pointer}
+.projects-tools,.chord-index-bar{display:flex;align-items:center;gap:1rem;margin-bottom:1rem}
+.projects-tools>span{color:var(--text-soft)}
+.project-board{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.75rem;align-items:start}
+.project-board>section{min-height:14rem;padding:.7rem;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--bg-alt)}
+.project-board>section>header{display:flex;justify-content:space-between;margin-bottom:.65rem}
+.project-board h2{margin:0;font-size:.9rem}
+.project-board article{position:relative;margin-bottom:.55rem;padding:.75rem;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--surface)}
+.project-board h3,.project-board p{margin:0}
+.project-board p{margin-top:.35rem;color:var(--text-soft);font-size:.85rem}
+.music-card-actions,.chord-slip-grid aside,.progression-list aside,.arrangement-board aside{display:flex;gap:.3rem;margin-top:.55rem}
+.music-card-actions button,.chord-slip-grid aside button,.progression-list aside button,.arrangement-board aside button,.lyric-notebook header button,.note-index article header button{display:grid;place-items:center;padding:.3rem;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--surface);color:var(--text)}
+.chord-index-bar{align-items:flex-start}
+.chord-key-filters{display:flex;align-items:center;flex-wrap:wrap;gap:.35rem}
+.chord-key-filter{display:inline-flex;align-items:center;padding:.25rem .5rem;border:0;border-radius:999px;background:var(--bg-alt);color:var(--primary);font-weight:700;white-space:nowrap}
+.chord-key-filter:hover{background:color-mix(in srgb,var(--primary) 12%,var(--bg-alt))}
+.chord-key-filter.is-active{background:var(--primary);color:var(--text-inverse)}
+.chord-filter-clear{display:inline-flex;align-items:center;gap:.25rem;padding:.25rem .55rem;border:1px solid var(--border);border-radius:999px;background:var(--surface);color:var(--text-soft);font-weight:700;white-space:nowrap}
+.chord-filter-clear:hover:not(:disabled){border-color:var(--primary);color:var(--primary)}
+.chord-filter-clear:disabled{cursor:default;opacity:.45}
+.chord-slip-grid{display:flex;flex-wrap:wrap;align-items:flex-start;gap:.75rem}
+.chord-slip-grid article{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:1rem;align-items:center;width:max-content;max-width:100%;padding:.85rem 1rem;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--surface)}
+.chord-slip-grid article>strong{padding:0;color:var(--primary);font-family:var(--font-heading);font-size:1.25rem;white-space:nowrap}
+.chord-slip-grid article>div{display:grid;gap:.12rem;min-width:0}
+.chord-slip-grid h2,.chord-slip-grid p{margin:0;white-space:nowrap}
+.chord-slip-grid h2{font-size:1rem}
+.chord-slip-grid p{color:var(--text-soft)}
+.chord-slip-grid .chord-voicing{color:var(--text-soft);font-size:.88rem}
+.chord-slip-grid .chord-instrument{margin-top:.15rem;color:var(--text);font-size:.82rem}
+.chord-slip-grid aside{margin-top:0;white-space:nowrap}
+.progression-list{display:grid;gap:.75rem}
+.progression-list article{position:relative;padding:1rem;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--surface)}
+.progression-list article>header{display:flex;justify-content:space-between}
+.progression-list h2,.progression-list p{margin:0}
+.progression-lane{display:flex;gap:.45rem;margin:.8rem 0;overflow-x:auto}
+.progression-lane>span{display:grid;min-width:5rem;place-items:center;padding:.55rem;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--bg-alt);font-weight:800}
+.progression-lane small{color:var(--text-soft)}
+.lyric-notebook{columns:2;column-gap:1rem}
+.lyric-notebook article{break-inside:avoid;margin-bottom:1rem;padding:1rem;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--surface)}
+.lyric-notebook header,.note-index article header{display:flex;justify-content:space-between;gap:1rem}
+.lyric-notebook h2{margin:0;font-size:1rem}
+.lyric-notebook blockquote{margin:.75rem 0;white-space:pre-wrap}
+.lyric-notebook footer,.note-index footer{display:flex;flex-wrap:wrap;gap:.3rem}
+.lyric-notebook footer span,.note-index footer span{padding:.2rem .45rem;border-radius:999px;background:var(--bg-alt);font-size:.72rem}
+.lyric-card-sections{display:grid;gap:.8rem;margin-top:.8rem}
+.lyric-card-section{padding-top:.6rem;border-top:1px solid var(--border)}
+.lyric-card-section:first-child{padding-top:0;border-top:0}
+.lyric-card-section h3{margin:0 0 .3rem;color:var(--primary);font-size:.78rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase}
+.lyric-card-section p{margin:0;color:var(--text);white-space:pre-wrap}
+.lyric-section-editor{margin-bottom:1rem}
+.lyric-section-editor-header{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:.8rem;padding-bottom:.7rem;border-bottom:1px solid var(--border)}
+.lyric-section-editor-header h3,.lyric-section-editor-header p{margin:0}
+.lyric-section-editor-header p{margin-top:.2rem;color:var(--text-soft);font-size:.82rem}
+.lyric-section-add{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.5rem;margin-bottom:.8rem}
+.lyric-add-section{display:inline-flex;align-items:center;justify-content:center;gap:.35rem;padding:.45rem .65rem;border:1px solid var(--primary);border-radius:var(--radius-sm);background:var(--surface);color:var(--primary);font-weight:800;white-space:nowrap}
+.lyric-add-section:hover{background:var(--primary);color:var(--text-inverse)}
+.lyric-section-row{margin-bottom:.8rem;padding:.8rem;border:1px solid var(--border);border-left:4px solid var(--primary);border-radius:var(--radius-sm);background:var(--bg-alt);transition:opacity .15s ease,border-color .15s ease,box-shadow .15s ease}
+.lyric-section-row.is-dragging{opacity:.5;border-color:var(--primary);box-shadow:var(--shadow)}
+.lyric-section-row>header{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:.7rem}
+.lyric-section-row-heading{display:flex;align-items:center;gap:.4rem;min-width:0}
+.lyric-section-row-heading strong{color:var(--heading);font-size:.9rem}
+.lyric-drag-handle{display:grid;width:2rem;height:2rem;flex:0 0 2rem;place-items:center;padding:0;border:1px solid transparent;border-radius:var(--radius-sm);background:transparent;color:var(--text-soft);cursor:grab}
+.lyric-drag-handle:hover{border-color:var(--border);background:var(--surface);color:var(--primary)}
+.lyric-drag-handle:active{cursor:grabbing}
+.lyric-remove-section{display:grid;width:2rem;height:2rem;place-items:center;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--surface);color:var(--danger)}
+.lyric-remove-section:hover{border-color:var(--danger)}
+.lyric-section-row .music-field:last-child{margin-bottom:0}
+.lyric-section-empty{display:grid;min-height:10rem;place-content:center;justify-items:center;gap:.5rem;border:1px dashed var(--border-strong);border-radius:var(--radius-md);background:var(--bg-alt);color:var(--text-soft);text-align:center}
+.lyric-section-empty p{margin:0}
+.arrangement-board{display:grid;gap:.6rem}
+.arrangement-board article{display:grid;grid-template-columns:3rem 1fr auto;gap:1rem;align-items:start;padding:1rem;border-left:4px solid var(--primary);background:var(--surface);box-shadow:var(--shadow)}
+.arrangement-number{color:var(--accent-2);font-family:var(--font-heading);font-size:1.4rem;font-weight:800}
+.arrangement-board h2,.arrangement-board p{margin:0}
+.arrangement-board p{margin-top:.35rem;color:var(--text-soft);white-space:pre-wrap}
+.note-index{display:grid;grid-template-columns:7rem 1fr;gap:1rem}
+.note-index>aside{display:grid;align-content:start;justify-items:center;padding:1rem;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--bg-alt)}
+.note-index>aside strong{font-size:2rem}
+.note-index>div{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:.75rem}
+.note-index article{padding:1rem;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--surface)}
+.note-index h2,.note-index p{margin:0}
+.note-index h2{font-size:1rem}
+.note-index p{margin:.65rem 0;white-space:pre-wrap}
+.music-dialog-backdrop{position:fixed;inset:0;z-index:1080;display:grid;place-items:center;padding:1rem;background:color-mix(in srgb,var(--text) 55%,transparent)}
+.music-dialog{width:min(820px,calc(100vw - 2rem));max-height:calc(100vh - 2rem);overflow:hidden;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--surface);color:var(--text);box-shadow:var(--shadow)}
+.music-dialog.is-wide{width:min(1080px,calc(100vw - 2rem))}
+.music-dialog>form{display:grid;grid-template-rows:auto minmax(0,1fr) auto;max-height:calc(100vh - 2rem)}
+.music-dialog-header{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.25rem;border-bottom:1px solid var(--border);background:var(--bg-alt)}
+.music-dialog-header>button{width:2rem;height:2rem;border:0;background:transparent;color:var(--text);font-size:1.5rem}
+.music-dialog-title{margin:0;font-family:var(--font-heading);font-size:1.35rem}
+.music-dialog-body{padding:1.25rem;overflow-y:auto}
+.music-dialog-footer{display:flex;justify-content:flex-end;gap:.55rem;padding:.85rem 1.25rem;border-top:1px solid var(--border);background:var(--bg-alt)}
+.music-editor-modal h3{margin:0 0 .8rem;font-family:var(--font-heading)}
+.music-field{display:grid;grid-template-columns:8rem minmax(0,1fr);gap:.75rem;align-items:start;margin-bottom:.7rem}
+.music-field>span{padding-top:.5rem;font-weight:700}
+.music-field>div{max-width:30rem}
+.music-field.is-wide>div{max-width:none}
+.music-control{width:100%;min-height:2.3rem;padding:.45rem .6rem;border:1px solid var(--border);border-radius:var(--radius-sm);outline:0;background:var(--bg);color:var(--text)}
+.music-control:focus{border-color:var(--primary);box-shadow:0 0 0 2px color-mix(in srgb,var(--primary) 18%,transparent)}
+.music-textarea{resize:vertical}
+.music-toggle{display:flex;gap:.45rem;align-items:center}
+.project-form-layout{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.chord-form-layout,.progression-form-layout,.lyric-form-layout,.arrangement-form-layout,.note-form-layout{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(260px,.85fr);gap:1.5rem}
+.music-inline-fields{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+.music-inline-fields .music-field{grid-template-columns:4rem 1fr}
+.connection-ledger{padding-left:1.25rem;border-left:1px solid var(--border)}
+.connection-ledger>div{margin-bottom:.8rem}
+.connection-ledger h4{margin:0 0 .35rem;font-size:.78rem;color:var(--text-soft);text-transform:uppercase}
+.music-connections{display:grid;grid-template-columns:1fr;gap:.3rem;height:6.5rem;padding:.4rem;border:1px solid var(--border);border-radius:var(--radius-sm);overflow-y:auto;background:var(--bg)}
+.music-connections label{display:flex;align-items:center;gap:.4rem;min-width:0;min-height:2rem;padding:.35rem;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--surface)}
+.music-connections label span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.music-connections input{flex:0 0 auto;accent-color:var(--primary)}
+.music-meter-control{display:flex;gap:.4rem}
+.music-meter-control>*{flex:1}
+.chord-slip-grid article.is-clickable{cursor:pointer;transition:border-color .16s ease,transform .16s ease,box-shadow .16s ease}
+.chord-slip-grid article.is-clickable:hover,.chord-slip-grid article.is-clickable:focus-visible{border-color:var(--primary);box-shadow:var(--shadow);outline:0;transform:translateY(-1px)}
+.chord-detail-dialog{width:min(1120px,calc(100vw - 2rem))}
+.chord-detail-dialog .music-dialog-body{display:grid;gap:1rem}
+.chord-detail-dialog .music-dialog-title{display:flex;align-items:baseline;gap:.7rem}
+.chord-detail-dialog .music-dialog-title small{color:var(--text-soft);font-family:var(--font-body);font-size:.85rem;font-weight:500}
+.chord-detail-meta{display:flex;flex-wrap:wrap;justify-content:center;gap:.45rem}
+.chord-detail-meta span{padding:.3rem .6rem;border-radius:999px;background:var(--bg-alt);color:var(--text);font-weight:700}
+.chord-detail-staff{display:grid;place-items:center}
+.chord-detail-staff .chord-notation-layout.is-staff-only{display:block;width:min(900px,100%)}
+.chord-detail-staff .grand-staff-panel{width:100%;margin:0 auto}
+.chord-playback{display:flex;flex-wrap:wrap;justify-content:center;gap:.55rem}
+.chord-playback button{display:inline-flex;align-items:center;gap:.4rem;padding:.6rem .8rem;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--surface);color:var(--text);font-weight:700}
+.chord-playback button:hover{border-color:var(--primary);color:var(--primary)}
+.project-board{display:flex;flex-wrap:wrap;align-items:flex-start}
+.project-board>section{width:max-content;min-width:15rem;max-width:100%;min-height:0}
+.progression-list{display:flex;flex-wrap:wrap;align-items:flex-start}
+.progression-list article{width:max-content;max-width:100%}
+.progression-lane>span{grid-template-columns:auto auto;column-gap:.45rem;min-width:max-content;place-items:start;padding:.5rem .65rem;border-left:3px solid var(--primary);border-radius:0}
+.progression-lane em{grid-column:1/-1;color:var(--text-soft);font-size:.76rem;font-style:normal;white-space:nowrap}
+.progression-list article>footer{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.progression-list article>footer aside{margin:0}
+.progression-list article.is-clickable{cursor:pointer}
+.arrangement-board{display:flex;flex-wrap:wrap;align-items:flex-start}
+.arrangement-board article{grid-template-columns:3rem auto auto;width:max-content;max-width:100%}
+.note-index>div{display:flex;flex-wrap:wrap;align-items:flex-start}
+.note-index article{width:max-content;max-width:100%}
+.progression-detail-dialog{width:min(1180px,calc(100vw - 2rem))}
+.progression-score{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,32rem),1fr));gap:1rem}
+.progression-score>section>header{display:flex;justify-content:space-between;margin-bottom:.4rem}
+.progression-score .grand-staff-panel{padding:.65rem}
+.progression-score .grand-staff-panel>header{display:none}
+.piano-score-wrap{width:100%;overflow-x:auto}
+.piano-progression-score{display:block;width:100%;min-width:980px;height:auto}
+.score-staff-line,.score-system-line,.score-barline,.score-final-barline,.score-note line{stroke:var(--text);stroke-width:1.3}
+.score-system-line,.score-final-barline{stroke-width:3}
+.score-clef,.score-key{fill:var(--text);font-family:"Bravura","Noto Music","Segoe UI Symbol",serif}
+.score-clef.score-treble{font-size:67px}
+.score-clef.score-bass{font-size:52px}
+.score-key{font-size:22px}
+.score-note ellipse{fill:var(--text)}
+.score-note ellipse.is-half{fill:var(--surface);stroke:var(--text);stroke-width:2}
+.score-chord-name{fill:var(--primary);font-size:15px;font-weight:800;text-anchor:middle}
+.score-title{fill:var(--text);font-size:15px;font-weight:800}
+.score-measure-number,.score-hand-label{fill:var(--text-soft);font-size:11px}
+.score-hand-label{font-weight:700;letter-spacing:.04em}
+.progression-play-button{display:inline-flex!important;align-items:center;gap:.4rem;margin-right:auto;border-color:var(--primary)!important;background:var(--primary)!important;color:var(--text-inverse)!important}
+.progression-step-editor{margin:.8rem 0 1rem}
+.progression-step-editor>header{display:flex;align-items:center;justify-content:space-between;margin-bottom:.45rem}
+.progression-step-editor>header button{display:inline-flex;align-items:center;gap:.35rem;padding:.4rem .55rem;border:1px solid var(--primary);border-radius:var(--radius-sm);background:var(--surface);color:var(--primary);font-weight:700}
+.progression-step-editor>section{display:grid;grid-template-columns:2rem minmax(7rem,1fr) 5.5rem 6.5rem 7.5rem minmax(7rem,1fr) 2rem;gap:.4rem;align-items:end;margin-bottom:.45rem;padding:.55rem;border-left:3px solid var(--primary);background:var(--bg-alt)}
+.progression-step-editor>section>b{align-self:center;text-align:center}
+.progression-step-editor label{display:grid;gap:.2rem;color:var(--text-soft);font-size:.7rem;font-weight:700;text-transform:uppercase}
+.progression-step-editor .music-control{min-width:0}
+.progression-step-editor .remove-step{display:grid;width:2rem;height:2.3rem;place-items:center;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--surface);color:var(--danger)}
+.score-flag{fill:none;stroke:var(--text);stroke-width:2}
+.progression-step-editor>section.measure-row{grid-template-columns:auto auto minmax(12rem,1fr) auto 2rem;align-items:center;width:100%}
+.measure-row>span{color:var(--text-soft);font-size:.82rem;white-space:nowrap}
+.measure-row .edit-pattern{padding:.45rem .6rem;border:1px solid var(--primary);border-radius:var(--radius-sm);background:var(--surface);color:var(--primary);font-weight:700;white-space:nowrap}
+.measure-pattern-dialog{width:min(620px,calc(100vw - 2rem))}
+.measure-pattern-form{display:grid;gap:.65rem}
+.measure-pattern-form .music-field{margin:0}
+.measure-pattern-form .music-field>div{max-width:none}
+.score-note-accidental{fill:var(--text);font-family:"Bravura","Noto Music","Segoe UI Symbol",serif;font-size:20px}
+.progression-preview-button{display:inline-flex!important;align-items:center;margin-right:auto;padding:.55rem .75rem;border:1px solid var(--primary)!important;border-radius:var(--radius-sm);background:var(--surface)!important;color:var(--primary)!important;font-weight:800}
+.hand-note-layout{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.hand-note-picker{min-width:0;padding:.65rem;border:1px solid var(--border);border-radius:var(--radius-sm)}
+.hand-note-picker legend{padding:0 .3rem;font-weight:800}
+.hand-note-picker>div{display:grid;grid-template-columns:1fr 2rem;gap:.35rem;margin-bottom:.35rem}
+.hand-note-picker button{display:inline-flex;align-items:center;justify-content:center;gap:.3rem;min-height:2.2rem;padding:.35rem;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--surface);color:var(--text)}
+.hand-note-picker>div.hand-note-row{grid-template-columns:1.5rem minmax(5rem,1fr) 4.5rem 3.5rem 2rem;align-items:end}
+.hand-note-row>b{align-self:center;text-align:center}
+.hand-note-row label{display:grid;gap:.15rem}
+.hand-note-row label>span{color:var(--text-soft);font-size:.68rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
+.hand-note-row>strong{align-self:center;color:var(--primary);font-size:.9rem;text-align:center}
+.hand-note-row>button{align-self:end}
+.hand-note-picker>div.hand-play-settings{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.4rem;margin-bottom:.7rem;padding-bottom:.7rem;border-bottom:1px solid var(--border)}
+.hand-play-settings label{display:grid;gap:.15rem}
+.hand-play-settings label>span{color:var(--text-soft);font-size:.68rem;font-weight:800;text-transform:uppercase}
+.hand-play-settings>button{grid-column:1/-1;color:var(--primary);font-weight:800}
+.progression-editor-dialog{width:min(1280px,calc(100vw - 2rem))!important}
+.progression-editor-dialog .progression-form-layout{grid-template-columns:minmax(0,1.6fr) minmax(250px,.65fr)}
+.progression-step-editor>section.measure-row{grid-template-columns:3.3rem 5.5rem minmax(8rem,auto) minmax(15rem,1fr) minmax(12.5rem,auto) 2rem;align-items:center}
+.measure-play-toggle{display:flex!important;align-items:center;gap:.3rem!important;color:var(--text)!important;font-size:.72rem!important;text-transform:none!important}
+.measure-play-toggle input{accent-color:var(--primary)}
+.measure-summary{display:grid;gap:.12rem;min-width:0}
+.measure-summary>span{font-weight:700}
+.measure-summary small{color:var(--text-soft);white-space:nowrap}
+.measure-row .edit-pattern{min-width:12.5rem}
+.measure-pattern-dialog{width:min(900px,calc(100vw - 2rem))}
+.hand-play-settings .music-toggle{display:flex}
+.measure-preview-actions{display:flex;flex-wrap:wrap;gap:.45rem;margin-right:auto}
+.measure-preview-actions .progression-preview-button{margin-right:0}
+.score-rest{fill:var(--text);font-family:"Bravura","Noto Music","Segoe UI Symbol",serif;font-size:28px;text-anchor:middle}
+
+@media(max-width:900px){
+ .progression-editor-dialog .progression-form-layout{grid-template-columns:1fr}
+ .progression-step-editor>section.measure-row{grid-template-columns:auto 1fr auto}
+ .measure-summary,.measure-row .edit-pattern{grid-column:1/-1}
+ .measure-row .remove-step{grid-column:3;grid-row:1}
+ .measure-play-toggle{grid-column:1}
+ .hand-note-layout{grid-template-columns:1fr}
+}
+
+@media(max-width:850px){
+ .project-board{grid-template-columns:1fr 1fr}
+ .project-form-layout,.chord-form-layout,.progression-form-layout,.lyric-form-layout,.arrangement-form-layout,.note-form-layout{grid-template-columns:1fr}
+ .connection-ledger{padding:1rem 0 0;border-top:1px solid var(--border);border-left:0}
+ .lyric-notebook{columns:1}
+ .progression-step-editor>section{grid-template-columns:2rem 1fr 1fr}
+ .progression-step-editor .remove-step{grid-column:3}
+ .progression-step-editor>section.measure-row{grid-template-columns:1fr auto}
+ .measure-row>span,.measure-row .edit-pattern{grid-column:1/-1}
+ .measure-row .remove-step{grid-column:2;grid-row:1}
+}
+
+@media(max-width:600px){
+ .music-page{padding:1rem .5rem 2rem}
+ .music-page-header{align-items:stretch;flex-direction:column;gap:1rem}
+ .projects-tools,.chord-index-bar{align-items:stretch;flex-direction:column}
+ .project-board{grid-template-columns:1fr}
+ .music-field{grid-template-columns:1fr;gap:.25rem}
+ .music-inline-fields{grid-template-columns:1fr}
+ .music-inline-fields .music-field{grid-template-columns:1fr}
+ .note-index{grid-template-columns:1fr}
+ .music-connections{grid-template-columns:1fr}
+ .hand-note-layout{grid-template-columns:1fr}
+ .hand-note-picker>div.hand-note-row{grid-template-columns:1.5rem 1fr 4rem 2rem}
+ .hand-note-row>strong{display:none}
+ .lyric-section-editor-header{align-items:stretch;flex-direction:column}
+ .lyric-section-add{grid-template-columns:1fr}
+ .lyric-add-section{width:100%}
+}
