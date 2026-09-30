@@ -1,0 +1,204 @@
+/* Study print preview and print styles */
+body.study-print-preview-active{
+ background:#e7e7e7;
+}
+
+body.study-print-preview-active .site-header,
+body.study-print-preview-active .app-nav,
+body.study-print-preview-active .app-footer,
+body.study-print-preview-active .site-footer,
+body.study-print-preview-active .scroll-to-top-btn{
+ display:none !important;
+}
+
+body.study-print-preview-active .app-layout,
+body.study-print-preview-active .app-content{
+ display:block;
+ min-height:auto;
+ width:100%;
+ margin:0;
+ padding:0;
+ background:#e7e7e7;
+}
+
+.study-print-preview-page{
+ display:grid;
+ gap:.35in;
+ justify-content:center;
+ width:100%;
+ min-height:100vh;
+ box-sizing:border-box;
+ margin:0;
+ padding:.45in 0;
+ background:#e7e7e7;
+}
+
+.study-print-sheet{
+ width:8.5in;
+ height:11in;
+ box-sizing:border-box;
+ overflow:hidden;
+ padding:.5in .45in .5in .85in;
+ background:#fff;
+ color:#111;
+ font-family:Georgia,"Times New Roman",serif;
+ font-size:12px;
+ line-height:1.25;
+ box-shadow:0 0 0 1px #d7d7d7,0 14px 34px rgba(0,0,0,.16);
+}
+
+.study-print-toolbar{
+ position:fixed;
+ top:0;
+ right:0;
+ z-index:1000;
+ display:flex;
+ flex-wrap:wrap;
+ align-items:flex-start;
+ gap:.4rem;
+ margin:0;
+ padding:0;
+}
+
+.study-print-scope{
+ display:flex;
+ align-items:center;
+ gap:.4rem;
+ margin:0;
+ padding:.25rem .35rem;
+ background:#fff;
+ border:1px solid #cfcfcf;
+ box-shadow:0 2px 10px rgba(0,0,0,.12);
+}
+
+.study-print-scope span{
+ color:#111;
+ font-weight:700;
+}
+
+.study-print-scope select{
+ width:2.8in;
+ max-width:calc(100vw - 12rem);
+}
+
+.study-print-header{
+ display:flex;
+ align-items:flex-start;
+ justify-content:space-between;
+ gap:.25in;
+ margin:0 0 .12in;
+}
+
+.study-print-header h1{
+ margin:0 0 2pt;
+ color:#111;
+ font-size:16pt;
+ line-height:1.1;
+}
+
+.study-print-header p,
+.study-print-meta p{
+ margin:0 0 2pt;
+ color:#111;
+ font-size:9pt;
+}
+
+.study-print-header span{
+ color:#555;
+ font-size:8pt;
+ white-space:nowrap;
+}
+
+.study-print-meta{
+ margin:0 0 6pt;
+}
+
+.study-print-section{
+ margin:0 0 6pt;
+}
+
+.study-print-section h3{
+ display:inline-block;
+ margin:0 0 2pt;
+ padding:1pt 4pt;
+ color:#111;
+ background:#f1f1f1;
+ font-size:10pt;
+ line-height:1.15;
+}
+
+.study-print-section p,
+.study-print-section li{
+ margin:0;
+ color:#111;
+ font-size:9pt;
+ line-height:1.25;
+ white-space:pre-wrap;
+}
+
+.study-print-section ul{
+ margin:0;
+ padding-left:.18in;
+}
+
+.study-print-response{
+ margin:0 0 4pt;
+}
+
+.study-print-response strong{
+ display:block;
+ color:#111;
+ font-size:9pt;
+}
+
+@media print{
+ @page{
+  size:letter;
+  margin:0;
+ }
+
+ body.study-print-preview-active,
+ body.study-print-preview-active .app-layout,
+ body.study-print-preview-active .app-content{
+  background:#fff !important;
+ }
+
+ body.study-print-preview-active .site-header,
+ body.study-print-preview-active .app-nav,
+ body.study-print-preview-active .app-footer,
+ body.study-print-preview-active .site-footer,
+ body.study-print-preview-active .no-print,
+ body.study-print-preview-active .scroll-to-top-btn{
+  display:none !important;
+ }
+
+ .study-print-preview-page{
+  display:block !important;
+  width:auto !important;
+  box-sizing:border-box !important;
+  min-height:auto !important;
+  margin:0 !important;
+  padding:0 !important;
+  background:#fff !important;
+  box-shadow:none !important;
+ }
+
+ .study-print-sheet{
+  width:8.5in !important;
+  height:11in !important;
+  box-sizing:border-box !important;
+  margin:0 !important;
+  padding:.5in .45in .5in .85in !important;
+  background:#fff !important;
+  box-shadow:none !important;
+  break-after:page !important;
+  page-break-after:always !important;
+  box-decoration-break:clone !important;
+  -webkit-box-decoration-break:clone !important;
+ }
+
+ .study-print-sheet:last-child{
+  break-after:auto !important;
+  page-break-after:auto !important;
+ }
+}

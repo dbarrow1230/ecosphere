@@ -1,0 +1,60 @@
+.app-mui-date-picker-field{
+ width:100%;
+}
+
+.app-mui-date-picker-field .MuiInputBase-root{
+ background:#fff;
+ color:var(--text);
+ font-family:var(--font-body);
+ min-height:2.75rem;
+}
+
+.app-mui-date-picker-field .MuiInputBase-input{
+ color:var(--text);
+ padding:.65rem .75rem;
+}
+
+.app-mui-date-picker-field .MuiOutlinedInput-notchedOutline{
+ border-color:var(--border);
+}
+
+.app-mui-date-picker-field .MuiInputBase-root:hover .MuiOutlinedInput-notchedOutline{
+ border-color:var(--secondary);
+}
+
+.app-mui-date-picker-field .MuiInputBase-root.Mui-focused .MuiOutlinedInput-notchedOutline{
+ border-color:var(--accent);
+ border-width:1px;
+ box-shadow:0 0 0 3px var(--accent);
+}
+
+form .form-label:has(+ .MuiFormControl-root){
+ display:inline-flex;
+ align-items:center;
+ width:9.5rem;
+ margin-bottom:0;
+ white-space:nowrap;
+ vertical-align:top;
+}
+
+form .form-label:has(+ .MuiFormControl-root)::after{
+ content:":";
+}
+
+form .form-label + .MuiFormControl-root{
+ display:inline-flex;
+ width:calc(100% - 10.25rem);
+ min-width:0;
+ vertical-align:top;
+}
+
+@media (max-width:768px){
+ form .form-label:has(+ .MuiFormControl-root),
+ form .form-label + .MuiFormControl-root{
+  width:100%;
+ }
+
+ form .form-label:has(+ .MuiFormControl-root){
+  margin-bottom:.35rem;
+ }
+}

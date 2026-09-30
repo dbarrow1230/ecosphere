@@ -1,0 +1,503 @@
+/* Bible study method print preview and print styles */
+/* Print-only method documents */
+.print-only{
+ display:none;
+}
+
+.method-print-actions{
+ display:flex;
+ flex-wrap:wrap;
+ gap:.6rem;
+ justify-content:flex-end;
+}
+
+.method-print-method{
+ margin:0 0 1.5rem;
+}
+
+.method-print-header{
+ margin:0 0 .75rem;
+ padding-bottom:.45rem;
+ border-bottom:1px solid var(--border);
+}
+
+.method-print-header h2{
+ margin:0;
+ color:var(--primary-dark);
+ font-size:1.7rem;
+ line-height:1.08;
+}
+
+.method-print-header p{
+ margin:.25rem 0 0;
+}
+
+.method-print-summary,
+.method-print-example-grid{
+ display:grid;
+ grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:.75rem 1rem;
+}
+
+.method-print-section{
+ margin:0 0 .85rem;
+}
+
+.method-print-section h3{
+ display:inline-flex;
+ margin:0 0 .45rem;
+ padding:.2rem .5rem;
+ color:var(--primary-dark);
+ background:color-mix(in srgb,var(--primary) 10%,transparent);
+ font-size:1.05rem;
+ line-height:1.15;
+}
+
+.method-print-section p,
+.method-print-section li{
+ margin-top:0;
+}
+
+.method-print-steps{
+ padding-left:1.25rem;
+}
+
+.method-print-steps li{
+ margin-bottom:.45rem;
+}
+
+.method-print-steps strong{
+ display:block;
+}
+
+.method-print-example-item strong{
+ display:block;
+ color:var(--primary-dark);
+ margin-bottom:.2rem;
+}
+
+.method-print-plain-page{
+ width:8.5in;
+ min-height:11in;
+ box-sizing:border-box;
+ margin:.45in auto;
+ padding:.5in .45in .5in .85in;
+ color:#111;
+ background:#fff;
+ font-family:Georgia,"Times New Roman",serif;
+ font-size:12px;
+ line-height:1.25;
+ box-shadow:0 0 0 1px #d7d7d7,0 14px 34px rgba(0,0,0,.16);
+}
+
+body.method-print-preview-active{
+ background:#e7e7e7;
+}
+
+body.method-print-preview-active .site-header,
+body.method-print-preview-active .app-nav,
+body.method-print-preview-active .app-footer,
+body.method-print-preview-active .site-footer,
+body.method-print-preview-active .scroll-to-top-btn{
+ display:none !important;
+}
+
+body.method-print-preview-active .app-layout,
+body.method-print-preview-active .app-content{
+ display:block;
+ min-height:auto;
+ width:100%;
+ margin:0;
+ padding:0;
+ background:#e7e7e7;
+}
+
+body.method-print-preview-active main.method-print-plain-page{
+ width:8.5in;
+ min-height:11in;
+ margin:.45in auto;
+ padding:.5in .45in .5in .85in;
+ background:#fff;
+}
+
+.method-print-plain-toolbar{
+ position:fixed;
+ top:0;
+ right:0;
+ z-index:1000;
+ display:flex;
+ align-items:end;
+ justify-content:space-between;
+ gap:.5rem;
+ flex-wrap:wrap;
+ margin:0;
+ padding:0;
+}
+
+.method-print-plain-controls{
+ min-width:0;
+ flex:1 1 auto;
+}
+
+.method-print-plain-controls label{
+ display:grid;
+ gap:.35rem;
+ margin:0;
+}
+
+.method-print-plain-context{
+ margin:0;
+ color:#111;
+ font-weight:700;
+ line-height:1.25;
+}
+
+.method-print-plain-actions{
+ display:flex;
+ gap:.4rem;
+ flex-wrap:wrap;
+ justify-content:flex-end;
+}
+
+.method-print-plain-page h1{
+ color:#111;
+ font-size:16pt;
+ margin:0 0 .12in;
+}
+
+.method-print-plain-method{
+ margin:0 0 .6rem;
+ padding:0 0 .45rem;
+ border-bottom:1px solid #bbb;
+}
+
+.method-print-plain-method:last-child{
+ border-bottom:0;
+}
+
+.method-print-plain-method h2{
+ color:#111;
+ font-size:14pt;
+ line-height:1.1;
+ margin:0 0 2pt;
+}
+
+.method-print-plain-subtitle{
+ margin:0 0 5pt;
+ color:#333;
+ font-size:9pt;
+}
+
+.method-print-plain-meta{
+ display:grid;
+ grid-template-columns:repeat(3,minmax(0,1fr));
+ gap:2pt 10pt;
+ margin:0 0 6pt;
+}
+
+.method-print-plain-meta div{
+ display:grid;
+ grid-template-columns:.55in minmax(0,1fr);
+ gap:3pt;
+}
+
+.method-print-plain-meta dt,
+.method-print-plain-meta dd{
+ margin:0;
+ color:#111;
+ font-size:9pt;
+ line-height:1.2;
+}
+
+.method-print-plain-meta dt{
+ font-weight:700;
+}
+
+.method-print-plain-group{
+ margin:0 0 8pt;
+}
+
+.method-print-plain-group>h3{
+ display:block;
+ margin:0 0 3pt;
+ padding:2pt 4pt;
+ color:#111;
+ background:#e7e7e7;
+ font-size:10.5pt;
+ line-height:1.15;
+}
+
+.method-print-plain-section{
+ margin:0 0 6pt;
+}
+
+.method-print-plain-section h3{
+ display:inline-block;
+ margin:0 0 2pt;
+ padding:1pt 4pt;
+ color:#111;
+ background:#f1f1f1;
+ font-size:10pt;
+ line-height:1.15;
+}
+
+.method-print-plain-section p,
+.method-print-plain-section li{
+ color:#111;
+ font-size:9pt;
+ line-height:1.25;
+}
+
+.method-print-plain-section p{
+ margin:0;
+}
+
+.method-print-plain-section ul,
+.method-print-plain-section ol{
+ margin:0;
+ padding-left:.18in;
+}
+
+.method-print-plain-section li{
+ margin-bottom:.08rem;
+}
+
+.method-print-plain-section li strong{
+ display:block;
+}
+
+.method-print-plain-section li span{
+ display:block;
+}
+
+.method-print-plain-example{
+ margin:0 0 4pt;
+}
+
+.method-print-plain-example strong{
+ display:block;
+ color:#111;
+ margin:0 0 .1rem;
+}
+
+@media print{
+ @page{
+  size:letter;
+  margin:0;
+ }
+
+ html,
+ body,
+ #root{
+  width:100%;
+  min-height:auto;
+  background:#fff !important;
+  color:#111 !important;
+ }
+
+ body::before,
+ body::after,
+ .site-header,
+ .app-nav,
+ .app-footer,
+ .site-footer,
+ .no-print,
+ .scroll-to-top-btn{
+  display:none !important;
+ }
+
+ .app-layout,
+ .app-content,
+ main{
+  display:block !important;
+  min-height:auto !important;
+  width:100% !important;
+  margin:0 !important;
+  padding:0 !important;
+  background:#fff !important;
+ }
+
+ .method-page-wrap{
+  width:100% !important;
+  max-width:none !important;
+  margin:0 !important;
+  padding:0 !important;
+  background:#fff !important;
+ }
+
+ .print-only{
+  display:none !important;
+ }
+
+ body.print-method-current .method-print-current-document,
+ body.print-method-all .method-print-all-document{
+  display:block !important;
+ }
+
+ body.print-method-current .method-screen-content,
+ body.print-method-all .method-screen-content{
+  display:none !important;
+ }
+
+ .method-print-all-document>h1{
+  margin:0 0 .16in;
+  color:#111 !important;
+  font-size:18pt;
+  line-height:1.05;
+ }
+
+ .method-print-method{
+  margin:0 0 .16in;
+  padding:0 0 .12in;
+  border-bottom:1pt solid #bbb;
+ }
+
+ .method-print-all-document .method-print-method{
+  break-before:auto;
+  page-break-before:auto;
+ }
+
+ .method-print-all-document .method-print-method:first-of-type{
+  break-before:auto;
+  page-break-before:auto;
+ }
+
+ .method-print-header{
+  border-bottom:1pt solid #bbb;
+ }
+
+ .method-print-header h2{
+  color:#111 !important;
+  font-size:16pt;
+ }
+
+ .method-print-header p,
+ .method-print-section p,
+ .method-print-section li,
+ .method-print-example-item p{
+  color:#111 !important;
+  font-size:9.5pt;
+  line-height:1.35;
+ }
+
+ .method-print-summary,
+ .method-print-example-grid{
+  display:block !important;
+ }
+
+ .method-print-section{
+  margin:0 0 .08in;
+ }
+
+ .method-print-example-item{
+  margin:0 0 .08in;
+ }
+
+ .method-print-section h3{
+  color:#111 !important;
+  background:#f1f1f1 !important;
+  border-left:0 !important;
+  border-bottom:1pt solid #999 !important;
+  padding:2pt 5pt !important;
+  margin:0 0 3pt !important;
+  font-size:10.5pt !important;
+ }
+
+ .method-print-plain-page{
+  width:8.5in !important;
+  box-sizing:border-box !important;
+  min-height:auto !important;
+  margin:0 !important;
+  padding:.5in .45in .5in .85in !important;
+  background:#fff !important;
+  box-shadow:none !important;
+ }
+
+ .method-print-plain-page h1{
+  font-size:16pt !important;
+  margin:0 0 .12in !important;
+ }
+
+ .method-print-plain-method{
+  display:block !important;
+  margin:0 0 .12in !important;
+  padding:0 0 .08in !important;
+  border-bottom:1pt solid #bbb !important;
+ }
+
+ .method-print-plain-method:last-child{
+  border-bottom:0 !important;
+ }
+
+ .method-print-plain-method h2{
+  font-size:14pt !important;
+  color:#111 !important;
+  margin:0 0 2pt !important;
+ }
+
+ .method-print-plain-subtitle{
+  color:#111 !important;
+  font-size:9pt !important;
+  margin:0 0 5pt !important;
+ }
+
+ .method-print-plain-meta{
+  display:grid !important;
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  gap:2pt 10pt !important;
+  margin:0 0 6pt !important;
+ }
+
+ .method-print-plain-meta dt,
+ .method-print-plain-meta dd{
+  color:#111 !important;
+  font-size:9pt !important;
+ }
+
+ .method-print-plain-group{
+  margin:0 0 8pt !important;
+ }
+
+ .method-print-plain-group>h3{
+  display:block !important;
+  color:#111 !important;
+  background:#e7e7e7 !important;
+  border:0 !important;
+  padding:2pt 4pt !important;
+  margin:0 0 3pt !important;
+  font-size:10.5pt !important;
+ }
+
+ .method-print-plain-section{
+  display:block !important;
+  margin:0 0 6pt !important;
+ }
+
+ .method-print-plain-section h3{
+  color:#111 !important;
+  background:#f1f1f1 !important;
+  border:0 !important;
+  padding:1pt 4pt !important;
+  margin:0 0 2pt !important;
+  font-size:10pt !important;
+ }
+
+ .method-print-plain-section p,
+ .method-print-plain-section li,
+ .method-print-plain-example p{
+  color:#111 !important;
+  font-size:9pt !important;
+  line-height:1.25 !important;
+ }
+
+ .method-print-plain-section ul,
+ .method-print-plain-section ol{
+  margin:0 !important;
+  padding-left:.18in !important;
+ }
+
+ .method-print-plain-example{
+  margin:0 0 4pt !important;
+ }
+}
+

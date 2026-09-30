@@ -1,0 +1,163 @@
+/* E:\React-Projects\bible-study\src\styles\study-task-form.css */
+
+.study-task-page-card{
+ background:var(--surface);
+ border:1px solid var(--border);
+}
+
+.study-task-modal-dialog{
+ width:min(1120px,calc(100vw - 2rem));
+ max-width:min(1120px,calc(100vw - 2rem));
+}
+
+.study-task-modal-content{
+ background:var(--surface);
+ border:1px solid var(--border);
+ border-radius:.45rem;
+ color:var(--text);
+}
+
+.study-task-modal-body{
+ padding:1rem;
+}
+
+.study-task-form{
+ width:100%;
+ margin:0;
+}
+
+.study-task-form-panel{
+ width:100%;
+ padding:1rem;
+ border:1px solid var(--border);
+ border-radius:.35rem;
+ background:var(--surface);
+}
+
+.study-task-form-grid{
+ display:grid;
+ grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:1rem 1.75rem;
+ align-items:start;
+ width:100%;
+}
+
+.study-task-field{
+ display:grid;
+ grid-template-columns:9rem minmax(0,1fr);
+ gap:.75rem;
+ align-items:center;
+ width:100%;
+ min-width:0;
+ margin:0;
+}
+
+.study-task-field-wide{
+ grid-column:1/-1;
+ grid-template-columns:9rem minmax(0,1fr);
+ align-items:start;
+}
+
+.study-task-field .form-label{
+ margin:0;
+ color:var(--primary);
+ font-weight:700;
+ line-height:1.2;
+ white-space:normal;
+}
+
+.study-task-field .form-control,
+.study-task-field .form-select{
+ width:100%;
+ min-width:0;
+ max-width:none;
+ margin:0;
+}
+
+.study-task-field textarea.form-control{
+ min-height:5rem;
+ resize:vertical;
+}
+
+.study-task-check-field .form-check{
+ margin:0;
+ color:var(--primary);
+ font-weight:700;
+ display:flex;
+ align-items:center;
+ gap:.45rem;
+ min-height:2.35rem;
+}
+
+.study-task-check-field .form-check-input{
+ margin:0;
+ flex:0 0 auto;
+}
+
+.study-task-check-field .form-check-label{
+ margin:0;
+ line-height:1.2;
+}
+
+.study-task-actions{
+ grid-column:1/-1;
+ display:flex;
+ align-items:center;
+ justify-content:flex-start;
+ gap:.75rem;
+ margin-top:.25rem;
+}
+
+.study-task-actions .btn{
+ width:auto;
+ min-width:8rem;
+ flex:0 0 auto;
+}
+
+@media (max-width:991.98px){
+ .study-task-modal-dialog{
+  width:calc(100vw - 1rem);
+  max-width:calc(100vw - 1rem);
+ }
+
+ .study-task-form-grid{
+  grid-template-columns:1fr;
+ }
+
+ .study-task-field,
+ .study-task-field-wide{
+  grid-template-columns:8.5rem minmax(0,1fr);
+ }
+}
+
+@media (max-width:640px){
+ .study-task-modal-body{
+  padding:.75rem;
+ }
+
+ .study-task-form-panel{
+  padding:.75rem;
+ }
+
+ .study-task-field,
+ .study-task-field-wide{
+  grid-template-columns:1fr;
+  gap:.35rem;
+ }
+
+ .study-task-check-field{
+  grid-template-columns:1fr;
+ }
+
+ .study-task-check-field>span{
+  display:none;
+ }
+
+ .study-task-actions{
+  justify-content:stretch;
+ }
+
+ .study-task-actions .btn{
+  width:100%;
+ }
+}

@@ -1,0 +1,180 @@
+/* Bible study method template print styles */
+@media print{
+ @page{
+  size:letter;
+  margin:.4in;
+ }
+
+ html,
+ body,
+ #root{
+  width:100%;
+  min-height:auto;
+  background:#fff !important;
+  color:#111 !important;
+ }
+
+ body::before,
+ body::after,
+ .site-header,
+ .app-nav,
+ .app-footer,
+ .site-footer,
+ .no-print,
+ .scroll-to-top-btn{
+  display:none !important;
+ }
+
+ .app-layout,
+ .app-content,
+ main{
+  display:block !important;
+  min-height:auto !important;
+  width:100% !important;
+  margin:0 !important;
+  padding:0 !important;
+  background:#fff !important;
+ }
+
+ .study-method-page{
+  padding:0 !important;
+  background:#fff !important;
+ }
+
+ .study-method-page-inner{
+  padding:0 !important;
+  margin:0 !important;
+  max-width:none !important;
+ }
+
+ .study-method-header{
+  padding-bottom:.12in !important;
+  margin-bottom:.12in !important;
+ }
+
+ .study-method-title-row{
+  gap:.16in !important;
+  align-items:flex-start !important;
+ }
+
+ .study-method-title-icon-wrap,
+ .study-method-title-emoji{
+  flex:0 0 1.1in !important;
+  width:1.1in !important;
+  height:1.1in !important;
+ }
+
+ .study-method-title-icon{
+  width:1.1in !important;
+  height:1.1in !important;
+  max-width:1.1in !important;
+  max-height:1.1in !important;
+ }
+
+ .study-method-title-emoji{
+  font-size:.65in !important;
+ }
+
+ .study-method-title{
+  color:#111 !important;
+  font-size:18pt !important;
+  line-height:1.05 !important;
+ }
+
+ .study-method-subtitle,
+ .study-method-summary-item p,
+ .study-method-section p,
+ .study-method-list li,
+ .study-method-example-label{
+  color:#111 !important;
+ }
+
+ .study-method-subtitle{
+  font-size:10pt !important;
+ }
+
+ .study-method-header-content{
+  gap:.08in !important;
+ }
+
+ .study-method-header-summary{
+  gap:.05in !important;
+  max-width:none !important;
+ }
+
+ .study-method-summary-item h2,
+ .study-method-section h2{
+  color:#111 !important;
+  background:#f1f1f1 !important;
+  border-left:0 !important;
+  border-bottom:1pt solid #999 !important;
+  padding:2pt 5pt !important;
+  margin:0 0 3pt !important;
+  font-size:10.5pt !important;
+ }
+
+ .study-method-summary-item p,
+ .study-method-section p,
+ .study-method-list li{
+  font-size:9.5pt !important;
+  line-height:1.35 !important;
+ }
+
+ .study-method-grid{
+  grid-template-columns:minmax(0,1.55fr) minmax(1.75in,.85fr) !important;
+  gap:.16in !important;
+ }
+
+ .study-method-main,
+ .study-method-sidebar{
+  gap:.1in !important;
+ }
+
+ .study-method-sidebar{
+  padding-left:.12in !important;
+  border-left:0 !important;
+ }
+
+ .study-method-step-card{
+  grid-template-columns:.24in minmax(0,1fr) !important;
+  gap:.09in !important;
+ }
+
+ .study-method-step-number{
+  width:.18in !important;
+  height:.18in !important;
+  min-width:.18in !important;
+  background:#555 !important;
+  color:#fff !important;
+  font-size:7pt !important;
+ }
+
+ .study-method-step-title{
+  color:#111 !important;
+  font-size:10pt !important;
+ }
+
+ .study-method-example-grid{
+  display:block !important;
+ }
+
+ .study-method-section,
+ .study-method-step-card,
+ .study-method-example-reference,
+ .study-method-example-summary,
+ .study-method-example-card{
+  display:block !important;
+ }
+
+ .study-method-example-reference,
+ .study-method-example-summary,
+ .study-method-example-card{
+  margin:0 0 .08in !important;
+ }
+
+ .study-method-closing{
+  border-top:1pt solid #777 !important;
+  padding-top:.08in !important;
+ }
+}
+
