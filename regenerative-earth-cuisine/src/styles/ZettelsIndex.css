@@ -1,0 +1,655 @@
+.zettels-index-page {
+ padding:3.25rem 1.5rem 4rem;
+}
+
+.zettels-index-header {
+ display:flex;
+ align-items:flex-end;
+ justify-content:space-between;
+ gap:1.5rem;
+ max-width:116rem;
+ margin:0 auto 1.5rem;
+}
+
+.zettels-index-heading p {
+ margin-top:.35rem;
+ color:var(--text-muted);
+}
+
+.zettels-index-card {
+ display:flex;
+ flex-direction:column;
+ max-width:116rem;
+ margin:0 auto;
+ overflow:hidden;
+ background:var(--surface);
+ border:1px solid var(--border);
+ border-left:.5rem solid var(--accent);
+ border-radius:var(--radius-lg);
+ box-shadow:var(--shadow);
+}
+
+.zettels-index-card-header {
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:1rem;
+ padding:1rem 1.25rem;
+ background:linear-gradient(100deg,color-mix(in srgb,var(--accent) 12%,var(--surface)),var(--surface) 55%);
+ border-bottom:1px solid var(--border);
+}
+
+.zettels-index-card-header h2 {
+ margin:.1rem 0 0;
+ font-size:1.25rem;
+}
+
+.zettels-index-eyebrow {
+ color:var(--accent-2);
+ font-size:.72rem;
+ font-weight:800;
+ letter-spacing:.12em;
+ text-transform:uppercase;
+}
+
+.zettels-index-count {
+ padding:.25rem .6rem;
+ border-radius:999px;
+ background:var(--accent);
+ color:var(--text-inverse);
+ font-size:.78rem;
+ font-weight:800;
+ white-space:nowrap;
+}
+
+.zettels-workspace {
+ flex:1 1 auto;
+ display:grid;
+ grid-template-columns:minmax(18rem,24rem) minmax(0,1fr);
+ min-height:clamp(34rem,calc(100vh - 14rem),62rem);
+ overflow:visible;
+}
+
+.zettels-record-index {
+ display:flex;
+ flex-direction:column;
+ min-height:34rem;
+ max-height:62rem;
+ overflow:hidden;
+ background:var(--bg-alt);
+ border-right:1px solid var(--border);
+}
+
+.zettels-record-tools {
+ flex:0 0 auto;
+ display:grid;
+ grid-template-columns:minmax(0,1fr) minmax(9rem,.65fr);
+ gap:.5rem;
+ padding:.75rem;
+ background:var(--surface);
+ border-bottom:1px solid var(--border);
+}
+
+.zettels-record-list {
+ flex:1 1 auto;
+ min-height:0;
+ overflow-y:auto;
+ scrollbar-color:var(--secondary) transparent;
+ scrollbar-width:thin;
+}
+
+.zettels-record-empty {
+ padding:1.25rem 1rem;
+ color:var(--text-muted);
+ text-align:center;
+}
+
+.zettels-record-item {
+ position:relative;
+ display:grid;
+ align-content:start;
+ align-items:start;
+ justify-content:stretch;
+ justify-items:start;
+ gap:.15rem;
+ width:100%;
+ min-width:0;
+ padding:1rem 1.1rem;
+ text-align:left;
+ background:transparent;
+ color:var(--text);
+ border:0;
+ border-bottom:1px solid var(--border);
+ border-radius:0;
+}
+
+.zettels-record-item:hover {
+ background:var(--surface);
+ color:var(--text);
+}
+
+.zettels-record-item.is-selected {
+ padding-right:1.4rem;
+ background:transparent;
+}
+
+.zettels-record-item.is-selected::after {
+ content:"";
+ position:absolute;
+ top:.15rem;
+ right:0;
+ bottom:.15rem;
+ width:1rem;
+ background:transparent;
+ border-top:.22rem solid var(--text);
+ border-right:.22rem solid var(--text);
+ border-bottom:.22rem solid var(--text);
+ border-radius:0 .7rem .7rem 0;
+ pointer-events:none;
+}
+
+.zettels-record-item.is-selected .zettels-record-title {
+ color:var(--text);
+}
+
+.zettels-record-item code {
+ display:block;
+ overflow:hidden;
+ width:100%;
+ max-width:calc(100% - 1.5rem);
+ color:var(--text-muted);
+ font-size:.75rem;
+ font-weight:700;
+ text-overflow:ellipsis;
+ overflow-wrap:normal;
+ word-break:normal;
+ white-space:nowrap;
+}
+
+.zettels-record-title-row {
+ display:flex;
+ align-items:center;
+ gap:.35rem;
+ width:100%;
+ min-width:0;
+ padding-right:1rem;
+}
+
+.zettels-record-item .zettels-record-title {
+ flex:0 1 auto;
+ margin-top:0;
+ overflow:hidden;
+ max-width:calc(100% - 1.5rem);
+ color:var(--text);
+ font-size:1rem;
+ font-weight:800;
+ text-overflow:ellipsis;
+ white-space:nowrap;
+}
+
+.zettels-record-item b {
+ position:static;
+ flex:0 0 auto;
+ color:var(--accent);
+}
+
+.zettels-reader {
+ display:flex;
+ flex-direction:column;
+ min-height:34rem;
+ min-width:0;
+ overflow:hidden;
+ background:var(--surface);
+}
+
+.zettels-reader-header {
+ position:sticky;
+ top:0;
+ z-index:5;
+ flex:0 0 auto;
+ display:block;
+ padding:1.5rem;
+ background:var(--surface);
+ border-bottom:1px solid var(--border);
+ box-shadow:0 .2rem .55rem rgba(28,57,75,.08);
+}
+
+.zettels-reader-header > div:first-child {
+ min-width:0;
+ width:100%;
+}
+
+.zettels-reader-header code {
+ display:block;
+ overflow:hidden;
+ max-width:min(100%,65rem);
+ color:var(--text);
+ font-size:1.05rem;
+ font-weight:800;
+ text-overflow:ellipsis;
+ overflow-wrap:normal;
+ word-break:normal;
+ white-space:nowrap;
+}
+
+.zettels-reader-header h2 {
+ margin:.35rem 0;
+ overflow:hidden;
+ max-width:100%;
+ font-size:clamp(1.35rem,2vw,1.9rem);
+ text-overflow:ellipsis;
+ white-space:nowrap;
+}
+
+.zettels-reader-header p,
+.zettels-reader-main-idea {
+ width:100%;
+ max-width:none;
+ margin:0;
+ font-size:1.05rem;
+ line-height:1.6;
+ white-space:normal;
+}
+
+.zettels-reader-actions {
+ position:absolute;
+ top:1.5rem;
+ right:1.5rem;
+ z-index:1;
+}
+
+.zettels-reader-header code,
+.zettels-reader-header h2 {
+ padding-right:18rem;
+}
+
+.zettels-reader-tabs {
+ flex:0 0 auto;
+ display:flex;
+ gap:.25rem;
+ padding:.75rem 1.5rem 0;
+ border-bottom:1px solid var(--border);
+}
+
+.zettels-reader-tabs button {
+ margin-bottom:-1px;
+ padding:.65rem 1rem;
+ background:transparent;
+ color:var(--text-muted);
+ border:0;
+ border-bottom:.2rem solid transparent;
+ border-radius:0;
+}
+
+.zettels-reader-tabs button:hover,
+.zettels-reader-tabs button.is-active {
+ background:transparent;
+ color:var(--heading);
+ border-bottom-color:var(--accent);
+}
+
+.zettels-reader-content {
+ flex:1 1 auto;
+ min-height:max-content;
+ overflow:visible;
+ padding:1.5rem;
+}
+
+.zettels-reader-meta {
+ display:grid;
+ grid-template-columns:repeat(3,minmax(0,1fr));
+ align-items:start;
+ gap:.75rem;
+ margin:0 0 1.5rem;
+}
+
+.zettels-reader-meta div {
+ position:relative;
+ min-width:0;
+ padding:.9rem 1rem;
+ overflow:hidden;
+ background:linear-gradient(145deg,color-mix(in srgb,var(--surface) 86%,var(--accent)),var(--surface));
+ border:1px solid var(--border);
+ border-radius:var(--radius-md);
+ box-shadow:0 .2rem .65rem rgba(28,57,75,.07);
+}
+
+.zettels-reader-meta div::before {
+ content:"";
+ position:absolute;
+ inset:0 auto 0 0;
+ width:.22rem;
+ background:var(--accent);
+}
+
+.zettels-reader-meta dt {
+ margin-bottom:.2rem;
+}
+
+.zettels-reader-meta dd {
+ margin:0;
+ overflow-wrap:anywhere;
+}
+
+.zettels-reader-meta .zettels-meta-record-details {
+ display:grid;
+ grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:.85rem 1rem;
+}
+
+.zettels-reader-meta .zettels-meta-record-details::before {
+ content:"";
+ position:absolute;
+ inset:0 auto 0 0;
+ width:.22rem;
+ background:var(--accent);
+}
+
+.zettels-meta-record-details>div {
+ min-width:0;
+ padding:0;
+ overflow:visible;
+ background:transparent;
+ border:0;
+ border-radius:0;
+ box-shadow:none;
+}
+
+.zettels-meta-record-details>div::before {
+ content:none;
+}
+
+.zettels-meta-projects dd {
+ font-size:.82rem;
+ line-height:1.45;
+}
+
+.zettels-meta-subtypes dd {
+ display:flex;
+ flex-wrap:wrap;
+ gap:.3rem;
+ font-size:.78rem;
+}
+
+.zettels-meta-subtypes .badge {
+ font-size:.72rem;
+ font-weight:700;
+}
+
+.zettels-overview-links {
+ display:grid;
+ grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:.75rem;
+}
+
+.zettels-linked-section {
+ min-width:0;
+ margin:0;
+ padding:1rem;
+ background:color-mix(in srgb,var(--bg-alt) 72%,var(--surface));
+ border:1px solid var(--border);
+ border-radius:var(--radius-md);
+}
+
+.zettels-linked-section h3 {
+ margin-bottom:.65rem;
+ font-size:1rem;
+}
+
+.zettels-linked-section .record-detail-links {
+ display:grid;
+ gap:.5rem;
+}
+
+.zettels-linked-section .record-detail-link {
+ display:block;
+ width:fit-content;
+ max-width:100%;
+ padding:.15rem 0;
+ background:transparent;
+ border:0;
+ overflow-wrap:anywhere;
+}
+
+.zettels-body-tab p {
+ margin:0;
+ white-space:pre-wrap;
+ line-height:1.8;
+}
+
+.zettel-id-builder {
+ margin:0;
+ max-width:56rem;
+ background:color-mix(in srgb,var(--accent) 7%,var(--surface));
+ border:1px solid var(--border);
+ border-radius:var(--radius-md);
+ box-shadow:none;
+}
+
+.zettel-form-grid {
+ display:grid;
+ gap:1rem;
+}
+
+.zettel-field {
+ min-width:0;
+ margin:0;
+}
+
+.zettel-field::after {
+ content:"";
+ display:block;
+ clear:both;
+}
+
+.zettel-option-control {
+ gap:.5rem;
+}
+
+.zettel-option-control>.form-select {
+ flex:1 1 auto;
+ width:auto;
+ min-width:0;
+}
+
+.zettel-option-control>.btn {
+ flex:0 0 auto;
+ white-space:nowrap;
+}
+
+.zettel-option-control>.form-text {
+ flex:0 0 auto;
+ margin:0;
+}
+
+.zettel-subtype-checkboxes {
+ display:grid;
+ grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:.4rem .85rem;
+ width:100%;
+ max-height:11rem;
+ padding:.65rem .75rem;
+ overflow-y:auto;
+ background:var(--surface);
+ border:1px solid var(--border);
+ border-radius:var(--radius-md);
+}
+
+.zettel-subtype-checkboxes .form-check {
+ min-width:0;
+ margin:0;
+}
+
+.zettel-subtype-checkboxes .form-check-label {
+ overflow:hidden;
+ max-width:100%;
+ text-overflow:ellipsis;
+ white-space:nowrap;
+}
+
+.zettel-inline-create {
+ display:grid;
+ grid-template-columns:minmax(10rem,1fr) minmax(9rem,.7fr) minmax(10rem,.8fr) auto;
+ gap:.5rem;
+ width:var(--form-field-width);
+ margin:.65rem 0 0 var(--form-help-offset);
+ padding:.75rem;
+ background:var(--bg-alt);
+ border:1px solid var(--border);
+ border-radius:var(--radius-md);
+}
+
+.zettel-inline-create>.btn {
+ white-space:nowrap;
+}
+
+.zettel-id-builder>.card-header {
+ margin:0;
+ padding:.75rem 1rem;
+ background:transparent;
+ color:var(--heading);
+ border-bottom:1px solid var(--border);
+ font-size:1rem;
+ font-weight:700;
+}
+
+.zettel-id-builder-grid {
+ display:grid;
+ grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:1rem;
+ padding:1rem;
+ background:transparent;
+}
+
+.zettel-form-tabs {
+ margin-bottom:1rem;
+}
+
+.zettel-id-builder-preview {
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:1rem;
+}
+
+.zettel-id-builder-preview span {
+ color:var(--text-muted);
+ font-size:.75rem;
+ font-weight:800;
+ letter-spacing:.04em;
+ text-transform:uppercase;
+}
+
+@media (max-width:900px) {
+ .zettels-workspace {
+  grid-template-columns:1fr;
+  height:auto;
+  min-height:0;
+  overflow:visible;
+ }
+
+ .zettels-record-index {
+  min-height:0;
+  max-height:18rem;
+  border-right:0;
+  border-bottom:1px solid var(--border);
+ }
+
+ .zettels-record-tools {
+  grid-template-columns:1fr 1fr;
+ }
+
+ .zettels-record-list {
+  display:flex;
+  overflow-x:auto;
+  overflow-y:hidden;
+ }
+
+ .zettels-record-item {
+  flex:0 0 17rem;
+  border-bottom:0;
+  border-right:1px solid var(--border);
+ }
+
+ .zettels-record-item:hover {
+  background:var(--surface);
+ }
+
+ .zettels-reader {
+  overflow:visible;
+ }
+
+ .zettels-reader-content {
+  overflow:visible;
+ }
+
+ .zettels-reader-header {
+  display:block;
+ }
+
+ .zettels-reader-actions {
+  position:static;
+  flex-wrap:wrap;
+  margin-top:1rem;
+ }
+
+ .zettels-reader-header code,
+ .zettels-reader-header h2 {
+  padding-right:0;
+ }
+
+ .zettel-inline-create {
+  grid-template-columns:1fr 1fr;
+ }
+
+ .zettel-id-builder-grid {
+  grid-template-columns:1fr;
+ }
+
+}
+
+@media (max-width:600px) {
+ .zettels-index-page {
+  padding:2rem 1rem 3rem;
+ }
+
+ .zettels-index-header {
+  align-items:stretch;
+  flex-direction:column;
+ }
+
+ .zettels-index-header>.btn {
+  align-self:flex-start;
+ }
+
+ .zettels-index-card-header,
+ .zettels-reader-header,
+ .zettels-reader-content {
+  padding-inline:1rem;
+ }
+
+ .zettels-reader-meta {
+  grid-template-columns:1fr;
+ }
+
+ .zettels-reader-meta .zettels-meta-record-details {
+  grid-template-columns:1fr 1fr;
+ }
+
+ .zettel-subtype-checkboxes {
+  grid-template-columns:1fr;
+ }
+
+ .zettels-overview-links {
+  grid-template-columns:1fr;
+ }
+
+ .zettels-reader-tabs {
+  padding-inline:1rem;
+  overflow-x:auto;
+ }
+
+ .zettel-inline-create {
+  grid-template-columns:1fr;
+ }
+}

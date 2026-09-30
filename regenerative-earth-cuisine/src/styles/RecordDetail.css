@@ -1,0 +1,429 @@
+.record-detail h2{
+ color:var(--heading);
+ margin:0 0 1rem;
+}
+
+.record-detail dl{
+ margin:0;
+}
+
+.record-detail dl > div{
+ display:grid;
+ grid-template-columns:12rem minmax(0,1fr);
+ column-gap:.75rem;
+ align-items:start;
+ margin-bottom:.65rem;
+}
+
+.record-detail dt{
+ white-space:nowrap;
+}
+
+.record-detail dt::after{
+ content:":";
+}
+
+.record-detail dd{
+ min-width:0;
+ margin:0;
+}
+
+.record-detail-links{
+ display:flex;
+ flex-direction:column;
+ align-items:flex-start;
+ gap:.25rem;
+}
+
+.record-detail-link{
+ display:flex;
+ flex-wrap:wrap;
+ gap:.35rem .65rem;
+ align-items:baseline;
+ text-decoration:none;
+}
+
+.record-detail-link code{
+ color:var(--text);
+ white-space:nowrap;
+}
+
+.record-detail-link span{
+ color:var(--body-text,#49657c);
+ font-family:var(--font-body,inherit);
+}
+
+.record-detail-link:hover{
+ text-decoration:underline;
+}
+
+.record-detail-code{
+ color:var(--text);
+ font-family:var(--font-mono,monospace);
+ white-space:nowrap;
+}
+
+.workflow-record-detail{
+ display:grid;
+ gap:1rem;
+}
+
+.workflow-record-meta{
+ display:grid;
+ grid-template-columns:repeat(3,minmax(0,1fr));
+ gap:.75rem;
+}
+
+.record-detail .workflow-record-meta > div{
+ position:relative;
+ display:block;
+ margin:0;
+ padding:.85rem 1rem;
+ overflow:hidden;
+ background:linear-gradient(145deg,color-mix(in srgb,var(--surface) 86%,var(--accent)),var(--surface));
+ border:1px solid var(--border);
+ border-radius:var(--radius-md);
+ box-shadow:0 .2rem .65rem rgba(28,57,75,.07);
+}
+
+.record-detail .workflow-record-meta > div::before{
+ content:"";
+ position:absolute;
+ inset:0 auto 0 0;
+ width:.22rem;
+ background:var(--accent);
+}
+
+.workflow-record-meta dt{
+ margin-bottom:.25rem;
+}
+
+.workflow-record-meta dt::after{
+ content:"";
+}
+
+.workflow-record-meta dd{
+ font-size:.82rem;
+ line-height:1.45;
+ overflow-wrap:anywhere;
+}
+
+.record-detail .workflow-record-meta > .workflow-record-summary{
+ display:grid;
+ grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:.75rem 1rem;
+}
+
+.record-detail .workflow-record-summary > div{
+ min-width:0;
+ margin:0;
+ padding:0;
+ overflow:visible;
+ background:transparent;
+ border:0;
+ border-radius:0;
+ box-shadow:none;
+}
+
+.record-detail .workflow-record-summary > div::before{
+ content:none;
+}
+
+.workflow-record-list-value dd,
+.workflow-record-meta > div:first-child dd{
+ font-size:.82rem;
+ line-height:1.45;
+}
+
+.workflow-record-projects dd{
+ display:grid;
+ gap:.45rem;
+}
+
+.workflow-record-project{
+ display:flex;
+ align-items:baseline;
+ gap:.35rem;
+ min-width:0;
+ overflow:hidden;
+ white-space:nowrap;
+}
+
+.workflow-record-project code{
+ flex:0 0 auto;
+ font-size:.82rem;
+}
+
+.workflow-record-project > span{
+ min-width:0;
+ overflow:hidden;
+ color:var(--text-muted);
+ font-size:.82rem;
+ text-overflow:ellipsis;
+ white-space:nowrap;
+}
+
+.workflow-record-project > span::before{
+ content:"— ";
+}
+
+.workflow-record-content-grid,
+.workflow-record-relationships{
+ display:grid;
+ grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:.75rem;
+ align-items:start;
+}
+
+.workflow-record-relationships{
+ grid-template-columns:repeat(3,minmax(0,1fr));
+}
+
+.workflow-record-relationships.workflow-record-relationships-two{
+ grid-template-columns:repeat(2,minmax(0,1fr));
+}
+
+.workflow-record-relationships.is-single{
+ grid-template-columns:minmax(0,1fr);
+}
+
+.workflow-record-content-grid > section,
+.workflow-record-relationships > section{
+ min-width:0;
+ margin:0;
+ padding:1rem;
+ background:color-mix(in srgb,var(--bg-alt) 72%,var(--surface));
+ border:1px solid var(--border);
+ border-left:.25rem solid var(--accent);
+ border-radius:var(--radius-md);
+}
+
+.workflow-record-content-grid h3,
+.workflow-record-relationships h3{
+ margin:0 0 .65rem;
+ font-size:1.05rem;
+}
+
+@media (max-width:800px){
+ .workflow-record-meta,
+ .workflow-record-content-grid,
+ .workflow-record-relationships{
+  grid-template-columns:1fr;
+ }
+
+ .workflow-record-relationships.workflow-record-relationships-two{
+  grid-template-columns:1fr;
+ }
+}
+
+@media (max-width:500px){
+ .record-detail .workflow-record-meta > .workflow-record-summary{
+  grid-template-columns:1fr;
+ }
+}
+
+.output-attachments-panel{
+ margin:0;
+ padding:1rem;
+ background:color-mix(in srgb,var(--bg-alt) 72%,var(--surface));
+ border:1px solid var(--border);
+ border-left:.25rem solid var(--accent);
+ border-radius:var(--radius-md);
+}
+
+.output-detail-left-column{
+ display:grid;
+ gap:.75rem;
+ align-items:start;
+}
+
+.workflow-record-content-grid > .output-detail-left-column > section{
+ min-width:0;
+ margin:0;
+ padding:1rem;
+ background:color-mix(in srgb,var(--bg-alt) 72%,var(--surface));
+ border:1px solid var(--border);
+ border-left:.25rem solid var(--accent);
+ border-radius:var(--radius-md);
+}
+
+.output-attachments-panel > h3{
+ margin:0 0 .75rem;
+ font-size:1.05rem;
+}
+
+.output-document-table th{
+ color:var(--text-muted);
+ font-size:.7rem;
+ letter-spacing:.05em;
+ text-transform:uppercase;
+}
+
+.output-document-table td{
+ vertical-align:middle;
+}
+
+.output-document-frame{
+ display:block;
+ width:100%;
+ height:min(72vh,52rem);
+ border:1px solid var(--border);
+ border-radius:var(--radius-md);
+}
+
+.output-native-document-message{
+ display:grid;
+ justify-items:start;
+ gap:.75rem;
+ padding:1.25rem;
+ background:var(--bg-alt);
+ border:1px solid var(--border);
+ border-radius:var(--radius-md);
+}
+
+.output-native-document-message p{
+ margin:0;
+}
+
+.output-form-id{
+ display:flex;
+ align-items:baseline;
+ gap:.75rem;
+ margin:0 0 1rem;
+}
+
+.output-form-id span{
+ flex:0 0 auto;
+ color:var(--heading);
+ font-weight:700;
+}
+
+.output-form-id code{
+ color:var(--text);
+ font-size:1rem;
+ overflow-wrap:anywhere;
+}
+
+.output-document-picker .form-control{
+ flex:1 1 24rem;
+ min-width:12rem;
+}
+
+.output-document-picker .btn{
+ flex:0 0 auto;
+ white-space:nowrap;
+}
+
+.output-status-filter{
+ display:grid;
+ grid-template-columns:max-content minmax(12rem,20rem);
+ align-items:center;
+ gap:.75rem;
+ margin-bottom:1rem;
+}
+
+.output-status-filter .form-label{
+ margin:0;
+ white-space:nowrap;
+}
+
+.output-field-row,
+.output-project-field > .mb-3{
+ display:grid;
+ grid-template-columns:8.5rem minmax(0,1fr);
+ column-gap:.75rem;
+ align-items:center;
+}
+
+.output-field-row > .form-label,
+.output-project-field > .mb-3 > .form-label{
+ margin:0;
+ white-space:nowrap;
+}
+
+.output-field-row > div,
+.output-project-field > .mb-3 > div{
+ min-width:0;
+}
+
+.output-field-row > .relationship-attached-values,
+.output-project-field > .relationship-selector-add-more > .relationship-attached-values{
+ grid-column:1 / -1;
+ margin-top:.5rem;
+}
+
+.output-type-control{
+ display:grid;
+ gap:.4rem;
+ min-width:0;
+ align-items:flex-start;
+}
+
+.relationship-checkbox-picker{
+ position:absolute;
+ z-index:20;
+ top:calc(100% + .35rem);
+ left:0;
+ display:grid;
+ gap:.45rem;
+ justify-items:start;
+ width:min(30rem,calc(100vw - 3rem));
+ padding:.75rem;
+ background:var(--surface);
+ border:1px solid var(--border);
+ border-radius:var(--radius-md);
+ box-shadow:0 .5rem 1.25rem rgba(28,57,75,.18);
+}
+
+.relationship-checkbox-options{
+ display:grid;
+ gap:.45rem;
+ width:100%;
+ max-height:11rem;
+ overflow:auto;
+ padding:.25rem .5rem .25rem 0;
+}
+
+.relationship-attached-values{
+ display:grid;
+ gap:.3rem;
+ margin-top:.5rem;
+}
+
+.relationship-attached-values > span{
+ color:var(--text);
+ overflow-wrap:anywhere;
+}
+
+.relationship-checkbox-picker .form-check{
+ margin:0;
+ min-width:max-content;
+}
+
+.relationship-add-control{
+ position:relative;
+ width:max-content;
+ max-width:100%;
+}
+
+.output-type-actions{
+ display:grid;
+ grid-auto-flow:column;
+ grid-auto-columns:max-content;
+ gap:.5rem;
+ align-items:flex-start;
+ justify-content:start;
+}
+
+.output-type-actions .btn{
+ white-space:nowrap;
+}
+
+.output-type-control .form-select{
+ min-width:0;
+}
+
+.output-type-control .btn{
+ flex:0 0 auto;
+ white-space:nowrap;
+}

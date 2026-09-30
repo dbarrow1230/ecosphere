@@ -1,0 +1,3 @@
+import {Link} from "react-router-dom";
+import "./Records.css";
+export default function AdminDashboard(){return <main className="records-page"><header className="records-heading"><p className="eyebrow">Administration</p><h1>Admin Dashboard</h1><p>Manage application records and user access.</p></header><section className="record-grid"><article className="record-card"><h2><Link to="/admin/users">Users</Link></h2><p>View and manage application users.</p></article><article className="record-card"><h2><Link to="/ingredients">Ingredients</Link></h2><p>Manage ingredient and sourcing records.</p></article><article className="record-card"><h2><Link to="/recipes">Recipes</Link></h2><p>Manage recipe development records.</p></article></section></main>}

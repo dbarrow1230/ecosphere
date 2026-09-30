@@ -1,0 +1,32 @@
+.project-record-list{
+ display:grid;
+ gap:.45rem;
+ min-width:0;
+}
+
+.project-record-line{
+ display:flex;
+ align-items:baseline;
+ gap:.35rem;
+ min-width:0;
+ overflow:hidden;
+ white-space:nowrap;
+}
+
+.project-record-line code{
+ flex:0 0 auto;
+ font-size:.82rem;
+}
+
+.project-record-line > span{
+ min-width:0;
+ overflow:hidden;
+ color:var(--text-muted);
+ font-size:.82rem;
+ text-overflow:ellipsis;
+ white-space:nowrap;
+}
+
+.project-record-line > span::before{
+ content:"— ";
+}
