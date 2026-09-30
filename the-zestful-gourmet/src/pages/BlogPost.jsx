@@ -1,0 +1,6 @@
+import {useEffect,useState} from "react";
+import {Link,useParams} from "react-router-dom";
+import api from "../services/blogApi.js";
+import "../styles/Blog.css";
+
+export default function BlogPost(){const {slug}=useParams();const [post,setPost]=useState(null);const [error,setError]=useState("");useEffect(()=>{api.get(`/posts/${slug}`).then(({data})=>setPost(data)).catch(err=>setError(err.response?.data?.message||"Unable to load this post."));},[slug]);if(error)return <main className="blog-page"><div className="blog-alert">{error}</div></main>;if(!post)return <main className="blog-page"><p>Loading article…</p></main>;return <main className="blog-page"><article className="blog-article"><Link to="/blog" className="blog-link">← All articles</Link><p className="blog-meta">{post.category?.name||"Journal"} · {new Date(post.publishedAt||post.createdAt).toLocaleDateString()} · {post.author?.username||"The Zestful Gourmet"}</p><h1>{post.title}</h1>{post.excerpt&&<p className="blog-deck">{post.excerpt}</p>}{post.featuredImage&&<img className="blog-featured-image" src={post.featuredImage} alt={post.imageAlt||post.title}/>}<div className="blog-content">{post.content.split(/\n{2,}/).map((paragraph,index)=><p key={index}>{paragraph}</p>)}</div>{post.tags?.length>0&&<div className="blog-tags">{post.tags.map(tag=><span key={tag}>#{tag}</span>)}</div>}</article></main>;}
