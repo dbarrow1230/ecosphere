@@ -1,0 +1,47 @@
+.give-resource-modal .modal-dialog{
+ max-width:660px;
+}
+
+.give-resource-modal .modal-body{
+ display:flex;
+ flex-direction:column;
+ gap:.8rem;
+}
+
+.give-resource-row{
+ display:grid;
+ grid-template-columns:110px minmax(0,1fr);
+ align-items:center;
+ gap:1rem;
+}
+
+.give-resource-row>label{
+ margin:0;
+ color:var(--accent);
+ font-weight:700;
+ text-align:right;
+ white-space:nowrap;
+}
+
+.give-resource-row select{
+ width:min(100%,460px);
+}
+
+.give-resource-row input[type="date"]{
+ width:170px;
+}
+
+.give-resource-notes{
+ align-items:start;
+}
+
+.give-resource-notes textarea{
+ width:min(100%,460px);
+ min-height:76px;
+}
+
+.give-resource-follow-up{
+ display:flex;
+ align-items:center;
+ gap:.75rem;
+}
