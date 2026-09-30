@@ -1,0 +1,1 @@
+import {Router} from "express";import {list,create,update,remove} from "../../controllers/dashboard/orderController.js";const router=Router();router.route("/").get(list).post(create);router.route("/:id").put(update).delete(remove);export default router;
