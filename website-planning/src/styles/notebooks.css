@@ -1,0 +1,11 @@
+.notebook-list-scroll
+{
+ max-height:900px;
+ overflow-y:auto;
+}
+
+.notebook-badge
+{
+ background-color:var(--notebook-color)!important;
+ color:var(--text-inverse);
+}

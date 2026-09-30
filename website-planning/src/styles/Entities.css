@@ -1,0 +1,43 @@
+.entity-modal .modal-dialog{
+ max-width:min(1200px,calc(100vw - 3rem));
+}
+
+.entity-modal .modal-body{
+ padding:1.5rem;
+}
+
+.entity-form-id{
+ display:grid;
+ grid-template-columns:var(--form-label-width,9.5rem) minmax(0,1fr);
+ column-gap:var(--form-label-gap,.75rem);
+ align-items:center;
+ margin-bottom:1rem;
+}
+
+.entity-form-id-label{
+ color:var(--heading);
+ font-weight:700;
+}
+
+.entity-form-id-value{
+ display:block;
+ min-width:0;
+ color:var(--text);
+ overflow-wrap:anywhere;
+}
+
+.entity-form-tabs .tab-content{
+ padding-top:1rem;
+}
+
+@media (max-width:768px){
+ .entity-modal .modal-dialog{
+  max-width:calc(100vw - 1rem);
+  margin:.5rem;
+ }
+
+ .entity-form-id{
+  grid-template-columns:1fr;
+  row-gap:.35rem;
+ }
+}
