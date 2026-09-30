@@ -1,0 +1,3 @@
+.recipe-import-icon{display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;flex:0 0 52px;border:1px solid var(--bs-success);border-radius:.75rem;color:var(--bs-success);background:rgba(25,135,84,.08)}
+.recipe-import-search{display:flex;align-items:center;gap:.5rem}.recipe-import-search .form-control{min-width:0}
+.recipe-import-table th{white-space:nowrap;background:#f6f8f7}.recipe-import-table td{min-width:150px}.recipe-import-table td:first-child{min-width:70px}.recipe-import-table td:nth-child(6){min-width:125px;font-size:.9rem;color:#5d6862}.recipe-import-table td:last-child{min-width:180px}

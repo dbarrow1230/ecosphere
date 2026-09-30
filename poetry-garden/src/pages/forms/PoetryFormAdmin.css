@@ -1,0 +1,172 @@
+/* src/pages/forms/PoetryFormAdmin.css */
+
+.poetry-form-admin{
+ width:100%;
+ padding:1rem;
+ background:var(--bg);
+ color:var(--text);
+ font-family:var(--font-body);
+}
+
+.poetry-form-admin-heading{
+ width:100%;
+ margin-bottom:1rem;
+ text-align:center;
+}
+
+.poetry-form-admin-heading h1{
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ gap:0.65rem;
+ margin:0;
+ color:var(--heading);
+ font-family:var(--font-heading);
+ font-size:2rem;
+ font-weight:700;
+}
+
+.poetry-form-admin-heading h1 svg{
+ color:var(--primary);
+}
+
+.poetry-form-admin-card{
+ max-width:1200px;
+ margin:0 auto;
+ background:var(--surface);
+ border:1px solid var(--border);
+ color:var(--text);
+}
+
+.poetry-form-admin .form-label{
+ color:var(--heading);
+ font-weight:600;
+}
+
+.poetry-form-admin .form-control,
+.poetry-form-admin .form-select{
+ background:var(--surface);
+ border-color:var(--border);
+ color:var(--text);
+}
+
+.poetry-form-admin .form-control:focus,
+.poetry-form-admin .form-select:focus{
+ background:var(--surface);
+ border-color:var(--primary);
+ color:var(--text);
+ box-shadow:0 0 0 0.15rem color-mix(in srgb,var(--primary) 20%,transparent);
+}
+
+.poetry-form-switch{
+ display:flex;
+ align-items:center;
+ min-height:38px;
+}
+
+.poetry-form-section-title{
+ margin:1.75rem 0 1rem;
+ color:var(--heading);
+ font-family:var(--font-heading);
+ font-size:1.3rem;
+ font-weight:700;
+}
+
+.poetry-form-section-heading{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:1rem;
+ margin:1.75rem 0 1rem;
+}
+
+.poetry-form-section-heading h2{
+ margin:0;
+ color:var(--heading);
+ font-family:var(--font-heading);
+ font-size:1.3rem;
+ font-weight:700;
+}
+
+.poetry-form-section-heading .btn,
+.poetry-form-actions .btn,
+.poetry-form-subcard-heading .btn{
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ gap:0.4rem;
+}
+
+.poetry-form-subcard{
+ margin-bottom:1rem;
+ background:var(--surface-2);
+ border:1px solid var(--border);
+ color:var(--text);
+}
+
+.poetry-form-subcard-heading{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:1rem;
+ margin-bottom:1rem;
+ color:var(--heading);
+}
+
+.poetry-form-actions{
+ display:flex;
+ align-items:center;
+ justify-content:flex-end;
+ gap:0.75rem;
+ margin-top:1.5rem;
+ padding-top:1rem;
+ border-top:1px solid var(--border);
+}
+
+.poetry-form-loading{
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ gap:0.5rem;
+ min-height:200px;
+ color:var(--text-soft);
+}
+
+.poetry-form-toast{
+ position:fixed!important;
+ z-index:1080;
+ padding:1rem;
+}
+
+.poetry-form-toast .toast{
+ min-width:340px;
+ box-shadow:0 0.5rem 1.5rem var(--overlay);
+}
+
+@media(max-width:767.98px){
+ .poetry-form-admin{
+  padding:0.75rem;
+ }
+
+ .poetry-form-admin-heading h1{
+  font-size:1.6rem;
+ }
+
+ .poetry-form-section-heading{
+  align-items:flex-start;
+  flex-direction:column;
+ }
+
+ .poetry-form-actions{
+  flex-direction:column-reverse;
+ }
+
+ .poetry-form-actions .btn{
+  width:100%;
+ }
+
+ .poetry-form-toast .toast{
+  min-width:0;
+  width:100%;
+ }
+}
