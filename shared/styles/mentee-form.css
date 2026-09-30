@@ -1,0 +1,18 @@
+.mentee-form-page,.mentee-form-shell{width:100%;margin:0;padding:0;background:transparent}
+.mentee-form-card{margin:0;padding:24px;border:0;border-radius:0;background:var(--surface);color:var(--text);box-shadow:none}
+.mentee-form-header{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:20px}
+.mentee-form-eyebrow{margin:0 0 8px;color:var(--accent);font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.mentee-form-title{margin:0 0 8px;color:var(--text);font-size:clamp(1.6rem,3vw,2.4rem);line-height:1.08}
+.mentee-form-text{margin:0;color:var(--text-soft);line-height:1.65}
+.mentee-form-section{margin-top:20px;padding-top:20px;border-top:1px solid var(--border)}
+.mentee-form-section:first-of-type{margin-top:0;padding-top:0;border-top:0}
+.mentee-form-section-title{margin:0 0 16px;color:var(--text);font-size:1.05rem;font-weight:700}
+.mentee-form-label{display:block;margin-bottom:8px;color:var(--text);font-size:.95rem;font-weight:600}
+.mentee-form-input,.mentee-form-select,.mentee-form-textarea{display:block;width:100%;min-height:46px;padding:10px 12px;border:1px solid var(--border);border-radius:var(--radius-sm);outline:0;background:var(--surface);color:var(--text);box-shadow:none!important}
+.mentee-form-input:focus,.mentee-form-select:focus,.mentee-form-textarea:focus{border-color:var(--accent);box-shadow:0 0 0 .2rem color-mix(in srgb,var(--accent) 16%,transparent)!important}
+.mentee-form-textarea{min-height:110px;resize:vertical}
+.mentee-form-check{display:flex;align-items:center;gap:10px;min-height:46px}
+.mentee-form-actions{display:flex;justify-content:flex-end;gap:12px;margin-top:28px;padding-top:20px;border-top:1px solid var(--border)}
+.mentee-form-alert{margin-bottom:16px;padding:12px 14px;border:1px solid var(--border);border-radius:var(--radius-sm);font-size:.92rem}
+.modal .mentee-form-card{padding:20px 20px 24px}.modal .mentee-form-shell{max-width:none}.modal .modal-body{max-height:calc(100vh - 180px);padding:0;overflow-y:auto;background:var(--surface)}
+@media(max-width:768px){.mentee-form-card{padding:18px}.mentee-form-header{flex-direction:column}.mentee-form-actions{flex-direction:column-reverse}.mentee-form-actions .btn{width:100%}}
