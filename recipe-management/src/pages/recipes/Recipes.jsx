@@ -34,11 +34,15 @@ export default function Recipes(){
  const [showHaccpLog,setShowHaccpLog]=useState(false);
  const [formRecipe,setFormRecipe]=useState(null);
  const [currentBusinessId,setCurrentBusinessId]=useState("");
+ const newRecipeDefaults=useMemo(()=>({business:currentBusinessId}),[currentBusinessId]);
 
  const fetchRows=async url=>{
   const res=await fetch(url);
   const data=await res.json().catch(()=>null);
-  if(!res.ok)throw new Error(data?.message||`Failed to load ${url}.`);
+  if(!res.ok){
+   const detail=[data?.message,data?.error].filter(Boolean).join(": ");
+   throw new Error(`${url} (${res.status}): ${detail||"Request failed."}`);
+  }
   return rows(data);
  };
 
@@ -69,13 +73,13 @@ export default function Recipes(){
     if(!search)return true;
     const searchable=[recipe.name,recipe.recipeNumber,...(recipe.cuisines||[]).map(label),...(recipe.courses||[]).map(label),label(recipe.mealType),...(recipe.categories||[]).map(label),recipe.generalDescription,recipe.menuDescription,...(recipe.techniques||[]),...(recipe.techniqueRefs||[]).map(label),...(recipe.allergens||[]).map(label)];
     return searchable.some(value=>String(value||"").toLowerCase().includes(search));
-   }).sort((a,b)=>a.name.localeCompare(b.name));
+   }).sort((a,b)=>String(a.name||"").localeCompare(String(b.name||"")));
   const matchedIds=new Set(matches.map(recipe=>recipe._id));
   const roots=matches.filter(recipe=>!getObjectId(recipe.parentRecipe)||!matchedIds.has(getObjectId(recipe.parentRecipe)));
   const childrenByParent=new Map();
   matches.forEach(recipe=>{const parentId=getObjectId(recipe.parentRecipe);if(!parentId)return;childrenByParent.set(parentId,[...(childrenByParent.get(parentId)||[]),recipe]);});
   const ordered=[];
-  const append=recipe=>{ordered.push(recipe);(childrenByParent.get(recipe._id)||[]).sort((a,b)=>a.name.localeCompare(b.name)).forEach(append);};
+  const append=recipe=>{ordered.push(recipe);(childrenByParent.get(recipe._id)||[]).sort((a,b)=>String(a.name||"").localeCompare(String(b.name||""))).forEach(append);};
   roots.forEach(append);
   return ordered;
  },[recipes,query,filters]);
@@ -128,13 +132,14 @@ export default function Recipes(){
   const data=await res.json().catch(()=>null);if(!res.ok)throw new Error(data?.message||`Failed to create ${body.name}.`);
   const singular={categories:"category",cuisines:"cuisine",courses:"course","meal-types":"mealType",dietaries:"dietary",allergens:"allergen",techniques:"technique",equipment:"equipment",ingredients:"ingredient"}[type];
   const key={categories:"categories",cuisines:"cuisines",courses:"courses","meal-types":"mealTypes",dietaries:"dietaries",allergens:"allergens",techniques:"techniques",equipment:"equipment",ingredients:"ingredients"}[type];
-  const record=data?.[singular]||data;
+  const record=data?.[singular]||data?.data||data;
+  if(!record?._id)throw new Error(`The ${type} response did not include the saved record.`);
   setLookups(current=>({...current,[key]:[...current[key].filter(item=>item._id!==record._id),record].sort((a,b)=>String(a.name||"").localeCompare(String(b.name||"")))}));
   return record;
  };
 
  const save=async payload=>{
-  if(formRecipe?._id&&!Object.keys(payload).length){setNotice("No changes to save.");return;}
+  if(formRecipe?._id&&!Object.keys(payload).length){setNotice("No changes to save.");setShowForm(false);setFormRecipe(null);return;}
   try{
    setSaving(true);setError("");
    const editing=Boolean(formRecipe?._id);
@@ -157,7 +162,7 @@ export default function Recipes(){
    try{queuedRecipes=JSON.parse(localStorage.getItem("recipe-management-word-parser-queue")||"null")?.recipes||[];}catch{queuedRecipes=[];}
    if(queuedRecipes.length>1)setFormRecipe({business:currentBusinessId});
    else setShowForm(false);
-  }catch(err){setError(err.message);}finally{setSaving(false);}
+  }catch(err){setError(err.message);throw err;}finally{setSaving(false);}
  };
 
  const remove=async()=>{
@@ -202,7 +207,7 @@ export default function Recipes(){
       {!loading&&filteredRecipes.length===0?<div className="recipes-empty">No recipes match your search.</div>:null}
       {filteredRecipes.map(recipe=>(
        <button type="button" key={recipe._id} className={`recipe-list-item${getObjectId(recipe.parentRecipe)?" recipe-list-item-child":""}${selectedId===recipe._id?" active":""}`} onClick={()=>setSelectedId(recipe._id)}>
-        <span className="recipe-list-content">{getObjectId(recipe.parentRecipe)?<span className="recipe-list-branch" aria-hidden="true">↳</span>:null}{recipe.image?<img className="recipe-list-thumbnail" src={imageUrl(recipe.image,recipe.updatedAt)} alt=""/>:<span className="recipe-list-thumbnail recipe-list-thumbnail-empty">No image</span>}<span className="recipe-list-copy"><span className="recipe-list-name">{recipe.name}</span><span className="recipe-list-number">{recipe.recipeNumber||"Number pending"}</span></span></span>
+        <span className="recipe-list-content">{getObjectId(recipe.parentRecipe)?<span className="recipe-list-branch" aria-hidden="true">↳</span>:null}{recipe.image?<img className="recipe-list-thumbnail" src={imageUrl(recipe.image,recipe.updatedAt)} alt=""/>:<span className="recipe-list-thumbnail recipe-list-thumbnail-empty">No image</span>}<span className="recipe-list-copy"><span className="recipe-list-name">{recipe.name||"Unnamed recipe"}</span><span className="recipe-list-number">{recipe.recipeNumber||"Number pending"}</span></span></span>
        </button>
       ))}
      </div>
@@ -213,7 +218,7 @@ export default function Recipes(){
     </main>
    </div>
 
-   <Modal size="xl" dialogClassName="recipe-form-modal" show={showForm} onHide={()=>!saving&&setShowForm(false)} backdrop="static" keyboard={false} centered><Modal.Header closeButton><Modal.Title>{formRecipe?._id?"Edit":"Add"} Recipe</Modal.Title></Modal.Header><Modal.Body><RecipeForm initialData={formRecipe||{business:currentBusinessId}} lookups={lookups} onSubmit={save} onCreateLookup={createLookup} onBulkImported={finishBulkImport} loading={saving}/></Modal.Body></Modal>
+   <Modal size="xl" dialogClassName="recipe-form-modal" show={showForm} onHide={()=>!saving&&setShowForm(false)} backdrop="static" keyboard={false} centered><Modal.Header closeButton><Modal.Title>{formRecipe?._id?"Edit":"Add"} Recipe</Modal.Title></Modal.Header><Modal.Body><RecipeForm initialData={formRecipe||newRecipeDefaults} lookups={lookups} onSubmit={save} onCreateLookup={createLookup} onBulkImported={finishBulkImport} loading={saving}/></Modal.Body></Modal>
    <Modal show={showDelete} onHide={()=>!saving&&setShowDelete(false)} centered><Modal.Header closeButton><Modal.Title>Delete Recipe</Modal.Title></Modal.Header><Modal.Body>Delete <strong>{selected?.name}</strong>?</Modal.Body><Modal.Footer><Button variant="secondary" onClick={()=>setShowDelete(false)}>Cancel</Button><Button variant="danger" onClick={remove} disabled={saving}>{saving?"Deleting...":"Delete"}</Button></Modal.Footer></Modal>
    <ScaleRecipeModal show={showScale} recipe={selected} imperialUnits={lookups.imperialUnits} metricUnits={lookups.metricUnits} onHide={()=>!saving&&setShowScale(false)} onSave={saveScaled} saving={saving}/>
    <HaccpLogModal show={showHaccpLog} recipe={selected} onHide={()=>setShowHaccpLog(false)}/>

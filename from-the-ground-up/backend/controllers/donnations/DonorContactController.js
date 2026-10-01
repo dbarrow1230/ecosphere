@@ -1,5 +1,5 @@
 // backend/controllers/donnations/DonorContactController.js
-import DonorContact from "../../models/donnations/DonationModel.js";
+import DonorContact from "../../models/donnations/DonorContactModel.js";
 
 export const createDonorContact=async(req,res)=>{
  try{

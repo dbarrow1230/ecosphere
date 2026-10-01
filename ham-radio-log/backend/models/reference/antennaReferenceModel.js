@@ -31,9 +31,9 @@ const antennaReferenceSchema=new mongoose.Schema({
  updatedBy:{type:mongoose.Schema.Types.ObjectId,ref:"User",default:null}
 },{timestamps:true,collection:"antenna_references"});
 
-antennaReferenceSchema.pre("save",function(next){
+antennaReferenceSchema.pre("save",function(){
  if(this.title)this.key=this.title.trim().toLowerCase();
- next();
+
 });
 
 antennaReferenceSchema.index({business:1,key:1},{unique:true});

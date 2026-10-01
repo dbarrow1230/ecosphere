@@ -95,7 +95,7 @@ export const updateRecipe=async(req,res)=>{
   const merged={...existing.toObject(),...payload};
   const classificationsChanged=['business','primaryCuisine','primaryCourse','primaryCategory'].some(field=>Object.hasOwn(payload,field)&&String(existing[field]||'')!==String(payload[field]||''));
   const canGenerate=merged.business&&merged.primaryCuisine&&merged.primaryCourse&&merged.primaryCategory;
-  if(classificationsChanged&&canGenerate){Object.assign(payload,await generateRecipeNumber(merged));}
+  if(canGenerate&&(classificationsChanged||!existing.recipeNumber||!existing.recipeSequence||/^IMPORT-/i.test(existing.recipeNumber))){Object.assign(payload,await generateRecipeNumber(merged));}
   else{delete payload.recipeNumber;delete payload.recipeSequence;}
   if(nutritionInputsChanged(existing.toObject(),payload)){
    payload.nutritionSync={status:'pending'};

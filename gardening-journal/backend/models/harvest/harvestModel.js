@@ -33,7 +33,7 @@ createdBy:{type:Schema.Types.ObjectId,ref:"User",default:null},
 isActive:{type:Boolean,default:true}
 },{timestamps:true,collection:"harvests"});
 
-harvestSchema.pre("save",async function(next){
+harvestSchema.pre("save",async function(){
 if(this.isNew){
 const last=await mongoose.model("Harvest").findOne({planting:this.planting}).sort({harvestDate:-1}).select("harvestDate");
 if(last){
@@ -42,7 +42,7 @@ const diff=new Date(this.harvestDate)-new Date(last.harvestDate);
 this.daysSinceLastHarvest=Math.floor(diff/(1000*60*60*24));
 }
 }
-next();
+
 });
 
 const Harvest=mongoose.models.Harvest||mongoose.model("Harvest",harvestSchema);

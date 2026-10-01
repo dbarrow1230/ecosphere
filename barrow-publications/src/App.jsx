@@ -1,3 +1,4 @@
+import WorkflowPlaceholder from "@shared/components/WorkflowPlaceholder.jsx";
 // src/App.jsx
 import {Routes,Route,useNavigate,useLocation,Navigate,Link} from "react-router-dom";
 import {useState,useEffect} from "react";
@@ -456,6 +457,7 @@ function App(){
      <Route path="/504" element={<Error504/>}/>
 
      {/**Catch All */}
+     <Route path="/reminders" element={<RequireAuth user={user}><WorkflowPlaceholder title="Reminders"/></RequireAuth>}/>
      <Route path="*" element={<Error404/>}/>
     </Routes>
    </main>

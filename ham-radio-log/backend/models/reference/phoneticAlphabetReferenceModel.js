@@ -23,9 +23,9 @@ const phoneticAlphabetReferenceSchema=new mongoose.Schema({
  updatedBy:{type:mongoose.Schema.Types.ObjectId,ref:"User",default:null}
 },{timestamps:true,collection:"phonetic_alphabet_references"});
 
-phoneticAlphabetReferenceSchema.pre("save",function(next){
+phoneticAlphabetReferenceSchema.pre("save",function(){
  if(this.symbol)this.key=this.symbol.trim().toLowerCase();
- next();
+
 });
 
 phoneticAlphabetReferenceSchema.index({business:1,key:1},{unique:true});

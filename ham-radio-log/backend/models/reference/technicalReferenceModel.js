@@ -29,9 +29,9 @@ const technicalReferenceSchema=new mongoose.Schema({
  updatedBy:{type:mongoose.Schema.Types.ObjectId,ref:"User",default:null}
 },{timestamps:true,collection:"technical_references"});
 
-technicalReferenceSchema.pre("save",function(next){
+technicalReferenceSchema.pre("save",function(){
  if(this.title)this.key=this.title.trim().toLowerCase();
- next();
+
 });
 
 technicalReferenceSchema.index({business:1,key:1},{unique:true});

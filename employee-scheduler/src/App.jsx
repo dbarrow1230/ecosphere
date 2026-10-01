@@ -1,3 +1,4 @@
+import WorkflowPlaceholder from "@shared/components/WorkflowPlaceholder.jsx";
 // src/App.jsx
 import {Routes,Route,useNavigate,useLocation} from "react-router-dom";
 import {useState,useEffect} from "react";
@@ -235,6 +236,10 @@ function App(){
      <Route path="/504" element={<Error504/>}/>
 
      {/**Catch All */}
+     <Route path="/events" element={<WorkflowPlaceholder title="Events"/>}/>
+     <Route path="/orders" element={<WorkflowPlaceholder title="Orders"/>}/>
+     <Route path="/clients" element={<WorkflowPlaceholder title="Clients"/>}/>
+     <Route path="/reports" element={<WorkflowPlaceholder title="Reports"/>}/>
      <Route path="*" element={<Error404/>}/>
          <Route path="/schedule" element={<ShiftCalendarPage/>}/>
      <Route path="/shifts/add" element={<ShiftCalendarPage/>}/>

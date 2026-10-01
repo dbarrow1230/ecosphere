@@ -6,7 +6,7 @@ const AuthorModelSchema=new mongoose.Schema({
  lastName:{type:String,trim:true,required:true},
  displayName:{type:String,trim:true,index:true},
  sortName:{type:String,trim:true},
- slug:{type:String,trim:true,lowercase:true,unique:true,index:true},
+ slug:{type:String,trim:true,lowercase:true},
  birthDate:{type:Date,default:null},
  deathDate:{type:Date,default:null,validate:{validator:function(v){return !v||!this.birthDate||v>=this.birthDate;},message:"deathDate cannot be before birthDate"}},
  nationality:{type:String,trim:true,default:""},
@@ -39,6 +39,10 @@ AuthorModelSchema.pre("validate",function(){
   .replace(/-+/g,"-")
   .replace(/^-+|-+$/g,"");
 });
+
+// Legacy imported authors may not have a slug yet. Keep generated slugs unique
+// without preventing the application from loading those existing records.
+AuthorModelSchema.index({slug:1},{unique:true,partialFilterExpression:{slug:{$type:"string",$gt:""}}});
 
 AuthorModelSchema.index({displayName:"text",bio:"text",nationality:"text"});
 AuthorModelSchema.index({lastName:1,firstName:1});

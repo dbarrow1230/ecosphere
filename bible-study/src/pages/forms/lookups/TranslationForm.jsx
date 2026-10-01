@@ -184,7 +184,7 @@ function TranslationForm({id:propId="",onSuccess,onClose,embedded=false}){
    }
    else{
     setTimeout(()=>{
-     navigate("/lookups/translations");
+     navigate("/translations");
     },800);
    }
   }
@@ -298,7 +298,7 @@ function TranslationForm({id:propId="",onSuccess,onClose,embedded=false}){
        onClose();
        return;
       }
-      navigate("/lookups/translations");
+      navigate("/translations");
      }}>Cancel</Button>:null}
     </Col>
 

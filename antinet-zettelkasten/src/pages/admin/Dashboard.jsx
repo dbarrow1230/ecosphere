@@ -72,7 +72,7 @@ const ownerTools=[
 
 const adminTools=[
  {title:"Users",text:"Create users, assign roles, and manage profile details.",to:"/users",icon:Users},
- {title:"Permissions",text:"Review role modules and permission assignments.",to:"/permissions",icon:ShieldCheck},
+ {title:"Permissions",text:"Review role modules and permission assignments.",to:"/admin/business-roles-permissions",icon:ShieldCheck},
  {title:"Reminders",text:"Manage reminders and follow-up work.",to:"/reminders",icon:ClipboardList}
 ];
 

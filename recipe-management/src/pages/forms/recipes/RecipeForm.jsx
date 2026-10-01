@@ -46,7 +46,7 @@ const nutritionFields=[
 ];
 
 const buildForm=source=>({
- business:id(source.business),name:source.name||"",recipeNumber:source.recipeNumber||"",recipeSequence:source.recipeSequence||null,image:source.image||"",cuisines:ids(source.cuisines),courses:ids(source.courses),mealType:id(source.mealType),categories:ids(source.categories),primaryCuisine:id(source.primaryCuisine)||ids(source.cuisines)[0]||"",primaryCourse:id(source.primaryCourse)||ids(source.courses)[0]||"",primaryCategory:id(source.primaryCategory)||ids(source.categories)[0]||"",sourceCuisine:source.sourceCuisine||source.cuisine||source.referenceNames?.cuisine||"",sourceCourse:source.sourceCourse||source.course||source.referenceNames?.course||"",sourceCategory:source.sourceCategory||source.category||source.referenceNames?.category||"",sourceMealType:source.sourceMealType||source.mealTypeName||"",
+ business:id(source.business),name:source.name||"",recipeNumber:source.recipeNumber||"",recipeSequence:source.recipeSequence||null,image:source.image||"",cuisines:[...new Set([...ids(source.cuisines),id(source.primaryCuisine)].filter(Boolean))],courses:[...new Set([...ids(source.courses),id(source.primaryCourse)].filter(Boolean))],mealType:id(source.mealType),categories:[...new Set([...ids(source.categories),id(source.primaryCategory)].filter(Boolean))],primaryCuisine:id(source.primaryCuisine)||ids(source.cuisines)[0]||"",primaryCourse:id(source.primaryCourse)||ids(source.courses)[0]||"",primaryCategory:id(source.primaryCategory)||ids(source.categories)[0]||"",sourceCuisine:source.sourceCuisine||source.cuisine||source.referenceNames?.cuisine||"",sourceCourse:source.sourceCourse||source.course||source.referenceNames?.course||"",sourceCategory:source.sourceCategory||source.category||source.referenceNames?.category||"",sourceMealType:source.sourceMealType||source.mealTypeName||"",
  dietaryConsiderations:ids(source.dietaryConsiderations),yield:{...emptyQuantity(),...(source.yield||{}),imperialUnit:id(source.yield?.imperialUnit),metricUnit:id(source.yield?.metricUnit)},
  servingSize:{...emptyQuantity(),...(source.servingSize||{}),imperialUnit:id(source.servingSize?.imperialUnit),metricUnit:id(source.servingSize?.metricUnit)},servingSizeDescription:source.servingSizeDescription||"",servings:source.servings??"",
  times:{prepTime:"",cookTime:"",chillTime:"",restTime:"",...(source.times||{})},flavorProfile:{taste:editableLines(source.flavorProfile?.taste),aroma:editableLines(source.flavorProfile?.aroma),mouthfeel:editableLines(source.flavorProfile?.mouthfeel)},
@@ -95,18 +95,19 @@ export default function RecipeForm({initialData={},lookups={},onSubmit,loading=f
 
  useEffect(()=>{
   const signature=[data.business,data.primaryCourse,data.primaryCuisine,data.primaryCategory].join(":");
-  if(!data.business||!data.primaryCourse||!data.primaryCuisine||!data.primaryCategory||reservedSignature.current===signature)return;
+  if(!data.business||!data.primaryCourse||!data.primaryCuisine||!data.primaryCategory||(reservedSignature.current===signature&&data.recipeNumber&&data.recipeSequence))return;
   const controller=new AbortController();
   const timer=setTimeout(async()=>{
    try{
     setReservingNumber(true);setFormError("");
-    const response=await fetch("/api/recipes/reserve-number",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({business:data.business,primaryCourse:data.primaryCourse,primaryCuisine:data.primaryCategory}),signal:controller.signal});
-    const payload=await response.json().catch(()=>null);if(!response.ok)throw new Error(payload?.message||"Failed to reserve recipe number.");
+    const response=await fetch("/api/recipes/reserve-number",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({business:data.business,primaryCourse:data.primaryCourse,primaryCuisine:data.primaryCuisine,primaryCategory:data.primaryCategory}),signal:controller.signal});
+    const payload=await response.json().catch(()=>null);if(!response.ok)throw new Error(payload?.error||payload?.message||"Failed to reserve recipe number.");
+    if(controller.signal.aborted)return;
     reservedSignature.current=signature;setData(prev=>({...prev,recipeNumber:payload.recipeNumber,recipeSequence:payload.recipeSequence}));
    }catch(error){if(error.name!=="AbortError")setFormError(error.message||"Failed to reserve recipe number.");}finally{if(!controller.signal.aborted)setReservingNumber(false);}
   },350);
-  return()=>{clearTimeout(timer);controller.abort();};
- },[data.business,data.primaryCourse,data.primaryCuisine,data.primaryCategory,initialData?._id]);
+  return()=>{clearTimeout(timer);controller.abort();setReservingNumber(false);};
+ },[data.business,data.primaryCourse,data.primaryCuisine,data.primaryCategory,data.recipeNumber,data.recipeSequence,initialData?._id]);
 
  const change=e=>{const {name,value,type,checked}=e.target;setData(prev=>({...prev,[name]:type==="checkbox"?checked:value}));};
  const nestedChange=(section,name,value)=>setData(prev=>({...prev,[section]:{...prev[section],[name]:value}}));
@@ -175,6 +176,9 @@ export default function RecipeForm({initialData={},lookups={},onSubmit,loading=f
  const createLookup=async(type,payload,apply)=>{
   const name=typeof payload==="string"?payload:payload?.name;
   if(!onCreateLookup||!name?.trim())return;
+  const lookupKey={"meal-types":"mealTypes"}[type]||type;
+  const existing=(lookups[lookupKey]||[]).find(item=>normalizeName(item.name)===normalizeName(name));
+  if(existing){apply(existing._id);return existing;}
   try{setCreatingLookup(`${type}:${name}`);setFormError("");const record=await onCreateLookup(type,payload);apply(record._id);return record;}
   catch(err){setFormError(err.message||`Failed to create ${name}.`);}finally{setCreatingLookup("");}
  };
@@ -278,6 +282,12 @@ export default function RecipeForm({initialData={},lookups={},onSubmit,loading=f
    })
   };
   const next=buildForm(parsed);
+  // A partial parser result must preserve fields already entered in this form.
+  const parserFields={cuisines:["cuisine","cuisines","referenceNames"],primaryCuisine:["cuisine","primaryCuisine","referenceNames"],courses:["course","courses","referenceNames"],primaryCourse:["course","primaryCourse","referenceNames"],categories:["category","categories","referenceNames"],primaryCategory:["category","primaryCategory","referenceNames"],sourceCuisine:["cuisine","referenceNames"],sourceCourse:["course","referenceNames"],sourceCategory:["category","referenceNames"],sourceMealType:["mealTypeName"],dietaryConsiderations:["dietaryConsiderations","dietaryConsiderationNames","referenceNames"],equipment:["equipmentNames"],unmatchedEquipment:["equipmentNames"],techniqueRefs:["techniques"],unmatchedTechniques:["techniques"],unmatchedDietaries:["dietaryConsiderations","dietaryConsiderationNames","referenceNames"]};
+  for(const key of Object.keys(data)){
+   if(!(parserFields[key]||[key]).some(field=>Object.hasOwn(source,field)))next[key]=structuredClone(data[key]);
+  }
+  next.recipeNumber="";next.recipeSequence=null;
   const servingCount=countFromDescription(next.servingSizeDescription);
   if(servingCount&&next.servingSize.imperialQuantity===""&&next.servingSize.metricQuantity===""){
    next.servingSize.imperialQuantity=servingCount.quantity;

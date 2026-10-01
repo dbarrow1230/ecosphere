@@ -1,3 +1,4 @@
+import AllergenForm from "@shared/components/AllergenForm.jsx";
 import WorkflowPlaceholder from "@shared/components/WorkflowPlaceholder.jsx";
 // src/App.jsx
 import {Routes,Route,useNavigate,useLocation,Navigate,Link} from "react-router-dom";
@@ -484,6 +485,8 @@ return(
      <Route path="/504" element={<Error504/>}/>
 
      {/**Catch All */}
+     <Route path="/referance/allergens/new" element={<RequireAuth user={user}><AllergenForm returnPath="/admin/allergens"/></RequireAuth>}/>
+     <Route path="/referance/allergens/:id/edit" element={<RequireAuth user={user}><AllergenForm returnPath="/admin/allergens"/></RequireAuth>}/>
      <Route path="*" element={<Error404/>}/>
          <Route path="/low-stock" element={<RequireAuth user={user}><EquipmentInventory/></RequireAuth>}/>
      <Route path="/expiring" element={<RequireAuth user={user}><EquipmentInventory/></RequireAuth>}/>

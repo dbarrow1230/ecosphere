@@ -25,9 +25,9 @@ const cwReferenceSchema=new mongoose.Schema({
  updatedBy:{type:mongoose.Schema.Types.ObjectId,ref:"User",default:null}
 },{timestamps:true,collection:"cw_references"});
 
-cwReferenceSchema.pre("save",function(next){
+cwReferenceSchema.pre("save",function(){
  if(this.title)this.key=this.title.trim().toLowerCase();
- next();
+
 });
 
 cwReferenceSchema.index({business:1,key:1},{unique:true});

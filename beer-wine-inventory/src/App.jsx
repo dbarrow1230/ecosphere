@@ -1,3 +1,4 @@
+import WorkflowPlaceholder from "@shared/components/WorkflowPlaceholder.jsx";
 // src/App.jsx
 import {Routes,Route,useNavigate,useLocation} from "react-router-dom";
 import {useState,useEffect} from "react";
@@ -252,6 +253,7 @@ const unwrapBusiness=data=>{
      <Route path="/504" element={<Error504/>}/>
 
      {/**Catch All */}
+     <Route path="/reminders" element={<WorkflowPlaceholder title="Reminders"/>}/>
      <Route path="*" element={<Error404/>}/>
     </Routes>
    </main>

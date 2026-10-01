@@ -24,9 +24,9 @@ const radioTermSchema=new mongoose.Schema({
  updatedBy:{type:mongoose.Schema.Types.ObjectId,ref:"User",default:null}
 },{timestamps:true,collection:"radio_terms"});
 
-radioTermSchema.pre("save",function(next){
+radioTermSchema.pre("save",function(){
  if(this.term)this.key=this.term.trim().toLowerCase();
- next();
+
 });
 
 radioTermSchema.index({business:1,key:1},{unique:true});

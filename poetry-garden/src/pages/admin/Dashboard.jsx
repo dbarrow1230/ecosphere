@@ -72,7 +72,7 @@ const ownerTools=[
 ];
 
 const adminTools=[
- {title:"Users",text:"Create users, assign departments and optional role overrides, and manage profile details.",to:"/admin/users",icon:Users},
+ {title:"Users",text:"Create users, assign departments and optional role overrides, and manage profile details.",to:"/users",icon:Users},
  {title:"Roles & Permissions",text:"Manage roles, departments, permission modules, and overrides.",to:"/admin/business-roles-permissions",icon:ShieldCheck}
 ];
 

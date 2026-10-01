@@ -7,10 +7,10 @@ const plantingDepthSchema = new mongoose.Schema({
   description: { type: String, trim: true }
 }, { timestamps: true, collection: 'planting_depths' });
 
-plantingDepthSchema.pre('save', function(next) {
+plantingDepthSchema.pre('save', function() {
   if (this.inches != null && this.centimeters == null) this.centimeters = +(this.inches * 2.54).toFixed(2);
   if (this.centimeters != null && this.inches == null) this.inches = +(this.centimeters / 2.54).toFixed(2);
-  next();
+
 });
 
 const PlantingDepth = mongoose.model('PlantingDepth', plantingDepthSchema);

@@ -1,3 +1,4 @@
+import PlannerPreview from "./pages/PlannerPreview.jsx";
 import WorkflowPlaceholder from "@shared/components/WorkflowPlaceholder.jsx";
 // src/App.jsx
 import {Routes,Route,useNavigate,useLocation} from "react-router-dom";
@@ -220,6 +221,8 @@ function App(){
      <Route path="/504" element={<Error504/>}/>
 
      {/**Catch All */}
+     <Route path="/planners/:category/:template" element={<PlannerPreview/>}/>
+     <Route path="/admin/users" element={<Users/>}/>
      <Route path="*" element={<Error404/>}/>
          <Route path="/items/add" element={<WorkflowPlaceholder title="Items / Add"/>}/>
      <Route path="/items" element={<WorkflowPlaceholder title="Items"/>}/>

@@ -41,7 +41,10 @@ function ApplicationWorkspace(){
    const response=await fetch(`/api/app-runtime/activate/${encodeURIComponent(app.id)}`,{method:"POST"});
    const data=await response.json().catch(()=>({}));
 
-   if(!response.ok)throw new Error(data.message||data.error||"Unable to start the application.");
+   if(!response.ok){
+    const message=data.message||"Unable to start the application.";
+    throw new Error(data.error?`${message} ${data.error}`:message);
+   }
 
    const baseUrl=data.url||app.url;
    let applicationUrl=baseUrl;

@@ -58,11 +58,11 @@ employeeSchema.virtual("fullName").get(function(){
  return `${this.firstName||""} ${this.lastName||""}`.trim();
 });
 
-employeeSchema.pre("save",function(next){
+employeeSchema.pre("save",function(){
  if(this.hireDate&&!this.originalHireDate)this.originalHireDate=this.hireDate;
  if(this.hireDate)this.lastHireDate=this.hireDate;
  if(this.payType==="salary")this.overtimeEligible=false;
- next();
+
 });
 
 employeeSchema.index({business:1,email:1},{unique:true});

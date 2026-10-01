@@ -19,9 +19,9 @@ const referenceOrganizationSchema=new mongoose.Schema({
  updatedBy:{type:mongoose.Schema.Types.ObjectId,ref:"User",default:null}
 },{timestamps:true,collection:"reference_organizations"});
 
-referenceOrganizationSchema.pre("save",function(next){
+referenceOrganizationSchema.pre("save",function(){
  if(this.name)this.key=this.name.trim().toLowerCase();
- next();
+
 });
 
 referenceOrganizationSchema.index({business:1,key:1},{unique:true});

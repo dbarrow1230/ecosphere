@@ -20,24 +20,24 @@ const rolePermissionSchema=new mongoose.Schema(
 rolePermissionSchema.index({role:1,module:1},{unique:true});
 rolePermissionSchema.index({business:1,module:1});
 
-rolePermissionSchema.pre("validate",async function(next){
+rolePermissionSchema.pre("validate",async function(){
  if(!this.role||!this.business)
  {
-  return next();
+  return;
  }
 
  const roleDoc=await Role.findById(this.role).select("business").lean();
  if(!roleDoc)
  {
-  return next(new Error("Invalid role."));
+  throw new Error("Invalid role.");
  }
 
  if(String(roleDoc.business)!==String(this.business))
  {
-  return next(new Error("Role does not belong to the selected business."));
+  throw new Error("Role does not belong to the selected business.");
  }
 
- next();
+
 });
 
 const RolePermission=businessInfoConnection.models.RolePermission||businessInfoConnection.model("RolePermission",rolePermissionSchema);

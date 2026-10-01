@@ -225,6 +225,9 @@ function App(){
      <Route path="/504" element={<Error504/>}/>
 
      {/**Catch All */}
+     <Route path="/events" element={<WorkflowPlaceholder title="Events"/>}/>
+     <Route path="/clients" element={<WorkflowPlaceholder title="Clients"/>}/>
+     <Route path="/reports" element={<Reports/>}/>
      <Route path="*" element={<Error404/>}/>
          <Route path="/trips/add" element={<WorkflowPlaceholder title="Trips / Add"/>}/>
      <Route path="/inventory" element={<Inventory/>}/>

@@ -59,7 +59,7 @@ function AllergensPage(){
   rows.map(allergen=>(
    <tr key={allergen._id}>
     <td>{allergen.emoji}</td>
-    <td>{allergen.name}</td>
+    <td>{allergen.name}{allergen.description&&<div className="small text-muted">{allergen.description}</div>}</td>
     <td>{allergen.code}</td>
     <td>{allergen.severityLevel}</td>
     <td>{allergen.isActive?"Active":"Inactive"}</td>

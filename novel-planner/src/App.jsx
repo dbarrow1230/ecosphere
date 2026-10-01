@@ -1,3 +1,4 @@
+import AllergenForm from "@shared/components/AllergenForm.jsx";
 // src/App.jsx
 import {Routes,Route,useNavigate,useLocation,Navigate,Link} from "react-router-dom";
 import {useState,useEffect} from "react";
@@ -498,6 +499,8 @@ function App(){
      <Route path="/504" element={<Error504/>}/>
 
      {/**Catch All */}
+     <Route path="/referance/allergens/new" element={<RequireAuth user={user}><AllergenForm returnPath="/admin/allergens"/></RequireAuth>}/>
+     <Route path="/referance/allergens/:id/edit" element={<RequireAuth user={user}><AllergenForm returnPath="/admin/allergens"/></RequireAuth>}/>
      <Route path="*" element={<Error404/>}/>
     </Routes>
    </main>

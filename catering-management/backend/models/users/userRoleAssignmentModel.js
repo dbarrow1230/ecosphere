@@ -17,32 +17,27 @@ userRoleAssignmentSchema.index({user:1,business:1,role:1},{unique:true});
 userRoleAssignmentSchema.index({user:1,business:1});
 userRoleAssignmentSchema.index({business:1,role:1});
 
-userRoleAssignmentSchema.pre("validate",async function(next){
- try
- {
+userRoleAssignmentSchema.pre("validate",async function(){
+
   if(!this.role||!this.business)
   {
-   return next();
+   return;
   }
 
   const roleDoc=await Role.findById(this.role).select("business").lean();
 
   if(!roleDoc)
   {
-   return next(new Error("Invalid role."));
+   throw new Error("Invalid role.");
   }
 
   if(String(roleDoc.business)!==String(this.business))
   {
-   return next(new Error("Role does not belong to the selected business."));
+   throw new Error("Role does not belong to the selected business.");
   }
 
-  next();
- }
- catch(error)
- {
-  next(error);
- }
+
+
 });
 
 const UserRoleAssignment=businessInfoConnection.models.UserRoleAssignment||businessInfoConnection.model("UserRoleAssignment",userRoleAssignmentSchema);

@@ -1,3 +1,4 @@
+import AllergenForm from "@shared/components/AllergenForm.jsx";
 import WorkflowPlaceholder from "@shared/components/WorkflowPlaceholder.jsx";
 // src/App.jsx
 import {Routes,Route,useNavigate,useLocation} from "react-router-dom";
@@ -257,6 +258,8 @@ function App(){
      <Route path="/504" element={<Error504/>}/>
 
      {/**Catch All */}
+     <Route path="/referance/allergens/new" element={<AllergenForm returnPath="/reference/allergens"/>}/>
+     <Route path="/referance/allergens/:id/edit" element={<AllergenForm returnPath="/reference/allergens"/>}/>
      <Route path="*" element={<Error404/>}/>
          <Route path="/inventory/add" element={<Inventory/>}/>
      <Route path="/batches/add" element={<Batches/>}/>

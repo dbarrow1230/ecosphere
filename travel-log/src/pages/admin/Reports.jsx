@@ -1,12 +1,13 @@
 // src/pages/Reports.jsx
 import {useState,useEffect,useMemo} from "react";
-import {Container,Row,Col,Card,Table,Form} from "react-bootstrap";
+import {Container,Row,Col,Card,Table,Form,Alert,Button} from "react-bootstrap";
 
 function Reports(){
 
  const [events,setEvents]=useState([]);
  const [orders,setOrders]=useState([]);
  const [loading,setLoading]=useState(true);
+ const [error,setError]=useState("");
 
  const [range,setRange]=useState("this-month");
 
@@ -21,12 +22,14 @@ function Reports(){
  const fetchData=async()=>{
   try{
    setLoading(true);
+   setError("");
 
    const [eventsRes,ordersRes]=await Promise.all([
     fetch("/api/events"),
     fetch("/api/orders")
    ]);
 
+   if(!eventsRes.ok||!ordersRes.ok)throw new Error("Reports could not load event and order data. These workflows may not be connected in this application yet.");
    const eventsData=await eventsRes.json();
    const ordersData=await ordersRes.json();
 
@@ -47,6 +50,7 @@ function Reports(){
    );
 
   }catch(err){
+   setError(err.message||"Failed to load reports.");
    console.error("Reports load error:",err);
   }finally{
    setLoading(false);
@@ -68,11 +72,12 @@ function Reports(){
   const now=new Date();
 
   const startOfWeek=new Date(now);
+  startOfWeek.setHours(0,0,0,0);
   startOfWeek.setDate(now.getDate()-now.getDay());
 
   const startOfMonth=new Date(now.getFullYear(),now.getMonth(),1);
   const startOfLastMonth=new Date(now.getFullYear(),now.getMonth()-1,1);
-  const endOfLastMonth=new Date(now.getFullYear(),now.getMonth(),0);
+  const endOfLastMonth=new Date(now.getFullYear(),now.getMonth(),0,23,59,59,999);
 
   const startOfYear=new Date(now.getFullYear(),0,1);
 
@@ -146,6 +151,9 @@ function Reports(){
    avgOrder:formatMoney(summary.ytd.avg)
   }
  ];
+
+ if(error)return <Container className="py-4"><h1>Reports</h1><Alert variant="warning">{error}</Alert><Button onClick={fetchData} disabled={loading}>Retry</Button></Container>;
+ if(loading)return <Container className="py-4" role="status">Loading reports...</Container>;
 
  return(
   <section className="reports-page py-4">
