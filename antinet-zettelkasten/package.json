@@ -13,7 +13,7 @@
     "jwt:secret": "node -e \"import('crypto').then(c=>console.log(c.randomBytes(64).toString('hex')))\""
   },
   "dependencies": {
-    "@dotenvx/dotenvx": "^1.67.0",
+    "@dotenvx/dotenvx": "^2.32.2",
     "@fortawesome/fontawesome-free": "^7.1.0",
     "@fortawesome/fontawesome-svg-core": "^7.1.0",
     "@fortawesome/free-brands-svg-icons": "^7.1.0",

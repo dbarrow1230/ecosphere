@@ -63,10 +63,8 @@ import {notFound,errorHandler} from "./middleware/errorMiddleware.js";
 const app=express();
 const server=http.createServer(app);
 const PORT=process.env.PORT||3001;
-
 const __filename=fileURLToPath(import.meta.url);
 const __dirname=path.dirname(__filename);
-
 let isShuttingDown=false;
 const activeFrontendServers=new Map();
 const activeBackendProcesses=new Map();
@@ -78,67 +76,52 @@ const runtimeConfig=JSON.parse(fs.readFileSync(runtimeConfigPath,"utf8"));
 
 const getApplicationDirectory=appId=>{
  if(!appIdPattern.test(appId))return null;
-
  const ecosphereRoot=path.resolve(__dirname,"..");
  const localDirectory=path.join(ecosphereRoot,appId);
-
  if(fs.existsSync(path.join(localDirectory,"package.json")))return localDirectory;
-
  return null;
 };
 
 const parsePlainEnvironmentFile=filePath=>{
  const values={};
-
  for(const rawLine of fs.readFileSync(filePath,"utf8").split(/\r?\n/)){
   const line=rawLine.trim();
   if(!line||line.startsWith("#"))continue;
-
   const separatorIndex=line.indexOf("=");
   if(separatorIndex<1)continue;
-
   const key=line.slice(0,separatorIndex).trim();
   let value=line.slice(separatorIndex+1).trim();
   if((value.startsWith('"')&&value.endsWith('"'))||(value.startsWith("'")&&value.endsWith("'")))value=value.slice(1,-1);
   values[key]=value;
  }
-
  return values;
 };
 
 const getEnvironmentKeys=filePath=>{
  const keys=[];
-
  for(const rawLine of fs.readFileSync(filePath,"utf8").split(/\r?\n/)){
   const line=rawLine.trim();
   if(!line||line.startsWith("#"))continue;
-
   const separatorIndex=line.indexOf("=");
   if(separatorIndex<1)continue;
-
   const key=line.slice(0,separatorIndex).trim();
   if(/^[A-Za-z_][A-Za-z0-9_]*$/.test(key))keys.push(key);
  }
-
  return keys;
 };
 
 const waitForApplicationBackend=async(port,childProcess,retries=60)=>{
  const healthUrl=`http://${runtimeConfig.host}:${port}/api/health`;
-
  for(let attempt=0;attempt<retries;attempt+=1){
   if(childProcess.exitCode!==null)throw new Error(`Application backend exited with code ${childProcess.exitCode}.`);
-
   try{
    const response=await fetch(healthUrl,{signal:AbortSignal.timeout(750)});
    if(response.ok)return;
   }catch{
    // The backend is still connecting to its configured database.
   }
-
   await new Promise(resolve=>setTimeout(resolve,500));
  }
-
  throw new Error(`Application backend did not become ready on port ${port}.`);
 };
 
@@ -154,33 +137,26 @@ const endpointIsReady=async url=>{
 const startApplicationBackend=async appId=>{
  const backendPort=runtimeConfig.backends?.[appId];
  if(!backendPort)throw new Error(`No backend port is configured for "${appId}".`);
-
  const runningProcess=activeBackendProcesses.get(appId);
  if(runningProcess&&runningProcess.exitCode===null){
   await waitForApplicationBackend(backendPort,runningProcess);
   return backendPort;
  }
-
  const healthUrl=`http://${runtimeConfig.host}:${backendPort}/api/health`;
  if(await endpointIsReady(healthUrl))return backendPort;
-
  const applicationDirectory=getApplicationDirectory(appId);
  if(!applicationDirectory)throw new Error(`Application directory not found for "${appId}".`);
-
  const serverPath=path.join(applicationDirectory,"backend","server.js");
  const environmentPath=path.join(applicationDirectory,"backend",".env");
  if(!fs.existsSync(serverPath))throw new Error(`Backend server is missing for "${appId}".`);
  if(!fs.existsSync(environmentPath))throw new Error(`Backend environment is missing for "${appId}".`);
-
  const dotenvxCliPath=path.resolve(__dirname,"..","node_modules","@dotenvx","dotenvx","src","cli","dotenvx.js");
  if(!fs.existsSync(dotenvxCliPath))throw new Error("The shared Dotenvx runtime is not installed.");
  const childEnvironment={...process.env};
-
  for(const key of getEnvironmentKeys(environmentPath))delete childEnvironment[key];
  for(const key of Object.keys(childEnvironment)){
   if(key==="DOTENV_PUBLIC_KEY"||key.startsWith("DOTENV_PRIVATE_KEY"))delete childEnvironment[key];
  }
-
  if(!process.env.JWT_SECRET)throw new Error("The Eco Sphere JWT_SECRET is not configured.");
 
  // Child applications keep their own database and service environment, but all
@@ -209,9 +185,11 @@ const startApplicationBackend=async appId=>{
  childProcess.stdout?.on("data",data=>{
   for(const line of String(data).split(/\r?\n/).filter(Boolean))console.log(`[${appId}:backend] ${line}`);
  });
+
  childProcess.stderr?.on("data",data=>{
   for(const line of String(data).split(/\r?\n/).filter(Boolean))console.error(`[${appId}:backend] ${line}`);
  });
+
  childProcess.on("exit",()=>{
   if(activeBackendProcesses.get(appId)===childProcess)activeBackendProcesses.delete(appId);
  });
@@ -229,10 +207,8 @@ const startApplicationBackend=async appId=>{
 const activateApplicationBackend=async appId=>{
  const pendingActivation=pendingBackendActivations.get(appId);
  if(pendingActivation)return pendingActivation;
-
  const activation=startApplicationBackend(appId);
  pendingBackendActivations.set(appId,activation);
-
  try{
   return await activation;
  }finally{
@@ -245,26 +221,29 @@ const startApplicationFrontend=async appId=>{
  if(!frontendPort)throw new Error(`No frontend port is configured for "${appId}".`);
  const backendPort=runtimeConfig.backends?.[appId];
  if(!backendPort)throw new Error(`No backend port is configured for "${appId}".`);
-
  const frontendUrl=`http://${runtimeConfig.host}:${frontendPort}`;
  if(activeFrontendServers.has(appId))return frontendUrl;
  if(await endpointIsReady(frontendUrl))return frontendUrl;
 
  const applicationDirectory=getApplicationDirectory(appId);
  if(!applicationDirectory)throw new Error(`Application directory not found for "${appId}".`);
+
  const frontendEnvironmentPath=path.join(applicationDirectory,".env");
  const frontendEnvironment=fs.existsSync(frontendEnvironmentPath)
   ?parsePlainEnvironmentFile(frontendEnvironmentPath)
   :{};
+
  const backendEnvironmentPath=path.join(applicationDirectory,"backend",".env");
  const backendEnvironment=fs.existsSync(backendEnvironmentPath)
   ?parsePlainEnvironmentFile(backendEnvironmentPath)
   :{};
+
  const backendUrl=`http://${runtimeConfig.host}:${backendPort}`;
  const uploadDirectories=String(frontendEnvironment.VITE_UPLOAD_DIRS||backendEnvironment.UPLOAD_DIRS||"")
   .split(",")
   .map(directory=>directory.trim())
   .filter(Boolean);
+
  const runtimeProxy={
   "/api":{target:backendUrl,changeOrigin:true,secure:false},
   "/socket.io":{target:backendUrl,changeOrigin:true,secure:false,ws:true}
@@ -275,7 +254,6 @@ const startApplicationFrontend=async appId=>{
  }
 
  const shellViteEntry=path.resolve(__dirname,"..","node_modules","vite","dist","node","index.js");
-
  if(!fs.existsSync(shellViteEntry)){
   throw new Error("The Eco Sphere shell Vite runtime is not installed.");
  }
@@ -302,17 +280,14 @@ const startApplicationFrontend=async appId=>{
 
  await frontendServer.listen();
  activeFrontendServers.set(appId,frontendServer);
-
  return frontendUrl;
 };
 
 const activateApplicationFrontend=async appId=>{
  const pendingActivation=pendingFrontendActivations.get(appId);
  if(pendingActivation)return pendingActivation;
-
  const activation=startApplicationFrontend(appId);
  pendingFrontendActivations.set(appId,activation);
-
  try{
   return await activation;
  }finally{
@@ -340,12 +315,9 @@ const uploadDirNames=(process.env.UPLOAD_DIRS||"").split(",").map(dir=>dir.trim(
 
 const uploadDirs=uploadDirNames.reduce((acc,dir)=>{
  const dirPath=path.join(uploadRoot,dir);
-
  if(!fs.existsSync(dirPath))fs.mkdirSync(dirPath,{recursive:true});
-
  app.use(`/${dir}`,express.static(dirPath));
  acc[dir]=dirPath;
-
  return acc;
 },{});
 
@@ -363,7 +335,6 @@ const ensureDir=dirPath=>{
 
 const getUploadFolder=req=>{
  const dir=sanitizePathPart(req.params.dir||req.body.dir||req.query.dir||"");
-
  if(!dir||!uploadDirs[dir])return null;
 
  const folderName=sanitizePathPart(req.body.folderName||req.query.folderName||"");
@@ -384,20 +355,14 @@ const getUploadFolder=req=>{
   ensureDir(dirPath);
  }
 
- return{
-  dir,
-  dirPath,
-  relativeDir
- };
+ return{dir,dirPath,relativeDir};
 };
 
 const storage=multer.diskStorage({
  destination:(req,file,cb)=>{
   try{
    const target=getUploadFolder(req);
-
    if(!target)return cb(new Error("Invalid upload directory"));
-
    ensureDir(target.dirPath);
    cb(null,target.dirPath);
   }catch(error){
@@ -418,10 +383,7 @@ const storage=multer.diskStorage({
  }
 });
 
-const upload=multer({
- storage,
- limits:{fileSize:parseInt(process.env.UPLOAD_MAX_SIZE,10)||26214400}
-});
+const upload=multer({storage,limits:{fileSize:parseInt(process.env.UPLOAD_MAX_SIZE,10)||26214400}});
 
 /* API's */
 app.get("/api/health",(req,res)=>{
@@ -526,6 +488,7 @@ app.post("/api/upload/:dir",upload.single("file"),(req,res)=>{
 
 /* error middleware */
 app.use(notFound);
+
 app.use((err,req,res,next)=>{
  if(err instanceof multer.MulterError){
   if(err.code==="LIMIT_FILE_SIZE"){
@@ -539,8 +502,6 @@ app.use((err,req,res,next)=>{
  return errorHandler(err,req,res,next);
 });
 
-
-
 const waitForMongo=async(uri,retries=30,delay=2000)=>{
  for(let i=0;i<retries;i++){
   try{
@@ -549,9 +510,7 @@ const waitForMongo=async(uri,retries=30,delay=2000)=>{
    return;
   }catch(err){
    console.log(`Waiting for MongoDB... attempt ${i+1}/${retries}`);
-
    if(i===retries-1)throw err;
-
    await new Promise(resolve=>setTimeout(resolve,delay));
   }
  }
@@ -560,14 +519,12 @@ const waitForMongo=async(uri,retries=30,delay=2000)=>{
 const closeServer=()=>{
  return new Promise(resolve=>{
   if(!server.listening)return resolve();
-
   server.close(()=>resolve());
  });
 };
 
 const shutdown=async(signal="SIGTERM")=>{
  if(isShuttingDown)return;
-
  isShuttingDown=true;
 
  try{
@@ -605,8 +562,6 @@ const shutdown=async(signal="SIGTERM")=>{
    await mongoose.connection.close();
   }
 
-
-
   process.exit(0);
  }catch(err){
   console.error(err);
@@ -634,9 +589,7 @@ const startKeyboardShutdown=()=>{
 
 const startApp=async()=>{
  if(!process.env.MONGO_URI)throw new Error("MONGO_URI is not defined");
-
  await waitForMongo(process.env.MONGO_URI);
-
  startKeyboardShutdown();
 
  server.listen(PORT,()=>{
