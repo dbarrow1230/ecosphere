@@ -25,7 +25,7 @@ export default function GardeningJournalBoard({user}){
 	const [dashboard,setDashboard]=useState(null);
 	const [calendarTab,setCalendarTab]=useState('indoor');
 	const [selectedMonth,setSelectedMonth]=useState('All');
-	const [selectedYear,setSelectedYear]=useState('2026');
+	const [selectedYear,setSelectedYear]=useState(String(new Date().getFullYear()));
 
 	useEffect(()=>{
 		const userId=getObjectId(user);
@@ -38,7 +38,7 @@ export default function GardeningJournalBoard({user}){
 			.then(res=>res.json())
 			.then(data=>{
 				setDashboard(data);
-				setSelectedYear(String(data.year||2026));
+				setSelectedYear(String(data.year||new Date().getFullYear()));
 			})
 			.catch(err=>console.error(err));
 	},[user,selectedYear]);
@@ -46,10 +46,10 @@ export default function GardeningJournalBoard({user}){
 	if(!dashboard) return <div className="garden-page py-4">Loading...</div>;
 
 	const months=dashboard.months||['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-	const years=dashboard.years?.length?dashboard.years:[2024,2025,2026,2027];
+	const years=dashboard.years?.length?dashboard.years:[new Date().getFullYear()];
 	const selectedMonthIndex=months.indexOf(selectedMonth);
 	const activeMonths=selectedMonth==='All'?months:[selectedMonth];
-	const progress=dashboard.progress?.length?dashboard.progress:[35,40,45,50,55,62,68,74,80,86,92,38];
+	const progress=dashboard.progress?.length?dashboard.progress:new Array(12).fill(0);
 
 	const harvestLineTokens=[
 		'var(--primary)',
@@ -116,8 +116,8 @@ export default function GardeningJournalBoard({user}){
 			<Card className="board-card garden-hero-card mb-3" style={{backgroundImage:`url(${dashboardHero})`}}>
 				<Card.Body>
 					<Row className="align-items-end g-3">
-						<Col lg={7}><h1>Garden Overview</h1>
-							<p>Track seed starts, active plants, harvest windows, photos, and seasonal garden work.</p>
+						<Col lg={7}><h1>Seasonal Review</h1>
+							<p>Review recorded starts, harvests, and garden progress by year and month. Use the Dashboard for upcoming work.</p>
 						</Col>
 						<Col lg={5}>
 							<div className="garden-filter-panel">

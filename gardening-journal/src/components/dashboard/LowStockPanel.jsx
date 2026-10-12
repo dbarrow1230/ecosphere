@@ -6,7 +6,7 @@ import DashboardSection from "./DashboardSection";
 function LowStockPanel({lowStockItems=[],className=""}){
  return(
   <DashboardSection className={`dashboard-section-priority ${className}`.trim()} kicker="Attention Needed" title="Low Garden Supplies" linkTo="/supplies" linkLabel="Open supplies">
-   <ul className="dashboard-list">
+   <ul className="dashboard-list" tabIndex={0} aria-label="Scrollable records">
     {lowStockItems?.length?lowStockItems.map(item=>(
      <li key={item._id||item.id||item.name} className="dashboard-list-item">
       <span className="dashboard-list-icon"><TriangleAlert size={17} strokeWidth={2.2}/></span>

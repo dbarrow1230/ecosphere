@@ -87,7 +87,7 @@ export default function GardenWorkspacePage({user}){
 
  useEffect(()=>{loadWorkspace();},[id]);
 
- const activeRuns=useMemo(()=>runs.filter(run=>!["harvested","failed","dead","archived"].includes(run.status)).length+hydroRuns.filter(run=>run.isActive!==false).length,[runs,hydroRuns]);
+ const activeRuns=useMemo(()=>runs.filter(run=>run.isActive!==false&&!["harvested","failed","dead","archived"].includes(run.status)).length+hydroRuns.filter(run=>run.isActive!==false).length,[runs,hydroRuns]);
  const totalRuns=runs.length+hydroRuns.length;
  const isHydro=String(garden?.gardenType?.name||"").toLowerCase().includes("hydro");
 
@@ -240,10 +240,11 @@ export default function GardenWorkspacePage({user}){
        </article>)}
        {runs.map(run=><article key={getId(run)} className="garden-run-item">
         <div><small>{run.sourceType==="plant"?"Plant run":"Seed run"}</small><h2>{run.instanceName||getSourceName(run)}</h2><p>{getSourceName(run)}</p></div>
-        <Badge bg="success">{run.status||"active"}</Badge>
+        <Badge bg={["dead","failed"].includes(run.status)?"danger":run.status==="archived"?"secondary":run.status==="harvested"?"warning":"success"}>{run.status||"active"}</Badge>
         <span><strong>Started:</strong> {formatDate(run.plantedDate)}</span>
         {run.gardenSection&&<span><strong>Section:</strong> {run.gardenSection.name||"Assigned section"}</span>}
         <span><strong>Quantity:</strong> {run.quantity||1}</span>
+        <Button as={Link} to={`/plantings?run=${getId(run)}`} size="sm" variant="outline-primary"><Pencil size={15}/> Update Outcome</Button>
        </article>)}
       </div>
      ):<div className="garden-workspace-empty"><Sprout size={30}/><h2>Nothing growing here yet</h2><p>Add a seed or plant to begin the first run in this garden.</p></div>}

@@ -511,7 +511,7 @@
 
 .hydro-pod-grid{
  display:grid;
- grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+ grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));
  gap:.8rem;
  min-width:0;
 }
@@ -643,18 +643,16 @@
  text-transform:uppercase;
 }
 
-.hydro-pod-date input{
- width:100%;
- min-height:34px;
- border:1px solid var(--border);
- border-radius:8px;
- background:var(--surface2);
+.hydro-pod-date time{
  color:var(--text);
- padding:.25rem .4rem;
  text-align:center;
 }
 
-.hydro-pod-seed button{
+.hydro-pod-actions{display:flex;flex-wrap:nowrap;align-items:center;justify-content:center;gap:.35rem;}
+.hydro-pod-actions .btn{white-space:nowrap;padding:.25rem .4rem;font-size:.75rem;}
+.hydro-pod-notes{margin:.35rem 0;white-space:pre-wrap;overflow-wrap:anywhere;}
+
+.hydro-pod-seed > button{
  border:0;
  background:transparent;
  color:var(--danger);

@@ -20,7 +20,7 @@ function RecentItemsPanel({journalEntries=[],className=""}){
 
  return(
   <DashboardSection className={className} kicker="Recently Added" title="Recent Journal Entries" linkTo="/journal" linkLabel="Open journal">
-   <ul className="dashboard-list">
+   <ul className="dashboard-list" tabIndex={0} aria-label="Scrollable records">
     {journalEntries?.length?journalEntries.map(item=>(
      <li key={item._id||item.id||item.title||item.name} className="dashboard-list-item">
       <span className="dashboard-list-icon dashboard-list-icon-soft"><NotebookPen size={17} strokeWidth={2.2}/></span>

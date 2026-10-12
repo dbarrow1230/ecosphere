@@ -5,6 +5,7 @@ import {useNavigate,useParams} from "react-router-dom";
 import AuthorForm from "./AuthorForm";
 import SeriesForm from "./SeriesForm";
 import PublisherForm from "./PublisherForm";
+import {isbnPair,publicationDate} from "../../utils/isbn";
 
 const CONDITION_OPTIONS=["New","Like New","Very Good","Good","Fair","Poor","Damaged"];
 const READING_STATUS_OPTIONS=["Unread","Reading","Paused","Finished","Abandoned"];
@@ -148,7 +149,7 @@ const CheckboxList=memo(function CheckboxList({items=[],selected=[],getLabel,gro
  const [filter,setFilter]=useState("");
  const selectedSet=useMemo(()=>new Set(selected.map(item=>String(item))),[selected]);
  const normalizedFilter=filter.trim().toLowerCase();
- const visibleLimit=150;
+ const [visibleLimit,setVisibleLimit]=useState(150);
 
  const visibleItems=useMemo(()=>{
   const labelFor=item=>String(getLabel(item)||"").toLowerCase();
@@ -170,7 +171,7 @@ const CheckboxList=memo(function CheckboxList({items=[],selected=[],getLabel,gro
   }
 
   return [...selectedItems,...unselectedItems.slice(0,Math.max(visibleLimit-selectedItems.length,0))];
- },[items,getLabel,normalizedFilter,selectedSet]);
+ },[items,getLabel,normalizedFilter,selectedSet,visibleLimit]);
 
  const showingLimited=!normalizedFilter&&items.length>visibleItems.length;
 
@@ -180,12 +181,17 @@ const CheckboxList=memo(function CheckboxList({items=[],selected=[],getLabel,gro
     type="search"
     className="form-control form-control-sm mb-2"
     value={filter}
-    onChange={e=>setFilter(e.target.value)}
+    onChange={e=>{setFilter(e.target.value);setVisibleLimit(150);}}
     placeholder={`Filter ${groupName}s...`}
     disabled={!items.length}
    />
-   {showingLimited?<div className="small text-muted mb-2">Showing {visibleItems.length} of {items.length}. Type to narrow the list.</div>:null}
-   <div style={{maxHeight,overflowY:"auto"}}>
+   {showingLimited?<div className="small text-muted mb-2">Showing {visibleItems.length} of {items.length}. Scroll down for more or type to narrow the list.</div>:null}
+   <div style={{maxHeight,overflowY:"auto"}} onScroll={e=>{
+    const list=e.currentTarget;
+    if(showingLimited&&list.scrollHeight-list.scrollTop-list.clientHeight<80){
+     setVisibleLimit(limit=>Math.min(limit+150,items.length));
+    }
+   }}>
     {!items.length?<div className="text-muted">{emptyText}</div>:null}
     {items.length&&!visibleItems.length?<div className="text-muted">No matching {groupName}s found.</div>:null}
     {visibleItems.map(item=>{
@@ -205,7 +211,7 @@ const CheckboxList=memo(function CheckboxList({items=[],selected=[],getLabel,gro
 
 async function fetchJson(url){
  const res=await fetch(url,{cache:"no-store"});
- const data=await res.json();
+ const data=await res.json().catch(()=>{throw new Error("The server returned an invalid response. Restart the backend and try again.");});
  if(!res.ok)throw new Error(data?.message||`Failed to load ${url}`);
  return data;
 }
@@ -221,6 +227,10 @@ export default function BookForm({mode,bookId,initialData,onSaved,onCancel}){
  const [saving,setSaving]=useState(false);
  const [error,setError]=useState("");
  const [success,setSuccess]=useState("");
+ const [isbnBusy,setIsbnBusy]=useState(false);
+ const [isbnResult,setIsbnResult]=useState(null);
+ const [isbnError,setIsbnError]=useState("");
+ const [isbnApplied,setIsbnApplied]=useState(false);
  const [activeTab,setActiveTab]=useState("book-info");
 
  const [authorOptions,setAuthorOptions]=useState([]);
@@ -237,6 +247,7 @@ export default function BookForm({mode,bookId,initialData,onSaved,onCancel}){
  const [showAuthorModal,setShowAuthorModal]=useState(false);
  const [showSeriesModal,setShowSeriesModal]=useState(false);
  const [showPublisherModal,setShowPublisherModal]=useState(false);
+ const [isbnPublisher,setIsbnPublisher]=useState(null);
 
  const [newLanguage,setNewLanguage]=useState("");
  const [newGenre,setNewGenre]=useState("");
@@ -502,11 +513,46 @@ export default function BookForm({mode,bookId,initialData,onSaved,onCancel}){
  },[id,isEdit,initialData]);
 
  function setField(name,value){
-  setForm(prev=>({...prev,[name]:value}));
+  setForm(prev=>{
+   const pair=name==="isbn10"||name==="isbn13"?isbnPair(value):null;
+   return {...prev,...(pair||{}),[name]:value};
+  });
  }
 
  function setNested(parent,name,value){
   setForm(prev=>({...prev,[parent]:{...prev[parent],[name]:value}}));
+ }
+
+ async function lookupIsbn(isbn){
+  setIsbnBusy(true);
+  setIsbnResult(null);
+  setIsbnError("");
+  setIsbnApplied(false);
+  try{
+   const data=await fetchJson(`/api/books/isbn-lookup?isbn=${encodeURIComponent(isbn)}`);
+   setIsbnResult(data.book);
+   applyIsbnResult(data.book);
+  }catch(err){setIsbnError(err.message);}
+  finally{setIsbnBusy(false);}
+ }
+
+ function applyIsbnResult(result){
+  const book=result||isbnResult;
+  if(!book)return;
+  const matchNames=(names,options,label)=>options.filter(option=>names.some(name=>name.trim().toLowerCase()===label(option).trim().toLowerCase())).map(getId);
+  // A year alone must not invent an exact publication date.
+  const date=publicationDate(book.publishedDate);
+  setForm(prev=>({...prev,
+   title:prev.title||book.title,subtitle:prev.subtitle||book.subtitle,
+   isbn10:prev.isbn10||book.isbn10,isbn13:prev.isbn13||book.isbn13,
+   authors:prev.authors.length?prev.authors:matchNames(book.authors,authorOptions,getAuthorLabel),
+   publishers:prev.publishers.length?prev.publishers:matchNames(book.publishers,publisherOptions,getPublisherLabel),
+   publication:{...prev.publication,publishedDate:prev.publication.publishedDate||date},
+   reading:{...prev.reading,totalPages:prev.reading.totalPages||book.totalPages||""},
+   subjects:prev.subjects||book.subjects.join(", "),
+   images:prev.images.length?prev.images:book.cover?[book.cover]:[]
+  }));
+  setIsbnApplied(true);
  }
 
  function toggleArrayValue(name,value){
@@ -801,7 +847,7 @@ export default function BookForm({mode,bookId,initialData,onSaved,onCancel}){
 
        <InlineField label="Publishers" right={
         <div className="d-flex gap-2">
-         <button type="button" className="btn btn-outline-primary btn-sm" onClick={()=>setShowPublisherModal(true)}>Add Publisher</button>
+         <button type="button" className="btn btn-outline-primary btn-sm" onClick={()=>{setIsbnPublisher(null);setShowPublisherModal(true);}}>Add Publisher</button>
          <button type="button" className="btn btn-outline-secondary btn-sm" onClick={loadLookups}>Refresh</button>
         </div>
        }>
@@ -829,17 +875,35 @@ export default function BookForm({mode,bookId,initialData,onSaved,onCancel}){
         </select>
        </InlineField>
 
-       <InlineField label="ISBN-10">
-        <input type="text" className="form-control" value={form.isbn10} onChange={e=>setField("isbn10",e.target.value)} />
+       <InlineField label="ISBN-10" right={
+        <button type="button" className="btn btn-outline-primary text-nowrap" disabled={isbnBusy||!form.isbn10.trim()} onClick={()=>lookupIsbn(form.isbn10)}>{isbnBusy?"Looking up…":"Look up ISBN"}</button>
+       }>
+        <input type="text" className="form-control" value={form.isbn10} disabled={isbnBusy} onChange={e=>{setField("isbn10",e.target.value);setIsbnResult(null);setIsbnError("");}} onKeyDown={e=>{if(e.key==="Enter"){e.preventDefault();if(!isbnBusy&&form.isbn10.trim())lookupIsbn(form.isbn10);}}} />
        </InlineField>
 
-       <InlineField label="ISBN-13">
-        <input type="text" className="form-control" value={form.isbn13} onChange={e=>setField("isbn13",e.target.value)} />
+       <InlineField label="ISBN-13" right={
+        <button type="button" className="btn btn-outline-primary text-nowrap" disabled={isbnBusy||!form.isbn13.trim()} onClick={()=>lookupIsbn(form.isbn13)}>{isbnBusy?"Looking up…":"Look up ISBN"}</button>
+       }>
+        <input type="text" className="form-control" value={form.isbn13} disabled={isbnBusy} onChange={e=>{setField("isbn13",e.target.value);setIsbnResult(null);setIsbnError("");}} onKeyDown={e=>{if(e.key==="Enter"){e.preventDefault();if(!isbnBusy&&form.isbn13.trim())lookupIsbn(form.isbn13);}}} />
        </InlineField>
 
-       <InlineField label="eISBN">
-        <input type="text" className="form-control" value={form.eisbn} onChange={e=>setField("eisbn",e.target.value)} />
+       <InlineField label="eISBN" right={
+        <button type="button" className="btn btn-outline-primary text-nowrap" disabled={isbnBusy||!form.eisbn.trim()} onClick={()=>lookupIsbn(form.eisbn)}>{isbnBusy?"Looking up…":"Look up ISBN"}</button>
+       }>
+        <input type="text" className="form-control" value={form.eisbn} disabled={isbnBusy} onChange={e=>{setField("eisbn",e.target.value);setIsbnResult(null);setIsbnError("");}} onKeyDown={e=>{if(e.key==="Enter"){e.preventDefault();if(!isbnBusy&&form.eisbn.trim())lookupIsbn(form.eisbn);}}} />
        </InlineField>
+       <div className="row mb-2"><div className="col-md-9 offset-md-3">
+        {isbnError?<div role="alert" className="text-danger mt-2">{isbnError}</div>:null}
+        {isbnResult?<div className="border rounded p-2 mt-2" aria-live="polite">
+         <strong>{isbnResult.title}</strong>{isbnResult.subtitle?`: ${isbnResult.subtitle}`:""}
+         <div>Authors: {isbnResult.authors.join(", ")||"Not available"}</div>
+         <div>Publishers: {isbnResult.publishers.join(", ")||"Not available"}</div>
+         <div>Published: {isbnResult.publishedDate||"Not available"} · Pages: {isbnResult.totalPages||"Not available"}</div>
+         <div className="small text-muted">Source: <a href="https://openlibrary.org" target="_blank" rel="noreferrer">Open Library</a>. Available details fill empty fields automatically. Authors and publishers are selected when their names match existing records. Partial publication dates are shown here for reference.</div>
+         {isbnResult.publishers.filter(name=>!publisherOptions.some(item=>getPublisherLabel(item).trim().toLowerCase()===name.trim().toLowerCase())).map(name=><div key={name} className="mt-1">Publisher “{name}” is not in your library. <button type="button" className="btn btn-outline-primary btn-sm" onClick={()=>{setIsbnPublisher({name});setShowPublisherModal(true);}}>Add {name}</button></div>)}
+         <button type="button" className="btn btn-outline-primary btn-sm mt-2" disabled={isbnApplied} onClick={()=>applyIsbnResult()}>{isbnApplied?"Information applied":"Fill empty fields"}</button>
+        </div>:null}
+       </div></div>
 
        <InlineField label="ASIN">
         <input type="text" className="form-control" value={form.asin} onChange={e=>setField("asin",e.target.value.toUpperCase())} />
@@ -1089,6 +1153,7 @@ export default function BookForm({mode,bookId,initialData,onSaved,onCancel}){
     <Modal.Body>
      <PublisherForm
       mode="add"
+      initialData={isbnPublisher}
       onSaved={async publisher=>{
        if(publisher?._id){
         const publisherId=String(publisher._id);

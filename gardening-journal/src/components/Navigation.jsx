@@ -135,7 +135,7 @@ function Navigation({user,onLogout,brand="Chorna Lifeboard"}){
          active={isActive("/dashboard")||isActive("/journalboard")}
         >
          <NavDropdown.Item as={NavLink} to="/dashboard"> {FontAwesomeIcons.Book} Dashboard</NavDropdown.Item>
-         <NavDropdown.Item as={NavLink} to="/journalboard"> {FontAwesomeIcons.Book} Journal Board</NavDropdown.Item>
+         <NavDropdown.Item as={NavLink} to="/journalboard"> {FontAwesomeIcons.Book} Seasonal Review</NavDropdown.Item>
         </NavDropdown>
 
         <NavDropdown
@@ -145,7 +145,7 @@ function Navigation({user,onLogout,brand="Chorna Lifeboard"}){
          active={isActive("/gardens")||isActive("/plantings")}
         >
          <NavDropdown.Item as={NavLink} to="/gardens"> {FontAwesomeIcons.Seedling} Gardens </NavDropdown.Item>
-         <NavDropdown.Item as={NavLink} to="/plantings"> {FontAwesomeIcons.Leaf} All Growing Runs </NavDropdown.Item>
+         <NavDropdown.Item as={NavLink} to="/plantings"> {FontAwesomeIcons.Leaf} Growing Run Register </NavDropdown.Item>
         </NavDropdown>
 
         <NavDropdown
@@ -163,7 +163,7 @@ function Navigation({user,onLogout,brand="Chorna Lifeboard"}){
          title={<>{FontAwesomeIcons.Tasks} Work</>}
          id="work-nav"
          className="app-nav-dropdown"
-         active={isExact("/journal")||isActive("/tasks")||isActive("/harvest")||isActive("/equipment")||isActive("/supplies")||isActive("/observations")||isActive("/fertilizer-applications")}
+         active={isExact("/journal")||isActive("/tasks")||isActive("/harvest")||isActive("/equipment")||isActive("/supplies")||isActive("/observations")||isActive("/fertilizer-applications")||isActive("/hydroponics")}
         >
          <NavDropdown.Item as={NavLink} to="/journal"> {FontAwesomeIcons.Book} Journal </NavDropdown.Item>
          <NavDropdown.Item as={NavLink} to="/tasks"> {FontAwesomeIcons.Tasks} Tasks </NavDropdown.Item>
@@ -201,7 +201,7 @@ function Navigation({user,onLogout,brand="Chorna Lifeboard"}){
 
       {canSeeAdminMenus&&(
         <NavDropdown title={<><span className="me-2">{FontAwesomeIcons.Admin}</span>Admin</>} id="admin-dropdown" className="app-nav-dropdown"
-         active={isActive("/admin")||isActive("/users")||isActive("/equipment")||isActive("/hydroponics")||isActive("/diseases")||isActive("/pests")||isActive("/tasks")||isExact("/journal")}  >
+         active={isActive("/admin")||isActive("/users")}  >
         <NavDropdown.Item as={NavLink} to="/admin"> <span className="me-2">{FontAwesomeIcons.Admin}</span>Admin Dashboard </NavDropdown.Item>
         {isOwner&&(
          <>
@@ -221,15 +221,8 @@ function Navigation({user,onLogout,brand="Chorna Lifeboard"}){
          </>
         )}
         <NavDropdown.Divider/>
-        <NavDropdown.Header>Garden Admin</NavDropdown.Header>
+        <NavDropdown.Header>Access Management</NavDropdown.Header>
         <NavDropdown.Item as={NavLink} to="/users"> <span className="me-2">{FontAwesomeIcons.Account}</span>Users </NavDropdown.Item>
-        <NavDropdown.Item as={NavLink} to="/admin/inventory"> <span className="me-2">{FontAwesomeIcons.List}</span>Inventory </NavDropdown.Item>
-         <NavDropdown.Item as={NavLink} to="/equipment"> <span className="me-2">{FontAwesomeIcons.Book}</span>Equipment </NavDropdown.Item>
-         <NavDropdown.Item as={NavLink} to="/hydroponics"> <span className="me-2">{FontAwesomeIcons.Leaf}</span>Hydro Systems </NavDropdown.Item>
-         <NavDropdown.Item as={NavLink} to="/diseases"> <span className="me-2">{FontAwesomeIcons.Microscope}</span>Diseases </NavDropdown.Item>
-         <NavDropdown.Item as={NavLink} to="/pests"> <span className="me-2">{FontAwesomeIcons.Bug}</span>Pests </NavDropdown.Item>
-         <NavDropdown.Item as={NavLink} to="/tasks"> <span className="me-2">{FontAwesomeIcons.Tasks}</span>Tasks </NavDropdown.Item>
-         <NavDropdown.Item as={NavLink} to="/journal"> <span className="me-2">{FontAwesomeIcons.Book}</span>Journal </NavDropdown.Item>
         </NavDropdown>
       )}
 

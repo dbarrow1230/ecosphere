@@ -13,6 +13,9 @@ gardenSection,
 name,
 observationType,
 observedAt,
+moisture,
+light,
+temperature,
 details,
 tags,
 notes,
@@ -30,6 +33,9 @@ gardenSection:gardenSection||null,
 name,
 observationType,
 observedAt,
+moisture,
+light,
+temperature,
 details,
 tags:Array.isArray(tags)?tags:[],
 notes:Array.isArray(notes)?notes:[],
@@ -155,6 +161,9 @@ if(gardenSection!==undefined)observation.gardenSection=gardenSection||null;
 if(name!==undefined)observation.name=name;
 if(observationType!==undefined)observation.observationType=observationType;
 if(observedAt!==undefined)observation.observedAt=observedAt;
+for(const key of ["moisture","light","temperature"]){
+ if(req.body[key]!==undefined)observation[key]=req.body[key];
+}
 if(details!==undefined)observation.details=details;
 if(tags!==undefined)observation.tags=Array.isArray(tags)?tags:observation.tags;
 if(notes!==undefined)observation.notes=Array.isArray(notes)?notes:observation.notes;

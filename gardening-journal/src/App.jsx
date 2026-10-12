@@ -1,5 +1,5 @@
 // src/App.jsx
-import {Routes,Route,useNavigate,useLocation} from "react-router-dom";
+import {Routes,Route,Navigate,useNavigate,useLocation} from "react-router-dom";
 import {useState,useEffect} from "react";
 import {Modal,Button} from "react-bootstrap";
 import {applyBusinessTheme,clearBusinessTheme} from "./utils/applyBusinessTheme.js";
@@ -69,7 +69,6 @@ import BusinessRolesPermissionsPage from "./pages/admin/BusinessRolesPermissions
 import BusinessTypes from "./pages/admin/BusinessTypes.jsx";
 import AppKeys from "./pages/admin/AppKeys.jsx";
 import TaxRatesPage from "./pages/admin/TaxRatesPage.jsx";
-import Inventory from "./pages/admin/inventory/Inventory.jsx";
 
 //forms
 import SeedForm from "./pages/forms/seeds/SeedFormPage.jsx";
@@ -383,11 +382,11 @@ function App(){
      <Route path="/reset-password/:token" element={<ResetPasswordPage/>}/>
      <Route path="/profile" element={<UserProfilePage/>}/>
 
-    <Route path="/businesses" element={<Businesses/>}/>
+    <Route path="/businesses" element={<Navigate to="/admin/businesses" replace/>}/>
 
      {/**Admin */}
      <Route path="/admin" element={<AdminDashboard user={user}/>}/>
-     <Route path="/admin/dashboard" element={<AdminDashboard user={user}/>}/>
+     <Route path="/admin/dashboard" element={<Navigate to="/admin" replace/>}/>
      <Route path="/admin/businesses" element={<Businesses/>}/>
      <Route path="/admin/business-types" element={<BusinessTypes/>}/>
      <Route path="/admin/app-keys" element={<AppKeys/>}/>
@@ -399,7 +398,7 @@ function App(){
      <Route path="/admin/taglines" element={<Taglines/>}/>
      <Route path="/admin/vendors" element={<Vendors/>}/>
      <Route path="/admin/business-roles-permissions" element={<BusinessRolesPermissionsPage/>}/>
-     <Route path="/admin/inventory" element={<Inventory/>}/>
+     <Route path="/admin/inventory" element={<Navigate to="/supplies" replace/>}/>
      
      {/**Error Pages */}
      <Route path="/400" element={<Error400/>}/>

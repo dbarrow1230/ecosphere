@@ -1,6 +1,6 @@
 // backend/models/journal/observationModel.js
 import mongoose from "mongoose";
-const {Schema,model}=mongoose;
+const {Schema}=mongoose;
 
 const noteSchema=new Schema({note:{type:String,trim:true,default:""},date:{type:Date,default:Date.now},createdBy:{type:Schema.Types.ObjectId,ref:"User",default:null}},{_id:false});
 
@@ -13,6 +13,9 @@ gardenSection:{type:Schema.Types.ObjectId,ref:"GardenSection",default:null},
 name:{type:String,trim:true,default:""},
 observationType:{type:String,trim:true,default:""},
 observedAt:{type:Date,default:Date.now},
+moisture:{type:Number,min:0,max:100,default:null},
+light:{type:Number,min:0,default:null},
+temperature:{type:Number,default:null},
 details:{type:String,trim:true,default:""},
 tags:[String],
 notes:[noteSchema],

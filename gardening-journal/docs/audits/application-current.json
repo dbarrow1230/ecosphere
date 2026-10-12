@@ -1,0 +1,684 @@
+{
+  "sourceFiles": 151,
+  "reachableFiles": 151,
+  "unreachable": [],
+  "routes": [
+    {
+      "path": "/",
+      "component": "Home"
+    },
+    {
+      "path": "/contact",
+      "component": "ContactUs"
+    },
+    {
+      "path": "/faq",
+      "component": "FAQ"
+    },
+    {
+      "path": "/privacy",
+      "component": "Privacy"
+    },
+    {
+      "path": "/terms",
+      "component": "TermsOfService"
+    },
+    {
+      "path": "/about",
+      "component": "About"
+    },
+    {
+      "path": "/dashboard",
+      "component": "Dashboard"
+    },
+    {
+      "path": "/journalboard",
+      "component": "GardeningJournalBoard"
+    },
+    {
+      "path": "/hydroponics",
+      "component": "HydroSystemsPage"
+    },
+    {
+      "path": "/equipment",
+      "component": "EquipmentPage"
+    },
+    {
+      "path": "/journal",
+      "component": "JournalPage"
+    },
+    {
+      "path": "/plantings",
+      "component": "PlantingsPage"
+    },
+    {
+      "path": "/gardens",
+      "component": "GardensPage"
+    },
+    {
+      "path": "/gardens/:id",
+      "component": "GardenWorkspacePage"
+    },
+    {
+      "path": "/supplies",
+      "component": "SuppliesPage"
+    },
+    {
+      "path": "/observations",
+      "component": "ObservationsPage"
+    },
+    {
+      "path": "/fertilizer-applications",
+      "component": "FertilizerApplicationsPage"
+    },
+    {
+      "path": "/issues",
+      "component": "IssuesPage"
+    },
+    {
+      "path": "/harvest",
+      "component": "HarvestPage"
+    },
+    {
+      "path": "/pests",
+      "component": "PestsPage"
+    },
+    {
+      "path": "/tasks",
+      "component": "TasksPage"
+    },
+    {
+      "path": "/seeds/form",
+      "component": "SeedForm"
+    },
+    {
+      "path": "/hardiness-zones",
+      "component": "USDAZonesReference"
+    },
+    {
+      "path": "/hydroponic-companion-planting",
+      "component": "HydroponicCompanionPlantingPage"
+    },
+    {
+      "path": "/diseases",
+      "component": "DiseasesPage"
+    },
+    {
+      "path": "/seeds",
+      "component": "SeedPage"
+    },
+    {
+      "path": "/seed-collections",
+      "component": "SeedCollectionsPage"
+    },
+    {
+      "path": "/plants",
+      "component": "PlantPage"
+    },
+    {
+      "path": "/vendors/equipment",
+      "component": "EquipmentVendor"
+    },
+    {
+      "path": "/vendors/seeds",
+      "component": "SeedVendor"
+    },
+    {
+      "path": "/vendors/supplies",
+      "component": "SupplyVendor"
+    },
+    {
+      "path": "/users",
+      "component": "Users"
+    },
+    {
+      "path": "/login",
+      "component": "Login"
+    },
+    {
+      "path": "/forgot-password",
+      "component": "ForgotPasswordPage"
+    },
+    {
+      "path": "/reset-password/:token",
+      "component": "ResetPasswordPage"
+    },
+    {
+      "path": "/profile",
+      "component": "UserProfilePage"
+    },
+    {
+      "path": "/businesses",
+      "component": "Navigate",
+      "redirect": "/admin/businesses"
+    },
+    {
+      "path": "/admin",
+      "component": "AdminDashboard"
+    },
+    {
+      "path": "/admin/dashboard",
+      "component": "Navigate",
+      "redirect": "/admin"
+    },
+    {
+      "path": "/admin/businesses",
+      "component": "Businesses"
+    },
+    {
+      "path": "/admin/business-types",
+      "component": "BusinessTypes"
+    },
+    {
+      "path": "/admin/app-keys",
+      "component": "AppKeys"
+    },
+    {
+      "path": "/admin/tax-rates",
+      "component": "TaxRatesPage"
+    },
+    {
+      "path": "/admin/footers",
+      "component": "Footers"
+    },
+    {
+      "path": "/admin/seasons",
+      "component": "Seasons"
+    },
+    {
+      "path": "/admin/holidays",
+      "component": "Holidays"
+    },
+    {
+      "path": "/admin/occasions",
+      "component": "Occasions"
+    },
+    {
+      "path": "/admin/taglines",
+      "component": "Taglines"
+    },
+    {
+      "path": "/admin/vendors",
+      "component": "Vendors"
+    },
+    {
+      "path": "/admin/business-roles-permissions",
+      "component": "BusinessRolesPermissionsPage"
+    },
+    {
+      "path": "/admin/inventory",
+      "component": "Navigate",
+      "redirect": "/supplies"
+    },
+    {
+      "path": "/400",
+      "component": "Error400"
+    },
+    {
+      "path": "/401",
+      "component": "Error401"
+    },
+    {
+      "path": "/403",
+      "component": "Error403"
+    },
+    {
+      "path": "/404",
+      "component": "Error404"
+    },
+    {
+      "path": "/500",
+      "component": "Error500"
+    },
+    {
+      "path": "/502",
+      "component": "Error502"
+    },
+    {
+      "path": "/503",
+      "component": "Error503"
+    },
+    {
+      "path": "/504",
+      "component": "Error504"
+    },
+    {
+      "path": "*",
+      "component": "Error404"
+    }
+  ],
+  "apiMounts": [
+    {
+      "path": "/api/app-modules",
+      "handler": "appModuleRoutes"
+    },
+    {
+      "path": "/api/app",
+      "handler": "appRoutes"
+    },
+    {
+      "path": "/api/states",
+      "handler": "stateRoutes"
+    },
+    {
+      "path": "/api/countries",
+      "handler": "countryRoutes"
+    },
+    {
+      "path": "/api/counties",
+      "handler": "countyRoutes"
+    },
+    {
+      "path": "/api/growth-rates",
+      "handler": "growthRateRoutes"
+    },
+    {
+      "path": "/api/planting-depths",
+      "handler": "plantingDepthRoutes"
+    },
+    {
+      "path": "/api/reference/usda-zones",
+      "handler": "usdaZonesRoutes"
+    },
+    {
+      "path": "/api/reference/fertilizers",
+      "handler": "fertilizerRoutes"
+    },
+    {
+      "path": "/api/condition-scales",
+      "handler": "conditionScaleRoutes"
+    },
+    {
+      "path": "/api/disease-ref-treatments",
+      "handler": "diseaseRefTreatmentRoutes"
+    },
+    {
+      "path": "/api/equipment-categories",
+      "handler": "equipmentCategoryRoutes"
+    },
+    {
+      "path": "/api/fertilizer-types",
+      "handler": "fertilizerTypeRoutes"
+    },
+    {
+      "path": "/api/lighting",
+      "handler": "lightingRoutes"
+    },
+    {
+      "path": "/api/pest-ref-treatments",
+      "handler": "pestRefTreatmentRoutes"
+    },
+    {
+      "path": "/api/plant-categories",
+      "handler": "plantCategoryRoutes"
+    },
+    {
+      "path": "/api/plant-types",
+      "handler": "plantTypeRoutes"
+    },
+    {
+      "path": "/api/seasons",
+      "handler": "seasonRoutes"
+    },
+    {
+      "path": "/api/severity-scales",
+      "handler": "severityScaleRoutes"
+    },
+    {
+      "path": "/api/soil-types",
+      "handler": "soilTypeRoutes"
+    },
+    {
+      "path": "/api/supply-categories",
+      "handler": "supplyCategoryRoutes"
+    },
+    {
+      "path": "/api/reference/weather-observations",
+      "handler": "weatherObservationRoutes"
+    },
+    {
+      "path": "/api/reference/plant-spacings",
+      "handler": "plantSpacingRoutes"
+    },
+    {
+      "path": "/api/reference/sunlight-requirements",
+      "handler": "sunlightRequirementRoutes"
+    },
+    {
+      "path": "/api/reference/plant-soil-temps",
+      "handler": "plantSoilTempRoutes"
+    },
+    {
+      "path": "/api/reference/watering-requirements",
+      "handler": "wateringRequirementRoutes"
+    },
+    {
+      "path": "/api/reference/propagation-methods",
+      "handler": "propagationMethodRoutes"
+    },
+    {
+      "path": "/api/reference/lifespans",
+      "handler": "lifespanRoutes"
+    },
+    {
+      "path": "/api/businesses",
+      "handler": "businessRoutes"
+    },
+    {
+      "path": "/api/business-types",
+      "handler": "businessTypeRoutes"
+    },
+    {
+      "path": "/api/app-keys",
+      "handler": "appKeyRoutes"
+    },
+    {
+      "path": "/api/footers",
+      "handler": "footerRoutes"
+    },
+    {
+      "path": "/api/seasons",
+      "handler": "seasonRoutes"
+    },
+    {
+      "path": "/api/taglines",
+      "handler": "taglineRoutes"
+    },
+    {
+      "path": "/api/occasions",
+      "handler": "occasionRoutes"
+    },
+    {
+      "path": "/api/holidays",
+      "handler": "holidayRoutes"
+    },
+    {
+      "path": "/api/vendors",
+      "handler": "vendorRoutes"
+    },
+    {
+      "path": "/api/receipt-templates",
+      "handler": "receiptTemplateRoutes"
+    },
+    {
+      "path": "/api/receipt-headers",
+      "handler": "receiptHeaderRoutes"
+    },
+    {
+      "path": "/api/receipt-sub-headers",
+      "handler": "receiptSubHeaderRoutes"
+    },
+    {
+      "path": "/api/receipt-footers",
+      "handler": "receiptFooterRoutes"
+    },
+    {
+      "path": "/api/imperial-units",
+      "handler": "imperialUnitRoutes"
+    },
+    {
+      "path": "/api/metric-units",
+      "handler": "metricUnitRoutes"
+    },
+    {
+      "path": "/api/location-types",
+      "handler": "locationTypeRoutes"
+    },
+    {
+      "path": "/api/locations",
+      "handler": "locationRoutes"
+    },
+    {
+      "path": "/api/tax-rates",
+      "handler": "taxRateRoutes"
+    },
+    {
+      "path": "/api/seeds",
+      "handler": "seedRoutes"
+    },
+    {
+      "path": "/api/seed-collections",
+      "handler": "seedCollectionRoutes"
+    },
+    {
+      "path": "/api/species",
+      "handler": "speciesRoutes"
+    },
+    {
+      "path": "/api/families",
+      "handler": "familyRoutes"
+    },
+    {
+      "path": "/api/genus",
+      "handler": "genusRoutes"
+    },
+    {
+      "path": "/api/diseases",
+      "handler": "diseaseRoutes"
+    },
+    {
+      "path": "/api/disease-logs",
+      "handler": "diseaseLogRoutes"
+    },
+    {
+      "path": "/api/equipment",
+      "handler": "equipmentRoutes"
+    },
+    {
+      "path": "/api/hydro-systems",
+      "handler": "hydroSystemRoutes"
+    },
+    {
+      "path": "/api/gardens",
+      "handler": "gardenRoutes"
+    },
+    {
+      "path": "/api/garden-notes",
+      "handler": "gardenNoteRoutes"
+    },
+    {
+      "path": "/api/garden-sections",
+      "handler": "gardenSectionRoutes"
+    },
+    {
+      "path": "/api/garden-references",
+      "handler": "gardenReferenceRoutes"
+    },
+    {
+      "path": "/api/supplies",
+      "handler": "supplyRoutes"
+    },
+    {
+      "path": "/api/activities",
+      "handler": "activityRoutes"
+    },
+    {
+      "path": "/api/daily-journals",
+      "handler": "dailyJournalRoutes"
+    },
+    {
+      "path": "/api/journal-entries",
+      "handler": "journalEntryRoutes"
+    },
+    {
+      "path": "/api/observations",
+      "handler": "observationRoutes"
+    },
+    {
+      "path": "/api/fertilizer-applications",
+      "handler": "fertilizerApplicationRoutes"
+    },
+    {
+      "path": "/api/media",
+      "handler": "mediaRoutes"
+    },
+    {
+      "path": "/api/equipment-vendors",
+      "handler": "equipmentVendorRoutes"
+    },
+    {
+      "path": "/api/seed-vendors",
+      "handler": "seedVendorRoutes"
+    },
+    {
+      "path": "/api/supply-vendors",
+      "handler": "supplyVendorRoutes"
+    },
+    {
+      "path": "/api/task-reminders",
+      "handler": "taskReminderRoutes"
+    },
+    {
+      "path": "/api/tasks",
+      "handler": "taskRoutes"
+    },
+    {
+      "path": "/api/task-statuses",
+      "handler": "taskStatusRoutes"
+    },
+    {
+      "path": "/api/task-priorities",
+      "handler": "taskPriorityRoutes"
+    },
+    {
+      "path": "/api/harvests",
+      "handler": "harvestRoutes"
+    },
+    {
+      "path": "/api/harvest-quality-scales",
+      "handler": "harvestQualityScaleRoutes"
+    },
+    {
+      "path": "/api/pest-logs",
+      "handler": "pestLogRoutes"
+    },
+    {
+      "path": "/api/pests",
+      "handler": "pestRoutes"
+    },
+    {
+      "path": "/api/pest-types",
+      "handler": "pestTypeRoutes"
+    },
+    {
+      "path": "/api/issues",
+      "handler": "issueRoutes"
+    },
+    {
+      "path": "/api/plantings",
+      "handler": "plantingRoutes"
+    },
+    {
+      "path": "/api/plants",
+      "handler": "plantRoutes"
+    },
+    {
+      "path": "/api/plant-stages",
+      "handler": "plantStageRoutes"
+    },
+    {
+      "path": "/api/plant-varieties",
+      "handler": "plantVarietyRoutes"
+    },
+    {
+      "path": "/api/users/details",
+      "handler": "userDetailsRoutes"
+    },
+    {
+      "path": "/api/users/roles",
+      "handler": "userRolesRoutes"
+    },
+    {
+      "path": "/api/users/permission-modules",
+      "handler": "permissionModuleRoutes"
+    },
+    {
+      "path": "/api/users/departments",
+      "handler": "businessDepartmentRoutes"
+    },
+    {
+      "path": "/api/users/business-departments",
+      "handler": "businessDepartmentRoutes"
+    },
+    {
+      "path": "/api/users/department-assignments",
+      "handler": "userDepartmentAssignmentRoutes"
+    },
+    {
+      "path": "/api/users/role-assignments",
+      "handler": "userRoleAssignmentRoutes"
+    },
+    {
+      "path": "/api/users/role-permissions",
+      "handler": "rolePermissionRoutes"
+    },
+    {
+      "path": "/api/users/user-permission-overrides",
+      "handler": "userPermissionOverrideRoutes"
+    },
+    {
+      "path": "/api/users/effective-permissions",
+      "handler": "effectivePermissionRoutes"
+    },
+    {
+      "path": "/api/users",
+      "handler": "userRoutes"
+    },
+    {
+      "path": "/api/categories",
+      "handler": "categoryRoutes"
+    },
+    {
+      "path": "/api/courses",
+      "handler": "courseRoutes"
+    },
+    {
+      "path": "/api/cuisines",
+      "handler": "cuisineRoutes"
+    },
+    {
+      "path": "/api/dietaries",
+      "handler": "dietaryRoutes"
+    },
+    {
+      "path": "/api/recipes",
+      "handler": "recipeRoutes"
+    },
+    {
+      "path": "/api/recipe-costings",
+      "handler": "recipeCostingRoutes"
+    },
+    {
+      "path": "/api/vendor-categories",
+      "handler": "vendorCategoryRoutes"
+    },
+    {
+      "path": "/api/vendor-ingredient-prices",
+      "handler": "vendorIngredientPriceRoutes"
+    },
+    {
+      "path": "/api/reference/planting-seasons",
+      "handler": "plantingSeasonRoutes"
+    },
+    {
+      "path": "/api/boardjournal",
+      "handler": "dashboardSnapShotRoutes"
+    },
+    {
+      "path": "/api/dashboard",
+      "handler": "dashboardRoutes"
+    },
+    {
+      "path": "/api/weather",
+      "handler": "weatherRoutes"
+    },
+    {
+      "path": "/api/reminders",
+      "handler": "reminderRoutes"
+    }
+  ],
+  "sharedImports": [
+    "../barrow-coffee-delights/src/pages/admin/Businesses.jsx"
+  ],
+  "limitations": "Static local import and route analysis. Shared applications, runtime authorization, database contents and live browser behavior require separate verification."
+}

@@ -8,7 +8,7 @@ function DashboardChartCard({title,data=[],fillClass="",emptyMessage=""}){
     <h3 className="dashboard-chart-title">{title}</h3>
    </div>
 
-   <div className="dashboard-chart-body">
+   <div className="dashboard-chart-body" tabIndex={0} role="region" aria-label={title}>
     {data.length?data.map(item=>(
      <div key={item.category} className="dashboard-bar-row">
       <div className="dashboard-bar-meta">

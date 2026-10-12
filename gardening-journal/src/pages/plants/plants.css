@@ -1,13 +1,32 @@
 /* src/pages/plants/plants.css */
 .plant-page{
- background:var(--bs-body-bg);
+ background:var(--gradientSoft);
+ color:var(--text);
 }
+
+.plant-profile-layout{display:grid;grid-template-columns:minmax(220px,300px) minmax(0,1fr);gap:1rem;align-items:start;}
+.plant-profile-sidebar{position:sticky;top:1rem;min-width:0;}
+.plant-profile-main{min-width:0;}
+.plant-sidebar-card .card-header h2{margin:0;font-size:1.4rem;white-space:nowrap;color:var(--heading);}
+.plant-list-search{padding:.75rem;}
+.plant-alpha-tabs{display:flex;flex-wrap:wrap;gap:.25rem;padding:.75rem;border-bottom:1px solid var(--border);}
+.plant-sidebar-card .list-group{max-height:640px;overflow-y:auto;overscroll-behavior:contain;}
+.plant-list-name,.plant-list-type{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.plant-list-name{font-weight:900;}
+.plant-list-type{font-size:.78rem;margin-top:.15rem;}
+.plant-detail-flow{display:grid;gap:.9rem;margin-top:1rem;}
+.plant-detail-overview-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.9rem;}
+.plant-detail-overview-grid > *{min-width:0;}
+.plant-info-card .card-header{background:var(--primary);color:var(--textInverse);}
+.plant-info-card .list-group-item{background:var(--surface);color:var(--text);border-color:var(--border);}
 
 .plant-sidebar-card,
 .plant-hero-card,
 .plant-info-card{
  border-radius:14px;
- overflow:hidden;
+ background:var(--surface);
+ color:var(--text);
+ border-color:var(--border);
 }
 
 .plant-sidebar-card .list-group-item.active{
@@ -38,7 +57,7 @@
  display:flex;
  align-items:center;
  justify-content:center;
- background:#f8f9fa;
+ background:var(--surface2);
  color:#6c757d;
 }
 
@@ -104,7 +123,32 @@
  color:#fd7e14;
 }
 
+.plant-detail-tabs{
+ gap:.25rem;
+ border-bottom:1px solid var(--borderStrong);
+}
+
+.plant-detail-tabs .nav-link{
+ color:var(--heading);
+ font-weight:700;
+ padding:.6rem .85rem;
+}
+
+.plant-detail-tabs .nav-link.active{
+ color:var(--textInverse);
+ background:var(--primary);
+ border-color:var(--primary);
+}
+
+.plant-page .tab-content{
+ padding:.75rem 0;
+}
+
 @media(max-width:768px){
+ .plant-profile-layout,.plant-detail-overview-grid{
+  grid-template-columns:minmax(0,1fr);
+ }
+ .plant-profile-sidebar{ position:static; }
  .plant-hero-row{
   flex-direction:column;
  }

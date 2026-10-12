@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import {buildJournalFollowUpTasks} from "./journalFollowUpTasks.js";
 import Plant from "../../models/plants/plantModel.js";
 import Planting from "../../models/plants/plantingModel.js";
 import Garden from "../../models/gardens/gardenModel.js";
@@ -14,6 +15,7 @@ import JournalEntry from "../../models/journal/journalEntryModel.js";
 import Observation from "../../models/journal/observationModel.js";
 import Harvest from "../../models/harvest/harvestModel.js";
 import DiseaseLog from "../../models/diseases/diseaseLogModel.js";
+import Issue from "../../models/issues/issueModel.js";
 import PestLog from "../../models/pests/pestLogModel.js";
 
 const closedTaskStatuses=[
@@ -224,8 +226,8 @@ const mapDeadPlantingLifecycle=planting=>({
  status:"Dead",
  reason:getText(planting.failureReason)||"Not listed",
  location:getText(planting.garden)||planting.location||"Garden",
- date:formatDate(planting.plantedDate||planting.createdAt),
- reportingDate:formatDate(planting.plantedDate||planting.createdAt),
+ date:formatDate(planting.deathDate||planting.endDate||planting.updatedAt),
+ reportingDate:formatDate(planting.deathDate||planting.endDate||planting.updatedAt),
  plantedDate:formatDate(planting.plantedDate||planting.createdAt)
 });
 
@@ -413,7 +415,6 @@ const getDashboardDataService=async({userId=null,reportDate=new Date()}={})=>{
   hydroSystems,
   diseaseIssueCount,
   pestIssueCount,
-  deadPlantingCount,
   seeds,
   supplies,
   lowSupplies,
@@ -425,7 +426,9 @@ const getDashboardDataService=async({userId=null,reportDate=new Date()}={})=>{
   pestLogs,
   deadPlantings,
   growingInstances,
-  environmentObservations
+  environmentObservations,
+  followUpEntries,
+  generalIssues
  ]=await Promise.all([
   Plant.find(createdByQuery).populate("type").lean(),
   Garden.find(createdByQuery).lean(),
@@ -433,7 +436,6 @@ const getDashboardDataService=async({userId=null,reportDate=new Date()}={})=>{
   HydroSystem.find(createdByQuery).lean(),
   DiseaseLog.countDocuments({...userQuery,status:{$nin:closedIssueStatuses}}),
   PestLog.countDocuments({...createdByQuery,isActive:{$ne:false},status:{$nin:closedIssueStatuses}}),
-  Planting.countDocuments({...createdByQuery,status:"dead",isActive:{$ne:false}}),
   Seed.find(userQuery).lean(),
   Supply.find(createdByQuery)
    .populate("category")
@@ -475,7 +477,6 @@ const getDashboardDataService=async({userId=null,reportDate=new Date()}={})=>{
    .populate("hydroSystem")
    .populate("equipment")
    .sort({entryDate:-1,createdAt:-1})
-   .limit(8)
    .lean(),
   Harvest.find({...createdByQuery,isActive:{$ne:false}})
    .populate({
@@ -505,7 +506,6 @@ const getDashboardDataService=async({userId=null,reportDate=new Date()}={})=>{
     populate:{path:"garden",model:"Garden"}
    })
    .sort({dateObserved:-1,createdAt:-1})
-   .limit(4)
    .lean(),
   Planting.find({...createdByQuery,status:"dead",isActive:{$ne:false}})
    .populate("seed")
@@ -527,6 +527,14 @@ const getDashboardDataService=async({userId=null,reportDate=new Date()}={})=>{
    .populate("planting")
    .sort({observedAt:-1,createdAt:-1})
    .limit(24)
+   .lean(),
+  JournalEntry.find({...createdByQuery,isActive:{$ne:false},followUpDate:{$ne:null}})
+   .populate("garden")
+   .sort({followUpDate:1})
+   .lean(),
+  Issue.find({...createdByQuery,isActive:{$ne:false},status:{$nin:closedIssueStatuses}})
+   .populate("garden")
+   .sort({observedAt:-1})
    .lean()
  ]);
 
@@ -534,7 +542,10 @@ const getDashboardDataService=async({userId=null,reportDate=new Date()}={})=>{
   .map(mapSupplyCost)
   .filter(item=>item.cost>0);
 
- const issueCount=diseaseIssueCount+pestIssueCount;
+ const issueCount=diseaseIssueCount+pestIssueCount+generalIssues.length;
+ const lifecycleItems=deadPlantings.map(mapDeadPlantingLifecycle).filter(item=>new Date(item.reportingDate).getUTCFullYear()===today.getFullYear());
+ const followUps=buildJournalFollowUpTasks(followUpEntries);
+ const gardenTasks=[...tasks.map(mapTaskItem),...followUps].sort((a,b)=>(a.dueDate||"9999").localeCompare(b.dueDate||"9999"));
 
  return {
   stats:buildStats({
@@ -543,28 +554,34 @@ const getDashboardDataService=async({userId=null,reportDate=new Date()}={})=>{
    gardens,
    gardenSections,
    hydroSystems,
-   tasks,
+   tasks:[...tasks,...followUps],
    harvests,
    issueCount,
-   deadPlantingCount,
+   deadPlantingCount:lifecycleItems.length,
    today,
    nextThirtyDays
   }),
   lowStockItems:lowSupplies.map(mapSupplyItem),
-  expiringItems:tasks.map(mapTaskItem),
+  expiringItems:gardenTasks,
   recentItems:supplies.slice(0,8).map(mapSupplyItem),
   missingItems:missingSupplies.map(mapSupplyItem),
   categoryCosts,
-  gardenTasks:tasks.map(mapTaskItem),
+  gardenTasks,
   recentJournalEntries:journalEntries.map(mapJournalItem),
   plantHealthItems:[
+   ...generalIssues.map(issue=>({_id:`issue-${issue._id}`,name:issue.title,issue:issue.title,status:issue.status,severity:issue.severity,location:getText(issue.garden)||"Garden",dateObserved:formatDate(issue.observedAt||issue.createdAt)})),
    ...diseaseLogs.map(mapDiseaseIssue),
    ...pestLogs.map(mapPestIssue)
   ],
-  plantLifecycleItems:deadPlantings.map(mapDeadPlantingLifecycle),
+  plantLifecycleItems:lifecycleItems,
   growingInstanceItems:growingInstances.map(mapGrowingInstanceItem),
   harvestItems:harvests.map(mapHarvestItem),
-  environmentItems:environmentObservations.map(mapEnvironmentItem)
+  environmentItems:environmentObservations.flatMap(observation=>{
+   const base=mapEnvironmentItem(observation);
+   const readings=[["moisture","Moisture","%"],["light","Ambient Light","lux"],["temperature","Temperature","°C"]];
+   const items=readings.filter(([key])=>observation[key]!==null&&observation[key]!==undefined).map(([key,label,unit])=>({...base,_id:`${base._id}-${key}`,label,value:`${observation[key]} ${unit}`}));
+   return items.length?items:[base];
+  })
  };
 };
 

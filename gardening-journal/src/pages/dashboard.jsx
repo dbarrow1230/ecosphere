@@ -26,20 +26,23 @@ import {
  getObjectId,
  normalizeDashboardData
 } from "../utils/dashboard/dashboardData.js";
+import {mergeJournalFollowUps} from "../utils/dashboard/journalFollowUpTasks.js";
 import {months} from "../utils/dashboard/dashboardFilters.js";
 import "../styles/Dashboard.css";
 import dashboardBg from "../images/hero_image.png";
 
 function Dashboard({user}){
- const [yearFilter,setYearFilter]=useState("all");
- const [monthFilter,setMonthFilter]=useState("all");
+ const [yearFilter,setYearFilter]=useState(String(new Date().getFullYear()));
+ const [monthFilter,setMonthFilter]=useState(String(new Date().getMonth()));
+ const [dayFilter,setDayFilter]=useState("all");
  const [dashboardData,setDashboardData]=useState(()=>normalizeDashboardData(emptyDashboardData));
  const [loading,setLoading]=useState(true);
  const [error,setError]=useState("");
- const periodSummary=getDashboardPeriodSummary(yearFilter,monthFilter);
+ const periodSummary=getDashboardPeriodSummary(yearFilter,monthFilter,dayFilter);
 
  const handleYearFilterChange=value=>{
   setYearFilter(value);
+  setDayFilter("all");
   if(value==="all")setMonthFilter("all");
  };
 
@@ -53,11 +56,16 @@ function Dashboard({user}){
 
     const userId=getObjectId(user);
     const query=userId?`?userId=${encodeURIComponent(userId)}`:"";
-    const res=await fetch(`/api/dashboard${query}`,{headers:{"Content-Type":"application/json"}});
+    const [res,journalRes]=await Promise.all([
+     fetch(`/api/dashboard${query}`,{headers:{"Content-Type":"application/json"}}),
+     fetch("/api/journal-entries")
+    ]);
     const data=await res.json().catch(()=>({}));
+    const journalData=await journalRes.json().catch(()=>[]);
+    if(!journalRes.ok)throw new Error(journalData.message||"Failed to load journal follow-ups");
 
     if(!res.ok)throw new Error(data.message||"Failed to load dashboard data");
-    if(!ignore)setDashboardData(normalizeDashboardData(data));
+    if(!ignore)setDashboardData(normalizeDashboardData(mergeJournalFollowUps(data,journalData)));
    }catch(err){
     if(!ignore){
      setError(err.message||"Failed to load dashboard data");
@@ -78,7 +86,6 @@ function Dashboard({user}){
  const {
   stats,
   lowStockItems,
-  expiringItems,
   missingItems,
   categoryCosts,
   gardenTasks,
@@ -100,15 +107,14 @@ function Dashboard({user}){
   harvestItems
  ),[categoryCosts,gardenTasks,recentJournalEntries,plantHealthItems,plantLifecycleItems,growingInstanceItems,harvestItems]);
 
- const filteredCategoryCosts=useMemo(()=>filterDashboardRows(categoryCosts,yearFilter,monthFilter),[categoryCosts,yearFilter,monthFilter]);
- const filteredGardenTasks=useMemo(()=>filterDashboardRows(gardenTasks,yearFilter,monthFilter),[gardenTasks,yearFilter,monthFilter]);
- const filteredExpiringItems=useMemo(()=>filterDashboardRows(expiringItems,yearFilter,monthFilter),[expiringItems,yearFilter,monthFilter]);
- const filteredJournalEntries=useMemo(()=>filterDashboardRows(recentJournalEntries,yearFilter,monthFilter),[recentJournalEntries,yearFilter,monthFilter]);
- const filteredPlantHealthItems=useMemo(()=>filterDashboardRows(plantHealthItems,yearFilter,monthFilter),[plantHealthItems,yearFilter,monthFilter]);
- const filteredPlantLifecycleItems=useMemo(()=>filterDashboardRows(plantLifecycleItems,yearFilter,monthFilter),[plantLifecycleItems,yearFilter,monthFilter]);
- const filteredGrowingInstanceItems=useMemo(()=>filterDashboardRows(growingInstanceItems,yearFilter,monthFilter),[growingInstanceItems,yearFilter,monthFilter]);
- const filteredHarvestItems=useMemo(()=>filterDashboardRows(harvestItems,yearFilter,monthFilter),[harvestItems,yearFilter,monthFilter]);
- const filteredLowStockItems=useMemo(()=>filterDashboardRows(lowStockItems,yearFilter,monthFilter),[lowStockItems,yearFilter,monthFilter]);
+ const filteredCategoryCosts=useMemo(()=>filterDashboardRows(categoryCosts,yearFilter,monthFilter,dayFilter),[categoryCosts,yearFilter,monthFilter,dayFilter]);
+ const filteredGardenTasks=useMemo(()=>filterDashboardRows(gardenTasks,yearFilter,monthFilter,dayFilter),[gardenTasks,yearFilter,monthFilter,dayFilter]);
+ const filteredJournalEntries=useMemo(()=>filterDashboardRows(recentJournalEntries,yearFilter,monthFilter,dayFilter),[recentJournalEntries,yearFilter,monthFilter,dayFilter]);
+ const filteredPlantHealthItems=useMemo(()=>filterDashboardRows(plantHealthItems,yearFilter,monthFilter,dayFilter),[plantHealthItems,yearFilter,monthFilter,dayFilter]);
+ const filteredPlantLifecycleItems=useMemo(()=>filterDashboardRows(plantLifecycleItems,String(new Date().getFullYear()),"all"),[plantLifecycleItems]);
+ const filteredGrowingInstanceItems=useMemo(()=>filterDashboardRows(growingInstanceItems,yearFilter,monthFilter,dayFilter),[growingInstanceItems,yearFilter,monthFilter,dayFilter]);
+ const filteredHarvestItems=useMemo(()=>filterDashboardRows(harvestItems,yearFilter,monthFilter,dayFilter),[harvestItems,yearFilter,monthFilter,dayFilter]);
+ const filteredLowStockItems=useMemo(()=>filterDashboardRows(lowStockItems,yearFilter,monthFilter,dayFilter),[lowStockItems,yearFilter,monthFilter,dayFilter]);
 
  const isDashboardFiltered=yearFilter!=="all"||monthFilter!=="all";
  const dashboardStats=useMemo(()=>isDashboardFiltered?buildFilteredStats(stats,{
@@ -121,7 +127,8 @@ function Dashboard({user}){
 
  const seedChartData=useMemo(()=>buildChartData(filteredCategoryCosts,"seed"),[filteredCategoryCosts]);
  const supplyChartData=useMemo(()=>buildChartData(filteredCategoryCosts,"supply"),[filteredCategoryCosts]);
- const upcomingItems=filteredGardenTasks.length?filteredGardenTasks:filteredExpiringItems;
+ // The attention queue includes follow-ups beyond the selected calendar period.
+ const upcomingItems=gardenTasks;
  const calendarEvents=useMemo(()=>{
   const toDate=value=>{
    if(!value)return null;
@@ -164,10 +171,13 @@ function Dashboard({user}){
     yearFilter={yearFilter}
     monthFilter={monthFilter}
     onClear={()=>{
-     setYearFilter("all");
-     setMonthFilter("all");
+     setYearFilter(String(new Date().getFullYear()));
+     setMonthFilter(String(new Date().getMonth()));
+     setDayFilter("all");
     }}
    />
+
+   <DashboardFilters months={months} availableYears={[...new Set([new Date().getFullYear(),...availableYears])].sort((a,b)=>b-a)} yearFilter={yearFilter} monthFilter={monthFilter} onYearChange={handleYearFilterChange} onMonthChange={value=>{setMonthFilter(value);setDayFilter("all");}} dayFilter={dayFilter} onDayChange={value=>{setDayFilter(value||"all");if(value){setYearFilter(value.slice(0,4));setMonthFilter(String(Number(value.slice(5,7))-1));}}}/>
 
    {(loading||error)&&(
     <div className={`dashboard-status${error?" dashboard-status-error":""}`}>
@@ -183,7 +193,7 @@ function Dashboard({user}){
 
      <section className="dashboard-workbench">
       <div className="dashboard-primary-flow">
-       <DashboardCalendarCard events={calendarEvents}/>
+       <DashboardCalendarCard events={calendarEvents} date={new Date(Number(yearFilter==="all"?new Date().getFullYear():yearFilter),Number(monthFilter==="all"?0:monthFilter),dayFilter==="all"?1:Number(dayFilter.slice(8,10)))} onNavigate={date=>{setYearFilter(String(date.getFullYear()));setMonthFilter(String(date.getMonth()));setDayFilter("all");}}/>
        <EnvironmentMonitorPanel items={environmentItems}/>
 
        <div className="dashboard-paired-flow">
@@ -197,14 +207,6 @@ function Dashboard({user}){
        </div>
 
        <DashboardSection className="dashboard-section-charts" kicker="Garden Spending" title="Cost by Garden Category">
-        <DashboardFilters
-         months={months}
-         availableYears={availableYears}
-         yearFilter={yearFilter}
-         monthFilter={monthFilter}
-         onYearChange={handleYearFilterChange}
-         onMonthChange={setMonthFilter}
-        />
         <CategorySpendCharts seedChartData={seedChartData} supplyChartData={supplyChartData}/>
        </DashboardSection>
       </div>

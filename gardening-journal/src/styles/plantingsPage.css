@@ -60,68 +60,6 @@
  gap:.4rem;
 }
 
-.plantings-reference-dashboard{
- display:grid;
- grid-template-columns:minmax(0,.78fr) minmax(360px,1.22fr);
- align-items:center;
- gap:1.25rem;
- padding:1rem;
- border:1px solid var(--border);
- border-radius:18px;
- background:var(--surface);
- box-shadow:0 12px 32px rgba(17,24,39,.08);
- overflow:hidden;
-}
-
-.plantings-reference-dashboard h2{
- margin:.2rem 0 .45rem;
- color:var(--heading);
- font-family:var(--fontHeading);
- line-height:1.15;
-}
-
-.plantings-reference-dashboard p{
- margin:0;
- color:var(--textSoft);
- line-height:1.55;
-}
-
-.plantings-care-summary{
- display:grid;
- grid-template-columns:repeat(3,minmax(0,1fr));
- gap:.75rem;
-}
-
-.plantings-care-summary article{
- display:grid;
- gap:.25rem;
- min-height:150px;
- align-content:center;
- padding:1rem;
- border:1px solid var(--border);
- border-radius:16px;
- background:linear-gradient(145deg,var(--surface2),var(--surface));
-}
-
-.plantings-care-summary span{
- color:var(--textSoft);
- font-size:.78rem;
- font-weight:900;
- text-transform:uppercase;
-}
-
-.plantings-care-summary strong{
- color:var(--heading);
- font-family:var(--fontHeading);
- font-size:2.4rem;
- line-height:1;
-}
-
-.plantings-care-summary small{
- color:var(--textSoft);
- line-height:1.35;
-}
-
 .plantings-metrics{
  display:grid;
  grid-template-columns:repeat(4,minmax(0,1fr));
@@ -160,9 +98,11 @@
 
 .plantings-filter-grid{
  display:grid;
- grid-template-columns:minmax(280px,1fr) minmax(170px,.25fr) minmax(130px,.18fr) minmax(170px,.2fr);
+ grid-template-columns:minmax(160px,.6fr) minmax(240px,1.5fr) minmax(150px,.6fr) minmax(110px,.4fr) minmax(150px,.6fr);
  gap:.75rem;
 }
+
+.plantings-filter-summary{margin:0;color:var(--textSoft);font-size:.9rem;}
 
 .plantings-loading,
 .plantings-empty{
@@ -234,8 +174,6 @@
  }
 
  .plantings-metrics,
- .plantings-reference-dashboard,
- .plantings-care-summary,
  .plantings-filter-grid{
   grid-template-columns:repeat(2,minmax(0,1fr));
  }
@@ -247,8 +185,6 @@
  }
 
  .plantings-metrics,
- .plantings-reference-dashboard,
- .plantings-care-summary,
  .plantings-filter-grid,
  .plantings-list,
  .planting-card-details{

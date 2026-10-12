@@ -33,7 +33,7 @@ function EnvironmentMonitorPanel({items=[],className=""}){
    </div>
 
    {monitorRows.length?(
-    <div className="dashboard-monitor-grid">
+    <div className="dashboard-monitor-grid" tabIndex={0} role="region" aria-label="Environmental readings">
      {monitorRows.map(row=>(
      <article key={row.label} className="dashboard-monitor-card">
       <div>

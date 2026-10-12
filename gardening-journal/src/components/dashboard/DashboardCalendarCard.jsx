@@ -4,7 +4,7 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 
 const localizer=momentLocalizer(moment);
 
-function DashboardCalendarCard({events=[],className=""}){
+function DashboardCalendarCard({events=[],className="",date,onNavigate}){
  const today=new Date();
 
  const eventStyleGetter=event=>{
@@ -20,6 +20,7 @@ function DashboardCalendarCard({events=[],className=""}){
    className:`dashboard-calendar-event dashboard-calendar-event-${event.resource?.type||"default"}`,
    style:{
     backgroundColor:colorMap[event.resource?.type]||"#0f5132",
+    color:"#ffffff",
     borderColor:colorMap[event.resource?.type]||"#0f5132"
    }
   };
@@ -41,6 +42,8 @@ function DashboardCalendarCard({events=[],className=""}){
      startAccessor="start"
      endAccessor="end"
      defaultDate={today}
+     date={date}
+     onNavigate={onNavigate}
      defaultView="month"
      views={["month","week","agenda"]}
      popup

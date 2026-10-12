@@ -256,7 +256,7 @@
 }
 
 .seed-page .card-title,
-.seed-page .card h2,
+.seed-page .card h2:not(.seed-banner-title),
 .seed-page .card h3 {
   color: var(--heading);
   font-family: var(--fontHeading);
@@ -323,7 +323,7 @@
   margin-bottom: 0;
 }
 
-.seed-page .card-body strong {
+.seed-page .card-body strong:not(.seed-stat-value) {
   color: var(--heading);
   font-weight: 900;
 }
@@ -1188,3 +1188,14 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Keep seed navigation on one line and reference sections within their tabs. */
+.seed-page .seed-sidebar-card > .card-header { gap:.5rem; }
+.seed-page .seed-sidebar-card > .card-header h2 { font-size:1.4rem; white-space:nowrap; }
+.seed-page .seed-sidebar-card > .card-header .btn { flex-shrink:0; white-space:nowrap; }
+.seed-page .seed-list-name,.seed-page .seed-list-species { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.seed-page .seed-detail-tabs { gap:.25rem; flex-wrap:wrap; border-bottom:1px solid var(--borderStrong); }
+.seed-page .seed-detail-tabs .nav-link { color:var(--heading); font-weight:700; padding:.6rem .85rem; }
+.seed-page .seed-detail-tabs .nav-link.active { color:var(--textInverse); background:var(--primary); border-color:var(--primary); }
+.seed-page .seed-detail-library > .tab-content { padding:.75rem 0; }
+.seed-page .seed-detail-library .card { height:auto; }

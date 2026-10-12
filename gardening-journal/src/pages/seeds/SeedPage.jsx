@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Container, Card, ListGroup, Image, Button, Modal, Form, InputGroup } from "react-bootstrap";
+import { Container, Card, ListGroup, Image, Button, Modal, Form, InputGroup, Tabs, Tab } from "react-bootstrap";
 import { BookOpen, Plus, Search, X } from "lucide-react";
 import "../../styles/SeedPage.css";
 import seedHeaderImage from "../../images/seed header.png";
@@ -298,8 +298,8 @@ export default function SeedsPage({ user }) {
                   aria-current={selectedSeed?._id===seed._id ? "true" : undefined}
                   onClick={()=>setSelectedSeed(seed)}
                 >
-                  <strong className="seed-list-name">{seed.plantName || "Unnamed Seed"}</strong>
-                  <div className="seed-list-species">{getSpeciesText(seed.species)}</div>
+                  <strong className="seed-list-name" title={seed.plantName || "Unnamed Seed"}>{seed.plantName || "Unnamed Seed"}</strong>
+                  <div className="seed-list-species" title={getSpeciesText(seed.species)}>{getSpeciesText(seed.species)}</div>
                 </ListGroup.Item>
               )}
             >
@@ -418,16 +418,23 @@ export default function SeedsPage({ user }) {
             <SeedGrowingConditions data={selectedSeed.growingConditionsAndRequirements} />
           </section>
 
-          <SeedStressRisk data={selectedSeed.stressRisk} />
-
+          <section className="seed-detail-library" aria-label="Seed reference sections">
+          <Tabs defaultActiveKey="planting" id="seed-detail-tabs" className="seed-detail-tabs" mountOnEnter unmountOnExit>
+          <Tab eventKey="stress" title="Stress Risk">
+            <SeedStressRisk data={selectedSeed.stressRisk} />
+          </Tab>
+          <Tab eventKey="planting" title="Planting">
           <SeedPlantingInfo data={selectedSeed.plantingInformation} />
 
+          </Tab>
+          <Tab eventKey="health" title="Pests & Diseases">
           <SeedPestDisease
             pestManagement={selectedSeed.pestManagement}
             diseaseManagement={selectedSeed.diseaseManagement}
           />
 
-          <section className="seed-detail-trio">
+          </Tab>
+          <Tab eventKey="harvest" title="Propagation & Harvest">
             <SeedPropagationHarvestStorage
               propagationMethods={selectedSeed.propagationMethods}
               pollinationInformation={selectedSeed.pollinationInformation}
@@ -437,19 +444,24 @@ export default function SeedsPage({ user }) {
               storageTips={selectedSeed.storageTips}
             />
 
+          </Tab>
+          <Tab eventKey="uses" title="Uses & Nutrition">
             <SeedUsesBenefits
               data={selectedSeed.usesAndBenefits}
               nutritionalInformation={selectedSeed.nutritionalInformation}
             />
 
+          </Tab>
+          <Tab eventKey="environment" title="Environment">
             <SeedEnvironmentalFeatures
               environmentalImpact={selectedSeed.environmentalImpact}
               specialFeatures={selectedSeed.specialFeatures}
               apartmentGardening={selectedSeed.plantingInformation?.apartmentGardening}
               plantingInformation={selectedSeed.plantingInformation}
             />
-          </section>
+          </Tab>
 
+          <Tab eventKey="references" title="History & Resources">
           <section className="seed-detail-pair seed-detail-reference-row">
             <SeedHistory
               data={selectedSeed.historicalInformation}
@@ -460,6 +472,9 @@ export default function SeedsPage({ user }) {
               data={selectedSeed.resourcesAndLinks}
               medicalDisclaimer={selectedSeed.medicalDisclaimer}
             />
+          </section>
+          </Tab>
+          </Tabs>
           </section>
         </div>
       )}

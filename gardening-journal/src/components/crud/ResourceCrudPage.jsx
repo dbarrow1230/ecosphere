@@ -138,7 +138,7 @@ export default function ResourceCrudPage({title,kicker,description,endpoint,fiel
  const buildPayload=()=>fields.reduce((acc,field)=>{
   const value=formData[field.name];
 
-  if(field.type==="number")acc[field.name]=value===""?0:Number(value);
+  if(field.type==="number")acc[field.name]=value===""?(field.nullable?null:0):Number(value);
   else if(field.type==="tags")acc[field.name]=String(value||"").split(",").map(item=>item.trim()).filter(Boolean);
   else if(field.type==="select")acc[field.name]=value||null;
   else if(field.type==="checkbox")acc[field.name]=!!value;
@@ -229,6 +229,9 @@ export default function ResourceCrudPage({title,kicker,description,endpoint,fiel
   return(
    <Form.Control
     type={field.type||"text"}
+     min={field.min}
+     max={field.max}
+     step={field.step}
     value={value||""}
     onChange={event=>updateField(field.name,event.target.value)}
     required={field.required}

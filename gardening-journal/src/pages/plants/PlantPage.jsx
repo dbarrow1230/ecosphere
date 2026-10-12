@@ -1,6 +1,6 @@
 // src/pages/plants/PlantPage.jsx
 import {useEffect,useState} from "react";
-import {Container,Row,Col,Card,ListGroup} from "react-bootstrap";
+import {Container,Card,ListGroup,Tabs,Tab,Form,InputGroup,Button} from "react-bootstrap";
 import SortedList from "../../components/SortedList.jsx";
 import "./plants.css";
 
@@ -16,6 +16,9 @@ export default function PlantPage(){
  const [selectedPlant,setSelectedPlant]=useState(null);
  const [loading,setLoading]=useState(true);
  const [error,setError]=useState("");
+ const [search,setSearch]=useState("");
+ const [letter,setLetter]=useState("all");
+ const alphabet="ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
  const getTypeText=type=>{
   if(!type)return "Type not listed";
@@ -44,6 +47,12 @@ export default function PlantPage(){
   fetchPlants();
  },[]);
 
+ const availableLetters=new Set(plants.map(plant=>(plant.name||"").trim().charAt(0).toUpperCase()));
+ const filteredPlants=plants.filter(plant=>{
+  const name=plant.name||"";
+  return (letter==="all"||name.trim().toUpperCase().startsWith(letter))&&`${name} ${plant.scientificName||""} ${getTypeText(plant.type)}`.toLowerCase().includes(search.trim().toLowerCase());
+ });
+
  if(loading){
   return(
    <Container className="py-4">
@@ -64,17 +73,23 @@ export default function PlantPage(){
 
  return(
   <Container fluid className="py-4 plant-page">
-   <Row className="g-4">
-    <Col lg={3}>
+   <div className="plant-profile-layout">
+    <aside className="plant-profile-sidebar">
      <Card className="plant-sidebar-card">
       <Card.Header className="fw-bold">
        <h2>Plant List</h2>
       </Card.Header>
 
+      <div className="plant-list-search">
+       <InputGroup size="sm"><InputGroup.Text>Search</InputGroup.Text><Form.Control type="search" value={search} onChange={event=>setSearch(event.target.value)} placeholder="Search plants" aria-label="Search plants"/></InputGroup>
+      </div>
+      <div className="plant-alpha-tabs" aria-label="Filter plants by first letter">
+       {["all",...alphabet].map(value=><Button key={value} size="sm" variant="outline-success" active={letter===value} aria-pressed={letter===value} disabled={value!=="all"&&!availableLetters.has(value)} onClick={()=>setLetter(value)}>{value==="all"?"All":value}</Button>)}
+      </div>
       <SortedList
        as={ListGroup}
        variant="flush"
-       items={plants}
+       items={filteredPlants}
        getKey={plant=>plant._id}
        getLabel={plant=>plant.name||getTypeText(plant.type)||"Unnamed Plant"}
        wrapItems={false}
@@ -84,50 +99,47 @@ export default function PlantPage(){
          active={selectedPlant?._id===plant._id}
          onClick={()=>setSelectedPlant(plant)}
         >
-         <strong>{plant.name||"Unnamed Plant"}</strong>
-         <div className="small text-muted">
+         <strong className="plant-list-name" title={plant.name||"Unnamed Plant"}>{plant.name||"Unnamed Plant"}</strong>
+         <div className="plant-list-type" title={getTypeText(plant.type)}>
           {getTypeText(plant.type)}
          </div>
         </ListGroup.Item>
        )}
       >
-       <ListGroup.Item>No plants found.</ListGroup.Item>
+       {filteredPlants.length===0&&<ListGroup.Item>No plants match the current filter.</ListGroup.Item>}
       </SortedList>
      </Card>
-    </Col>
+    </aside>
 
-    <Col lg={9}>
+    <main className="plant-profile-main">
      {!selectedPlant?(
       <Card body>No plant selected.</Card>
      ):(
-      <Row className="g-4">
-       <Col xs={12}>
-        <PlantHeader plant={selectedPlant}/>
-       </Col>
-
-       <Col md={6}>
-        <PlantGrowingConditions data={selectedPlant.growingConditions}/>
-       </Col>
-
-       <Col md={6}>
-        <PlantSpacing spacing={selectedPlant.spacing} growthDurationDays={selectedPlant.growthDurationDays}/>
-       </Col>
-
-       <Col xs={12}>
-        <PlantSeedInfo seed={selectedPlant.seed}/>
-       </Col>
-
-       <Col md={6}>
-        <PlantNotes notes={selectedPlant.notes}/>
-       </Col>
-
-       <Col md={6}>
-        <PlantResources plant={selectedPlant}/>
-       </Col>
-      </Row>
+      <PlantHeader plant={selectedPlant}/>
      )}
-    </Col>
-   </Row>
+    </main>
+   </div>
+   {selectedPlant&&(
+    <div className="plant-detail-flow">
+     <section className="plant-detail-overview-grid" aria-label="Plant growing overview">
+      <PlantGrowingConditions data={selectedPlant.growingConditions}/>
+      <PlantSpacing spacing={selectedPlant.spacing} growthDurationDays={selectedPlant.growthDurationDays}/>
+     </section>
+     <section className="plant-detail-library" aria-label="Plant reference sections">
+        <Tabs defaultActiveKey="seed" id="plant-detail-tabs" className="plant-detail-tabs" mountOnEnter unmountOnExit>
+         <Tab eventKey="seed" title="Seed Information">
+          <PlantSeedInfo seed={selectedPlant.seed}/>
+         </Tab>
+         <Tab eventKey="notes" title="Notes">
+          <PlantNotes notes={selectedPlant.notes}/>
+         </Tab>
+         <Tab eventKey="resources" title="Resources">
+          <PlantResources plant={selectedPlant}/>
+         </Tab>
+        </Tabs>
+     </section>
+    </div>
+   )}
   </Container>
  );
 }

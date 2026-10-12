@@ -8,7 +8,7 @@ function ShoppingListPanel({missingItems=[],className=""}){
 
  return(
   <DashboardSection className={sectionClassName} kicker="Restock & Prepare" title="Needed Garden Supplies" linkTo="/supplies" linkLabel="Open supplies">
-   <ul className="dashboard-list dashboard-list-two-column">
+   <ul className="dashboard-list dashboard-list-two-column" tabIndex={0} aria-label="Scrollable records">
     {missingItems?.length?missingItems.map(item=>(
      <li key={item._id||item.id||item.name} className="dashboard-list-item">
       <span className="dashboard-list-icon dashboard-list-icon-warning"><ShoppingCart size={17} strokeWidth={2.2}/></span>

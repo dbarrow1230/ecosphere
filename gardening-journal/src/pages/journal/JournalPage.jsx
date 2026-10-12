@@ -1,6 +1,6 @@
 import {useEffect,useMemo,useState} from "react";
-import {Container,Row,Col,Card,Form,InputGroup,Button,Badge,Alert} from "react-bootstrap";
-import {CalendarDays,NotebookPen,Sprout,Droplets,Wrench,Leaf,Clock3,Flag} from "lucide-react";
+import {Container,Row,Col,Card,Form,InputGroup,Button,Badge,Alert,Modal} from "react-bootstrap";
+import {CalendarDays,NotebookPen,Clock3,Flag} from "lucide-react";
 import {sortItems} from "../../utils/sortItems.js";
 import "../../styles/journalPage.css";
 
@@ -68,14 +68,15 @@ const getObjectId=value=>{
 };
 
 const formatDateForInput=value=>{
+	if(typeof value==="string"&&/^\d{4}-\d{2}-\d{2}/.test(value))return value.slice(0,10);
 	const date=value ? new Date(value) : new Date();
 	if(Number.isNaN(date.getTime()))return "";
-	return date.toISOString().slice(0,10);
+	return `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,"0")}-${String(date.getDate()).padStart(2,"0")}`;
 };
 
 const formatDate=value=>{
 	if(!value)return "No date";
-	const date=new Date(value);
+	const date=new Date(formatDateForInput(value)+"T12:00:00");
 	if(Number.isNaN(date.getTime()))return "No date";
 	return date.toLocaleDateString();
 };
@@ -99,12 +100,12 @@ const unwrapRows=value=>{
 const loadRows=async url=>{
 	const res=await fetch(url);
 	const data=await res.json().catch(()=>[]);
-	if(!res.ok)return [];
+	if(!res.ok)throw new Error(data.message||`Failed to load ${url}`);
 	return unwrapRows(data);
 };
 
-export default function JournalPage({user}){
-	const [entryForm,setEntryForm]=useState({...defaultEntryForm,entryDate:formatDateForInput(new Date())});
+export default function JournalPage({user,editorOnly=false,initialEntry={},onClose,onSaved}){
+	const [entryForm,setEntryForm]=useState(()=>({...defaultEntryForm,entryDate:formatDateForInput(new Date()),...initialEntry}));
 	const [journalEntries,setJournalEntries]=useState([]);
 	const [plantings,setPlantings]=useState([]);
 	const [seedRecords,setSeedRecords]=useState([]);
@@ -117,6 +118,10 @@ export default function JournalPage({user}){
 	const [loading,setLoading]=useState(true);
 	const [error,setError]=useState("");
 	const [success,setSuccess]=useState("");
+ const [editingId,setEditingId]=useState("");
+ const [showEditor,setShowEditor]=useState(editorOnly);
+ const [showHistory,setShowHistory]=useState(false);
+ const [historyMonth,setHistoryMonth]=useState(()=>formatDateForInput(new Date()).slice(0,7));
 
 	useEffect(()=>{
 		let ignore=false;
@@ -172,9 +177,26 @@ export default function JournalPage({user}){
 		return hydroDevices.find(device=>getObjectId(device)===entryForm.hydroDevice)||null;
 	},[hydroDevices,entryForm.hydroDevice]);
 
-	const sortedEntries=useMemo(()=>{
-		return [...journalEntries].sort((a,b)=>new Date(b.entryDate||b.createdAt||0)-new Date(a.entryDate||a.createdAt||0));
-	},[journalEntries]);
+ const currentMonth=formatDateForInput(new Date()).slice(0,7);
+ const currentMonthEntries=journalEntries.filter(entry=>formatDateForInput(entry.entryDate||entry.createdAt).slice(0,7)===currentMonth);
+ const currentMonthLabel=new Date(currentMonth+"-01T12:00:00").toLocaleDateString(undefined,{month:"long",year:"numeric"});
+ const moveHistoryMonth=offset=>{const date=new Date(historyMonth+"-01T12:00:00");date.setMonth(date.getMonth()+offset);setHistoryMonth(formatDateForInput(date).slice(0,7));};
+ const openEditor=entry=>{
+  const form={...defaultEntryForm};
+  if(entry){
+   Object.keys(form).forEach(key=>{form[key]=entry[key]??"";});
+   ["planting","seed","plant","garden","gardenSection","hydroSystem","hydroDevice","equipment"].forEach(key=>{form[key]=getObjectId(entry[key]);});
+   form.tags=(entry.tags||[]).join(", ");
+   form.followUpDate=entry.followUpDate?formatDateForInput(entry.followUpDate):"";
+  }
+  form.entryDate=formatDateForInput(entry?.entryDate||new Date());
+  if(form.hydroSystem){
+   const run=hydroSystems.find(item=>getObjectId(item)===form.hydroSystem);
+   const device=run?.devices?.find(item=>getObjectId(item)===form.hydroDevice)||(run?.devices?.length===1?run.devices[0]:null);
+   if(device){form.hydroDevice=getObjectId(device);form.equipment=getObjectId(device.equipment);}
+  }
+  setEntryForm(form);setEditingId(getObjectId(entry));setError("");setShowEditor(true);
+ };
 
 	const handleEntryChange=e=>{
 		const {name,value}=e.target;
@@ -183,11 +205,19 @@ export default function JournalPage({user}){
 			const next={...prev,[name]:value};
 
 			if(name==="hydroSystem"){
-				next.hydroDevice="";
-				next.hydroPodPosition="";
+				const run=hydroSystems.find(item=>getObjectId(item)===value);
+    const device=run?.devices?.length===1?run.devices[0]:null;
+    next.hydroDevice=getObjectId(device);
+    next.equipment=getObjectId(device?.equipment);
+    next.hydroPodPosition="";
 			}
 
-			if(name==="hydroDevice"){
+			if(name==="planting"){
+    const planting=plantings.find(item=>getObjectId(item)===value);
+    if(planting)["seed","plant","garden","gardenSection"].forEach(key=>{next[key]=getObjectId(planting[key]);});
+   }
+   if(name==="hydroDevice"){
+    next.equipment=getObjectId(hydroDevices.find(item=>getObjectId(item)===value)?.equipment);
 				next.hydroPodPosition="";
 			}
 
@@ -209,11 +239,11 @@ export default function JournalPage({user}){
 				hydroPodPosition:entryForm.hydroPodPosition==="" ? null : Number(entryForm.hydroPodPosition),
 				followUpDate:entryForm.followUpDate||null,
 				tags:entryForm.tags.split(",").map(item=>item.trim()).filter(Boolean),
-				createdBy:getObjectId(user)
+				...(!editingId?{createdBy:getObjectId(user)}:{})
 			};
 
-			const res=await fetch("/api/journal-entries",{
-				method:"POST",
+			const res=await fetch(editingId?`/api/journal-entries/${editingId}`:"/api/journal-entries",{
+				method:editingId?"PUT":"POST",
 				headers:{"Content-Type":"application/json"},
 				body:JSON.stringify(payload)
 			});
@@ -221,9 +251,11 @@ export default function JournalPage({user}){
 			const data=await res.json().catch(()=>({}));
 			if(!res.ok)throw new Error(data.message||"Failed to save journal entry");
 
-			setJournalEntries(prev=>[data,...prev]);
+			setJournalEntries(prev=>editingId?prev.map(item=>getObjectId(item)===editingId?data:item):[data,...prev]);
+   setShowEditor(false);
+   onSaved?.(data);
 			setEntryForm({...defaultEntryForm,entryDate:formatDateForInput(new Date())});
-			setSuccess("Journal entry saved.");
+			setSuccess(editingId?"Journal entry updated.":"Journal entry saved.");
 		}catch(err){
 			setError(err.message||"Failed to save journal entry");
 		}finally{
@@ -231,274 +263,111 @@ export default function JournalPage({user}){
 		}
 	};
 
-	const renderLinkedTargets=entry=>{
-		const targets=[
-			entry.planting&&`Instance: ${getPlantingLabel(entry.planting)}`,
-			entry.seed&&`Seed: ${getSeedLabel(entry.seed)}`,
-			entry.plant&&`Plant: ${getPlantLabel(entry.plant)}`,
-			entry.hydroSystem&&`Hydro: ${getHydroLabel(entry.hydroSystem)}`,
-			entry.hydroPodPosition&&`Pod ${entry.hydroPodPosition}`,
-			entry.equipment&&`Equipment: ${getEquipmentLabel(entry.equipment)}`,
-			entry.garden&&`Garden: ${getGardenLabel(entry.garden)}`,
-			entry.gardenSection&&`Section: ${getSectionLabel(entry.gardenSection)}`
-		].filter(Boolean);
+ const renderLinkedTargets=entry=>{
+  const targets=[
+   entry.planting&&["Instance",getPlantingLabel(entry.planting)],
+   !entry.planting&&entry.seed&&["Seed",getSeedLabel(entry.seed)],
+   !entry.planting&&entry.plant&&["Plant",getPlantLabel(entry.plant)],
+   entry.hydroSystem&&["Hydro run",getHydroLabel(entry.hydroSystem)],
+   entry.hydroPodPosition&&["Pod",entry.hydroPodPosition],
+   !entry.hydroSystem&&entry.equipment&&["Equipment",getEquipmentLabel(entry.equipment)],
+   entry.garden&&["Garden",getGardenLabel(entry.garden)],
+   entry.gardenSection&&["Section",getSectionLabel(entry.gardenSection)]
+  ].filter(Boolean);
+  return targets.length?<dl className="journal-linked-records">{targets.map(([label,value])=><div key={label}><dt>{label}:</dt><dd>{value}</dd></div>)}</dl>:"General journal entry";
+ };
 
-		return targets.length ? targets.join(" • ") : "General journal entry";
-	};
+ const closeEditor=()=>{setShowEditor(false);if(editorOnly)onClose?.();};
 
-	return(
-		<Container fluid className="journal-page py-4">
-			<Card className="journal-hero">
-				<Card.Body>
-					<div>
-						<p className="journal-kicker">Garden Journal</p>
-						<h1>Log Daily Work, Maintenance & Growing Notes</h1>
-						<p>Record what happened and connect it to the exact seed, plant, growing instance, hydro run, pod, equipment, garden, or section.</p>
-					</div>
+ const records=(rows,label)=>[{value:"",label:"None selected"},...sortItems(rows,label).map(item=>({value:getObjectId(item),label:label(item)}))];
+ const fieldWidths={entryDate:3,entryType:3,outcome:3,durationMinutes:3,title:8,entry:12,followUpDate:3,tags:9,maintenanceType:4,planting:6,hydroSystem:6,hydroDevice:6,hydroPodPosition:3,equipment:6,seed:6,plant:6,garden:6,gardenSection:6};
+ const field=(name,label,type="text",options=null,disabled=false)=><Col xs={12} md={name==="title"&&entryForm.entryType!=="maintenance"&&!entryForm.maintenanceType?12:fieldWidths[name]||6} key={name}>
+  <InputGroup className={"journal-form-field"+(name==="entry"?" journal-notes-field":"")}>
+   <Form.Label htmlFor={"journal-"+name} className="input-group-text">{label}:</Form.Label>
+   {options?<Form.Select id={"journal-"+name} name={name} value={entryForm[name]} onChange={handleEntryChange} disabled={disabled}>{options.map(option=><option key={option.value} value={option.value}>{option.label}</option>)}</Form.Select>:
+    <Form.Control id={"journal-"+name} name={name} type={type} as={name==="entry"?"textarea":undefined} rows={name==="entry"?3:undefined} min={type==="number"?0:undefined} required={name==="entryDate"||name==="title"} value={entryForm[name]} onChange={handleEntryChange}/>}
+  </InputGroup>
+ </Col>;
 
-					<div className="journal-hero-count">
-						<strong>{journalEntries.length}</strong>
-						<span>entries</span>
-					</div>
-				</Card.Body>
-			</Card>
+ return <Container fluid className={editorOnly?"journal-page":"journal-page py-4"}>
+  {!editorOnly&&<>
+  <Card className="journal-hero"><Card.Body><div><p className="journal-kicker">Garden Journal</p><h1>Daily Work & Growing Notes</h1><p>This month’s work and growing notes.</p></div><div className="journal-hero-count"><strong>{loading?"…":currentMonthEntries.length}</strong><span>entries in {currentMonthLabel}</span></div><Button disabled={loading} onClick={()=>openEditor(null)}><NotebookPen size={18}/> New entry</Button></Card.Body></Card>
+  {error&&!showEditor&&<Alert variant="danger">{error}</Alert>}{success&&<Alert variant="success" dismissible onClose={()=>setSuccess("")}>{success}</Alert>}
+  <Card className="journal-card"><Card.Header><CalendarDays size={20}/><h2>{currentMonthLabel}</h2><Button variant="primary" className="ms-auto" onClick={()=>setShowHistory(true)}>Entry history</Button></Card.Header><Card.Body>
+   <JournalEntriesView key={currentMonth} journalEntries={journalEntries} month={currentMonth} loading={loading} onEdit={openEditor} renderLinkedTargets={renderLinkedTargets} idPrefix="current"/>
+  </Card.Body></Card>
+  <Modal show={showHistory&&!showEditor} onHide={()=>setShowHistory(false)} size="xl" centered scrollable className="journal-editor">
+   <Modal.Header closeButton><Modal.Title>Entry history</Modal.Title></Modal.Header>
+   <Modal.Body className="journal-page">
+    <div className="journal-month-navigation"><Button variant="primary" onClick={()=>moveHistoryMonth(-1)}>← Previous month</Button><Form.Group controlId="history-month"><Form.Label>Browse month</Form.Label><Form.Control type="month" value={historyMonth} onChange={e=>{if(e.target.value)setHistoryMonth(e.target.value);}}/></Form.Group><Button variant="primary" onClick={()=>moveHistoryMonth(1)}>Next month →</Button></div>
+    <JournalEntriesView key={historyMonth} journalEntries={journalEntries} month={historyMonth} loading={loading} onEdit={openEditor} renderLinkedTargets={renderLinkedTargets} idPrefix="history"/>
+   </Modal.Body><Modal.Footer><Button onClick={()=>setShowHistory(false)}>Close history</Button></Modal.Footer>
+  </Modal>
+  </>}
+  <Modal show={showEditor} onHide={()=>{if(!saving)closeEditor();}} size="xl" centered scrollable className="journal-editor" backdrop={saving?"static":true} keyboard={!saving}>
+   <Modal.Header closeButton={!saving}><Modal.Title>{editingId?"Edit journal entry":"New journal entry"}</Modal.Title></Modal.Header>
+   <Modal.Body>{error&&<Alert variant="danger">{error}</Alert>}
+    <Form id="journal-entry-form" onSubmit={handleEntrySubmit}><fieldset disabled={saving}><Row className="g-2">
+     {field("entryDate","Date","date")}{field("entryType","Type","text",entryTypes)}
+     {field("outcome","Outcome","text",outcomes)}{field("durationMinutes","Minutes","number")}
+     {field("title","Title")}
+     {(entryForm.entryType==="maintenance"||entryForm.maintenanceType)&&field("maintenanceType","Maintenance")}
+     {field("entry","Notes")}
+     {field("followUpDate","Follow-up","date")}{field("tags","Tags")}
+     <Col xs={12}><h3>Linked records</h3><p>Selecting a growing instance fills its seed, plant and garden links. Separate tags with commas.</p></Col>
+     {field("planting","Growing instance","text",records(plantings,getPlantingLabel))}
+     {field("hydroSystem","Hydro run","text",records(hydroSystems,getHydroLabel))}
+     {selectedHydroSystem&&field("hydroDevice","Run device","text",records(hydroDevices,item=>item.name||item.model||"Device"))}
+     {selectedHydroSystem&&field("hydroPodPosition","Pod","text",[{value:"",label:"Any pod"},...(selectedHydroDevice?.pods||selectedHydroSystem.pods||[]).map(pod=>({value:pod.position,label:"Pod "+pod.position}))])}
+     {field("equipment",selectedHydroSystem?"Run equipment":"Equipment","text",records(equipmentRecords,getEquipmentLabel),!!selectedHydroSystem)}
+     <Col xs={12}><details><summary>Seed, plant and location links</summary><Row className="g-3">
+      {field("seed","Seed","text",records(seedRecords,getSeedLabel))}{field("plant","Plant","text",records(plantRecords,getPlantLabel))}
+      {field("garden","Garden","text",records(gardens,getGardenLabel))}{field("gardenSection","Garden section","text",records(gardenSections,getSectionLabel))}
+     </Row></details></Col>
+    </Row></fieldset></Form>
+    {selectedHydroSystem&&<p className="mt-3">Equipment is selected automatically from the run device. {hydroDevices.length>1&&!entryForm.hydroDevice?"Choose a device to link its equipment.":""}</p>}
+   </Modal.Body><Modal.Footer><Button variant="primary" disabled={saving} onClick={closeEditor}>Cancel</Button><Button type="submit" form="journal-entry-form" disabled={saving}>{saving?"Saving…":editingId?"Save changes":"Save entry"}</Button></Modal.Footer>
+  </Modal>
+ </Container>;
+}
 
-			{error&&<Alert variant="danger" dismissible onClose={()=>setError("")}>{error}</Alert>}
-			{success&&<Alert variant="success" dismissible onClose={()=>setSuccess("")}>{success}</Alert>}
+function JournalEntriesView({journalEntries,month,loading,onEdit,renderLinkedTargets,idPrefix}){
+ const [filters,setFilters]=useState({type:"",outcome:"",followUp:"",tag:""});
+ const [page,setPage]=useState(0);
+ const monthEntries=useMemo(()=>journalEntries.filter(entry=>formatDateForInput(entry.entryDate||entry.createdAt).slice(0,7)===month),[journalEntries,month]);
+ const today=formatDateForInput(new Date());
+ const sortedEntries=useMemo(()=>monthEntries.filter(entry=>
+  (!filters.type||entry.entryType===filters.type)&&
+  (!filters.outcome||(filters.outcome==="none"?!entry.outcome:entry.outcome===filters.outcome))&&
+  (!filters.tag||(entry.tags||[]).includes(filters.tag))&&
+  (!filters.followUp||(filters.followUp==="none"?!entry.followUpDate:filters.followUp==="scheduled"?!!entry.followUpDate:!!entry.followUpDate&&formatDateForInput(entry.followUpDate)<=today))
+ ).sort((a,b)=>new Date(b.entryDate||b.createdAt)-new Date(a.entryDate||a.createdAt)),[monthEntries,filters,today]);
+ const days=[...new Set(sortedEntries.map(entry=>formatDateForInput(entry.entryDate||entry.createdAt)))];
+ const pageCount=Math.max(1,days.length);
+ const currentPage=Math.min(page,pageCount-1);
+ const selectedDay=days[currentPage];
+ const pageEntries=sortedEntries.filter(entry=>formatDateForInput(entry.entryDate||entry.createdAt)===selectedDay);
+ const updateFilters=next=>{setFilters(next);setPage(0);};
+ const groups=selectedDay?{[selectedDay]:pageEntries}:{};
+ const tags=[...new Set(journalEntries.flatMap(entry=>entry.tags||[]))].sort();
 
-			<Row className="g-4">
-				<Col xl={8}>
-					<Card className="journal-card">
-						<Card.Header>
-							<NotebookPen size={20}/>
-							<span>New Journal Entry</span>
-						</Card.Header>
-
-						<Card.Body>
-							<Form onSubmit={handleEntrySubmit}>
-								<Row className="g-3">
-									<Col md={3}>
-										<InputGroup>
-											<InputGroup.Text>Date</InputGroup.Text>
-											<Form.Control type="date" name="entryDate" value={entryForm.entryDate} onChange={handleEntryChange}/>
-										</InputGroup>
-									</Col>
-
-									<Col md={3}>
-										<InputGroup>
-											<InputGroup.Text>Type</InputGroup.Text>
-											<Form.Select name="entryType" value={entryForm.entryType} onChange={handleEntryChange}>
-												{entryTypes.map(type=><option key={type.value} value={type.value}>{type.label}</option>)}
-											</Form.Select>
-										</InputGroup>
-									</Col>
-
-									<Col md={3}>
-										<InputGroup>
-											<InputGroup.Text>Outcome</InputGroup.Text>
-											<Form.Select name="outcome" value={entryForm.outcome} onChange={handleEntryChange}>
-												{outcomes.map(outcome=><option key={outcome.value} value={outcome.value}>{outcome.label}</option>)}
-											</Form.Select>
-										</InputGroup>
-									</Col>
-
-									<Col md={3}>
-										<InputGroup>
-											<InputGroup.Text>Minutes</InputGroup.Text>
-											<Form.Control type="number" min="0" name="durationMinutes" value={entryForm.durationMinutes} onChange={handleEntryChange}/>
-										</InputGroup>
-									</Col>
-
-									<Col md={6}>
-										<InputGroup>
-											<InputGroup.Text>Title</InputGroup.Text>
-											<Form.Control name="title" value={entryForm.title} onChange={handleEntryChange} placeholder="Trimmed dead leaves, refilled iDoo, checked thyme pod"/>
-										</InputGroup>
-									</Col>
-
-									<Col md={3}>
-										<InputGroup>
-											<InputGroup.Text>Maintenance</InputGroup.Text>
-											<Form.Control name="maintenanceType" value={entryForm.maintenanceType} onChange={handleEntryChange} placeholder="Trim, refill, pH check"/>
-										</InputGroup>
-									</Col>
-
-									<Col md={3}>
-										<InputGroup>
-											<InputGroup.Text>Follow-up</InputGroup.Text>
-											<Form.Control type="date" name="followUpDate" value={entryForm.followUpDate} onChange={handleEntryChange}/>
-										</InputGroup>
-									</Col>
-
-									<Col md={4}>
-										<InputGroup>
-											<InputGroup.Text>Instance</InputGroup.Text>
-											<Form.Select name="planting" value={entryForm.planting} onChange={handleEntryChange}>
-												<option value="">Select growing instance</option>
-												{sortItems(plantings,getPlantingLabel).map(item=><option key={getObjectId(item)} value={getObjectId(item)}>{getPlantingLabel(item)}</option>)}
-											</Form.Select>
-										</InputGroup>
-									</Col>
-
-									<Col md={4}>
-										<InputGroup>
-											<InputGroup.Text>Seed</InputGroup.Text>
-											<Form.Select name="seed" value={entryForm.seed} onChange={handleEntryChange}>
-												<option value="">Select seed record</option>
-												{sortItems(seedRecords,getSeedLabel).map(item=><option key={getObjectId(item)} value={getObjectId(item)}>{getSeedLabel(item)}</option>)}
-											</Form.Select>
-										</InputGroup>
-									</Col>
-
-									<Col md={4}>
-										<InputGroup>
-											<InputGroup.Text>Plant</InputGroup.Text>
-											<Form.Select name="plant" value={entryForm.plant} onChange={handleEntryChange}>
-												<option value="">Select plant record</option>
-												{sortItems(plantRecords,getPlantLabel).map(item=><option key={getObjectId(item)} value={getObjectId(item)}>{getPlantLabel(item)}</option>)}
-											</Form.Select>
-										</InputGroup>
-									</Col>
-
-									<Col md={3}>
-										<InputGroup>
-											<InputGroup.Text>Garden</InputGroup.Text>
-											<Form.Select name="garden" value={entryForm.garden} onChange={handleEntryChange}>
-												<option value="">Select garden</option>
-												{sortItems(gardens,getGardenLabel).map(item=><option key={getObjectId(item)} value={getObjectId(item)}>{getGardenLabel(item)}</option>)}
-											</Form.Select>
-										</InputGroup>
-									</Col>
-
-									<Col md={3}>
-										<InputGroup>
-											<InputGroup.Text>Section</InputGroup.Text>
-											<Form.Select name="gardenSection" value={entryForm.gardenSection} onChange={handleEntryChange}>
-												<option value="">Select section</option>
-												{sortItems(gardenSections,getSectionLabel).map(item=><option key={getObjectId(item)} value={getObjectId(item)}>{getSectionLabel(item)}</option>)}
-											</Form.Select>
-										</InputGroup>
-									</Col>
-
-									<Col md={3}>
-										<InputGroup>
-											<InputGroup.Text>Hydro</InputGroup.Text>
-											<Form.Select name="hydroSystem" value={entryForm.hydroSystem} onChange={handleEntryChange}>
-												<option value="">Select hydro run</option>
-												{sortItems(hydroSystems,getHydroLabel).map(item=><option key={getObjectId(item)} value={getObjectId(item)}>{getHydroLabel(item)}</option>)}
-											</Form.Select>
-										</InputGroup>
-									</Col>
-
-									<Col md={3}>
-										<InputGroup>
-											<InputGroup.Text>Equipment</InputGroup.Text>
-											<Form.Select name="equipment" value={entryForm.equipment} onChange={handleEntryChange}>
-												<option value="">Select equipment</option>
-												{sortItems(equipmentRecords,getEquipmentLabel).map(item=><option key={getObjectId(item)} value={getObjectId(item)}>{getEquipmentLabel(item)}</option>)}
-											</Form.Select>
-										</InputGroup>
-									</Col>
-
-									{selectedHydroSystem&&(
-										<>
-											<Col md={4}>
-												<InputGroup>
-													<InputGroup.Text>Device</InputGroup.Text>
-													<Form.Select name="hydroDevice" value={entryForm.hydroDevice} onChange={handleEntryChange}>
-														<option value="">Select device</option>
-														{hydroDevices.map(device=><option key={getObjectId(device)} value={getObjectId(device)}>{device.name||device.model||"Hydro Device"}</option>)}
-													</Form.Select>
-												</InputGroup>
-											</Col>
-
-											<Col md={2}>
-												<InputGroup>
-													<InputGroup.Text>Pod</InputGroup.Text>
-													<Form.Select name="hydroPodPosition" value={entryForm.hydroPodPosition} onChange={handleEntryChange}>
-														<option value="">Any</option>
-														{(selectedHydroDevice?.pods||[]).map(pod=><option key={pod.position} value={pod.position}>{pod.position}</option>)}
-													</Form.Select>
-												</InputGroup>
-											</Col>
-										</>
-									)}
-
-									<Col md={6}>
-										<InputGroup>
-											<InputGroup.Text>Tags</InputGroup.Text>
-											<Form.Control name="tags" value={entryForm.tags} onChange={handleEntryChange} placeholder="hydro, refill, thyme, maintenance"/>
-										</InputGroup>
-									</Col>
-
-									<Col xs={12}>
-										<Form.Control as="textarea" rows={5} name="entry" value={entryForm.entry} onChange={handleEntryChange} placeholder="What did you do, what changed, and what should you check next?"/>
-									</Col>
-
-									<Col xs={12} className="d-flex justify-content-end">
-										<Button type="submit" disabled={saving}>
-											{saving ? "Saving..." : "Save Journal Entry"}
-										</Button>
-									</Col>
-								</Row>
-							</Form>
-						</Card.Body>
-					</Card>
-				</Col>
-
-				<Col xl={4}>
-					<Card className="journal-card journal-list-card">
-						<Card.Header>
-							<CalendarDays size={20}/>
-							<span>Recent Entries</span>
-						</Card.Header>
-
-						<Card.Body>
-							{loading&&<div className="journal-empty">Loading journal entries...</div>}
-
-							{!loading&&!sortedEntries.length&&(
-								<div className="journal-empty">No journal entries yet.</div>
-							)}
-
-							{!loading&&sortedEntries.map(entry=>(
-								<article className="journal-entry-item" key={getObjectId(entry)||entry.title||entry.createdAt}>
-									<div className="journal-entry-head">
-										<h3>{entry.title||"Untitled entry"}</h3>
-										<Badge bg={entry.outcome==="needs-follow-up" ? "warning" : "success"}>{entry.outcome||entry.entryType||"entry"}</Badge>
-									</div>
-
-									<div className="journal-entry-meta">
-										<span><CalendarDays size={14}/>{formatDate(entry.entryDate||entry.createdAt)}</span>
-										{entry.entryType&&<span><Flag size={14}/>{entry.entryType}</span>}
-										{!!entry.durationMinutes&&<span><Clock3 size={14}/>{entry.durationMinutes} min</span>}
-									</div>
-
-									<p>{entry.entry||"No notes added."}</p>
-									<div className="journal-entry-targets">{renderLinkedTargets(entry)}</div>
-
-									{entry.followUpDate&&(
-										<div className="journal-follow-up">Follow up: {formatDate(entry.followUpDate)}</div>
-									)}
-								</article>
-							))}
-						</Card.Body>
-					</Card>
-
-					<Card className="journal-card journal-reference-card">
-						<Card.Header>
-							<Leaf size={20}/>
-							<span>Journal Covers</span>
-						</Card.Header>
-
-						<Card.Body>
-							<div><Sprout size={16}/> Seed starts and seed records</div>
-							<div><Leaf size={16}/> Plant records and growing instances</div>
-							<div><Droplets size={16}/> Hydro runs, devices, pods, refills, and cleanings</div>
-							<div><Wrench size={16}/> Equipment maintenance and vendor-linked devices</div>
-						</Card.Body>
-					</Card>
-				</Col>
-			</Row>
-		</Container>
-	);
+ const renderFilter=(name,label,options)=><Form.Group controlId={idPrefix+"-filter-"+name}><Form.Label>{label}</Form.Label><Form.Select value={filters[name]} onChange={e=>updateFilters(prev=>({...prev,[name]:e.target.value}))}><option value="">All {label.toLowerCase()}</option>{options.map(item=><option key={item.value} value={item.value}>{item.label}</option>)}</Form.Select></Form.Group>;
+ return <>   <div className="journal-filters">
+    {renderFilter("type","Types",entryTypes)}{renderFilter("outcome","Outcomes",outcomes.map(item=>({...item,value:item.value||"none"})))}
+    {renderFilter("followUp","Follow-ups",[{value:"due",label:"Due or overdue"},{value:"scheduled",label:"Has follow-up date"},{value:"none",label:"No follow-up date"}])}
+    {renderFilter("tag","Tags",tags.map(tag=>({value:tag,label:tag})))}<Button variant="primary" onClick={()=>updateFilters({type:"",outcome:"",followUp:"",tag:""})}>Clear filters</Button>
+   </div>
+   <nav className="journal-entry-navigation" aria-label="Journal days">
+    <Button variant="primary" disabled={loading||currentPage===0} onClick={()=>setPage(currentPage-1)}>← Previous day</Button>
+    <span role="status">{loading?"Loading entries…":sortedEntries.length?`${formatDate(selectedDay)} · ${pageEntries.length} ${pageEntries.length===1?"entry":"entries"} · Day ${currentPage+1} of ${days.length}`:"0 entries"}</span>
+    <Button variant="primary" disabled={loading||currentPage>=pageCount-1} onClick={()=>setPage(currentPage+1)}>Next day →</Button>
+   </nav>
+   {!loading&&!sortedEntries.length&&<div className="journal-empty">No entries match this month and filters.</div>}
+   {!loading&&Object.entries(groups).map(([day,entries])=><section className="journal-day" key={day}><h3>{formatDate(day+"T12:00:00")}</h3><div className="journal-entry-grid">{entries.map(entry=><article className="journal-entry-item" key={getObjectId(entry)}>
+    <div className="journal-entry-head"><h4>{entry.title||"Untitled entry"}</h4><Button variant="primary" onClick={()=>onEdit(entry)} aria-label={"Edit "+(entry.title||"entry")}>Edit</Button></div>
+    <div className="journal-entry-meta"><span><Flag size={14}/>{entryTypes.find(type=>type.value===entry.entryType)?.label||entry.entryType}</span>{!!entry.durationMinutes&&<span><Clock3 size={14}/>{entry.durationMinutes} min</span>}{entry.outcome&&<Badge bg={entry.outcome==="needs-follow-up"?"warning":"success"}>{outcomes.find(item=>item.value===entry.outcome)?.label||entry.outcome}</Badge>}</div>
+    <p>{entry.entry||"No notes added."}</p><div className="journal-entry-targets">{renderLinkedTargets(entry)}</div>
+    {entry.followUpDate&&<div className="journal-follow-up">Follow up: {formatDate(entry.followUpDate)}</div>}
+    {!!entry.tags?.length&&<div className="journal-tags">{entry.tags.map(tag=><span key={tag}>#{tag}</span>)}</div>}
+   </article>)}</div></section>)}</>;
 }

@@ -5,8 +5,8 @@ import DashboardSection from "./DashboardSection";
 
 function ExpiringItemsPanel({expiringItems=[],className=""}){
  return(
-  <DashboardSection className={className} kicker="Time Sensitive" title="Upcoming Garden Tasks" linkTo="/tasks" linkLabel="View all">
-   <ul className="dashboard-list">
+  <DashboardSection className={`dashboard-upcoming-tasks ${className}`.trim()} kicker="Time Sensitive" title="Upcoming Garden Tasks" linkTo="/tasks" linkLabel="View all">
+   <ul className="dashboard-list" tabIndex={0} aria-label="Upcoming garden tasks">
     {expiringItems?.length?expiringItems.map(item=>(
      <li key={item._id||item.id||item.name||item.title} className="dashboard-list-item">
       <span className="dashboard-list-icon dashboard-list-icon-accent"><Clock3 size={17} strokeWidth={2.2}/></span>

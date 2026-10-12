@@ -615,6 +615,24 @@
  grid-template-columns:repeat(2,minmax(0,1fr));
 }
 
+.dashboard-section .dashboard-list,
+.dashboard-section .dashboard-monitor-grid,
+.dashboard-section .dashboard-chart-body{
+ height:18rem;
+ min-height:0;
+ overflow-y:auto;
+ overscroll-behavior-y:contain;
+ scrollbar-gutter:stable;
+ align-content:start;
+}
+
+.dashboard-section .dashboard-list:focus-visible,
+.dashboard-section .dashboard-monitor-grid:focus-visible,
+.dashboard-section .dashboard-chart-body:focus-visible{
+ outline:2px solid var(--primary);
+ outline-offset:2px;
+}
+
 .dashboard-list-item{
  display:flex;
  align-items:center;
@@ -1340,3 +1358,11 @@
   grid-template-columns:1fr;
  }
 }
+
+/* Keep calendar controls and events readable on their green backgrounds. */
+.dashboard-big-calendar .rbc-toolbar button.rbc-active,
+.dashboard-big-calendar .rbc-toolbar button.rbc-active:hover,
+.dashboard-big-calendar .rbc-toolbar button.rbc-active:focus,
+.dashboard-big-calendar .rbc-event,
+.dashboard-big-calendar .rbc-event-content { color: #fff !important; }
+.dashboard-big-calendar .rbc-toolbar button.rbc-active { background: #0f5132; }

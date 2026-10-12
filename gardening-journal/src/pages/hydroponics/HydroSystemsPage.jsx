@@ -3,6 +3,7 @@ import {useEffect,useMemo,useState} from "react";
 import {Alert,Button,Card,Col,Form,InputGroup,Modal,Row,Spinner} from "react-bootstrap";
 import {Activity,AlertTriangle,ArrowLeft,Droplets,Grip,Leaf,Pencil,Plus,Save,Thermometer,Trash2,Undo2} from "lucide-react";
 import {Link,useNavigate,useSearchParams} from "react-router-dom";
+import JournalPage from "../journal/JournalPage.jsx";
 import SortedList from "../../components/SortedList.jsx";
 import SortedSelect from "../../components/SortedSelect.jsx";
 import {sortItems} from "../../utils/sortItems.js";
@@ -141,9 +142,9 @@ const getGrowthRateValue=growthRate=>{
 
 const getGrowthRateLabel=growthRate=>{
  if(!growthRate)return "";
- if(typeof growthRate==="string")return growthRate;
+ if(typeof growthRate==="string")return /^[a-f0-9]{24}$/i.test(growthRate)?"":growthRate;
 
- return growthRate.name||growthRate.title||growthRate.label||growthRate.rate||getObjectId(growthRate)||"";
+ return growthRate.name||growthRate.title||growthRate.label||growthRate.rate||"";
 };
 
 const getSeedGrowthRate=seed=>{
@@ -525,6 +526,8 @@ export default function HydroSystemsPage({user}){
  const [showLibraryDeviceModal,setShowLibraryDeviceModal]=useState(false);
  const [libraryDeviceTarget,setLibraryDeviceTarget]=useState("run");
  const [editingDeviceId,setEditingDeviceId]=useState("");
+ const [podEditor,setPodEditor]=useState(null);
+ const [podJournal,setPodJournal]=useState(null);
  const [runForm,setRunForm]=useState(defaultRunForm);
  const [deviceForm,setDeviceForm]=useState(defaultDeviceForm);
  const [libraryDeviceForm,setLibraryDeviceForm]=useState(defaultLibraryDeviceForm);
@@ -1011,11 +1014,19 @@ const openAddDeviceModal=()=>{
   } : device));
  };
 
- const updatePodDate=(deviceId,position,value)=>{
-  setDevices(prev=>prev.map(device=>device._id===deviceId ? {
-   ...device,
-   pods:device.pods.map(pod=>pod.position===position ? {...pod,plantedDate:value||null} : pod)
-  } : device));
+ const getPodSeed=pod=>seeds.find(seed=>getObjectId(seed)===getObjectId(pod.seed))||pod.seed;
+ const openPodJournal=async(device,pod,entryType)=>{
+  if(!await saveDevices(devices,"Pod assignments saved."))return;
+  setPodJournal({
+  entryType,title:`${getSeedName(getPodSeed(pod))} — Pod ${pod.position}`,
+  hydroSystem:getObjectId(selectedRun),hydroDevice:getObjectId(device),hydroPodPosition:String(pod.position),
+  equipment:getObjectId(device.equipment),seed:getObjectId(pod.seed),garden:getObjectId(selectedRun?.garden)||gardenId
+  });
+ };
+ const savePod=async event=>{
+  event.preventDefault();
+  const next=devices.map(device=>device._id===podEditor.deviceId?{...device,pods:device.pods.map(pod=>pod.position===podEditor.position?{...pod,label:podEditor.label,seed:seeds.find(seed=>getObjectId(seed)===podEditor.seed)||pod.seed,notes:podEditor.notes}:pod)}:device);
+  if(await saveDevices(next,"Pod details saved."))setPodEditor(null);
  };
 
  const clearPod=(deviceId,position)=>{
@@ -1066,8 +1077,10 @@ const openAddDeviceModal=()=>{
    setSelectedRunId(getObjectId(data));
    setDevices(normalizeRunDevices(data));
    setSuccess(message);
+   return true;
   }catch(err){
    setError(err.message||"Failed to save hydro run");
+   return false;
   }finally{
    setSaving(false);
   }
@@ -1248,17 +1261,16 @@ const openAddDeviceModal=()=>{
                 {pod.seed ? (
                  <div className="hydro-pod-seed">
                   <Leaf size={18}/>
-                  <strong>{getSeedName(pod.seed)}</strong>
-                  <span>{getSeedMeta(pod.seed)||"Assigned seed"}</span>
-                  <label className="hydro-pod-date">
-                   <small>Started</small>
-                   <input
-                    type="date"
-                    value={formatDateForInput(pod.plantedDate)}
-                    onChange={e=>updatePodDate(device._id,pod.position,e.target.value)}
-                   />
-                  </label>
-                  <button type="button" onClick={()=>clearPod(device._id,pod.position)}>Clear</button>
+                  <strong>{getSeedName(getPodSeed(pod))}</strong>
+                  <span>{getSeedMeta(getPodSeed(pod))||"Assigned seed"}</span>
+                  <div className="hydro-pod-date"><small>Started</small><time>{formatDisplayDate(pod.plantedDate)}</time></div>
+                  {pod.notes&&<p className="hydro-pod-notes">{pod.notes}</p>}
+                  <div className="hydro-pod-actions">
+                   <Button size="sm" variant="outline-primary" disabled={saving} onClick={()=>setPodEditor({deviceId:device._id,position:pod.position,label:pod.label||"",seed:getObjectId(pod.seed),notes:pod.notes||""})}>Edit</Button>
+                   <Button size="sm" variant="outline-success" disabled={saving} onClick={()=>openPodJournal(device,pod,"note")}>Note</Button>
+                   <Button size="sm" variant="outline-success" disabled={saving} onClick={()=>openPodJournal(device,pod,"observation")}>Journal</Button>
+                   <Button size="sm" variant="outline-danger" disabled={saving} onClick={()=>clearPod(device._id,pod.position)}>Clear</Button>
+                  </div>
                  </div>
                 ) : (
                  <div className="hydro-pod-empty">
@@ -1367,6 +1379,21 @@ const openAddDeviceModal=()=>{
     </div>
     </>
    )}
+
+   {podJournal&&<JournalPage user={user} editorOnly initialEntry={podJournal} onClose={()=>setPodJournal(null)} onSaved={()=>{setPodJournal(null);setSuccess("Journal entry saved for this pod.");}}/>}
+   <Modal show={!!podEditor} onHide={()=>{if(!saving)setPodEditor(null);}} centered scrollable>
+    <Form onSubmit={savePod}>
+     <Modal.Header closeButton={!saving}><Modal.Title>Edit Pod {podEditor?.position}</Modal.Title></Modal.Header>
+     <Modal.Body>
+      {error&&<Alert variant="danger">{error}</Alert>}
+      <Form.Group className="mb-3"><Form.Label>Pod label</Form.Label><Form.Control value={podEditor?.label||""} onChange={event=>setPodEditor(previous=>({...previous,label:event.target.value}))}/></Form.Group>
+      <Form.Group className="mb-3"><Form.Label>Assigned seed</Form.Label><SortedSelect value={podEditor?.seed||""} options={seeds} getValue={getObjectId} getLabel={getSeedName} onChange={event=>setPodEditor(previous=>({...previous,seed:event.target.value}))} required/></Form.Group>
+      <Form.Group><Form.Label>Pod notes</Form.Label><Form.Control as="textarea" rows={4} value={podEditor?.notes||""} onChange={event=>setPodEditor(previous=>({...previous,notes:event.target.value}))}/></Form.Group>
+      <p className="mt-3">The recorded start date stays unchanged.</p>
+     </Modal.Body>
+     <Modal.Footer><Button variant="outline-secondary" disabled={saving} onClick={()=>setPodEditor(null)}>Cancel</Button><Button type="submit" disabled={saving}>{saving?"Saving…":"Save Pod"}</Button></Modal.Footer>
+    </Form>
+   </Modal>
 
    <RunModal
     show={showRunModal}

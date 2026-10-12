@@ -81,7 +81,8 @@ const getDashboardDateValues=item=>{
  return dashboardDateKeys.map(key=>item[key]).filter(Boolean);
 };
 
-const matchesDashboardPeriod=(item,yearFilter,monthFilter)=>{
+const matchesDashboardPeriod=(item,yearFilter,monthFilter,dayFilter="all")=>{
+ if(dayFilter!=="all"&&!getDashboardDateValues(item).some(value=>String(value).slice(0,10)===dayFilter))return false;
  if(yearFilter==="all"&&monthFilter==="all")return true;
 
  return getDashboardDateValues(item).some(value=>{
@@ -95,8 +96,8 @@ const matchesDashboardPeriod=(item,yearFilter,monthFilter)=>{
  });
 };
 
-export const filterDashboardRows=(items,yearFilter,monthFilter)=>{
- return items.filter(item=>matchesDashboardPeriod(item,yearFilter,monthFilter));
+export const filterDashboardRows=(items,yearFilter,monthFilter,dayFilter="all")=>{
+ return items.filter(item=>matchesDashboardPeriod(item,yearFilter,monthFilter,dayFilter));
 };
 
 export const collectDashboardYears=(...collections)=>{
@@ -181,7 +182,8 @@ export const buildFilteredStats=(stats,{gardenTasks,harvestItems,plantHealthItem
  });
 };
 
-export const getDashboardPeriodSummary=(yearFilter,monthFilter)=>{
+export const getDashboardPeriodSummary=(yearFilter,monthFilter,dayFilter="all")=>{
+ if(dayFilter!=="all")return {title:`Viewing ${dayFilter}`,detail:`Showing dashboard records dated ${dayFilter}.`,badge:dayFilter};
  if(yearFilter==="all"){
   return {
    title:"Viewing all years",

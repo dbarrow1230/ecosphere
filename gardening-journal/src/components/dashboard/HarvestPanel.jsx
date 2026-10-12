@@ -6,7 +6,7 @@ import DashboardSection from "./DashboardSection";
 function HarvestPanel({items=[],className=""}){
  return(
   <DashboardSection className={className} kicker="Harvest Tracking" title="Recent Harvests" linkTo="/harvest" linkLabel="View harvests">
-   <ul className="dashboard-list">
+   <ul className="dashboard-list" tabIndex={0} aria-label="Scrollable records">
     {items?.length?items.map(item=>(
      <li key={item._id||item.id||item.name||item.crop} className="dashboard-list-item">
       <span className="dashboard-list-icon dashboard-list-icon-soft"><Wheat size={17} strokeWidth={2.2}/></span>

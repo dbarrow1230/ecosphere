@@ -15,6 +15,7 @@ export default function SeedBannerTemplate({
       <img src={image} alt="" className="seed-banner-img" />
 
       <div className="seed-banner-content">
+        <div className="seed-banner-copy">
         <div className="seed-banner-topline">
           Track • Grow • Harvest
         </div>
@@ -27,25 +28,26 @@ export default function SeedBannerTemplate({
           {description || "No description listed."}
         </p>
 
+        </div>
         <div className="seed-banner-bottom">
           <div className="seed-stat seed-sun">
             <span>Sun</span>
-            <strong>{sun || "Not listed"}</strong>
+            <strong className="seed-stat-value" title={sun || "Not listed"}>{sun || "Not listed"}</strong>
           </div>
 
           <div className="seed-stat seed-water">
             <span>Water</span>
-            <strong>{water || "Not listed"}</strong>
+            <strong className="seed-stat-value" title={water || "Not listed"}>{water || "Not listed"}</strong>
           </div>
 
           <div className="seed-stat seed-soil">
             <span>Soil</span>
-            <strong>{soil || "Not listed"}</strong>
+            <strong className="seed-stat-value" title={soil || "Not listed"}>{soil || "Not listed"}</strong>
           </div>
 
           <div className="seed-stat seed-climate">
             <span>Climate</span>
-            <strong>{climate || "Not listed"}</strong>
+            <strong className="seed-stat-value" title={climate || "Not listed"}>{climate || "Not listed"}</strong>
           </div>
         </div>
       </div>

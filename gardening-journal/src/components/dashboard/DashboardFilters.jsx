@@ -1,5 +1,5 @@
 // src/components/dashboard/DashboardFilters.jsx
-function DashboardFilters({months=[],availableYears=[],yearFilter="all",monthFilter="all",onYearChange,onMonthChange}){
+function DashboardFilters({months=[],availableYears=[],yearFilter="all",monthFilter="all",onYearChange,onMonthChange,dayFilter="all",onDayChange}){
 
  return(
   <div className="dashboard-filters">
@@ -27,6 +27,7 @@ function DashboardFilters({months=[],availableYears=[],yearFilter="all",monthFil
      ))}
     </select>
    </label>
+   {onDayChange&&<label className="dashboard-filter"><span className="dashboard-filter-label">Day</span><input aria-label="Dashboard day" type="date" className="dashboard-filter-select" value={dayFilter==="all"?"":dayFilter} onChange={event=>onDayChange(event.target.value)}/></label>}
   </div>
  );
 }

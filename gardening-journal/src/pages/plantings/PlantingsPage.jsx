@@ -1,7 +1,8 @@
 import {useEffect,useMemo,useState} from "react";
 import {Alert,Badge,Button,Card,Col,Form,InputGroup,Modal,Row,Spinner} from "react-bootstrap";
-import {CalendarDays,Leaf,Pencil,Plus,Save,Search,Skull,Sprout} from "lucide-react";
-import {Link} from "react-router-dom";
+import {CalendarDays,Leaf,Pencil,Save,Search,Skull,Sprout} from "lucide-react";
+import {Link,useSearchParams} from "react-router-dom";
+import {combineGrowingRuns,summarizeGrowingRuns} from "../../utils/growing/growingRuns.js";
 import SortedList from "../../components/SortedList.jsx";
 import SortedSelect from "../../components/SortedSelect.jsx";
 import {sortItems} from "../../utils/sortItems.js";
@@ -116,14 +117,18 @@ const statusVariant=value=>{
 };
 
 export default function PlantingsPage({user}){
+ const [searchParams,setSearchParams]=useSearchParams();
+ const selectedRunId=searchParams.get("run")||"";
  const today=formatDateForInput(new Date());
  const [instances,setInstances]=useState([]);
+ const [hydroSystems,setHydroSystems]=useState([]);
+ const [gardenFilter,setGardenFilter]=useState("all");
  const [seeds,setSeeds]=useState([]);
  const [plants,setPlants]=useState([]);
  const [gardens,setGardens]=useState([]);
  const [search,setSearch]=useState("");
  const [statusFilter,setStatusFilter]=useState("all");
- const [datePeriod,setDatePeriod]=useState("month");
+ const [datePeriod,setDatePeriod]=useState("year");
  const [selectedDay,setSelectedDay]=useState(today);
  const [selectedMonth,setSelectedMonth]=useState(today.slice(0,7));
  const [selectedYear,setSelectedYear]=useState(today.slice(0,4));
@@ -143,16 +148,19 @@ export default function PlantingsPage({user}){
     setLoading(true);
     setError("");
 
-    const [plantingsRes,seedsRes,plantsRes,gardensRes]=await Promise.all([
+    const [plantingsRes,seedsRes,plantsRes,gardensRes,hydroRes]=await Promise.all([
      fetch("/api/plantings"),
      fetch("/api/seeds"),
      fetch("/api/plants"),
-     fetch("/api/gardens")
+     fetch("/api/gardens"),
+     fetch("/api/hydro-systems")
     ]);
 
     const plantingsData=await plantingsRes.json().catch(()=>[]);
     const seedsData=await seedsRes.json().catch(()=>[]);
     const plantsData=await plantsRes.json().catch(()=>[]);
+    const hydroData=await hydroRes.json().catch(()=>[]);
+    if(!hydroRes.ok)throw new Error(hydroData.message||"Failed to load hydro runs");
     const gardensData=await gardensRes.json().catch(()=>[]);
 
     if(!plantingsRes.ok)throw new Error(plantingsData.message||"Failed to load growing instances");
@@ -162,6 +170,7 @@ export default function PlantingsPage({user}){
 
     if(ignore)return;
 
+    setHydroSystems(Array.isArray(hydroData)?hydroData:[]);
     setInstances(Array.isArray(plantingsData)?plantingsData:[]);
     setSeeds(Array.isArray(seedsData)?seedsData:[]);
     setPlants(Array.isArray(plantsData)?plantsData:[]);
@@ -180,17 +189,19 @@ export default function PlantingsPage({user}){
   };
  },[]);
 
+ const allRuns=useMemo(()=>combineGrowingRuns(instances,hydroSystems),[instances,hydroSystems]);
+
  const yearOptions=useMemo(()=>{
   const years=new Set([today.slice(0,4)]);
-  instances.forEach(item=>{
+  allRuns.forEach(item=>{
    const date=formatDateForInput(item.plantedDate);
    if(date)years.add(date.slice(0,4));
   });
   return [...years].sort((a,b)=>b.localeCompare(a)).map(year=>({value:year,label:year}));
- },[instances,today]);
+ },[allRuns,today]);
 
  const dateFilteredInstances=useMemo(()=>{
-  return instances.filter(item=>{
+  return allRuns.filter(item=>{
    if(datePeriod==="all")return true;
    const date=formatDateForInput(item.plantedDate);
    if(!date)return false;
@@ -198,7 +209,7 @@ export default function PlantingsPage({user}){
    if(datePeriod==="month")return date.startsWith(selectedMonth);
    return date.startsWith(selectedYear);
   });
- },[instances,datePeriod,selectedDay,selectedMonth,selectedYear]);
+ },[allRuns,datePeriod,selectedDay,selectedMonth,selectedYear]);
 
  const filteredInstances=useMemo(()=>{
   const searchText=search.trim().toLowerCase();
@@ -208,32 +219,18 @@ export default function PlantingsPage({user}){
     getInstanceName(item),
     getInstanceSource(item),
     item.location,
+    getGardenName(item.garden),
    item.status,
    item.deathDate,
    item.failureReason,
     item.outcomeNotes
    ].filter(Boolean).join(" ").toLowerCase();
 
-   return (statusFilter==="all"||item.status===statusFilter)&&(!searchText||haystack.includes(searchText));
+   return (!selectedRunId||getObjectId(item)===selectedRunId)&&(gardenFilter==="all"||getObjectId(item.garden)===gardenFilter)&&(statusFilter==="all"||item.status===statusFilter)&&(!searchText||haystack.includes(searchText));
   });
- },[dateFilteredInstances,search,statusFilter]);
+ },[dateFilteredInstances,search,statusFilter,gardenFilter,selectedRunId]);
 
- const metrics=useMemo(()=>({
-  total:dateFilteredInstances.length,
-  active:dateFilteredInstances.filter(item=>item.status==="active"||item.status==="germinating"||item.status==="seedling"||item.status==="transplanted").length,
-  failed:dateFilteredInstances.filter(item=>item.status==="failed"||item.status==="dead").length,
-  harvested:dateFilteredInstances.filter(item=>item.status==="harvested").length
- }),[dateFilteredInstances]);
-
- const openAddModal=(sourceType="seed")=>{
-  setEditingInstance(null);
-  setFormData({
-   ...defaultInstanceForm,
-   sourceType,
-   plantedDate:formatDateForInput(new Date())
-  });
-  setShowModal(true);
- };
+ const metrics=useMemo(()=>summarizeGrowingRuns(filteredInstances),[filteredInstances]);
 
  const openEditModal=item=>{
   setEditingInstance(item);
@@ -296,7 +293,7 @@ export default function PlantingsPage({user}){
     endDate:formData.endDate||null,
     deathDate:formData.status==="dead" ? formData.deathDate||null : null,
     quantity:formData.quantity==="" ? 1 : Number(formData.quantity),
-    createdBy:getObjectId(user)
+    ...(!editingInstance?{createdBy:getObjectId(user)}:{})
    };
 
    const editingId=getObjectId(editingInstance);
@@ -328,53 +325,18 @@ export default function PlantingsPage({user}){
    <header className="plantings-header">
     <div>
      <p className="plantings-kicker">Growing Instances</p>
-     <h1>Plant & Seed Starts</h1>
-     <p>Review growing runs across all gardens. New runs belong to a named garden and start from an existing seed or plant.</p>
+     <h1>Growing Run Register</h1>
+     <p>Find seed starts, plant starts, and hydro runs across every garden. Start new runs inside their garden; use this register to review progress and update outcomes.</p>
     </div>
 
     <div className="plantings-header-actions">
-     <Button type="button" onClick={()=>openAddModal("seed")} disabled={!gardens.length}>
-      <Plus size={18}/>
-      Start From Seed
-     </Button>
-     <Button type="button" variant="outline-primary" onClick={()=>openAddModal("plant")} disabled={!gardens.length}>
-      <Plus size={18}/>
-      Start From Plant
-     </Button>
+     <Button as={Link} to="/gardens">Open Gardens</Button>
     </div>
    </header>
 
    {!loading&&!gardens.length&&(
     <Alert variant="info">Create a <Alert.Link as={Link} to="/gardens">named garden</Alert.Link> before starting a seed or plant run.</Alert>
    )}
-
-   <section className="plantings-reference-dashboard">
-    <div>
-     <p className="plantings-kicker">Plant Care Dashboard</p>
-     <h2>Track each real growing instance, not just the seed record.</h2>
-     <p>
-      This is where started plants and seeds become living records with dates, status, location, outcomes, and death details when needed.
-     </p>
-    </div>
-
-    <div className="plantings-care-summary">
-     <article>
-      <span>Daily Watering</span>
-      <strong>{metrics.active}</strong>
-      <small>active starts to review</small>
-     </article>
-     <article>
-      <span>Lifecycle Status</span>
-      <strong>{metrics.failed}</strong>
-      <small>failed or dead starts</small>
-     </article>
-     <article>
-      <span>Harvested</span>
-      <strong>{metrics.harvested}</strong>
-      <small>instances completed</small>
-     </article>
-    </div>
-   </section>
 
    {error&&(
     <Alert variant="danger" dismissible onClose={()=>setError("")}>{error}</Alert>
@@ -384,8 +346,10 @@ export default function PlantingsPage({user}){
     <Alert variant="success" dismissible onClose={()=>setSuccess("")}>{success}</Alert>
    )}
 
+   {selectedRunId&&<Alert variant="info">Showing the run selected from its garden. <Button size="sm" variant="outline-primary" onClick={()=>setSearchParams({})}>Show all runs</Button></Alert>}
+
    <section className="plantings-metrics">
-    <MetricCard icon={<Sprout size={18}/>} label="Instances" value={metrics.total}/>
+    <MetricCard icon={<Sprout size={18}/>} label="Runs Shown" value={metrics.total}/>
     <MetricCard icon={<Leaf size={18}/>} label="Growing" value={metrics.active}/>
     <MetricCard icon={<Skull size={18}/>} label="Failed / Dead" value={metrics.failed}/>
     <MetricCard icon={<CalendarDays size={18}/>} label="Harvested" value={metrics.harvested}/>
@@ -394,9 +358,10 @@ export default function PlantingsPage({user}){
    <Card className="plantings-card">
     <Card.Body>
      <div className="plantings-filter-grid">
+      <SortedSelect value={gardenFilter} onChange={event=>setGardenFilter(event.target.value)} options={[{_id:"all",name:"All Gardens"},...gardens]} getValue={getObjectId} getLabel={getGardenName} includePlaceholder={false} aria-label="Filter runs by garden"/>
       <InputGroup>
        <InputGroup.Text><Search size={16}/></InputGroup.Text>
-       <Form.Control value={search} onChange={e=>setSearch(e.target.value)} placeholder="Search starts, seeds, plants, location..."/>
+       <Form.Control value={search} onChange={e=>setSearch(e.target.value)} placeholder="Search runs, seeds, plants, gardens..."/>
       </InputGroup>
 
       <SortedSelect
@@ -439,6 +404,8 @@ export default function PlantingsPage({user}){
     </Card.Body>
    </Card>
 
+   <p className="plantings-filter-summary">Showing {filteredInstances.length} of {allRuns.length} runs{datePeriod==="year"?` started in ${selectedYear}`:datePeriod==="month"?` started in ${selectedMonth}`:datePeriod==="day"?` started on ${selectedDay}`:" across all dates"}. Date filters use the run’s start date. Each hydro run counts once; devices and pods are managed within it.</p>
+
    {loading ? (
     <div className="plantings-loading">
      <Spinner animation="border" size="sm"/>
@@ -447,16 +414,16 @@ export default function PlantingsPage({user}){
    ) : (
     <SortedList
      items={filteredInstances}
-     getKey={item=>getObjectId(item)}
+     getKey={item=>item.runKey}
      getLabel={getInstanceName}
      className="plantings-list"
      renderItem={item=>(
       <article className="planting-card">
        <div className="planting-card-head">
         <div>
-         <p className="plantings-kicker">{item.sourceType==="plant"?"Plant":"Seed"} Instance</p>
+         <p className="plantings-kicker">{item.runKind==="hydro"?"Hydro Run":item.sourceType==="plant"?"Plant Start":"Seed Start"}</p>
          <h2>{getInstanceName(item)}</h2>
-         <p>{getInstanceSource(item)}</p>
+         <p>{item.runKind==="hydro"?item.systemType:getInstanceSource(item)}</p>
         </div>
 
         <Badge bg={statusVariant(item.status)}>{statusLabel(item.status)}</Badge>
@@ -469,7 +436,7 @@ export default function PlantingsPage({user}){
         {item.status==="dead"&&(
          <span><strong>Death Date:</strong> {formatDate(item.deathDate)}</span>
         )}
-        <span><strong>Quantity:</strong> {item.quantity ?? 1}</span>
+        {item.runKind!=="hydro"&&<span><strong>Quantity:</strong> {item.quantity ?? 1}</span>}
         <span><strong>Garden:</strong> {getGardenName(item.garden)||"Not assigned"}</span>
         <span><strong>Location:</strong> {item.location||"Not listed"}</span>
         {(item.status==="failed"||item.status==="dead")&&(
@@ -481,10 +448,10 @@ export default function PlantingsPage({user}){
         <p className="planting-outcome">{item.outcomeNotes}</p>
        )}
 
-       <Button type="button" size="sm" variant="outline-primary" onClick={()=>openEditModal(item)}>
-        <Pencil size={15}/>
-        Edit Instance
-       </Button>
+       <div className="plantings-header-actions">
+        {item.garden&&<Button as={Link} to={`/gardens/${getObjectId(item.garden)}`} size="sm" variant="outline-success">Open Garden</Button>}
+        {item.runKind==="hydro"?<Button as={Link} to={`/hydroponics?run=${getObjectId(item)}${item.garden?`&garden=${getObjectId(item.garden)}`:""}`} size="sm" variant="outline-primary">Manage Hydro Run</Button>:<Button type="button" size="sm" variant="outline-primary" onClick={()=>openEditModal(item)}><Pencil size={15}/> Update Run</Button>}
+       </div>
       </article>
      )}
     >

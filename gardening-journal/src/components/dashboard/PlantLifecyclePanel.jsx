@@ -6,7 +6,7 @@ import DashboardSection from "./DashboardSection";
 function PlantLifecyclePanel({items=[],className=""}){
  return(
   <DashboardSection className={className} kicker="Lifecycle Records" title="Plant Deaths & Ended Starts" linkTo="/plantings" linkLabel="Open instances">
-   <ul className="dashboard-list">
+   <ul className="dashboard-list" tabIndex={0} aria-label="Scrollable records">
     {items?.length?items.map(item=>(
      <li key={item._id||item.id||item.name} className="dashboard-list-item">
       <span className="dashboard-list-icon dashboard-list-icon-warning"><TriangleAlert size={17} strokeWidth={2.2}/></span>
