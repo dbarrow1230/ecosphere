@@ -1,6 +1,8 @@
 import {useMemo,useState} from "react";
 import {RotateCcw,Volume2,Play} from "lucide-react";
 import GrandStaff from "../components/GrandStaff.jsx";
+import {playSampledNotes,INSTRUMENT_AUDIO} from "../services/sampledPiano.js";
+import ChordBreakdown from "../components/ChordBreakdown.jsx";
 import "../styles/ChordBuilderPage.css";
 
 const NOTES=[
@@ -49,6 +51,7 @@ function identifyChord(selected,preferredRoot=null){
   root:noteName(match.root),
   rootPitch:match.root,
   bass:noteName(bass),
+  bassPitch:bass,
   intervals:match.type.intervals,
   alternatives:matches.slice(1).map(formatName)
  };
@@ -59,6 +62,8 @@ export default function ChordBuilderPage(){
  const [preferredRoot,setPreferredRoot]=useState(null);
  const [quickRoot,setQuickRoot]=useState(0);
  const [quickCategory,setQuickCategory]=useState("Triads");
+ const [audioLoading,setAudioLoading]=useState(false);
+ const [instrument,setInstrument]=useState("guitar");
  const chord=useMemo(()=>identifyChord(selected,preferredRoot),[selected,preferredRoot]);
  const toggleNote=pitch=>setSelected(current=>{
   if(current.includes(pitch)){
@@ -75,35 +80,23 @@ export default function ChordBuilderPage(){
  const startChord=type=>{setPreferredRoot(quickRoot);setSelected(type.intervals.map(interval=>(quickRoot+interval)%12));};
  const chooseInversion=index=>{
   if(!chord)return;
-  const bass=(chord.rootPitch+chord.intervals[index])%12;
-  setSelected([bass,...selected.filter(pitch=>pitch!==bass)]);
+  const rootOrder=chord.intervals.map(interval=>(chord.rootPitch+interval)%12);
+  setPreferredRoot(chord.rootPitch);
+  setSelected([...rootOrder.slice(index),...rootOrder.slice(0,index)]);
  };
- const playPitches=(pitches,arpeggiate=false)=>{
-  if(!pitches.length)return;
-  const AudioContextClass=window.AudioContext||window.webkitAudioContext;
-  if(!AudioContextClass)return;
-  const context=new AudioContextClass();
-  let previousPitch=-1;
-  const voicedPitches=pitches.map(pitch=>{
-   let voicedPitch=pitch;
-   while(voicedPitch<=previousPitch)voicedPitch+=12;
-   previousPitch=voicedPitch;
-   return voicedPitch;
-  });
-  voicedPitches.forEach((pitch,index)=>{
-   const start=context.currentTime+(arpeggiate?index*.32:0);
-   const oscillator=context.createOscillator();
-   const gain=context.createGain();
-   oscillator.type="triangle";
-   oscillator.frequency.value=261.63*Math.pow(2,pitch/12);
-   gain.gain.setValueAtTime(.0001,start);
-   gain.gain.exponentialRampToValueAtTime(.16/Math.max(1,Math.sqrt(voicedPitches.length)),start+.025);
-   gain.gain.exponentialRampToValueAtTime(.0001,start+.75);
-   oscillator.connect(gain).connect(context.destination);
-   oscillator.start(start);
-   oscillator.stop(start+.8);
-  });
-  window.setTimeout(()=>context.close(),(arpeggiate?pitches.length*.32:0)*1000+1000);
+ const playPitches=async(pitches,arpeggiate=false)=>{
+  if(!pitches.length||audioLoading)return;
+  const voicedPitches=pitches.reduce((midis,pitch)=>{
+   let midi=60+pitch;
+   while(midi<=(midis.at(-1)??59))midi+=12;
+   return [...midis,midi];
+  },[]);
+  setAudioLoading(true);
+  try{
+   await playSampledNotes(voicedPitches,{arpeggio:arpeggiate,sustain:!arpeggiate,instrument});
+  }finally{
+   setAudioLoading(false);
+  }
  };
 
  return(
@@ -116,12 +109,12 @@ export default function ChordBuilderPage(){
       <strong>{chord?.name||"—"}</strong>
       <p>{chord?`${chord.quality} · Root ${chord.root}${chord.bass!==chord.root?` · ${chord.bass} in the bass`:""}${chord.alternatives.length?` · Also: ${chord.alternatives.join(", ")}`:""}`:selected.length>1?"These notes do not match a supported chord yet.":"Start with any root, then add the other chord tones."}</p>
      </div>
-     <GrandStaff pitches={selected} chordName={chord?.name||""} keyRoot={chord?.root||"C"} quality={chord?.quality||"Major"}/>
+     <GrandStaff instrument={instrument} onInstrumentChange={setInstrument} pitches={selected} chordName={chord?.name||""} keyRoot={chord?.root||"C"} quality={chord?.quality||"Major"}/>
      <div className="chord-builder-selected" aria-label="Selected notes">
       {selected.length?selected.map((pitch,index)=><button type="button" onClick={()=>toggleNote(pitch)} key={pitch}><span>{index===0?"Bass":index+1}</span>{noteName(pitch)}</button>):<span>No notes selected</span>}
      </div>
-     {chord&&<div className="chord-builder-inversions"><span>Choose inversion</span><div>{chord.intervals.map((interval,index)=>{const bass=(chord.rootPitch+interval)%12;return <button type="button" className={selected[0]===bass?"is-active":""} onClick={()=>chooseInversion(index)} key={interval}><strong>{inversionNames[index]}</strong><small>{noteName(bass)} in bass</small></button>;})}</div></div>}
-     <div className="chord-builder-audio"><button type="button" onClick={()=>playPitches(selected)} disabled={!selected.length}><Volume2 size={17}/> Hear chord</button><button type="button" onClick={()=>playPitches(selected,true)} disabled={!selected.length}><Play size={17}/> Hear notes</button></div>
+     {chord&&<div className="chord-builder-chord-guide"><div className="chord-builder-inversions"><span>Choose inversion</span><div>{chord.intervals.map((interval,index)=>{const bass=(chord.rootPitch+interval)%12;return <button type="button" className={selected[0]===bass?"is-active":""} onClick={()=>chooseInversion(index)} key={interval}><strong>{inversionNames[index]}</strong><small>{noteName(bass)} in bass</small></button>;})}</div></div><ChordBreakdown chord={chord}/></div>}
+     <div className="chord-builder-audio"><button type="button" onClick={()=>playPitches(selected)} disabled={!selected.length||audioLoading}><Volume2 size={17}/> Hear chord</button><button type="button" onClick={()=>playPitches(selected,true)} disabled={!selected.length||audioLoading}><Play size={17}/> Hear notes</button><span className="chord-builder-audio-status" role="status">{audioLoading?"Loading instrument samples…":INSTRUMENT_AUDIO[instrument].label}</span></div>
      <div className="chord-builder-notes">
       {NOTES.map(note=><button type="button" className={selected.includes(note.pitch)?"is-selected":""} aria-pressed={selected.includes(note.pitch)} onClick={()=>toggleNote(note.pitch)} key={note.pitch}><strong>{note.name}</strong><small>{selected.includes(note.pitch)?"Selected":"Add note"}</small></button>)}
      </div>
@@ -138,3 +131,6 @@ export default function ChordBuilderPage(){
   </section>
  );
 }
+
+
+

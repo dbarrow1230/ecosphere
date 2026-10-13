@@ -1,4 +1,5 @@
 import {useState} from "react";
+import ChordReferenceStaff from "../components/ChordReferenceStaff.jsx";
 import "../styles/ChordTypesReferencePage.css";
 
 const ROOTS=[
@@ -56,17 +57,21 @@ export default function ChordTypesReferencePage(){
  const [activeGroup,setActiveGroup]=useState("Triads");
  const root=ROOTS.find(note=>note.pitch===rootPitch);
  const noteName=pitch=>ROOTS.find(note=>note.pitch===(pitch+12)%12)?.[spelling];
+ const chordNotes=chord=>chord.voicing?chord.voicing.split(" · ").map(name=>noteName(ROOTS.find(note=>note.sharp===name||note.flat===name).pitch)):chord.intervals.map(interval=>noteName(rootPitch+interval));
  const groups=[...new Set(CHORDS.map(chord=>chord.group))];
  return(
   <section className="chord-types-page">
    <header className="chord-types-hero"><p>Music Theory Reference</p><h1>Chord Types & Formulas</h1><span>Choose a root and accidental spelling to see every chord formula with its notes.</span></header>
    <div className="chord-types-controls">
-    <label>Root<select value={rootPitch} onChange={event=>setRootPitch(Number(event.target.value))}>{ROOTS.map(note=><option value={note.pitch} key={note.pitch}>{note.sharp===note.flat?note.sharp:`${note.sharp} / ${note.flat}`}</option>)}</select></label>
-    <div><span>Spell accidentals as</span><button type="button" className={spelling==="sharp"?"is-active":""} onClick={()=>setSpelling("sharp")}>Sharps ♯</button><button type="button" className={spelling==="flat"?"is-active":""} onClick={()=>setSpelling("flat")}>Flats ♭</button></div>
+    <label>Root<select value={rootPitch} onChange={event=>setRootPitch(Number(event.target.value))}>{ROOTS.map(note=><option value={note.pitch} key={note.pitch}>{note[spelling]}</option>)}</select></label>
+    <div><span>Spell accidentals as</span><button type="button" aria-pressed={spelling==="sharp"} className={spelling==="sharp"?"is-active":""} onClick={()=>setSpelling("sharp")}>Sharps ♯</button><button type="button" aria-pressed={spelling==="flat"} className={spelling==="flat"?"is-active":""} onClick={()=>setSpelling("flat")}>Flats ♭</button></div>
    </div>
+   <p className="chord-types-spelling-status" role="status">{spelling==="sharp"?"Using sharp spellings: C♯, D♯, F♯, G♯, A♯.":"Using flat spellings: D♭, E♭, G♭, A♭, B♭."} Natural notes stay the same; these buttons change note spelling, not pitch.</p>
    <aside className="chord-types-theory-note"><strong>Why there is no separate 12th chord</strong><span>The 12th is a compound perfect fifth—a fifth plus an octave—so it repeats the fifth already in the chord. Standard extensions continue from 11th to 13th.</span></aside>
    <nav className="chord-types-tabs" role="tablist" aria-label="Chord type categories">{groups.map(group=><button type="button" role="tab" aria-selected={activeGroup===group} className={activeGroup===group?"is-active":""} onClick={()=>setActiveGroup(group)} key={group}>{group}</button>)}</nav>
-   <section className="chord-types-group" role="tabpanel"><h2>{activeGroup}</h2><div className="chord-types-grid">{CHORDS.filter(chord=>chord.group===activeGroup).map(chord=><article key={chord.name}><header><span>{chord.symbol||`${root[spelling]}${chord.suffix}`}</span><div><h3>{chord.name}</h3><small>{chord.formula}</small></div></header><p className="chord-type-notes">{chord.voicing||chord.intervals.map(interval=>noteName(rootPitch+interval)).join(" · ")}</p><p>{chord.definition}</p></article>)}</div></section>
+   <section className="chord-types-group" role="tabpanel"><h2>{activeGroup}</h2><div className="chord-types-grid">{CHORDS.filter(chord=>chord.group===activeGroup).map(chord=><article key={chord.name}><header><span>{chord.symbol||`${root[spelling]}${chord.suffix}`}</span><div><h3>{chord.name}</h3><small>{chord.formula}</small></div></header><p className="chord-type-notes">{chordNotes(chord).join(" · ")}</p><p>{chord.definition}</p><ChordReferenceStaff name={chord.symbol||`${root[spelling]}${chord.suffix}`} notes={chordNotes(chord)} intervals={chord.intervals} rootPitch={rootPitch}/></article>)}</div></section>
   </section>
  );
 }
+
+

@@ -6,3 +6,13 @@
 .chord-types-tabs button{flex:1 0 auto;padding:.7rem 1rem;border:1px solid transparent;border-radius:var(--radius-md);background:transparent;color:var(--text);font-weight:800;white-space:nowrap}
 .chord-types-tabs button:hover{background:var(--bg-alt)}
 .chord-types-tabs button.is-active{border-color:var(--primary);background:var(--primary);color:var(--text-inverse)}
+.chord-reference-staff{margin:0;border-top:1px solid var(--border);padding-top:.65rem;color:var(--text)}
+.chord-reference-staff figcaption{font-size:.7rem;color:var(--text-soft)}
+.chord-reference-staff svg{display:block;width:100%;max-width:360px;margin:auto;overflow:visible}
+.chord-reference-staff line{stroke:var(--text);stroke-width:1}
+.chord-reference-staff ellipse{fill:var(--primary)}
+.chord-reference-staff .chord-reference-stem{stroke:var(--primary);stroke-width:1.6}
+.chord-reference-clef{fill:var(--text);font:52px "Bravura","Noto Music","Segoe UI Symbol",serif}
+.chord-reference-clef-label{fill:var(--text-soft);font-size:10px}
+.chord-reference-accidental{fill:var(--text);font:22px "Segoe UI Symbol",serif}
+.chord-types-spelling-status{margin:0;color:var(--text-soft);font-size:.85rem}
