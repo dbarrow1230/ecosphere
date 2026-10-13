@@ -1,6 +1,11 @@
+import {isNonIngredientLine} from "@shared/culinary/ingredientRows.js";
+import {onRecipeCostingUpdated} from "../../utils/recipeCostingUpdates.js";
+import {Link} from "react-router-dom";
+
+import CulinaryWorkspace from "@shared/culinary/CulinaryWorkspace.jsx";
 import Alert from "../../components/AppAlert.jsx";
 import {useEffect,useMemo,useState} from "react";
-import {Button,Container,Form,Modal} from "react-bootstrap";
+import {Button,Container,Form,Modal,Offcanvas} from "react-bootstrap";
 import RecipeForm from "../forms/recipes/RecipeForm.jsx";
 import RecipeDetailView from "../../components/recipes/RecipeDetailView.jsx";
 import ScaleRecipeModal from "../../components/recipes/ScaleRecipeModal.jsx";
@@ -29,6 +34,7 @@ export default function Recipes(){
  const [error,setError]=useState("");
  const [notice,setNotice]=useState("");
  const [showForm,setShowForm]=useState(false);
+ const [showActions,setShowActions]=useState(false);
  const [showDelete,setShowDelete]=useState(false);
  const [showScale,setShowScale]=useState(false);
  const [showHaccpLog,setShowHaccpLog]=useState(false);
@@ -52,7 +58,15 @@ export default function Recipes(){
    fetchRows("/api/cuisines"),fetchRows("/api/courses"),fetchRows("/api/meal-types"),
    fetchRows("/api/dietaries"),fetchRows("/api/allergens"),fetchRows("/api/techniques"),fetchRows("/api/equipment"),fetchRows("/api/ingredients"),fetchRows("/api/imperial-units"),fetchRows("/api/metric-units"),fetchRows("/api/vendors"),fetchRows("/api/vendor-ingredient-prices")
   ]);
-  const recipeRows=rawRecipes.map(recipe=>{const costing=recipeCostings.find(item=>getObjectId(item.recipe)===recipe._id);return{...recipe,recipeCostingId:costing?._id||"",recipeCosting:costing||null,ingredients:(recipe.ingredients||[]).map((line,index)=>({...line,...(costing?.ingredients?.[index]||{}),ingredient:line.ingredient,preparation:line.preparation,time:line.time,note:line.note}))};});
+  const recipeRows=rawRecipes.map(recipe=>{
+   const costing=recipeCostings.find(item=>getObjectId(item.recipe)===recipe._id&&getObjectId(item.business)===getObjectId(recipe.business));
+   const used=new Set();
+   return{...recipe,recipeCostingId:costing?._id||"",recipeCosting:costing||null,ingredients:(recipe.ingredients||[]).map(line=>{
+    const index=(costing?.ingredients||[]).findIndex((item,i)=>!used.has(i)&&getObjectId(item.ingredient)===getObjectId(line.ingredient)&&(!line.vendorIngredientPrice||getObjectId(item.vendorIngredientPrice)===getObjectId(line.vendorIngredientPrice)));
+    if(index<0)return line;used.add(index);
+    return{...line,...costing.ingredients[index],_id:line._id,ingredient:line.ingredient,imperialQuantity:line.imperialQuantity,imperialUnit:line.imperialUnit,metricQuantity:line.metricQuantity,metricUnit:line.metricUnit,preparation:line.preparation,time:line.time,note:line.note};
+   })};
+  });
   const businesses=[currentBusiness];setCurrentBusinessId(getObjectId(currentBusiness));setRecipes(recipeRows);
   setLookups({businesses,categories,cuisines,courses,mealTypes,dietaries,allergens,techniques,equipment,ingredients,imperialUnits,metricUnits,vendors,vendorIngredientPrices});
   setSelectedId(current=>{
@@ -62,6 +76,8 @@ export default function Recipes(){
  };
 
  useEffect(()=>{load().catch(err=>setError(err.message)).finally(()=>setLoading(false));},[]);
+
+ useEffect(()=>onRecipeCostingUpdated(()=>{load(selectedId).catch(err=>setError(err.message));}),[selectedId]);
 
  const filteredRecipes=useMemo(()=>{
   const search=query.trim().toLowerCase();
@@ -88,23 +104,6 @@ export default function Recipes(){
  const resetFilters=()=>{setQuery("");setFilters({cuisine:"",course:"",category:"",mealType:""});};
 
  const selected=recipes.find(recipe=>recipe._id===selectedId)||null;
- useEffect(()=>{
-  if(!selectedId)return;
-  let cancelled=false,timer;
-  const controller=new AbortController();
-  const check=async()=>{
-   try{
-    const response=await fetch('/api/recipes/'+encodeURIComponent(selectedId)+'/nutrition-sync',{method:'POST',signal:controller.signal});
-    if(!response.ok)throw new Error('Nutrition status is unavailable.');
-    const result=await response.json();
-    if(cancelled)return;
-    setRecipes(current=>current.map(recipe=>recipe._id===selectedId?{...recipe,nutrition:result.nutrition,nutritionSync:result.nutritionSync}:recipe));
-    timer=setTimeout(check,['pending','processing'].includes(result.nutritionSync?.status)?5000:15000);
-   }catch(err){if(!cancelled&&err.name!=='AbortError')timer=setTimeout(check,15000);}
-  };
-  void check();
-  return()=>{cancelled=true;controller.abort();clearTimeout(timer);};
- },[selectedId,selected?.updatedAt]);
  const openAdd=()=>{setFormRecipe({business:currentBusinessId,isActive:true});setShowForm(true);setError("");};
  const openEdit=()=>{if(selected){setFormRecipe(selected);setShowForm(true);setError("");}};
  const scaleQuantity=(value,factor)=>value===null||value===undefined||value===""?null:Number((Number(value)*factor).toFixed(4));
@@ -118,7 +117,7 @@ export default function Recipes(){
    const round2=value=>Math.round((Number(value)+Number.EPSILON)*100)/100;
    const sourceImperialYield=round2(Number(selected.yield?.imperialQuantity||0));
    const sourceMetricYield=round2(Number(selected.yield?.metricQuantity||0));
-   const payload={...selected,_id:undefined,recipeNumber:undefined,recipeSequence:undefined,createdAt:undefined,updatedAt:undefined,__v:undefined,name,parentRecipe:ref(selected.parentRecipe)||selected._id,scaleFactor:factor,scalingMethod:method,business:ref(selected.business)||currentBusinessId,cuisines:refs(selected.cuisines),courses:refs(selected.courses),mealType:ref(selected.mealType),categories:refs(selected.categories),primaryCuisine:ref(selected.primaryCuisine),primaryCourse:ref(selected.primaryCourse),primaryCategory:ref(selected.primaryCategory),dietaryConsiderations:refs(selected.dietaryConsiderations),techniqueRefs:refs(selected.techniqueRefs),servings:scaleQuantity(sourceServings,factor),yield:{imperialQuantity:scaleQuantity(sourceImperialYield,factor),imperialUnit:ref(selected.yield?.imperialUnit)||ref(selected.servingSize?.imperialUnit),metricQuantity:scaleQuantity(sourceMetricYield,factor),metricUnit:ref(selected.yield?.metricUnit)||ref(selected.servingSize?.metricUnit)},servingSize:{imperialQuantity:selected.servingSize?.imperialQuantity??null,imperialUnit:ref(selected.servingSize?.imperialUnit),metricQuantity:selected.servingSize?.metricQuantity??null,metricUnit:ref(selected.servingSize?.metricUnit)},equipment:refs(selected.equipment),ingredients:(selected.ingredients||[]).map(item=>({ingredient:ref(item.ingredient),imperialQuantity:scaleQuantity(item.imperialQuantity,factor),imperialUnit:ref(item.imperialUnit),metricQuantity:scaleQuantity(item.metricQuantity,factor),metricUnit:ref(item.metricUnit),preparation:item.preparation||"",time:item.time||"",note:item.note||""})).filter(item=>item.ingredient),allergens:refs(selected.allergens),isActive:true};
+   const payload={...selected,_id:undefined,recipeNumber:undefined,recipeSequence:undefined,createdAt:undefined,updatedAt:undefined,__v:undefined,name,parentRecipe:ref(selected.parentRecipe)||selected._id,scaleFactor:factor,scalingMethod:method,business:ref(selected.business)||currentBusinessId,cuisines:refs(selected.cuisines),courses:refs(selected.courses),mealType:ref(selected.mealType),categories:refs(selected.categories),primaryCuisine:ref(selected.primaryCuisine),primaryCourse:ref(selected.primaryCourse),primaryCategory:ref(selected.primaryCategory),dietaryConsiderations:refs(selected.dietaryConsiderations),techniqueRefs:refs(selected.techniqueRefs),servings:scaleQuantity(sourceServings,factor),yield:{imperialQuantity:scaleQuantity(sourceImperialYield,factor),imperialUnit:ref(selected.yield?.imperialUnit)||ref(selected.servingSize?.imperialUnit),metricQuantity:scaleQuantity(sourceMetricYield,factor),metricUnit:ref(selected.yield?.metricUnit)||ref(selected.servingSize?.metricUnit)},servingSize:{imperialQuantity:selected.servingSize?.imperialQuantity??null,imperialUnit:ref(selected.servingSize?.imperialUnit),metricQuantity:selected.servingSize?.metricQuantity??null,metricUnit:ref(selected.servingSize?.metricUnit)},equipment:refs(selected.equipment),ingredients:(selected.ingredients||[]).map(item=>({ingredient:ref(item.ingredient),vendor:ref(item.vendor),vendorIngredientPrice:ref(item.vendorIngredientPrice),imperialQuantity:scaleQuantity(item.imperialQuantity,factor),imperialUnit:ref(item.imperialUnit),metricQuantity:scaleQuantity(item.metricQuantity,factor),metricUnit:ref(item.metricUnit),preparation:item.preparation||"",time:item.time||"",note:item.note||""})).filter(item=>item.ingredient),allergens:refs(selected.allergens),isActive:true};
    if(yieldOverride)payload.yield=yieldOverride;
    if(Number(newServings)>0)payload.servings=Number(newServings.toFixed(4));
    const response=await fetch("/api/recipes",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});
@@ -149,9 +148,12 @@ export default function Recipes(){
    const savedId=data?.recipe?._id||formRecipe?._id;
    const costingChanged=!editing||["ingredients","yield","suggestedPrice","business","isActive"].some(key=>Object.hasOwn(payload,key));
    const costingSource={...formRecipe,...payload};
-   const costingIngredients=(costingSource.ingredients||[]).filter(item=>item.vendorIngredientPrice).map(item=>({ingredient:item.ingredient,vendor:item.vendor||null,vendorIngredientPrice:item.vendorIngredientPrice,imperialQuantity:item.imperialQuantity,imperialUnit:item.imperialUnit,metricQuantity:item.metricQuantity,metricUnit:item.metricUnit,unitCost:Number(item.unitCost||0),totalCost:Number(item.totalCost||0),vendorPackCost:Number(item.vendorPackCost||0),vendorPackImperialDisplay:item.vendorPackImperialDisplay||"",vendorPackMetricDisplay:item.vendorPackMetricDisplay||""}));
+   const costingIngredients=(costingSource.ingredients||[]).filter(item=>!isNonIngredientLine(item)&&item.vendorIngredientPrice).map(item=>({ingredient:item.ingredient,vendor:item.vendor||null,vendorIngredientPrice:item.vendorIngredientPrice,imperialQuantity:item.imperialQuantity,imperialUnit:item.imperialUnit,metricQuantity:item.metricQuantity,metricUnit:item.metricUnit,unitCost:Number(item.unitCost||0),totalCost:Number(item.totalCost||0),vendorPackCost:Number(item.vendorPackCost||0),vendorPackImperialDisplay:item.vendorPackImperialDisplay||"",vendorPackMetricDisplay:item.vendorPackMetricDisplay||""}));
    const ingredientCost=costingIngredients.reduce((total,item)=>total+item.totalCost,0);
-   const costingPayload={business:getObjectId(costingSource.business),recipe:savedId,yield:costingSource.yield,ingredients:costingIngredients,totals:{ingredientCost,totalCost:ingredientCost},pricing:{suggestedPrice:Number(costingSource.suggestedPrice||0)},isActive:costingSource.isActive};
+   const previousCosting=formRecipe?.recipeCosting;
+   const previousTotals=previousCosting?.totals||{};
+   const totalCost=previousCosting?Number(previousTotals.totalCost||0)-Number(previousTotals.ingredientCost||0)+ingredientCost:ingredientCost;
+   const costingPayload={business:getObjectId(costingSource.business),recipe:savedId,yield:costingSource.yield,ingredients:costingIngredients,totals:{...previousTotals,ingredientCost,totalCost:Math.max(0,totalCost)},pricing:{...previousCosting?.pricing,suggestedPrice:Object.hasOwn(payload,"suggestedPrice")?Number(costingSource.suggestedPrice||0):Number(previousCosting?.pricing?.suggestedPrice??costingSource.suggestedPrice??0)},isActive:costingSource.isActive};
    if(costingChanged&&(costingIngredients.length||formRecipe?.recipeCostingId)){
     const costingRes=await fetch(formRecipe?.recipeCostingId?`/api/recipe-costings/${formRecipe.recipeCostingId}`:"/api/recipe-costings",{method:formRecipe?.recipeCostingId?"PUT":"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(costingPayload)});
     const costingData=await costingRes.json().catch(()=>null);if(!costingRes.ok)throw new Error(costingData?.message||"Recipe saved, but vendor costing failed to save.");
@@ -184,7 +186,7 @@ export default function Recipes(){
   <Container fluid className="recipes-page py-4">
    <div className="recipes-toolbar">
     <div><h1 className="mb-1">Recipes</h1><p className="text-muted mb-0">Search the recipe database and review complete recipe details.</p></div>
-    <div className="d-flex gap-2 flex-wrap justify-content-end"><Button onClick={openAdd}>Add Recipe</Button><Button variant="outline-primary" onClick={openEdit} disabled={!selected}>Edit Recipe</Button><Button variant="outline-primary" onClick={()=>setShowScale(true)} disabled={!selected}>Scale Recipe</Button>{recipes.some(recipe=>/^IMPORT-/i.test(recipe.recipeNumber||""))?<Button variant="outline-primary" onClick={updateImportNumbers} disabled={saving}>Update Import Numbers</Button>:null}<Button variant="outline-primary" onClick={()=>{if(!printBlankHaccpSheet(selected))setError("Allow popups for this site to open the printable HACCP form.");}} disabled={!selected}>Print Recipe HACCP Sheet</Button><Button variant="outline-primary" onClick={()=>{if(!printBlankHaccpSheet())setError("Allow popups for this site to open the printable HACCP form.");}}>Print Blank HACCP Form</Button><Button variant="outline-primary" onClick={()=>setShowHaccpLog(true)} disabled={!selected||(!(selected.haccp||[]).length&&!(selected.ccp||[]).length)}>Enter HACCP Log</Button><Button variant="outline-danger" onClick={()=>setShowDelete(true)} disabled={!selected}>Delete</Button></div>
+    {!showActions?<Button className="recipe-actions-tab" variant="primary" onClick={()=>setShowActions(true)} aria-label="Open recipe actions" aria-expanded={false}>Actions</Button>:null}
    </div>
    {saving&&!showForm?<Alert variant="info" notification>{showDelete?"Deleting recipe…":"Saving changes…"}</Alert>:null}
    {error?<Alert variant="danger" onClose={()=>setError("")}>{error}</Alert>:null}
@@ -214,10 +216,11 @@ export default function Recipes(){
     </aside>
 
     <main className="recipes-detail-panel">
-     {!selected?<div className="recipes-empty recipes-empty-detail">Select a recipe to view its details.</div>:<RecipeDetailView recipe={selected} imageUrl={imageUrl} linkedRecipes={recipes.filter(item=>item._id!==selected._id&&getObjectId(item.parentRecipe)===(getObjectId(selected.parentRecipe)||selected._id))}/>}
+     {!selected?<div className="recipes-empty recipes-empty-detail">Select a recipe to view its details.</div>:<RecipeDetailView recipe={selected} costReviewAction={<Button variant="outline-primary" size="sm" as={Link} to={`/recipe-costings?recipe=${encodeURIComponent(selectedId)}`}>Cost Recipe</Button>} allergenReviewAction={<CulinaryWorkspace popup review="allergens" triggerLabel="Review Allergens" triggerSize="sm" business={getObjectId(selected.business)||currentBusinessId} recipe={selectedId} recipeRecord={selected} recipeLookups={lookups}/>} imageUrl={imageUrl} linkedRecipes={recipes.filter(item=>item._id!==selected._id&&getObjectId(item.parentRecipe)===(getObjectId(selected.parentRecipe)||selected._id))}/>}
     </main>
    </div>
 
+   <Offcanvas show={showActions} onHide={()=>setShowActions(false)} placement="end" className="recipe-actions-drawer"><Button className="recipe-actions-tab" variant="primary" onClick={()=>setShowActions(false)} aria-label="Close recipe actions" aria-expanded={true}>Actions</Button><Offcanvas.Header closeButton><Offcanvas.Title>Recipe actions</Offcanvas.Title></Offcanvas.Header><Offcanvas.Body onClick={event=>{const button=event.target.closest("button");if(button&&!button.disabled)setShowActions(false);}}>    <div className="d-grid gap-2"><Button variant="outline-primary" onClick={openAdd}>Add Recipe</Button><Button variant="outline-primary" onClick={openEdit} disabled={!selected}>Edit Recipe</Button><Button variant="outline-primary" as={Link} to={`/recipe-costings?recipe=${encodeURIComponent(selectedId)}`} disabled={!selected}>Cost Recipe</Button><Button variant="outline-primary" as={Link} to={`/recipes/costing-worksheets?recipe=${encodeURIComponent(selectedId)}`} disabled={!selected}>Recipe Costing Sheets</Button><Button variant="outline-primary" onClick={()=>setShowScale(true)} disabled={!selected}>Scale Recipe</Button>{recipes.some(recipe=>/^IMPORT-/i.test(recipe.recipeNumber||""))?<Button variant="outline-primary" onClick={updateImportNumbers} disabled={saving}>Update Import Numbers</Button>:null}<Button variant="outline-primary" onClick={()=>{if(!printBlankHaccpSheet(selected))setError("Allow popups for this site to open the printable HACCP form.");}} disabled={!selected}>Print Recipe HACCP Sheet</Button><Button variant="outline-primary" onClick={()=>{if(!printBlankHaccpSheet())setError("Allow popups for this site to open the printable HACCP form.");}}>Print Blank HACCP Form</Button><Button variant="outline-primary" onClick={()=>setShowHaccpLog(true)} disabled={!selected||(!(selected.haccp||[]).length&&!(selected.ccp||[]).length)}>Enter HACCP Log</Button><Button variant="outline-danger" onClick={()=>setShowDelete(true)} disabled={!selected}>Delete</Button></div></Offcanvas.Body></Offcanvas>
    <Modal size="xl" dialogClassName="recipe-form-modal" show={showForm} onHide={()=>!saving&&setShowForm(false)} backdrop="static" keyboard={false} centered><Modal.Header closeButton><Modal.Title>{formRecipe?._id?"Edit":"Add"} Recipe</Modal.Title></Modal.Header><Modal.Body><RecipeForm initialData={formRecipe||newRecipeDefaults} lookups={lookups} onSubmit={save} onCreateLookup={createLookup} onBulkImported={finishBulkImport} loading={saving}/></Modal.Body></Modal>
    <Modal show={showDelete} onHide={()=>!saving&&setShowDelete(false)} centered><Modal.Header closeButton><Modal.Title>Delete Recipe</Modal.Title></Modal.Header><Modal.Body>Delete <strong>{selected?.name}</strong>?</Modal.Body><Modal.Footer><Button variant="secondary" onClick={()=>setShowDelete(false)}>Cancel</Button><Button variant="danger" onClick={remove} disabled={saving}>{saving?"Deleting...":"Delete"}</Button></Modal.Footer></Modal>
    <ScaleRecipeModal show={showScale} recipe={selected} imperialUnits={lookups.imperialUnits} metricUnits={lookups.metricUnits} onHide={()=>!saving&&setShowScale(false)} onSave={saveScaled} saving={saving}/>
@@ -225,3 +228,7 @@ export default function Recipes(){
   </Container>
  );
 }
+
+
+
+

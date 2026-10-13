@@ -13,7 +13,7 @@ export const createRecipeCosting=async(req,res)=>{
 
 export const getRecipeCostings=async(req,res)=>{
  try{
-  const filter={};
+  const filter={isActive:{$ne:false}};
   if(req.query.business)filter.business=req.query.business;
   if(req.query.recipe)filter.recipe=req.query.recipe;
   if(req.query.isActive!==undefined)filter.isActive=req.query.isActive==="true";
@@ -75,9 +75,9 @@ export const updateRecipeCosting=async(req,res)=>{
 
 export const deleteRecipeCosting=async(req,res)=>{
  try{
-  const recipeCosting=await RecipeCosting.findByIdAndDelete(req.params.id);
+  const recipeCosting=await RecipeCosting.findByIdAndUpdate(req.params.id,{isActive:false},{returnDocument:"after"});
   if(!recipeCosting)return res.status(404).json({message:"Recipe costing not found"});
-  return res.status(200).json({message:"Recipe costing deleted successfully"});
+  return res.status(200).json({message:"Recipe costing archived successfully"});
  }catch(error){
   return res.status(500).json({message:"Failed to delete recipe costing",error:error.message});
  }

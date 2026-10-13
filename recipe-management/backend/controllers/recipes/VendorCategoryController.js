@@ -4,26 +4,8 @@ import businessInfoConnection from "../../db/businessInfoConnection.js";
 
 const buildSlug=value=>String(value||"").toLowerCase().trim().replace(/[^a-z0-9\s-]/g,"").replace(/\s+/g,"-").replace(/-+/g,"-");
 
-let legacyMigrationComplete=false;
-const migrateLegacyVendorCategories=async()=>{
- if(legacyMigrationComplete)return;
- const legacy=await businessInfoConnection.collection("categories").find({}).toArray();
- if(legacy.length){
-  const operations=legacy.map(item=>({
-   updateOne:{
-    filter:{name:item.name},
-    update:{$setOnInsert:{...item,_id:item._id}},
-    upsert:true
-   }
-  }));
-  await businessInfoConnection.collection("vendor_categories").bulkWrite(operations,{ordered:false});
- }
- legacyMigrationComplete=true;
-};
-
 export const createVendorCategory=async(req,res)=>{
  try{
-  await migrateLegacyVendorCategories();
   const{name,slug,code,description,isActive}=req.body;
   if(!name?.trim())return res.status(400).json({message:"Vendor category name is required"});
   const trimmedName=name.trim();
@@ -52,8 +34,7 @@ export const createVendorCategory=async(req,res)=>{
 
 export const getVendorCategories=async(req,res)=>{
  try{
-  await migrateLegacyVendorCategories();
-  const vendorCategories=await VendorCategory.find().sort({name:1});
+  const vendorCategories=await VendorCategory.find({isActive:{$ne:false}}).sort({name:1});
   return res.status(200).json(vendorCategories);
  }catch(error){
   return res.status(500).json({message:"Failed to fetch vendor categories",error:error.message});

@@ -13,7 +13,7 @@ export default function RecipeNutritionModule({nutrition,fields,nestedChange,rec
    const payload=await response.json().catch(()=>null);
    if(!response.ok)throw new Error(payload?.message||'Unable to update nutrition from USDA.');
    setStatus(payload?.nutritionSync||null);
-   if(payload?.nutrition){
+   if(payload?.nutritionSync?.status==='complete'&&payload?.nutrition){
     onApply?.(payload.nutrition);
     setNotice('USDA nutrition updated and saved in the backend.');
    }

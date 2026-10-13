@@ -1,13 +1,14 @@
+import Alert from "../../../components/AppAlert.jsx";
 import {Form,Row,Col,Modal,Button} from "react-bootstrap";
 
-export default function LocationForm({show,onHide,onSubmit,form,setForm,saving,editing,locationTypes,locations,disableParentId,businesses}){
+export default function LocationForm({show,onHide,onSubmit,form,setForm,saving,editing,locationTypes,locations,disableParentId,businesses,onAddType,error}){
  return (
   <Modal show={show} onHide={saving?undefined:onHide} centered size="lg" backdrop={saving?"static":true}>
    <Form onSubmit={onSubmit}>
     <Modal.Header closeButton={!saving}>
      <Modal.Title>{editing?"Edit Location":"Add Location"}</Modal.Title>
     </Modal.Header>
-    <Modal.Body>
+    <Modal.Body>{error?<Alert variant="danger">{error}</Alert>:null}
      <Row className="g-3">
       <Col md={6}>
        <Form.Group>
@@ -35,12 +36,12 @@ export default function LocationForm({show,onHide,onSubmit,form,setForm,saving,e
       <Col md={6}>
        <Form.Group>
         <Form.Label>Type</Form.Label>
-        <Form.Select value={form.type||""} onChange={e=>setForm({...form,type:e.target.value})} required>
+        <div className="d-flex align-items-center gap-2"><Form.Select value={form.type||""} onChange={e=>setForm({...form,type:e.target.value})} required>
          <option value="">Select type</option>
          {locationTypes.map(item=>(
           <option key={item._id} value={item._id}>{item.name}</option>
          ))}
-        </Form.Select>
+        </Form.Select>{onAddType?<Button type="button" variant="outline-primary" className="text-nowrap" onClick={onAddType}>Add Type</Button>:null}</div>
        </Form.Group>
       </Col>
       <Col md={6}>

@@ -667,3 +667,13 @@ Library
 .recipe-general-module > .card-body > .row > .col-md-4 > .card > .card-body > .mb-2 .form-check{
  min-height:1.75rem;
 }
+.recipe-financial-summary .recipe-cost-value{display:flex;align-items:center;gap:.5rem;}
+.recipe-financial-summary .recipe-cost-value .btn{padding:.25rem .5rem;font-size:.75rem;white-space:nowrap;}
+.recipe-actions-drawer{--bs-offcanvas-bg:var(--surface);--bs-offcanvas-color:var(--text);--bs-offcanvas-border-color:var(--border);}
+.recipe-actions-tab.btn{position:fixed;right:0;top:40%;writing-mode:vertical-rl;text-orientation:mixed;border-radius:.5rem 0 0 .5rem;padding:1rem .55rem;z-index:1030;}
+.recipe-actions-drawer.offcanvas-end{top:50%;bottom:auto;height:max-content;max-height:calc(100dvh - 2rem);width:20rem;max-width:calc(100vw - 3rem);border-radius:.5rem 0 0 .5rem;}
+.recipe-actions-drawer.offcanvas-end{transform:translate(100%,-50%);}
+.recipe-actions-drawer.offcanvas-end.show,.recipe-actions-drawer.offcanvas-end.showing{transform:translateY(-50%);}
+.recipe-actions-drawer .recipe-actions-tab.btn{position:absolute;right:100%;top:1rem;}
+.recipe-actions-drawer .offcanvas-body{overflow-y:auto;}
+.recipe-actions-drawer .offcanvas-body .btn{text-align:left;justify-content:flex-start;}

@@ -1,3 +1,4 @@
+
 import {Card,Col,Container,Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import "../../../styles/CostingWorksheets.css";
@@ -20,7 +21,7 @@ export default function RecipeWorksheetsPage(){
  return <Container fluid className="costing-index-page py-4 px-3 px-lg-4">
   <div className="costing-index-heading"><div><h1>Recipe Costing Worksheets</h1><p>Select the professional worksheet required for the recipe or production task.</p></div></div>
   <Row xs={1} md={2} xl={3} className="g-3">
-   {worksheetTypes.map(item=><Col key={item.slug}><Card className="costing-type-card h-100"><Card.Body><span className="costing-sheet-mark">Costing Sheet</span><Card.Title>{item.title}</Card.Title><Card.Text>{item.description}</Card.Text><Link className="btn btn-primary" to={`/recipes/costing-worksheets/${item.slug}`}>Open Worksheet</Link></Card.Body></Card></Col>)}
+   {worksheetTypes.map(item=><Col key={item.slug}><Card className="costing-type-card h-100"><Card.Body><span className="costing-sheet-mark">Costing Sheet</span><Card.Title>{item.title}</Card.Title><Card.Text>{item.description}</Card.Text><Link className="btn btn-primary" to={`/recipes/costing-worksheets/${item.slug}${window.location.search}`}>Open Worksheet</Link></Card.Body></Card></Col>)}
   </Row>
  </Container>;
 }

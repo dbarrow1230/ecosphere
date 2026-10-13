@@ -2,6 +2,8 @@
 import mongoose from "mongoose";
 
 const inventorySchema=new mongoose.Schema({
+ business:{type:mongoose.Schema.Types.ObjectId,ref:"Business",default:null,index:true},
+ ingredient:{type:mongoose.Schema.Types.ObjectId,ref:"Ingredient",default:null,index:true},
  name:{type:String,required:true,trim:true},
  category:{type:String,required:true,trim:true},
  subcategory:{type:String,trim:true,default:""},

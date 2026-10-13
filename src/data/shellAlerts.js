@@ -28,7 +28,7 @@ const shellAlerts=[
   items:[{id:"np-1",type:"progress",title:"Writing target has not started",detail:"Emperor's Earth shows 0 of 80,000 words and 0% overall progress.",time:"From app dashboard"}]
  },
  {
-  appId:"recipe-costing",appTitle:"Recipe Costing",
+  appId:"recipe-management",appTitle:"Recipe Management",
   items:[{id:"rc-1",type:"alert",title:"Vendor prices are missing",detail:"Ingredients without a current vendor price cannot be compared or costed correctly.",time:"Needs attention"}]
  }
 ];

@@ -1,9 +1,10 @@
+const culinaryPayload=body=>{const payload={...body};for(const field of ["business","recipeAssignments","menuAssignments","customerAllergens","allergenSnapshots"])delete payload[field];return payload;};
 // backend/controllers/eventController.js
 import Event from "../models/eventModel.js";
 
 export const createEvent=async(req,res)=>{
  try{
-  const event=await Event.create(req.body);
+  const event=await Event.create(culinaryPayload(req.body));
   res.status(201).json({success:true,message:"Event created successfully",event});
  }catch(error){
   res.status(400).json({success:false,message:error.message});
@@ -33,7 +34,7 @@ export const getSingleEvent=async(req,res)=>{
 
 export const updateEvent=async(req,res)=>{
  try{
-  const event=await Event.findByIdAndUpdate(req.params.id,req.body,{returnDocument:"after",runValidators:true});
+  const event=await Event.findByIdAndUpdate(req.params.id,culinaryPayload(req.body),{returnDocument:"after",runValidators:true});
   if(!event){
    return res.status(404).json({success:false,message:"Event not found"});
   }

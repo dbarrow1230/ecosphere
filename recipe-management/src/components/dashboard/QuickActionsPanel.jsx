@@ -25,6 +25,10 @@ function QuickActionsPanel(){
     </div>
 
     <div className="dashboard-actions-grid">
+     <NavLink className="dashboard-action" to="/purchasing" onClick={()=>setOpen(false)}><span className="dashboard-action-copy"><span className="dashboard-action-label">Ordering & Receiving</span></span></NavLink>
+     <NavLink className="dashboard-action" to="/recipe-costings" onClick={()=>setOpen(false)}><span className="dashboard-action-copy"><span className="dashboard-action-label">Recipe Costing</span></span></NavLink>
+     <NavLink className="dashboard-action" to="/costing-formula" onClick={()=>setOpen(false)}><span className="dashboard-action-copy"><span className="dashboard-action-label">Costing Formulas</span></span></NavLink>
+     <NavLink className="dashboard-action" to="/ingredient-records" onClick={()=>setOpen(false)}><span className="dashboard-action-copy"><span className="dashboard-action-label">Ingredient Catalog</span></span></NavLink>
      <NavLink className="dashboard-action dashboard-action-primary" to="/recipes" onClick={()=>setOpen(false)}>
       <span className="dashboard-action-icon">+</span>
       <span className="dashboard-action-copy">

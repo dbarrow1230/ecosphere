@@ -1,9 +1,10 @@
+const culinaryPayload=body=>{const payload={...body};for(const field of ["business","recipeAssignments","menuAssignments","customerAllergens","allergenSnapshots"])delete payload[field];return payload;};
 // backend/controllers/menuController.js
 import Menu from "../models/menuModel.js";
 
 export const createMenu=async(req,res)=>{
  try{
-  const menu=await Menu.create(req.body);
+  const menu=await Menu.create(culinaryPayload(req.body));
   res.status(201).json({success:true,message:"Menu created successfully",menu});
  }catch(error){
   res.status(400).json({success:false,message:error.message});
@@ -35,7 +36,7 @@ export const getSingleMenu=async(req,res)=>{
 
 export const updateMenu=async(req,res)=>{
  try{
-  const menu=await Menu.findByIdAndUpdate(req.params.id,req.body,{returnDocument:"after",runValidators:true});
+  const menu=await Menu.findByIdAndUpdate(req.params.id,culinaryPayload(req.body),{returnDocument:"after",runValidators:true});
   if(!menu){
    return res.status(404).json({success:false,message:"Menu not found"});
   }

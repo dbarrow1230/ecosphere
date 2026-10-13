@@ -1,3 +1,8 @@
+import MenuPlanning from "./pages/MenuPlanning.jsx";
+import Purchasing from "./pages/Purchasing.jsx";
+import IngredientCatalog from "./pages/IngredientCatalog.jsx";
+import RecipeCostings from "./pages/RecipeCostings.jsx";
+import CostingFormulaReference from "./pages/referance/CostingFormulaReference.jsx";
 // src/App.jsx
 import {Routes,Route,Navigate,Link,useNavigate,useLocation,useParams} from "react-router-dom";
 import {useState,useEffect} from "react";
@@ -346,6 +351,7 @@ function App(){
      <Route path="/about" element={<About/>}/>
      <Route path="/dashboard" element={<Dashboard user={user}/>}/>
      <Route path="/recipes" element={<Recipes/>}/>
+     <Route path="/ingredient-records" element={<IngredientCatalog/>}/>
      <Route path="/ingredients" element={<Ingredients/>}/>
      <Route path="/categories" element={<Categories/>}/>
      <Route path="/cuisines" element={<Cuisines/>}/>
@@ -353,6 +359,11 @@ function App(){
      <Route path="/courses" element={<Courses/>}/>
      <Route path="/menus" element={<MenuManager/>}/>
      <Route path="/contacts" element={<ContactUs/>}/>
+     <Route path="/menu-planning" element={<MenuPlanning/>}/>
+     <Route path="/purchasing" element={<Purchasing user={user}/>}/>
+     <Route path="/recipe-costings" element={<RecipeCostings/>}/>
+     <Route path="/costing-formula" element={<CostingFormulaReference/>}/>
+     <Route path="/contact" element={<Navigate to="/contacts" replace/>}/>
      <Route path="/recipes/costing-worksheets" element={<RecipeCostingWorksheetsPage/>}/>
      <Route path="/recipes/costing-worksheets/:worksheet" element={<CostingWorksheetPage/>}/>
 

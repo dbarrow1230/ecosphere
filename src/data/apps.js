@@ -36,7 +36,6 @@ const APP_DESCRIPTIONS={
  "poetry-garden":"Write, organize, revise, and publish poetry collections.",
  "pro-edge-knife-system":"Track knives, sharpening work, equipment, and service records.",
  "project-tracker":"Manage projects, boards, tasks, timelines, and teams.",
- "recipe-costing":"Calculate recipe ingredient, portion, labor, and menu costs.",
  "recipe-management":"Create and organize recipes, ingredients, cuisines, and meal types.",
  "regenerative-earth-cuisine":"Develop regenerative cuisine menus, recipes, and food resources.",
  "root-wise-consulting":"Manage consulting services, clients, case studies, and resources.",
@@ -164,10 +163,6 @@ const configuredApps=[
  {
   id:"project-tracker",
   title:"Project Tracker"
- },
- {
-  id:"recipe-costing",
-  title:"Recipe Costing"
  },
  {
   id:"recipe-management",

@@ -1,3 +1,4 @@
+import {Link} from "react-router-dom";
 import Alert from "../../components/AppAlert.jsx";
 // src/pages/admin/MenuManager.jsx
 import {useState,useEffect,useMemo} from "react";
@@ -230,9 +231,9 @@ function MenuManager(){
     <Row className="g-4 mb-4">
      <Col lg={8}>
       <div>
-       <p className="text-muted mb-2">Admin Menu Management</p>
-       <h1 className="mb-2">Menu Manager</h1>
-       <p className="text-muted mb-0">Create, update, and organize public-facing catering menus and packages.</p>
+       
+       <h1 className="mb-2">Menus</h1><Button as={Link} to="/menu-planning" variant="outline-primary">Recipe Assignments & Purchasing</Button>
+       
       </div>
      </Col>
 

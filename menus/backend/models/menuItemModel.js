@@ -1,6 +1,10 @@
 import mongoose from "mongoose";
 
 const menuItemSchema=new mongoose.Schema({
+ menu:{type:mongoose.Schema.Types.ObjectId,ref:"Menu",default:null,index:true},
+ business:{type:mongoose.Schema.Types.ObjectId,ref:"Business",default:null,index:true},
+ recipe:{type:mongoose.Schema.Types.ObjectId,ref:"Recipe",default:null,index:true},
+ servingsPerGuest:{type:Number,default:1,min:0},
  name:{type:String,required:true,trim:true},
  category:{type:String,default:"",trim:true},
  description:{type:String,default:"",trim:true},

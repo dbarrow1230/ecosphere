@@ -1,3 +1,4 @@
+import {isNonIngredientLine} from "../../../shared/culinary/ingredientRows.js";
 import {calculateNutrition,usdaRequest} from './nutrition.js';
 import {convertBetweenUnits} from '../../src/utils/measurementConversion.js';
 
@@ -48,6 +49,7 @@ export async function enrichNutrition(recipe,request=usdaRequest){
  if(recipe.ingredients?.length>100)issues.push('Automatic nutrition supports up to 100 ingredients per recipe.');
  if(issues.length)return {status:'needs_review',issues,matches};
  for(const [index,item] of recipe.ingredients.entries()){
+  if(isNonIngredientLine(item))continue;
   const name=item.ingredient?.name||item.sourceName||'';
   if(!name){issues.push(`Ingredient ${index+1}: name is missing.`);continue;}
   const query=/\bunsalted\b/i.test(name)?name.replace(/\bunsalted\b/ig,'').trim()+' without salt':name;

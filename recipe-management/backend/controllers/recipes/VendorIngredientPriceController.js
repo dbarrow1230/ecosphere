@@ -1,10 +1,11 @@
 // backend/controllers/recipes/VendorIngredientPriceController.js
 import VendorIngredientPrice from "../../models/recipes/VendorIngredientPriceModel.js";
+import {pricePayload,updateVendorPrice} from "../../../../shared/culinary/vendorHistory.js";
 
 export const createVendorIngredientPrice=async(req,res)=>{
  try{
   if(!req.body.business||!req.body.vendor||!req.body.ingredient)return res.status(400).json({message:"Business, vendor, and ingredient are required"});
-  const vendorIngredientPrice=await VendorIngredientPrice.create(req.body);
+  const vendorIngredientPrice=await VendorIngredientPrice.create(pricePayload(req.body));
   return res.status(201).json({message:"Vendor ingredient price created successfully",vendorIngredientPrice});
  }catch(error){
   return res.status(500).json({message:"Failed to create vendor ingredient price",error:error.message});
@@ -49,12 +50,8 @@ export const getVendorIngredientPriceById=async(req,res)=>{
 export const updateVendorIngredientPrice=async(req,res)=>{
  try{
   if(!req.body.business||!req.body.vendor||!req.body.ingredient)return res.status(400).json({message:"Business, vendor, and ingredient are required"});
-  const vendorIngredientPrice=await VendorIngredientPrice.findByIdAndUpdate(req.params.id,req.body,{returnDocument:"after",runValidators:true})
-   .populate("business")
-   .populate("vendor")
-   .populate("ingredient")
-   .populate("imperialUnit")
-   .populate("metricUnit");
+  const vendorIngredientPrice=await updateVendorPrice(VendorIngredientPrice,req.params.id,req.body);
+  if(vendorIngredientPrice)await vendorIngredientPrice.populate("business vendor ingredient imperialUnit metricUnit");
   if(!vendorIngredientPrice)return res.status(404).json({message:"Vendor ingredient price not found"});
   return res.status(200).json({message:"Vendor ingredient price updated successfully",vendorIngredientPrice});
  }catch(error){
@@ -64,9 +61,9 @@ export const updateVendorIngredientPrice=async(req,res)=>{
 
 export const deleteVendorIngredientPrice=async(req,res)=>{
  try{
-  const vendorIngredientPrice=await VendorIngredientPrice.findByIdAndDelete(req.params.id);
+  const vendorIngredientPrice=await VendorIngredientPrice.findByIdAndUpdate(req.params.id,{isActive:false},{returnDocument:"after"});
   if(!vendorIngredientPrice)return res.status(404).json({message:"Vendor ingredient price not found"});
-  return res.status(200).json({message:"Vendor ingredient price deleted successfully"});
+  return res.status(200).json({message:"Vendor ingredient price archived successfully"});
  }catch(error){
   return res.status(500).json({message:"Failed to delete vendor ingredient price",error:error.message});
  }

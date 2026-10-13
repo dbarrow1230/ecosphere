@@ -13,7 +13,8 @@ export default function SortedSelect({
  required=false,
  className="",
  sort=true,
- customSort
+ customSort,
+ ...rest
 }){
 
  const sortedOptions=sort
@@ -24,7 +25,7 @@ export default function SortedSelect({
   :options;
 
  return(
-  <Form.Select name={name} value={value} onChange={onChange} disabled={disabled} required={required} className={className}>
+  <Form.Select {...rest} name={name} value={value} onChange={onChange} disabled={disabled} required={required} className={className}>
    <option value="">{placeholder}</option>
    {sortedOptions.map(option=>(
     <option key={getValue(option)} value={getValue(option)}>{getLabel(option)}</option>

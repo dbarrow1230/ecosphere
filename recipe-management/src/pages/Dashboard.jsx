@@ -1,3 +1,4 @@
+import CostingOverviewPanel from "../components/dashboard/CostingOverviewPanel.jsx";
 // src/pages/Dashboard.jsx
 import {useEffect,useMemo,useState} from "react";
 import {ChefHat} from "lucide-react";
@@ -213,6 +214,7 @@ function Dashboard(){
       <CategorySpendCharts recipeChartData={recipeChartData} ingredientChartData={ingredientChartData}/>
      </DashboardSection>
 
+     <CostingOverviewPanel recipes={dashboardSource.recipes} costings={dashboardSource.recipeCostings}/>
      <RecipeReviewPanel recipes={dashboardData.lowStockItems}/>
      <PrepPlanningPanel prepItems={dashboardData.expiringItems}/>
      <RecentRecipesPanel recipes={dashboardData.recentItems}/>

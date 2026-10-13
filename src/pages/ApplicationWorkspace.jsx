@@ -1,5 +1,5 @@
 import {useCallback,useEffect,useMemo,useState} from "react";
-import {Link,useLocation,useParams} from "react-router-dom";
+import {Link,Navigate,useLocation,useParams} from "react-router-dom";
 import {ArrowLeft} from "lucide-react";
 import apps from "../data/apps.js";
 import "../styles/ApplicationWorkspace.css";
@@ -61,8 +61,15 @@ function ApplicationWorkspace(){
  },[app,appPath]);
 
  useEffect(()=>{
-  activateApplication();
- },[activateApplication]);
+  if(appId!=="recipe-costing")activateApplication();
+ },[activateApplication,appId]);
+
+ if(appId==="recipe-costing"){
+  const destination=new URLSearchParams();
+  const path=appPath||"/recipe-costings";
+  destination.set("appPath",path==="/ingredients"?"/ingredient-records":path);
+  return <Navigate to={`/applications/recipe-management?${destination}`} replace/>;
+ }
 
  if(!app){
   return(

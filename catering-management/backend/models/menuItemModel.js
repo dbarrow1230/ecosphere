@@ -2,6 +2,9 @@
 import mongoose from "mongoose";
 
 const menuItemSchema=new mongoose.Schema({
+ business:{type:mongoose.Schema.Types.ObjectId,ref:"Business",default:null,index:true},
+ recipe:{type:mongoose.Schema.Types.ObjectId,ref:"Recipe",default:null,index:true},
+ servingsPerGuest:{type:Number,default:1,min:0},
  menu:{type:mongoose.Schema.Types.ObjectId,ref:"Menu",required:true},
  name:{type:String,required:true,trim:true},
  category:{type:String,required:true,trim:true},

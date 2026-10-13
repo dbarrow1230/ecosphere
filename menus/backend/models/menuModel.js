@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 
 const menuSchema=new mongoose.Schema({
+ business:{type:mongoose.Schema.Types.ObjectId,ref:"Business",default:null,index:true},
+ recipeAssignments:[{recipe:{type:mongoose.Schema.Types.ObjectId,ref:"Recipe",required:true},servingsPerGuest:{type:Number,default:1,min:0}}],
  name:{type:String,required:true,trim:true},
  description:{type:String,default:"",trim:true},
  status:{type:String,enum:["draft","active","inactive","archived"],default:"draft",trim:true},

@@ -3,8 +3,11 @@ import mongoose from "mongoose";
 import businessInfoConnection from "../../db/businessInfoConnection.js";
 
 const {Schema}=mongoose;
+const ingredientDefault=value=>function(){return ["label","instruction"].includes(this.rowType)?undefined:value;};
 
 const RecipeSchema=new Schema({
+ allergenReview:{type:Schema.Types.Mixed,default:null},
+ allergenReviewHistory:[{type:Schema.Types.Mixed}],
  business:{type:Schema.Types.ObjectId,ref:"Business",required:true,index:true},
 
  name:{type:String,required:true,trim:true,index:true},
@@ -86,17 +89,27 @@ const RecipeSchema=new Schema({
  }],
 
  ingredients:[{
-  ingredient:{type:Schema.Types.ObjectId,ref:"Ingredient",required:true},
+  rowType:{type:String,enum:["ingredient","label","instruction"],default:"ingredient"},
+  sourceName:{type:String,trim:true,default:ingredientDefault("")},
+  ingredient:{type:Schema.Types.ObjectId,ref:"Ingredient",required:function(){return this.rowType==="ingredient";}},
+  vendor:{type:Schema.Types.ObjectId,ref:"Vendor",default:ingredientDefault(null)},
+  vendorIngredientPrice:{type:Schema.Types.ObjectId,ref:"VendorIngredientPrice",default:ingredientDefault(null)},
+  priceSnapshot:{type:Schema.Types.Mixed,default:ingredientDefault(null)},
+  unitCost:{type:Number,default:ingredientDefault(0),min:0},
+  totalCost:{type:Number,default:ingredientDefault(0),min:0},
+  vendorPackCost:{type:Number,default:ingredientDefault(0),min:0},
+  vendorPackImperialDisplay:{type:String,default:ingredientDefault("")},
+  vendorPackMetricDisplay:{type:String,default:ingredientDefault("")},
 
-  imperialQuantity:{type:Number,default:null},
-  imperialUnit:{type:Schema.Types.ObjectId,ref:"ImperialUnit",default:null},
+  imperialQuantity:{type:Number,default:ingredientDefault(null)},
+  imperialUnit:{type:Schema.Types.ObjectId,ref:"ImperialUnit",default:ingredientDefault(null)},
 
-  metricQuantity:{type:Number,default:null},
-  metricUnit:{type:Schema.Types.ObjectId,ref:"MetricUnit",default:null},
+  metricQuantity:{type:Number,default:ingredientDefault(null)},
+  metricUnit:{type:Schema.Types.ObjectId,ref:"MetricUnit",default:ingredientDefault(null)},
 
-  preparation:{type:String,trim:true,default:""},
-  time:{type:String,trim:true,default:""},
-  note:{type:String,trim:true,default:""}
+  preparation:{type:String,trim:true,default:ingredientDefault("")},
+  time:{type:String,trim:true,default:ingredientDefault("")},
+  note:{type:String,trim:true,default:ingredientDefault("")}
  }],
 
  instructions:[{

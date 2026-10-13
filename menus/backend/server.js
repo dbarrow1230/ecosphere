@@ -1,3 +1,5 @@
+import {createCulinaryRouter} from "../../shared/culinary/router.js";
+import culinaryBusinessConnection from "./db/businessInfoConnection.js";
 import backupScheduleRoutes from "./routes/backupScheduleRoutes.js";
 import backupLogRoutes from "./routes/backupLogRoutes.js";
 // backend/server.js
@@ -260,6 +262,7 @@ app.post("/api/upload/:dir",upload.single("file"),(req,res)=>{
 app.use("/api/backup-logs",backupLogRoutes);
 app.use("/api/backup-schedules",backupScheduleRoutes);
 
+app.use("/api/culinary",createCulinaryRouter({express,mongoose,businessConnection:culinaryBusinessConnection,enableMenus:true,enableEvents:false}));
 app.use(notFound);
 app.use((err,req,res,next)=>{
  if(err instanceof multer.MulterError){

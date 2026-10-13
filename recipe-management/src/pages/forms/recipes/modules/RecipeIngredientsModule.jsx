@@ -1,35 +1,35 @@
-import Alert from "../../../../components/AppAlert.jsx";
+import {isNonIngredientLine,rowName} from "@shared/culinary/ingredientRows.js";
 import {Button,Card,Form,Table} from "react-bootstrap";
+import {costLine,idOf,offersFor} from "@shared/culinary/pricing.js";
 
-const objectId=value=>typeof value==="object"?String(value?._id||value?.id||""):String(value||"");
-
-export default function RecipeIngredientsModule({data,lookups,SelectOptions,arrayChange,chooseVendor,chooseVendorPrice,removeRow,addIngredient}){
+export default function RecipeIngredientsModule({data,lookups,SelectOptions,arrayChange,chooseVendor,chooseIngredient,chooseVendorPrice,removeRow,addIngredient}){
+ const units=[...(lookups.imperialUnits||[]),...(lookups.metricUnits||[])];
  return <Card><Card.Body>
-  <Alert variant="info">Vendor and pricing selections are optional. Parsed ingredient names will be created as basic Ingredient records when the recipe is saved; vendor packs and costs can be linked later.</Alert>
-  <div className="table-responsive">
-   <Table bordered hover align="middle" className="mb-3">
-    <thead><tr><th>Vendor</th><th>Imperial</th><th>Metric</th><th>Ingredient</th><th>Preparation</th><th>Time</th><th aria-label="Actions"/></tr></thead>
-    <tbody>{data.ingredients.map((item,index)=>{
-     const activeOffers=(lookups.vendorIngredientPrices||[]).filter(price=>price.isActive!==false);
-     const vendors=(lookups.vendors||[]).filter(vendor=>vendor.isActive!==false).sort((a,b)=>String(a.legalName||a.name||"").localeCompare(String(b.legalName||b.name||"")));
-     const ingredientRecord=(lookups.ingredients||[]).find(ingredient=>objectId(ingredient)===objectId(item.ingredient));
-     const ingredientName=item.sourceName||ingredientRecord?.name||"";
-     return <tr key={item._id||index}>
-      <td style={{minWidth:190}}><Form.Select value={item.vendor||""} onChange={event=>chooseVendor(index,event.target.value)}><SelectOptions items={vendors} placeholder="Optional vendor"/></Form.Select></td>
-      <td style={{minWidth:210}}><div className="d-flex gap-2"><Form.Control aria-label="Imperial quantity" type="number" step="any" value={item.imperialQuantity??""} onChange={event=>arrayChange("ingredients",index,"imperialQuantity",event.target.value)} placeholder="Qty"/><Form.Select aria-label="Imperial unit" value={item.imperialUnit} onChange={event=>arrayChange("ingredients",index,"imperialUnit",event.target.value)}><SelectOptions items={lookups.imperialUnits} placeholder="Unit"/></Form.Select></div></td>
-      <td style={{minWidth:210}}><div className="d-flex gap-2"><Form.Control aria-label="Metric quantity" type="number" step="any" value={item.metricQuantity??""} onChange={event=>arrayChange("ingredients",index,"metricQuantity",event.target.value)} placeholder="Qty"/><Form.Select aria-label="Metric unit" value={item.metricUnit} onChange={event=>arrayChange("ingredients",index,"metricUnit",event.target.value)}><SelectOptions items={lookups.metricUnits} placeholder="Unit"/></Form.Select></div></td>
-      <td style={{minWidth:220}}><Form.Control aria-label="Ingredient" value={ingredientName} onChange={event=>{arrayChange("ingredients",index,"ingredient","");arrayChange("ingredients",index,"sourceName",event.target.value);}} placeholder="Ingredient"/></td>
-      <td style={{minWidth:150}}><Form.Control value={item.preparation} onChange={event=>arrayChange("ingredients",index,"preparation",event.target.value)}/></td>
-      <td style={{minWidth:100}}><Form.Control value={item.time} onChange={event=>arrayChange("ingredients",index,"time",event.target.value)}/></td>
-      <td><Button type="button" size="sm" variant="outline-danger" onClick={()=>removeRow("ingredients",index)}>Remove</Button></td>
-     </tr>;
-    }).flatMap((row,index)=>{
-     const item=data.ingredients[index];
-     const prices=(lookups.vendorIngredientPrices||[]).filter(price=>price.isActive!==false&&objectId(price.ingredient)===item.ingredient).sort((a,b)=>String(a.vendor?.legalName||a.vendor?.name||"").localeCompare(String(b.vendor?.legalName||b.vendor?.name||"")));
-     return [row,<tr key={`cost-${item._id||index}`} className="table-light"><td colSpan="3"><strong>Optional Vendor Pricing</strong><Form.Select className="mt-2" value={item.vendorIngredientPrice||""} onChange={event=>chooseVendorPrice(index,event.target.value)} disabled={!item.ingredient}><option value="">No vendor price selected</option>{prices.map(price=><option key={price._id} value={price._id}>{[price.vendor?.legalName||price.vendor?.name||"Unknown vendor",price.brand,price.packSizeName,price.sku&&`SKU ${price.sku}`].filter(Boolean).join(" · ")} — pack $${Number(price.packCost||0).toFixed(2)} / unit $${Number(price.unitCost||0).toFixed(4)}</option>)}</Form.Select>{item.ingredient&&!prices.length?<Form.Text>Vendor pricing can be added later from the Vendor Ingredients page.</Form.Text>:null}</td><td colSpan="2"><Form.Label>Ingredient note</Form.Label><Form.Control value={item.note} onChange={event=>arrayChange("ingredients",index,"note",event.target.value)}/></td><td colSpan="2"><Form.Label>Estimated cost</Form.Label><Form.Control value={`$${Number(item.totalCost||0).toFixed(2)}`} readOnly/></td></tr>];
-    })}</tbody>
-   </Table>
-  </div>
-  <Button type="button" variant="outline-primary" onClick={addIngredient}>Add Ingredient</Button>
+  <div className="table-responsive"><Table bordered hover align="middle"><thead><tr><th>Ingredient</th><th>Vendor</th><th>Imperial</th><th>Metric</th><th>Preparation / time</th><th/></tr></thead><tbody>{data.ingredients.flatMap((item,index)=>{
+   if(isNonIngredientLine(item))return [<tr key={`label-${item._id||index}`} className="recipe-ingredient-label"><td colSpan={5}><Form.Control aria-label="Ingredient label" value={rowName(item)} onChange={event=>arrayChange("ingredients",index,"sourceName",event.target.value)}/></td><td><Button type="button" variant="outline-danger" size="sm" onClick={()=>removeRow("ingredients",index)}>Remove</Button></td></tr>];
+   const offers=offersFor(lookups.vendorIngredientPrices||[],{business:data.business,ingredient:item.ingredient},units);
+   const vendorIds=new Set(offers.map(price=>idOf(price.vendor)));
+   const vendors=(lookups.vendors||[]).filter(vendor=>vendor.isActive!==false&&vendorIds.has(idOf(vendor)));
+   const prices=offers.filter(price=>!item.vendor||idOf(price.vendor)===idOf(item.vendor));
+   const ingredient=(lookups.ingredients||[]).find(record=>idOf(record)===idOf(item.ingredient));
+   const lowest=new Map();
+   for(const offer of offers){const value=offer.comparison;if(value&&!lowest.has(value.dimension))lowest.set(value.dimension,value.normalizedUnitCost);}
+   const quantity=system=><div className="d-flex gap-2"><Form.Control aria-label={`${system} quantity`} type="number" min="0" step="any" value={item[`${system}Quantity`]??""} onChange={event=>arrayChange("ingredients",index,`${system}Quantity`,event.target.value)}/><Form.Select aria-label={`${system} unit`} value={item[`${system}Unit`]||""} onChange={event=>arrayChange("ingredients",index,`${system}Unit`,event.target.value)}><SelectOptions items={lookups[`${system}Units`]} placeholder="Unit"/></Form.Select></div>;
+   return [<tr key={item._id||index}>
+    <td style={{minWidth:210}}><Form.Select aria-label="Saved ingredient" value={item.ingredient||""} onChange={event=>chooseIngredient(index,event.target.value)}><SelectOptions items={lookups.ingredients} placeholder="Select ingredient"/></Form.Select><Form.Control className="mt-2" aria-label="Ingredient name" value={item.sourceName||ingredient?.name||""} placeholder="Or enter new ingredient" onChange={event=>arrayChange("ingredients",index,"sourceName",event.target.value)}/></td>
+    <td style={{minWidth:180}}><Form.Select aria-label="Ingredient vendor" value={item.vendor||""} onChange={event=>chooseVendor(index,event.target.value)}><SelectOptions items={vendors} placeholder="All supplying vendors"/></Form.Select></td>
+    <td style={{minWidth:190}}>{quantity("imperial")}</td><td style={{minWidth:190}}>{quantity("metric")}</td>
+    <td><Form.Control aria-label="Preparation" value={item.preparation} onChange={event=>arrayChange("ingredients",index,"preparation",event.target.value)}/><Form.Control className="mt-2" aria-label="Time" value={item.time} onChange={event=>arrayChange("ingredients",index,"time",event.target.value)}/></td>
+    <td><Button type="button" size="sm" variant="outline-danger" onClick={()=>removeRow("ingredients",index)}>Remove</Button></td>
+   </tr>,<tr key={`cost-${item._id||index}`} className="table-light"><td colSpan={4}>
+    <Form.Label>Vendor product</Form.Label><Form.Select aria-label="Vendor product" value={item.vendorIngredientPrice||""} disabled={!item.ingredient||!data.business} onChange={event=>chooseVendorPrice(index,event.target.value)}><option value="">No vendor price selected</option>{prices.map(price=><option key={price._id} value={price._id}>{[price.vendor?.legalName||price.vendor?.name,price.brand,price.packSizeName,price.sku].filter(Boolean).join(" · ")} — ${Number(price.packCost).toFixed(2)} / pack{price.isPreferred?" (Preferred)":""}</option>)}</Form.Select>
+    {!offers.length?<Form.Text>No vendor pricing.</Form.Text>:<details className="mt-2"><summary>Compare all vendor offers ({offers.length})</summary><Table size="sm" bordered className="mt-2"><thead><tr><th>Vendor / product</th><th>Pack size</th><th>Pack cost</th><th>Normalized cost</th><th>Recipe cost</th><th/></tr></thead><tbody>{offers.map(price=>{
+     const comparison=price.comparison;const calculation=costLine(item,price,units);
+     return <tr key={price._id}><td>{price.vendor?.legalName||price.vendor?.name||"Unknown vendor"} · {price.brand} {price.sku}{price.isPreferred?" · Preferred":""}</td><td>{price.packSizeName} {price.metricDisplay||price.imperialDisplay||comparison&&`${comparison.quantity} ${comparison.unit?.symbol||comparison.unit?.name||""}`}</td><td>${Number(price.packCost).toFixed(2)}</td><td>{comparison?`$${comparison.normalizedUnitCost.toFixed(6)}/${comparison.baseUnit}${comparison.normalizedUnitCost===lowest.get(comparison.dimension)?" · Lowest comparable":""}`:"Measurement required"}</td><td>{calculation.error?"Cannot convert":`$${calculation.totalCost.toFixed(2)}`}</td><td><Button type="button" size="sm" disabled={Boolean(calculation.error)} onClick={()=>chooseVendorPrice(index,price._id)}>Select</Button></td></tr>;
+    })}</tbody></Table></details>}
+   </td><td><Form.Label>Ingredient note</Form.Label><Form.Control value={item.note} onChange={event=>arrayChange("ingredients",index,"note",event.target.value)}/></td><td><strong>{item.conversionError?"Needs review":`$${Number(item.totalCost||0).toFixed(2)}`}</strong>{item.conversionError?<div role="alert">{item.conversionError}</div>:null}</td></tr>];
+  })}</tbody></Table></div><Button type="button" variant="outline-primary" onClick={addIngredient}>Add Ingredient</Button><Button type="button" className="ms-2" variant="outline-primary" onClick={()=>addIngredient("label")}>Add Label</Button>
  </Card.Body></Card>;
 }
+
+

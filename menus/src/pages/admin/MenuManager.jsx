@@ -1,3 +1,4 @@
+import CulinaryWorkspace from "@shared/culinary/CulinaryWorkspace.jsx";
 // src/pages/admin/MenuManager.jsx
 import {useState,useEffect,useMemo} from "react";
 import {Container,Row,Col,Card,Form,Button,Table,Badge,Alert} from "react-bootstrap";
@@ -225,6 +226,7 @@ function MenuManager(){
  return(
   <section className="menu-manager-page py-4">
    <Container fluid="lg">
+    <CulinaryWorkspace review="menus" menus/>
 
     <Row className="g-4 mb-4">
      <Col lg={8}>

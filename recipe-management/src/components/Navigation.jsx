@@ -101,7 +101,8 @@ function Navigation({user,onLogout,brand="Recipe Management"}){
        <span className="me-2">{LucideIcons.NotebookPen}</span>Recipes
       </Nav.Link>
 
-      {/* ADDED HERE */}
+      <Nav.Link as={NavLink} to="/recipe-costings" className="app-nav-link"><span className="me-2">{FontAwesomeIcons.List}</span>Recipe Costing</Nav.Link>
+      <Nav.Link as={NavLink} to="/costing-formula" className="app-nav-link"><span className="me-2">{LucideIcons.FileText}</span>Costing Formulas</Nav.Link>
       <Nav.Link as={NavLink} to="/recipes/costing-worksheets" className="app-nav-link">
        <span className="me-2">{LucideIcons.FileText}</span>
        Recipe Costing Worksheets
@@ -111,6 +112,7 @@ function Navigation({user,onLogout,brand="Recipe Management"}){
        <span className="me-2">{FontAwesomeIcons.List}</span>Ingredients
       </Nav.Link>
 
+      <Nav.Link as={NavLink} to="/purchasing" className="app-nav-link"><span className="me-2">{FontAwesomeIcons.List}</span>Ordering & Receiving</Nav.Link>
       <NavDropdown
        title={<><span className="me-2">{FontAwesomeIcons.LayerGroup}</span>Categories</>}
        id="categories-dropdown"

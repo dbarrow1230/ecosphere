@@ -1,3 +1,4 @@
+import {isNonIngredientLine,asLabelLine,cleanIngredientName} from "@shared/culinary/ingredientRows.js";
 import Alert from "../../../components/AppAlert.jsx";
 import {useEffect,useRef,useState} from "react";
 import {Button,Form,Spinner,Tab,Tabs} from "react-bootstrap";
@@ -12,6 +13,7 @@ import RecipeRelatedModule from "./modules/RecipeRelatedModule.jsx";
 import RecipeGeneralModule from "./modules/RecipeGeneralModule.jsx";
 import RecipeParserModule from "./modules/RecipeParserModule.jsx";
 import {convertMeasurement} from "../../../utils/measurementConversion.js";
+import {applyPrice,clearPrice,offersFor} from "@shared/culinary/pricing.js";
 
 const id=value=>typeof value==="object"?String(value?._id||value?.id||""):String(value||"");
 const ids=values=>(Array.isArray(values)?values:[]).map(id).filter(Boolean);
@@ -77,8 +79,9 @@ const countFromDescription=value=>{
  return match?{quantity:Number(match[1]),label:match[2].trim()}:null;
 };
 
-export default function RecipeForm({initialData={},lookups={},onSubmit,loading=false,submitLabel,onCreateLookup=null,onBulkImported=null}){
+export default function RecipeForm({initialData={},lookups:providedLookups={},onSubmit,loading=false,submitLabel,onCreateLookup=null,onBulkImported=null}){
  const [data,setData]=useState(()=>buildForm(initialData));
+ const lookups={...providedLookups,ingredients:(providedLookups.ingredients||[]).filter(item=>!item.business||objectId(item.business)===objectId(data.business))};
  const baseline=useRef(buildForm(initialData));
  const [activeTab,setActiveTab]=useState("general");
  const [formError,setFormError]=useState("");
@@ -109,7 +112,7 @@ export default function RecipeForm({initialData={},lookups={},onSubmit,loading=f
   return()=>{clearTimeout(timer);controller.abort();setReservingNumber(false);};
  },[data.business,data.primaryCourse,data.primaryCuisine,data.primaryCategory,data.recipeNumber,data.recipeSequence,initialData?._id]);
 
- const change=e=>{const {name,value,type,checked}=e.target;setData(prev=>({...prev,[name]:type==="checkbox"?checked:value}));};
+ const change=e=>{const {name,value,type,checked}=e.target;setData(prev=>({...prev,[name]:type==="checkbox"?checked:value,...(name==="business"?{ingredients:prev.ingredients.map(item=>({...clearPrice(item),vendor:""}))}:{})}));};
  const nestedChange=(section,name,value)=>setData(prev=>({...prev,[section]:{...prev[section],[name]:value}}));
  const measurementChange=(section,name,value)=>setData(prev=>{
   if(name.endsWith("Quantity")&&value!==""&&!/^\d*(?:\.\d*)?$/.test(value))return prev;
@@ -150,6 +153,10 @@ export default function RecipeForm({initialData={},lookups={},onSubmit,loading=f
  const ingredientChange=(section,index,name,value)=>setData(prev=>({...prev,[section]:prev[section].map((item,i)=>{
   if(i!==index)return item;
   const nextItem={...item,[name]:value};
+  if(name==="sourceName"||name==="ingredient"){
+   const record=(lookups.ingredients||[]).find(option=>name==="ingredient"?objectId(option)===objectId(value):normalizeName(option.name)===normalizeName(value));
+   return{...clearPrice(nextItem),ingredient:objectId(record),sourceName:name==="sourceName"?value:record?.name||"",vendor:""};
+  }
   if(!name.startsWith("imperial")&&!name.startsWith("metric"))return nextItem;
   const imperialChanged=name.startsWith("imperial");
   const quantityField=imperialChanged?"imperialQuantity":"metricQuantity";
@@ -159,15 +166,17 @@ export default function RecipeForm({initialData={},lookups={},onSubmit,loading=f
   const sourceUnits=imperialChanged?lookups.imperialUnits||[]:lookups.metricUnits||[];
   const targetUnits=imperialChanged?lookups.metricUnits||[]:lookups.imperialUnits||[];
   const converted=convertMeasurement(nextItem[quantityField],nextItem[unitField],sourceUnits,targetUnits);
-  if(converted){nextItem[targetQuantityField]=converted.quantity;nextItem[targetUnitField]=converted.unit;}
-  return nextItem;
+  if(nextItem[quantityField]===""||!nextItem[unitField]||!converted){nextItem[targetQuantityField]="";nextItem[targetUnitField]="";}
+  else{nextItem[targetQuantityField]=converted.quantity;nextItem[targetUnitField]=converted.unit;}
+  const price=(lookups.vendorIngredientPrices||[]).find(option=>objectId(option)===objectId(nextItem.vendorIngredientPrice));
+  return price?applyPrice(nextItem,price,prev.business,[...(lookups.imperialUnits||[]),...(lookups.metricUnits||[])]):nextItem;
  })}));
- const chooseVendor=(index,vendor)=>setData(prev=>({...prev,ingredients:prev.ingredients.map((item,i)=>i===index?{...item,vendor,vendorIngredientPrice:"",unitCost:0,totalCost:0,vendorPackCost:0,vendorPackImperialDisplay:"",vendorPackMetricDisplay:""}:item)}));
- const chooseIngredient=(index,ingredient)=>setData(prev=>({...prev,ingredients:prev.ingredients.map((item,i)=>i===index?{...item,ingredient,vendorIngredientPrice:"",unitCost:0,totalCost:0,vendorPackCost:0,vendorPackImperialDisplay:"",vendorPackMetricDisplay:""}:item)}));
+ const chooseVendor=(index,vendor)=>setData(prev=>({...prev,ingredients:prev.ingredients.map((item,i)=>i===index?{...clearPrice(item),vendor}:item)}));
+ const chooseIngredient=(index,ingredient)=>ingredientChange("ingredients",index,"ingredient",ingredient);
  const chooseVendorPrice=(index,priceId)=>setData(prev=>({...prev,ingredients:prev.ingredients.map((item,i)=>{
-  if(i!==index)return item;const price=(lookups.vendorIngredientPrices||[]).find(option=>option._id===priceId);if(!price)return{...item,vendorIngredientPrice:""};
-  const quantity=Number(item.metricQuantity!==""&&item.metricQuantity!==null&&item.metricQuantity!==undefined?item.metricQuantity:item.imperialQuantity||0);const unitCost=Number(price.unitCost||0);
-  return{...item,vendor:objectId(price.vendor),vendorIngredientPrice:price._id,unitCost,totalCost:quantity*unitCost,vendorPackCost:Number(price.packCost||0),vendorPackImperialDisplay:price.imperialDisplay||"",vendorPackMetricDisplay:price.metricDisplay||""};
+  if(i!==index)return item;
+  const price=offersFor(lookups.vendorIngredientPrices||[],{business:prev.business,ingredient:item.ingredient}).find(option=>objectId(option)===priceId);
+  return applyPrice(item,price,prev.business,[...(lookups.imperialUnits||[]),...(lookups.metricUnits||[])]);
  })}));
  const addRow=(section,row)=>setData(prev=>({...prev,[section]:[...prev[section],row]}));
  const removeRow=(section,index)=>setData(prev=>({...prev,[section]:prev[section].filter((_,i)=>i!==index)}));
@@ -207,6 +216,7 @@ export default function RecipeForm({initialData={},lookups={},onSubmit,loading=f
 
  const submit=async e=>{
   e.preventDefault();
+  if(data.ingredients.some(item=>item.vendorIngredientPrice&&item.conversionError)){setFormError("Resolve incompatible vendor pack measurements before saving.");setActiveTab("ingredients");return;}
   const editing=Boolean(initialData._id);
   const changed=Object.keys(data).filter(key=>JSON.stringify(data[key])!==JSON.stringify(baseline.current[key]));
   if(editing&&!changed.length){await onSubmit({});return;}
@@ -220,16 +230,16 @@ export default function RecipeForm({initialData={},lookups={},onSubmit,loading=f
   setSubmitting(true);
   try{
    let resolvedIngredients=data.ingredients;
-   const missingIngredients=data.ingredients.filter(item=>!item.ingredient&&String(item.sourceName||"").trim());
+   const missingIngredients=data.ingredients.filter(item=>!isNonIngredientLine(item)&&!item.ingredient&&String(item.sourceName||"").trim());
    if(ingredientsChanged&&missingIngredients.length){
     if(!onCreateLookup){setActiveTab("ingredients");setFormError("Parsed ingredient names could not be created.");return;}
     const createdByName=new Map();
     for(const item of missingIngredients){
-     const name=String(item.sourceName).trim();
+     const name=cleanIngredientName(item.sourceName);
      const key=normalizeName(name);
      if(!createdByName.has(key))createdByName.set(key,await onCreateLookup("ingredients",{name,unit:item.metricUnitName||item.imperialUnitName||"g"}));
     }
-    resolvedIngredients=data.ingredients.map(item=>item.ingredient?item:{...item,ingredient:createdByName.get(normalizeName(item.sourceName))?._id||""});
+    resolvedIngredients=data.ingredients.map(item=>isNonIngredientLine(item)||item.ingredient?item:{...item,ingredient:createdByName.get(normalizeName(cleanIngredientName(item.sourceName)))?._id||""});
     setData(current=>({...current,ingredients:resolvedIngredients}));
    }
    const payload={
@@ -238,7 +248,7 @@ export default function RecipeForm({initialData={},lookups={},onSubmit,loading=f
    yield:{...data.yield,imperialQuantity:numberOrNull(data.yield.imperialQuantity),imperialUnit:data.yield.imperialUnit||null,metricQuantity:numberOrNull(data.yield.metricQuantity),metricUnit:data.yield.metricUnit||null},
    servingSize:{...data.servingSize,imperialQuantity:numberOrNull(data.servingSize.imperialQuantity),imperialUnit:data.servingSize.imperialUnit||null,metricQuantity:numberOrNull(data.servingSize.metricQuantity),metricUnit:data.servingSize.metricUnit||null},
    techniques:splitLines(data.techniques),techniqueRefs:data.techniqueRefs,allergens:data.allergens,plating:splitLines(data.plating),notes:splitLines(data.notes),storage:splitLines(data.storage),
-   ingredients:resolvedIngredients.filter(item=>item.ingredient).map(item=>({...item,imperialQuantity:numberOrNull(item.imperialQuantity),imperialUnit:item.imperialUnit||null,metricQuantity:numberOrNull(item.metricQuantity),metricUnit:item.metricUnit||null})),
+   ingredients:resolvedIngredients.filter(item=>isNonIngredientLine(item)||item.ingredient).map(item=>isNonIngredientLine(item)?asLabelLine(item):({...item,vendor:item.vendor||null,vendorIngredientPrice:item.vendorIngredientPrice||null,imperialQuantity:numberOrNull(item.imperialQuantity),imperialUnit:item.imperialUnit||null,metricQuantity:numberOrNull(item.metricQuantity),metricUnit:item.metricUnit||null})),
    instructions:data.instructions.filter(item=>item.instruction.trim()).map((item,index)=>({...item,stepNumber:Number(item.stepNumber||index+1),ccpRefs:String(item.ccpRefs||"").split(",").map(value=>value.trim()).filter(Boolean)})),
    haccp:data.haccp.filter(item=>String(item.code||"").trim()),ccp:data.ccp.filter(item=>String(item.code||"").trim())
   };
@@ -277,7 +287,7 @@ export default function RecipeForm({initialData={},lookups={},onSubmit,loading=f
    yield:{...(source.yield||{}),imperialUnit:lookupUnitId(lookups.imperialUnits||[],source.yield?.imperialUnitName,source.yield?.imperialDisplay),metricUnit:lookupUnitId(lookups.metricUnits||[],source.yield?.metricUnitName,source.yield?.metricDisplay)},
    servingSize:{...(source.servingSize||{}),imperialUnit:lookupUnitId(lookups.imperialUnits||[],source.servingSize?.imperialUnitName,source.servingSize?.imperialDisplay),metricUnit:lookupUnitId(lookups.metricUnits||[],source.servingSize?.metricUnitName,source.servingSize?.metricDisplay)},
    ingredients:(source.ingredients||[]).map(item=>{
-    const ingredientName=String(item.ingredientName||item.sourceName||item.name||"").trim();
+    const ingredientName=cleanIngredientName(item.ingredientName||item.sourceName||item.name);
     return{...item,ingredient:lookupId(lookups.ingredients||[],ingredientName),sourceName:ingredientName,imperialUnit:lookupUnitId(lookups.imperialUnits||[],item.imperialUnitName,item.imperialDisplay),metricUnit:lookupUnitId(lookups.metricUnits||[],item.metricUnitName,item.metricDisplay)};
    })
   };
@@ -342,7 +352,7 @@ export default function RecipeForm({initialData={},lookups={},onSubmit,loading=f
 
     <Tab eventKey="related" title="Related Items"><RecipeRelatedModule data={data} setData={setData} lookups={lookups} change={change} toggleDietary={toggleDietary} toggleLookup={toggleLookup} createLookup={createLookup} newLookups={newLookups} setNewLookups={setNewLookups} addLookup={addLookup} creatingLookup={creatingLookup}/></Tab>
 
-    <Tab eventKey="ingredients" title={`Ingredients (${data.ingredients.length})`}><RecipeIngredientsModule data={data} lookups={lookups} SelectOptions={SelectOptions} arrayChange={ingredientChange} chooseVendor={chooseVendor} chooseIngredient={chooseIngredient} chooseVendorPrice={chooseVendorPrice} removeRow={removeRow} addIngredient={()=>addRow("ingredients",emptyIngredient())}/></Tab>
+    <Tab eventKey="ingredients" title={`Ingredients (${data.ingredients.length})`}><RecipeIngredientsModule data={data} lookups={lookups} SelectOptions={SelectOptions} arrayChange={ingredientChange} chooseVendor={chooseVendor} chooseIngredient={chooseIngredient} chooseVendorPrice={chooseVendorPrice} removeRow={removeRow} addIngredient={rowType=>addRow("ingredients",rowType==="label"?{rowType:"label",sourceName:""}:emptyIngredient())}/></Tab>
 
     <Tab eventKey="instructions" title={`Instructions (${data.instructions.length})`}><RecipeInstructionsModule instructions={data.instructions} arrayChange={arrayChange} removeRow={removeRow} addInstruction={()=>addRow("instructions",emptyInstruction(data.instructions.length))}/></Tab>
 

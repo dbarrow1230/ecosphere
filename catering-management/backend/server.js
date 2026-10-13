@@ -1,3 +1,5 @@
+import {createCulinaryRouter} from "../../shared/culinary/router.js";
+import culinaryBusinessConnection from "./db/businessInfoConnection.js";
 // backend/server.js
 import express from "express";
 import http from "http";
@@ -298,6 +300,7 @@ app.post("/api/upload/:dir",upload.single("file"),(req,res)=>{
 });
 
 /* error middleware */
+app.use("/api/culinary",createCulinaryRouter({express,mongoose,businessConnection:culinaryBusinessConnection,enableMenus:true,enableEvents:true,menuItemCollection:"menuitems"}));
 app.use(notFound);
 app.use((err,req,res,next)=>{
  if(err instanceof multer.MulterError){

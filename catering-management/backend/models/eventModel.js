@@ -2,6 +2,10 @@
 import mongoose from "mongoose";
 
 const eventSchema=new mongoose.Schema({
+ business:{type:mongoose.Schema.Types.ObjectId,ref:"Business",default:null,index:true},
+ menuAssignments:[{menu:{type:mongoose.Schema.Types.ObjectId,ref:"Menu",required:true},guests:{type:Number,min:1}}],
+ customerAllergens:[{type:mongoose.Schema.Types.ObjectId,ref:"Allergen"}],
+ allergenSnapshots:[{type:mongoose.Schema.Types.Mixed}],
  eventNumber:{type:String,trim:true,default:""},
  eventName:{type:String,required:true,trim:true},
  eventType:{type:String,trim:true,default:""},

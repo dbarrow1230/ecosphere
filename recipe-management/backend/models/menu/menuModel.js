@@ -3,6 +3,8 @@ import businessInfoConnection from "../../db/businessInfoConnection.js";
 
 const {Schema}=mongoose;
 const MenuSchema=new Schema({
+ business:{type:Schema.Types.ObjectId,ref:"Business",default:null,index:true},
+ recipeAssignments:[{recipe:{type:Schema.Types.ObjectId,ref:"Recipe",required:true},servingsPerGuest:{type:Number,required:true,min:0.001}}],
  name:{type:String,required:true,trim:true,index:true},
  description:{type:String,trim:true,default:""},
  category:{type:String,trim:true,default:""},

@@ -9,6 +9,7 @@ const VendorIngredientPriceSchema=new Schema({
  vendor:{type:Schema.Types.ObjectId,ref:"Vendor",required:true,index:true},
  ingredient:{type:Schema.Types.ObjectId,ref:"Ingredient",required:true,index:true},
 
+ vendorCategory:{type:Schema.Types.ObjectId,ref:"VendorCategory",default:null},
  brand:{type:String,trim:true,default:""},
  packSizeName:{type:String,trim:true,default:""},
 
@@ -20,6 +21,9 @@ const VendorIngredientPriceSchema=new Schema({
  metricUnit:{type:Schema.Types.ObjectId,ref:"MetricUnit",default:null},
  metricDisplay:{type:String,trim:true,default:""},
 
+ availablePacks:{type:Number,default:null,min:0},
+ allergenInformation:{type:Schema.Types.Mixed,default:null},
+ allergenHistory:[{type:Schema.Types.Mixed}],
  packCost:{type:Number,required:true,min:0},
  unitCost:{type:Number,default:0,min:0},
 
@@ -28,6 +32,12 @@ const VendorIngredientPriceSchema=new Schema({
  notes:[{type:String,trim:true}],
 
  effectiveDate:{type:Date,default:Date.now},
+ priceHistory:[{
+  packCost:{type:Number,required:true,min:0},
+  unitCost:{type:Number,default:0,min:0},
+  effectiveDate:{type:Date,default:Date.now},
+  recordedAt:{type:Date,default:Date.now}
+ }],
  isPreferred:{type:Boolean,default:false},
  isActive:{type:Boolean,default:true}
 },{

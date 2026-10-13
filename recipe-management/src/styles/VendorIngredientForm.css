@@ -1,0 +1,55 @@
+form.vendor-ingredient-form .vendor-ingredient-field{
+ display:grid;
+ grid-template-columns:10.5rem minmax(0,1fr);
+ align-items:center;
+ gap:.5rem .75rem;
+ min-width:0;
+}
+form.vendor-ingredient-form .vendor-ingredient-field>label.form-label{
+ display:block;
+ width:auto;
+ max-width:none;
+ margin:0;
+ padding:0;
+ white-space:normal;
+ line-height:1.3;
+ overflow-wrap:break-word;
+}
+form.vendor-ingredient-form .vendor-ingredient-field>input.form-control,
+form.vendor-ingredient-form .vendor-ingredient-field>textarea.form-control,
+form.vendor-ingredient-form .vendor-ingredient-field>select.form-select{
+ display:block;
+ width:100%;
+ max-width:100%;
+ min-width:0;
+ margin:0;
+}
+form.vendor-ingredient-form .vendor-ingredient-field>input.vendor-ingredient-short{width:8rem;}
+form.vendor-ingredient-form .vendor-ingredient-field>input.vendor-ingredient-medium{width:15rem;}
+form.vendor-ingredient-form .vendor-ingredient-field>select.vendor-ingredient-medium{width:15rem;}
+form.vendor-ingredient-form .vendor-ingredient-description{
+ grid-template-columns:max-content minmax(0,32rem);
+}
+form.vendor-ingredient-form .vendor-ingredient-description>label.form-label{
+ white-space:nowrap;
+ overflow-wrap:normal;
+}
+form.vendor-ingredient-form .row .vendor-ingredient-field>.form-control+.form-text{
+ grid-column:2;
+ width:auto;
+ margin:0;
+ padding:0;
+}
+@media(max-width:575.98px){
+ form.vendor-ingredient-form .vendor-ingredient-field{grid-template-columns:8.5rem minmax(0,1fr);gap:.5rem;}
+ form.vendor-ingredient-form .vendor-ingredient-description{grid-template-columns:max-content minmax(0,1fr);}
+}
+
+.costing-vendor-selector{display:grid;grid-template-columns:10.5rem minmax(0,1fr);align-items:center;gap:.75rem;}
+.costing-vendor-selector>.form-label{margin:0;white-space:nowrap;}
+.costing-vendor-selector .form-select{flex:1;width:auto;min-width:0;margin:0;}
+
+.vendor-ingredient-banner{text-align:center;font-size:1.5rem;padding:1rem;}
+.vendor-unit-combobox{display:flex;align-items:center;gap:.25rem;}
+.vendor-unit-combobox .form-control{width:8rem!important;min-width:0;margin:0;}
+.vendor-unit-combobox .dropdown-menu{max-height:18rem;overflow-y:auto;}

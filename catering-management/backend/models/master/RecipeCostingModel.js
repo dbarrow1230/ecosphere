@@ -1,3 +1,4 @@
+import {installCostingHistory} from "../../../../shared/culinary/costingLifecycle.js";
 // backend/models/master/RecipeCostingModel.js
 import mongoose from "mongoose";
 import businessInfoConnection from "../../db/businessInfoConnection.js";
@@ -21,6 +22,7 @@ const RecipeCostingSchema=new Schema({
   ingredient:{type:Schema.Types.ObjectId,ref:"Ingredient",required:true},
   vendor:{type:Schema.Types.ObjectId,ref:"Vendor",default:null},
   vendorIngredientPrice:{type:Schema.Types.ObjectId,ref:"VendorIngredientPrice",default:null},
+  priceSnapshot:{type:Schema.Types.Mixed,default:null},
 
   imperialQuantity:{type:Number,default:null},
   imperialUnit:{type:Schema.Types.ObjectId,ref:"ImperialUnit",default:null},
@@ -39,6 +41,7 @@ const RecipeCostingSchema=new Schema({
  }],
 
  totals:{
+  profit:{type:Number,default:0},
   ingredientCost:{type:Number,default:0,min:0},
   laborCost:{type:Number,default:0,min:0},
   overheadCost:{type:Number,default:0,min:0},
@@ -47,6 +50,14 @@ const RecipeCostingSchema=new Schema({
  },
 
  pricing:{
+  foodCostPercent:{type:Number,default:0},
+  laborCostPercent:{type:Number,default:0},
+  overheadCostPercent:{type:Number,default:0},
+  profitPercent:{type:Number,default:0},
+  sellingPricePerYield:{type:Number,default:0,min:0},
+  actualLaborCostPercent:{type:Number,default:0},
+  actualOverheadCostPercent:{type:Number,default:0},
+  actualProfitPercent:{type:Number,default:0},
   targetFoodCostPercent:{type:Number,default:0},
   suggestedPrice:{type:Number,default:0,min:0},
   actualFoodCostPercent:{type:Number,default:0}
@@ -56,6 +67,8 @@ const RecipeCostingSchema=new Schema({
 
  isActive:{type:Boolean,default:true}
 },{ timestamps:true, collection:"recipe_costings"});
+
+installCostingHistory(RecipeCostingSchema,businessInfoConnection,mongoose);
 
 RecipeCostingSchema.index({business:1,recipe:1},{unique:true});
 

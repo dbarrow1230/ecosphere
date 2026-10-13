@@ -1,3 +1,4 @@
+import {isNonIngredientLine,asLabelLine,cleanIngredientName} from "../../../../shared/culinary/ingredientRows.js";
 import Recipe from "../../models/recipes/ReceipeModel.js";
 import RecipeCosting from "../../models/recipes/RecipeCostingModel.js";
 import {parseRecipeBook} from "../../services/recipeBookParser.js";
@@ -101,7 +102,8 @@ export const importRecipeBookDrafts=async(req,res)=>{
    for(const techniqueName of draft.techniques||[]){const technique=await resolveNamed(Technique,techniqueName);if(technique)techniqueRefs.push(technique._id);}
    const recipeIngredients=[];
    for(const item of draft.ingredients||[]){
-    const ingredient=await resolveNamed(Ingredient,item.name||item.ingredientName||item.sourceName);
+    if(isNonIngredientLine(item)){recipeIngredients.push(asLabelLine(item));continue;}
+    const ingredient=await resolveNamed(Ingredient,cleanIngredientName(item.name||item.ingredientName||item.sourceName));
     if(ingredient){
      const imperialUnit=await resolveUnit(ImperialUnit,item.imperialUnitName);
      const metricUnit=await resolveUnit(MetricUnit,item.metricUnitName);
@@ -113,10 +115,10 @@ export const importRecipeBookDrafts=async(req,res)=>{
    const servingSize=parsedServingSize.imperialQuantity!==null||parsedServingSize.metricQuantity!==null?parsedServingSize:await countMeasurement(draft.servingSizeDescription)||parsedServingSize;
    const parsedYield=await resolveMeasurement(draft.yield);
    const calculatedYield=servings?{imperialQuantity:servingSize.imperialQuantity===null?parsedYield.imperialQuantity:Number(servingSize.imperialQuantity)*servings,imperialUnit:servingSize.imperialUnit||parsedYield.imperialUnit,metricQuantity:servingSize.metricQuantity===null?parsedYield.metricQuantity:Number(servingSize.metricQuantity)*servings,metricUnit:servingSize.metricUnit||parsedYield.metricUnit}:parsedYield;
-   const recipeDraft={business,name,cuisines:cuisine?[cuisine._id]:[],courses:course?[course._id]:[],categories:category?[category._id]:[],primaryCuisine:cuisine?._id||null,primaryCourse:course?._id||null,primaryCategory:category?._id||null,dietaryConsiderations:[...new Set(dietaryConsiderations.map(String))],servings,servingSize,servingSizeDescription:draft.servingSizeDescription||"",yield:calculatedYield,generalDescription:draft.generalDescription||"",menuDescription:draft.menuDescription||"",times:draft.times||{},flavorProfile:draft.flavorProfile||{},fermentationTemperatureAdjustment:draft.fermentationTemperatureAdjustment||"",techniques:draft.techniques||[],techniqueRefs:[...new Set(techniqueRefs.map(String))],equipmentNames:draft.equipmentNames||[],ingredients:recipeIngredients,instructions:draft.instructions||[],plating:draft.plating||[],notes:draft.notes||[],storage:draft.storage||[],haccp:draft.haccp||[],ccp:draft.ccp||[],nutrition:draft.nutrition||{},suggestedNutrition:draft.nutrition||{},nutritionSync:{status:"pending"},suggestedPrice:Number(draft.suggestedPrice||0),isActive:true};
+   const recipeDraft={business,name,cuisines:cuisine?[cuisine._id]:[],courses:course?[course._id]:[],categories:category?[category._id]:[],primaryCuisine:cuisine?._id||null,primaryCourse:course?._id||null,primaryCategory:category?._id||null,dietaryConsiderations:[...new Set(dietaryConsiderations.map(String))],servings,servingSize,servingSizeDescription:draft.servingSizeDescription||"",yield:calculatedYield,generalDescription:draft.generalDescription||"",menuDescription:draft.menuDescription||"",times:draft.times||{},flavorProfile:draft.flavorProfile||{},fermentationTemperatureAdjustment:draft.fermentationTemperatureAdjustment||"",techniques:draft.techniques||[],techniqueRefs:[...new Set(techniqueRefs.map(String))],equipmentNames:draft.equipmentNames||[],ingredients:recipeIngredients,instructions:draft.instructions||[],plating:draft.plating||[],notes:draft.notes||[],storage:draft.storage||[],haccp:draft.haccp||[],ccp:draft.ccp||[],nutrition:draft.nutrition||{},suggestedNutrition:draft.nutrition||{},nutritionSync:{status:"needs_review",issues:["Imported nutrition is unverified. Use Update Nutrition from USDA when ready."]},suggestedPrice:Number(draft.suggestedPrice||0),isActive:true};
    const generated=existingRecipe?{}:cuisine&&course&&category?await generateRecipeNumber(recipeDraft):{recipeNumber:`IMPORT-${Date.now().toString(36).toUpperCase()}-${String(draftIndex+1).padStart(4,"0")}`,recipeSequence:Date.now()+draftIndex};
    const recipe=existingRecipe?await Recipe.findByIdAndUpdate(existingRecipe._id,recipeDraft,{returnDocument:"after",runValidators:true}):await Recipe.create({...recipeDraft,...generated});
-   const costingIngredients=(draft.ingredients||[]).filter(item=>item.vendorIngredientPrice).map(item=>({
+   const costingIngredients=(draft.ingredients||[]).filter(item=>!isNonIngredientLine(item)&&item.vendorIngredientPrice).map(item=>({
     ingredient:item.ingredient,vendor:item.vendor||null,vendorIngredientPrice:item.vendorIngredientPrice,
     imperialQuantity:item.imperialQuantity??null,imperialUnit:item.imperialUnit||null,
     metricQuantity:item.metricQuantity??null,metricUnit:item.metricUnit||null,
@@ -132,3 +134,4 @@ export const importRecipeBookDrafts=async(req,res)=>{
  }
  return res.json({results,summary:{imported:results.filter(item=>item.status==="imported").length,updated:results.filter(item=>item.status==="updated").length,duplicates:0,skipped:results.filter(item=>item.status==="skipped").length,errors:results.filter(item=>item.status==="error").length}});
 };
+

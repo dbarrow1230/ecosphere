@@ -1,0 +1,16 @@
+.purchasing-page{padding:1.5rem;background:var(--bg);}
+.purchasing-header{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1rem;}
+.purchasing-header h1{margin:0;}
+.purchasing-toolbar{display:flex;align-items:center;gap:.75rem;margin-bottom:1rem;}
+.purchasing-toolbar .form-label{width:auto;margin:0;}
+.purchasing-toolbar .form-select{max-width:22rem;}
+.purchasing-page .tab-content{background:var(--surface);padding:1rem;border:1px solid var(--border);border-top:0;}
+.purchase-fields{display:flex;flex-wrap:wrap;gap:1rem 1.5rem;margin:1rem 0;}
+.purchase-fields>div{display:flex;align-items:center;gap:.5rem;}
+.purchase-fields .form-label,.purchase-invoice .form-label,.purchase-notes .form-label{width:auto;margin:0;white-space:nowrap;}
+.purchase-fields .form-select,.purchase-fields .form-control{margin:0;width:auto;min-width:8rem;max-width:24rem;}
+.purchase-number.form-control{width:7rem!important;min-width:7rem;max-width:7rem;}
+.purchase-invoice,.purchase-notes{display:flex;align-items:center;gap:.75rem;}
+.purchase-invoice .form-control{width:18rem;margin:0;}
+.purchase-notes .form-control{width:32rem;min-height:4rem;max-width:100%;margin:0;}
+@media(max-width:700px){.purchasing-toolbar{flex-wrap:wrap;}.purchase-fields>div{max-width:100%;}.purchasing-page{padding:1rem;}}

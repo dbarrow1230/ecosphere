@@ -1,3 +1,5 @@
+import {Link} from "react-router-dom";
+import VendorProductsPanel from "../../components/vendors/VendorProductsPanel.jsx";
 import Alert from "../../components/AppAlert.jsx";
 //src/pages/admin/Vendors.jsx
 import {useEffect,useMemo,useRef,useState} from "react";
@@ -15,6 +17,8 @@ export default function Vendors(){
  const [selectedId,setSelectedId]=useState(""),[showForm,setShowForm]=useState(false),[showDelete,setShowDelete]=useState(false);
  const [mode,setMode]=useState("add"),[initial,setInitial]=useState(defaultFormData),[success,setSuccess]=useState("");
  const [loading,setLoading]=useState(false),[error,setError]=useState("");
+ const [currentBusiness,setCurrentBusiness]=useState(null);
+ const [saving,setSaving]=useState(false);
  const t=useRef(null);
 
  const ok=m=>{if(t.current)clearTimeout(t.current);t.current=setTimeout(()=>setSuccess(""),2500);setSuccess(m)};
@@ -24,7 +28,7 @@ export default function Vendors(){
    setLoading(true);
    setError("");
 
-   const [businessRes,vendorRes]=await Promise.all([fetch("/api/businesses"),fetch("/api/vendors")]);
+   const [businessRes,vendorRes]=await Promise.all([fetch("/api/businesses"),fetch("/api/vendors"),fetch("/api/app/current-business/recipe-management").then(async response=>{const data=await response.json();if(!response.ok)throw new Error("Recipe Management business could not load.");setCurrentBusiness(data?.business||data?.data||data);})]);
    const businessData=await businessRes.json().catch(()=>null);
    const vendorData=await vendorRes.json().catch(()=>null);
 
@@ -58,9 +62,10 @@ export default function Vendors(){
 
  const selected=useMemo(()=>rows.find(x=>String(getId(x))===String(selectedId)),[rows,selectedId]);
 
- const openAdd=()=>{setMode("add");setInitial(defaultFormData);setShowForm(true)};
+ const openAdd=()=>{setMode("add");setInitial({...defaultFormData,business_id:getId(currentBusiness)});setShowForm(true)};
  const openEdit=()=>{if(!selected)return;setMode("edit");setInitial({...defaultFormData,...selected,business_id:getId(selected.business_id)});setShowForm(true)};
  const save=async(p)=>{
+  if(saving)return;setSaving(true);setError("");try{
   const isEdit=mode==="edit";
   const res=await fetch(isEdit?`/api/vendors/${getId(selected)}`:"/api/vendors",{method:isEdit?"PUT":"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(p)});
   const data=await res.json().catch(()=>null);
@@ -68,6 +73,7 @@ export default function Vendors(){
   await load();
   setShowForm(false);
   ok(isEdit?"Updated":"Created");
+  }catch(err){setError(err.message);}finally{setSaving(false);}
  };
  const remove=async()=>{
   const res=await fetch(`/api/vendors/${getId(selected)}`,{method:"DELETE"});
@@ -122,12 +128,14 @@ export default function Vendors(){
       {selected&&(
        <>
         <h4>{selected.legalName}</h4>
-        <div>{selected.dbaName||"-"}</div>
-        <div>{selected.email||"-"}</div>
-        <div>{selected.phone||"-"}</div>
-        <div>Category: {selected.vendorCategory||"-"}</div>
-        <div>Preferred: {selected.isPreferred?"Yes":"No"}</div>
-        <div>Active: {selected.isActive?"Yes":"No"}</div>
+        <dl className="vendor-reference-list">
+         {selected.dbaName?<><dt>DBA</dt><dd>{selected.dbaName}</dd></>:null}
+         {selected.email?<><dt>Email</dt><dd><a href={`mailto:${selected.email}`}>{selected.email}</a></dd></>:null}
+         {selected.phone?<><dt>Phone</dt><dd><a href={`tel:${selected.phone}`}>{selected.phone}</a></dd></>:null}
+         {selected.vendorCategory?<><dt>Category</dt><dd>{typeof selected.vendorCategory==="object"?selected.vendorCategory.name:selected.vendorCategory}</dd></>:null}
+         <dt>Preferred</dt><dd>{selected.isPreferred?"Yes":"No"}</dd><dt>Active</dt><dd>{selected.isActive?"Yes":"No"}</dd>
+        </dl>
+        <div className="d-flex flex-wrap gap-2"><Button as={Link} size="sm" variant="outline-primary" to={`/purchasing?vendor=${getId(selected)}&new=1`}>New Order</Button><Button as={Link} size="sm" variant="outline-primary" to={`/purchasing?vendor=${getId(selected)}`}>Orders & Receiving</Button></div>
        </>
       )}
      </div>
@@ -140,36 +148,28 @@ export default function Vendors(){
      <div className="vendors-col-body">
       {selected&&(
        <>
-        <div className="vendors-section">
-         <h5>Payment</h5>
-         <div>{selected.payment?.paymentTerms||"-"}</div>
-         <div>{selected.payment?.preferredPaymentMethod||"-"}</div>
-         <div>{selected.payment?.currencyCode||"-"}</div>
-        </div>
-
-        <div className="vendors-section">
-         <h5>Ordering</h5>
-         <div>{selected.ordering?.orderingEmail||"-"}</div>
-         <div>{selected.ordering?.leadTimeDays||0} days</div>
-         <div>{selected.ordering?.minimumOrderValue||0}</div>
-        </div>
-
-        <div className="vendors-section">
-         <h5>Performance</h5>
-         <div>Rating: {selected.performance?.rating||0}</div>
-         <div>On Time: {selected.performance?.onTimeRate||0}%</div>
-         <div>Fill Rate: {selected.performance?.fillRate||0}%</div>
-        </div>
+        <dl className="vendor-reference-list">
+         {selected.payment?.paymentTerms?<><dt>Payment</dt><dd>{selected.payment.paymentTerms}</dd></>:null}
+         {selected.payment?.preferredPaymentMethod?<><dt>Method</dt><dd>{selected.payment.preferredPaymentMethod}</dd></>:null}
+         {selected.ordering?.orderingEmail?<><dt>Order email</dt><dd><a href={`mailto:${selected.ordering.orderingEmail}`}>{selected.ordering.orderingEmail}</a></dd></>:null}
+         {selected.ordering?.vendorPortalUrl?<><dt>Portal</dt><dd><a href={/^https?:\/\//i.test(selected.ordering.vendorPortalUrl)?selected.ordering.vendorPortalUrl:`https://${selected.ordering.vendorPortalUrl}`} target="_blank" rel="noreferrer">Open vendor portal</a></dd></>:null}
+         {selected.ordering?.leadTimeDays!=null?<><dt>Lead time</dt><dd>{selected.ordering.leadTimeDays} days</dd></>:null}
+         {selected.ordering?.minimumOrderValue!=null?<><dt>Minimum order</dt><dd>${Number(selected.ordering.minimumOrderValue).toFixed(2)}</dd></>:null}
+         {selected.performance?.rating!=null?<><dt>Rating</dt><dd><span className="vendor-rating" role="img" aria-label={`${selected.performance.rating} out of 5 stars`} title={`${selected.performance.rating} / 5`}><span aria-hidden="true">☆☆☆☆☆</span><span aria-hidden="true" style={{width:`${Math.max(0,Math.min(5,Number(selected.performance.rating)))/5*100}%`}}>★★★★★</span></span></dd></>:null}
+         {selected.performance?.onTimeRate!=null?<><dt>On time</dt><dd>{selected.performance.onTimeRate}%</dd></>:null}
+         {selected.performance?.fillRate!=null?<><dt>Fill rate</dt><dd>{selected.performance.fillRate}%</dd></>:null}
+        </dl>
        </>
       )}
      </div>
     </div>
 
+    {selected?<VendorProductsPanel key={getId(selected)} vendor={selected}/>:null}
    </div>
 
-   <Modal show={showForm} onHide={()=>setShowForm(false)} size="xl">
+   <Modal show={showForm} onHide={()=>!saving&&setShowForm(false)} size="xl" centered scrollable><Modal.Header closeButton><Modal.Title>{mode==="edit"?"Edit":"Add"} Vendor</Modal.Title></Modal.Header>
     <Modal.Body>
-     <VendorForm initialData={initial} onSubmit={save} businesses={businesses}/>
+     {error?<Alert variant="danger">{error}</Alert>:null}<VendorForm initialData={initial} loading={saving} onSubmit={save} onCancel={()=>setShowForm(false)} fixedBusiness={currentBusiness} businesses={businesses}/>
     </Modal.Body>
    </Modal>
 

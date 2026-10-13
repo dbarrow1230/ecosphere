@@ -3,13 +3,19 @@ import {nutritionInputsChanged} from "../../services/recipeUpdatePolicy.js";
 import Recipe from "../../models/recipes/ReceipeModel.js";
 import RecipeCosting from "../../models/recipes/RecipeCostingModel.js";
 import {generateRecipeNumber} from "../../services/recipeNumberService.js";
+import mongoose from "mongoose";
+import businessInfoConnection from "../../db/businessInfoConnection.js";
+import {validateRecipePrices} from "../../../../shared/culinary/vendorHistory.js";
+import {enrichNutrition} from "../../services/automaticNutrition.js";
 
 const filenameOnly=value=>String(value||"").replace(/\\/g,"/").split("?")[0].split("/").pop();
-const recipePayload=body=>({...body,image:filenameOnly(body.image),nutritionSync:{status:"pending"},suggestedNutrition:body.nutrition||{}});
+const recipePayload=body=>({...body,image:filenameOnly(body.image),nutritionSync:{status:"needs_review",issues:["Nutrition has not been updated from USDA. Use Update Nutrition from USDA when ready."]},suggestedNutrition:body.nutrition||{}});
 
 export const createRecipe=async(req,res)=>{
  try{
   const payload=recipePayload(req.body);
+  delete payload.allergenReview;delete payload.allergenReviewHistory;
+  payload.ingredients=await validateRecipePrices(businessInfoConnection,mongoose,payload);
   const generated=payload.recipeNumber&&payload.recipeSequence?{recipeNumber:payload.recipeNumber,recipeSequence:payload.recipeSequence}:await generateRecipeNumber(payload);
   const recipe=await Recipe.create({...payload,...generated,isActive:true});
   return res.status(201).json({message:"Recipe created successfully",recipe});
@@ -21,7 +27,7 @@ export const createRecipe=async(req,res)=>{
 
 export const getRecipes=async(req,res)=>{
  try{
-  const filter={};
+  const filter={isActive:{$ne:false}};
   if(req.query.business)filter.business=req.query.business;
   if(req.query.cuisine)filter.cuisines=req.query.cuisine;
   if(req.query.course)filter.courses=req.query.course;
@@ -91,14 +97,16 @@ export const updateRecipe=async(req,res)=>{
   if(!existing)return res.status(404).json({message:"Recipe not found"});
   const payload={...req.body};
   delete payload.nutritionSync;delete payload.suggestedNutrition;delete payload._id;
+  delete payload.allergenReview;delete payload.allergenReviewHistory;
   if(Object.hasOwn(payload,'image'))payload.image=filenameOnly(payload.image);
   const merged={...existing.toObject(),...payload};
+  if(Object.hasOwn(payload,"ingredients")||Object.hasOwn(payload,"business"))payload.ingredients=await validateRecipePrices(businessInfoConnection,mongoose,merged);
   const classificationsChanged=['business','primaryCuisine','primaryCourse','primaryCategory'].some(field=>Object.hasOwn(payload,field)&&String(existing[field]||'')!==String(payload[field]||''));
   const canGenerate=merged.business&&merged.primaryCuisine&&merged.primaryCourse&&merged.primaryCategory;
   if(canGenerate&&(classificationsChanged||!existing.recipeNumber||!existing.recipeSequence||/^IMPORT-/i.test(existing.recipeNumber))){Object.assign(payload,await generateRecipeNumber(merged));}
   else{delete payload.recipeNumber;delete payload.recipeSequence;}
   if(nutritionInputsChanged(existing.toObject(),payload)){
-   payload.nutritionSync={status:'pending'};
+   payload.nutritionSync={status:'needs_review',issues:['Ingredients or servings changed. Use Update Nutrition from USDA to recalculate.']};
   }else if(Object.hasOwn(payload,'nutrition')&&JSON.stringify(payload.nutrition)!==JSON.stringify(existing.toObject().nutrition)){
    payload.nutritionSync={status:'needs_review',issues:['Nutrition was manually edited and has not been verified by USDA.']};
   }
@@ -132,10 +140,10 @@ export const updateRecipe=async(req,res)=>{
 
 export const deleteRecipe=async(req,res)=>{
  try{
-  const recipe=await Recipe.findByIdAndDelete(req.params.id);
+  const recipe=await Recipe.findByIdAndUpdate(req.params.id,{isActive:false},{returnDocument:"after"});
   if(!recipe)return res.status(404).json({message:"Recipe not found"});
-  await RecipeCosting.deleteMany({recipe:recipe._id});
-  return res.status(200).json({message:"Recipe deleted successfully"});
+  await RecipeCosting.updateMany({recipe:recipe._id},{$set:{isActive:false}});
+  return res.status(200).json({message:"Recipe archived successfully"});
  }catch(error){
   return res.status(500).json({message:"Failed to delete recipe",error:error.message});
  }
@@ -165,12 +173,23 @@ export const regenerateImportRecipeNumbers=async(req,res)=>{
 };
 
 export const syncRecipeNutrition=async(req,res)=>{
+ let guard=null;
  try{
+  if(req.body?.force!==true)return res.status(400).json({message:"Use Update Nutrition from USDA to request an update."});
   if(!process.env.USDA_API_KEY)return res.status(503).json({message:"USDA is not configured in the running backend. Restart the backend after setting USDA_API_KEY."});
-  const filter=req.body?.force===true?{_id:req.params.id,"nutritionSync.status":{$nin:["pending","processing"]}}:{_id:req.params.id,$or:[{nutritionSync:null},{nutritionSync:{$exists:false}}]};
-  await Recipe.updateOne(filter,{$set:{nutritionSync:{status:"pending",requestedAt:new Date()}}},{timestamps:false});
-  const recipe=await Recipe.findById(req.params.id).select("nutrition nutritionSync").lean();
-  if(!recipe)return res.status(404).json({message:"Recipe not found"});
-  return res.json(recipe);
- }catch{return res.status(500).json({message:"Unable to check automatic nutrition."});}
+  const now=new Date();
+  const recipe=await Recipe.findOneAndUpdate({_id:req.params.id,$or:[{"nutritionSync.status":{$ne:"processing"}},{"nutritionSync.startedAt":{$lt:new Date(Date.now()-30*60*1000)}},{"nutritionSync.startedAt":{$exists:false}}]},{$set:{nutritionSync:{status:"processing",requestedAt:now,startedAt:now}}},{returnDocument:"after",timestamps:false}).populate("ingredients.ingredient ingredients.metricUnit ingredients.imperialUnit").lean();
+  if(!recipe)return res.status(409).json({message:"Recipe is missing or a nutrition update is already running."});
+  guard={_id:recipe._id,"nutritionSync.status":"processing","nutritionSync.startedAt":now};
+  const result=await enrichNutrition(recipe);
+  const {nutrition,...metadata}=result;
+  const nutritionSync={...metadata,checkedAt:new Date(),source:result.status==="complete"?"USDA FoodData Central":"Unverified recipe nutrition"};
+  const update={nutritionSync,...(nutrition?{nutrition,suggestedNutrition:recipe.suggestedNutrition||recipe.nutrition}:{})};
+  const saved=await Recipe.collection.updateOne(guard,{$set:update});
+  if(!saved.matchedCount)return res.status(409).json({message:"Recipe changed during the nutrition update. Save your changes and request a new update."});
+  return res.json({nutrition:nutrition||recipe.nutrition,nutritionSync});
+ }catch(error){
+  if(guard)await Recipe.collection.updateOne(guard,{$set:{nutritionSync:{status:"error",issues:[error.message||"USDA update failed. Retry manually."],checkedAt:new Date()}}});
+  return res.status(500).json({message:"Unable to update nutrition from USDA. Retry manually."});
+ }
 };

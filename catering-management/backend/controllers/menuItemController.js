@@ -1,3 +1,4 @@
+const culinaryPayload=body=>{const payload={...body};for(const field of ["business","recipe","servingsPerGuest"])delete payload[field];return payload;};
 // backend/controllers/menuItemController.js
 import MenuItem from "../models/menuItemModel.js";
 
@@ -48,7 +49,7 @@ export const getSingleMenuItem=async(req,res)=>{
 
 export const updateMenuItem=async(req,res)=>{
  try{
-  const item=await MenuItem.findByIdAndUpdate(req.params.id,req.body,{returnDocument:"after",runValidators:true});
+  const item=await MenuItem.findByIdAndUpdate(req.params.id,culinaryPayload(req.body),{returnDocument:"after",runValidators:true});
   if(!item){
    return res.status(404).json({success:false,message:"Menu item not found"});
   }

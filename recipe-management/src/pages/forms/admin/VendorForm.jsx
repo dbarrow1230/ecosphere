@@ -37,19 +37,24 @@ const getBusinessLabel=business=>business?.legalName||business?.name||business?.
 export default function VendorForm({
  initialData={},
  onSubmit,
+ onCancel,
+ fixedBusiness,
  loading=false,
  businesses=[]
 }){
  const [formData,setFormData]=useState(defaultFormData);
  const [activeTab,setActiveTab]=useState("general");
+ const [vendorCategories,setVendorCategories]=useState([]);
+
 
  useEffect(()=>{
   setFormData({
    ...defaultFormData,
    ...initialData,
-   business_id:getId(initialData?.business_id)
+   business_id:initialData._id&&getId(initialData.business_id)?getId(initialData.business_id):getId(fixedBusiness)||getId(initialData?.business_id)
   });
- },[initialData]);
+ },[initialData,fixedBusiness?._id]);
+ useEffect(()=>{let active=true;fetch("/api/vendor-categories").then(response=>response.json()).then(data=>{if(active)setVendorCategories(Array.isArray(data)?data:data.data||[]);}).catch(()=>{});return()=>{active=false;};},[]);
 
  const handleChange=e=>{
   const {name,value,type,checked}=e.target;
@@ -81,16 +86,7 @@ export default function VendorForm({
         <Form.Group as={Row} className="mb-3">
          <Form.Label column md={2}>Business</Form.Label>
          <Col md={10}>
-          <SortedSelect
-           name="business_id"
-           value={formData.business_id}
-           onChange={handleChange}
-           required
-           options={businesses}
-           getValue={getId}
-           getLabel={getBusinessLabel}
-           placeholder="Select"
-          />
+          <Form.Control plaintext readOnly value={businesses.find(item=>getId(item)===formData.business_id)?.legalName||(getId(fixedBusiness)===formData.business_id?(fixedBusiness?.legalName||fixedBusiness?.name):"")||"Recipe Management"}/>
          </Col>
         </Form.Group>
        </Col>
@@ -126,7 +122,7 @@ export default function VendorForm({
         <Form.Group as={Row} className="mb-3">
          <Form.Label column md={4}>Category</Form.Label>
          <Col md={8}>
-          <Form.Control name="vendorCategory" value={formData.vendorCategory} onChange={handleChange}/>
+          <SortedSelect name="vendorCategory" value={formData.vendorCategory} onChange={handleChange} options={vendorCategories} getValue={item=>item.name} getLabel={item=>item.name} placeholder="Select category"/>
          </Col>
         </Form.Group>
        </Col>
@@ -205,6 +201,7 @@ export default function VendorForm({
         </Form.Group>
        </Col>
 
+       {[{key:"orderingEmail",label:"Order Email",type:"email"},{key:"leadTimeDays",label:"Lead Time (days)",type:"number"},{key:"minimumOrderValue",label:"Minimum Order",type:"number"}].map(field=><Col md={12} key={field.key}><Form.Group as={Row} className="mb-3"><Form.Label column md={3}>{field.label}</Form.Label><Col md={9}><Form.Control type={field.type} min={field.type==="number"?0:undefined} step={field.type==="number"?"any":undefined} value={formData.ordering?.[field.key]??""} onChange={event=>setFormData(current=>({...current,ordering:{...current.ordering,[field.key]:field.type==="number"&&event.target.value!==""?Number(event.target.value):event.target.value}}))}/></Col></Form.Group></Col>)}
       </Row>
 
      </Card.Body></Card>
@@ -233,7 +230,8 @@ export default function VendorForm({
 
    </Tabs>
 
-   <div className="d-flex justify-content-end">
+   <div className="d-flex justify-content-end gap-2">
+    {onCancel?<Button type="button" variant="outline-primary" disabled={loading} onClick={onCancel}>Cancel</Button>:null}
     <Button type="submit" disabled={loading}>
      {loading?"Saving...":"Save Vendor"}
     </Button>

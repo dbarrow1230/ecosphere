@@ -1,4 +1,6 @@
-import {startNutritionWorker} from "./jobs/nutritionJob.js";
+import ingredientWorkflowRoutes from "./routes/purchasing/ingredientWorkflowRoutes.js";
+import {createCulinaryRouter} from "../../shared/culinary/router.js";
+import culinaryBusinessConnection from "./db/businessInfoConnection.js";
 // backend/server.js
 import express from "express";
 import http from "http";
@@ -215,6 +217,7 @@ app.use("/api/haccp-logs",haccpLogRoutes);
 app.use("/api/recipes",recipeRoutes);
 app.use("/api/nutrition",nutritionRoutes);
 app.use("/api/recipe-costings",recipeCostingRoutes);
+app.use("/api/purchasing-workflow",ingredientWorkflowRoutes);
 app.use("/api/categories",categoryRoutes);
 app.use("/api/cuisines",cuisineRoutes);
 app.use("/api/courses",courseRoutes);
@@ -285,6 +288,7 @@ app.post("/api/upload/:dir",upload.single("file"),(req,res)=>{
 });
 
 /* error middleware */
+app.use("/api/culinary",createCulinaryRouter({express,mongoose,businessConnection:culinaryBusinessConnection,menuConnection:culinaryBusinessConnection,enableMenus:true,enableEvents:false}));
 app.use(notFound);
 
 app.use((err,req,res,next)=>{
@@ -422,7 +426,6 @@ const startApp=async()=>{
 
  registerReminderSocket(io);
  startReminderCron(io);
- startNutritionWorker();
  startKeyboardShutdown();
 
  server.listen(PORT,()=>{

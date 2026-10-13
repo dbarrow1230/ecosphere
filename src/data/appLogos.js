@@ -25,7 +25,6 @@ import plannersLogo from "../../planners/src/images/logo.png";
 import poetryGardenLogo from "../../poetry-garden/src/images/logo.png";
 import proEdgeKnifeSystemLogo from "../../pro-edge-knife-system/src/images/logo.svg";
 import projectTrackerLogo from "../../project-tracker/src/images/logo.png";
-import recipeCostingLogo from "../../recipe-costing/src/images/logo.png";
 import recipeManagementLogo from "../../recipe-management/src/images/logo.png";
 import regenerativeEarthCuisineLogo from "../../regenerative-earth-cuisine/src/images/logo.png";
 import rootWiseConsultingLogo from "../../root-wise-consulting/src/images/logo.png";
@@ -67,7 +66,6 @@ const appLogos={
  "pro-edge-knife-system":proEdgeKnifeSystemLogo,
  "photo-lattice":photoLatticeLogo,
  "project-tracker":projectTrackerLogo,
- "recipe-costing":recipeCostingLogo,
  "recipe-management":recipeManagementLogo,
 "regenerative-earth-cuisine":regenerativeEarthCuisineLogo,
  "root-wise-consulting":rootWiseConsultingLogo,
