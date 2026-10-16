@@ -1,3 +1,4 @@
+import BusinessTaxLabel from "../../components/BusinessTaxLabel.jsx";
 import Alert from "../../components/AppAlert.jsx";
 // src/pages/Orders.jsx
 import {useState,useEffect,useMemo} from "react";
@@ -491,7 +492,7 @@ function Orders(){
 
             <Col md={4}>
              <Form.Group controlId="tax">
-              <Form.Label>Tax</Form.Label>
+              <Form.Label><BusinessTaxLabel/></Form.Label>
               <Form.Control type="number" step="0.01" name="tax" value={formData.tax} onChange={handleChange} placeholder="0.00"/>
              </Form.Group>
             </Col>
@@ -568,7 +569,7 @@ function Orders(){
 
            <Col md={6}>
             <div className="mb-3">
-             <strong>Tax</strong>
+             <strong><BusinessTaxLabel/></strong>
              <div>{formatMoney(selectedOrder.tax)}</div>
             </div>
            </Col>
@@ -678,7 +679,7 @@ function Orders(){
 
             <Col md={4}>
              <Form.Group controlId="editTax">
-              <Form.Label>Tax</Form.Label>
+              <Form.Label><BusinessTaxLabel/></Form.Label>
               <Form.Control type="number" step="0.01" name="tax" value={formData.tax} onChange={handleChange} placeholder="0.00"/>
              </Form.Group>
             </Col>

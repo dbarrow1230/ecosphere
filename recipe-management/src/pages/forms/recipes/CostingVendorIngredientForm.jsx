@@ -24,8 +24,8 @@ export default function CostingVendorIngredientForm({row,business,ingredient,ven
  const busy=saving||savingVendor||savingIngredient;
  useEffect(()=>{
   let active=true;
-  Promise.all(["vendors","ingredients","businesses","imperial-units","metric-units","vendor-categories"].map(name=>request(`/api/${name}`))).then(data=>{
-   if(active)setOptions({vendors:rows(data[0]),ingredients:rows(data[1]),businesses:rows(data[2]),imperialUnits:rows(data[3]),metricUnits:rows(data[4]),categories:Array.isArray(data[5])?data[5]:data[5]?.vendorCategories||data[5]?.data||[]});
+  Promise.all(["vendors","ingredients","businesses","imperial-units","metric-units","product-categories"].map(name=>request(`/api/${name}`))).then(data=>{
+   if(active)setOptions({vendors:rows(data[0]),ingredients:rows(data[1]),businesses:rows(data[2]),imperialUnits:rows(data[3]),metricUnits:rows(data[4]),categories:Array.isArray(data[5])?data[5]:data[5]?.productCategories||data[5]?.data||[]});
   }).catch(err=>active&&setError(err.message));
   return()=>{active=false;};
  },[]);
@@ -60,7 +60,7 @@ export default function CostingVendorIngredientForm({row,business,ingredient,ven
  };
  return <>
   <Modal show={!newVendor} onHide={()=>!busy&&onClose()} size="xl" centered scrollable>
-   <Modal.Header closeButton><Modal.Title>{row?"Edit":"Add"} Vendor Ingredient</Modal.Title></Modal.Header>
+   <Modal.Header closeButton><Modal.Title>{row?._id?"Edit":"Add"} Vendor Ingredient</Modal.Title></Modal.Header>
    <Modal.Body>
     {error?<Alert variant="danger">{error}</Alert>:null}
     {!fixedVendor?<Form.Group className="costing-vendor-selector mb-3"><Form.Label>Vendor</Form.Label><div className="d-flex align-items-center gap-2">

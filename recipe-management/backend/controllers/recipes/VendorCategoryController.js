@@ -1,12 +1,19 @@
 // backend/controllers/recipes/VendorCategoryController.js
 import VendorCategory from "../../models/recipes/VendorCategoryModel.js";
-import businessInfoConnection from "../../db/businessInfoConnection.js";
+import mongoose from "mongoose";
 
+const validateParent=async(parent,categoryId="")=>{
+ if(!parent)return null;
+ if(!mongoose.isValidObjectId(parent))throw new Error("Choose a valid parent category.");
+ const seen=new Set([String(categoryId)]);let current=String(parent);
+ while(current){if(seen.has(current))throw new Error("A category cannot be its own parent or descendant.");seen.add(current);const record=await VendorCategory.findById(current);if(!record||record.isActive===false)throw new Error("Parent category is unavailable.");current=record.parent?String(record.parent):"";}
+ return parent;
+};
 const buildSlug=value=>String(value||"").toLowerCase().trim().replace(/[^a-z0-9\s-]/g,"").replace(/\s+/g,"-").replace(/-+/g,"-");
 
 export const createVendorCategory=async(req,res)=>{
  try{
-  const{name,slug,code,description,isActive}=req.body;
+  const{name,slug,code,description,isActive,parent}=req.body;
   if(!name?.trim())return res.status(400).json({message:"Vendor category name is required"});
   const trimmedName=name.trim();
   const finalCode=code?.trim()?.toUpperCase()||undefined;
@@ -19,7 +26,9 @@ export const createVendorCategory=async(req,res)=>{
   }
   const existingSlug=await VendorCategory.findOne({slug:finalSlug});
   if(existingSlug)return res.status(409).json({message:"Vendor category slug already exists"});
+  let parentId;try{parentId=await validateParent(parent);}catch(error){return res.status(400).json({message:error.message});}
   const vendorCategory=await VendorCategory.create({
+   parent:parentId,
    name:trimmedName,
    slug:finalSlug,
    code:finalCode,
@@ -56,6 +65,7 @@ export const updateVendorCategory=async(req,res)=>{
   const{name,slug,code,description,isActive}=req.body;
   const vendorCategory=await VendorCategory.findById(req.params.id);
   if(!vendorCategory)return res.status(404).json({message:"Vendor category not found"});
+  if(Object.hasOwn(req.body,"parent")){try{vendorCategory.parent=await validateParent(req.body.parent,req.params.id);}catch(error){return res.status(400).json({message:error.message});}}
   if(name!==undefined){
    if(!name?.trim())return res.status(400).json({message:"Vendor category name is required"});
    const trimmedName=name.trim();
@@ -88,6 +98,7 @@ export const updateVendorCategory=async(req,res)=>{
 
 export const deleteVendorCategory=async(req,res)=>{
  try{
+  if(await VendorCategory.exists({parent:req.params.id}))return res.status(409).json({message:"Move or remove subcategories before deleting this category."});
   const vendorCategory=await VendorCategory.findByIdAndDelete(req.params.id);
   if(!vendorCategory)return res.status(404).json({message:"Vendor category not found"});
   return res.status(200).json({message:"Vendor category deleted successfully"});

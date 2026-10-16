@@ -1,0 +1,430 @@
+{
+  "checkedAt": "2026-10-16T02:08:10.276Z",
+  "baseUrl": "http://127.0.0.1:6005",
+  "method": "GET only",
+  "results": [
+    {
+      "path": "/api/health",
+      "status": 200,
+      "arrays": {}
+    },
+    {
+      "path": "/api/app",
+      "status": 404,
+      "arrays": {},
+      "message": "Not Found - /api/app"
+    },
+    {
+      "path": "/api/app-modules",
+      "status": 404,
+      "arrays": {},
+      "message": "Not Found - /api/app-modules"
+    },
+    {
+      "path": "/api/businesses",
+      "status": 200,
+      "arrays": {}
+    },
+    {
+      "path": "/api/business-types",
+      "status": 200,
+      "arrays": {}
+    },
+    {
+      "path": "/api/app-keys",
+      "status": 200,
+      "arrays": {}
+    },
+    {
+      "path": "/api/footers",
+      "status": 200,
+      "arrays": {}
+    },
+    {
+      "path": "/api/seasons",
+      "status": 200,
+      "arrays": {}
+    },
+    {
+      "path": "/api/taglines",
+      "status": 200,
+      "arrays": {}
+    },
+    {
+      "path": "/api/occasions",
+      "status": 200,
+      "arrays": {}
+    },
+    {
+      "path": "/api/holidays",
+      "status": 200,
+      "arrays": {}
+    },
+    {
+      "path": "/api/vendors",
+      "status": 200,
+      "arrays": {}
+    },
+    {
+      "path": "/api/receipt-templates",
+      "status": 200,
+      "arrays": {}
+    },
+    {
+      "path": "/api/receipt-headers",
+      "status": 200,
+      "arrays": {}
+    },
+    {
+      "path": "/api/receipt-sub-headers",
+      "status": 200,
+      "arrays": {}
+    },
+    {
+      "path": "/api/receipt-footers",
+      "status": 200,
+      "arrays": {}
+    },
+    {
+      "path": "/api/imperial-units",
+      "status": 200,
+      "arrays": {}
+    },
+    {
+      "path": "/api/metric-units",
+      "status": 200,
+      "arrays": {}
+    },
+    {
+      "path": "/api/location-types",
+      "status": 200,
+      "arrays": {}
+    },
+    {
+      "path": "/api/locations",
+      "status": 200,
+      "arrays": {}
+    },
+    {
+      "path": "/api/tax-rates",
+      "status": 200,
+      "arrays": {}
+    },
+    {
+      "path": "/api/equipment-categories",
+      "status": 200,
+      "arrays": {}
+    },
+    {
+      "path": "/api/supply-categories",
+      "status": 200,
+      "arrays": {}
+    },
+    {
+      "path": "/api/task-priorities",
+      "status": 200,
+      "arrays": {}
+    },
+    {
+      "path": "/api/task-statuses",
+      "status": 200,
+      "arrays": {}
+    },
+    {
+      "path": "/api/clients",
+      "status": 200,
+      "arrays": {
+        "clients": 6,
+        "data": 6
+      }
+    },
+    {
+      "path": "/api/dietary-tags",
+      "status": 200,
+      "arrays": {
+        "data": 0
+      }
+    },
+    {
+      "path": "/api/documents",
+      "status": 200,
+      "arrays": {
+        "data": 0
+      }
+    },
+    {
+      "path": "/api/events",
+      "status": 200,
+      "arrays": {
+        "events": 10
+      }
+    },
+    {
+      "path": "/api/inventory",
+      "status": 200,
+      "arrays": {
+        "items": 10
+      }
+    },
+    {
+      "path": "/api/inventory-transactions",
+      "status": 200,
+      "arrays": {
+        "transactions": 0
+      }
+    },
+    {
+      "path": "/api/invoices",
+      "status": 200,
+      "arrays": {
+        "invoices": 0
+      }
+    },
+    {
+      "path": "/api/menu-items",
+      "status": 200,
+      "arrays": {
+        "items": 0
+      }
+    },
+    {
+      "path": "/api/menus",
+      "status": 200,
+      "arrays": {
+        "menus": 6
+      }
+    },
+    {
+      "path": "/api/orders",
+      "status": 200,
+      "arrays": {
+        "orders": 10
+      }
+    },
+    {
+      "path": "/api/payments",
+      "status": 200,
+      "arrays": {
+        "payments": 0
+      }
+    },
+    {
+      "path": "/api/services",
+      "status": 200,
+      "arrays": {
+        "services": 0
+      }
+    },
+    {
+      "path": "/api/staff-assignments",
+      "status": 200,
+      "arrays": {
+        "assignments": 0
+      }
+    },
+    {
+      "path": "/api/tasks",
+      "status": 200,
+      "arrays": {
+        "tasks": 10
+      }
+    },
+    {
+      "path": "/api/venues",
+      "status": 200,
+      "arrays": {
+        "venues": 0
+      }
+    },
+    {
+      "path": "/api/suppliers",
+      "status": 200,
+      "arrays": {
+        "suppliers": 0
+      }
+    },
+    {
+      "path": "/api/stations",
+      "status": 200,
+      "arrays": {
+        "stations": 5
+      }
+    },
+    {
+      "path": "/api/kitchen-prep",
+      "status": 200,
+      "arrays": {
+        "kitchenPrep": 3
+      }
+    },
+    {
+      "path": "/api/catering-orders",
+      "status": 200,
+      "arrays": {
+        "data": 0
+      }
+    },
+    {
+      "path": "/api/catering-contracts",
+      "status": 200,
+      "arrays": {
+        "data": 0
+      }
+    },
+    {
+      "path": "/api/users/details",
+      "status": 200,
+      "arrays": {
+        "data": 1
+      }
+    },
+    {
+      "path": "/api/users/roles",
+      "status": 200,
+      "arrays": {
+        "data": 136
+      }
+    },
+    {
+      "path": "/api/users/role-assignments",
+      "status": 200,
+      "arrays": {
+        "data": 11
+      }
+    },
+    {
+      "path": "/api/users/role-permissions",
+      "status": 200,
+      "arrays": {
+        "data": 234
+      }
+    },
+    {
+      "path": "/api/users/user-permission-overrides",
+      "status": 200,
+      "arrays": {
+        "data": 1
+      }
+    },
+    {
+      "path": "/api/users/effective-permissions",
+      "status": 400,
+      "arrays": {},
+      "message": "user and business required"
+    },
+    {
+      "path": "/api/users/permission-modules",
+      "status": 400,
+      "arrays": {},
+      "message": "Invalid user id"
+    },
+    {
+      "path": "/api/users/departments",
+      "status": 400,
+      "arrays": {},
+      "message": "Invalid user id"
+    },
+    {
+      "path": "/api/users/permissions",
+      "status": 400,
+      "arrays": {},
+      "message": "Invalid user id"
+    },
+    {
+      "path": "/api/users",
+      "status": 200,
+      "arrays": {
+        "data": 1
+      }
+    },
+    {
+      "path": "/api/categories",
+      "status": 200,
+      "arrays": {}
+    },
+    {
+      "path": "/api/courses",
+      "status": 200,
+      "arrays": {}
+    },
+    {
+      "path": "/api/cuisines",
+      "status": 200,
+      "arrays": {}
+    },
+    {
+      "path": "/api/dietaries",
+      "status": 200,
+      "arrays": {}
+    },
+    {
+      "path": "/api/recipes",
+      "status": 500,
+      "arrays": {},
+      "message": "Failed to fetch recipes"
+    },
+    {
+      "path": "/api/recipe-costings",
+      "status": 500,
+      "arrays": {},
+      "message": "Failed to fetch recipe costings"
+    },
+    {
+      "path": "/api/vendor-categories",
+      "status": 200,
+      "arrays": {}
+    },
+    {
+      "path": "/api/vendor-ingredient-prices",
+      "status": 500,
+      "arrays": {},
+      "message": "Failed to fetch vendor ingredient prices"
+    },
+    {
+      "path": "/api/dashboard",
+      "status": 200,
+      "arrays": {
+        "stats": 4,
+        "lowStockItems": 5,
+        "expiringItems": 0,
+        "recentItems": 8,
+        "missingItems": 5,
+        "categoryCosts": 10
+      }
+    },
+    {
+      "path": "/api/dashboard-snapshots",
+      "status": 200,
+      "arrays": {
+        "data": 0
+      }
+    },
+    {
+      "path": "/api/reminders",
+      "status": 400,
+      "arrays": {},
+      "message": "User is required."
+    },
+    {
+      "path": "/api/states",
+      "status": 200,
+      "arrays": {
+        "data": 100
+      }
+    },
+    {
+      "path": "/api/countries",
+      "status": 200,
+      "arrays": {
+        "data": 249
+      }
+    },
+    {
+      "path": "/api/counties",
+      "status": 200,
+      "arrays": {
+        "data": 5
+      }
+    }
+  ]
+}

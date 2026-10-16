@@ -453,7 +453,7 @@ a:hover{
  color:var(--secondary);
 }
 
-button,
+button:where(:not(.btn-close)),
 .btn-primary{
  display:inline-flex;
  align-items:center;
@@ -463,26 +463,26 @@ button,
  color:var(--text-inverse);
  border:1px solid var(--primary);
  border-radius:var(--radius-sm);
- padding:.7rem 1rem;
+ padding:.375rem .65rem;
  font-weight:600;
  cursor:pointer;
  transition:background .2s ease,border-color .2s ease,color .2s ease,transform .2s ease,box-shadow .2s ease;
 }
 
-button:hover,
+button:where(:not(.btn-close)):hover,
 .btn-primary:hover{
  background:var(--primary-hover);
  border-color:var(--primary-hover);
 }
 
-button:focus-visible,
+button:where(:not(.btn-close)):focus-visible,
 .btn-primary:focus-visible,
 .btn-secondary:focus-visible{
  outline:none;
  box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 45%,transparent);
 }
 
-button:disabled,
+button:where(:not(.btn-close)):disabled,
 .btn-primary:disabled,
 .btn-secondary:disabled{
  cursor:not-allowed;
@@ -662,7 +662,12 @@ input[type="checkbox"]:focus{
  cursor:pointer;
 }
 
-table{
+table,.table{
+ --bs-table-bg:var(--surface);
+ --bs-table-color:var(--text);
+ --bs-table-border-color:var(--border);
+ --bs-table-hover-bg:var(--bg-alt);
+ --bs-table-hover-color:var(--text);
  width:100%;
  border-collapse:separate;
  border-spacing:0;
@@ -678,7 +683,10 @@ thead{
  background:var(--surface-2);
 }
 
-th{
+th,.table>thead>tr>th{
+ --bs-table-bg:var(--surface-2);
+ background:var(--surface-2);
+ white-space:nowrap;
  color:var(--heading);
  font-family:var(--font-heading);
  font-weight:700;
@@ -688,7 +696,7 @@ th{
  vertical-align:middle;
 }
 
-td{
+td,.table>tbody>tr>td{
  color:var(--text-soft);
  padding:.9rem 1rem;
  border-bottom:1px solid var(--border);
@@ -702,6 +710,12 @@ tbody tr{
 
 tbody tr:hover{
  background:var(--bg-alt);
+}
+.table>tbody>tr:hover>td{
+ --bs-table-bg-state:var(--bg-alt);
+ --bs-table-color-state:var(--text);
+ background:var(--bg-alt);
+ color:var(--text);
 }
 
 tbody tr:last-child td{
@@ -864,6 +878,18 @@ tbody tr:last-child td{
  .form-compact-field.form-date-field .form-label + input:not([type="checkbox"]):not([type="radio"]){
   width:calc(100% - 10.25rem);
  }
+}
+.btn{
+ --bs-btn-padding-x:.65rem;
+ --bs-btn-padding-y:.375rem;
+ --bs-btn-font-size:.875rem;
+ --bs-btn-font-weight:600;
+ --bs-btn-line-height:1.5;
+ --bs-btn-border-radius:var(--radius-sm);
+ width:auto;
+ height:auto;
+ flex-shrink:0;
+ white-space:nowrap;
 }
 .btn-primary,.btn-outline-primary{--app-button-color:var(--primary);--app-button-hover:var(--primary-hover);}
 .btn-secondary,.btn-outline-secondary{--app-button-color:var(--secondary);--app-button-hover:var(--secondary-hover,var(--secondary));}

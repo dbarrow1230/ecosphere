@@ -1,3 +1,4 @@
+import ProductCategories from "./pages/admin/ProductCategories.jsx";
 import MenuPlanning from "./pages/MenuPlanning.jsx";
 import Purchasing from "./pages/Purchasing.jsx";
 import IngredientCatalog from "./pages/IngredientCatalog.jsx";
@@ -389,6 +390,7 @@ function App(){
      <Route path="/admin/tax-rates" element={<TaxRatesPage/>}/>
      <Route path="/admin/vendors" element={<Vendors/>}/>
      <Route path="/admin/vendor-categories" element={<VendorCategories/>}/>
+     <Route path="/admin/product-categories" element={<ProductCategories/>}/>
      <Route path="/admin/reports" element={<Reports/>}/>
      <Route path="/admin/recipe-book-import" element={<RecipeBookImport/>}/>
      <Route path="/admin/business-roles-permissions" element={<BusinessRolesPermissionsPage/>}/>

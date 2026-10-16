@@ -66,6 +66,7 @@ function MenuManager(){
     setLoading(true);
     const res=await fetch("/api/menus");
     const data=await res.json();
+    if(!res.ok)throw new Error(data.message||"Failed to load menus.");
     const menuList=Array.isArray(data?.menus)?data.menus:Array.isArray(data?.data)?data.data:Array.isArray(data)?data:[];
     setMenus(menuList);
    }catch(err){

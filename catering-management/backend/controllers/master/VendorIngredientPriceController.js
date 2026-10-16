@@ -1,5 +1,6 @@
 // backend/controllers/master/VendorIngredientPriceController.js
 import VendorIngredientPrice from "../../models/master/VendorIngredientPriceModel.js";
+import "../../models/master/IngredientModel.js";
 
 export const createVendorIngredientPrice=async(req,res)=>{
  try{

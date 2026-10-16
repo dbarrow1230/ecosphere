@@ -193,6 +193,7 @@ function Navigation({user,onLogout,brand="Recipe Management"}){
          <span className="me-2">{FontAwesomeIcons.List}</span>Vendors
         </NavDropdown.Item>
 
+        <NavDropdown.Item as={NavLink} to="/admin/product-categories">Product Categories</NavDropdown.Item>
         <NavDropdown.Item as={NavLink} to="/admin/vendor-categories">
          <span className="me-2">{FontAwesomeIcons.LayerGroup}</span>Vendor Categories
         </NavDropdown.Item>

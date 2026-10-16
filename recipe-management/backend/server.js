@@ -1,3 +1,4 @@
+import productCategoryRoutes from "./routes/recipes/ProductCategoryRoutes.js";
 import ingredientWorkflowRoutes from "./routes/purchasing/ingredientWorkflowRoutes.js";
 import {createCulinaryRouter} from "../../shared/culinary/router.js";
 import culinaryBusinessConnection from "./db/businessInfoConnection.js";
@@ -227,6 +228,7 @@ app.use("/api/allergens",allergenRoutes);
 app.use("/api/ingredients",ingredientRoutes);
 app.use("/api/recipe-import",recipeImportRoutes);
 app.use("/api/vendor-categories",vendorCategoryRoutes);
+app.use("/api/product-categories",productCategoryRoutes);
 app.use("/api/vendor-ingredient-prices",vendorIngredientPriceRoutes);
 app.use("/api/menus",menuRoutes);
 app.use("/api/contacts",contactInquiryRoutes);

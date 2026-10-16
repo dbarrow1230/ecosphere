@@ -110,6 +110,10 @@ function Navigation({user,onLogout,brand="Chorna Lifeboard"}){
       <Nav.Link as={NavLink} to="/menus" className="app-nav-link">
        <span className="me-2">{FontAwesomeIcons.Book||FontAwesomeIcons.List}</span>Menus
       </Nav.Link>
+      <NavDropdown title="Reference" id="reference-nav" className="app-nav-dropdown" active={isActive("/reference")||isActive("/wine-pairing")}>
+       <NavDropdown.Item as={NavLink} to="/reference/catering-quantities">Catering Quantities</NavDropdown.Item>
+       <NavDropdown.Item as={NavLink} to="/reference/wine-pairing">Wine Pairing</NavDropdown.Item>
+      </NavDropdown>
       {isSignedIn&&(
        <>
         <Nav.Link as={NavLink} to="/dashboard" className="app-nav-link">
@@ -119,7 +123,7 @@ function Navigation({user,onLogout,brand="Chorna Lifeboard"}){
          title={<><span className="me-2">{FontAwesomeIcons.List}</span>Operations</>}
          id="operations-nav"
          className="app-nav-link"
-         active={isActive("/events")||isActive("/clients")||isActive("/orders")||isActive("/inventory")||isActive("/reports")||isActive("/reminders")}
+         active={isActive("/events")||isActive("/clients")||isActive("/orders")||isActive("/catering-orders")||isActive("/contracts")||isActive("/inventory")||isActive("/reports")||isActive("/reminders")}
         >
          <NavDropdown.Item as={NavLink} to="/events">
           <span className="me-2">{FontAwesomeIcons.Calendar}</span>Events
@@ -133,6 +137,7 @@ function Navigation({user,onLogout,brand="Chorna Lifeboard"}){
          <NavDropdown.Item as={NavLink} to="/contracts">
           <span className="me-2">{FontAwesomeIcons.List}</span>Contracts
          </NavDropdown.Item>
+         <NavDropdown.Item as={NavLink} to="/catering-orders">Catering Orders</NavDropdown.Item>
          <NavDropdown.Item as={NavLink} to="/inventory">
           <span className="me-2">{FontAwesomeIcons.List}</span>Inventory
          </NavDropdown.Item>
@@ -210,7 +215,7 @@ function Navigation({user,onLogout,brand="Chorna Lifeboard"}){
      <Nav>
       {isSignedIn?(
        <NavDropdown
-        title={<><span className="me-2">{FontAwesomeIcons.Account}</span>{user.username||user.name||"Account"}</>}
+        title={<><span className="me-2">{FontAwesomeIcons.Account}</span>{user?.username||user?.name||"Account"}</>}
        >
         <NavDropdown.Item as={NavLink} to="/profile">
          <span className="me-2">{FontAwesomeIcons.Profile}</span>Profile

@@ -1,5 +1,6 @@
 import {useState,useEffect,useMemo} from "react";
-import {Container,Row,Col,Card,Form,Button,Table,Badge,Alert} from "react-bootstrap";
+import {Row,Col,Card,Form,Button,Table,Badge,Alert} from "react-bootstrap";
+import {calendarDate} from "../../utils/calendarDate.js";
 
 function Events(){
 
@@ -60,14 +61,7 @@ function Events(){
  };
 
  const formatDateForInput=value=>{
-  if(!value) return "";
-  if(typeof value==="string"&&/^\d{4}-\d{2}-\d{2}$/.test(value)) return value;
-  const date=new Date(value);
-  if(Number.isNaN(date.getTime())) return "";
-  const year=date.getFullYear();
-  const month=String(date.getMonth()+1).padStart(2,"0");
-  const day=String(date.getDate()).padStart(2,"0");
-  return `${year}-${month}-${day}`;
+  return calendarDate(value);
  };
 
  useEffect(()=>{
@@ -76,6 +70,7 @@ function Events(){
     setLoading(true);
     const res=await fetch("/api/events");
     const data=await res.json();
+    if(!res.ok)throw new Error(data.message||"Failed to load events.");
     const eventList=Array.isArray(data?.events)?data.events:Array.isArray(data?.data)?data.data:Array.isArray(data)?data:[];
     setEvents(eventList);
    }catch(err){
@@ -310,17 +305,11 @@ function Events(){
 
  return(
   <section className="events-page py-4">
-   <Container fluid="lg">
+   <div className="px-3 px-lg-4">
 
     <Row className="g-4 mb-4">
      <Col lg={8}>
-      <div>
-       <p className="text-muted mb-2">Event Management</p>
-       <h1 className="mb-2">Events</h1>
-       <p className="text-muted mb-0">
-        Create bookings, track client details, and manage event schedules from one place.
-       </p>
-      </div>
+      <h1 className="h2 fw-bold mb-0">Events</h1>
      </Col>
 
      <Col lg={4}>
@@ -800,7 +789,7 @@ function Events(){
 
     </Row>
 
-   </Container>
+   </div>
   </section>
  );
 }

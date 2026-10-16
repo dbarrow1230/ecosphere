@@ -1,7 +1,7 @@
-.operations-page,.operation-form-page{width:100%;max-width:none;margin:0;padding:clamp(1rem,2vw,2rem);}
+.operations-page,.operation-form-page{width:100%;max-width:none;margin:0;padding:1.5rem 1rem;}
 .operations-hero,.operation-form-header{display:flex;align-items:flex-start;justify-content:space-between;gap:1.5rem;margin-bottom:1.5rem;}
 .operations-hero p,.operation-form-header p{margin:0 0 .35rem;color:var(--primary);font-size:.78rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;}
-.operations-hero h1,.operation-form-header h1{margin:0 0 .4rem;}
+.operations-hero h1,.operation-form-header h1{margin:0;}
 .operations-hero span,.operation-form-header span{color:var(--text-soft);}
 .operations-card{overflow:hidden;}
 .operations-toolbar{display:flex;align-items:center;gap:1rem;padding:1rem!important;background:var(--surface)!important;color:var(--text)!important;}
@@ -14,3 +14,4 @@
 .operation-form-section .card-body{padding:clamp(1rem,2vw,1.5rem);}
 .operation-form-footer{display:flex;justify-content:flex-end;gap:.75rem;margin-top:1.5rem;}
 @media(max-width:800px){.operations-hero,.operation-form-header{flex-direction:column}.operations-toolbar{align-items:stretch;flex-direction:column}.operations-toolbar .form-control{max-width:none}.operations-toolbar span{margin-left:0}.operations-actions{flex-wrap:wrap;justify-content:flex-start}}
+@media(min-width:992px){.operations-page,.operation-form-page{padding-right:1.5rem;padding-left:1.5rem;}}

@@ -1,3 +1,4 @@
+import {categoryPath,categoryWithin} from "../../../utils/vendorCategories.js";
 import {useEffect,useState} from "react";
 import {Button,Form} from "react-bootstrap";
 
@@ -10,7 +11,7 @@ const slugify=value=>String(value||"")
  .replace(/\s+/g,"-")
  .replace(/-+/g,"-");
 
-export default function ReferenceDataForm({initialData={},label,onSubmit,loading=false}){
+export default function ReferenceDataForm({initialData={},label,onSubmit,loading=false,categories=null}){
  const [formData,setFormData]=useState(emptyForm);
 
  useEffect(()=>{
@@ -29,6 +30,7 @@ export default function ReferenceDataForm({initialData={},label,onSubmit,loading
  const handleSubmit=e=>{
   e.preventDefault();
   onSubmit({
+   ...(categories?{parents:formData.parents||[formData.parent||null]}:{}),
    name:formData.name.trim(),
    slug:slugify(formData.slug||formData.name),
    description:formData.description.trim(),
@@ -38,6 +40,7 @@ export default function ReferenceDataForm({initialData={},label,onSubmit,loading
 
  return(
   <Form onSubmit={handleSubmit}>
+   {categories?<Form.Group className="mb-3"><Form.Label>Parent Links</Form.Label><div className="category-parent-links">{[{_id:"",name:"Main category"},...categories.filter(item=>!initialData._id||!categoryWithin(item._id,initialData._id,categories))].map(item=>{const links=(formData.parents||[formData.parent||null]).map(value=>value?._id||value||"");return <Form.Check key={item._id||"main"} label={item.name} checked={links.includes(item._id)} disabled={loading} onChange={event=>setFormData(current=>({...current,parents:event.target.checked?[...links,item._id||null]:links.filter(value=>value!==item._id)}))}/>;})}</div></Form.Group>:null}
    <Form.Group className="mb-3">
     <Form.Label>Name</Form.Label>
     <Form.Control name="name" value={formData.name} onChange={handleChange} required autoFocus/>

@@ -1,6 +1,6 @@
 // src/components/dashboard/CategorySpendCharts.jsx
 function CategorySpendCharts({recipeChartData=[],ingredientChartData=[]}){
- const getMaxValue=rows=>Math.max(...rows.map(row=>Number(row.value||0)),0);
+ const getMaxValue=rows=>Math.max(...rows.map(row=>Number(row.cost??row.value??0)),0);
 
  const renderRows=(rows,emptyMessage)=>{
   const maxValue=getMaxValue(rows);
@@ -11,15 +11,13 @@ function CategorySpendCharts({recipeChartData=[],ingredientChartData=[]}){
      const percent=maxValue?Math.max((Number(row.value||0)/maxValue)*100,4):0;
 
      return(
-      <div className="dashboard-bar-row" key={row.label}>
+      <div className="dashboard-bar-row" key={row.category||row.label}>
        <div className="dashboard-bar-meta">
-        <span className="dashboard-bar-label">{row.label}</span>
+        <span className="dashboard-bar-label">{row.category||row.label}</span>
         <span className="dashboard-bar-value">${Number(row.value||0).toFixed(2)}</span>
        </div>
 
-       <div className="dashboard-bar-track">
-        <div className="dashboard-bar-fill" style={{width:`${percent}%`,background:"var(--primary)"}}/>
-       </div>
+       <meter className="dashboard-cost-meter" min="0" max="100" value={percent} aria-label={(row.category||row.label)+" cost proportion"}/>
       </div>
      );
     })}

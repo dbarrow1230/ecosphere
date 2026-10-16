@@ -1,0 +1,17 @@
+.recipe-plating-photo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:1rem;margin:1rem 0;}
+.recipe-plating-photo-grid figure{display:grid;align-content:start;gap:.65rem;margin:0;padding:.75rem;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--surface);}
+.recipe-plating-photo-grid img{display:block;width:100%;height:12rem;object-fit:contain;background:var(--bg);}
+.recipe-plating-photo-grid .form-control{margin:0;}
+.recipe-plating-photo-grid .btn{justify-self:start;}
+.recipe-plating-photo-grid figcaption{color:var(--text-soft);}
+
+.recipe-plating-gallery{margin:0 0 1rem;}
+.recipe-plating-gallery .recipe-plating-photo-grid{grid-template-columns:repeat(auto-fill,minmax(10rem,13rem));justify-content:start;}
+.recipe-plating-gallery .recipe-plating-photo-grid img{height:9rem;}
+.plating-photo-thumbnail{display:block;width:100%;padding:0;border:0;border-radius:var(--radius-sm);background:var(--surface);cursor:zoom-in;overflow:hidden;}
+.plating-photo-thumbnail:hover,.plating-photo-thumbnail:focus-visible{outline:2px solid var(--primary);outline-offset:2px;background:var(--surface);}
+.plating-photo-thumbnail img{transition:transform .18s ease;}
+.plating-photo-thumbnail:hover img{transform:scale(1.04);}
+.plating-photo-popover{--bs-popover-max-width:min(36rem,90vw);--bs-popover-bg:var(--surface);--bs-popover-header-bg:var(--bg);--bs-popover-header-color:var(--text);--bs-popover-border-color:var(--border);}
+.plating-photo-popover img{display:block;max-width:100%;max-height:55vh;object-fit:contain;}
+.plating-photo-full{display:block;max-width:100%;max-height:75vh;margin:auto;object-fit:contain;}

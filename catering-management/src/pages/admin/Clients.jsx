@@ -1,5 +1,5 @@
 import {useState,useEffect} from "react";
-import {Container,Row,Col,Card,Form,Button,Table,Badge,Alert} from "react-bootstrap";
+import {Row,Col,Card,Form,Button,Table,Badge,Alert} from "react-bootstrap";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/bootstrap.css";
 
@@ -44,6 +44,7 @@ function Clients(){
     setLoading(true);
     const res=await fetch("/api/clients");
     const data=await res.json();
+    if(!res.ok)throw new Error(data.message||"Failed to load clients.");
     const clientList=Array.isArray(data?.clients)?data.clients:Array.isArray(data?.data)?data.data:[];
     setClients(clientList);
    }catch(err){
@@ -209,17 +210,11 @@ function Clients(){
 
  return(
   <section className="clients-page py-4">
-   <Container fluid="lg">
+   <div className="px-3 px-lg-4">
 
     <Row className="g-4 mb-4">
      <Col lg={8}>
-      <div>
-       <p className="text-muted mb-2">Client Management</p>
-       <h1 className="mb-2">Clients</h1>
-       <p className="text-muted mb-0">
-        Manage client records, contact information, and client details.
-       </p>
-      </div>
+      <h1 className="h2 fw-bold mb-0">Clients</h1>
      </Col>
 
      <Col lg={4}>
@@ -771,7 +766,7 @@ function Clients(){
 
     </Row>
 
-   </Container>
+   </div>
   </section>
  );
 }

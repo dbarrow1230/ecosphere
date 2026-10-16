@@ -1,0 +1,566 @@
+{
+  "sourceFiles": 456,
+  "routes": 73,
+  "mounts": 68,
+  "parseErrors": [],
+  "missingImports": [
+    {
+      "file": "src/components/AdminCatalogWorkspace.jsx",
+      "specifier": "../styles/AdminCatalogWorkspace.css",
+      "target": null,
+      "active": false
+    },
+    {
+      "file": "backend/controllers/beverages/beverageItemController.js",
+      "specifier": "../../models/beverages/beverageItemModel.js",
+      "target": null,
+      "active": false
+    },
+    {
+      "file": "backend/controllers/beverages/beverageVendorItemController.js",
+      "specifier": "../../models/beverages/beverageVendorItemModel.js",
+      "target": null,
+      "active": false
+    },
+    {
+      "file": "backend/controllers/returns/vendorReturnController.js",
+      "specifier": "../../models/returns/vendorReturnModel.js",
+      "target": null,
+      "active": false
+    },
+    {
+      "file": "backend/controllers/returns/vendorReturnLineController.js",
+      "specifier": "../../models/returns/vendorReturnLineModel.js",
+      "target": null,
+      "active": false
+    },
+    {
+      "file": "backend/models/index.js",
+      "specifier": "./beverages/beverageItemModel.js",
+      "target": null,
+      "active": false
+    },
+    {
+      "file": "backend/models/index.js",
+      "specifier": "./beverages/beverageVendorItemModel.js",
+      "target": null,
+      "active": false
+    },
+    {
+      "file": "backend/models/index.js",
+      "specifier": "./master/metricUnitModel.js",
+      "target": null,
+      "active": false
+    },
+    {
+      "file": "backend/models/index.js",
+      "specifier": "./master/imperialUnitModel.js",
+      "target": null,
+      "active": false
+    },
+    {
+      "file": "backend/models/index.js",
+      "specifier": "./master/recipeModel.js",
+      "target": null,
+      "active": false
+    },
+    {
+      "file": "backend/models/index.js",
+      "specifier": "./returns/vendorReturnModel.js",
+      "target": null,
+      "active": false
+    },
+    {
+      "file": "backend/models/index.js",
+      "specifier": "./returns/vendorReturnLineModel.js",
+      "target": null,
+      "active": false
+    },
+    {
+      "file": "backend/models/index.js",
+      "specifier": "./sales/salesUsageModel.js",
+      "target": null,
+      "active": false
+    },
+    {
+      "file": "backend/models/index.js",
+      "specifier": "./sales/salesUsageLineModel.js",
+      "target": null,
+      "active": false
+    },
+    {
+      "file": "backend/models/index.js",
+      "specifier": "./transfers/stockTransferModel.js",
+      "target": null,
+      "active": false
+    },
+    {
+      "file": "backend/models/index.js",
+      "specifier": "./transfers/stockTransferLineModel.js",
+      "target": null,
+      "active": false
+    },
+    {
+      "file": "backend/routes/receiving/goodsReceiptLineRoutes.js",
+      "specifier": "../../controllers/receiving/goodsReceiptLineController.js",
+      "target": null,
+      "active": false
+    },
+    {
+      "file": "backend/routes/receiving/goodsReceiptRoutes.js",
+      "specifier": "../../controllers/receiving/goodsReceiptController.js",
+      "target": null,
+      "active": false
+    },
+    {
+      "file": "backend/routes/reference/conditionScaleRoutes.js",
+      "specifier": "../../controllers/reference/conditionScaleController.js",
+      "target": null,
+      "active": false
+    }
+  ],
+  "unmatchedLinks": [
+    {
+      "file": "src/pages/forms/lookups/TranslationForm.jsx",
+      "path": "/lookups/translations"
+    },
+    {
+      "file": "src/pages/forms/lookups/TranslationForm.jsx",
+      "path": "/lookups/translations"
+    },
+    {
+      "file": "src/pages/forms/MenteeForm.jsx",
+      "path": "/mentees"
+    },
+    {
+      "file": "src/pages/forms/methods/BibleStudyMethodForm.jsx",
+      "path": "/methods/bible-study-methods"
+    }
+  ],
+  "unmountedApiReferences": [
+    {
+      "file": "src/forms/TagForm.jsx",
+      "path": "/api/tags/${tag._id}"
+    },
+    {
+      "file": "src/forms/TagForm.jsx",
+      "path": "/api/tags"
+    },
+    {
+      "file": "src/pages/forms/BrandForm.jsx",
+      "path": "/api/brands"
+    },
+    {
+      "file": "src/pages/forms/BudgetForm.jsx",
+      "path": "/api/budgets"
+    },
+    {
+      "file": "src/pages/forms/CouponForm.jsx",
+      "path": "/api/coupons"
+    },
+    {
+      "file": "src/pages/forms/CurrencyForm.jsx",
+      "path": "/api/currencies"
+    },
+    {
+      "file": "src/pages/forms/InventoryForm.jsx",
+      "path": "/api/inventories"
+    },
+    {
+      "file": "src/pages/forms/lookups/TranslationForm.jsx",
+      "path": "/api/lookups/translations/next-sort"
+    },
+    {
+      "file": "src/pages/forms/lookups/TranslationForm.jsx",
+      "path": "/api/lookups/translations/${id}"
+    },
+    {
+      "file": "src/pages/forms/lookups/TranslationForm.jsx",
+      "path": "/api/lookups/translations/${id}"
+    },
+    {
+      "file": "src/pages/forms/lookups/TranslationForm.jsx",
+      "path": "/api/lookups/translations"
+    },
+    {
+      "file": "src/pages/forms/MeetingMethodForm.jsx",
+      "path": "/api/meeting-methods/${method._id}"
+    },
+    {
+      "file": "src/pages/forms/MeetingMethodForm.jsx",
+      "path": "/api/meeting-methods"
+    },
+    {
+      "file": "src/pages/forms/MenteeForm.jsx",
+      "path": "/api/statuses/list?type=mentee"
+    },
+    {
+      "file": "src/pages/forms/MenteeForm.jsx",
+      "path": "/api/programs"
+    },
+    {
+      "file": "src/pages/forms/MenteeForm.jsx",
+      "path": "/api/meeting-methods"
+    },
+    {
+      "file": "src/pages/forms/MenteeForm.jsx",
+      "path": "/api/mentees/${id}"
+    },
+    {
+      "file": "src/pages/forms/MenteeForm.jsx",
+      "path": "/api/mentees/${id}"
+    },
+    {
+      "file": "src/pages/forms/MenteeForm.jsx",
+      "path": "/api/mentees"
+    },
+    {
+      "file": "src/pages/forms/MenteeForm.jsx",
+      "path": "/api/mentees/create"
+    },
+    {
+      "file": "src/pages/forms/methods/BibleStudyMethodForm.jsx",
+      "path": "/api/methods"
+    },
+    {
+      "file": "src/pages/forms/methods/BibleStudyMethodForm.jsx",
+      "path": "/api/lookups/study-categories"
+    },
+    {
+      "file": "src/pages/forms/methods/BibleStudyMethodForm.jsx",
+      "path": "/api/lookups/difficulty-levels"
+    },
+    {
+      "file": "src/pages/forms/NoteForm.jsx",
+      "path": "/api/notebooks"
+    },
+    {
+      "file": "src/pages/forms/NoteForm.jsx",
+      "path": "/api/note-types"
+    },
+    {
+      "file": "src/pages/forms/NoteForm.jsx",
+      "path": "/api/tags"
+    },
+    {
+      "file": "src/pages/forms/NoteForm.jsx",
+      "path": "/api/notebooks"
+    },
+    {
+      "file": "src/pages/forms/NoteForm.jsx",
+      "path": "/api/note-types"
+    },
+    {
+      "file": "src/pages/forms/NoteForm.jsx",
+      "path": "/api/notes/${note._id}"
+    },
+    {
+      "file": "src/pages/forms/NoteForm.jsx",
+      "path": "/api/notes"
+    },
+    {
+      "file": "src/pages/forms/OrderItemForm.jsx",
+      "path": "/api/order-items"
+    },
+    {
+      "file": "src/pages/forms/ProductForm.jsx",
+      "path": "/api/products"
+    },
+    {
+      "file": "src/pages/forms/ProgramForm.jsx",
+      "path": "/api/programs/${program._id}"
+    },
+    {
+      "file": "src/pages/forms/ProgramForm.jsx",
+      "path": "/api/programs"
+    },
+    {
+      "file": "src/pages/forms/PurchaseForm.jsx",
+      "path": "/api/purchases"
+    },
+    {
+      "file": "src/pages/forms/PurchaseItemForm.jsx",
+      "path": "/api/purchase-items"
+    },
+    {
+      "file": "src/pages/forms/ReceiptForm.jsx",
+      "path": "/api/receipts"
+    },
+    {
+      "file": "src/pages/forms/ReturnForm.jsx",
+      "path": "/api/returns"
+    },
+    {
+      "file": "src/pages/forms/ReturnItemForm.jsx",
+      "path": "/api/return-items"
+    },
+    {
+      "file": "src/pages/forms/ShoppingListForm.jsx",
+      "path": "/api/shopping-lists"
+    },
+    {
+      "file": "src/pages/forms/ShoppingListItemForm.jsx",
+      "path": "/api/shopping-list-items"
+    },
+    {
+      "file": "src/pages/forms/StatusForm.jsx",
+      "path": "/api/statuses"
+    },
+    {
+      "file": "src/pages/forms/StoreForm.jsx",
+      "path": "/api/stores"
+    },
+    {
+      "file": "src/pages/forms/studies/CrossReferenceForm.jsx",
+      "path": "/api/studies"
+    },
+    {
+      "file": "src/pages/forms/studies/CrossReferenceForm.jsx",
+      "path": "/api/lookups/study-categories"
+    },
+    {
+      "file": "src/pages/forms/studies/CrossReferenceForm.jsx",
+      "path": "/api/studies/cross-references/${id}"
+    },
+    {
+      "file": "src/pages/forms/studies/CrossReferenceForm.jsx",
+      "path": "/api/studies/cross-references/${id}"
+    },
+    {
+      "file": "src/pages/forms/studies/CrossReferenceForm.jsx",
+      "path": "/api/studies/cross-references"
+    },
+    {
+      "file": "src/pages/forms/studies/LibraryItemForm.jsx",
+      "path": "/api/studies"
+    },
+    {
+      "file": "src/pages/forms/studies/LibraryItemForm.jsx",
+      "path": "/api/methods"
+    },
+    {
+      "file": "src/pages/forms/studies/LibraryItemForm.jsx",
+      "path": "/api/lookups/library-item-types"
+    },
+    {
+      "file": "src/pages/forms/studies/LibraryItemForm.jsx",
+      "path": "/api/lookups/study-categories"
+    },
+    {
+      "file": "src/pages/forms/studies/LibraryItemForm.jsx",
+      "path": "/api/lookups/statuses"
+    },
+    {
+      "file": "src/pages/forms/studies/LibraryItemForm.jsx",
+      "path": "/api/studies/library-items/${id}"
+    },
+    {
+      "file": "src/pages/forms/studies/LibraryItemForm.jsx",
+      "path": "/api/studies/library-items/${id}"
+    },
+    {
+      "file": "src/pages/forms/studies/LibraryItemForm.jsx",
+      "path": "/api/studies/library-items"
+    },
+    {
+      "file": "src/pages/forms/studies/MemoryVerseForm.jsx",
+      "path": "/api/studies"
+    },
+    {
+      "file": "src/pages/forms/studies/MemoryVerseForm.jsx",
+      "path": "/api/lookups/statuses"
+    },
+    {
+      "file": "src/pages/forms/studies/MemoryVerseForm.jsx",
+      "path": "/api/studies/memory-verses/${id}"
+    },
+    {
+      "file": "src/pages/forms/studies/MemoryVerseForm.jsx",
+      "path": "/api/studies/memory-verses/${id}"
+    },
+    {
+      "file": "src/pages/forms/studies/MemoryVerseForm.jsx",
+      "path": "/api/studies/memory-verses"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyEnteryForm.jsx",
+      "path": "/api/studies"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyEnteryForm.jsx",
+      "path": "/api/methods"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyEnteryForm.jsx",
+      "path": "/api/lookups/study-entry-types"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyEnteryForm.jsx",
+      "path": "/api/lookups/statuses"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyEnteryForm.jsx",
+      "path": "/api/studies/entries/${id}"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyEnteryForm.jsx",
+      "path": "/api/studies/entries/${id}"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyEnteryForm.jsx",
+      "path": "/api/studies/entries"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyForm.jsx",
+      "path": "/api/methods"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyForm.jsx",
+      "path": "/api/lookups/study-categories"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyForm.jsx",
+      "path": "/api/lookups/difficulty-levels"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyForm.jsx",
+      "path": "/api/lookups/statuses"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyForm.jsx",
+      "path": "/api/studies/${id}"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyForm.jsx",
+      "path": "/api/studies/${id}"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyForm.jsx",
+      "path": "/api/studies"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyRecommendationForm.jsx",
+      "path": "/api/methods"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyRecommendationForm.jsx",
+      "path": "/api/lookups/study-categories"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyRecommendationForm.jsx",
+      "path": "/api/lookups/difficulty-levels"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyRecommendationForm.jsx",
+      "path": "/api/lookups/statuses"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyRecommendationForm.jsx",
+      "path": "/api/studies/recommendations/${id}"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyRecommendationForm.jsx",
+      "path": "/api/studies/recommendations/${id}"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyRecommendationForm.jsx",
+      "path": "/api/studies/recommendations"
+    },
+    {
+      "file": "src/pages/forms/studies/StudySessionForm.jsx",
+      "path": "/api/studies"
+    },
+    {
+      "file": "src/pages/forms/studies/StudySessionForm.jsx",
+      "path": "/api/methods"
+    },
+    {
+      "file": "src/pages/forms/studies/StudySessionForm.jsx",
+      "path": "/api/lookups/statuses"
+    },
+    {
+      "file": "src/pages/forms/studies/StudySessionForm.jsx",
+      "path": "/api/studies/sessions/${id}"
+    },
+    {
+      "file": "src/pages/forms/studies/StudySessionForm.jsx",
+      "path": "/api/studies/sessions/${id}"
+    },
+    {
+      "file": "src/pages/forms/studies/StudySessionForm.jsx",
+      "path": "/api/studies/sessions"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyTaskForm.jsx",
+      "path": "/api/studies"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyTaskForm.jsx",
+      "path": "/api/lookups/task-priorities"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyTaskForm.jsx",
+      "path": "/api/lookups/task-statuses"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyTaskForm.jsx",
+      "path": "/api/studies/tasks/${id}"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyTaskForm.jsx",
+      "path": "/api/studies/tasks/${id}"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyTaskForm.jsx",
+      "path": "/api/studies/tasks"
+    },
+    {
+      "file": "src/pages/forms/TagForm.jsx",
+      "path": "/api/tags/${tag._id}"
+    },
+    {
+      "file": "src/pages/forms/TagForm.jsx",
+      "path": "/api/tags"
+    },
+    {
+      "file": "src/pages/forms/UnitForm.jsx",
+      "path": "/api/units"
+    },
+    {
+      "file": "src/pages/forms/WeeklySessionForm.jsx",
+      "path": "/api/meeting-methods"
+    },
+    {
+      "file": "src/pages/forms/WeeklySessionForm.jsx",
+      "path": "/api/meeting-methods/list"
+    },
+    {
+      "file": "src/pages/forms/WeeklySessionForm.jsx",
+      "path": "/api/weekly-sessions/${session._id}"
+    },
+    {
+      "file": "src/pages/forms/WeeklySessionForm.jsx",
+      "path": "/api/weekly-sessions/update/${session._id}"
+    },
+    {
+      "file": "src/pages/forms/WeeklySessionForm.jsx",
+      "path": "/api/weekly-sessions"
+    },
+    {
+      "file": "src/pages/forms/WeeklySessionForm.jsx",
+      "path": "/api/weekly-sessions/create"
+    },
+    {
+      "file": "src/pages/forms/WishlistForm.jsx",
+      "path": "/api/wishlists"
+    },
+    {
+      "file": "backend/server.js",
+      "path": "/api/health"
+    },
+    {
+      "file": "backend/server.js",
+      "path": "/api/culinary"
+    }
+  ]
+}

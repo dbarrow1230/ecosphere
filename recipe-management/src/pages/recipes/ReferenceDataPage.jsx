@@ -6,7 +6,7 @@ import "../../styles/ReferenceDataPage.css";
 
 const getRows=data=>Array.isArray(data)?data:Array.isArray(data?.data)?data.data:[];
 
-export default function ReferenceDataPage({title,singular,endpoint,description}){
+export default function ReferenceDataPage({title,singular,endpoint,description,hierarchy=false}){
  const [rows,setRows]=useState([]);
  const [selected,setSelected]=useState(null);
  const [loading,setLoading]=useState(true);
@@ -78,13 +78,13 @@ export default function ReferenceDataPage({title,singular,endpoint,description})
    {error?<Alert variant="danger" onClose={()=>setError("")}>{error}</Alert>:null}
    <div className="table-responsive">
     <Table hover bordered align="middle">
-     <thead><tr><th>Name</th><th>Slug</th><th>Description</th><th>Status</th><th className="text-end">Actions</th></tr></thead>
+     <thead><tr><th>Name</th><th>{hierarchy?"Parent Links":"Slug"}</th><th>Description</th><th>Status</th><th className="text-end">Actions</th></tr></thead>
      <tbody>
       {loading?<tr><td colSpan="5" className="text-center py-4">Loading...</td></tr>:null}
       {!loading&&sortedRows.length===0?<tr><td colSpan="5" className="text-center py-4 text-muted">No {title.toLowerCase()} have been created.</td></tr>:null}
       {sortedRows.map(row=>(
        <tr key={row._id}>
-        <td className="fw-semibold">{row.name}</td><td>{row.slug||"-"}</td><td>{row.description||"-"}</td>
+        <td className="fw-semibold">{row.name}</td><td>{hierarchy?((row.parents?.length?row.parents:[row.parent||null]).map(parent=>parent?(rows.find(item=>item._id===(parent?._id||parent))?.name||"—"):"Main category").join(", ")):(row.slug||"-")}</td><td>{row.description||"-"}</td>
         <td><Badge bg={row.isActive!==false?"success":"secondary"}>{row.isActive!==false?"Active":"Inactive"}</Badge></td>
         <td className="text-end text-nowrap"><span className="d-inline-flex flex-nowrap gap-2"><Button size="sm" variant="outline-primary" onClick={()=>openEdit(row)}>Edit</Button><Button size="sm" variant="outline-danger" onClick={()=>{setSelected(row);setShowDelete(true);}}>Delete</Button></span></td>
        </tr>
@@ -94,7 +94,7 @@ export default function ReferenceDataPage({title,singular,endpoint,description})
    </div>
    <Modal show={showForm} onHide={()=>!saving&&setShowForm(false)} centered>
     <Modal.Header closeButton><Modal.Title>{selected?"Edit":"Add"} {singular}</Modal.Title></Modal.Header>
-    <Modal.Body><ReferenceDataForm initialData={selected||{}} label={singular} onSubmit={save} loading={saving}/></Modal.Body>
+    <Modal.Body><ReferenceDataForm initialData={selected||{}} label={singular} onSubmit={save} loading={saving} categories={hierarchy?rows:null}/></Modal.Body>
    </Modal>
    <Modal show={showDelete} onHide={()=>!saving&&setShowDelete(false)} centered>
     <Modal.Header closeButton><Modal.Title>Delete {singular}</Modal.Title></Modal.Header>

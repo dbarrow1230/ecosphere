@@ -1,0 +1,1013 @@
+{
+  "sourceFiles": 456,
+  "routes": [
+    "/events",
+    "/events/new",
+    "/events/:id",
+    "/events/:id/edit",
+    "/clients",
+    "/clients/new",
+    "/clients/:id",
+    "/clients/:id/edit",
+    "/menus",
+    "/orders",
+    "/catering-orders",
+    "/catering-orders/new",
+    "/catering-orders/:id",
+    "/catering-orders/:id/edit",
+    "/orders/new",
+    "/orders/:id",
+    "/orders/:id/edit",
+    "/contracts",
+    "/contracts/new",
+    "/contracts/:id",
+    "/contracts/:id/edit",
+    "/inventory",
+    "/inventory/new",
+    "/inventory/:id",
+    "/inventory/:id/edit",
+    "/reports",
+    "/admin/menus",
+    "/admin/menus/new",
+    "/admin/menus/:id",
+    "/admin/menus/:id/edit",
+    "/",
+    "/contact",
+    "/faq",
+    "/privacy",
+    "/terms",
+    "/about",
+    "/dashboard",
+    "/wine-pairing",
+    "/reminders",
+    "/catering-order",
+    "/catering-contract",
+    "/users",
+    "/login",
+    "/forgot-password",
+    "/reset-password/:token",
+    "/profile",
+    "/admin",
+    "/admin/dashboard",
+    "/admin/businesses",
+    "/admin/business-types",
+    "/admin/app-keys",
+    "/admin/footers",
+    "/admin/seasons",
+    "/admin/holidays",
+    "/admin/occasions",
+    "/admin/taglines",
+    "/admin/vendors",
+    "/admin/business-roles-permissions",
+    "/admin/inventory",
+    "/admin/reports",
+    "/admin/tax-rates",
+    "/permissions",
+    "/reference/wine-pairing",
+    "/reference/catering-quantities",
+    "/400",
+    "/401",
+    "/403",
+    "/404",
+    "/500",
+    "/502",
+    "/503",
+    "/504",
+    "*"
+  ],
+  "mounts": [
+    {
+      "path": "/api/app",
+      "router": "appRoutes"
+    },
+    {
+      "path": "/api/app-modules",
+      "router": "appModuleRoutes"
+    },
+    {
+      "path": "/api/businesses",
+      "router": "businessRoutes"
+    },
+    {
+      "path": "/api/business-types",
+      "router": "businessTypeRoutes"
+    },
+    {
+      "path": "/api/app-keys",
+      "router": "appKeyRoutes"
+    },
+    {
+      "path": "/api/footers",
+      "router": "footerRoutes"
+    },
+    {
+      "path": "/api/seasons",
+      "router": "seasonRoutes"
+    },
+    {
+      "path": "/api/taglines",
+      "router": "taglineRoutes"
+    },
+    {
+      "path": "/api/occasions",
+      "router": "occasionRoutes"
+    },
+    {
+      "path": "/api/holidays",
+      "router": "holidayRoutes"
+    },
+    {
+      "path": "/api/vendors",
+      "router": "vendorRoutes"
+    },
+    {
+      "path": "/api/receipt-templates",
+      "router": "receiptTemplateRoutes"
+    },
+    {
+      "path": "/api/receipt-headers",
+      "router": "receiptHeaderRoutes"
+    },
+    {
+      "path": "/api/receipt-sub-headers",
+      "router": "receiptSubHeaderRoutes"
+    },
+    {
+      "path": "/api/receipt-footers",
+      "router": "receiptFooterRoutes"
+    },
+    {
+      "path": "/api/imperial-units",
+      "router": "imperialUnitRoutes"
+    },
+    {
+      "path": "/api/metric-units",
+      "router": "metricUnitRoutes"
+    },
+    {
+      "path": "/api/location-types",
+      "router": "locationTypeRoutes"
+    },
+    {
+      "path": "/api/locations",
+      "router": "locationRoutes"
+    },
+    {
+      "path": "/api/tax-rates",
+      "router": "taxRateRoutes"
+    },
+    {
+      "path": "/api/equipment-categories",
+      "router": "equipmentCategoryRoutes"
+    },
+    {
+      "path": "/api/supply-categories",
+      "router": "supplyCategoryRoutes"
+    },
+    {
+      "path": "/api/task-priorities",
+      "router": "taskPriorityRoutes"
+    },
+    {
+      "path": "/api/task-statuses",
+      "router": "taskStatusRoutes"
+    },
+    {
+      "path": "/api/clients",
+      "router": "clientRoutes"
+    },
+    {
+      "path": "/api/dietary-tags",
+      "router": "dietaryTagRoutes"
+    },
+    {
+      "path": "/api/documents",
+      "router": "documentRoutes"
+    },
+    {
+      "path": "/api/events",
+      "router": "eventRoutes"
+    },
+    {
+      "path": "/api/inventory",
+      "router": "inventoryRoutes"
+    },
+    {
+      "path": "/api/inventory-transactions",
+      "router": "inventoryTransactionRoutes"
+    },
+    {
+      "path": "/api/invoices",
+      "router": "invoiceRoutes"
+    },
+    {
+      "path": "/api/menu-items",
+      "router": "menuItemRoutes"
+    },
+    {
+      "path": "/api/menus",
+      "router": "menuRoutes"
+    },
+    {
+      "path": "/api/orders",
+      "router": "orderRoutes"
+    },
+    {
+      "path": "/api/payments",
+      "router": "paymentRoutes"
+    },
+    {
+      "path": "/api/services",
+      "router": "serviceRoutes"
+    },
+    {
+      "path": "/api/staff-assignments",
+      "router": "staffAssignmentRoutes"
+    },
+    {
+      "path": "/api/tasks",
+      "router": "taskRoutes"
+    },
+    {
+      "path": "/api/venues",
+      "router": "venueRoutes"
+    },
+    {
+      "path": "/api/suppliers",
+      "router": "supplierRoutes"
+    },
+    {
+      "path": "/api/stations",
+      "router": "stationRoutes"
+    },
+    {
+      "path": "/api/kitchen-prep",
+      "router": "kitchenPrepRoutes"
+    },
+    {
+      "path": "/api/catering-orders",
+      "router": "cateringOrderRoutes"
+    },
+    {
+      "path": "/api/catering-contracts",
+      "router": "cateringContractRoutes"
+    },
+    {
+      "path": "/api/users/details",
+      "router": "userDetailsRoutes"
+    },
+    {
+      "path": "/api/users/roles",
+      "router": "userRolesRoutes"
+    },
+    {
+      "path": "/api/users/role-assignments",
+      "router": "userRoleAssignmentRoutes"
+    },
+    {
+      "path": "/api/users/role-permissions",
+      "router": "rolePermissionRoutes"
+    },
+    {
+      "path": "/api/users/user-permission-overrides",
+      "router": "userPermissionOverrideRoutes"
+    },
+    {
+      "path": "/api/users/effective-permissions",
+      "router": "effectivePermissionRoutes"
+    },
+    {
+      "path": "/api/users/permission-modules",
+      "router": "permissionModuleRoutes"
+    },
+    {
+      "path": "/api/users/departments",
+      "router": "businessDepartmentRoutes"
+    },
+    {
+      "path": "/api/users/permissions",
+      "router": "permissionRoutes"
+    },
+    {
+      "path": "/api/users",
+      "router": "userRoutes"
+    },
+    {
+      "path": "/api/categories",
+      "router": "categoryRoutes"
+    },
+    {
+      "path": "/api/courses",
+      "router": "courseRoutes"
+    },
+    {
+      "path": "/api/cuisines",
+      "router": "cuisineRoutes"
+    },
+    {
+      "path": "/api/dietaries",
+      "router": "dietaryRoutes"
+    },
+    {
+      "path": "/api/recipes",
+      "router": "recipeRoutes"
+    },
+    {
+      "path": "/api/recipe-costings",
+      "router": "recipeCostingRoutes"
+    },
+    {
+      "path": "/api/vendor-categories",
+      "router": "vendorCategoryRoutes"
+    },
+    {
+      "path": "/api/vendor-ingredient-prices",
+      "router": "vendorIngredientPriceRoutes"
+    },
+    {
+      "path": "/api/dashboard",
+      "router": "dashboardRoutes"
+    },
+    {
+      "path": "/api/dashboard-snapshots",
+      "router": "dashboardSnapshotRoutes"
+    },
+    {
+      "path": "/api/reminders",
+      "router": "reminderRoutes"
+    },
+    {
+      "path": "/api/states",
+      "router": "stateRoutes"
+    },
+    {
+      "path": "/api/countries",
+      "router": "countryRoutes"
+    },
+    {
+      "path": "/api/counties",
+      "router": "countyRoutes"
+    }
+  ],
+  "parseErrors": [],
+  "missingImports": [
+    {
+      "file": "src/components/AdminCatalogWorkspace.jsx",
+      "specifier": "../styles/AdminCatalogWorkspace.css",
+      "target": null,
+      "active": false
+    },
+    {
+      "file": "backend/controllers/beverages/beverageItemController.js",
+      "specifier": "../../models/beverages/beverageItemModel.js",
+      "target": null,
+      "active": false
+    },
+    {
+      "file": "backend/controllers/beverages/beverageVendorItemController.js",
+      "specifier": "../../models/beverages/beverageVendorItemModel.js",
+      "target": null,
+      "active": false
+    },
+    {
+      "file": "backend/controllers/returns/vendorReturnController.js",
+      "specifier": "../../models/returns/vendorReturnModel.js",
+      "target": null,
+      "active": false
+    },
+    {
+      "file": "backend/controllers/returns/vendorReturnLineController.js",
+      "specifier": "../../models/returns/vendorReturnLineModel.js",
+      "target": null,
+      "active": false
+    },
+    {
+      "file": "backend/models/index.js",
+      "specifier": "./beverages/beverageItemModel.js",
+      "target": null,
+      "active": false
+    },
+    {
+      "file": "backend/models/index.js",
+      "specifier": "./beverages/beverageVendorItemModel.js",
+      "target": null,
+      "active": false
+    },
+    {
+      "file": "backend/models/index.js",
+      "specifier": "./master/metricUnitModel.js",
+      "target": null,
+      "active": false
+    },
+    {
+      "file": "backend/models/index.js",
+      "specifier": "./master/imperialUnitModel.js",
+      "target": null,
+      "active": false
+    },
+    {
+      "file": "backend/models/index.js",
+      "specifier": "./master/recipeModel.js",
+      "target": null,
+      "active": false
+    },
+    {
+      "file": "backend/models/index.js",
+      "specifier": "./returns/vendorReturnModel.js",
+      "target": null,
+      "active": false
+    },
+    {
+      "file": "backend/models/index.js",
+      "specifier": "./returns/vendorReturnLineModel.js",
+      "target": null,
+      "active": false
+    },
+    {
+      "file": "backend/models/index.js",
+      "specifier": "./sales/salesUsageModel.js",
+      "target": null,
+      "active": false
+    },
+    {
+      "file": "backend/models/index.js",
+      "specifier": "./sales/salesUsageLineModel.js",
+      "target": null,
+      "active": false
+    },
+    {
+      "file": "backend/models/index.js",
+      "specifier": "./transfers/stockTransferModel.js",
+      "target": null,
+      "active": false
+    },
+    {
+      "file": "backend/models/index.js",
+      "specifier": "./transfers/stockTransferLineModel.js",
+      "target": null,
+      "active": false
+    },
+    {
+      "file": "backend/routes/receiving/goodsReceiptLineRoutes.js",
+      "specifier": "../../controllers/receiving/goodsReceiptLineController.js",
+      "target": null,
+      "active": false
+    },
+    {
+      "file": "backend/routes/receiving/goodsReceiptRoutes.js",
+      "specifier": "../../controllers/receiving/goodsReceiptController.js",
+      "target": null,
+      "active": false
+    },
+    {
+      "file": "backend/routes/reference/conditionScaleRoutes.js",
+      "specifier": "../../controllers/reference/conditionScaleController.js",
+      "target": null,
+      "active": false
+    }
+  ],
+  "unmatchedLinks": [
+    {
+      "file": "src/pages/forms/lookups/TranslationForm.jsx",
+      "path": "/lookups/translations"
+    },
+    {
+      "file": "src/pages/forms/lookups/TranslationForm.jsx",
+      "path": "/lookups/translations"
+    },
+    {
+      "file": "src/pages/forms/MenteeForm.jsx",
+      "path": "/mentees"
+    },
+    {
+      "file": "src/pages/forms/methods/BibleStudyMethodForm.jsx",
+      "path": "/methods/bible-study-methods"
+    }
+  ],
+  "unmountedApiReferences": [
+    {
+      "file": "src/forms/TagForm.jsx",
+      "path": "/api/tags/${tag._id}"
+    },
+    {
+      "file": "src/forms/TagForm.jsx",
+      "path": "/api/tags"
+    },
+    {
+      "file": "src/pages/forms/BrandForm.jsx",
+      "path": "/api/brands"
+    },
+    {
+      "file": "src/pages/forms/BudgetForm.jsx",
+      "path": "/api/budgets"
+    },
+    {
+      "file": "src/pages/forms/CouponForm.jsx",
+      "path": "/api/coupons"
+    },
+    {
+      "file": "src/pages/forms/CurrencyForm.jsx",
+      "path": "/api/currencies"
+    },
+    {
+      "file": "src/pages/forms/InventoryForm.jsx",
+      "path": "/api/inventories"
+    },
+    {
+      "file": "src/pages/forms/lookups/TranslationForm.jsx",
+      "path": "/api/lookups/translations/next-sort"
+    },
+    {
+      "file": "src/pages/forms/lookups/TranslationForm.jsx",
+      "path": "/api/lookups/translations/${id}"
+    },
+    {
+      "file": "src/pages/forms/lookups/TranslationForm.jsx",
+      "path": "/api/lookups/translations/${id}"
+    },
+    {
+      "file": "src/pages/forms/lookups/TranslationForm.jsx",
+      "path": "/api/lookups/translations"
+    },
+    {
+      "file": "src/pages/forms/MeetingMethodForm.jsx",
+      "path": "/api/meeting-methods/${method._id}"
+    },
+    {
+      "file": "src/pages/forms/MeetingMethodForm.jsx",
+      "path": "/api/meeting-methods"
+    },
+    {
+      "file": "src/pages/forms/MenteeForm.jsx",
+      "path": "/api/statuses/list?type=mentee"
+    },
+    {
+      "file": "src/pages/forms/MenteeForm.jsx",
+      "path": "/api/programs"
+    },
+    {
+      "file": "src/pages/forms/MenteeForm.jsx",
+      "path": "/api/meeting-methods"
+    },
+    {
+      "file": "src/pages/forms/MenteeForm.jsx",
+      "path": "/api/mentees/${id}"
+    },
+    {
+      "file": "src/pages/forms/MenteeForm.jsx",
+      "path": "/api/mentees/${id}"
+    },
+    {
+      "file": "src/pages/forms/MenteeForm.jsx",
+      "path": "/api/mentees"
+    },
+    {
+      "file": "src/pages/forms/MenteeForm.jsx",
+      "path": "/api/mentees/create"
+    },
+    {
+      "file": "src/pages/forms/methods/BibleStudyMethodForm.jsx",
+      "path": "/api/methods"
+    },
+    {
+      "file": "src/pages/forms/methods/BibleStudyMethodForm.jsx",
+      "path": "/api/lookups/study-categories"
+    },
+    {
+      "file": "src/pages/forms/methods/BibleStudyMethodForm.jsx",
+      "path": "/api/lookups/difficulty-levels"
+    },
+    {
+      "file": "src/pages/forms/NoteForm.jsx",
+      "path": "/api/notebooks"
+    },
+    {
+      "file": "src/pages/forms/NoteForm.jsx",
+      "path": "/api/note-types"
+    },
+    {
+      "file": "src/pages/forms/NoteForm.jsx",
+      "path": "/api/tags"
+    },
+    {
+      "file": "src/pages/forms/NoteForm.jsx",
+      "path": "/api/notebooks"
+    },
+    {
+      "file": "src/pages/forms/NoteForm.jsx",
+      "path": "/api/note-types"
+    },
+    {
+      "file": "src/pages/forms/NoteForm.jsx",
+      "path": "/api/notes/${note._id}"
+    },
+    {
+      "file": "src/pages/forms/NoteForm.jsx",
+      "path": "/api/notes"
+    },
+    {
+      "file": "src/pages/forms/OrderItemForm.jsx",
+      "path": "/api/order-items"
+    },
+    {
+      "file": "src/pages/forms/ProductForm.jsx",
+      "path": "/api/products"
+    },
+    {
+      "file": "src/pages/forms/ProgramForm.jsx",
+      "path": "/api/programs/${program._id}"
+    },
+    {
+      "file": "src/pages/forms/ProgramForm.jsx",
+      "path": "/api/programs"
+    },
+    {
+      "file": "src/pages/forms/PurchaseForm.jsx",
+      "path": "/api/purchases"
+    },
+    {
+      "file": "src/pages/forms/PurchaseItemForm.jsx",
+      "path": "/api/purchase-items"
+    },
+    {
+      "file": "src/pages/forms/ReceiptForm.jsx",
+      "path": "/api/receipts"
+    },
+    {
+      "file": "src/pages/forms/ReturnForm.jsx",
+      "path": "/api/returns"
+    },
+    {
+      "file": "src/pages/forms/ReturnItemForm.jsx",
+      "path": "/api/return-items"
+    },
+    {
+      "file": "src/pages/forms/ShoppingListForm.jsx",
+      "path": "/api/shopping-lists"
+    },
+    {
+      "file": "src/pages/forms/ShoppingListItemForm.jsx",
+      "path": "/api/shopping-list-items"
+    },
+    {
+      "file": "src/pages/forms/StatusForm.jsx",
+      "path": "/api/statuses"
+    },
+    {
+      "file": "src/pages/forms/StoreForm.jsx",
+      "path": "/api/stores"
+    },
+    {
+      "file": "src/pages/forms/studies/CrossReferenceForm.jsx",
+      "path": "/api/studies"
+    },
+    {
+      "file": "src/pages/forms/studies/CrossReferenceForm.jsx",
+      "path": "/api/lookups/study-categories"
+    },
+    {
+      "file": "src/pages/forms/studies/CrossReferenceForm.jsx",
+      "path": "/api/studies/cross-references/${id}"
+    },
+    {
+      "file": "src/pages/forms/studies/CrossReferenceForm.jsx",
+      "path": "/api/studies/cross-references/${id}"
+    },
+    {
+      "file": "src/pages/forms/studies/CrossReferenceForm.jsx",
+      "path": "/api/studies/cross-references"
+    },
+    {
+      "file": "src/pages/forms/studies/LibraryItemForm.jsx",
+      "path": "/api/studies"
+    },
+    {
+      "file": "src/pages/forms/studies/LibraryItemForm.jsx",
+      "path": "/api/methods"
+    },
+    {
+      "file": "src/pages/forms/studies/LibraryItemForm.jsx",
+      "path": "/api/lookups/library-item-types"
+    },
+    {
+      "file": "src/pages/forms/studies/LibraryItemForm.jsx",
+      "path": "/api/lookups/study-categories"
+    },
+    {
+      "file": "src/pages/forms/studies/LibraryItemForm.jsx",
+      "path": "/api/lookups/statuses"
+    },
+    {
+      "file": "src/pages/forms/studies/LibraryItemForm.jsx",
+      "path": "/api/studies/library-items/${id}"
+    },
+    {
+      "file": "src/pages/forms/studies/LibraryItemForm.jsx",
+      "path": "/api/studies/library-items/${id}"
+    },
+    {
+      "file": "src/pages/forms/studies/LibraryItemForm.jsx",
+      "path": "/api/studies/library-items"
+    },
+    {
+      "file": "src/pages/forms/studies/MemoryVerseForm.jsx",
+      "path": "/api/studies"
+    },
+    {
+      "file": "src/pages/forms/studies/MemoryVerseForm.jsx",
+      "path": "/api/lookups/statuses"
+    },
+    {
+      "file": "src/pages/forms/studies/MemoryVerseForm.jsx",
+      "path": "/api/studies/memory-verses/${id}"
+    },
+    {
+      "file": "src/pages/forms/studies/MemoryVerseForm.jsx",
+      "path": "/api/studies/memory-verses/${id}"
+    },
+    {
+      "file": "src/pages/forms/studies/MemoryVerseForm.jsx",
+      "path": "/api/studies/memory-verses"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyEnteryForm.jsx",
+      "path": "/api/studies"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyEnteryForm.jsx",
+      "path": "/api/methods"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyEnteryForm.jsx",
+      "path": "/api/lookups/study-entry-types"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyEnteryForm.jsx",
+      "path": "/api/lookups/statuses"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyEnteryForm.jsx",
+      "path": "/api/studies/entries/${id}"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyEnteryForm.jsx",
+      "path": "/api/studies/entries/${id}"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyEnteryForm.jsx",
+      "path": "/api/studies/entries"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyForm.jsx",
+      "path": "/api/methods"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyForm.jsx",
+      "path": "/api/lookups/study-categories"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyForm.jsx",
+      "path": "/api/lookups/difficulty-levels"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyForm.jsx",
+      "path": "/api/lookups/statuses"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyForm.jsx",
+      "path": "/api/studies/${id}"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyForm.jsx",
+      "path": "/api/studies/${id}"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyForm.jsx",
+      "path": "/api/studies"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyRecommendationForm.jsx",
+      "path": "/api/methods"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyRecommendationForm.jsx",
+      "path": "/api/lookups/study-categories"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyRecommendationForm.jsx",
+      "path": "/api/lookups/difficulty-levels"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyRecommendationForm.jsx",
+      "path": "/api/lookups/statuses"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyRecommendationForm.jsx",
+      "path": "/api/studies/recommendations/${id}"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyRecommendationForm.jsx",
+      "path": "/api/studies/recommendations/${id}"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyRecommendationForm.jsx",
+      "path": "/api/studies/recommendations"
+    },
+    {
+      "file": "src/pages/forms/studies/StudySessionForm.jsx",
+      "path": "/api/studies"
+    },
+    {
+      "file": "src/pages/forms/studies/StudySessionForm.jsx",
+      "path": "/api/methods"
+    },
+    {
+      "file": "src/pages/forms/studies/StudySessionForm.jsx",
+      "path": "/api/lookups/statuses"
+    },
+    {
+      "file": "src/pages/forms/studies/StudySessionForm.jsx",
+      "path": "/api/studies/sessions/${id}"
+    },
+    {
+      "file": "src/pages/forms/studies/StudySessionForm.jsx",
+      "path": "/api/studies/sessions/${id}"
+    },
+    {
+      "file": "src/pages/forms/studies/StudySessionForm.jsx",
+      "path": "/api/studies/sessions"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyTaskForm.jsx",
+      "path": "/api/studies"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyTaskForm.jsx",
+      "path": "/api/lookups/task-priorities"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyTaskForm.jsx",
+      "path": "/api/lookups/task-statuses"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyTaskForm.jsx",
+      "path": "/api/studies/tasks/${id}"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyTaskForm.jsx",
+      "path": "/api/studies/tasks/${id}"
+    },
+    {
+      "file": "src/pages/forms/studies/StudyTaskForm.jsx",
+      "path": "/api/studies/tasks"
+    },
+    {
+      "file": "src/pages/forms/TagForm.jsx",
+      "path": "/api/tags/${tag._id}"
+    },
+    {
+      "file": "src/pages/forms/TagForm.jsx",
+      "path": "/api/tags"
+    },
+    {
+      "file": "src/pages/forms/UnitForm.jsx",
+      "path": "/api/units"
+    },
+    {
+      "file": "src/pages/forms/WeeklySessionForm.jsx",
+      "path": "/api/meeting-methods"
+    },
+    {
+      "file": "src/pages/forms/WeeklySessionForm.jsx",
+      "path": "/api/meeting-methods/list"
+    },
+    {
+      "file": "src/pages/forms/WeeklySessionForm.jsx",
+      "path": "/api/weekly-sessions/${session._id}"
+    },
+    {
+      "file": "src/pages/forms/WeeklySessionForm.jsx",
+      "path": "/api/weekly-sessions/update/${session._id}"
+    },
+    {
+      "file": "src/pages/forms/WeeklySessionForm.jsx",
+      "path": "/api/weekly-sessions"
+    },
+    {
+      "file": "src/pages/forms/WeeklySessionForm.jsx",
+      "path": "/api/weekly-sessions/create"
+    },
+    {
+      "file": "src/pages/forms/WishlistForm.jsx",
+      "path": "/api/wishlists"
+    },
+    {
+      "file": "backend/server.js",
+      "path": "/api/health"
+    },
+    {
+      "file": "backend/server.js",
+      "path": "/api/culinary"
+    }
+  ],
+  "unmountedRouteFiles": [
+    "backend/routes/beverages/beverageItemRoutes.js",
+    "backend/routes/beverages/beverageVendorItemRoutes.js",
+    "backend/routes/counts/stockAdjustmentLineRoutes.js",
+    "backend/routes/counts/stockAdjustmentRoutes.js",
+    "backend/routes/counts/stockCountLineRoutes.js",
+    "backend/routes/counts/stockCountRoutes.js",
+    "backend/routes/inventory/inventoryBalanceRoutes.js",
+    "backend/routes/inventory/inventoryLotRoutes.js",
+    "backend/routes/inventory/inventoryTransactionRoutes.js",
+    "backend/routes/purchasing/purchaseOrderLineRoutes.js",
+    "backend/routes/purchasing/purchaseOrderRoutes.js",
+    "backend/routes/receiving/goodsReceiptLineRoutes.js",
+    "backend/routes/receiving/goodsReceiptRoutes.js",
+    "backend/routes/reference/conditionScaleRoutes.js",
+    "backend/routes/waste/wasteRecordRoutes.js"
+  ],
+  "unreachableFrontendFiles": [
+    "src/components/AdminCatalogWorkspace.jsx",
+    "src/components/dashboard/BudgetInsightCards.jsx",
+    "src/components/dashboard/DashboardCalendarCard.jsx",
+    "src/components/dashboard/DashboardError.jsx",
+    "src/components/dashboard/MonthlySpendingChart.jsx",
+    "src/components/dashboard/SpendingLineChart.jsx",
+    "src/components/dashboard/YearlySpendingChart.jsx",
+    "src/components/SortedList.jsx",
+    "src/components/SortedSelect.jsx",
+    "src/forms/admin/AppKeyForm.jsx",
+    "src/forms/admin/BusinessesForm.jsx",
+    "src/forms/admin/BusinessTypeForm.jsx",
+    "src/forms/admin/FooterForm.jsx",
+    "src/forms/admin/HolidayForm.jsx",
+    "src/forms/admin/OccasionForm.jsx",
+    "src/forms/admin/receipt/ReceiptFooterForm.jsx",
+    "src/forms/admin/receipt/ReceiptHeaderForm.jsx",
+    "src/forms/admin/receipt/ReceiptSubHeaderForm.jsx",
+    "src/forms/admin/receipt/ReceiptTemplateForm.jsx",
+    "src/forms/admin/SeasonForm.jsx",
+    "src/forms/admin/TaglineForm.jsx",
+    "src/forms/admin/VendorForm.jsx",
+    "src/forms/ReminderForm.jsx",
+    "src/forms/TagForm.jsx",
+    "src/forms/users/LoginForm.jsx",
+    "src/forms/users/UserDetailsForm.jsx",
+    "src/forms/users/UserForm.jsx",
+    "src/pages/admin/inventory/Inventory.jsx",
+    "src/pages/admin/receipt/ReceiptFooterForm.jsx",
+    "src/pages/admin/receipt/ReceiptHeaderForm.jsx",
+    "src/pages/admin/receipt/ReceiptSubHeaderForm.jsx",
+    "src/pages/admin/receipt/ReceiptTemplateForm.jsx",
+    "src/pages/admin/users/PermissionMatrix.jsx",
+    "src/pages/forms/admin/AppKeyForm.jsx",
+    "src/pages/forms/admin/BusinessesForm.jsx",
+    "src/pages/forms/admin/BusinessTypeForm.jsx",
+    "src/pages/forms/admin/receipt/ReceiptFooterForm.jsx",
+    "src/pages/forms/admin/receipt/ReceiptHeaderForm.jsx",
+    "src/pages/forms/admin/receipt/ReceiptSubHeaderForm.jsx",
+    "src/pages/forms/admin/receipt/ReceiptTemplateForm.jsx",
+    "src/pages/forms/BrandForm.jsx",
+    "src/pages/forms/BudgetForm.jsx",
+    "src/pages/forms/CategoryForm.jsx",
+    "src/pages/forms/CouponForm.jsx",
+    "src/pages/forms/CurrencyForm.jsx",
+    "src/pages/forms/InventoryForm.jsx",
+    "src/pages/forms/lookups/TranslationForm.jsx",
+    "src/pages/forms/MeetingMethodForm.jsx",
+    "src/pages/forms/MenteeForm.jsx",
+    "src/pages/forms/MentorNoteForm.jsx",
+    "src/pages/forms/methods/BibleStudyMethodForm.jsx",
+    "src/pages/forms/NotebookForm.jsx",
+    "src/pages/forms/NoteForm.jsx",
+    "src/pages/forms/OrderForm.jsx",
+    "src/pages/forms/OrderItemForm.jsx",
+    "src/pages/forms/ProductForm.jsx",
+    "src/pages/forms/ProgramForm.jsx",
+    "src/pages/forms/PurchaseForm.jsx",
+    "src/pages/forms/PurchaseItemForm.jsx",
+    "src/pages/forms/ReceiptForm.jsx",
+    "src/pages/forms/ReturnForm.jsx",
+    "src/pages/forms/ReturnItemForm.jsx",
+    "src/pages/forms/ShoppingListForm.jsx",
+    "src/pages/forms/ShoppingListItemForm.jsx",
+    "src/pages/forms/SmartGoalsForm.jsx",
+    "src/pages/forms/StatusForm.jsx",
+    "src/pages/forms/StoreForm.jsx",
+    "src/pages/forms/studies/CrossReferenceForm.jsx",
+    "src/pages/forms/studies/LibraryItemForm.jsx",
+    "src/pages/forms/studies/MemoryVerseForm.jsx",
+    "src/pages/forms/studies/StudyEnteryForm.jsx",
+    "src/pages/forms/studies/StudyForm.jsx",
+    "src/pages/forms/studies/StudyRecommendationForm.jsx",
+    "src/pages/forms/studies/StudySessionForm.jsx",
+    "src/pages/forms/studies/StudyTaskForm.jsx",
+    "src/pages/forms/StudyTaskForm.jsx",
+    "src/pages/forms/TagForm.jsx",
+    "src/pages/forms/TimeSheetForm.jsx",
+    "src/pages/forms/UnitForm.jsx",
+    "src/pages/forms/WeeklySessionForm.jsx",
+    "src/pages/forms/WishlistForm.jsx"
+  ]
+}

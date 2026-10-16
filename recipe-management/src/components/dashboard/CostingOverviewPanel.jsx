@@ -14,9 +14,9 @@ export function costingOverview(recipes=[],costings=[]){
 }
 export default function CostingOverviewPanel({recipes=[],costings=[]}){
  const overview=costingOverview(recipes,costings);
- return <DashboardSection title="Recipe Costing">
+ return <DashboardSection className="dashboard-panel-costing" kicker="Costing Coverage" title="Recipe Costing">
   <div className="d-flex flex-wrap gap-4 mb-3"><span>Costed recipes: <strong>{overview.costed}</strong></span><span>Without costing: <strong>{overview.uncosted.length}</strong></span></div>
-  {overview.recent.length?<div className="dashboard-list">{overview.recent.map(costing=><Link className="dashboard-list-item" key={id(costing)} to={`/recipe-costings?recipe=${encodeURIComponent(id(costing.recipe))}`}><strong>{costing.recipe?.name||recipes.find(recipe=>id(recipe)===id(costing.recipe))?.name||"Recipe"}</strong><span>Cost: ${Number(costing.totals?.totalCost||0).toFixed(2)} · Selling price: ${Number(costing.pricing?.suggestedPrice||0).toFixed(2)}</span></Link>)}</div>:null}
+  {overview.recent.length?<div className="dashboard-list">{overview.recent.map(costing=><Link className="dashboard-list-item" key={id(costing)} to={`/recipe-costings?recipe=${encodeURIComponent(id(costing.recipe))}`}><div className="dashboard-list-content"><strong>{costing.recipe?.name||recipes.find(recipe=>id(recipe)===id(costing.recipe))?.name||"Recipe"}</strong><span>Cost: ${Number(costing.totals?.totalCost||0).toFixed(2)} · Selling price: ${Number(costing.pricing?.suggestedPrice||0).toFixed(2)}</span></div></Link>)}</div>:null}
   <Link className="btn btn-outline-primary mt-3" to="/recipe-costings">Recipe Costing</Link>
  </DashboardSection>;
 }

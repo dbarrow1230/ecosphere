@@ -1,12 +1,14 @@
 // src/pages/Reports.jsx
 import {useState,useEffect,useMemo} from "react";
-import {Container,Row,Col,Card,Table,Form} from "react-bootstrap";
+import {Row,Col,Card,Table,Form,Alert} from "react-bootstrap";
+import {localEventDate} from "../../utils/calendarDate.js";
 
 function Reports(){
 
  const [events,setEvents]=useState([]);
  const [orders,setOrders]=useState([]);
  const [loading,setLoading]=useState(true);
+ const [error,setError]=useState("");
 
  const [range,setRange]=useState("this-month");
 
@@ -21,6 +23,7 @@ function Reports(){
  const fetchData=async()=>{
   try{
    setLoading(true);
+   setError("");
 
    const [eventsRes,ordersRes]=await Promise.all([
     fetch("/api/events"),
@@ -29,6 +32,8 @@ function Reports(){
 
    const eventsData=await eventsRes.json();
    const ordersData=await ordersRes.json();
+   if(!eventsRes.ok)throw new Error(eventsData?.message||"Events could not be loaded.");
+   if(!ordersRes.ok)throw new Error(ordersData?.message||"Orders could not be loaded.");
 
    setEvents(
     Array.isArray(eventsData?.events)
@@ -48,6 +53,7 @@ function Reports(){
 
   }catch(err){
    console.error("Reports load error:",err);
+   setError(err.message);
   }finally{
    setLoading(false);
   }
@@ -69,15 +75,17 @@ function Reports(){
 
   const startOfWeek=new Date(now);
   startOfWeek.setDate(now.getDate()-now.getDay());
+  startOfWeek.setHours(0,0,0,0);
 
   const startOfMonth=new Date(now.getFullYear(),now.getMonth(),1);
   const startOfLastMonth=new Date(now.getFullYear(),now.getMonth()-1,1);
   const endOfLastMonth=new Date(now.getFullYear(),now.getMonth(),0);
+  endOfLastMonth.setHours(23,59,59,999);
 
   const startOfYear=new Date(now.getFullYear(),0,1);
 
   const calc=(start,end)=>{
-   const ev=events.filter(e=>inRange(e.eventDate,start,end)).length;
+   const ev=events.filter(e=>inRange(localEventDate(e.eventDate),start,end)).length;
 
    const ord=orders.filter(o=>inRange(o.createdAt,start,end));
 
@@ -146,21 +154,19 @@ function Reports(){
    avgOrder:formatMoney(summary.ytd.avg)
   }
  ];
+ const selectedIndex={"this-week":0,"this-month":1,"last-month":2,ytd:3}[range];
+ const selectedRow=rows[selectedIndex];
 
  return(
   <section className="reports-page py-4">
-   <Container fluid="lg">
+   <div className="px-3 px-lg-4">
+    {error&&<Alert variant="danger">{error}</Alert>}
+    {loading&&<p role="status">Loading reports…</p>}
 
     <Row className="g-4 mb-4">
 
      <Col lg={8}>
-      <div>
-       <p className="text-muted mb-2">Business Reporting</p>
-       <h1 className="mb-2">Reports</h1>
-       <p className="text-muted mb-0">
-        Review event activity, order volume, and revenue performance.
-       </p>
-      </div>
+      <h1 className="h2 fw-bold mb-0">Reports</h1>
      </Col>
 
      <Col lg={4}>
@@ -285,7 +291,7 @@ function Reports(){
 
           <tbody>
 
-           {rows.map((row,i)=>(
+           {[selectedRow].map((row,i)=>(
             <tr key={i}>
              <td>{row.period}</td>
              <td>{row.events}</td>
@@ -307,7 +313,7 @@ function Reports(){
 
     </Row>
 
-   </Container>
+   </div>
   </section>
  );
 }

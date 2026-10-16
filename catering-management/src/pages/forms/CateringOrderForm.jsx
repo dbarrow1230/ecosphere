@@ -155,7 +155,7 @@ export default function CateringOrderForm({readOnly=false}){
    });
    const data=await res.json();
    if(!res.ok)throw new Error(data.message||"Failed to save catering order.");
-   navigate("/orders");
+   navigate("/catering-orders");
   }catch(error){setMessage({type:"danger",text:error.message});}
   finally{setSaving(false);}
  };
@@ -163,7 +163,7 @@ export default function CateringOrderForm({readOnly=false}){
  return(
   <section className="operation-form-page">
    <Form onSubmit={handleSubmit}>
-    <header className="operation-form-header"><div><p>Order Operations</p><h1>{readOnly?"Catering Order Details":id?"Edit Catering Order":"Create Catering Order"}</h1><span>Customer, event, menu, dietary, delivery, service, and payment details.</span></div><Button type="button" variant="outline-secondary" onClick={()=>navigate("/orders")}>Back to Orders</Button></header>
+    <header className="operation-form-header"><div><h1 className="h2 fw-bold mb-0">{readOnly?"Catering Order Details":id?"Edit Catering Order":"Create Catering Order"}</h1></div><Button type="button" variant="outline-secondary" onClick={()=>navigate("/catering-orders")}>Back to Catering Orders</Button></header>
     {message.text&&<Alert variant={message.type}>{message.text}</Alert>}
     <fieldset disabled={readOnly}>
     <Tabs defaultActiveKey="order" className="mb-4">
@@ -695,7 +695,7 @@ export default function CateringOrderForm({readOnly=false}){
      </Tab>
     </Tabs></fieldset>
     <div className="d-flex justify-content-end">
-     {readOnly?<Button type="button" onClick={()=>navigate(`/orders/${id}/edit`)}>Edit Catering Order</Button>:<Button type="submit" variant="primary" className="d-flex align-items-center gap-2" disabled={saving}><Save size={18}/>{saving?"Saving...":id?"Update Catering Order":"Save Catering Order"}</Button>}
+     {readOnly?<Button type="button" onClick={()=>navigate(`/catering-orders/${id}/edit`)}>Edit Catering Order</Button>:<Button type="submit" variant="primary" className="d-flex align-items-center gap-2" disabled={saving}><Save size={18}/>{saving?"Saving...":id?"Update Catering Order":"Save Catering Order"}</Button>}
     </div>
    </Form>
   </section>

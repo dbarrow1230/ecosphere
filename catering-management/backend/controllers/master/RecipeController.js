@@ -1,5 +1,7 @@
 // backend/controllers/master/RecipeController.js
 import Recipe from "../../models/master/ReceipeModel.js";
+import "../../models/master/IngredientModel.js";
+import "../../models/master/EquipmentModel.js";
 
 export const createRecipe=async(req,res)=>{
  try{

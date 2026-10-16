@@ -45,7 +45,7 @@ export default function ForgotPasswordPage()
    }
 
    setSuccess(data?.message||"Password reset link generated.");
-   setResetUrl(data?.resetUrl||"");
+   setResetUrl(data?.resetUrl||(data?.resetToken?`${window.location.origin}/reset-password/${encodeURIComponent(data.resetToken)}`:""));
    setForm({email:""});
   }
   catch(err)

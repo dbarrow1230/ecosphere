@@ -1,0 +1,2 @@
+export function ingredientSearchText(name){return String(name||'').replace(/\b(?:fresh|ripe|flesh|granulated|finely|chopped|diced|minced|sliced|peeled|toasted)\b/gi,' ').replace(/\s+/g,' ').trim();}
+export function matchesVendorProduct(text,query){const normalize=value=>String(value||'').normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase();const haystack=normalize(text);return normalize(query).split(/\s+/).filter(Boolean).every(word=>haystack.includes(word));}

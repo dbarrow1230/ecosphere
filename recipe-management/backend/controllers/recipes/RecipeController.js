@@ -1,3 +1,4 @@
+import {needsRecipeNumber,recipeClassificationSignature} from "../../services/recipeNumberPolicy.js";
 import {nutritionInputsChanged} from "../../services/recipeUpdatePolicy.js";
 // backend/controllers/recipes/RecipeController.js
 import Recipe from "../../models/recipes/ReceipeModel.js";
@@ -20,7 +21,7 @@ export const createRecipe=async(req,res)=>{
   const recipe=await Recipe.create({...payload,...generated,isActive:true});
   return res.status(201).json({message:"Recipe created successfully",recipe});
  }catch(error){
-  if(error.code===11000)return res.status(409).json({message:"Recipe already exists for this business"});
+  if(error.code===11000)return res.status(409).json({message:error.keyPattern?.recipeNumber?"This recipe number is already assigned to another recipe. Please generate a new number.":"Another recipe already uses this name for this business."});
   return res.status(500).json({message:"Failed to create recipe",error:error.message});
  }
 };
@@ -101,9 +102,8 @@ export const updateRecipe=async(req,res)=>{
   if(Object.hasOwn(payload,'image'))payload.image=filenameOnly(payload.image);
   const merged={...existing.toObject(),...payload};
   if(Object.hasOwn(payload,"ingredients")||Object.hasOwn(payload,"business"))payload.ingredients=await validateRecipePrices(businessInfoConnection,mongoose,merged);
-  const classificationsChanged=['business','primaryCuisine','primaryCourse','primaryCategory'].some(field=>Object.hasOwn(payload,field)&&String(existing[field]||'')!==String(payload[field]||''));
   const canGenerate=merged.business&&merged.primaryCuisine&&merged.primaryCourse&&merged.primaryCategory;
-  if(canGenerate&&(classificationsChanged||!existing.recipeNumber||!existing.recipeSequence||/^IMPORT-/i.test(existing.recipeNumber))){Object.assign(payload,await generateRecipeNumber(merged));}
+  if(canGenerate&&needsRecipeNumber(existing,merged)){const reservation=await businessInfoConnection.db.collection("recipe_number_reservations").findOne({_id:String(existing._id)+":"+recipeClassificationSignature(merged)});const occupied=reservation&&await Recipe.exists({business:merged.business,recipeNumber:reservation.recipeNumber,_id:{$ne:existing._id}});Object.assign(payload,reservation&&!occupied?{recipeNumber:reservation.recipeNumber,recipeSequence:reservation.recipeSequence}:await generateRecipeNumber(merged));}
   else{delete payload.recipeNumber;delete payload.recipeSequence;}
   if(nutritionInputsChanged(existing.toObject(),payload)){
    payload.nutritionSync={status:'needs_review',issues:['Ingredients or servings changed. Use Update Nutrition from USDA to recalculate.']};
@@ -133,7 +133,7 @@ export const updateRecipe=async(req,res)=>{
   if(!recipe)return res.status(404).json({message:"Recipe not found"});
   return res.status(200).json({message:"Recipe updated successfully",recipe});
  }catch(error){
-  if(error.code===11000)return res.status(409).json({message:"Recipe already exists for this business"});
+  if(error.code===11000)return res.status(409).json({message:error.keyPattern?.recipeNumber?"This recipe number is already assigned to another recipe. Please generate a new number.":"Another recipe already uses this name for this business."});
   return res.status(500).json({message:"Failed to update recipe",error:error.message});
  }
 };
@@ -151,7 +151,8 @@ export const deleteRecipe=async(req,res)=>{
 
 export const reserveRecipeNumber=async(req,res)=>{
  try{
-  const {business,primaryCourse,primaryCuisine,primaryCategory}=req.body;
+  const {business,primaryCourse,primaryCuisine,primaryCategory,recipeId}=req.body;
+  if(recipeId){const existing=await Recipe.findById(recipeId);if(!existing)return res.status(404).json({message:"Recipe not found"});const next={business,primaryCourse,primaryCuisine,primaryCategory};if(!needsRecipeNumber(existing,next))return res.json({recipeNumber:existing.recipeNumber,recipeSequence:existing.recipeSequence});const key=String(existing._id)+":"+recipeClassificationSignature(next),reservations=businessInfoConnection.db.collection("recipe_number_reservations"),reserved=await reservations.findOne({_id:key});if(reserved)return res.json({recipeNumber:reserved.recipeNumber,recipeSequence:reserved.recipeSequence});const generated=await generateRecipeNumber(next);await reservations.updateOne({_id:key},{$setOnInsert:{...generated,recipeId:existing._id,createdAt:new Date()}},{upsert:true});const saved=await reservations.findOne({_id:key});return res.status(201).json({recipeNumber:saved.recipeNumber,recipeSequence:saved.recipeSequence});}
   if(!business||!primaryCourse||!primaryCuisine||!primaryCategory)return res.status(400).json({message:"Business and all three primary classifications are required."});
   return res.status(201).json(await generateRecipeNumber({business,primaryCourse,primaryCuisine,primaryCategory}));
  }catch(error){return res.status(500).json({message:"Failed to reserve recipe number",error:error.message});}

@@ -1,7 +1,9 @@
+import {buildRecipeDashboardData} from "../utils/dashboard/recipeDashboardData.js";
 import CostingOverviewPanel from "../components/dashboard/CostingOverviewPanel.jsx";
 // src/pages/Dashboard.jsx
 import {useEffect,useMemo,useState} from "react";
-import {ChefHat} from "lucide-react";
+import DashboardHeader from "../components/dashboard/DashboardHeader.jsx";
+import {costingOverview} from "../components/dashboard/CostingOverviewPanel.jsx";
 import DashboardStats from "../components/dashboard/DashboardStats.jsx";
 import DashboardSection from "../components/dashboard/DashboardSection.jsx";
 import DashboardFilters from "../components/dashboard/DashboardFilters.jsx";
@@ -19,7 +21,8 @@ import "../styles/Dashboard.css";
 const emptyData={
  recipes:[],
  categories:[],
- recipeCostings:[]
+ recipeCostings:[],
+ menus:[],vendorPrices:[],productCategories:[]
 };
 
 const getRows=payload=>{
@@ -27,87 +30,15 @@ const getRows=payload=>{
  if(Array.isArray(payload?.data))return payload.data;
  if(Array.isArray(payload?.items))return payload.items;
  if(Array.isArray(payload?.results))return payload.results;
+ if(Array.isArray(payload?.vendorIngredientPrices))return payload.vendorIngredientPrices;
+ if(Array.isArray(payload?.productCategories))return payload.productCategories;
+ if(Array.isArray(payload?.menus))return payload.menus;
  if(Array.isArray(payload?.recipes))return payload.recipes;
  if(Array.isArray(payload?.categories))return payload.categories;
  if(Array.isArray(payload?.recipeCostings))return payload.recipeCostings;
  return [];
 };
 
-const getId=value=>{
- if(!value)return "";
- if(typeof value==="string")return value;
- if(typeof value._id==="string")return value._id;
- if(typeof value.id==="string")return value.id;
- if(typeof value._id?.$oid==="string")return value._id.$oid;
- if(typeof value.id?.$oid==="string")return value.id.$oid;
- return "";
-};
-
-const getName=value=>{
- if(!value)return "";
- if(typeof value==="string")return value;
- return value.name||value.title||value.label||"";
-};
-
-const getRecipeCategory=recipe=>getName(recipe?.category)||"Uncategorized";
-const getIngredientCategory=line=>getName(line?.ingredient?.category)||getName(line?.ingredient?.ingredientCategory)||"";
-
-const buildRecipeDashboardData=({recipes=[],categories=[],recipeCostings=[]})=>{
- const recipeById=new Map(recipes.map(recipe=>[getId(recipe),recipe]));
- const activeRecipes=recipes.filter(recipe=>recipe?.isActive!==false);
- const reviewRecipes=recipes.filter(recipe=>recipe?.isActive===false);
- const recentRecipes=[...recipes]
-  .sort((left,right)=>new Date(right.createdAt||0)-new Date(left.createdAt||0))
-  .slice(0,5);
-
- const recipeCategoryCosts=recipeCostings.map(costing=>{
-  const recipe=recipeById.get(getId(costing.recipe))||costing.recipe;
-  return{
-   _id:getId(costing),
-   type:"recipe",
-   category:getRecipeCategory(recipe),
-   cost:Number(costing?.totals?.totalCost||costing?.totals?.ingredientCost||0),
-   date:costing.updatedAt||costing.createdAt||recipe?.updatedAt||recipe?.createdAt
-  };
- });
-
- const ingredientCategoryCosts=recipeCostings.flatMap(costing=>
-  (Array.isArray(costing.ingredients)?costing.ingredients:[])
-   .map((line,index)=>({
-    _id:`${getId(costing)}-ingredient-${index}`,
-    type:"ingredient",
-    category:getIngredientCategory(line),
-    cost:Number(line?.totalCost||0),
-    date:costing.updatedAt||costing.createdAt
-   }))
-   .filter(item=>item.category&&item.cost>0)
- );
-
- return{
-  stats:[
-   {label:"Total Recipes",value:recipes.length},
-   {label:"Active Recipes",value:activeRecipes.length},
-   {label:"Recipes To Review",value:reviewRecipes.length},
-   {label:"Categories",value:categories.length}
-  ],
-  lowStockItems:reviewRecipes.slice(0,5).map(recipe=>({
-   _id:getId(recipe),
-   name:recipe.name,
-   quantity:"Draft",
-   unit:"",
-   category:getRecipeCategory(recipe)
-  })),
-  expiringItems:[],
-  recentItems:recentRecipes.map(recipe=>({
-   _id:getId(recipe),
-   name:recipe.name,
-   category:getRecipeCategory(recipe),
-   location:"Recipe Database"
-  })),
-  missingItems:[],
-  categoryCosts:[...recipeCategoryCosts,...ingredientCategoryCosts]
- };
-};
 
 function Dashboard(){
  const [yearFilter,setYearFilter]=useState("all");
@@ -140,13 +71,13 @@ function Dashboard(){
     setLoading(true);
     setError("");
 
-    const [recipes,categories,recipeCostings]=await Promise.all([
+    const [recipes,categories,recipeCostings,menus,vendorPrices,productCategories]=await Promise.all([
      fetchJson("/api/recipes"),
      fetchJson("/api/categories"),
-     fetchJson("/api/recipe-costings")
+     fetchJson("/api/recipe-costings"),fetchJson("/api/menus"),fetchJson("/api/vendor-ingredient-prices?isActive=true"),fetchJson("/api/product-categories")
     ]);
 
-    if(!ignore)setDashboardSource({recipes,categories,recipeCostings});
+    if(!ignore)setDashboardSource({recipes,categories,recipeCostings,menus,vendorPrices,productCategories});
    }catch(err){
     if(!ignore)setError(err.message||"Failed to load recipe dashboard data");
    }finally{
@@ -172,28 +103,8 @@ function Dashboard(){
 
  return(
   <section className="dashboard">
-   <header className="dashboard-header">
-    <div className="dashboard-header-copy">
-     <p className="dashboard-eyebrow">Recipe Management System</p>
-     <h1 className="dashboard-title">Recipe Operations Dashboard</h1>
-     <p className="dashboard-text">
-      Organize recipes, ingredients, categories, costing, prep flow, and kitchen planning in one structured recipe management system.
-     </p>
-     {loading?<p className="dashboard-text">Loading recipe dashboard data...</p>:null}
-    </div>
+   <DashboardHeader loading={loading} recipeCount={dashboardSource.recipes.length} costedCount={costingOverview(dashboardSource.recipes,dashboardSource.recipeCostings).costed}/>
 
-    <div className="dashboard-header-panel">
-     <div className="dashboard-header-panel-icon">
-      <ChefHat size={26} strokeWidth={2.1}/>
-     </div>
-
-     <div className="dashboard-header-panel-copy">
-      <p className="dashboard-header-panel-label">Business Overview</p>
-      <h3 className="dashboard-header-panel-title">Manage recipes, costing, and prep planning from one dashboard.</h3>
-      <p className="dashboard-header-panel-text">Track recipe records, category coverage, costing activity, review queues, and kitchen planning workflows.</p>
-     </div>
-    </div>
-   </header>
 
    {error?<DashboardError message={error}/>:null}
 

@@ -8,6 +8,7 @@ const VendorCategorySchema=new Schema({
  name:{type:String,required:true,trim:true,unique:true,index:true},
  slug:{type:String,trim:true,unique:true,sparse:true,index:true},
  code:{type:String,trim:true,uppercase:true,unique:true,sparse:true},
+ parent:{type:Schema.Types.ObjectId,ref:"VendorCategory",default:null,index:true},
  description:{type:String,trim:true,default:""},
  isActive:{type:Boolean,default:true}
 },{

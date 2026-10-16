@@ -1,7 +1,8 @@
 // src/pages/Orders.jsx
 import {useState,useEffect,useMemo} from "react";
-import {Container,Row,Col,Card,Form,Button,Table,Badge,Alert} from "react-bootstrap";
+import {Row,Col,Card,Form,Button,Table,Badge,Alert} from "react-bootstrap";
 import "../../styles/orders.css";
+import {calendarDate} from "../../utils/calendarDate.js";
 
 function Orders(){
 
@@ -94,13 +95,7 @@ function Orders(){
 
  const getEventDate=event=>{
   const source=typeof event==="object"?event:events.find(item=>item._id===event);
-  if(!source?.eventDate) return "-";
-  const date=new Date(source.eventDate);
-  if(Number.isNaN(date.getTime())) return "-";
-  const year=date.getFullYear();
-  const month=String(date.getMonth()+1).padStart(2,"0");
-  const day=String(date.getDate()).padStart(2,"0");
-  return `${year}-${month}-${day}`;
+  return calendarDate(source?.eventDate)||"-";
  };
 
  useEffect(()=>{
@@ -109,6 +104,7 @@ function Orders(){
     setLoading(true);
     const res=await fetch("/api/orders");
     const data=await res.json();
+    if(!res.ok)throw new Error(data.message||"Failed to load orders.");
     const orderList=Array.isArray(data?.orders)?data.orders:Array.isArray(data?.data)?data.data:Array.isArray(data)?data:[];
     setOrders(orderList);
    }catch(err){
@@ -304,15 +300,11 @@ function Orders(){
 
  return(
   <section className="orders-page py-4">
-   <Container fluid="lg">
+   <div className="px-3 px-lg-4">
 
     <Row className="g-4 mb-4">
      <Col lg={8}>
-      <div>
-       <p className="text-muted mb-2">Order Management</p>
-       <h1 className="mb-2">Orders</h1>
-       <p className="text-muted mb-0">Create, review, and track catering orders connected to clients and events.</p>
-      </div>
+      <h1 className="h2 fw-bold mb-0">Orders</h1>
      </Col>
 
      <Col lg={4}>
@@ -760,7 +752,7 @@ function Orders(){
      </Col>
     </Row>
 
-   </Container>
+   </div>
   </section>
  );
 }

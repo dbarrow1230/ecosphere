@@ -1,9 +1,18 @@
+import ProductCategory from "../../models/recipes/ProductCategoryModel.js";
 // backend/controllers/recipes/VendorIngredientPriceController.js
 import VendorIngredientPrice from "../../models/recipes/VendorIngredientPriceModel.js";
 import {pricePayload,updateVendorPrice} from "../../../../shared/culinary/vendorHistory.js";
 
+async function validateCategoryPath(body){
+ if(!Object.hasOwn(body,"productCategory")&&!Object.hasOwn(body,"productCategoryPath"))return;
+ if(!body.productCategory){body.productCategoryPath=[];return;}
+ if(!body.productCategoryPath?.length)return;
+ const path=body.productCategoryPath.map(value=>String(value?._id||value));if(path.at(-1)!==String(body.productCategory?._id||body.productCategory)||new Set(path).size!==path.length)throw Error("Choose a valid category path.");
+ let parent="";for(const id of path){const category=await ProductCategory.findById(id);const links=category?.parents?.length?category.parents:[category?.parent||null];if(!category||category.isActive===false||!links.some(value=>String(value||"")===parent))throw Error("Category links changed. Select the category path again.");parent=id;}
+}
 export const createVendorIngredientPrice=async(req,res)=>{
  try{
+  await validateCategoryPath(req.body);
   if(!req.body.business||!req.body.vendor||!req.body.ingredient)return res.status(400).json({message:"Business, vendor, and ingredient are required"});
   const vendorIngredientPrice=await VendorIngredientPrice.create(pricePayload(req.body));
   return res.status(201).json({message:"Vendor ingredient price created successfully",vendorIngredientPrice});
@@ -49,6 +58,7 @@ export const getVendorIngredientPriceById=async(req,res)=>{
 
 export const updateVendorIngredientPrice=async(req,res)=>{
  try{
+  await validateCategoryPath(req.body);
   if(!req.body.business||!req.body.vendor||!req.body.ingredient)return res.status(400).json({message:"Business, vendor, and ingredient are required"});
   const vendorIngredientPrice=await updateVendorPrice(VendorIngredientPrice,req.params.id,req.body);
   if(vendorIngredientPrice)await vendorIngredientPrice.populate("business vendor ingredient imperialUnit metricUnit");

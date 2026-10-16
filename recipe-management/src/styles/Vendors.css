@@ -67,6 +67,13 @@
  font-weight:700;
 }
 
+.vendors-list-item:hover,
+.vendors-list-item:focus-visible{
+ background:var(--primary);
+ border-color:var(--primary);
+ color:var(--text-inverse);
+}
+
 .vendors-list-item.active{
  border-color:var(--primary);
  background:var(--primary);
@@ -120,7 +127,7 @@
 .vendor-products-table{max-height:28rem;overflow:auto;}
 @media(max-width:992px){.vendors-products{grid-column:1 / -1;}.vendors-list{grid-row:auto;}}
 
-.vendors-layout{grid-template-columns:15rem minmax(0,1fr) minmax(0,1fr);gap:1rem;}
+.vendors-layout{grid-template-columns:18rem minmax(0,1fr);gap:1rem;}
 .vendors-col-header{padding:.75rem 1rem;}
 .vendors-col-body{padding:1rem;gap:.6rem;}
 .vendors-list-item{padding:.55rem .75rem;font-size:.9rem;}
@@ -135,3 +142,79 @@
 .vendor-products-table tbody tr{cursor:pointer;transition:background-color .15s;}
 .vendor-products-table tbody tr:hover>td,.vendor-products-table tbody tr:focus-visible>td{background:var(--surface-2);box-shadow:inset 0 0 0 9999px color-mix(in srgb,var(--primary) 12%,transparent);}
 .vendor-products-table tbody tr.is-selected>td{background:color-mix(in srgb,var(--primary) 20%,var(--surface));}
+
+.vendor-details-columns{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1.5rem;align-items:start;}
+.vendors-list-tools{padding:.75rem 1rem 0;display:grid;gap:.6rem;}
+.vendors-alphabet{display:flex;flex-wrap:wrap;gap:.2rem;}
+.vendors-alphabet button{font-size:.75rem;padding:.15rem .3rem;min-width:1.5rem;background:transparent;color:var(--primary);border:1px solid transparent;}
+.vendors-alphabet button[aria-pressed="true"]{background:var(--primary);color:var(--text-inverse);}
+.vendors-alphabet button:disabled{color:var(--text-muted);opacity:.45;}
+@media(max-width:767.98px){.vendor-details-columns{grid-template-columns:1fr;gap:.75rem;}}
+.vendor-details-header{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1.5rem;}
+.vendor-price-history-summary{display:flex;align-items:center;flex-wrap:wrap;gap:.75rem;margin-bottom:.75rem;color:var(--text);}
+.vendor-price-history-chart{display:block;width:100%;max-height:18rem;color:var(--text);}
+.vendor-price-history-chart line{stroke:var(--border);}
+.vendor-price-history-chart polyline{fill:none;stroke:var(--primary);stroke-width:3;}
+.vendor-price-history-chart circle{fill:var(--primary);}
+.vendor-price-history-chart text{fill:currentColor;font-size:12px;}
+.vendor-price-history-filters{display:flex;flex-wrap:wrap;align-items:end;gap:.75rem;margin-bottom:1rem;}
+.vendor-price-history-filters .form-label{display:block;width:auto;margin:0 0 .25rem;padding:0;}
+.vendor-price-history-filters .form-control,.vendor-price-history-filters .form-select{width:auto;margin:0;}
+.price-change-negative{color:var(--success)!important;}
+.price-change-positive{color:var(--danger,var(--accent-2))!important;}
+.vendor-price-dashboard{background:var(--surface);}
+.vendor-price-metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(10rem,1fr));gap:.75rem;margin-bottom:1rem;}
+.vendor-price-metrics>div{padding:.85rem 1rem;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--bg);box-shadow:var(--shadow-sm);}
+.vendor-price-metrics span,.vendor-price-impact-results span{display:block;color:var(--text-soft);font-size:.85rem;margin-bottom:.35rem;}
+.vendor-price-metrics strong,.vendor-price-impact-results strong{display:block;font-size:1.25rem;}
+.vendor-price-impact{padding:1rem;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--surface);box-shadow:var(--shadow-sm);margin-bottom:1.5rem;}
+.vendor-price-impact h5{margin:0 0 1rem;font-size:1rem;}
+.vendor-price-impact-inputs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.75rem;}
+.vendor-price-impact-inputs .form-label{display:block;width:auto;padding:0;margin:0 0 .35rem;font-size:.85rem;}
+.vendor-price-impact-inputs .form-control{width:100%;margin:0;border-radius:var(--radius-lg);}
+.vendor-price-impact-results{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;border-top:1px solid var(--border);padding-top:1rem;margin-top:1rem;}
+.vendor-price-trend-heading{font-size:1rem;margin-bottom:.75rem;}
+.vendor-price-history-chart{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-md);margin-bottom:1rem;}
+.vendor-price-chart-area{fill:color-mix(in srgb,var(--primary) 12%,transparent);}
+@media(max-width:575.98px){.vendor-price-metrics,.vendor-price-impact-inputs{grid-template-columns:1fr;}}
+.vendor-product-chart-hint{display:block;margin-top:.15rem;color:var(--text-muted);font-size:.75rem;line-height:1.3;}
+.vendor-price-update-fields{display:grid;gap:.75rem;}
+.vendor-price-update-fields .form-group{display:grid;grid-template-columns:8rem minmax(0,1fr);align-items:center;gap:.75rem;}
+.vendor-price-update-fields>div{display:grid;grid-template-columns:8rem minmax(0,1fr);align-items:center;gap:.75rem;}
+.vendor-price-update-fields .form-label{width:auto;margin:0;padding:0;white-space:nowrap;}
+.vendor-price-update-fields .form-control{margin:0;width:100%;}
+.vendor-products-header{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:.75rem;}
+.vendor-products-header>.btn{justify-self:end;}
+.vendors-col-header .vendor-products-type{
+ text-align:center;
+ color:var(--accent-2);
+ font-family:var(--font-body);
+ font-size:1.4rem;
+ font-weight:800;
+ line-height:1.2;
+}
+.vendor-products-type small{
+ display:block;
+ margin-bottom:.2rem;
+ color:var(--text);
+ font-size:.65rem;
+ font-weight:600;
+ letter-spacing:.12em;
+ text-transform:uppercase;
+}
+.vendor-product-groups{display:grid;gap:.6rem;}
+.vendor-product-group{border:1px solid var(--border);border-radius:var(--radius-md);overflow:hidden;}
+.vendor-product-group>summary{display:flex;align-items:center;gap:.65rem;padding:.65rem .85rem;cursor:pointer;background:var(--bg-alt);color:var(--primary);font-weight:700;list-style:none;}
+.vendor-product-group>summary::before{content:'▸';font-size:1rem;}
+.vendor-product-group[open]>summary::before{content:'▾';}
+.vendor-product-group>summary span{font-size:.8rem;font-weight:500;color:var(--text);}
+.vendor-product-group>summary:focus-visible{outline:2px solid var(--primary);outline-offset:-2px;}
+.vendor-product-group .table{margin-bottom:0;}
+.vendor-grouped-table thead{position:sticky;top:0;z-index:1;}
+.vendor-product-group-heading>td{padding:0;}
+.vendor-product-group-heading button{display:flex;align-items:center;gap:.65rem;width:100%;justify-content:flex-start;text-align:left;padding:.65rem .85rem;background:var(--bg-alt);color:var(--primary);border:0;border-radius:0;}
+.vendor-product-group-heading button:hover{background:var(--surface-2);color:var(--primary);}
+.vendor-product-group-heading button>span:last-child{font-weight:500;font-size:.8rem;}
+.vendor-current-price-label{color:var(--success);font-weight:600;}
+.vendor-products-search{display:flex;align-items:center;gap:.5rem;flex:0 1 31rem;min-width:0;}
+.vendor-products-search .form-control{flex:1;min-width:0;}

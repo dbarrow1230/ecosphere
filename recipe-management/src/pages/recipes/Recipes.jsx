@@ -1,6 +1,6 @@
 import {isNonIngredientLine} from "@shared/culinary/ingredientRows.js";
 import {onRecipeCostingUpdated} from "../../utils/recipeCostingUpdates.js";
-import {Link} from "react-router-dom";
+import {Link,useLocation} from "react-router-dom";
 
 import CulinaryWorkspace from "@shared/culinary/CulinaryWorkspace.jsx";
 import Alert from "../../components/AppAlert.jsx";
@@ -24,6 +24,8 @@ const imageUrl=(filename,version="")=>{
 };
 
 export default function Recipes(){
+ const location=useLocation();
+ const requestedRecipeId=new URLSearchParams(location.search).get("recipe")||location.state?.recipeId||"";
  const [recipes,setRecipes]=useState([]);
  const [lookups,setLookups]=useState(emptyLookups);
  const [selectedId,setSelectedId]=useState("");
@@ -75,7 +77,7 @@ export default function Recipes(){
   });
  };
 
- useEffect(()=>{load().catch(err=>setError(err.message)).finally(()=>setLoading(false));},[]);
+ useEffect(()=>{load(requestedRecipeId).catch(err=>setError(err.message)).finally(()=>setLoading(false));},[requestedRecipeId]);
 
  useEffect(()=>onRecipeCostingUpdated(()=>{load(selectedId).catch(err=>setError(err.message));}),[selectedId]);
 
@@ -216,7 +218,7 @@ export default function Recipes(){
     </aside>
 
     <main className="recipes-detail-panel">
-     {!selected?<div className="recipes-empty recipes-empty-detail">Select a recipe to view its details.</div>:<RecipeDetailView recipe={selected} costReviewAction={<Button variant="outline-primary" size="sm" as={Link} to={`/recipe-costings?recipe=${encodeURIComponent(selectedId)}`}>Cost Recipe</Button>} allergenReviewAction={<CulinaryWorkspace popup review="allergens" triggerLabel="Review Allergens" triggerSize="sm" business={getObjectId(selected.business)||currentBusinessId} recipe={selectedId} recipeRecord={selected} recipeLookups={lookups}/>} imageUrl={imageUrl} linkedRecipes={recipes.filter(item=>item._id!==selected._id&&getObjectId(item.parentRecipe)===(getObjectId(selected.parentRecipe)||selected._id))}/>}
+     {!selected?<div className="recipes-empty recipes-empty-detail">Select a recipe to view its details.</div>:<RecipeDetailView recipe={selected} costReviewAction={<Button variant="outline-primary" size="sm" as={Link} to={`/recipe-costings?recipe=${encodeURIComponent(selectedId)}`} state={{returnRecipeId:selectedId}}>Cost Recipe</Button>} allergenReviewAction={<CulinaryWorkspace popup review="allergens" triggerLabel="Review Allergens" triggerSize="sm" business={getObjectId(selected.business)||currentBusinessId} recipe={selectedId} recipeRecord={selected} recipeLookups={lookups}/>} imageUrl={imageUrl} linkedRecipes={recipes.filter(item=>item._id!==selected._id&&getObjectId(item.parentRecipe)===(getObjectId(selected.parentRecipe)||selected._id))}/>}
     </main>
    </div>
 

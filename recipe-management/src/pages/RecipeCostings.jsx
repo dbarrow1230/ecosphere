@@ -1,10 +1,12 @@
+import {ingredientSearchText,matchesVendorProduct} from "../utils/vendorProductSearch.js";
+import BusinessTaxLabel from "../components/BusinessTaxLabel.jsx";
 import {isNonIngredientLine,asLabelLine,rowName} from "@shared/culinary/ingredientRows.js";
-import {Link} from "react-router-dom";
+import {Link,useLocation} from "react-router-dom";
 import {notifyRecipeCostingUpdated} from "../utils/recipeCostingUpdates.js";
 import CulinaryWorkspace from "@shared/culinary/CulinaryWorkspace.jsx";
 import {costLine} from "@shared/culinary/pricing.js";
 import {useEffect,useMemo,useRef,useState} from "react";
-import {Alert,Button,Form,Spinner,Table} from "react-bootstrap";
+import {Alert,Button,Form,Spinner,Table,Modal} from "react-bootstrap";
 import SortedSelect from "../components/SortedSelect.jsx";
 import VendorIngredientPriceForm from "./forms/recipes/CostingVendorIngredientForm.jsx";
 import {ingredientIdentity} from "../utils/ingredientIdentity.js";
@@ -14,7 +16,7 @@ const idOf=value=>typeof value==="object"?(value?._id||""):value||"";
 const labelOf=value=>typeof value==="object"
  ?(value?.name||value?.legalName||value?.ingredientName||value?.displayName||value?.symbol||value?._id||"—")
  :(value||"—");
-const rowsOf=data=>Array.isArray(data)?data:(data?.data||data?.businesses||data?.recipes||data?.ingredients||[]);
+const rowsOf=data=>Array.isArray(data)?data:(data?.data||data?.vendors||data?.businesses||data?.recipes||data?.ingredients||[]);
 const number=value=>Number.isFinite(Number(value))?Number(value):0;
 const money=value=>number(value).toFixed(2);
 
@@ -340,6 +342,8 @@ const savedLineToCostLine=line=>isNonIngredientLine(line)?asLabelLine(line):({
 });
 
 export default function RecipeCostings(){
+ const location=useLocation();
+ const returnRecipeId=useRef(location.state?.returnRecipeId||new URLSearchParams(location.search).get("recipe")||"").current;
  const [costings,setCostings]=useState([]);
  const [businesses,setBusinesses]=useState([]);
  const [recipes,setRecipes]=useState([]);
@@ -352,8 +356,10 @@ export default function RecipeCostings(){
  const [saving,setSaving]=useState(false);
  const [error,setError]=useState("");
  const [vendorPriceLine,setVendorPriceLine]=useState(null);
+ const [vendorProductPicker,setVendorProductPicker]=useState(null);
  const initialRecipeHandled=useRef(false);
  const [currentBusiness,setCurrentBusiness]=useState(null);
+ const [vendors,setVendors]=useState([]);
 
  const ingredientRecordOf=value=>{
   const ingredientId=idOf(value);
@@ -376,7 +382,7 @@ export default function RecipeCostings(){
     fetch("/api/businesses"),
     fetch("/api/recipes"),
     fetch("/api/ingredients"),
-    fetch("/api/vendor-ingredient-prices?isActive=true"),fetch("/api/app/current-business/recipe-management")
+    fetch("/api/vendor-ingredient-prices?isActive=true"),fetch("/api/app/current-business/recipe-management"),fetch("/api/vendors")
    ]);
 
    const data=await Promise.all(responses.map(async response=>{
@@ -409,6 +415,7 @@ export default function RecipeCostings(){
    setRecipes([...rowsOf(data[2])].sort(byName));
    setIngredients(loadedIngredients);
    setVendorPrices(rowsOf(data[4]));
+   setVendors([...rowsOf(data[6])].filter(vendor=>vendor.isActive!==false).sort(byName));
 
    if(!initialRecipeHandled.current){
     initialRecipeHandled.current=true;
@@ -418,7 +425,7 @@ export default function RecipeCostings(){
 
     if(requestedRecipe){
      const existing=rowsOf(data[0]).find(row=>idOf(row.recipe)===requestedRecipeId&&idOf(row.business)===idOf(requestedRecipe.business));
-     if(existing){editCosting(existing,hydrateLoadedLine);window.history.replaceState({},document.title,window.location.pathname);return;}
+     if(existing){editCosting(existing,hydrateLoadedLine);return;}
      setEditingId("");
 
      setEditor({
@@ -789,7 +796,7 @@ export default function RecipeCostings(){
     </div>
     {mode==="list"
      ?<Button onClick={startNew}>Cost a Recipe</Button>
-     :<Button variant="outline-secondary" onClick={()=>setMode("list")} disabled={saving}>Back to Costings</Button>}
+     :returnRecipeId?<Button as={Link} variant="outline-secondary" to={`/recipes?recipe=${encodeURIComponent(returnRecipeId)}`} disabled={saving}>Back to Recipe</Button>:<Button variant="outline-secondary" onClick={()=>setMode("list")} disabled={saving}>Back to Costings</Button>}
    </header>
 
    {error?<Alert variant="danger" className="recipe-costing-alert">{error}</Alert>:null}
@@ -868,12 +875,12 @@ export default function RecipeCostings(){
               }}
               placeholder={prices.length?"Manual cost / select vendor price":"No vendor prices saved"}
              />
-             <Button type="button" size="sm" variant="outline-primary" onClick={()=>setVendorPriceLine({index,ingredient:line.ingredientRecord,row:prices.find(price=>price._id===line.vendorIngredientPrice)||prices[0]||null})}>{prices.length?"Open Vendor Price":"+ Add Vendor Price"}</Button></div>
+             <Button type="button" size="sm" variant="outline-primary" onClick={()=>{const selected=vendorPrices.find(price=>price._id===line.vendorIngredientPrice)||prices[0];setVendorProductPicker({index,vendor:idOf(selected?.vendor)||idOf(line.vendor)||"",search:ingredientSearchText(labelOf(line.ingredientRecord))});}}>Select Vendor Product</Button></div>
              
             </td>
             <td>${money(line.vendorPackCost)}</td>
             <td>
-             <Form.Control type="number" min="0" step="0.0001" value={line.unitCost} onChange={event=>updateLine(index,{unitCost:event.target.value,vendorIngredientPrice:"",vendorPackCost:0,vendorPackImperialDisplay:"",vendorPackMetricDisplay:"",conversionError:""})}/>
+             <Form.Control type="number" min="0" step="any" value={line.unitCost} onChange={event=>updateLine(index,{unitCost:event.target.value,vendorIngredientPrice:"",vendorPackCost:0,vendorPackImperialDisplay:"",vendorPackMetricDisplay:"",conversionError:""})}/>
              {line.conversionError?<small className="d-block mt-1 text-danger">{line.conversionError}</small>:null}
             </td>
             <td><strong>${money(line.totalCost)}</strong></td>
@@ -901,7 +908,7 @@ export default function RecipeCostings(){
       </div>
 
       <aside className="recipe-costing-panel costing-summary">
-       <h2>Cost Summary</h2>
+       <h2>Cost Summary</h2><p><BusinessTaxLabel business={editor.business}/></p>
        <dl>
         <div><dt>Ingredients ({actualFoodCostPercent.toFixed(1)}%)</dt><dd>${money(ingredientCost)}</dd></div>
         <div><dt>Labor ({laborCostPercent.toFixed(1)}%)</dt><dd>${money(laborCost)}</dd></div>
@@ -920,6 +927,7 @@ export default function RecipeCostings(){
     </Form>
    )}
 
+   {vendorProductPicker?<Modal show onHide={()=>setVendorProductPicker(null)} size="xl" dialogClassName="costing-product-picker" centered scrollable><Modal.Header closeButton><Modal.Title>Select Vendor Product · {labelOf(editor.ingredients[vendorProductPicker.index]?.ingredientRecord)}</Modal.Title></Modal.Header><Modal.Body><div className="costing-product-picker-controls"><Form.Group><Form.Label>Vendor</Form.Label><Form.Select value={vendorProductPicker.vendor} onChange={event=>setVendorProductPicker({...vendorProductPicker,vendor:event.target.value,search:ingredientSearchText(labelOf(editor.ingredients[vendorProductPicker.index]?.ingredientRecord))})}><option value="">Select vendor</option>{vendors.map(vendor=><option key={idOf(vendor)} value={idOf(vendor)}>{labelOf(vendor)}</option>)}</Form.Select></Form.Group><Form.Group><Form.Label>Search Products</Form.Label><Form.Control placeholder="Search this vendor’s products" disabled={!vendorProductPicker.vendor} value={vendorProductPicker.search} onChange={event=>setVendorProductPicker({...vendorProductPicker,search:event.target.value})}/></Form.Group><Button variant="outline-primary" size="sm" disabled={!vendorProductPicker.vendor||!vendorProductPicker.search} onClick={()=>setVendorProductPicker({...vendorProductPicker,search:""})}>Clear Search</Button></div>{!vendorProductPicker.vendor?<p>Select a vendor to search for this ingredient.</p>:!vendorPrices.some(price=>price.isActive!==false&&idOf(price.business)===editor.business&&idOf(price.vendor)===vendorProductPicker.vendor)?<p>No saved products for this vendor yet.</p>:null}<Table responsive size="sm"><thead><tr><th>Product</th><th>Vendor</th><th>Brand</th><th>Pack</th><th>Pack Cost</th><th/></tr></thead><tbody>{vendorPrices.filter(price=>price.isActive!==false&&idOf(price.business)===editor.business&&vendorProductPicker.vendor&&idOf(price.vendor)===vendorProductPicker.vendor&&matchesVendorProduct([labelOf(ingredientRecordOf(price.ingredient)||price.ingredient),price.brand,price.packSizeName].join(" "),vendorProductPicker.search)).map(price=><tr key={price._id}><td>{labelOf(ingredientRecordOf(price.ingredient)||price.ingredient)}</td><td>{labelOf(price.vendor)}</td><td>{price.brand||"—"}</td><td>{price.imperialDisplay||price.metricDisplay||price.packSizeName||"—"}</td><td>${money(price.packCost)}</td><td><Button size="sm" variant="outline-primary" onClick={()=>{chooseVendorPrice(vendorProductPicker.index,price._id);setVendorProductPicker(null);}}>Select</Button></td></tr>)}</tbody></Table></Modal.Body><Modal.Footer><Button variant="outline-primary" onClick={()=>setVendorProductPicker(null)}>Cancel</Button></Modal.Footer></Modal>:null}
    {vendorPriceLine?<VendorIngredientPriceForm key={vendorPriceLine.row?._id||`costing-price-${vendorPriceLine.ingredient?._id||vendorPriceLine.index}`} row={vendorPriceLine.row} business={editor.business} ingredient={vendorPriceLine.ingredient} onClose={()=>setVendorPriceLine(null)} onSave={saveVendorPrice} saving={saving}/>:null}
   </main>
  );

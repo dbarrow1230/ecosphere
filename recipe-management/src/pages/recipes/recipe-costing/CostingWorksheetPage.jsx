@@ -1,3 +1,4 @@
+import BusinessTaxLabel from "../../../components/BusinessTaxLabel.jsx";
 
 import Alert from "../../../components/AppAlert.jsx";
 import {useEffect,useMemo,useState} from "react";
@@ -48,7 +49,7 @@ export default function CostingWorksheetPage(){
   <section className="costing-sheet">
    <header className="costing-sheet-header"><h2>{definition.title}</h2><div className="costing-meta-grid"><label>Recipe<Form.Select value={selectedId} onChange={event=>setSelectedId(event.target.value)}><option value="">Select recipe</option>{recipes.map(item=><option key={item._id} value={item._id}>{item.name}</option>)}</Form.Select></label><div><span>Recipe Number</span><strong>{recipe?.recipeNumber||"-"}</strong></div><div><span>Recipe Yield</span><strong>{recipe?measure(recipe.yield||{}):"-"}</strong></div><div><span>Servings</span><strong>{recipe?.servings||"-"}</strong></div><div><span>Portion Size</span><strong>{recipe?measure(recipe.servingSize||{}):"-"}</strong></div><div><span>Date Costed</span><strong>{costing?.updatedAt?new Date(costing.updatedAt).toLocaleDateString():new Date().toLocaleDateString()}</strong></div></div></header>
    <div className="table-responsive"><table className="costing-grid"><thead><tr>{columns.map(column=><th key={column}>{column}</th>)}</tr></thead><tbody>{ingredientRows.map((item,index)=><tr key={item._id||index}>{columns.map(column=><td key={column}>{valueFor(column,item)}</td>)}</tr>)}{Array.from({length:Math.max(0,12-ingredientRows.length)},(_,index)=><tr key={`blank-${index}`}>{columns.map(column=><td key={column}>&nbsp;</td>)}</tr>)}</tbody></table></div>
-   <footer className="costing-summary"><div><span>Ingredient Cost</span><strong>{money(ingredientCost)}</strong></div><div><span>Portion Cost</span><strong>{money(portionCost)}</strong></div><div><span>Suggested Price</span><strong>{money(suggestedPrice)}</strong></div><div><span>Contribution Margin</span><strong>{money(margin)}</strong></div><div><span>Food Cost %</span><strong>{foodCostPercent.toFixed(2)}%</strong></div></footer>
+   <footer className="costing-summary"><div><BusinessTaxLabel business={id(recipe?.business)}/></div><div><span>Ingredient Cost</span><strong>{money(ingredientCost)}</strong></div><div><span>Portion Cost</span><strong>{money(portionCost)}</strong></div><div><span>Suggested Price</span><strong>{money(suggestedPrice)}</strong></div><div><span>Contribution Margin</span><strong>{money(margin)}</strong></div><div><span>Food Cost %</span><strong>{foodCostPercent.toFixed(2)}%</strong></div></footer>
   </section>
  </Container>;
 }

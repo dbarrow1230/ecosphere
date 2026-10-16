@@ -120,9 +120,9 @@ export default function VendorForm({
 
        <Col md={6}>
         <Form.Group as={Row} className="mb-3">
-         <Form.Label column md={4}>Category</Form.Label>
+         <Form.Label column md={4}>Vendor Type</Form.Label>
          <Col md={8}>
-          <SortedSelect name="vendorCategory" value={formData.vendorCategory} onChange={handleChange} options={vendorCategories} getValue={item=>item.name} getLabel={item=>item.name} placeholder="Select category"/>
+          <SortedSelect name="vendorCategory" value={formData.vendorCategory} onChange={handleChange} options={vendorCategories} getValue={item=>item.name} getLabel={item=>item.name} placeholder="Select vendor type"/>
          </Col>
         </Form.Group>
        </Col>
@@ -145,6 +145,8 @@ export default function VendorForm({
         </Form.Group>
        </Col>
 
+       <Col md={6}><Form.Group as={Row} className="mb-3"><Form.Label column md={4} htmlFor="vendor-rating">Rating (0–5)</Form.Label><Col md={8}><Form.Control id="vendor-rating" name="rating" type="number" min="0" max="5" step="0.1" value={formData.performance?.rating??""} disabled={loading} onChange={event=>setFormData(current=>({...current,performance:{...current.performance,rating:event.target.value===""?null:Number(event.target.value)}}))}/></Col></Form.Group></Col>
+       {[["onTimeRate","On Time (%)"],["fillRate","Fill Rate (%)"]].map(([key,label])=><Col md={6} key={key}><Form.Group as={Row} className="mb-3"><Form.Label column md={4} htmlFor={"vendor-"+key}>{label}</Form.Label><Col md={8}><Form.Control id={"vendor-"+key} type="number" min="0" max="100" step="0.1" value={formData.performance?.[key]??""} disabled={loading} onChange={event=>setFormData(current=>({...current,performance:{...current.performance,[key]:event.target.value===""?null:Number(event.target.value)}}))}/></Col></Form.Group></Col>)}
       </Row>
 
      </Card.Body></Card>

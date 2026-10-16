@@ -228,3 +228,12 @@
 .recipe-costing-setup .costing-recipe-field .form-select{flex:1;}
 .recipe-costing-setup .costing-yield-field .form-control{width:8rem;min-width:8rem;}
 .recipe-costing-setup .costing-yield-display-field .form-control{width:14rem;}
+
+.costing-product-picker-controls{display:flex;gap:1rem;flex-wrap:wrap;align-items:center;flex-shrink:0;margin-bottom:1rem;}
+.costing-product-picker-controls>div{display:flex;align-items:center;gap:.5rem;}
+.costing-product-picker-controls .form-label{width:auto;margin:0;white-space:nowrap;}
+
+.costing-product-picker .modal-body{display:flex;flex-direction:column;min-height:0;overflow:hidden;}
+.costing-product-picker .table-responsive{min-height:0;overflow:auto;}
+.costing-product-picker thead{position:sticky;top:0;z-index:1;}
+.costing-product-picker td:first-child{white-space:nowrap;}

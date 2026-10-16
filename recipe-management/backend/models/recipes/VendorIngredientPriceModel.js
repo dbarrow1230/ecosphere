@@ -9,7 +9,8 @@ const VendorIngredientPriceSchema=new Schema({
  vendor:{type:Schema.Types.ObjectId,ref:"Vendor",required:true,index:true},
  ingredient:{type:Schema.Types.ObjectId,ref:"Ingredient",required:true,index:true},
 
- vendorCategory:{type:Schema.Types.ObjectId,ref:"VendorCategory",default:null},
+ productCategoryPath:[{type:Schema.Types.ObjectId,ref:"ProductCategory"}],
+ productCategory:{type:Schema.Types.ObjectId,ref:"ProductCategory",default:null},
  brand:{type:String,trim:true,default:""},
  packSizeName:{type:String,trim:true,default:""},
 
@@ -33,6 +34,7 @@ const VendorIngredientPriceSchema=new Schema({
 
  effectiveDate:{type:Date,default:Date.now},
  priceHistory:[{
+  imperialDisplay:String,metricDisplay:String,packSizeName:String,imperialQuantity:Number,metricQuantity:Number,imperialUnit:Schema.Types.ObjectId,metricUnit:Schema.Types.ObjectId,
   packCost:{type:Number,required:true,min:0},
   unitCost:{type:Number,default:0,min:0},
   effectiveDate:{type:Date,default:Date.now},

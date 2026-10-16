@@ -1,6 +1,6 @@
 // src/pages/Inventory.jsx
 import {useState,useEffect,useMemo} from "react";
-import {Container,Row,Col,Card,Form,Button,Table,Badge,Alert} from "react-bootstrap";
+import {Row,Col,Card,Form,Button,Table,Badge,Alert} from "react-bootstrap";
 
 function Inventory(){
 
@@ -62,6 +62,7 @@ function Inventory(){
     setLoading(true);
     const res=await fetch("/api/inventory");
     const data=await res.json();
+    if(!res.ok)throw new Error(data.message||"Failed to load inventory.");
     const inventoryList=Array.isArray(data?.inventory)?data.inventory:Array.isArray(data?.items)?data.items:Array.isArray(data?.data)?data.data:Array.isArray(data)?data:[];
     setItems(inventoryList);
    }catch(err){
@@ -224,17 +225,11 @@ function Inventory(){
 
  return(
   <section className="inventory-page py-4">
-   <Container fluid="lg">
+   <div className="px-3 px-lg-4">
 
     <Row className="g-4 mb-4">
      <Col lg={8}>
-      <div>
-       <p className="text-muted mb-2">Kitchen Inventory</p>
-       <h1 className="mb-2">Inventory</h1>
-       <p className="text-muted mb-0">
-        Track ingredients, supplies, and kitchen stock used for catering events.
-       </p>
-      </div>
+      <h1 className="h2 fw-bold mb-0">Inventory</h1>
      </Col>
 
      <Col lg={4}>
@@ -667,7 +662,7 @@ function Inventory(){
 
     </Row>
 
-   </Container>
+   </div>
   </section>
  );
 }

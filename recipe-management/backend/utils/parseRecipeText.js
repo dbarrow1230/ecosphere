@@ -1,6 +1,8 @@
-const parserVersion="recipe-text-v1";
+const parserVersion="recipe-text-v2";
+const fractionValues={"¼":"1/4","½":"1/2","¾":"3/4","⅛":"1/8","⅜":"3/8","⅝":"5/8","⅞":"7/8","⅓":"1/3","⅔":"2/3"};
+const normalizeFractions=value=>String(value||"").replace(/(\d)([¼½¾⅛⅜⅝⅞⅓⅔])/g,"$1 $2").replace(/[¼½¾⅛⅜⅝⅞⅓⅔]/g,character=>fractionValues[character]);
 
-const cleanLine=value=>String(value||"")
+const cleanLine=value=>normalizeFractions(value)
  .replace(/^[^\w#$~]+/u,"")
  .replace(/\s+/g," ")
  .trim();
@@ -12,9 +14,8 @@ const normalizeHeader=value=>cleanLine(value)
  .trim();
 
 const getValueAfterLabel=(text,label)=>{
- const escaped=label.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
- const match=String(text||"").match(new RegExp(`^${escaped}(?:\\s*\\([^)]*\\))?\\s*:?[ \\t]*(.+)$`,"im"));
- return match?.[1]?.trim()||"";
+ const pattern=new RegExp('^'+label+'(?:[ \t]*\\([^)]*\\))?[ \t]*:?[ \t]*(.+)$','i');
+ for(const line of String(text||'').split(/\r?\n/)){const match=cleanLine(line).match(pattern);if(match)return match[1].trim();}return '';
 };
 
 const getBlock=(text,startLabels,endLabels=[])=>{
@@ -40,7 +41,7 @@ const splitLines=block=>String(block||"")
 const splitListItems=block=>splitLines(block)
  .flatMap(line=>line.split(/(?<=[.!?])\s+(?=[A-Z0-9])/))
  .map(cleanLine)
- .filter(Boolean);
+ .filter(value=>value&&!/^\d+$/.test(value));
 
 const parseQuantity=value=>{
  const display=cleanLine(value);
@@ -155,17 +156,17 @@ const parseNutrition=block=>{
 const parseInstructions=block=>splitLines(block).map((instruction,index)=>({
  stepNumber:index+1,
  instruction,
- ccpRefs:[...instruction.matchAll(/\b(CCP\d+)\b/gi)].map(match=>match[1].toUpperCase())
+ ccpRefs:[...instruction.matchAll(/\b(CCP-?\d+)\b/gi)].map(match=>match[1].toUpperCase())
 }));
 
 const parseYieldLike=value=>{
- const clean=cleanLine(value);
+ const clean=cleanLine(value).replace(/^(?:approximately|about|approx\.?)\s+/i,"").replace(/[,;]?\s*\d+(?:\.\d+)?\s+servings?\b.*$/i,"").trim();
  const candidates=[clean.replace(/\([^)]*\)/g,"").trim(),...[...clean.matchAll(/\(([^)]*)\)/g)].map(match=>match[1])]
-  .flatMap(part=>part.split(/\s*\/\s*/))
+  .flatMap(part=>part.split(/\s+\/\s+/))
   .map(part=>part.trim())
   .filter(Boolean);
  const metricPattern=/(?:^|\s)(?:mg|g|kg|ml|l)(?:\s|$)/i;
- const imperialPattern=/(?:^|\s)(?:oz|ounce|ounces|lb|lbs|pound|pounds|cup|cups|tsp|tbsp|fl oz|pint|quart|gallon)(?:\s|$)/i;
+ const imperialPattern=/(?:^|\s)(?:oz|ounce|ounces|lb|lbs|pound|pounds|cup|cups|tsp|tbsp|tablespoons?|teaspoons?|fl oz|pint|quart|gallon)(?:\s|$)/i;
  const metricDisplay=candidates.find(part=>metricPattern.test(part))||"";
  const imperialDisplay=candidates.find(part=>imperialPattern.test(part))||"";
  return{
@@ -179,13 +180,14 @@ const parseYieldLike=value=>{
   metricUnitName:parseUnitName(metricDisplay)
  };
 };
-const parseServings=value=>Number((String(value||"").match(/\d+(?:\.\d+)?/)||[])[0]||0)||null;
+const parseServings=value=>{const text=String(value||"");const match=text.match(/(\d+(?:\.\d+)?)\s+servings?\b/i)||text.match(/^\s*(\d+(?:\.\d+)?)\s*$/);return match?Number(match[1]):null;};
 const parseFlavorItems=value=>String(value||"").split(/\s*,\s*|\r?\n/).map(cleanLine).filter(Boolean);
 
 const parseAllergens=text=>{
  const source=String(text||"");
  const sectionMatch=source.match(/(?:⚠️?\s*)?Allergen Disclaimers?\s*:?[\s\S]*$/i);
- const allergenBlock=sectionMatch?.[0]||source;
+ if(!sectionMatch)return [];
+ const allergenBlock=sectionMatch[0];
  const canonical={egg:"Eggs",eggs:"Eggs",peanut:"Peanuts",peanuts:"Peanuts",milk:"Milk",wheat:"Wheat",gluten:"Gluten",soy:"Soybeans",soybean:"Soybeans",soybeans:"Soybeans",sesame:"Sesame",fish:"Fish",mustard:"Mustard",celery:"Celery",lupin:"Lupin",sulfite:"Sulfites",sulfites:"Sulfites"};
  return [...allergenBlock.matchAll(/(?:🥛|🥚|🌾|🥜|🥜|🫘|🐟|🦐|🦀|🥚|🌱|🧂)?\s*([A-Za-z][A-Za-z -]*?)\s*:(?:[^\r\n]*)/gu)]
   .map(match=>cleanLine(match[1]))
@@ -244,7 +246,7 @@ export const parseRecipeText=text=>{
    dietaryConsiderations:dietaryConsiderationNames
   },
   dietaryConsiderationNames,
-  yield:parseYieldLike(/\bservings?\b/i.test(getValueAfterLabel(sourceText,"Yield"))?"":getValueAfterLabel(sourceText,"Yield")),
+  yield:parseYieldLike(getValueAfterLabel(sourceText,"Yield")),
   servings:parseServings(getValueAfterLabel(sourceText,"Servings")||getValueAfterLabel(sourceText,"Yield")),
   servingSize:parseYieldLike(getValueAfterLabel(sourceText,"Serving Size")),
   servingSizeDescription:getValueAfterLabel(sourceText,"Serving Size"),
@@ -252,7 +254,8 @@ export const parseRecipeText=text=>{
    prepTime:getValueAfterLabel(sourceText,"Prep Time"),
    cookTime:getValueAfterLabel(sourceText,"Cook Time"),
    chillTime:getValueAfterLabel(sourceText,"Chill Time"),
-   restTime:getValueAfterLabel(sourceText,"Rest Time")
+   restTime:getValueAfterLabel(sourceText,"Rest Time"),
+   totalTime:getValueAfterLabel(sourceText,"Total Time")
   },
   flavorProfile:{
    taste:parseFlavorItems(getValueAfterLabel(flavorBlock,"Taste")),

@@ -98,7 +98,7 @@ function CateringContractForm({readOnly=false}){
   <section className="operation-form-page">
    <Form onSubmit={handleSubmit}>
     {message.text&&<Alert variant={message.type}>{message.text}</Alert>}
-    <header className="operation-form-header"><div><p>Contract Operations</p><h1>{readOnly?"Contract Details":id?"Edit Catering Contract":"Create Catering Contract"}</h1><span>Scope, pricing, deadlines, terms, acceptance, and signatures.</span></div><Button type="button" variant="outline-secondary" onClick={()=>navigate("/contracts")}>Back to Contracts</Button></header>
+    <header className="operation-form-header"><div><h1 className="h2 fw-bold mb-0">{readOnly?"Contract Details":id?"Edit Catering Contract":"Create Catering Contract"}</h1></div><Button type="button" variant="outline-secondary" onClick={()=>navigate("/contracts")}>Back to Contracts</Button></header>
     <fieldset disabled={readOnly}>
     <Tabs defaultActiveKey="contract" className="mb-4">
      <Tab eventKey="contract" title={<><FileText size={16} className="me-2"/>Contract</>}>

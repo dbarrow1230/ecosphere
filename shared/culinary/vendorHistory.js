@@ -1,16 +1,23 @@
+import {vendorUnitCost} from "./vendorUnitCost.js";
 import {isNonIngredientLine,asLabelLine} from "./ingredientRows.js";
 import {costLine,idOf,measurements,priceChange} from "./pricing.js";
 const priceFields=["packCost","unitCost","effectiveDate","imperialQuantity","imperialUnit","imperialDisplay","metricQuantity","metricUnit","metricDisplay","brand","sku","itemCode","packSizeName"];
-const editableFields=["business","vendor","ingredient",...priceFields,"notes","isPreferred","isActive","availablePacks","vendorCategory"];
+const editableFields=["business","vendor","ingredient",...priceFields,"notes","isPreferred","isActive","availablePacks","productCategory","productCategoryPath"];
 export const priceSnapshot=value=>Object.fromEntries(["business","vendor","ingredient",...priceFields].map(key=>[key,value[key]??null]));
-export const pricePayload=body=>Object.fromEntries(editableFields.filter(key=>Object.hasOwn(body,key)).map(key=>[key,key.endsWith("Unit")?body[key]||null:body[key]]));
+export const pricePayload=body=>{const payload=Object.fromEntries(editableFields.filter(key=>Object.hasOwn(body,key)).map(key=>[key,key.endsWith("Unit")||key==="productCategory"?body[key]||null:body[key]]));const calculated=vendorUnitCost(payload);if(calculated&&body.unitCostOverride!==true)payload.unitCost=calculated.cost;return payload;};
 export const buildPriceUpdate=(existing,body)=>{
  const payload=pricePayload(body);
+ if(body.unitCostOverride!==true&&["packCost","imperialQuantity","imperialUnit","metricQuantity","metricUnit"].some(key=>Object.hasOwn(body,key))){const calculated=vendorUnitCost({...existing,...payload});if(calculated)payload.unitCost=calculated.cost;}
  const ingredientChanged=Object.hasOwn(payload,"ingredient")&&idOf(payload.ingredient)!==idOf(existing.ingredient);
  if(ingredientChanged&&body.reassignIngredient!==true)throw new Error("Select an existing ingredient explicitly to correct this offering link.");
  for(const key of ["business","vendor"]){if(Object.hasOwn(payload,key)&&idOf(payload[key])!==idOf(existing[key]))throw new Error("Create a separate offering to change its business, vendor, or ingredient. Existing product history must retain its identity.");}
  const changed=ingredientChanged||priceFields.some(key=>Object.hasOwn(payload,key)&&(key==="effectiveDate"?new Date(payload[key]).getTime()!==new Date(existing[key]).getTime():String(payload[key]??"")!==String(existing[key]??"")));
  if(changed)payload.effectiveDate=body.effectiveDate||new Date();
+ if(changed&&!ingredientChanged&&new Date(payload.effectiveDate)<new Date(existing.effectiveDate)){
+  const historical={...priceSnapshot({...existing,...payload}),recordedAt:new Date()};
+  for(const key of priceFields)delete payload[key];
+  return {$set:payload,$inc:{__v:1},$push:{priceHistory:historical}};
+ }
  const update={$set:payload,$inc:{__v:1}};
  if(changed)update.$push={priceHistory:{...priceSnapshot(existing),recordedAt:new Date()}};
  if(ingredientChanged){update.$set.allergenInformation=null;if(existing.allergenInformation)update.$push.allergenHistory={...existing.allergenInformation,ingredient:existing.ingredient,recordedAt:new Date()};}

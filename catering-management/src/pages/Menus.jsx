@@ -1,5 +1,4 @@
-import CulinaryWorkspace from "@shared/culinary/CulinaryWorkspace.jsx";
-import {Container,Row,Col,Card} from "react-bootstrap";
+import {Row,Col,Card} from "react-bootstrap";
 
 function Menus(){
 
@@ -42,8 +41,7 @@ function Menus(){
  ];
 
  return(
-  <Container className="py-5">
-   <CulinaryWorkspace review="menus" menus catering/>
+  <div className="px-3 px-lg-4 py-4">
 
    <Row className="text-center mb-5">
     <Col>
@@ -82,7 +80,7 @@ function Menus(){
 
    </Row>
 
-  </Container>
+  </div>
  );
 
 }

@@ -143,10 +143,20 @@ export const forgotPassword=async(req,res)=>{
  }
 };
 
+export const validateResetToken=async(req,res)=>{
+ try{
+  const hashedToken=crypto.createHash("sha256").update(req.params.token).digest("hex");
+  const user=await User.findOne({resetPasswordToken:hashedToken,resetPasswordExpires:{$gt:new Date()}}).select("_id");
+  if(!user)return res.status(400).json({success:false,message:"Invalid or expired reset token"});
+  return res.json({success:true});
+ }catch{return res.status(500).json({success:false,message:"Reset token validation failed"});}
+};
+
 export const resetPassword=async(req,res)=>{
  try
  {
-  const {token,password}=req.body;
+  const {password}=req.body;
+  const token=req.params?.token||req.body.token;
 
   if(!token||!password)
   {

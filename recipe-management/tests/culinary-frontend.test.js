@@ -138,7 +138,7 @@ test("merged costing uses Recipe Management's vendor ingredient form and preserv
  const IngredientForm=require("../src/pages/forms/recipes/IngredientForm.jsx").default;let saved;const calls=[];const previousFetch=global.fetch;
  global.fetch=async(url,options)=>{calls.push({url,body:JSON.parse(options.body)});return{ok:true,json:async()=>({ingredient:{_id:"flour"}})};};
  const ingredient={_id:"flour",name:"Flour",unit:"g"};const h=harness(PriceForm,{business:"business",ingredient,onClose(){},onSave:async value=>{saved=value;}});
- try{h.render();h.states[0]="vendor";h.states[1]={vendors:[{_id:"vendor",legalName:"Supplier",business_id:"business"}],ingredients:[ingredient],businesses:[],imperialUnits:[],metricUnits:[]};const form=visit(h.render(),node=>node.type===IngredientForm);assert.ok(form);assert.equal(form.props.initialData.ingredient,ingredient);await form.props.onSubmit({ingredient:"flour",vendor:"vendor",business:"business",name:"Correct Flour",description:"Description",defaultUnit:"g",ingredientNotes:"Keep",vendorCategory:"supplier",packCost:4});assert.equal(calls[0].url,"/api/ingredients/flour");assert.equal(calls[0].body.unit,"g");assert.equal(calls[0].body.category,undefined);assert.equal(saved.vendorCategory,"supplier");assert.equal(saved.ingredient,"flour");assert.equal(saved.business,"business");assert.equal(saved.packCost,4);assert.equal(saved.name,undefined);}finally{h.restore();global.fetch=previousFetch;}
+ try{h.render();h.states[0]="vendor";h.states[1]={vendors:[{_id:"vendor",legalName:"Supplier",business_id:"business"}],ingredients:[ingredient],businesses:[],imperialUnits:[],metricUnits:[]};const form=visit(h.render(),node=>node.type===IngredientForm);assert.ok(form);assert.equal(form.props.initialData.ingredient,ingredient);await form.props.onSubmit({ingredient:"flour",vendor:"vendor",business:"business",name:"Correct Flour",description:"Description",defaultUnit:"g",ingredientNotes:"Keep",productCategory:"supplier",packCost:4});assert.equal(calls[0].url,"/api/ingredients/flour");assert.equal(calls[0].body.unit,"g");assert.equal(calls[0].body.category,undefined);assert.equal(saved.productCategory,"supplier");assert.equal(saved.ingredient,"flour");assert.equal(saved.business,"business");assert.equal(saved.packCost,4);assert.equal(saved.name,undefined);}finally{h.restore();global.fetch=previousFetch;}
 });
 test("saved vendor prices from Recipe Management's API are immediately applied to the costing line",async()=>{
  const Costings=require("../src/pages/RecipeCostings.jsx").default;const PriceForm=require("../src/pages/forms/recipes/CostingVendorIngredientForm.jsx").default;
@@ -165,11 +165,11 @@ test("recipe financial summary uses the saved costing price, including a zero pr
 test("vendor products use the selected vendor's existing offers and vendor categories",()=>{
  const {vendorProductRows}=require("../src/components/vendors/VendorProductsPanel.jsx");
  const ingredient={_id:"flour",name:"Flour",category:{_id:"baking",name:"Baking"}};
- const products=vendorProductRows([{_id:"one",vendor:{_id:"vendor"},ingredient:"flour",vendorCategory:"baking"},{_id:"other",vendor:"other",ingredient:"flour"},{_id:"inactive",vendor:"vendor",ingredient:"flour",isActive:false},{_id:"two",vendor:"vendor",ingredient:{_id:"water",name:"Water"}}],[ingredient],{_id:"vendor"},[{_id:"baking",name:"Supplier Products"}]);assert.equal(products.length,2);assert.equal(products[0]._id,"one");assert.equal(products[0].categoryName,"Supplier Products");assert.equal(products[1].categoryId,"uncategorized");
+ const products=vendorProductRows([{_id:"one",vendor:{_id:"vendor"},ingredient:"flour",productCategory:"baking"},{_id:"other",vendor:"other",ingredient:"flour"},{_id:"inactive",vendor:"vendor",ingredient:"flour",isActive:false},{_id:"two",vendor:"vendor",ingredient:{_id:"water",name:"Water"}}],[ingredient],{_id:"vendor"},[{_id:"baking",name:"Supplier Products"}]);assert.equal(products.length,2);assert.equal(products[0]._id,"one");assert.equal(products[0].categoryName,"Supplier Products");assert.equal(products[1].categoryId,"uncategorized");
 });
 test("vendor product category filters and editor remain tied to the selected vendor",()=>{
  const Panel=require("../src/components/vendors/VendorProductsPanel.jsx").default;const PriceForm=require("../src/pages/forms/recipes/CostingVendorIngredientForm.jsx").default;const vendor={_id:"vendor",business_id:"business",legalName:"Supplier"};const h=harness(Panel,{vendor});
- try{h.render();h.states[0]=[{_id:"flour-price",vendor:"vendor",ingredient:"flour",vendorCategory:"baking",packCost:4},{_id:"water-price",vendor:"vendor",ingredient:"water",packCost:1}];h.states[1]=[{_id:"flour",name:"Flour",category:{_id:"baking",name:"Baking"}},{_id:"water",name:"Water"}];h.states[5]=false;h.states[9]=[{_id:"baking",name:"Supplier Products"}];let tree=h.render();visit(tree,node=>node.props?.['aria-label']==="Product category").props.onChange({target:{value:"baking"}});tree=h.render();const body=visit(tree,node=>node.type==="tbody");assert.equal(React.Children.toArray(body.props.children).length,1);visit(body,node=>node.props?.children==="Edit").props.onClick();const form=visit(h.render(),node=>node.type===PriceForm);assert.equal(form.props.vendor,vendor);assert.equal(form.props.row._id,"flour-price");assert.equal(form.props.business,"business");}finally{h.restore();}
+ try{h.render();h.states[0]=[{_id:"flour-price",vendor:"vendor",ingredient:"flour",productCategory:"baking",packCost:4},{_id:"water-price",vendor:"vendor",ingredient:"water",packCost:1}];h.states[1]=[{_id:"flour",name:"Flour",category:{_id:"baking",name:"Baking"}},{_id:"water",name:"Water"}];h.states[5]=false;h.states[9]=[{_id:"baking",name:"Supplier Products"}];let tree=h.render();visit(tree,node=>node.props?.['aria-label']==="Product category").props.onChange({target:{value:"baking"}});tree=h.render();const body=visit(tree,node=>node.type==="tbody");assert.equal(React.Children.toArray(body.props.children).length,1);visit(body,node=>node.props?.children==="Edit").props.onClick();const form=visit(h.render(),node=>node.type===PriceForm);assert.equal(form.props.vendor,vendor);assert.equal(form.props.row._id,"flour-price");assert.equal(form.props.business,"business");}finally{h.restore();}
 });
 test("vendor page embeds products for its selected record",()=>{
  const Vendors=require("../src/pages/admin/Vendors.jsx").default;const Panel=require("../src/components/vendors/VendorProductsPanel.jsx").default;const vendor={_id:"vendor",legalName:"Supplier"};const h=harness(Vendors,{});try{h.render();h.states[0]=[vendor];h.states[2]="vendor";const panel=visit(h.render(),node=>node.type===Panel);assert.equal(panel.props.vendor,vendor);assert.ok(panel.key.endsWith("vendor"));}finally{h.restore();}
@@ -193,4 +193,52 @@ test("labels save as recipe text without creating ingredient records",async()=>{
 });
 test("vendor reference emails are clickable and ratings display fractional stars",()=>{
  const Vendors=require("../src/pages/admin/Vendors.jsx").default;const h=harness(Vendors,{});try{h.render();h.states[0]=[{_id:"vendor",legalName:"Supplier",email:"orders@example.com",performance:{rating:4.8}}];h.states[2]="vendor";const tree=h.render();assert.ok(visit(tree,node=>node.type==="a"&&node.props?.href==="mailto:orders@example.com"));const stars=visit(tree,node=>node.props?.className==="vendor-rating");assert.equal(stars.props['aria-label'],"4.8 out of 5 stars");assert.equal(React.Children.toArray(stars.props.children)[1].props.style.width,"96%");}finally{h.restore();}
+});
+
+test("vendor price history shows signed changes and handles a zero starting price",()=>{
+ const {productPriceHistory}=require("../src/components/vendors/ProductPriceHistory.jsx");
+ const history=productPriceHistory({packCost:9,priceHistory:[{packCost:10},{packCost:12}]});
+ assert.equal(history[1].percent,20);assert.equal(history[2].percent,-25);assert.equal(history[2].change,-3);assert.equal(history[2].current,true);
+ assert.equal(productPriceHistory({packCost:4,priceHistory:[{packCost:0}]} )[1].percent,null);
+ assert.equal(productPriceHistory({packCost:4})[0].change,null);
+});
+
+test("price impact calculator reconciles totals and signed percentage changes",()=>{
+ const {priceImpact}=require("../src/components/vendors/ProductPriceHistory.jsx");
+ const result=priceImpact('2.85','3.65','20');assert.equal(result.previous,57);assert.equal(result.next,73);assert.equal(result.difference,16);assert.ok(Math.abs(result.percent-28.070175)<0.00001);
+ assert.equal(priceImpact(4,3,2).percent,-25);assert.equal(priceImpact(0,3,2).percent,null);assert.equal(priceImpact('',3,2),null);assert.equal(priceImpact(3,4,-1),null);
+});
+
+test("price-only updates exclude product details and retain previous prices",async()=>{
+ const {priceUpdatePayload}=require("../src/components/vendors/UpdateProductPrice.jsx");
+ const {buildPriceUpdate}=await import("../../shared/culinary/vendorHistory.js");
+ const existing={business:'business',vendor:'vendor',ingredient:'ingredient',packCost:4,unitCost:.8,effectiveDate:'2026-01-01',brand:'Keep',packSizeName:'Jar'};
+ const payload=priceUpdatePayload(existing,{packCost:'5',unitCost:'1',effectiveDate:'2026-10-14'});
+ assert.deepEqual(Object.keys(payload).sort(),['business','effectiveDate','ingredient','packCost','unitCost','unitCostOverride','vendor']);
+ const update=buildPriceUpdate(existing,payload);assert.equal(update.$push.priceHistory.packCost,4);assert.equal(update.$set.packCost,5);assert.equal(update.$set.brand,undefined);assert.equal(update.$set.packSizeName,undefined);
+});
+
+test("vendor form saves fractional ratings without changing other performance values",()=>{
+ const VendorForm=require("../src/pages/forms/admin/VendorForm.jsx").default;let saved;
+ const h=harness(VendorForm,{initialData:{legalName:'Supplier',performance:{rating:3,onTimeRate:98}},onSubmit:value=>{saved=value;}});
+ try{h.render();h.effects[0]();let tree=h.render();const field=visit(tree,node=>node.props?.id==='vendor-rating'&&node.props?.type==='number');assert.equal(field.props.max,'5');field.props.onChange({target:{value:'4.5'}});tree=h.render();visit(tree,node=>node.props?.onSubmit).props.onSubmit({preventDefault(){}});assert.equal(saved.performance.rating,4.5);assert.equal(saved.performance.onTimeRate,98);}finally{h.restore();}
+});
+
+test("vendor accordion groups all descendants under their main category",()=>{
+ const {groupVendorProducts}=require("../src/components/vendors/VendorProductsPanel.jsx");
+ const groups=groupVendorProducts([{_id:'a',categoryId:'mushrooms'},{_id:'b',categoryId:'vegetables'},{_id:'c',categoryId:'beef'},{_id:'d',categoryId:'uncategorized'}],[{_id:'produce',name:'Produce'},{_id:'vegetables',name:'Vegetables',parent:'produce'},{_id:'mushrooms',name:'Mushrooms',parent:'vegetables'},{_id:'meat',name:'Meat'},{_id:'beef',name:'Beef',parent:'meat'}]);
+ assert.equal(groups.find(group=>group.name==='Produce').items.length,2);assert.equal(groups.find(group=>group.name==='Meat').items[0]._id,'c');assert.equal(groups.find(group=>group.name==='Uncategorized').items[0]._id,'d');
+});
+
+test("current price marker and calculations use effective dates rather than last entered record",()=>{
+ const {productPriceHistory}=require("../src/components/vendors/ProductPriceHistory.jsx");const history=productPriceHistory({packCost:8.09,effectiveDate:'2026-05-10',priceHistory:[{packCost:6.99,effectiveDate:'2026-07-11'}]});assert.equal(history[0].current,false);assert.equal(history[1].current,true);assert.equal(history[1].price,6.99);assert.ok(history[1].percent<0);
+});
+
+test("average price requires three dated observations and calculates their mean",()=>{
+ const {averagePackPrice}=require("../src/components/vendors/ProductPriceHistory.jsx");const history=[{price:3,effectiveDate:'2026-01-01'},{price:4,effectiveDate:'2026-02-01'},{price:5,effectiveDate:'2026-03-01'}];assert.equal(averagePackPrice(history),4);assert.equal(averagePackPrice(history.slice(0,2)),null);assert.equal(averagePackPrice([history[0],history[0],history[1]]),null);
+});
+
+test("New Order carries the selected vendor in both its URL and navigation state",()=>{
+ const Vendors=require("../src/pages/admin/Vendors.jsx").default;const h=harness(Vendors,{});
+ try{h.render();h.states[0]=[{_id:'amazon',legalName:'Amazon'},{_id:'wegmans',legalName:'Wegmans'}];h.states[2]='wegmans';const link=visit(h.render(),node=>node.props?.children==='New Order');assert.equal(link.props.to,'/purchasing?vendor=wegmans&new=1');assert.deepEqual(link.props.state,{vendorId:'wegmans',vendorName:'Wegmans'});}finally{h.restore();}
 });

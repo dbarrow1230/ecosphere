@@ -3,7 +3,7 @@ import VendorProductsPanel from "../../components/vendors/VendorProductsPanel.js
 import Alert from "../../components/AppAlert.jsx";
 //src/pages/admin/Vendors.jsx
 import {useEffect,useMemo,useRef,useState} from "react";
-import {Modal,Button} from "react-bootstrap";
+import {Modal,Button,Form} from "react-bootstrap";
 import VendorForm from "../forms/admin/VendorForm.jsx";
 import "../../styles/Vendors.css";
 
@@ -14,11 +14,19 @@ const getId=v=>!v?"":typeof v==="string"?v:String(v?._id||v?.id||"");
 
 export default function Vendors(){
  const [rows,setRows]=useState([]),[businesses,setBusinesses]=useState([]);
- const [selectedId,setSelectedId]=useState(""),[showForm,setShowForm]=useState(false),[showDelete,setShowDelete]=useState(false);
+ const [selectedId,setSelectedId]=useState(()=>{try{return globalThis.sessionStorage?.getItem("recipe-management-selected-vendor")||"";}catch{return "";}}),[showForm,setShowForm]=useState(false),[showDelete,setShowDelete]=useState(false);
  const [mode,setMode]=useState("add"),[initial,setInitial]=useState(defaultFormData),[success,setSuccess]=useState("");
  const [loading,setLoading]=useState(false),[error,setError]=useState("");
  const [currentBusiness,setCurrentBusiness]=useState(null);
  const [saving,setSaving]=useState(false);
+ const [vendorSearch,setVendorSearch]=useState(""),[vendorLetter,setVendorLetter]=useState("");
+ const [vendorType,setVendorType]=useState("");
+ const typeName=vendor=>typeof vendor.vendorCategory==="object"?vendor.vendorCategory?.name||"":vendor.vendorCategory||"";
+ const vendorTypes=[...new Set(rows.map(typeName).filter(Boolean))].sort((a,b)=>a.localeCompare(b));
+ const vendorName=vendor=>vendor.legalName||vendor.name||"Unnamed vendor";
+ const filteredVendors=rows.filter(vendor=>(!vendorType||typeName(vendor)===vendorType)&&vendorName(vendor).toLowerCase().includes(vendorSearch.trim().toLowerCase())&&(!vendorLetter||vendorName(vendor).toUpperCase().startsWith(vendorLetter))).sort((a,b)=>vendorName(a).localeCompare(vendorName(b)));
+ const [deliveryPerformance,setDeliveryPerformance]=useState({});
+ useEffect(()=>{const business=getId(currentBusiness);if(!business)return;let active=true;fetch(`/api/purchasing-workflow/vendor-performance?business=${business}`).then(async response=>{if(!response.ok)throw new Error("Delivery performance could not load.");return response.json();}).then(data=>{if(active)setDeliveryPerformance(data);}).catch(err=>{if(active)setError(err.message);});return()=>{active=false;};},[currentBusiness]);
  const t=useRef(null);
 
  const ok=m=>{if(t.current)clearTimeout(t.current);t.current=setTimeout(()=>setSuccess(""),2500);setSuccess(m)};
@@ -108,11 +116,12 @@ export default function Vendors(){
      <div className="vendors-col-header">
       <h3>Vendor List</h3>
      </div>
+     <div className="vendors-list-tools"><Form.Control type="search" aria-label="Search vendors" placeholder="Search vendors…" value={vendorSearch} onChange={event=>setVendorSearch(event.target.value)}/><Form.Select aria-label="Filter vendors by type" value={vendorType} onChange={event=>{setVendorType(event.target.value);setVendorLetter("");}}><option value="">All vendor types</option>{vendorTypes.map(type=><option key={type} value={type}>{type}</option>)}</Form.Select><div className="vendors-alphabet" role="group" aria-label="Filter vendors by first letter">{["",..."ABCDEFGHIJKLMNOPQRSTUVWXYZ"].map(letter=><button type="button" key={letter||"all"} aria-pressed={vendorLetter===letter} onClick={()=>setVendorLetter(letter)} disabled={Boolean(letter)&&!rows.some(vendor=>vendorName(vendor).toUpperCase().startsWith(letter))}>{letter||"All"}</button>)}</div></div>
      <div className="vendors-col-body">
       {loading?<div className="vendors-empty">Loading vendors...</div>:null}
-      {!loading&&!error&&rows.length===0?<div className="vendors-empty">No vendors found.</div>:null}
-      {rows.map(v=>(
-       <button key={getId(v)} onClick={()=>setSelectedId(getId(v))} className={`vendors-list-item ${selectedId===getId(v)?"active":""}`}>
+      {!loading&&!error&&filteredVendors.length===0?<div className="vendors-empty">No vendors found.</div>:null}
+      {filteredVendors.map(v=>(
+       <button key={getId(v)} onClick={()=>{setSelectedId(getId(v));try{globalThis.sessionStorage?.setItem("recipe-management-selected-vendor",getId(v));}catch{}}} className={`vendors-list-item ${selectedId===getId(v)?"active":""}`}>
         {v.legalName||v.name||"Unnamed vendor"}
        </button>
       ))}
@@ -120,35 +129,21 @@ export default function Vendors(){
     </div>
 
     <div className="vendors-col vendors-details">
-     <div className="vendors-col-header">
-      <h3>Vendor Details</h3>
+     <div className="vendors-col-header vendor-details-columns">
+      <h3>Vendor Details</h3><h3>Vendor Operations</h3>
      </div>
      <div className="vendors-col-body">
       {!selected&&!loading?<div className="vendors-empty">Select a vendor to view details.</div>:null}
       {selected&&(
        <>
         <h4>{selected.legalName}</h4>
-        <dl className="vendor-reference-list">
+        <div className="vendor-details-columns"><dl className="vendor-reference-list">
          {selected.dbaName?<><dt>DBA</dt><dd>{selected.dbaName}</dd></>:null}
          {selected.email?<><dt>Email</dt><dd><a href={`mailto:${selected.email}`}>{selected.email}</a></dd></>:null}
          {selected.phone?<><dt>Phone</dt><dd><a href={`tel:${selected.phone}`}>{selected.phone}</a></dd></>:null}
-         {selected.vendorCategory?<><dt>Category</dt><dd>{typeof selected.vendorCategory==="object"?selected.vendorCategory.name:selected.vendorCategory}</dd></>:null}
+         {selected.vendorCategory?<><dt>Vendor Type</dt><dd>{typeof selected.vendorCategory==="object"?selected.vendorCategory.name:selected.vendorCategory}</dd></>:null}
          <dt>Preferred</dt><dd>{selected.isPreferred?"Yes":"No"}</dd><dt>Active</dt><dd>{selected.isActive?"Yes":"No"}</dd>
-        </dl>
-        <div className="d-flex flex-wrap gap-2"><Button as={Link} size="sm" variant="outline-primary" to={`/purchasing?vendor=${getId(selected)}&new=1`}>New Order</Button><Button as={Link} size="sm" variant="outline-primary" to={`/purchasing?vendor=${getId(selected)}`}>Orders & Receiving</Button></div>
-       </>
-      )}
-     </div>
-    </div>
-
-    <div className="vendors-col vendors-extra">
-     <div className="vendors-col-header">
-      <h3>Vendor Operations</h3>
-     </div>
-     <div className="vendors-col-body">
-      {selected&&(
-       <>
-        <dl className="vendor-reference-list">
+        </dl><section className="vendor-operations-section"><dl className="vendor-reference-list">
          {selected.payment?.paymentTerms?<><dt>Payment</dt><dd>{selected.payment.paymentTerms}</dd></>:null}
          {selected.payment?.preferredPaymentMethod?<><dt>Method</dt><dd>{selected.payment.preferredPaymentMethod}</dd></>:null}
          {selected.ordering?.orderingEmail?<><dt>Order email</dt><dd><a href={`mailto:${selected.ordering.orderingEmail}`}>{selected.ordering.orderingEmail}</a></dd></>:null}
@@ -156,9 +151,10 @@ export default function Vendors(){
          {selected.ordering?.leadTimeDays!=null?<><dt>Lead time</dt><dd>{selected.ordering.leadTimeDays} days</dd></>:null}
          {selected.ordering?.minimumOrderValue!=null?<><dt>Minimum order</dt><dd>${Number(selected.ordering.minimumOrderValue).toFixed(2)}</dd></>:null}
          {selected.performance?.rating!=null?<><dt>Rating</dt><dd><span className="vendor-rating" role="img" aria-label={`${selected.performance.rating} out of 5 stars`} title={`${selected.performance.rating} / 5`}><span aria-hidden="true">☆☆☆☆☆</span><span aria-hidden="true" style={{width:`${Math.max(0,Math.min(5,Number(selected.performance.rating)))/5*100}%`}}>★★★★★</span></span></dd></>:null}
-         {selected.performance?.onTimeRate!=null?<><dt>On time</dt><dd>{selected.performance.onTimeRate}%</dd></>:null}
-         {selected.performance?.fillRate!=null?<><dt>Fill rate</dt><dd>{selected.performance.fillRate}%</dd></>:null}
-        </dl>
+         {(deliveryPerformance[getId(selected)]?.onTimeRate!=null||selected.performance?.onTimeRate!=null)?<><dt>On time</dt><dd>{deliveryPerformance[getId(selected)]?.onTimeRate!=null?deliveryPerformance[getId(selected)].onTimeRate.toFixed(1):selected.performance.onTimeRate}%</dd></>:null}
+         {(deliveryPerformance[getId(selected)]?.fillRate!=null||selected.performance?.fillRate!=null)?<><dt>Fill rate</dt><dd>{deliveryPerformance[getId(selected)]?.fillRate!=null?deliveryPerformance[getId(selected)].fillRate.toFixed(1):selected.performance.fillRate}%</dd></>:null}
+        </dl></section></div>
+        <div className="d-flex flex-wrap gap-2"><Button as={Link} size="sm" variant="outline-primary" to={`/purchasing?vendor=${encodeURIComponent(getId(selected))}&new=1`} state={{vendorId:getId(selected),vendorName:selected.legalName}}>New Order</Button><Button as={Link} size="sm" variant="outline-primary" to={`/purchasing?vendor=${getId(selected)}`} state={{vendorId:getId(selected),vendorName:selected.legalName}}>Orders & Receiving</Button></div>
        </>
       )}
      </div>

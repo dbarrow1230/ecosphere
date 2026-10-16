@@ -31,6 +31,7 @@ import Events from "./pages/admin/Events.jsx";
 //clients
 import Clients from "./pages/admin/Clients.jsx";
 import Orders from "./pages/admin/Orders.jsx";
+import CateringOrders from "./pages/admin/CateringOrders.jsx";
 import Contracts from "./pages/admin/Contracts.jsx";
 
 //admin
@@ -52,6 +53,7 @@ import TaxRatesPage from "./pages/admin/TaxRatesPage.jsx";
 
 //referenece
 import WinePairing from "./pages/referance/winePairing.jsx";
+import CateringQuantityReference from "./pages/CateringQuantityReference;.jsx";
 
 //users
 import Users from "./pages/admin/users/Users";
@@ -232,6 +234,10 @@ function App(){
      <Route path="/clients/:id/edit" element={<ProtectedRoute user={user}><ClientForm/></ProtectedRoute>}/>
      <Route path="/menus" element={<Menus/>}/>
      <Route path="/orders" element={<ProtectedRoute user={user}><Orders/></ProtectedRoute>}/>
+     <Route path="/catering-orders" element={<ProtectedRoute user={user}><CateringOrders/></ProtectedRoute>}/>
+     <Route path="/catering-orders/new" element={<ProtectedRoute user={user}><CateringOrderForm/></ProtectedRoute>}/>
+     <Route path="/catering-orders/:id" element={<ProtectedRoute user={user}><CateringOrderForm readOnly/></ProtectedRoute>}/>
+     <Route path="/catering-orders/:id/edit" element={<ProtectedRoute user={user}><CateringOrderForm/></ProtectedRoute>}/>
      <Route path="/orders/new" element={<ProtectedRoute user={user}><CateringOrderForm/></ProtectedRoute>}/>
      <Route path="/orders/:id" element={<ProtectedRoute user={user}><CateringOrderForm readOnly/></ProtectedRoute>}/>
      <Route path="/orders/:id/edit" element={<ProtectedRoute user={user}><CateringOrderForm/></ProtectedRoute>}/>
@@ -287,6 +293,7 @@ function App(){
 
         {/**Reference */}
      <Route path="/reference/wine-pairing" element={<WinePairing/>}/>
+     <Route path="/reference/catering-quantities" element={<CateringQuantityReference/>}/>
 
 
      <Route path="/400" element={<Error400/>}/>

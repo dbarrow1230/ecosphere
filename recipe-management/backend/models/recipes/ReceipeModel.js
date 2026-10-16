@@ -14,6 +14,7 @@ const RecipeSchema=new Schema({
  recipeNumber:{type:String,required:true,trim:true,uppercase:true,index:true},
  recipeSequence:{type:Number,required:true,min:1},
  image:{type:String,trim:true,default:""},
+ platingPhotos:[{image:{type:String,required:true,trim:true},caption:{type:String,trim:true,default:""}}],
  parentRecipe:{type:Schema.Types.ObjectId,ref:"Recipe",default:null,index:true},
  scaleFactor:{type:Number,default:1,min:0},
  scalingMethod:{type:String,enum:["original","multiplier","servings","imperialYield","metricYield"],default:"original"},
@@ -47,7 +48,8 @@ const RecipeSchema=new Schema({
   prepTime:{type:String,trim:true,default:""},
   cookTime:{type:String,trim:true,default:""},
   chillTime:{type:String,trim:true,default:""},
-  restTime:{type:String,trim:true,default:""}
+  restTime:{type:String,trim:true,default:""},
+  totalTime:{type:String,trim:true,default:""}
  },
 
  flavorProfile:{
@@ -60,6 +62,7 @@ const RecipeSchema=new Schema({
 
  generalDescription:{type:String,trim:true,default:""},
  suggestedPrice:{type:Number,default:0,min:0},
+ suggestedPriceDisplay:{type:String,trim:true,default:""},
  menuDescription:{type:String,trim:true,default:""},
 
  origin:{type:String,trim:true,default:""},

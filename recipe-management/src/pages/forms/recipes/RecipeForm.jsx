@@ -48,11 +48,11 @@ const nutritionFields=[
 ];
 
 const buildForm=source=>({
- business:id(source.business),name:source.name||"",recipeNumber:source.recipeNumber||"",recipeSequence:source.recipeSequence||null,image:source.image||"",cuisines:[...new Set([...ids(source.cuisines),id(source.primaryCuisine)].filter(Boolean))],courses:[...new Set([...ids(source.courses),id(source.primaryCourse)].filter(Boolean))],mealType:id(source.mealType),categories:[...new Set([...ids(source.categories),id(source.primaryCategory)].filter(Boolean))],primaryCuisine:id(source.primaryCuisine)||ids(source.cuisines)[0]||"",primaryCourse:id(source.primaryCourse)||ids(source.courses)[0]||"",primaryCategory:id(source.primaryCategory)||ids(source.categories)[0]||"",sourceCuisine:source.sourceCuisine||source.cuisine||source.referenceNames?.cuisine||"",sourceCourse:source.sourceCourse||source.course||source.referenceNames?.course||"",sourceCategory:source.sourceCategory||source.category||source.referenceNames?.category||"",sourceMealType:source.sourceMealType||source.mealTypeName||"",
+ business:id(source.business),name:source.name||"",recipeNumber:source.recipeNumber||"",recipeSequence:source.recipeSequence||null,image:source.image||"",platingPhotos:(source.platingPhotos||[]).map(photo=>({image:photo.image,caption:photo.caption||""})),cuisines:[...new Set([...ids(source.cuisines),id(source.primaryCuisine)].filter(Boolean))],courses:[...new Set([...ids(source.courses),id(source.primaryCourse)].filter(Boolean))],mealType:id(source.mealType),categories:[...new Set([...ids(source.categories),id(source.primaryCategory)].filter(Boolean))],primaryCuisine:id(source.primaryCuisine)||ids(source.cuisines)[0]||"",primaryCourse:id(source.primaryCourse)||ids(source.courses)[0]||"",primaryCategory:id(source.primaryCategory)||ids(source.categories)[0]||"",sourceCuisine:source.sourceCuisine||source.cuisine||source.referenceNames?.cuisine||"",sourceCourse:source.sourceCourse||source.course||source.referenceNames?.course||"",sourceCategory:source.sourceCategory||source.category||source.referenceNames?.category||"",sourceMealType:source.sourceMealType||source.mealTypeName||"",
  dietaryConsiderations:ids(source.dietaryConsiderations),yield:{...emptyQuantity(),...(source.yield||{}),imperialUnit:id(source.yield?.imperialUnit),metricUnit:id(source.yield?.metricUnit)},
  servingSize:{...emptyQuantity(),...(source.servingSize||{}),imperialUnit:id(source.servingSize?.imperialUnit),metricUnit:id(source.servingSize?.metricUnit)},servingSizeDescription:source.servingSizeDescription||"",servings:source.servings??"",
- times:{prepTime:"",cookTime:"",chillTime:"",restTime:"",...(source.times||{})},flavorProfile:{taste:editableLines(source.flavorProfile?.taste),aroma:editableLines(source.flavorProfile?.aroma),mouthfeel:editableLines(source.flavorProfile?.mouthfeel)},
- fermentationTemperatureAdjustment:source.fermentationTemperatureAdjustment||"",generalDescription:source.generalDescription||"",suggestedPrice:source.suggestedPrice??"",
+ times:{prepTime:"",cookTime:"",chillTime:"",restTime:"",totalTime:"",...(source.times||{})},flavorProfile:{taste:editableLines(source.flavorProfile?.taste),aroma:editableLines(source.flavorProfile?.aroma),mouthfeel:editableLines(source.flavorProfile?.mouthfeel)},
+ fermentationTemperatureAdjustment:source.fermentationTemperatureAdjustment||"",generalDescription:source.generalDescription||"",suggestedPrice:source.suggestedPrice??"",suggestedPriceDisplay:source.suggestedPriceDisplay||"",
  menuDescription:source.menuDescription||"",origin:source.origin||"",history:source.history||"",culturalSignificance:source.culturalSignificance||"",
  techniques:lines(source.techniques),techniqueRefs:ids(source.techniqueRefs),unmatchedTechniques:source.unmatchedTechniques||[],equipment:ids(source.equipment),equipmentNames:source.equipmentNames||[],unmatchedEquipment:source.unmatchedEquipment||[],unmatchedDietaries:source.unmatchedDietaries||[],
  haccp:(source.haccp||[]).map(item=>({...emptyHaccp(),...item})),ccp:(source.ccp||[]).map(item=>({...emptyCcp(),...item})),
@@ -86,6 +86,7 @@ export default function RecipeForm({initialData={},lookups:providedLookups={},on
  const [activeTab,setActiveTab]=useState("general");
  const [formError,setFormError]=useState("");
  const [uploadingImage,setUploadingImage]=useState(false);
+ const [uploadingPlating,setUploadingPlating]=useState(false);
  const [imageInputKey,setImageInputKey]=useState(0);
  const [imageVersion,setImageVersion]=useState(()=>Date.now());
  const [creatingLookup,setCreatingLookup]=useState("");
@@ -97,13 +98,16 @@ export default function RecipeForm({initialData={},lookups:providedLookups={},on
  useEffect(()=>{const next=buildForm(initialData);const techniqueNames=splitLines(next.techniques);const matchedTechniques=techniqueNames.map(value=>lookupId(lookups.techniques||[],value)).filter(Boolean);next.techniqueRefs=[...new Set([...next.techniqueRefs,...matchedTechniques])];next.unmatchedTechniques=[...new Set([...next.unmatchedTechniques,...techniqueNames.filter(value=>!lookupId(lookups.techniques||[],value))])];baseline.current=structuredClone(next);setData(next);reservedSignature.current=next.recipeNumber?[next.business,next.primaryCourse,next.primaryCuisine,next.primaryCategory].join(":"):"";setActiveTab("general");setFormError("");setImageInputKey(key=>key+1);setImageVersion(Date.now());},[initialData]);
 
  useEffect(()=>{
+  const original=buildForm(initialData);
   const signature=[data.business,data.primaryCourse,data.primaryCuisine,data.primaryCategory].join(":");
+  const originalSignature=[original.business,original.primaryCourse,original.primaryCuisine,original.primaryCategory].join(":");
+  if(initialData._id&&original.recipeNumber&&signature===originalSignature){if(data.recipeNumber!==original.recipeNumber||data.recipeSequence!==original.recipeSequence)setData(current=>({...current,recipeNumber:original.recipeNumber,recipeSequence:original.recipeSequence}));return;}
   if(!data.business||!data.primaryCourse||!data.primaryCuisine||!data.primaryCategory||(reservedSignature.current===signature&&data.recipeNumber&&data.recipeSequence))return;
   const controller=new AbortController();
   const timer=setTimeout(async()=>{
    try{
     setReservingNumber(true);setFormError("");
-    const response=await fetch("/api/recipes/reserve-number",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({business:data.business,primaryCourse:data.primaryCourse,primaryCuisine:data.primaryCuisine,primaryCategory:data.primaryCategory}),signal:controller.signal});
+    const response=await fetch("/api/recipes/reserve-number",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({recipeId:initialData._id||undefined,business:data.business,primaryCourse:data.primaryCourse,primaryCuisine:data.primaryCuisine,primaryCategory:data.primaryCategory}),signal:controller.signal});
     const payload=await response.json().catch(()=>null);if(!response.ok)throw new Error(payload?.error||payload?.message||"Failed to reserve recipe number.");
     if(controller.signal.aborted)return;
     reservedSignature.current=signature;setData(prev=>({...prev,recipeNumber:payload.recipeNumber,recipeSequence:payload.recipeSequence}));
@@ -214,6 +218,7 @@ export default function RecipeForm({initialData={},lookups:providedLookups={},on
   }catch(err){setFormError(err.message||"Failed to upload recipe image.");}finally{setUploadingImage(false);}
  };
 
+ const uploadPlatingPhotos=async event=>{const files=Array.from(event.target.files||[]);if(!files.length)return;setUploadingPlating(true);setFormError("");try{for(const file of files){if(!file.type.startsWith("image/"))throw Error("Choose image files for plating photos.");const body=new FormData();body.append("file",file,crypto.randomUUID()+"-"+file.name);const response=await fetch("/api/upload/recipe_images",{method:"POST",body});const payload=await response.json().catch(()=>null);if(!response.ok||!payload?.filename)throw Error(payload?.message||"Failed to upload plating photo.");setData(current=>({...current,platingPhotos:[...current.platingPhotos,{image:payload.filename,caption:""}]}));}}catch(error){setFormError(error.message);}finally{setUploadingPlating(false);event.target.value="";}};
  const submit=async e=>{
   e.preventDefault();
   if(data.ingredients.some(item=>item.vendorIngredientPrice&&item.conversionError)){setFormError("Resolve incompatible vendor pack measurements before saving.");setActiveTab("ingredients");return;}
@@ -222,7 +227,7 @@ export default function RecipeForm({initialData={},lookups:providedLookups={},on
   if(editing&&!changed.length){await onSubmit({});return;}
   const generalChanged=!editing||['name','business','cuisines','courses','categories','primaryCuisine','primaryCourse','primaryCategory','recipeNumber','recipeSequence'].some(key=>changed.includes(key));
   const ingredientsChanged=!editing||changed.includes('ingredients');
-  const missingGeneral=!data.name.trim()||!data.business||!data.cuisines.length||!data.courses.length||!data.categories.length||!data.primaryCuisine||!data.primaryCourse||!data.primaryCategory||!data.recipeNumber||!data.recipeSequence;
+  const missingGeneral=!data.name.trim()||!data.business||!data.cuisines.length||!data.courses.length||!data.categories.length||!data.primaryCuisine||!data.primaryCourse||!data.primaryCategory||!data.recipeNumber||(!editing&&!data.recipeSequence);
   if(generalChanged&&missingGeneral){setActiveTab("general");setFormError(reservingNumber?"Wait for the recipe number to finish generating.":"Recipe name, business, primary classifications, and a generated recipe number are required.");return;}
   const unnamedIngredients=data.ingredients.filter(item=>!item.ingredient&&!String(item.sourceName||"").trim());
   if(ingredientsChanged&&unnamedIngredients.length){setActiveTab("ingredients");setFormError(`${unnamedIngredients.length} ingredient row${unnamedIngredients.length===1?" needs":"s need"} an ingredient name or selection.`);return;}
@@ -297,7 +302,7 @@ export default function RecipeForm({initialData={},lookups:providedLookups={},on
   for(const key of Object.keys(data)){
    if(!(parserFields[key]||[key]).some(field=>Object.hasOwn(source,field)))next[key]=structuredClone(data[key]);
   }
-  next.recipeNumber="";next.recipeSequence=null;
+  next.recipeNumber=initialData._id?(initialData.recipeNumber||data.recipeNumber):"";next.recipeSequence=initialData._id?(initialData.recipeSequence||data.recipeSequence):null;
   const servingCount=countFromDescription(next.servingSizeDescription);
   if(servingCount&&next.servingSize.imperialQuantity===""&&next.servingSize.metricQuantity===""){
    next.servingSize.imperialQuantity=servingCount.quantity;
@@ -358,11 +363,11 @@ export default function RecipeForm({initialData={},lookups:providedLookups={},on
 
     <Tab eventKey="safety" title="Safety"><RecipeSafetyModule data={data} arrayChange={arrayChange} removeRow={removeRow} addHaccp={()=>addRow("haccp",emptyHaccp())} addCcp={()=>addRow("ccp",emptyCcp())}/></Tab>
 
-    <Tab eventKey="finish" title="Plating & Storage"><RecipeFinishModule data={data} change={change}/></Tab>
+    <Tab eventKey="finish" title="Plating & Storage"><RecipeFinishModule data={data} change={change} setData={setData} uploadPlatingPhotos={uploadPlatingPhotos} uploadingPlating={uploadingPlating} imageUrl={imageUrl}/></Tab>
 
     <Tab eventKey="nutrition" title="Nutrition"><RecipeNutritionModule recipeId={initialData._id} nutrition={data.nutrition} fields={nutritionFields} nestedChange={nestedChange} ingredients={data.ingredients} lookups={lookups} servings={data.servings} onApply={nutrition=>{baseline.current.nutrition=nutrition;setData(current=>({...current,nutrition}));}}/></Tab>
    </Tabs>
-   <div className="d-flex justify-content-end mt-4"><Button type="submit" disabled={loading||submitting||uploadingImage||reservingNumber}>{loading||submitting?"Saving...":uploadingImage?"Uploading Image...":reservingNumber?"Generating Number...":(submitLabel||(initialData._id?"Save Changes":"Save Recipe"))}</Button></div>
+   <div className="d-flex justify-content-end mt-4"><Button type="submit" disabled={loading||submitting||uploadingImage||uploadingPlating||reservingNumber}>{loading||submitting?"Saving...":uploadingImage||uploadingPlating?"Uploading Image...":reservingNumber?"Generating Number...":(submitLabel||(initialData._id?"Save Changes":"Save Recipe"))}</Button></div>
   </Form>
  );
 }

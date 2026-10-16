@@ -1,5 +1,6 @@
 // backend/controllers/master/RecipeCostingController.js
 import RecipeCosting from "../../models/master/RecipeCostingModel.js";
+import "../../models/master/IngredientModel.js";
 
 export const createRecipeCosting=async(req,res)=>{
  try{

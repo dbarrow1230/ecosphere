@@ -1,3 +1,4 @@
+import BusinessTaxLabel from "../../components/BusinessTaxLabel.jsx";
 import Alert from "../../components/AppAlert.jsx";
 // /src/forms/OrderForm.jsx
 import React,{useEffect,useRef,useState} from 'react';
@@ -456,7 +457,7 @@ return(
 </div>
 
 <div className="col-md-2">
-<label className="form-label">Tax</label>
+<label className="form-label"><BusinessTaxLabel/></label>
 <input type="number" className="form-control" name="taxTotal" value={form.taxTotal} onChange={handleChange} min="0" step="0.01" />
 </div>
 
@@ -537,7 +538,7 @@ showRemove={false}
 <th>Qty</th>
 <th>Unit Price</th>
 <th>Discount</th>
-<th>Tax</th>
+<th><BusinessTaxLabel/></th>
 <th>Subtotal</th>
 <th>Actions</th>
 </tr>

@@ -1,3 +1,4 @@
+import BusinessTaxLabel from "../../components/BusinessTaxLabel.jsx";
 import Alert from "../../components/AppAlert.jsx";
 // /src/forms/PurchaseForm.jsx
 import React,{useEffect,useRef,useState} from 'react';
@@ -264,7 +265,7 @@ return(
 </div>
 
 <div className="col-md-2">
-<label className="form-label">Tax</label>
+<label className="form-label"><BusinessTaxLabel/></label>
 <input type="number" className="form-control" name="taxTotal" value={form.taxTotal} onChange={handleChange} min="0" step="0.01" />
 </div>
 
@@ -364,7 +365,7 @@ handleItemFormChange(0,{...itemForm,discountAmount:e.target.value,subtotal:Math.
 </div>
 
 <div className="col-md-2">
-<label className="form-label">Tax</label>
+<label className="form-label"><BusinessTaxLabel/></label>
 <input type="number" className="form-control" value={itemForm.taxAmount} onChange={e=>{
 const taxAmount=Number(e.target.value)||0;
 const quantity=Number(itemForm.quantity)||0;
@@ -406,7 +407,7 @@ handleItemFormChange(0,{...itemForm,taxAmount:e.target.value,subtotal:Math.max((
 <th>Qty</th>
 <th>Unit Price</th>
 <th>Discount</th>
-<th>Tax</th>
+<th><BusinessTaxLabel/></th>
 <th>Subtotal</th>
 <th>Actions</th>
 </tr>

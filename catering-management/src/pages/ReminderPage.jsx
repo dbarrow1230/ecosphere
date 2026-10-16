@@ -142,9 +142,9 @@ return items.join(', ');
 };
 
 return(
-<div className="container py-4">
+<div className="px-3 px-lg-4 py-4">
 <div className="d-flex justify-content-between align-items-center mb-3">
-<h3 className="mb-0">Reminders</h3>
+<h1 className="h2 fw-bold mb-0">Reminders</h1>
 <Button variant="primary" onClick={openAddModal}>Add Reminder</Button>
 </div>
 

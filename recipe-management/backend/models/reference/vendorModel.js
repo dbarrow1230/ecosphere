@@ -33,9 +33,9 @@ const vendorOrderingSchema=new mongoose.Schema({
 },{_id:false});
 
 const vendorPerformanceSchema=new mongoose.Schema({
- rating:{type:Number,default:0},
- onTimeRate:{type:Number,default:0},
- fillRate:{type:Number,default:0}
+ rating:{type:Number,default:0,min:0,max:5},
+ onTimeRate:{type:Number,default:0,min:0,max:100},
+ fillRate:{type:Number,default:0,min:0,max:100}
 },{_id:false});
 
 const vendorComplianceSchema=new mongoose.Schema({
