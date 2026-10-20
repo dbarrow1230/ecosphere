@@ -101,8 +101,6 @@
 
 .dashboard-view-button,
 .dashboard-view-reset{
- min-height:38px;
- padding:.55rem .85rem;
  border:1px solid var(--border);
  border-radius:999px;
  background:var(--surface);
@@ -481,6 +479,11 @@
 
 .dashboard-filters{
  display:flex;
+ margin-left:3.4rem;
+ padding:.75rem 1rem;
+ border:1px solid var(--border);
+ border-radius:8px;
+ background:var(--surface);
  gap:.75rem;
  flex-wrap:wrap;
  min-width:0;
@@ -493,9 +496,9 @@
 }
 
 .dashboard-filter-label{
- font-size:.72rem;
+ font-size:.8rem;
  font-weight:800;
- color:var(--textSoft);
+ color:var(--primary);
  text-transform:uppercase;
  letter-spacing:.06em;
 }
@@ -730,7 +733,6 @@
  background:var(--surface);
  color:var(--text);
  font-weight:800;
- padding:.35rem .6rem;
 }
 
 .dashboard-big-calendar .rbc-toolbar button:hover,
@@ -903,18 +905,9 @@
  cursor:pointer;
  list-style:none;
  appearance:none;
- background:var(--surface2);
+ background:transparent;
  border:0;
  border-right:1px solid var(--border);
-}
-
-.dashboard-drawer-summary:hover{
- background:var(--surface2);
- border-color:transparent;
- border-right-color:var(--border);
- color:inherit;
- box-shadow:none;
- transform:none;
 }
 
 .dashboard-drawer.is-open .dashboard-drawer-summary{
@@ -1011,29 +1004,10 @@
  padding:.65rem;
  border:1px solid var(--border);
  border-radius:8px;
- background:var(--surface);
+ background:transparent;
  color:var(--text);
  text-decoration:none;
- transition:border-color .2s ease,background .2s ease,color .2s ease;
  min-width:0;
-}
-
-.dashboard-drawer-action:hover{
- border-color:var(--primary);
- color:var(--text);
- background:var(--app-page-background,var(--app-background,var(--bg)));
-}
-
-.dashboard-drawer-action-primary{
- background:var(--gradientMain);
- border-color:var(--borderStrong);
- color:var(--textInverse);
-}
-
-.dashboard-drawer-action-primary:hover{
- color:var(--textInverse);
- border-color:var(--borderStrong);
- background:var(--gradientMain);
 }
 
 .dashboard-drawer-action-icon{
@@ -1042,14 +1016,9 @@
  display:grid;
  place-items:center;
  border-radius:7px;
- background:var(--surface2);
+ background:transparent;
  color:var(--primary);
  flex:0 0 auto;
-}
-
-.dashboard-drawer-action-primary .dashboard-drawer-action-icon{
- background:var(--surface2);
- color:var(--textInverse);
 }
 
 .dashboard-drawer-action-copy{
@@ -1071,11 +1040,6 @@
  font-size:.78rem;
  line-height:1.35;
  overflow-wrap:anywhere;
-}
-
-.dashboard-drawer-action-primary .dashboard-drawer-action-text{
- color:var(--textInverse);
- opacity:.84;
 }
 
 .dashboard{
@@ -1102,6 +1066,7 @@
  }
 
  .dashboard-header,
+ .dashboard-filters,
  .dashboard-period-summary,
  .dashboard-status{
   margin-left:0;

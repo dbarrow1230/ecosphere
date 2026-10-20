@@ -1,3 +1,4 @@
+import TravelLogSummary from "../components/dashboard/TravelLogSummary.jsx";
 import {useMemo,useState} from "react";
 import DashboardStats from "../components/dashboard/DashboardStats";
 import DashboardFilters from "../components/dashboard/DashboardFilters";
@@ -16,7 +17,7 @@ import {buildCategoryChartData,buildDynamicCategoryChartGroups} from "../utils/d
 import {buildYearlySpendingData,buildMonthlySpendingData} from "../utils/dashboard/dashboardInsights";
 import "../styles/Dashboard.css";
 
-function Dashboard({stats,lowStockItems,expiringItems,recentItems,missingItems,categoryCosts=[],budgetInsights={yearlyByCategory:[],monthlyByCategory:[],overBudget:[]}}){
+function Dashboard({user,stats,lowStockItems,expiringItems,recentItems,missingItems,categoryCosts=[],budgetInsights={yearlyByCategory:[],monthlyByCategory:[],overBudget:[]}}){
 
  const today=new Date();
  const currentYear=String(today.getFullYear());
@@ -113,6 +114,8 @@ function Dashboard({stats,lowStockItems,expiringItems,recentItems,missingItems,c
      </div>
     </div>
    </header>
+
+   <TravelLogSummary user={user}/>
 
    <section className="dashboard-insights-row">
     <DashboardCalendarCard year={Number(yearFilter)} month={Number(monthFilter)}/>

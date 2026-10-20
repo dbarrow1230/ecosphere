@@ -56,6 +56,15 @@ const status=statuses.includes(cleanString(data.status))
 :statuses.includes(cleanString(existing.status)) ? cleanString(existing.status) : "active";
 
 return {
+sourceName:data.sourceName!==undefined?cleanString(data.sourceName):cleanString(existing.sourceName),
+seedCost:data.seedCost!==undefined?cleanNumber(data.seedCost):cleanNumber(existing.seedCost),
+sownCount:data.sownCount!==undefined?cleanNumber(data.sownCount):cleanNumber(existing.sownCount),
+sproutedDate:data.sproutedDate!==undefined?cleanDate(data.sproutedDate):cleanDate(existing.sproutedDate),
+sproutedCount:data.sproutedCount!==undefined?cleanNumber(data.sproutedCount):cleanNumber(existing.sproutedCount),
+transplantedDate:data.transplantedDate!==undefined?cleanDate(data.transplantedDate):cleanDate(existing.transplantedDate),
+transplantedCount:data.transplantedCount!==undefined?cleanNumber(data.transplantedCount):cleanNumber(existing.transplantedCount),
+soilNotes:data.soilNotes!==undefined?cleanString(data.soilNotes):cleanString(existing.soilNotes),
+sunNotes:data.sunNotes!==undefined?cleanString(data.sunNotes):cleanString(existing.sunNotes),
 instanceName:data.instanceName!==undefined ? cleanString(data.instanceName) : cleanString(existing.instanceName),
 sourceType,
 plant,

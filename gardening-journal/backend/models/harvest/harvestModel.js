@@ -19,6 +19,10 @@ capturedAt:{type:Date,default:Date.now}
 
 const harvestSchema=new Schema({
 planting:{type:Schema.Types.ObjectId,ref:"Planting",required:true},
+harvestQuantity:{type:Number,min:0,default:0},
+quantityUnit:{type:String,trim:true,default:""},
+storeUnitValue:{type:Number,min:0,default:0},
+currency:{type:String,trim:true,default:""},
 harvestDate:{type:Date,default:Date.now},
 lastHarvested:{type:Date,default:null},
 daysSinceLastHarvest:{type:Number,default:null},

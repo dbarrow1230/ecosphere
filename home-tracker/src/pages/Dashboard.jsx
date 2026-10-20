@@ -39,6 +39,7 @@ function Dashboard(){
     const data=await dashboardRes.json();
     const taskData=await tasksRes.json().catch(()=>({tasks:[]}));
     if(!dashboardRes.ok)throw new Error(data?.message||"Failed to load dashboard");
+    if(!tasksRes.ok)throw new Error(taskData?.message||"Failed to load tasks");
     const loadedItems=Array.isArray(data?.items)?data.items:[];
     if(!ignore)setDashboardData({
      items:loadedItems,
@@ -48,7 +49,7 @@ function Dashboard(){
      recentItems:Array.isArray(data?.recentItems)?data.recentItems:[],
      missingItems:Array.isArray(data?.missingItems)?data.missingItems:[],
      categoryCosts:Array.isArray(data?.categoryCosts)?data.categoryCosts:[],
-     tasks:Array.isArray(taskData?.tasks)?taskData.tasks:[]
+     tasks:Array.isArray(taskData?.tasks)?taskData.tasks.filter(task=>!["Done","Completed"].includes(task.status)):[]
     });
     if(!ignore)setStockLevels(loadedItems.reduce((acc,item)=>{
      acc[item._id||item.id]={
@@ -271,6 +272,7 @@ function Dashboard(){
     missingItems:prev.missingItems.map(current=>(current._id||current.id)===itemId?{...current,minimumQuantity:savedItem.minimumQuantity,parLevel:savedItem.parLevel}:current)
    }));
    setStockLevelMessage(`Saved min/par for ${item.name}.`);
+   await refreshInventory();
   }catch(err){
    setStockLevelMessage(err.message||"Failed to save stock levels.");
   }finally{
@@ -308,12 +310,20 @@ function Dashboard(){
    if(!res.ok)throw new Error(data?.message||"Failed to delete item");
 
    removeItemFromDashboard(itemId);
+   await refreshInventory();
    setStockLevelMessage(`Deleted ${item.name}.`);
   }catch(err){
    setStockLevelMessage(err.message||"Failed to delete item.");
   }finally{
    setSavingStockLevel("");
   }
+ };
+
+ const refreshInventory=async()=>{
+  const res=await fetch("/api/dashboard");
+  const data=await res.json();
+  if(!res.ok)throw new Error(data?.message||"Inventory changed, but dashboard refresh failed");
+  setDashboardData(prev=>({...prev,...data,tasks:prev.tasks}));
  };
 
  return(

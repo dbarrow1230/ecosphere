@@ -103,7 +103,10 @@ function Users()
  };
 
  const fetchEffectivePermissions=async(userId)=>{
-  const res=await fetch(`/api/users/effective-permissions?user=${encodeURIComponent(String(userId))}`);
+  const businessId=localStorage.getItem("activeBusinessId")||sessionStorage.getItem("activeBusinessId");
+  if(!businessId)throw new Error("Select an active business before managing users.");
+  const params=new URLSearchParams({user:String(userId),business:businessId});
+  const res=await fetch(`/api/users/effective-permissions?${params}`);
   const data=await res.json();
 
   if(!res.ok)

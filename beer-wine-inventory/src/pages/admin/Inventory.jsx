@@ -1,6 +1,7 @@
+import {confirmAction} from "../../utils/feedback.js";
 // src/pages/Inventory.jsx
 import {useState,useEffect,useMemo} from "react";
-import {Container,Row,Col,Card,Form,Button,Table,Badge,Alert} from "react-bootstrap";
+import {Row,Col,Card,Form,Button,Table,Badge,Alert} from "react-bootstrap";
 
 function Inventory(){
 
@@ -135,7 +136,7 @@ function Inventory(){
 
  const handleDeleteItem=async itemId=>{
   try{
-   const confirmed=window.confirm("Are you sure you want to delete this inventory item?");
+   const confirmed=await confirmAction("Are you sure you want to delete this inventory item?");
    if(!confirmed) return;
 
    closeAlert();
@@ -224,7 +225,7 @@ function Inventory(){
 
  return(
   <section className="inventory-page py-4">
-   <Container fluid="lg">
+   <div>
 
     <Row className="g-4 mb-4">
      <Col lg={8}>
@@ -667,7 +668,7 @@ function Inventory(){
 
     </Row>
 
-   </Container>
+   </div>
   </section>
  );
 }

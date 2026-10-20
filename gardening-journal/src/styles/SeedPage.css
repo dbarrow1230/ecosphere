@@ -353,7 +353,6 @@
   border-color: var(--border);
   color: var(--heading);
   min-width: 3.5rem;
-  padding: .25rem .45rem;
 }
 
 .seed-page .seed-sidebar-card > .card-header .btn-success:hover,
@@ -404,10 +403,7 @@
 
 .seed-alpha-tabs .btn {
   min-width: 0;
-  padding: .25rem .2rem;
-  font-size: .72rem;
   font-weight: 900;
-  line-height: 1.1;
 }
 
 .seed-alpha-tabs .btn.active {
@@ -617,8 +613,6 @@
   align-items: center;
   justify-content: center;
   width: 2rem;
-  height: 2rem;
-  padding: 0;
 }
 
 .seed-header-edit-button {

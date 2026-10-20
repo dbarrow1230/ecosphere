@@ -6,12 +6,18 @@ export const createFertilizerApplication=async(req,res)=>{
 try{
 const {fertilizer,name,method,timing,description,isActive}=req.body;
 
-if(!fertilizer){
-return res.status(400).json({message:"fertilizer is required"});
+if(!fertilizer&&!req.body.treatment){
+return res.status(400).json({message:"A fertilizer or soil treatment is required"});
 }
 
 const application=new FertilizerApplication({
-fertilizer,
+results:req.body.results||"",
+treatment:req.body.treatment||"",
+applicationDate:req.body.applicationDate||null,
+problem:req.body.problem||"",
+location:req.body.location||"",
+plantName:req.body.plantName||"",
+fertilizer:fertilizer||null,
 name,
 method,
 timing,
@@ -91,13 +97,19 @@ return res.status(404).json({message:"Fertilizer application not found"});
 
 const {fertilizer,name,method,timing,description,isActive}=req.body;
 
-if(fertilizer!==undefined)application.fertilizer=fertilizer;
+if(fertilizer!==undefined)application.fertilizer=fertilizer||null;
 if(name!==undefined)application.name=name;
 if(method!==undefined)application.method=method;
 if(timing!==undefined)application.timing=timing;
 if(description!==undefined)application.description=description;
 if(isActive!==undefined)application.isActive=isActive;
 
+if(req.body.plantName!==undefined)application.plantName=req.body.plantName||"";
+if(req.body.location!==undefined)application.location=req.body.location||"";
+if(req.body.problem!==undefined)application.problem=req.body.problem||"";
+if(req.body.applicationDate!==undefined)application.applicationDate=req.body.applicationDate||null;
+if(req.body.treatment!==undefined)application.treatment=req.body.treatment||"";
+if(req.body.results!==undefined)application.results=req.body.results||"";
 const updated=await application.save();
 const populated=await FertilizerApplication.findById(updated._id)
 .populate("fertilizer");

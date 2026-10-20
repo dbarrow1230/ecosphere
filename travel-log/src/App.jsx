@@ -1,3 +1,6 @@
+import LogPages from "./pages/travel/LogPages.jsx";
+import LogFormPage from "./pages/travel/LogFormPage.jsx";
+import ReferencePages from "./pages/travel/ReferencePages.jsx";
 import WorkflowPlaceholder from "@shared/components/WorkflowPlaceholder.jsx";
 // src/App.jsx
 import {Routes,Route,useNavigate,useLocation} from "react-router-dom";
@@ -211,6 +214,15 @@ function App(){
      <Route path="/admin/inventory" element={<Inventory/>}/>
      <Route path="/admin/reports" element={<Reports/>}/>
 
+     <Route path="/trips" element={<LogPages/>}/>
+     <Route path="/trips/:id" element={<LogPages/>}/>
+     <Route path="/trips/:id/edit" element={<LogFormPage key="travel-edit"/>}/>
+     <Route path="/hiking-logs" element={<LogPages kind="hiking"/>}/>
+     <Route path="/hiking-logs/add" element={<LogFormPage key="hiking-add" kind="hiking"/>}/>
+     <Route path="/hiking-logs/:id" element={<LogPages kind="hiking"/>}/>
+     <Route path="/hiking-logs/:id/edit" element={<LogFormPage key="hiking-edit" kind="hiking"/>}/>
+     <Route path="/reference" element={<ReferencePages/>}/>
+     <Route path="/reference/:slug" element={<ReferencePages/>}/>
      {/**Reference */}
      <Route path="/reference/wine-pairing" element={<WinePairing/>}/>
 
@@ -229,7 +241,7 @@ function App(){
      <Route path="/clients" element={<WorkflowPlaceholder title="Clients"/>}/>
      <Route path="/reports" element={<Reports/>}/>
      <Route path="*" element={<Error404/>}/>
-         <Route path="/trips/add" element={<WorkflowPlaceholder title="Trips / Add"/>}/>
+         <Route path="/trips/add" element={<LogFormPage key="travel-add"/>}/>
      <Route path="/inventory" element={<Inventory/>}/>
      <Route path="/shopping-lists" element={<WorkflowPlaceholder title="Shopping Lists"/>}/>
      <Route path="/categories" element={<WorkflowPlaceholder title="Categories"/>}/>

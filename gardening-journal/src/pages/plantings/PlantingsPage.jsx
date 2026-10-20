@@ -31,7 +31,7 @@ const datePeriodOptions=[
  {value:"all",label:"All Dates"}
 ];
 
-const defaultInstanceForm={
+const defaultInstanceForm={sunNotes:"",soilNotes:"",transplantedCount:"",transplantedDate:"",sproutedCount:"",sproutedDate:"",sownCount:"",seedCost:"",sourceName:"",
  instanceName:"",
  sourceType:"seed",
  seed:"",
@@ -245,6 +245,15 @@ export default function PlantingsPage({user}){
    endDate:formatDateForInput(item.endDate),
    deathDate:formatDateForInput(item.deathDate),
    status:item.status||"active",
+   sourceName:item.sourceName??"",
+   seedCost:item.seedCost??"",
+   sownCount:item.sownCount??"",
+   sproutedDate:formatDateForInput(item.sproutedDate),
+   sproutedCount:item.sproutedCount??"",
+   transplantedDate:formatDateForInput(item.transplantedDate),
+   transplantedCount:item.transplantedCount??"",
+   soilNotes:item.soilNotes??"",
+   sunNotes:item.sunNotes??"",
    quantity:item.quantity ?? 1,
    location:item.location||"",
    failureReason:item.failureReason||"",
@@ -292,6 +301,15 @@ export default function PlantingsPage({user}){
     expectedHarvestDate:formData.expectedHarvestDate||null,
     endDate:formData.endDate||null,
     deathDate:formData.status==="dead" ? formData.deathDate||null : null,
+    sourceName:formData.sourceName,
+    seedCost:Number(formData.seedCost)||0,
+    sownCount:Number(formData.sownCount)||0,
+    sproutedDate:formData.sproutedDate||null,
+    sproutedCount:Number(formData.sproutedCount)||0,
+    transplantedDate:formData.transplantedDate||null,
+    transplantedCount:Number(formData.transplantedCount)||0,
+    soilNotes:formData.soilNotes,
+    sunNotes:formData.sunNotes,
     quantity:formData.quantity==="" ? 1 : Number(formData.quantity),
     ...(!editingInstance?{createdBy:getObjectId(user)}:{})
    };
@@ -444,6 +462,7 @@ export default function PlantingsPage({user}){
         )}
        </div>
 
+       {item.runKind!=="hydro"&&<p>Seeding: {item.sownCount??0} sown; {item.sproutedCount??0} sprouted{item.sproutedDate?` on ${formatDate(item.sproutedDate)}`:""}; {item.transplantedCount??0} transplanted{item.transplantedDate?` on ${formatDate(item.transplantedDate)}`:""}. Success: {item.sownCount>0?`${((item.sproutedCount||0)/item.sownCount*100).toFixed(1)}%`:"Not recorded"}</p>}
        {item.outcomeNotes&&(
         <p className="planting-outcome">{item.outcomeNotes}</p>
        )}
@@ -637,6 +656,15 @@ function InstanceModal({show,saving,editing,formData,seeds,plants,gardens,onChan
        </Col>
       )}
 
+      <Col md={6}><Form.Group controlId="run-sourceName"><Form.Label>Source</Form.Label><Form.Control type="text"  name="sourceName" value={formData.sourceName} onChange={onChange}/></Form.Group></Col>
+      <Col md={6}><Form.Group controlId="run-seedCost"><Form.Label>Seed cost</Form.Label><Form.Control type="number" min="0" step="any" name="seedCost" value={formData.seedCost} onChange={onChange}/></Form.Group></Col>
+      <Col md={6}><Form.Group controlId="run-sownCount"><Form.Label>Number sown</Form.Label><Form.Control type="number" min="0" step="any" name="sownCount" value={formData.sownCount} onChange={onChange}/></Form.Group></Col>
+      <Col md={6}><Form.Group controlId="run-sproutedDate"><Form.Label>Sprouted date</Form.Label><Form.Control type="date"  name="sproutedDate" value={formData.sproutedDate} onChange={onChange}/></Form.Group></Col>
+      <Col md={6}><Form.Group controlId="run-sproutedCount"><Form.Label>Number sprouted</Form.Label><Form.Control type="number" min="0" step="any" name="sproutedCount" value={formData.sproutedCount} onChange={onChange}/></Form.Group></Col>
+      <Col md={6}><Form.Group controlId="run-transplantedDate"><Form.Label>Transplanted date</Form.Label><Form.Control type="date"  name="transplantedDate" value={formData.transplantedDate} onChange={onChange}/></Form.Group></Col>
+      <Col md={6}><Form.Group controlId="run-transplantedCount"><Form.Label>Number transplanted</Form.Label><Form.Control type="number" min="0" step="any" name="transplantedCount" value={formData.transplantedCount} onChange={onChange}/></Form.Group></Col>
+      <Col md={6}><Form.Group controlId="run-soilNotes"><Form.Label>Soil / growing medium</Form.Label><Form.Control type="text"  name="soilNotes" value={formData.soilNotes} onChange={onChange}/></Form.Group></Col>
+      <Col md={6}><Form.Group controlId="run-sunNotes"><Form.Label>Sun exposure</Form.Label><Form.Control type="text"  name="sunNotes" value={formData.sunNotes} onChange={onChange}/></Form.Group></Col>
       <Col md={12}>
        <InputGroup>
         <InputGroup.Text>Outcome Notes</InputGroup.Text>

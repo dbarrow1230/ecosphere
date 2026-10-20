@@ -1,6 +1,7 @@
+import {confirmAction} from "../../utils/feedback.js";
 // src/pages/admin/MenuManager.jsx
 import {useState,useEffect,useMemo} from "react";
-import {Container,Row,Col,Card,Form,Button,Table,Badge,Alert} from "react-bootstrap";
+import {Row,Col,Card,Form,Button,Table,Badge,Alert} from "react-bootstrap";
 
 function MenuManager(){
 
@@ -137,7 +138,7 @@ function MenuManager(){
 
  const handleDeleteMenu=async menuId=>{
   try{
-   const confirmed=window.confirm("Are you sure you want to delete this menu?");
+   const confirmed=await confirmAction("Are you sure you want to delete this menu?");
    if(!confirmed) return;
 
    closeAlert();
@@ -224,7 +225,7 @@ function MenuManager(){
 
  return(
   <section className="menu-manager-page py-4">
-   <Container fluid="lg">
+   <div>
 
     <Row className="g-4 mb-4">
      <Col lg={8}>
@@ -602,7 +603,7 @@ function MenuManager(){
      </Col>
     </Row>
 
-   </Container>
+   </div>
   </section>
  );
 }

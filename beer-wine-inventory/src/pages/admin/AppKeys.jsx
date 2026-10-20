@@ -1,3 +1,5 @@
+import {confirmAction} from "../../utils/feedback.js";
+import {referenceLabel} from "../../utils/inventoryApi.js";
 // src/pages/admin/AppKeys.jsx
 import {useEffect,useState} from "react";
 import {Alert,Badge,Button,ButtonGroup,Card,Col,Form,Modal,Row,Spinner,Table} from "react-bootstrap";
@@ -158,7 +160,7 @@ export default function AppKeys(){
  };
 
  const handleDelete=async id=>{
-  if(!window.confirm("Delete this app key?"))return;
+  if(!await confirmAction("Delete this app key?"))return;
 
   try{
    setMessage({type:"",text:""});
@@ -276,7 +278,7 @@ export default function AppKeys(){
           <option value="">Select business</option>
           {businesses.map(item=>(
            <option key={item._id} value={item._id}>
-            {item.legalName||item.name||item._id}
+            {referenceLabel(item)}
            </option>
           ))}
          </Form.Select>

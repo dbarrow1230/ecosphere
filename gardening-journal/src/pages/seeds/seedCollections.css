@@ -37,7 +37,6 @@
 	font-weight:800;
 }
 
-.seed-collection-list-card,
 .seed-collection-info-card {
 	border:1px solid var(--border);
 	border-radius:8px;
@@ -45,7 +44,6 @@
 	box-shadow:0 4px 14px var(--overlay);
 }
 
-.seed-collection-list-card .card-header,
 .seed-collection-info-card .card-header {
 	display:flex;
 	align-items:center;
@@ -130,19 +128,44 @@
 	border-left:6px solid var(--primary);
 }
 
-.seed-collection-list-row {
-	display:grid;
-	grid-template-columns:14px 1fr;
-	gap:.55rem;
-	align-items:start;
+.seed-collection-seed-nav {
+ padding:.5rem 1rem;
 }
 
-.seed-collection-color-dot {
-	width:12px;
-	height:12px;
-	border:1px solid var(--border);
-	border-radius:50%;
-	margin-top:.28rem;
+.seed-collection-seed-nav h2 {
+ margin:0 0 .75rem;
+ padding-bottom:.65rem;
+ border-bottom:1px solid var(--border);
+ color:var(--primary);
+ font-size:1rem;
+}
+
+.seed-collection-seed-link {
+ display:flex;
+ justify-content:flex-start;
+ width:100%;
+ padding:.5rem .65rem;
+ border:0;
+ border-left:3px solid transparent;
+ border-radius:0;
+ background:transparent;
+ color:var(--primary);
+ text-align:left;
+ text-decoration:none;
+ font-weight:500;
+}
+
+.seed-collection-seed-link:hover,
+.seed-collection-seed-link:focus-visible {
+ color:var(--primary);
+ text-decoration:underline;
+}
+
+.seed-collection-seed-link[aria-current="true"] {
+ border-left-color:var(--primary);
+ font-weight:800;
+ text-decoration:underline;
+ text-underline-offset:.2em;
 }
 
 .seed-collection-color-control {

@@ -1,6 +1,6 @@
 import {useEffect} from "react";
 import logo from "../images/logo.png";
-import {CurrentDateTime} from "@shared";
+import CurrentDateTime from "./CurrentDateTime.jsx";
 import "./Header.css";
 
 export default function Header({logoAlt="Beverage Inventory Management System logo",eyebrow="Beer · Wine · Beverage · Inventory",title="Beverage Inventory Management System",text="Track stock levels, manage suppliers, and monitor your beer, wine, and beverage inventory with accuracy and control.",userDetails=null,onTitleChange}){

@@ -181,11 +181,12 @@ export default function SeedFormPage({
   mode = "add",
   initialSeed = null,
   embedded = false,
+  initialTab = "header",
   onSaved,
   onCancel,
   user = null
 }) {
-  const [activeTab, setActiveTab] = useState("header");
+  const [activeTab, setActiveTab] = useState(tabs.some(tab=>tab.key===initialTab)?initialTab:"header");
   const [formData, setFormData] = useState(emptySeed);
   const [loading, setLoading] = useState(false);
   const [referenceLoading, setReferenceLoading] = useState(true);

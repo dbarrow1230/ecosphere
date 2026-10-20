@@ -1,0 +1,189 @@
+.beverage-heading {
+ display: flex;
+ align-items: center;
+ gap: 1.1rem;
+ margin: .25rem 0 1.25rem;
+}
+.beverage-emblem {
+ display: grid;
+ place-items: center;
+ width: 4.5rem;
+ height: 4.5rem;
+ flex-shrink: 0;
+ color: var(--text-inverse);
+ background: var(--primary);
+ border-radius: 1rem .25rem 1rem .25rem;
+}
+.beverage-eyebrow {
+ margin: 0 0 .35rem;
+ color: var(--text-soft);
+ font: 600 .75rem var(--font-body);
+ letter-spacing: .1em;
+ text-transform: uppercase;
+}
+.beverage-heading h1 {
+ margin: 0 0 .55rem;
+ font-size: clamp(1.6rem, 3vw, 2.25rem);
+ line-height: 1.15;
+}
+.beverage-identity {
+ display: flex;
+ flex-wrap: wrap;
+ gap: .5rem;
+}
+.beverage-badge {
+ display: inline-flex;
+ align-items: center;
+ padding: .25rem .7rem;
+ border: 1px solid;
+ border-radius: 5px;
+ font: 600 .8rem var(--font-body);
+}
+.beverage-badge--type {
+ color:var(--primary);
+ background:color-mix(in srgb, var(--primary) 14%, var(--surface));
+ border-color:var(--primary);
+ text-transform:capitalize;
+}
+.beverage-badge--size {
+ color:var(--secondary);
+ background:color-mix(in srgb, var(--secondary) 14%, var(--surface));
+ border-color:var(--secondary);
+}
+.beverage-badge--sku {
+ color:var(--accent-2);
+ background:color-mix(in srgb, var(--accent-2) 14%, var(--surface));
+ border-color:var(--accent-2);
+}
+.beverage-navigation {
+ display: flex;
+ flex-wrap: wrap;
+ gap: .5rem 1.5rem;
+ padding: .75rem 0;
+ margin-bottom: 1.25rem;
+ border-top: 1px solid var(--border);
+ font-size: .85rem;
+}
+.beverage-editor {
+ display: grid;
+ gap: 1.1rem;
+ min-width: 0;
+ margin: 0;
+ padding: 0;
+ border: 0;
+}
+.beverage-columns {
+ display: grid;
+ grid-template-columns: minmax(0, 1fr) minmax(17rem, .38fr);
+ align-items: start;
+ gap: 1.1rem;
+}
+.beverage-main-column,
+.beverage-side-column {
+ display: grid;
+ gap: 1.1rem;
+ min-width: 0;
+}
+.beverage-section {
+ min-width: 0;
+ margin: 0;
+ padding: 1rem 1.25rem 1.25rem;
+ border: 1px solid var(--border);
+ border-left: 4px solid var(--primary);
+ border-radius: 6px;
+ background: var(--surface);
+ box-shadow: 0 2px 5px color-mix(in srgb, var(--primary) 8%, transparent);
+}
+.beverage-section-title {
+ display: flex;
+ align-items: center;
+ gap: .6rem;
+ margin: 0 0 1rem;
+ padding: 0 0 .75rem;
+ border-bottom: 1px solid var(--border);
+ color: var(--primary);
+ font: 650 .95rem var(--font-heading);
+ line-height: 1.4;
+}
+.beverage-fields {
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(min(100%, 21rem), 1fr));
+ align-items: center;
+ gap: 1rem 1.5rem;
+ padding-top: .4rem;
+}
+.beverage-field {
+ display: flex;
+ align-items: center;
+ gap: .65rem;
+ min-width: 0;
+}
+.beverage-field > label,
+.beverage-notes > label {
+ flex-shrink: 0;
+ margin: 0;
+ color: var(--text);
+ font-size: .85rem;
+ font-family: var(--font-body);
+}
+.beverage-control { min-width: 0; }
+.beverage-control .form-control,
+.beverage-control .form-select {
+ field-sizing: content;
+ width: auto;
+ min-width: min(12ch, 100%);
+ max-width: 100%;
+ border-color: var(--border);
+ border-radius: 4px;
+ background-color: var(--surface-2);
+}
+.beverage-field--name input,
+.beverage-field--displayName input { min-width: min(22ch, 100%); }
+.beverage-control input[type="number"] { width: 10ch; }
+.beverage-control input[type="text"] { width: max-content; }
+.beverage-barcode {
+ display: flex;
+ flex-wrap: wrap;
+ align-items: center;
+ gap: 1rem 1.5rem;
+ margin-top: 1rem;
+}
+.beverage-checkboxes {
+ display: flex;
+ flex-wrap: wrap;
+ gap: 1rem 1.75rem;
+ padding-top: .4rem;
+}
+.beverage-checkboxes label {
+ display: inline-flex;
+ align-items: center;
+ gap: .6rem;
+ margin: 0;
+ color: var(--text);
+ font-size: .85rem;
+ font-family: var(--font-body);
+}
+.beverage-checkboxes .form-check-input { flex-shrink: 0; margin: 0; }
+.beverage-notes label { margin: 0; color: inherit; font-family: inherit; font-size: inherit; }
+.beverage-notes textarea {
+ width: 100%;
+ min-width: 0;
+ min-height: 15rem;
+ resize: vertical;
+ border-color: var(--border);
+ background: var(--surface-2);
+}
+.beverage-actions {
+ display: flex;
+ flex-wrap: wrap;
+ gap: .75rem;
+ padding: 1rem 0 .25rem;
+ border-top: 1px solid var(--border);
+}
+
+@media (max-width: 991px) {
+ .beverage-columns { grid-template-columns: minmax(0, 1fr); }
+}
+
+.beverage-row-actions { display:flex; gap:1rem; }
+.beverage-row-actions a { display:inline-flex; align-items:center; gap:.35rem; }

@@ -1,6 +1,6 @@
 // src/pages/auth/ResetPasswordPage.jsx
 import {useEffect,useState} from "react";
-import {Form,Button,Container,Card,InputGroup,Alert,Spinner} from "react-bootstrap";
+import {Form,Button,Card,InputGroup,Alert,Spinner} from "react-bootstrap";
 import {Link,useParams,useNavigate} from "react-router-dom";
 import logo from "../../images/logo.png";
 import "../../styles/login.css";
@@ -115,18 +115,18 @@ export default function ResetPasswordPage()
  if(checking)
  {
   return(
-   <Container className="login-container">
+   <div className="login-container">
     <Card className="login-card">
      <Card.Body className="text-center">
       <Spinner animation="border"/>
      </Card.Body>
     </Card>
-   </Container>
+   </div>
   );
  }
 
  return(
-  <Container className="login-container">
+  <div className="login-container">
    <Card className="login-card">
     <Card.Body>
      <div className="login-logo-wrapper">
@@ -179,6 +179,6 @@ export default function ResetPasswordPage()
      </div>
     </Card.Body>
    </Card>
-  </Container>
+  </div>
  );
 }

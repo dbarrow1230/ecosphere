@@ -1,3 +1,4 @@
+import {confirmAction} from "../../utils/feedback.js";
 // src/pages/admin/BusinessTypes.jsx
 import {useEffect,useState} from "react";
 import {Alert,Badge,Button,ButtonGroup,Card,Col,Form,Modal,Row,Spinner,Table} from "react-bootstrap";
@@ -126,7 +127,7 @@ export default function BusinessTypes(){
  };
 
  const handleDelete=async id=>{
-  if(!window.confirm("Delete this business type?"))return;
+  if(!await confirmAction("Delete this business type?"))return;
 
   try{
    setMessage({type:"",text:""});

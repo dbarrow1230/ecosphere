@@ -1,5 +1,6 @@
+import {formatDateTime as formatAppDateTime} from "../../../utils/dateFormat.js";
 import {useEffect,useState} from "react";
-import {Container,Table,Spinner,Alert,Badge,Button,Modal} from "react-bootstrap";
+import {Table,Spinner,Alert,Badge,Button,Modal} from "react-bootstrap";
 import UserForm from "../../forms/users/UserForm";
 
 function Users()
@@ -353,12 +354,12 @@ function Users()
  if(loading)
  {
   return(
-   <Container className="py-5 text-center"><Spinner animation="border"/></Container>
+   <div className="py-5 text-center"><Spinner animation="border"/></div>
   );
  }
 
  return(
-  <Container className="py-5">
+  <div className="py-5">
 
    <div className="d-flex justify-content-between align-items-center mb-4">
     <h1 className="mb-0">Users</h1>
@@ -397,7 +398,7 @@ function Users()
          </td>
          <td>{getHardinessZoneLabel(user.hardinessZone)}</td>
          <td><Badge bg={user.isActive?"success":"secondary"}>{user.isActive?"Active":"Inactive"}</Badge></td>
-         <td>{user.lastLogin?new Date(user.lastLogin).toLocaleString():"-"}</td>
+         <td>{user.lastLogin?formatAppDateTime(user.lastLogin):"-"}</td>
          <td>
           <div className="d-flex gap-2">
            <Button size="sm" variant="outline-warning" onClick={()=>handleEdit(user)}>Edit</Button>
@@ -426,7 +427,7 @@ function Users()
     </Modal.Footer>
    </Modal>
 
-  </Container>
+  </div>
  );
 }
 

@@ -1,3 +1,5 @@
+import {formatDate as formatAppDate} from "../../utils/dateFormat.js";
+import {referenceLabel} from "../../utils/inventoryApi.js";
 //src/pages/admin/Occasions.jsx
 import {useEffect,useMemo,useRef,useState} from "react";
 import {Modal,Button,Alert,Table,Accordion} from "react-bootstrap";
@@ -8,8 +10,8 @@ import "../../styles/Occasions.css";
 const defaultFormData={business_id:"",seasonRef:"",name:"",code:"",startDate:"",endDate:"",isRecurringAnnual:false,isActive:true,notes:""};
 const getRows=d=>Array.isArray(d)?d:Array.isArray(d?.data)?d.data:Array.isArray(d?.occasions)?d.occasions:Array.isArray(d?.businesses)?d.businesses:Array.isArray(d?.seasons)?d.seasons:[];
 const getId=v=>!v?"":typeof v==="string"?v:String(v?._id||v?.id||"");
-const formatValue=v=>v==null||v===""?"-":typeof v==="object"?(v?.name||v?.legalName||v?.code||v?._id||"-"):String(v);
-const formatDate=v=>!v?"-":(d=>isNaN(d.getTime())?"-":d.toLocaleDateString())(new Date(v));
+const formatValue=referenceLabel;
+const formatDate=formatAppDate;
 
 export default function Occasions(){
  const [rows,setRows]=useState([]),[businesses,setBusinesses]=useState([]),[seasons,setSeasons]=useState([]);

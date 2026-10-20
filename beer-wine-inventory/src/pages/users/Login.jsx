@@ -1,6 +1,6 @@
 // src/pages/users/Login.jsx
 import {useEffect} from "react";
-import {Container,Card} from "react-bootstrap";
+import {Card} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
 import LoginForm from "../forms/users/LoginForm";
 
@@ -32,13 +32,13 @@ export default function Login()
  };
 
  return(
-  <Container className="py-4 d-flex justify-content-center">
+  <div className="py-4 d-flex justify-content-center">
    <Card style={{width:"100%",maxWidth:"480px"}}>
     <Card.Body>
      <Card.Title className="mb-4">Login</Card.Title>
      <LoginForm onLogin={handleLogin}/>
     </Card.Body>
    </Card>
-  </Container>
+  </div>
  );
 }

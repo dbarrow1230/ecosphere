@@ -3,6 +3,7 @@ import {useEffect,useMemo,useState} from "react";
 import {Alert,Badge,Button,Card,Col,Form,Modal,Row,Spinner} from "react-bootstrap";
 import {ArrowLeft,Leaf,MapPin,Pencil,Plus,Settings,Sprout,Trash2} from "lucide-react";
 import {Link,useParams} from "react-router-dom";
+import GardenBedPlanner from "./GardenBedPlanner.jsx";
 import SortedSelect from "../../components/SortedSelect.jsx";
 import "./gardenWorkspace.css";
 
@@ -26,7 +27,7 @@ const formatSectionSize=(section,metricUnits,imperialUnits)=>{
 };
 
 const initialForm={sourceType:"seed",seed:"",plant:"",gardenSection:"",instanceName:"",plantedDate:new Date().toISOString().slice(0,10),quantity:1};
-const initialSectionForm={name:"",type:"",size:{metric:[emptyDimension("Length"),emptyDimension("Width")],imperial:[emptyDimension("Length"),emptyDimension("Width")]},newNote:"",isActive:true};
+const initialSectionForm={layoutPlan:"",sunExposure:"",locationDescription:"",drainage:"",soilType:"",name:"",type:"",size:{metric:[emptyDimension("Length"),emptyDimension("Width")],imperial:[emptyDimension("Length"),emptyDimension("Width")]},newNote:"",isActive:true};
 
 export default function GardenWorkspacePage({user}){
  const {id}=useParams();
@@ -104,6 +105,11 @@ export default function GardenWorkspacePage({user}){
  const openSectionForm=section=>{
   setEditingSection(section||null);
   setSectionForm(section?{
+   soilType:section.soilType||"",
+   drainage:section.drainage||"",
+   locationDescription:section.locationDescription||"",
+   sunExposure:section.sunExposure||"",
+   layoutPlan:section.layoutPlan||"",
    name:section.name||"",
    type:getId(section.type),
    size:{metric:normalizeDimensions(section.size?.metric),imperial:normalizeDimensions(section.size?.imperial)},
@@ -128,6 +134,11 @@ export default function GardenWorkspacePage({user}){
    const sectionId=getId(editingSection);
    const payload={
     garden:id,
+    soilType:sectionForm.soilType,
+    drainage:sectionForm.drainage,
+    locationDescription:sectionForm.locationDescription,
+    sunExposure:sectionForm.sunExposure,
+    layoutPlan:sectionForm.layoutPlan,
     name:sectionForm.name,
     type:sectionForm.type,
     size:{metric:sectionForm.size.metric.map(item=>({label:item.label,value:Number(item.value)||0,unit:item.unit||null})),imperial:sectionForm.size.imperial.map(item=>({label:item.label,value:Number(item.value)||0,unit:item.unit||null}))},
@@ -222,10 +233,13 @@ export default function GardenWorkspacePage({user}){
     <Card.Body>
      {sections.length?<div className="garden-section-grid">{sections.map(section=><article key={getId(section)} className="garden-section-item">
       <div><small>{section.type?.name||"Location type not set"}</small><h2>{section.name}</h2><p>{formatSectionSize(section,metricUnits,imperialUnits)}</p></div>
+      <dl>{[["Soil",section.soilType],["Drainage",section.drainage],["Location",section.locationDescription],["Sun",section.sunExposure],["Plan",section.layoutPlan]].filter(([,value])=>value).map(([label,value])=><div key={label}><dt>{label}</dt><dd className="garden-section-detail">{value}</dd></div>)}</dl>
       <div className="garden-section-actions"><Button size="sm" variant="outline-primary" onClick={()=>openSectionForm(section)}><Pencil size={14}/> Edit</Button><Button size="sm" variant="outline-danger" onClick={()=>deleteSection(section)}><Trash2 size={14}/> Delete</Button></div>
      </article>)}</div>:<p className="garden-section-empty">No sections yet. Add a bed, container, row, tray, shelf, hydro device, or other growing area.</p>}
     </Card.Body>
    </Card>
+
+   <GardenBedPlanner sections={sections} seeds={seeds} plants={plants} onSaved={updated=>setSections(previous=>previous.map(section=>getId(section)===getId(updated)?updated:section))}/>
 
    <Card className="garden-runs-card">
     <Card.Header>Growing in this garden</Card.Header>
@@ -272,6 +286,11 @@ export default function GardenWorkspacePage({user}){
     <Form onSubmit={saveSection}>
      <Modal.Header closeButton><Modal.Title>{editingSection?"Edit":"Add"} Garden Section</Modal.Title></Modal.Header>
      <Modal.Body><Row className="g-3">
+      <Col md={6}><Form.Group controlId="section-soilType"><Form.Label>Soil type</Form.Label><Form.Control as="textarea" name="soilType" value={sectionForm.soilType} onChange={handleSectionChange}/></Form.Group></Col>
+      <Col md={6}><Form.Group controlId="section-drainage"><Form.Label>Drainage</Form.Label><Form.Control as="textarea" name="drainage" value={sectionForm.drainage} onChange={handleSectionChange}/></Form.Group></Col>
+      <Col md={6}><Form.Group controlId="section-locationDescription"><Form.Label>Location</Form.Label><Form.Control as="textarea" name="locationDescription" value={sectionForm.locationDescription} onChange={handleSectionChange}/></Form.Group></Col>
+      <Col md={6}><Form.Group controlId="section-sunExposure"><Form.Label>Sun exposure (AM / noon / PM)</Form.Label><Form.Control as="textarea" name="sunExposure" value={sectionForm.sunExposure} onChange={handleSectionChange}/></Form.Group></Col>
+      <Col md={6}><Form.Group controlId="section-layoutPlan"><Form.Label>Bed layout / planting plan</Form.Label><Form.Control as="textarea" name="layoutPlan" value={sectionForm.layoutPlan} onChange={handleSectionChange}/></Form.Group></Col>
       <Col md={6}><Form.Group><Form.Label>Section name</Form.Label><Form.Control name="name" value={sectionForm.name} onChange={handleSectionChange} required placeholder="Raised bed A, herb shelf, tower 1..."/></Form.Group></Col>
       <Col md={6}><Form.Group><Form.Label>Location type</Form.Label><SortedSelect name="type" value={sectionForm.type} onChange={handleSectionChange} options={references.locationTypes} getValue={getId} getLabel={item=>item.name} placeholder="Select location type" required/></Form.Group></Col>
       <Col xs={12}><h3 className="h6">Metric Size</h3><SectionDimensionRows items={sectionForm.size.metric} units={metricUnits} system="metric" onChange={updateSectionDimension}/></Col>

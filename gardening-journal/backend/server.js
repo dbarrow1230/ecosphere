@@ -1,5 +1,6 @@
 // backend/server.js
 import express from "express";
+import {migrateGardenPlanning} from "./services/migrateGardenPlanning.js";
 import http from "http";
 import mongoose from "mongoose";
 import cors from "cors";
@@ -75,6 +76,12 @@ import seedRoutes from "./routes/seed/seedRoutes.js";
 import seedCollectionRoutes from "./routes/seed/seedCollectionRoutes.js";
 
 //supply
+import gardenBudgetRoutes from "./routes/planning/gardenBudgetRoutes.js";
+import gardenExpenseRoutes from "./routes/planning/gardenExpenseRoutes.js";
+import gardenWishRoutes from "./routes/planning/gardenWishRoutes.js";
+import fruitCalendarRoutes from "./routes/planning/fruitCalendarRoutes.js";
+import vegetableCalendarRoutes from "./routes/planning/vegetableCalendarRoutes.js";
+import companionPlantingRoutes from "./routes/planning/companionPlantingRoutes.js";
 import supplyRoutes from "./routes/supplies/supplyRoutes.js";
 
 //species
@@ -366,6 +373,12 @@ app.use("/api/garden-sections",gardenSectionRoutes);
 app.use("/api/garden-references",gardenReferenceRoutes);
 
 //supply api
+app.use("/api/garden-budgets",gardenBudgetRoutes);
+app.use("/api/garden-expenses",gardenExpenseRoutes);
+app.use("/api/garden-wishlist",gardenWishRoutes);
+app.use("/api/fruit-calendar",fruitCalendarRoutes);
+app.use("/api/vegetable-calendar",vegetableCalendarRoutes);
+app.use("/api/companion-planting",companionPlantingRoutes);
 app.use("/api/supplies",supplyRoutes);
 
 //journal api
@@ -592,6 +605,7 @@ const startApp=async()=>{
  if(!process.env.MONGO_URI)throw new Error("MONGO_URI is not defined");
 
  await waitForMongo(process.env.MONGO_URI);
+ await migrateGardenPlanning();
  await normalizeExistingSeedImages();
 
  startKeyboardShutdown();

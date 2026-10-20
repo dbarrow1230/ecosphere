@@ -1,5 +1,6 @@
+import {formatDate as formatAppDate,formatDateTime as formatAppDateTime} from "../../../utils/dateFormat.js";
 import {useEffect,useState} from "react";
-import {Container,Row,Col,Card,Spinner,Alert,Image,ListGroup,Badge} from "react-bootstrap";
+import {Row,Col,Card,Spinner,Alert,Image,ListGroup,Badge} from "react-bootstrap";
 import "../../../styles/UserProfilePage.css";
 
 
@@ -108,7 +109,7 @@ export default function UserProfilePage()
    return "—";
   }
 
-  return date.toLocaleString();
+  return formatAppDateTime(value);
  };
 
  const getAvatarUrl=()=>{
@@ -349,20 +350,20 @@ export default function UserProfilePage()
  if(loading)
  {
   return(
-   <Container className="py-4">
+   <div className="py-4">
     <div className="d-flex justify-content-center align-items-center" style={{minHeight:"320px"}}>
      <Spinner animation="border"/>
     </div>
-   </Container>
+   </div>
   );
  }
 
  if(error)
  {
   return(
-   <Container className="py-4">
+   <div className="py-4">
     <Alert variant="danger" className="mb-0">{error}</Alert>
-   </Container>
+   </div>
   );
  }
 
@@ -384,7 +385,7 @@ export default function UserProfilePage()
     <article><small>Account</small><strong>{profile?.isActive?"Active":"Inactive"}</strong><span>{profile?.username||"—"}</span></article>
     <article><small>Username</small><strong>{profile?.username||"—"}</strong><span>Account identity</span></article>
     <article><small>Contact</small><strong>{details?.phone?"Available":"Missing"}</strong><span>{details?.phone||"—"}</span></article>
-    <article><small>Last Login</small><strong>{profile?.lastLogin?new Date(profile.lastLogin).toLocaleDateString():"—"}</strong><span>Account activity</span></article>
+    <article><small>Last Login</small><strong>{profile?.lastLogin?formatAppDate(profile.lastLogin):"—"}</strong><span>Account activity</span></article>
    </section>
 
    <Row className="g-4">

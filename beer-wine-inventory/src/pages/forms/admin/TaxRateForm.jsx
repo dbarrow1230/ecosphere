@@ -1,3 +1,4 @@
+import {referenceLabel} from "../../../utils/inventoryApi.js";
 import {useState} from "react";
 import {Button,Col,Form,Row} from "react-bootstrap";
 
@@ -18,11 +19,7 @@ const getObjectId=value=>{
  return "";
 };
 
-const getStateLabel=value=>{
- if(!value)return "";
- if(typeof value==="string")return value;
- return value?.name||value?.title||value?.code||"";
-};
+const getStateLabel=referenceLabel;
 
 export default function TaxRateForm({
  initialData={},

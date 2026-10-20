@@ -1,6 +1,7 @@
+import {confirmAction} from "../../utils/feedback.js";
 // src/pages/Orders.jsx
 import {useState,useEffect,useMemo} from "react";
-import {Container,Row,Col,Card,Form,Button,Table,Badge,Alert} from "react-bootstrap";
+import {Row,Col,Card,Form,Button,Table,Badge,Alert} from "react-bootstrap";
 import "../../styles/orders.css";
 
 function Orders(){
@@ -212,7 +213,7 @@ function Orders(){
 
  const handleDeleteOrder=async orderId=>{
   try{
-   const confirmed=window.confirm("Are you sure you want to delete this order?");
+   const confirmed=await confirmAction("Are you sure you want to delete this order?");
    if(!confirmed) return;
 
    closeAlert();
@@ -304,7 +305,7 @@ function Orders(){
 
  return(
   <section className="orders-page py-4">
-   <Container fluid="lg">
+   <div>
 
     <Row className="g-4 mb-4">
      <Col lg={8}>
@@ -760,7 +761,7 @@ function Orders(){
      </Col>
     </Row>
 
-   </Container>
+   </div>
   </section>
  );
 }

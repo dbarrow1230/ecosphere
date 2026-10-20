@@ -1,5 +1,5 @@
 import {useEffect} from "react";
-import {Container,Card} from "react-bootstrap";
+import {Card} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
 import LoginForm from "../../forms/users/LoginForm";
 import "../../../styles/login.css";
@@ -44,13 +44,13 @@ export default function Login()
  };
 
  return(
-  <Container className="login-container">
+  <div className="login-container">
    <Card className="login-card">
     <Card.Body>
      <Card.Title className="login-title">Login</Card.Title>
      <LoginForm onLogin={handleLogin}/>
     </Card.Body>
    </Card>
-  </Container>
+  </div>
  );
 }

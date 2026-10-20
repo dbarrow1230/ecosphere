@@ -1,6 +1,8 @@
+import "../styles/tasting-ratings.css";
+import {formatDate as formatAppDate} from "../utils/dateFormat.js";
 import {useEffect,useState} from "react";
 import {useNavigate,useParams} from "react-router-dom";
-import {Container,Row,Col,Card,Badge,Button,Alert,Spinner} from "react-bootstrap";
+import {Row,Col,Card,Button,Alert,Spinner} from "react-bootstrap";
 import {ArrowLeft,CalendarDays,MapPin,Heart,ThumbsUp,X,Wine} from "lucide-react";
 
 const BeverageTastingDetails=()=>{
@@ -30,35 +32,35 @@ const BeverageTastingDetails=()=>{
 
     const displayRating=(rating)=>{
         if(rating==="love"){
-            return <Badge bg="danger"><Heart size={13} className="me-1"/>Love It</Badge>;
+            return <span className="tasting-rating-token tasting-rating--love"><Heart size={13} className="me-1"/>Love It</span>;
         }
         if(rating==="like"){
-            return <Badge bg="success"><ThumbsUp size={13} className="me-1"/>Like It</Badge>;
+            return <span className="tasting-rating-token tasting-rating--like"><ThumbsUp size={13} className="me-1"/>Like It</span>;
         }
         if(rating==="leave"){
-            return <Badge bg="secondary"><X size={13} className="me-1"/>Leave It</Badge>;
+            return <span className="tasting-rating-token tasting-rating--leave"><X size={13} className="me-1"/>Leave It</span>;
         }
-        return <Badge bg="light" text="dark">Not Rated</Badge>;
+        return <span className="tasting-rating-token tasting-rating--unrated">Not Rated</span>;
     };
 
     if(loading){
         return(
-            <Container className="py-4 text-center">
+            <div className="py-4 text-center">
                 <Spinner animation="border"/>
-            </Container>
+            </div>
         );
     }
 
     if(error){
         return(
-            <Container className="py-4">
+            <div className="py-4">
                 <Alert variant="danger">{error}</Alert>
-            </Container>
+            </div>
         );
     }
 
     return(
-        <Container className="py-4">
+        <div className="py-4">
             <Button variant="outline-secondary" className="mb-3" onClick={()=>navigate("/beverage-tastings")}>
                 <ArrowLeft size={16} className="me-1"/>
                 Back
@@ -71,12 +73,13 @@ const BeverageTastingDetails=()=>{
                     </div>
                 </Card.Header>
                 <Card.Body>
+                    <div className="mb-3"><strong className="detail-label">Tasting business:</strong> <span className="detail-value">{tasting.businessName||"—"}</span></div>
                     <Row>
                         <Col md={4}>
                             <strong>Date</strong>
                             <div className="d-flex align-items-center gap-1 mt-1">
                                 <CalendarDays size={16}/>
-                                {new Date(tasting.tastingDate).toLocaleDateString()}
+                                {formatAppDate(tasting.tastingDate)}
                             </div>
                         </Col>
                         <Col md={4}>
@@ -127,6 +130,7 @@ const BeverageTastingDetails=()=>{
                                 <p className="mb-0 mt-1">{beverage.personalNotes||"No personal notes."}</p>
                             </Col>
                         </Row>
+                        {beverage.culinaryApplications&&<div className="mt-3"><strong className="detail-label">Culinary applications:</strong><p className="detail-value detail-notes mt-1">{beverage.culinaryApplications}</p></div>}
                     </Card.Body>
                 </Card>
             ))}
@@ -140,7 +144,7 @@ const BeverageTastingDetails=()=>{
                     </Card.Body>
                 </Card>
             )}
-        </Container>
+        </div>
     );
 };
 

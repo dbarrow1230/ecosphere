@@ -32,6 +32,17 @@ import HarvestPage from "./pages/harvest/HarvestPage.jsx";
 
 import TasksPage from "./pages/task/TasksPage.jsx";
 
+import GardenBudgetsPage from "./pages/planning/GardenBudgetsPage.jsx";
+import GardenExpensesPage from "./pages/planning/GardenExpensesPage.jsx";
+import GardenWishListPage from "./pages/planning/GardenWishListPage.jsx";
+import FruitCalendarPage from "./pages/planning/FruitCalendarPage.jsx";
+import VegetableCalendarPage from "./pages/planning/VegetableCalendarPage.jsx";
+import TrapCropsPage from "./pages/planning/TrapCropsPage.jsx";
+import CoverCropsPage from "./pages/planning/CoverCropsPage.jsx";
+import CompanionPlantingPage from "./pages/planning/CompanionPlantingPage.jsx";
+import SoilTemperatureReferencePage from "./pages/reference/SoilTemperatureReferencePage.jsx";
+import MicrogreensGuidePage from "./pages/reference/MicrogreensGuidePage.jsx";
+
 //reference
 import HydroponicCompanionPlantingPage from "./pages/reference/HydroponicCompanionPlantingPage.jsx";
 import USDAZonesReference from "./pages/reference/USDAZonesReference.jsx";
@@ -347,6 +358,22 @@ function App(){
      <Route path="/plantings" element={<PlantingsPage user={user}/>}/>
      <Route path="/gardens" element={<GardensPage user={user}/>}/>
      <Route path="/gardens/:id" element={<GardenWorkspacePage user={user}/>}/>
+     <Route path="/garden-budgets" element={<GardenBudgetsPage/>}/>
+     <Route path="/garden-expenses" element={<GardenExpensesPage/>}/>
+     <Route path="/garden-wishlist" element={<GardenWishListPage/>}/>
+     <Route path="/fruit-calendar" element={<FruitCalendarPage/>}/>
+     <Route path="/vegetable-calendar" element={<VegetableCalendarPage/>}/>
+     <Route path="/trap-crops" element={<TrapCropsPage user={user}/>}/>
+     <Route path="/cover-crops" element={<CoverCropsPage user={user}/>}/>
+     <Route path="/companion-planting" element={<CompanionPlantingPage/>}/>
+     <Route path="/planning/budgets" element={<Navigate to="/garden-budgets" replace/>}/>
+     <Route path="/planning/expenses" element={<Navigate to="/garden-expenses" replace/>}/>
+     <Route path="/planning/wishlist" element={<Navigate to="/garden-wishlist" replace/>}/>
+     <Route path="/planning/companions" element={<Navigate to="/companion-planting" replace/>}/>
+     <Route path="/planning/crop-calendar" element={<Navigate to="/vegetable-calendar" replace/>}/>
+     <Route path="/soil-temperatures" element={<SoilTemperatureReferencePage user={user}/>}/>
+     <Route path="/microgreens-guide" element={<MicrogreensGuidePage/>}/>
+     <Route path="/garden-reference" element={<Navigate to="/microgreens-guide" replace/>}/>
      <Route path="/supplies" element={<SuppliesPage user={user}/>}/>
      <Route path="/observations" element={<ObservationsPage user={user}/>}/>
      <Route path="/fertilizer-applications" element={<FertilizerApplicationsPage user={user}/>}/>

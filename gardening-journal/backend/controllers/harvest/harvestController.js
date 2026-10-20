@@ -42,6 +42,10 @@ return res.status(400).json({message:"planting is required"});
 }
 
 const harvest=new Harvest({
+currency:req.body.currency,
+storeUnitValue:req.body.storeUnitValue,
+quantityUnit:req.body.quantityUnit,
+harvestQuantity:req.body.harvestQuantity,
 planting,
 harvestDate,
 harvestAmount:{
@@ -217,6 +221,10 @@ if(images!==undefined)harvest.images=Array.isArray(images)?images:harvest.images
 if(createdBy!==undefined)harvest.createdBy=createdBy||null;
 if(isActive!==undefined)harvest.isActive=isActive;
 
+if(req.body.harvestQuantity!==undefined)harvest.harvestQuantity=req.body.harvestQuantity;
+if(req.body.quantityUnit!==undefined)harvest.quantityUnit=req.body.quantityUnit;
+if(req.body.storeUnitValue!==undefined)harvest.storeUnitValue=req.body.storeUnitValue;
+if(req.body.currency!==undefined)harvest.currency=req.body.currency;
 const updated=await harvest.save();
 const populated=await Harvest.findById(updated._id)
 .populate(plantingPopulate)
@@ -255,6 +263,10 @@ date,
 createdBy:createdBy||req.user?._id||req.user?.id||null
 });
 
+if(req.body.harvestQuantity!==undefined)harvest.harvestQuantity=req.body.harvestQuantity;
+if(req.body.quantityUnit!==undefined)harvest.quantityUnit=req.body.quantityUnit;
+if(req.body.storeUnitValue!==undefined)harvest.storeUnitValue=req.body.storeUnitValue;
+if(req.body.currency!==undefined)harvest.currency=req.body.currency;
 const updated=await harvest.save();
 const populated=await Harvest.findById(updated._id)
 .populate(plantingPopulate)

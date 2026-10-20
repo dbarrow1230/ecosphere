@@ -1,3 +1,4 @@
+import {referenceLabel} from "../../utils/inventoryApi.js";
 //src/pages/forms/MentorNoteForm.jsx
 import {useMemo,useState,useEffect} from "react";
 import {Form,Row,Col,Button,Card,Table,Modal,Badge} from "react-bootstrap";
@@ -59,7 +60,7 @@ export default function MentorNoteForm({mentees=[],users=[],notes=[],initialData
  };
 
  const getUserDisplayName=user=>{
-  return user?.fullName||user?.name||user?.username||user?.email||user?._id||"";
+  return referenceLabel(user);
  };
 
  const defaultCreatedBy=String(

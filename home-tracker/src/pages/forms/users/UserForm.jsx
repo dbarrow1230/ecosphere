@@ -24,7 +24,7 @@ export default function UserForm({user,onSuccess})
   username:"",
   email:"",
   password:"",
-  role:"user",
+  role:"",
   isActive:true,
   details:{...emptyDetails}
  });
@@ -32,6 +32,7 @@ export default function UserForm({user,onSuccess})
  const [saving,setSaving]=useState(false);
  const [error,setError]=useState("");
  const [states,setStates]=useState([]);
+ const [roles,setRoles]=useState([]);
  const [counties,setCounties]=useState([]);
  const [activeTab,setActiveTab]=useState("account");
  const [avatarFile,setAvatarFile]=useState(null);
@@ -126,6 +127,15 @@ export default function UserForm({user,onSuccess})
  useEffect(()=>{
   fetchStates();
   fetchCounties();
+  const loadRoles=async()=>{
+   try{
+    const res=await fetch("/api/users/roles");
+    const data=await res.json();
+    if(!res.ok)throw new Error(data?.message||"Failed to load roles");
+    setRoles(Array.isArray(data?.data)?data.data:Array.isArray(data?.roles)?data.roles:[]);
+   }catch(err){setError(err.message);}
+  };
+  loadRoles();
  },[]);
 
  useEffect(()=>{
@@ -136,7 +146,7 @@ export default function UserForm({user,onSuccess})
      username:"",
      email:"",
      password:"",
-     role:"user",
+     role:"",
      isActive:true,
      details:{...emptyDetails}
     });
@@ -151,7 +161,7 @@ export default function UserForm({user,onSuccess})
     username:user.username||"",
     email:user.email||"",
     password:"",
-    role:user.role||"user",
+    role:typeof user.role==="object"?user.role?._id||"":user.role||"",
     isActive:user.isActive!==undefined?user.isActive:true,
     details:{...emptyDetails}
    });
@@ -275,7 +285,7 @@ export default function UserForm({user,onSuccess})
    formData.append("file",avatarFile);
    formData.append("type","avatar");
 
-   const res=await fetch("/api/upload/avatar",{
+   const res=await fetch("/api/upload/avatars",{
     method:"POST",
     body:formData
    });
@@ -569,9 +579,8 @@ export default function UserForm({user,onSuccess})
        <Form.Group>
         <Form.Label>Role</Form.Label>
         <Form.Select name="role" value={form.role} onChange={handleChange}>
-         <option value="admin">admin</option>
-         <option value="user">user</option>
-         <option value="staff">staff</option>
+         <option value="">No direct role</option>
+         {roles.map(role=><option key={role._id} value={role._id}>{role.name}</option>)}
         </Form.Select>
        </Form.Group>
       </Col>

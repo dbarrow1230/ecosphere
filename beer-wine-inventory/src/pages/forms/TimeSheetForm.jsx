@@ -1,3 +1,4 @@
+import {referenceLabel} from "../../utils/inventoryApi.js";
 import {useMemo,useState,useEffect} from "react";
 import {Form,Row,Col,Button,Card,Table,Modal,Alert} from "react-bootstrap";
 import {Clock3,CalendarRange,FileText,CheckCircle2,Calculator,Save,Trash2,XCircle,User,Plus} from "lucide-react";
@@ -178,7 +179,7 @@ export default function TimeSheetForm({initialData={},onSubmit,onDelete,submitLa
  },[requiredMinutes,overallTotalMinutes]);
 
  function getUserDisplayName(user){
-  return user?.fullName||user?.name||user?.username||user?.email||user?._id||"";
+  return referenceLabel(user);
  }
 
  function handleWeekChange(index,field,value){

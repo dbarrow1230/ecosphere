@@ -1,3 +1,4 @@
+import {referenceLabel} from "../../utils/inventoryApi.js";
 // src/pages/forms/SmartGoalsForm.jsx
 import {useMemo,useState,useEffect} from "react";
 import {Form,Row,Col,Button,Card,Modal} from "react-bootstrap";
@@ -37,11 +38,11 @@ export default function SmartGoalForm({initialData={},onSubmit,onDelete,submitLa
  },[lockedMentee]);
 
  function getUserDisplayName(user){
-  return user?.fullName||user?.name||user?.username||user?.email||user?._id||"";
+  return referenceLabel(user);
  }
 
  function getStatusDisplayName(status){
-  return status?.name||status?.label||status?.code||status?._id||"";
+  return referenceLabel(status);
  }
 
  function handleChange(e){

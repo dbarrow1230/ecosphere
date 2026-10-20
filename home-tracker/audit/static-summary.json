@@ -1,0 +1,177 @@
+{
+  "scannedFiles": 289,
+  "syntaxErrors": [],
+  "missingImports": 46,
+  "activeMissingImports": [],
+  "unmatchedStaticLinks": [],
+  "unmountedEndpoints": [
+    {
+      "file": "src\\pages\\admin\\Clients.jsx",
+      "active": false,
+      "url": "/api/clients",
+      "mountExists": false
+    },
+    {
+      "file": "src\\pages\\admin\\Clients.jsx",
+      "active": false,
+      "url": "/api/clients/",
+      "mountExists": false
+    },
+    {
+      "file": "src\\pages\\admin\\Clients.jsx",
+      "active": false,
+      "url": "/api/clients",
+      "mountExists": false
+    },
+    {
+      "file": "src\\pages\\admin\\Events.jsx",
+      "active": false,
+      "url": "/api/events",
+      "mountExists": false
+    },
+    {
+      "file": "src\\pages\\admin\\Events.jsx",
+      "active": false,
+      "url": "/api/events/",
+      "mountExists": false
+    },
+    {
+      "file": "src\\pages\\admin\\Events.jsx",
+      "active": false,
+      "url": "/api/events/",
+      "mountExists": false
+    },
+    {
+      "file": "src\\pages\\admin\\Events.jsx",
+      "active": false,
+      "url": "/api/events",
+      "mountExists": false
+    },
+    {
+      "file": "src\\pages\\admin\\inventory\\Inventory.jsx",
+      "active": false,
+      "url": "/api/inventory",
+      "mountExists": false
+    },
+    {
+      "file": "src\\pages\\admin\\inventory\\Inventory.jsx",
+      "active": false,
+      "url": "/api/inventory/",
+      "mountExists": false
+    },
+    {
+      "file": "src\\pages\\admin\\inventory\\Inventory.jsx",
+      "active": false,
+      "url": "/api/inventory/",
+      "mountExists": false
+    },
+    {
+      "file": "src\\pages\\admin\\inventory\\Inventory.jsx",
+      "active": false,
+      "url": "/api/inventory",
+      "mountExists": false
+    },
+    {
+      "file": "src\\pages\\admin\\Inventory.jsx",
+      "active": false,
+      "url": "/api/inventory",
+      "mountExists": false
+    },
+    {
+      "file": "src\\pages\\admin\\Inventory.jsx",
+      "active": false,
+      "url": "/api/inventory/",
+      "mountExists": false
+    },
+    {
+      "file": "src\\pages\\admin\\Inventory.jsx",
+      "active": false,
+      "url": "/api/inventory/",
+      "mountExists": false
+    },
+    {
+      "file": "src\\pages\\admin\\Inventory.jsx",
+      "active": false,
+      "url": "/api/inventory",
+      "mountExists": false
+    },
+    {
+      "file": "src\\pages\\admin\\MenuManager.jsx",
+      "active": false,
+      "url": "/api/menus",
+      "mountExists": false
+    },
+    {
+      "file": "src\\pages\\admin\\MenuManager.jsx",
+      "active": false,
+      "url": "/api/menus/",
+      "mountExists": false
+    },
+    {
+      "file": "src\\pages\\admin\\MenuManager.jsx",
+      "active": false,
+      "url": "/api/menus/",
+      "mountExists": false
+    },
+    {
+      "file": "src\\pages\\admin\\MenuManager.jsx",
+      "active": false,
+      "url": "/api/menus",
+      "mountExists": false
+    },
+    {
+      "file": "src\\pages\\admin\\Orders.jsx",
+      "active": false,
+      "url": "/api/orders",
+      "mountExists": false
+    },
+    {
+      "file": "src\\pages\\admin\\Orders.jsx",
+      "active": false,
+      "url": "/api/clients",
+      "mountExists": false
+    },
+    {
+      "file": "src\\pages\\admin\\Orders.jsx",
+      "active": false,
+      "url": "/api/events",
+      "mountExists": false
+    },
+    {
+      "file": "src\\pages\\admin\\Orders.jsx",
+      "active": false,
+      "url": "/api/orders/",
+      "mountExists": false
+    },
+    {
+      "file": "src\\pages\\admin\\Orders.jsx",
+      "active": false,
+      "url": "/api/orders/",
+      "mountExists": false
+    },
+    {
+      "file": "src\\pages\\admin\\Orders.jsx",
+      "active": false,
+      "url": "/api/orders",
+      "mountExists": false
+    },
+    {
+      "file": "src\\pages\\admin\\Reports.jsx",
+      "active": false,
+      "url": "/api/events",
+      "mountExists": false
+    },
+    {
+      "file": "src\\pages\\admin\\Reports.jsx",
+      "active": false,
+      "url": "/api/orders",
+      "mountExists": false
+    },
+    {
+      "file": "src\\pages\\reference\\USDAZonesReference.jsx",
+      "active": false,
+      "url": "/api/reference/usda-zones",
+      "mountExists": false
+    }
+  ]
+}

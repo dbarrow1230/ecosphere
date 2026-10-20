@@ -1,3 +1,5 @@
+import {formatDateTime as formatAppDateTime} from "../../utils/dateFormat.js";
+import {referenceLabel} from "../../utils/inventoryApi.js";
 //src/pages/admin/Seasons.jsx
 import {useEffect,useMemo,useRef,useState} from "react";
 import {Modal,Button,Alert,Table,Accordion} from "react-bootstrap";
@@ -34,17 +36,13 @@ const getId=value=>{
  return "";
 };
 
-const formatValue=value=>{
- if(value===null||value===undefined||value==="")return "-";
- if(typeof value==="object")return value?.name||value?.legalName||value?.code||value?._id||"-";
- return String(value);
-};
+const formatValue=referenceLabel;
 
 const formatDate=value=>{
  if(!value)return "-";
  const date=new Date(value);
  if(Number.isNaN(date.getTime()))return "-";
- return date.toLocaleString();
+ return formatAppDateTime(value);
 };
 
 export default function Seasons(){

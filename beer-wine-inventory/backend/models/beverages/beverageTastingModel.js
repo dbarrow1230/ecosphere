@@ -10,11 +10,13 @@ const beverageSchema=new mongoose.Schema({
     style:{type:String,trim:true,default:""},
     producerNotes:{type:String,trim:true,default:""},
     personalNotes:{type:String,trim:true,default:""},
+    culinaryApplications:{type:String,trim:true,default:""},
     rating:{type:String,enum:["love","like","leave",""],default:""}
 });
 
 const beverageTastingSchema=new mongoose.Schema({
     userId:{type:mongoose.Schema.Types.ObjectId,ref:"User",required:true},
+    businessName:{type:String,trim:true,required:true},
     title:{type:String,trim:true,required:true},
     tastingDate:{type:Date,required:true},
     venue:{type:String,trim:true,default:""},

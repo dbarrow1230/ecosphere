@@ -1,3 +1,4 @@
+import {referenceLabel} from "../../utils/inventoryApi.js";
 // /src/forms/ReturnForm.jsx
 import React,{useEffect,useRef,useState} from 'react';
 import ReturnItemForm from './ReturnItemForm';
@@ -214,7 +215,7 @@ return(
 <select className="form-select" name="order" value={form.order} onChange={handleChange}>
 <option value="">Select Order</option>
 {orders.map(order=>(
-<option key={order._id} value={order._id}>{order.orderNumber||order.name||order._id}</option>
+<option key={order._id} value={order._id}>{referenceLabel(order)}</option>
 ))}
 </select>
 </div>
@@ -224,7 +225,7 @@ return(
 <select className="form-select" name="purchase" value={form.purchase} onChange={handleChange}>
 <option value="">Select Purchase</option>
 {purchases.map(purchase=>(
-<option key={purchase._id} value={purchase._id}>{purchase.purchaseNumber||purchase.name||purchase._id}</option>
+<option key={purchase._id} value={purchase._id}>{referenceLabel(purchase)}</option>
 ))}
 </select>
 </div>
@@ -234,7 +235,7 @@ return(
 <select className="form-select" name="receipt" value={form.receipt} onChange={handleChange}>
 <option value="">Select Receipt</option>
 {receipts.map(receipt=>(
-<option key={receipt._id} value={receipt._id}>{receipt.receiptNumber||receipt.name||receipt._id}</option>
+<option key={receipt._id} value={receipt._id}>{referenceLabel(receipt)}</option>
 ))}
 </select>
 </div>
@@ -353,7 +354,7 @@ onSuccess={()=>{}}
 <select className="form-select" value={itemForm.orderItem} onChange={e=>handleItemFormChange({...itemForm,orderItem:e.target.value})}>
 <option value="">Select Order Item</option>
 {orderItems.map(item=>(
-<option key={item._id} value={item._id}>{item.product?.name||item.name||item._id}</option>
+<option key={item._id} value={item._id}>{referenceLabel(item)}</option>
 ))}
 </select>
 </div>
@@ -363,7 +364,7 @@ onSuccess={()=>{}}
 <select className="form-select" value={itemForm.purchaseItem} onChange={e=>handleItemFormChange({...itemForm,purchaseItem:e.target.value})}>
 <option value="">Select Purchase Item</option>
 {purchaseItems.map(item=>(
-<option key={item._id} value={item._id}>{item.product?.name||item.name||item._id}</option>
+<option key={item._id} value={item._id}>{referenceLabel(item)}</option>
 ))}
 </select>
 </div>

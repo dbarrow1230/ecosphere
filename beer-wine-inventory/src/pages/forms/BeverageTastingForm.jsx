@@ -1,8 +1,14 @@
-import {useState} from "react";
-import {Container,Row,Col,Card,Form,Button,ButtonGroup,Alert} from "react-bootstrap";
-import {Wine,Plus,Trash2,Save,Heart,ThumbsUp,X} from "lucide-react";
+import {notify} from "../../utils/feedback.js";
+import "../../styles/tasting-ratings.css";
+import {useReactToPrint} from "react-to-print";
+import TastingPrintCards from "../../components/TastingPrintCards.jsx";
+import {useRef,useState} from "react";
+import "../../styles/tasting-form.css";
+import {Wine,Plus,Trash2,Save,Heart,ThumbsUp,X,Printer} from "lucide-react";
 
 const BeverageTastingForm=({userId})=>{
+    const printRef=useRef(null);
+    const printCards=useReactToPrint({contentRef:printRef,documentTitle:"Blank beverage tasting cards",pageStyle:"@page { size: letter landscape; margin: 0.25in; }"});
     // Helper: creates a blank beverage entry
     const createEmptyBeverage=(order)=>({
         order,
@@ -14,11 +20,13 @@ const BeverageTastingForm=({userId})=>{
         style:"",
         producerNotes:"",
         personalNotes:"",
+        culinaryApplications:"",
         rating:""
     });
 
     const [formData,setFormData]=useState({
         userId:userId||"",
+        businessName:"",
         title:"",
         tastingDate:"",
         venue:"",
@@ -26,13 +34,23 @@ const BeverageTastingForm=({userId})=>{
         beverages:[createEmptyBeverage(1)],
         overallNotes:""
     });
-    const [message,setMessage]=useState("");
-    const [error,setError]=useState("");
+    const setMessage=message=>notify(message,"success");
+    const setError=message=>notify(message,"danger");
     const [saving,setSaving]=useState(false);
 
     const handleChange=(e)=>{
         const {name,value}=e.target;
         setFormData((prev)=>({...prev,[name]:value}));
+    };
+
+    const handlePrint=()=>{
+        for(const [key,title] of [["businessName","tasting business"],["title","title"],["tastingDate","tasting date"],["venue","venue"],["location","location"]]){
+            if(!String(formData[key]||"").trim()){
+                setError(`Enter the ${title} before printing cards.`);
+                return;
+            }
+        }
+        printCards();
     };
 
     const handleBeverageChange=(index,e)=>{
@@ -84,6 +102,7 @@ const BeverageTastingForm=({userId})=>{
             setMessage("Beverage tasting saved.");
             setFormData({
                 userId:userId||"",
+                businessName:"",
                 title:"",
                 tastingDate:"",
                 venue:"",
@@ -98,163 +117,34 @@ const BeverageTastingForm=({userId})=>{
         }
     };
 
-    return(
-        <Container className="py-4">
-            <Row className="justify-content-center">
-                <Col xl={10}>
-                    <Card className="shadow-sm">
-                        <Card.Header>
-                            <div className="d-flex align-items-center gap-2">
-                                <Wine size={22}/>
-                                <h4 className="mb-0">Beverage Tasting</h4>
-                            </div>
-                        </Card.Header>
-                        <Card.Body>
-                            {message&&<Alert variant="success">{message}</Alert>}
-                            {error&&<Alert variant="danger">{error}</Alert>}
-                            <Form onSubmit={handleSubmit}>
-                                <Row>
-                                    <Col md={6}>
-                                        <Form.Group className="mb-3">
-                                            <Form.Label>Title</Form.Label>
-                                            <Form.Control type="text" name="title" value={formData.title} onChange={handleChange} required/>
-                                        </Form.Group>
-                                    </Col>
-                                    <Col md={6}>
-                                        <Form.Group className="mb-3">
-                                            <Form.Label>Tasting Date</Form.Label>
-                                            <Form.Control type="date" name="tastingDate" value={formData.tastingDate} onChange={handleChange} required/>
-                                        </Form.Group>
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col md={6}>
-                                        <Form.Group className="mb-3">
-                                            <Form.Label>Venue</Form.Label>
-                                            <Form.Control type="text" name="venue" value={formData.venue} onChange={handleChange} placeholder="Brooklyn Winery"/>
-                                        </Form.Group>
-                                    </Col>
-                                    <Col md={6}>
-                                        <Form.Group className="mb-3">
-                                            <Form.Label>Location</Form.Label>
-                                            <Form.Control type="text" name="location" value={formData.location} onChange={handleChange} placeholder="Brooklyn, NY"/>
-                                        </Form.Group>
-                                    </Col>
-                                </Row>
-                                {formData.beverages.map((beverage,index)=>(
-                                    <Card className="mb-3" key={index}>
-                                        <Card.Header className="d-flex justify-content-between align-items-center">
-                                            <strong>Beverage {index+1}</strong>
-                                            {formData.beverages.length>1&&(
-                                                <Button type="button" variant="outline-danger" size="sm" onClick={()=>removeBeverage(index)}>
-                                                    <Trash2 size={16}/>
-                                                </Button>
-                                            )}
-                                        </Card.Header>
-                                        <Card.Body>
-                                            <Row>
-                                                <Col md={3}>
-                                                    <Form.Group className="mb-3">
-                                                        <Form.Label>Type</Form.Label>
-                                                        <Form.Select name="beverageType" value={beverage.beverageType} onChange={(e)=>handleBeverageChange(index,e)}>
-                                                            <option value="wine">Wine</option>
-                                                            <option value="beer">Beer</option>
-                                                            <option value="cider">Cider</option>
-                                                            <option value="spirit">Spirit</option>
-                                                            <option value="other">Other</option>
-                                                        </Form.Select>
-                                                    </Form.Group>
-                                                </Col>
-                                                <Col md={3}>
-                                                    <Form.Group className="mb-3">
-                                                        <Form.Label>Vintage / Year</Form.Label>
-                                                        <Form.Control type="text" name="vintageOrYear" value={beverage.vintageOrYear} onChange={(e)=>handleBeverageChange(index,e)}/>
-                                                    </Form.Group>
-                                                </Col>
-                                                <Col md={6}>
-                                                    <Form.Group className="mb-3">
-                                                        <Form.Label>Name</Form.Label>
-                                                        <Form.Control type="text" name="name" value={beverage.name} onChange={(e)=>handleBeverageChange(index,e)} required/>
-                                                    </Form.Group>
-                                                </Col>
-                                            </Row>
-                                            <Row>
-                                                <Col md={4}>
-                                                    <Form.Group className="mb-3">
-                                                        <Form.Label>Producer</Form.Label>
-                                                        <Form.Control type="text" name="producer" value={beverage.producer} onChange={(e)=>handleBeverageChange(index,e)}/>
-                                                    </Form.Group>
-                                                </Col>
-                                                <Col md={4}>
-                                                    <Form.Group className="mb-3">
-                                                        <Form.Label>Region</Form.Label>
-                                                        <Form.Control type="text" name="region" value={beverage.region} onChange={(e)=>handleBeverageChange(index,e)}/>
-                                                    </Form.Group>
-                                                </Col>
-                                                <Col md={4}>
-                                                    <Form.Group className="mb-3">
-                                                        <Form.Label>Style</Form.Label>
-                                                        <Form.Control type="text" name="style" value={beverage.style} onChange={(e)=>handleBeverageChange(index,e)}/>
-                                                    </Form.Group>
-                                                </Col>
-                                            </Row>
-                                            <Row>
-                                                <Col md={6}>
-                                                    <Form.Group className="mb-3">
-                                                        <Form.Label>Producer Tasting Notes</Form.Label>
-                                                        <Form.Control as="textarea" rows={3} name="producerNotes" value={beverage.producerNotes} onChange={(e)=>handleBeverageChange(index,e)}/>
-                                                    </Form.Group>
-                                                </Col>
-                                                <Col md={6}>
-                                                    <Form.Group className="mb-3">
-                                                        <Form.Label>My Notes</Form.Label>
-                                                        <Form.Control as="textarea" rows={3} name="personalNotes" value={beverage.personalNotes} onChange={(e)=>handleBeverageChange(index,e)}/>
-                                                    </Form.Group>
-                                                </Col>
-                                            </Row>
-                                            <Form.Group>
-                                                <Form.Label>Rating</Form.Label>
-                                                <div>
-                                                    <ButtonGroup>
-                                                        <Button type="button" variant={beverage.rating==="love"?"danger":"outline-danger"} onClick={()=>handleRating(index,"love")}>
-                                                            <Heart size={16} className="me-1"/>
-                                                            Love It
-                                                        </Button>
-                                                        <Button type="button" variant={beverage.rating==="like"?"success":"outline-success"} onClick={()=>handleRating(index,"like")}>
-                                                            <ThumbsUp size={16} className="me-1"/>
-                                                            Like It
-                                                        </Button>
-                                                        <Button type="button" variant={beverage.rating==="leave"?"secondary":"outline-secondary"} onClick={()=>handleRating(index,"leave")}>
-                                                            <X size={16} className="me-1"/>
-                                                            Leave It
-                                                        </Button>
-                                                    </ButtonGroup>
-                                                </div>
-                                            </Form.Group>
-                                        </Card.Body>
-                                    </Card>
-                                ))}
-                                <Button type="button" variant="outline-primary" className="mb-3" onClick={addBeverage}>
-                                    <Plus size={16} className="me-1"/>
-                                    Add Beverage
-                                </Button>
-                                <Form.Group className="mb-3">
-                                    <Form.Label>Overall Tasting Notes</Form.Label>
-                                    <Form.Control as="textarea" rows={4} name="overallNotes" value={formData.overallNotes} onChange={handleChange}/>
-                                </Form.Group>
-                                <div className="d-flex justify-content-end">
-                                    <Button type="submit" disabled={saving}>
-                                        <Save size={16} className="me-1"/>
-                                        {saving?"Saving...":"Save Tasting"}
-                                    </Button>
-                                </div>
-                            </Form>
-                        </Card.Body>
-                    </Card>
-                </Col>
-            </Row>
-        </Container>
-    );
+    const input=(name,title,value,onChange,type="text",required=false)=><div className="tasting-field" key={name}><label htmlFor={name}>{title}:</label><input id={name} name={name.replace(/^beverage-\d+-/,"")} className="form-control" type={type} value={value} onChange={onChange} required={required}/></div>;
+    return <section className="app-page py-4 tasting-page">
+     <header className="tasting-heading"><Wine size={28} aria-hidden="true"/><h1>Beverage tasting</h1><button type="button" className="btn btn-outline-primary tasting-icon-button" onClick={handlePrint}><Printer size={16} aria-hidden="true"/>Print blank cards</button></header>
+     <form className="tasting-form" onSubmit={handleSubmit}>
+      <fieldset className="tasting-editor" disabled={saving}>
+       <section className="tasting-section" aria-labelledby="tasting-details"><h2 id="tasting-details">Tasting details</h2><div className="tasting-fields">
+        {input("businessName","Tasting business",formData.businessName,handleChange,"text",true)}
+        {input("title","Title",formData.title,handleChange,"text",true)}
+        {input("tastingDate","Tasting date",formData.tastingDate,handleChange,"date",true)}
+        {input("venue","Venue",formData.venue,handleChange)}
+        {input("location","Location",formData.location,handleChange)}
+       </div></section>
+       {formData.beverages.map((beverage,index)=><section className="tasting-section" key={index} aria-labelledby={`tasting-beverage-${index}`}>
+        <header className="tasting-section-heading"><h2 id={`tasting-beverage-${index}`}><Wine size={19} aria-hidden="true"/>Beverage {index+1}</h2>{formData.beverages.length>1&&<button className="btn btn-outline-danger" type="button" aria-label={`Remove beverage ${index+1}`} onClick={()=>removeBeverage(index)}><Trash2 size={16}/></button>}</header>
+        <div className="tasting-fields">
+         <div className="tasting-field"><label htmlFor={`beverage-${index}-beverageType`}>Type:</label><select id={`beverage-${index}-beverageType`} name="beverageType" className="form-select" value={beverage.beverageType} onChange={e=>handleBeverageChange(index,e)}>{["wine","beer","cider","spirit","other"].map(type=><option key={type} value={type}>{type[0].toUpperCase()+type.slice(1)}</option>)}</select></div>
+         {[["name","Name"],["vintageOrYear","Vintage / year"],["producer","Producer"],["region","Region"],["style","Style"]].map(([key,title])=>input(`beverage-${index}-${key}`,title,beverage[key],e=>handleBeverageChange(index,e),"text",key==="name"))}
+        </div>
+        <div className="tasting-notes-grid">{[["producerNotes","Producer tasting notes"],["personalNotes","My notes"],["culinaryApplications","Culinary applications"]].map(([key,title])=><div className="tasting-notes" key={key}><label htmlFor={`beverage-${index}-${key}`}>{title}:</label><textarea id={`beverage-${index}-${key}`} name={key} className="form-control" rows={4} value={beverage[key]} onChange={e=>handleBeverageChange(index,e)}/></div>)}</div>
+        <div className="tasting-rating"><span className="detail-label">Rating:</span><div className="tasting-rating-options" role="group" aria-label={`Beverage ${index+1} rating`}>{[["love","Love it"],["like","Like it"],["leave","Leave it"]].map(([value,title])=><button type="button" key={value} className={`btn tasting-rating-choice tasting-rating--${value}`} aria-pressed={beverage.rating===value} onClick={()=>handleRating(index,value)}>{value==="love"?<Heart size={16} aria-hidden="true"/>:value==="like"?<ThumbsUp size={16} aria-hidden="true"/>:<X size={16} aria-hidden="true"/>}{title}</button>)}</div></div>
+       </section>)}
+       <div><button type="button" className="btn btn-outline-primary tasting-icon-button" onClick={addBeverage}><Plus size={16} aria-hidden="true"/>Add beverage</button></div>
+       <section className="tasting-section tasting-notes"><label htmlFor="overallNotes">Overall tasting notes:</label><textarea id="overallNotes" name="overallNotes" className="form-control" rows={5} value={formData.overallNotes} onChange={handleChange}/></section>
+       <div className="tasting-actions"><button type="submit" className="btn btn-primary tasting-icon-button"><Save size={16} aria-hidden="true"/>{saving?"Saving…":"Save tasting"}</button></div>
+      </fieldset>
+     </form>
+     <TastingPrintCards contentRef={printRef} details={formData}/>
+    </section>;
 };
 
 export default BeverageTastingForm;

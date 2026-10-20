@@ -1,4 +1,4 @@
-import {Badge,Card,Col,Container,Row} from "react-bootstrap";
+import {Badge,Card,Col,Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import {BookOpen,BriefcaseBusiness,CalendarDays,ClipboardList,KeyRound,Settings,ShieldCheck,Tags,Users} from "lucide-react";
 
@@ -84,7 +84,7 @@ function AdminDashboard({user}){
 
  return(
   <section className="py-4">
-   <Container fluid="lg">
+   <div>
     <Card className="border-0 shadow-sm mb-4">
      <Card.Body className="p-4">
       <div className="d-flex flex-wrap justify-content-between gap-3 align-items-start">
@@ -127,7 +127,7 @@ function AdminDashboard({user}){
       tools={visibleAdminTools}
      />
     )}
-   </Container>
+   </div>
   </section>
  );
 }

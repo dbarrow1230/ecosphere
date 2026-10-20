@@ -64,6 +64,9 @@ const cleanNotes=value=>{
 };
 
 const cleanCollectionData=data=>({
+ buyMore:data.buyMore===true,
+ germinationRate:cleanNumber(data.germinationRate),
+ inventoryYear:cleanNumber(data.inventoryYear),
 	seed:cleanObjectId(data.seed),
 	dateCollected:cleanDate(data.dateCollected),
 	seedCount:cleanNumber(data.seedCount),

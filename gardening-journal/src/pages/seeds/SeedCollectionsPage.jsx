@@ -1,5 +1,5 @@
 import {useEffect,useMemo,useState} from "react";
-import {Badge,Button,Card,Col,Container,ListGroup,Modal,Row,Spinner,Table} from "react-bootstrap";
+import {Badge,Button,Card,Col,Container,Modal,Row,Spinner,Table} from "react-bootstrap";
 import {Archive, Eye, Pencil, Plus, Trash2} from "lucide-react";
 import SortedList from "../../components/SortedList.jsx";
 import SeedCollectionForm from "../forms/seeds/SeedCollectionForm.jsx";
@@ -305,6 +305,9 @@ function SeedCollectionsPage({user}){
 												<dd>{getVendorName(collection.vendor)||"Not listed"}</dd>
 												<dt>Source Name</dt>
 												<dd>{collection.sourceName||"Not listed"}</dd>
+<dt>Inventory year</dt><dd>{collection.inventoryYear??"Not recorded"}</dd>
+<dt>Germination rate</dt><dd>{collection.germinationRate==null?"Not recorded":`${collection.germinationRate}%`}</dd>
+<dt>Buy more</dt><dd>{collection.buyMore?"Yes":"No"}</dd>
 											</dl>
 										</Card.Body>
 									</Card>
@@ -369,33 +372,22 @@ function SeedCollectionsPage({user}){
 				</Col>
 
 				<Col lg={4} xl={3}>
-					<Card className="seed-collection-list-card">
-						<Card.Header className="fw-bold">Seeds With Collections</Card.Header>
+					<nav className="seed-collection-seed-nav" aria-label="Seeds with collections">
+						<h2>Seeds With Collections</h2>
 						<SortedList
-							as={ListGroup}
-							variant="flush"
 							items={seedGroups}
 							getKey={group=>group.seedId}
 							getLabel={group=>getSeedName(group.seed)}
 							wrapItems={false}
 							renderItem={group=>(
-								<ListGroup.Item action active={selectedSeedGroup?.seedId===group.seedId} onClick={()=>setSelectedSeedId(group.seedId)}>
-									<div className="seed-collection-list-row">
-										<span className="seed-collection-color-dot" style={{backgroundColor:group.labelColor||"#0f7d4f"}}/>
-										<div>
-											<div className="d-flex justify-content-between gap-2">
-												<strong>{getSeedName(group.seed)}</strong>
-												<Badge bg="success">{group.collections.length}</Badge>
-											</div>
-											<div className="small text-muted">{group.totalCount||"Not counted"} seeds • Latest {formatDate(group.latestDate)}</div>
-										</div>
-									</div>
-								</ListGroup.Item>
+								<Button type="button" variant="link" className="seed-collection-seed-link" aria-current={selectedSeedGroup?.seedId===group.seedId?"true":undefined} onClick={()=>setSelectedSeedId(group.seedId)}>
+									{getSeedName(group.seed)}
+								</Button>
 							)}
 						>
-							{seedGroups.length===0&&<ListGroup.Item>No seed collections found.</ListGroup.Item>}
+							<p>No seed collections found.</p>
 						</SortedList>
-					</Card>
+					</nav>
 				</Col>
 
 				<Col lg={8} xl={9}>

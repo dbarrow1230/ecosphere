@@ -9,7 +9,7 @@ export default function InventoryReferences({endpoint,title}){
   await inventoryApi(`/api/${endpoint}${form._id?`/${form._id}`:""}`,{method:form._id?"PUT":"POST",body:JSON.stringify({name:form.name,description:form.description,isActive:form.isActive,...(endpoint==="units-of-measure"?{symbol:form.symbol}:{})})});
   setForm(null);setLoading(true);setRevision(v=>v+1);
  }catch(e){setError(e.message);}finally{setSaving(false);}}
- return <section className="container py-4"><h1>{title}</h1><Link to="/beverages">Beverages</Link>
+ return <section className="app-page py-4"><h1>{title}</h1><Link to="/beverages">Beverages</Link>
   {error&&<p role="alert" className="alert alert-danger">{error}</p>}
   <button className="btn btn-primary m-3" onClick={()=>setForm({name:"",symbol:"",description:"",isActive:true})}>Add {title.toLowerCase()}</button>
   {loading?<p>Loading…</p>:<table className="table"><thead><tr><th>Name</th><th>Description</th><th>Status</th><th/></tr></thead><tbody>{rows.map(row=><tr key={row._id}><td>{row.name}{row.symbol?` (${row.symbol})`:""}</td><td>{row.description}</td><td>{row.isActive?"Active":"Inactive"}</td><td><button className="btn btn-outline-primary" onClick={()=>setForm({...row})}>Edit</button></td></tr>)}</tbody></table>}

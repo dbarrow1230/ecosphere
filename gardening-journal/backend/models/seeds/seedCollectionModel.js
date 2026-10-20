@@ -5,6 +5,9 @@ const {Schema}=mongoose;
 
 const seedCollectionSchema=new Schema({
 
+	inventoryYear:{type:Number,min:0,default:null},
+	germinationRate:{type:Number,min:0,max:100,default:null},
+	buyMore:{type:Boolean,default:false},
 	seed:{type:Schema.Types.ObjectId,ref:"Seed",required:true},
 	dateCollected:{type:Date,default:null},
 	seedCount:{type:Number,default:null},

@@ -1,6 +1,6 @@
 // src/pages/auth/ForgotPasswordPage.jsx
 import {useState} from "react";
-import {Form,Button,Container,Card,InputGroup,Alert} from "react-bootstrap";
+import {Form,Button,Card,InputGroup,Alert} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import logo from "../../images/logo.png";
 import "../../styles/login.css";
@@ -59,7 +59,7 @@ export default function ForgotPasswordPage()
  };
 
  return(
-  <Container className="login-container">
+  <div className="login-container">
    <Card className="login-card">
     <Card.Body>
      <div className="login-logo-wrapper">
@@ -104,6 +104,6 @@ export default function ForgotPasswordPage()
      </Form>
     </Card.Body>
    </Card>
-  </Container>
+  </div>
  );
 }

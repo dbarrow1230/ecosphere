@@ -198,13 +198,13 @@ export default function ResourceCrudPage({title,kicker,description,endpoint,fiel
   const value=formData[field.name];
 
   if(field.type==="textarea"){
-   return <Form.Control as="textarea" rows={field.rows||3} value={value||""} onChange={event=>updateField(field.name,event.target.value)}/>;
+   return <Form.Control as="textarea" rows={field.rows||3} value={value??""} onChange={event=>updateField(field.name,event.target.value)}/>;
   }
 
   if(field.type==="select"){
    const fieldOptions=options[field.optionsKey]||field.options||[];
    return(
-    <Form.Select value={value||""} onChange={event=>updateField(field.name,event.target.value)} required={field.required}>
+    <Form.Select value={value??""} onChange={event=>updateField(field.name,event.target.value)} required={field.required}>
      <option value="">Select {field.label}</option>
      {fieldOptions.map(option=>(
       <option key={getId(option)} value={getId(option)}>{getText(option)}</option>
@@ -220,7 +220,7 @@ export default function ResourceCrudPage({title,kicker,description,endpoint,fiel
   if(field.type==="tags"){
    return(
     <>
-     <Form.Control value={value||""} onChange={event=>updateField(field.name,event.target.value)} placeholder={field.placeholder||"Enter comma-separated values"}/>
+     <Form.Control value={value??""} onChange={event=>updateField(field.name,event.target.value)} placeholder={field.placeholder||"Enter comma-separated values"}/>
      {field.helpText&&<Form.Text className="text-muted">{field.helpText}</Form.Text>}
     </>
    );
@@ -232,7 +232,7 @@ export default function ResourceCrudPage({title,kicker,description,endpoint,fiel
      min={field.min}
      max={field.max}
      step={field.step}
-    value={value||""}
+    value={value??""}
     onChange={event=>updateField(field.name,event.target.value)}
     required={field.required}
     placeholder={field.placeholder}
@@ -305,7 +305,7 @@ export default function ResourceCrudPage({title,kicker,description,endpoint,fiel
       <Row className="g-3">
        {fields.map(field=>(
         <Col md={field.md||6} key={field.name}>
-         <Form.Group>
+         <Form.Group controlId={`resource-${field.name}`}>
           <Form.Label>{field.label}</Form.Label>
           {renderField(field)}
          </Form.Group>

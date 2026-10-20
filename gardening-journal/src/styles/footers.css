@@ -227,11 +227,6 @@
  align-items:end;
 }
 
-.holidays-filter-grid .form-label{
- color:var(--heading);
- font-weight:700;
-}
-
 .holidays-selected-summary{
  display:grid;
  gap:.25rem;

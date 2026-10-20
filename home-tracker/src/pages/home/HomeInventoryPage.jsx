@@ -80,11 +80,13 @@ function HomeInventoryPage({mode="all",startAdding=false}){
  const loadReferenceData=useCallback(async()=>{
   const [categoryRes,locationRes]=await Promise.all([
    fetch("/api/categories?isActive=true"),
-   fetch("/api/locations?isActive=true")
+   fetch("/api/home-locations?isActive=true")
   ]);
 
   const categoryData=await categoryRes.json();
   const locationData=await locationRes.json();
+  if(!categoryRes.ok)throw new Error(categoryData?.message||"Failed to load categories");
+  if(!locationRes.ok)throw new Error(locationData?.message||"Failed to load locations");
 
   setCategories(Array.isArray(categoryData?.categories)?categoryData.categories:[]);
   setLocations(Array.isArray(locationData?.locations)?locationData.locations:[]);
@@ -106,6 +108,7 @@ function HomeInventoryPage({mode="all",startAdding=false}){
   try{
    const res=await fetch(`/api/items${params.toString()?`?${params.toString()}`:""}`);
    const data=await res.json();
+   if(!res.ok)throw new Error(data?.message||"Failed to load items");
    setItems(Array.isArray(data?.items)?data.items:[]);
   }finally{
    setLoading(false);
@@ -116,6 +119,7 @@ function HomeInventoryPage({mode="all",startAdding=false}){
   if(!isShoppingList)return;
   const res=await fetch("/api/items");
   const data=await res.json();
+  if(!res.ok)throw new Error(data?.message||"Failed to load items");
   setAllItems(Array.isArray(data?.items)?data.items:[]);
  },[isShoppingList]);
 
@@ -152,6 +156,7 @@ function HomeInventoryPage({mode="all",startAdding=false}){
 
  const metrics=useMemo(()=>{
   const now=new Date();
+  now.setUTCHours(0,0,0,0);
   const expiringThrough=new Date(now);
   expiringThrough.setDate(expiringThrough.getDate()+30);
   const lowItems=items.filter(item=>Number(item.minimumQuantity)>0&&Number(item.quantity)<=Number(item.minimumQuantity));
@@ -275,6 +280,15 @@ function HomeInventoryPage({mode="all",startAdding=false}){
   closeAlert();
  };
 
+ useEffect(()=>{
+  if(!startAdding)return;
+  const storageType=["pantry","fridge","freezer","household"].includes(mode)?mode:"pantry";
+  setFormData({...blankItem,storageType,shoppingList:isShoppingList,status:isShoppingList?"needed":"active"});
+  setSelectedItem(null);
+  setIsEditing(false);
+  setIsAdding(true);
+ },[startAdding,mode,isShoppingList]);
+
  const selectItem=item=>{
   setSelectedItem(item);
   setIsEditing(false);
@@ -343,6 +357,7 @@ function HomeInventoryPage({mode="all",startAdding=false}){
    setIsEditing(false);
    setIsAdding(false);
    showAlert("success","Item saved.");
+   await Promise.all([loadItems(),loadAllItems()]);
   }catch(error){
    showAlert("danger",error.message||"Failed to save item.");
   }finally{
@@ -397,6 +412,7 @@ function HomeInventoryPage({mode="all",startAdding=false}){
    if(!res.ok)throw new Error(data?.message||"Failed to delete item");
 
    setItems(prev=>prev.filter(current=>current._id!==item._id));
+   setAllItems(prev=>prev.filter(current=>current._id!==item._id));
    resetForm();
    showAlert("success","Item deleted.");
   }catch(error){

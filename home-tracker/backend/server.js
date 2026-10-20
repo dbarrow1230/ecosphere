@@ -45,6 +45,8 @@ import userRoleAssignmentRoutes from "./routes/users/userRoleAssignmentRoutes.js
 import rolePermissionRoutes from "./routes/users/rolePermissionRoutes.js";
 import userPermissionOverrideRoutes from "./routes/users/userPermissionOverrideRoutes.js";
 import effectivePermissionRoutes from "./routes/users/effectivePermissionRoutes.js";
+import permissionModuleRoutes from "./routes/users/permissionModuleRoutes.js";
+import businessDepartmentRoutes from "./routes/users/businessDepartmentRoutes.js";
 
 /* app */
 import appModuleRoutes from "./routes/app/appModuleRoutes.js";
@@ -205,6 +207,8 @@ app.use("/api/users/role-assignments",userRoleAssignmentRoutes);
 app.use("/api/users/role-permissions",rolePermissionRoutes);
 app.use("/api/users/user-permission-overrides",userPermissionOverrideRoutes);
 app.use("/api/users/effective-permissions",effectivePermissionRoutes);
+app.use("/api/users/permission-modules",permissionModuleRoutes);
+app.use("/api/users/departments",businessDepartmentRoutes);
 app.use("/api/users",userRoutes);
 
 /* app */

@@ -1,5 +1,5 @@
 import {useEffect,useState} from "react";
-import {Container,Row,Col,Card,Form,Table,Button,Spinner,Alert,Badge} from "react-bootstrap";
+import {Row,Col,Card,Form,Table,Button,Spinner,Alert,Badge} from "react-bootstrap";
 
 function PermissionMatrix()
 {
@@ -492,14 +492,14 @@ function PermissionMatrix()
  if(loading&&Object.keys(matrix).length===0)
  {
   return(
-   <Container className="py-5 text-center">
+   <div className="py-5 text-center">
     <Spinner animation="border"/>
-   </Container>
+   </div>
   );
  }
 
  return(
-  <Container className="py-5">
+  <div className="py-5">
    <div className="d-flex justify-content-between align-items-center mb-4">
     <div>
      <h1 className="mb-0">Admin Permissions</h1>
@@ -623,7 +623,7 @@ function PermissionMatrix()
      ))}
     </tbody>
    </Table>
-  </Container>
+  </div>
  );
 }
 

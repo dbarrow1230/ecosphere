@@ -47,6 +47,7 @@ function HomeReferencePage({kind}){
  const loadRecords=useCallback(async()=>{
   const res=await fetch(endpoint);
   const data=await res.json();
+  if(!res.ok)throw new Error(data?.message||`Failed to load ${responseKey}`);
   setRecords(Array.isArray(data?.[responseKey])?data[responseKey]:[]);
  },[endpoint,responseKey]);
 

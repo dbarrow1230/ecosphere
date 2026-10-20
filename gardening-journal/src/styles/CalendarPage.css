@@ -118,7 +118,6 @@
  background:var(--surface);
  color:var(--text);
  border-radius:var(--radius-md);
- padding:.45rem .8rem;
  box-shadow:none;
 }
 

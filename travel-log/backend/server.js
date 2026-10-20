@@ -1,3 +1,4 @@
+import travelLogRoutes from "./routes/travel/travelLogRoutes.js";
 import standaloneInventoryRoutes from "./routes/standaloneInventoryRoutes.js";
 // backend/server.js
 import express from "express";
@@ -244,6 +245,7 @@ app.post("/api/upload/:dir",upload.single("file"),(req,res)=>{
 
 //* error middleware */
 app.use("/api/inventory",standaloneInventoryRoutes);
+app.use("/api/travel-logs",travelLogRoutes);
 
 app.use(notFound);
 app.use((err,req,res,next)=>{

@@ -167,11 +167,6 @@
  gap:1rem;
 }
 
-.diseases-toolbar .form-label{
- color:var(--heading);
- font-weight:800;
-}
-
 .diseases-loading .card-body{
  display:flex;
  align-items:center;

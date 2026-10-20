@@ -27,3 +27,5 @@
 .garden-workspace-loading{padding:4rem;text-align:center}
 @media(max-width:1000px){.garden-workspace-summary{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:800px){.garden-workspace{padding:1rem}.garden-workspace-hero{align-items:flex-start;flex-direction:column}.garden-workspace-summary{grid-template-columns:1fr}.garden-section-item{flex-direction:column}.garden-section-actions{align-items:center}}
+
+.garden-section-detail{white-space:pre-wrap}

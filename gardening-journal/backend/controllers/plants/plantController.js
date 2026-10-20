@@ -38,6 +38,7 @@ isActive
 const cleanPlantStatus=status!==undefined ? cleanStatus(status) : isActive===false||isActive==="false" ? "inactive" : "active";
 
 const plant=new Plant({
+careCard:req.body.careCard,
 name,
 scientificName,
 seed:seed||null,
@@ -151,6 +152,7 @@ createdBy,
 isActive
 }=req.body||{};
 
+if(req.body.careCard!==undefined)plant.careCard={...plant.careCard?.toObject(),...req.body.careCard};
 if(name!==undefined)plant.name=name;
 if(scientificName!==undefined)plant.scientificName=scientificName;
 if(seed!==undefined)plant.seed=seed||null;

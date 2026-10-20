@@ -9,6 +9,8 @@ createdBy:{type:Schema.Types.ObjectId,ref:"User",default:null}
 },{_id:false});
 
 const plantSchema=new Schema({
+careCard:{variety:{type:String,trim:true,default:""},lifespan:{type:String,trim:true,default:""},plantCategory:{type:String,trim:true,default:""},currentHeight:{type:String,trim:true,default:""},matureHeight:{type:String,trim:true,default:""},currentWidth:{type:String,trim:true,default:""},matureWidth:{type:String,trim:true,default:""},soilPh:{type:String,trim:true,default:""},pruningNeeds:{type:String,trim:true,default:""},bloomCharacteristics:{type:String,trim:true,default:""},foliageCharacteristics:{type:String,trim:true,default:""},bloomMonths:{type:String,trim:true,default:""},edibleLifecycle:{type:String,trim:true,default:""},sunExposure:{type:String,trim:true,default:""},vendor:{type:String,trim:true,default:""},purchaseCost:{type:String,trim:true,default:""},purchaseDate:{type:String,trim:true,default:""},fertilizers:{type:String,trim:true,default:""},repellingPests:{type:String,trim:true,default:""},repellentFor:{type:String,trim:true,default:""},attractorFor:{type:String,trim:true,default:""},compatible:{type:String,trim:true,default:""},incompatible:{type:String,trim:true,default:""},careNotes:{type:String,trim:true,default:""}},
+
 name:{type:String,trim:true,default:""},
 scientificName:{type:String,trim:true,default:""},
 

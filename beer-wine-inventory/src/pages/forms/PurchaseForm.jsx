@@ -1,3 +1,4 @@
+import {referenceLabel} from "../../utils/inventoryApi.js";
 // /src/forms/PurchaseForm.jsx
 import React,{useEffect,useRef,useState} from 'react';
 import PurchaseItemForm from './PurchaseItemForm';
@@ -210,7 +211,7 @@ return(
 <select className="form-select" name="receipt" value={form.receipt} onChange={handleChange}>
 <option value="">Select Receipt</option>
 {receipts.map(receipt=>(
-<option key={receipt._id} value={receipt._id}>{receipt.name||receipt.receiptNumber||receipt._id}</option>
+<option key={receipt._id} value={receipt._id}>{referenceLabel(receipt)}</option>
 ))}
 </select>
 </div>
@@ -230,7 +231,7 @@ return(
 <select className="form-select" name="shoppingList" value={form.shoppingList} onChange={handleChange}>
 <option value="">Select Shopping List</option>
 {shoppingLists.map(list=>(
-<option key={list._id} value={list._id}>{list.name||list.title||list._id}</option>
+<option key={list._id} value={list._id}>{referenceLabel(list)}</option>
 ))}
 </select>
 </div>
@@ -317,7 +318,7 @@ onSuccess={()=>{}}
 <select className="form-select" value={itemForm.shoppingListItem} onChange={e=>handleItemFormChange(0,{...itemForm,shoppingListItem:e.target.value})}>
 <option value="">Select Shopping List Item</option>
 {shoppingListItems.map(item=>(
-<option key={item._id} value={item._id}>{item.name||item.title||item._id}</option>
+<option key={item._id} value={item._id}>{referenceLabel(item)}</option>
 ))}
 </select>
 </div>

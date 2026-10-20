@@ -168,8 +168,8 @@ function App(){
      <Route path="/locations" element={<HomeReferencePage kind="locations"/>}/>
      <Route path="/businesses" element={<Businesses/>}/>
 
-     <Route path="/admin/dashboard" element={<AdminDashboard/>}/>
-     <Route path="/admin" element={<PermissionMatrix/>}/>
+     <Route path="/admin/dashboard" element={<AdminDashboard user={user}/>}/>
+     <Route path="/admin" element={<AdminDashboard user={user}/>}/>
      <Route path="/admin/businesses" element={<Businesses/>}/>
      <Route path="/admin/business-types" element={<BusinessTypes/>}/>
      <Route path="/admin/app-keys" element={<AppKeys/>}/>

@@ -1,5 +1,5 @@
 import {useState,useEffect} from "react";
-import {Container,Row,Col,Card,Form,Button,Table,Badge,Alert} from "react-bootstrap";
+import {Row,Col,Card,Form,Button,Table,Badge,Alert} from "react-bootstrap";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/bootstrap.css";
 
@@ -209,7 +209,7 @@ function Clients(){
 
  return(
   <section className="clients-page py-4">
-   <Container fluid="lg">
+   <div>
 
     <Row className="g-4 mb-4">
      <Col lg={8}>
@@ -771,7 +771,7 @@ function Clients(){
 
     </Row>
 
-   </Container>
+   </div>
   </section>
  );
 }

@@ -1,6 +1,6 @@
 // src/pages/tasks/TasksPage.jsx
 import {useCallback,useEffect,useState} from "react";
-import {Button,Card,Col,Form,Modal,Row,Spinner,Table,Badge} from "react-bootstrap";
+import {Alert,Button,Card,Col,Form,Modal,Row,Spinner,Table,Badge} from "react-bootstrap";
 import axios from "axios";
 import {sortItems} from "../../utils/sortItems.js";
 import {hourlyTimeOptions as timeOptions} from "../../utils/timeOptions.js";
@@ -47,6 +47,7 @@ function TasksPage(){
 	const [loading,setLoading]=useState(false);
 	const [saving,setSaving]=useState(false);
 	const [deleting,setDeleting]=useState(false);
+ const [error,setError]=useState("");
 
 	const toLocalDateTimeParts=(value)=>{
 		if(!value)return "";
@@ -63,8 +64,7 @@ function TasksPage(){
 
 	const normalizeTimeOption=time=>{
 		if(!time)return "";
-		const hourOnly=`${time.slice(0,2)}:00`;
-		return isValidTimeOption(hourOnly)?hourOnly:"";
+  return time;
 	};
 
 	const combineDateTime=(date,time)=>{
@@ -93,7 +93,7 @@ function TasksPage(){
 			setTasks(Array.isArray(data)?data:data?.tasks||[]);
 		}catch(error){
 			console.error(error);
-			setTasks([]);
+   setError(error.response?.data?.message||"Failed to load tasks.");
 		}finally{
 			setLoading(false);
 		}
@@ -148,6 +148,7 @@ function TasksPage(){
 			setShowFormModal(true);
 		}catch(error){
 			console.error(error);
+   setError(error.response?.data?.message||"Failed to open task.");
 		}finally{
 			setLoading(false);
 		}
@@ -177,6 +178,7 @@ function TasksPage(){
 			fetchTasks();
 		}catch(error){
 			console.error(error);
+   setError(error.response?.data?.message||"Failed to save task.");
 		}finally{
 			setSaving(false);
 		}
@@ -196,6 +198,7 @@ function TasksPage(){
 			fetchTasks();
 		}catch(error){
 			console.error(error);
+   setError(error.response?.data?.message||"Failed to delete task.");
 		}finally{
 			setDeleting(false);
 		}
@@ -204,6 +207,7 @@ function TasksPage(){
 	return(
 		<section className="home-inventory tasks-page">
 		<div className="container">
+   {error&&<Alert variant="danger" dismissible onClose={()=>setError("")}>{error}</Alert>}
 			<Row className="g-3 mb-3">
 				<Col xs={12}>
 					<div className="home-inventory-header">
@@ -331,6 +335,7 @@ function TasksPage(){
 								<Form.Group>
 									<Form.Label>Due Time</Form.Label>
 									<Form.Select name="dueTime" value={form.dueTime} onChange={handleFormChange}>
+           {form.dueTime&&!isValidTimeOption(form.dueTime)&&<option value={form.dueTime}>{form.dueTime}</option>}
 										<option value="">Select Time</option>
 										{timeOptions.map(option=><option key={option.value} value={option.value}>{option.label}</option>)}
 									</Form.Select>
@@ -376,6 +381,7 @@ function TasksPage(){
 								<Form.Group>
 									<Form.Label>Reminder Time</Form.Label>
 									<Form.Select name="reminderTime" value={form.reminderTime} onChange={handleFormChange}>
+           {form.reminderTime&&!isValidTimeOption(form.reminderTime)&&<option value={form.reminderTime}>{form.reminderTime}</option>}
 										<option value="">Select Time</option>
 										{timeOptions.map(option=><option key={option.value} value={option.value}>{option.label}</option>)}
 									</Form.Select>

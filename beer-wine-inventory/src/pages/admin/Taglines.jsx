@@ -1,3 +1,4 @@
+import {referenceLabel} from "../../utils/inventoryApi.js";
 //src/pages/admin/Taglines.jsx
 import {useEffect,useMemo,useRef,useState} from "react";
 import {Modal,Button,Alert,Table,Accordion} from "react-bootstrap";
@@ -8,7 +9,7 @@ import "../../styles/Taglines.css";
 const defaultFormData={business_id:"",seasonRef:"",occasionRef:"",name:"",text:"",isActive:true,notes:""};
 const getRows=d=>Array.isArray(d)?d:Array.isArray(d?.data)?d.data:Array.isArray(d?.taglines)?d.taglines:Array.isArray(d?.businesses)?d.businesses:Array.isArray(d?.seasons)?d.seasons:Array.isArray(d?.occasions)?d.occasions:[];
 const getId=v=>!v?"":typeof v==="string"?v:String(v?._id||v?.id||"");
-const formatValue=v=>v==null||v===""?"-":typeof v==="object"?(v?.name||v?.legalName||v?.code||v?._id||"-"):String(v);
+const formatValue=referenceLabel;
 
 export default function Taglines(){
  const [rows,setRows]=useState([]),[businesses,setBusinesses]=useState([]),[seasons,setSeasons]=useState([]),[occasions,setOccasions]=useState([]);

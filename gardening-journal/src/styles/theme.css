@@ -27,6 +27,17 @@
  --radius-sm:4px;
  --radius-md:6px;
  --radius-lg:8px;
+ --button-font-size:.875rem;
+ --button-padding-y:.3rem;
+ --button-padding-x:.65rem;
+ --button-line-height:1.5;
+ --button-gap:.35rem;
+ --field-label-width:9rem;
+ --field-label-background:var(--bg-alt);
+ --field-background:var(--surface);
+ --field-height:2.125rem;
+ --field-padding-y:.3rem;
+ --field-padding-x:.65rem;
 }
 
 *,
@@ -147,59 +158,78 @@ a{
  text-decoration:none;
 }
 
-a:hover{
+a:not(.dashboard-drawer-action):hover{
  color:var(--secondary);
 }
 
+/* Button dimensions are owned here; variants only supply colors. */
 button,
-.btn-primary{
+.btn,
+.rbc-calendar .rbc-toolbar button{
  display:inline-flex;
  align-items:center;
  justify-content:center;
- gap:.5rem;
- background:var(--primary);
- color:var(--text-inverse);
- border:1px solid var(--primary);
- border-radius:var(--radius-sm);
- padding:.7rem 1rem;
+ gap:var(--button-gap);
+ padding:var(--bs-btn-padding-y,var(--button-padding-y)) var(--bs-btn-padding-x,var(--button-padding-x));
+ font-family:var(--font-body);
+ font-size:var(--bs-btn-font-size,var(--button-font-size));
  font-weight:600;
+ line-height:var(--bs-btn-line-height,var(--button-line-height));
+ border-radius:var(--radius-sm);
  cursor:pointer;
  transition:background .2s ease,border-color .2s ease,color .2s ease,transform .2s ease,box-shadow .2s ease;
 }
 
-button:hover,
+.btn{
+ --bs-btn-padding-y:var(--button-padding-y);
+ --bs-btn-padding-x:var(--button-padding-x);
+ --bs-btn-font-size:var(--button-font-size);
+ --bs-btn-line-height:var(--button-line-height);
+}
+
+.btn-sm,
+.btn-group-sm > .btn{
+ --bs-btn-padding-y:.2rem;
+ --bs-btn-padding-x:.5rem;
+ --bs-btn-font-size:.8125rem;
+}
+
+.btn-lg,
+.btn-group-lg > .btn{
+ --bs-btn-padding-y:.4rem;
+ --bs-btn-padding-x:.8rem;
+ --bs-btn-font-size:1rem;
+}
+
+button:not(.btn):not(.dashboard-drawer-summary),
+.btn-primary{
+ background:var(--primary);
+ color:var(--text-inverse);
+ border:1px solid var(--primary);
+}
+
+button:not(.btn):not(.dashboard-drawer-summary):hover,
 .btn-primary:hover{
  background:var(--primary-hover);
  border-color:var(--primary-hover);
 }
 
 button:focus-visible,
-.btn-primary:focus-visible,
-.btn-secondary:focus-visible{
+.btn:focus-visible{
  outline:none;
  box-shadow:0 0 0 3px var(--accent);
 }
 
 button:disabled,
-.btn-primary:disabled,
-.btn-secondary:disabled{
+.btn:disabled{
  cursor:not-allowed;
  opacity:.7;
 }
 
 .btn-secondary{
- display:inline-flex;
- align-items:center;
- justify-content:center;
- gap:.5rem;
  background:var(--secondary);
  color:var(--text-inverse);
  border:1px solid var(--secondary);
- border-radius:var(--radius-sm);
- padding:.7rem 1rem;
- font-weight:600;
- cursor:pointer;
- transition:background .2s ease,border-color .2s ease,color .2s ease,transform .2s ease,box-shadow .2s ease;
 }
 
 .btn-secondary:hover{
@@ -256,10 +286,12 @@ button:disabled,
 
 input,
 textarea,
-select{
+select,
+.form-control,
+.form-select{
  width:100%;
- background:var(--surface-2);
- color:var(--text);
+ background-color:var(--field-background);
+ color:var(--primary);
  border:1px solid var(--border);
  border-radius:var(--radius-sm);
  padding:.75rem .9rem;
@@ -297,15 +329,21 @@ select:hover{
 
 input:focus,
 textarea:focus,
-select:focus{
+select:focus,
+.form-control:focus,
+.form-select:focus{
  outline:none;
  border-color:var(--accent);
- box-shadow:0 0 0 3px var(--accent);
+ box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 35%,transparent);
+ background-color:var(--field-background);
+ color:var(--primary);
 }
 
 input:disabled,
 textarea:disabled,
-select:disabled{
+select:disabled,
+.form-control:disabled,
+.form-select:disabled{
  background:var(--bg-alt);
  color:var(--text-soft);
  cursor:not-allowed;
@@ -316,8 +354,28 @@ textarea{
  resize:vertical;
 }
 
-select{
- appearance:none;
+/* Shared sizing takes precedence over page-specific field padding. */
+input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]):not([type="file"]):not([type="hidden"]):not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="image"]),
+select:not([multiple]):not([size]),
+select[size="1"]{
+ height:var(--field-height) !important;
+ min-height:var(--field-height) !important;
+ padding:var(--field-padding-y) var(--field-padding-x) !important;
+ line-height:1.35 !important;
+}
+
+/* Restore the browser arrow for Bootstrap and plain dropdown fields alike. */
+select:not([multiple]):not([size]),
+select[size="1"]:not([multiple]){
+ appearance:auto !important;
+ -webkit-appearance:auto !important;
+ background-image:none !important;
+ padding-right:1.75rem !important;
+}
+
+.input-group > .input-group-text{
+ padding:var(--field-padding-y) var(--field-padding-x);
+ line-height:1.35;
 }
 
 input[type="checkbox"]{
@@ -428,8 +486,48 @@ tbody tr:last-child td{
  border-radius:var(--radius-md);
 }
 
+/* Labels and controls share one row, including React Bootstrap Form.Group
+   wrappers (which render as unclassed divs). Checks keep their own layout. */
+:is(div,fieldset):not(.input-group):has(> label:not(.form-check-label)):has(> :is(.form-control,.form-select,.input-group,input:not([type="checkbox"]):not([type="radio"]),select,textarea)){
+ display:grid;
+ grid-template-columns:minmax(5rem,min(var(--field-label-width),38%)) minmax(0,1fr);
+ align-items:start;
+ column-gap:.4rem;
+ row-gap:.3rem;
+ min-width:0;
+}
+
+:is(div,fieldset):not(.input-group):has(> label:not(.form-check-label)):has(> :is(.form-control,.form-select,.input-group,input:not([type="checkbox"]):not([type="radio"]),select,textarea)) > label:not(.form-check-label),
+.input-group > .input-group-text{
+ display:flex;
+ align-items:center;
+ min-height:var(--field-height);
+ margin:0;
+ padding:var(--field-padding-y) var(--field-padding-x);
+ border:1px solid var(--border);
+ border-radius:var(--radius-sm);
+ background:var(--field-label-background);
+ color:var(--primary);
+ font-size:.8125rem;
+ font-weight:700;
+ line-height:1.35;
+ white-space:normal;
+}
+
+:is(div,fieldset):not(.input-group):has(> label:not(.form-check-label)):has(> :is(.form-control,.form-select,.input-group,input:not([type="checkbox"]):not([type="radio"]),select,textarea)) > :is(.form-control,.form-select,.input-group,input,select,textarea){
+ grid-column:2;
+ min-width:0;
+ width:100%;
+ margin:0;
+}
+
+:is(div,fieldset):has(> .form-label) > :is(.form-text,.invalid-feedback,.valid-feedback){
+ grid-column:2;
+ margin-top:0;
+}
+
 .form-group{
- margin-bottom:1rem;
+ margin-bottom:.75rem;
 }
 
 .form-row{

@@ -1,5 +1,6 @@
+import {formatDateTime as formatAppDateTime} from "../../utils/dateFormat.js";
 import {useEffect,useState} from "react";
-import {Container,Row,Col,Card,Spinner,Alert,Image,ListGroup,Badge} from "react-bootstrap";
+import {Row,Col,Card,Spinner,Alert,Image,ListGroup,Badge} from "react-bootstrap";
 
 export default function UserProfilePage()
 {
@@ -61,7 +62,7 @@ export default function UserProfilePage()
    return "—";
   }
 
-  return date.toLocaleString();
+  return formatAppDateTime(value);
  };
 
  const getAvatarUrl=()=>{
@@ -210,25 +211,25 @@ export default function UserProfilePage()
  if(loading)
  {
   return(
-   <Container className="py-4">
+   <div className="py-4">
     <div className="d-flex justify-content-center align-items-center" style={{minHeight:"320px"}}>
      <Spinner animation="border"/>
     </div>
-   </Container>
+   </div>
   );
  }
 
  if(error)
  {
   return(
-   <Container className="py-4">
+   <div className="py-4">
     <Alert variant="danger" className="mb-0">{error}</Alert>
-   </Container>
+   </div>
   );
  }
 
  return(
-  <Container className="py-4">
+  <div className="py-4">
    <Row className="g-4">
     <Col lg={4}>
      <Card className="shadow-sm h-100">
@@ -331,6 +332,6 @@ export default function UserProfilePage()
      </Card>
     </Col>
    </Row>
-  </Container>
+  </div>
  );
 }

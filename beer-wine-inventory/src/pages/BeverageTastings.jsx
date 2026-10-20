@@ -1,6 +1,8 @@
+import "../styles/tasting-ratings.css";
+import {formatDate as formatAppDate} from "../utils/dateFormat.js";
 import {useEffect,useState} from "react";
 import {useNavigate} from "react-router-dom";
-import {Container,Row,Col,Card,Table,Badge,Button,Alert,Spinner} from "react-bootstrap";
+import {Row,Col,Card,Table,Button,Alert,Spinner} from "react-bootstrap";
 import {Wine,CalendarDays,MapPin,Eye,Plus,Heart,ThumbsUp,X} from "lucide-react";
 
 const BeverageTastings=({userId})=>{
@@ -30,27 +32,27 @@ const BeverageTastings=({userId})=>{
 
     const displayRating=(rating)=>{
         if(rating==="love"){
-            return <Badge bg="danger"><Heart size={13} className="me-1"/>Love It</Badge>;
+            return <span className="tasting-rating-token tasting-rating--love"><Heart size={13} className="me-1"/>Love It</span>;
         }
         if(rating==="like"){
-            return <Badge bg="success"><ThumbsUp size={13} className="me-1"/>Like It</Badge>;
+            return <span className="tasting-rating-token tasting-rating--like"><ThumbsUp size={13} className="me-1"/>Like It</span>;
         }
         if(rating==="leave"){
-            return <Badge bg="secondary"><X size={13} className="me-1"/>Leave It</Badge>;
+            return <span className="tasting-rating-token tasting-rating--leave"><X size={13} className="me-1"/>Leave It</span>;
         }
         return "-";
     };
 
     if(loading){
         return(
-            <Container className="py-4 text-center">
+            <div className="py-4 text-center">
                 <Spinner animation="border"/>
-            </Container>
+            </div>
         );
     }
 
     return(
-        <Container className="py-4">
+        <div className="py-4">
             <Row className="align-items-center mb-4">
                 <Col>
                     <div className="d-flex align-items-center gap-2">
@@ -73,12 +75,13 @@ const BeverageTastings=({userId})=>{
                         <Row className="align-items-center">
                             <Col>
                                 <h4 className="mb-1">{tasting.title}</h4>
+                                {tasting.businessName&&<div><strong className="detail-label">Tasting business:</strong> <span className="detail-value">{tasting.businessName}</span></div>}
                                 {tasting.venue&&<div className="text-muted">{tasting.venue}</div>}
                             </Col>
                             <Col xs="auto">
                                 <div className="d-flex align-items-center gap-1">
                                     <CalendarDays size={16}/>
-                                    {new Date(tasting.tastingDate).toLocaleDateString()}
+                                    {formatAppDate(tasting.tastingDate)}
                                 </div>
                                 {tasting.location&&(
                                     <div className="d-flex align-items-center gap-1 mt-1">
@@ -127,7 +130,7 @@ const BeverageTastings=({userId})=>{
                     </Card.Body>
                 </Card>
             ))}
-        </Container>
+        </div>
     );
 };
 

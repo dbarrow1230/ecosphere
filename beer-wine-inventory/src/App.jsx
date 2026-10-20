@@ -1,3 +1,4 @@
+import AppFeedback from "./components/AppFeedback.jsx";
 import WorkflowPlaceholder from "@shared/components/WorkflowPlaceholder.jsx";
 // src/App.jsx
 import {Routes,Route,useNavigate,useLocation} from "react-router-dom";
@@ -180,7 +181,7 @@ const unwrapBusiness=data=>{
 
 
  return(
-     <div className="app-layout">
+     <div className="app-layout"><AppFeedback/>
     <Header/>
    <Navigation user={user} onLogout={handleLogout} brand="Home"/>
    <main className="app-content">
@@ -194,6 +195,7 @@ const unwrapBusiness=data=>{
      <Route path="/dashboard" element={<InventoryOverview/>}/>
      <Route path="/beverages" element={<Beverages/>}/>
      <Route path="/beverages/add" element={<Beverages/>}/>
+     <Route path="/beverages/:id" element={<Beverages/>}/>
      <Route path="/beverages/:id/edit" element={<Beverages/>}/>
      <Route path="/beer" element={<Beverages type="beer"/>}/>
      <Route path="/beer/add" element={<Beverages type="beer"/>}/>

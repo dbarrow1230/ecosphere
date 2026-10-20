@@ -1,3 +1,4 @@
+import {referenceLabel} from "../../utils/inventoryApi.js";
 import {useEffect,useState} from "react";
 import {Form,Row,Col,Button,Card,Tabs,Tab,InputGroup,Modal} from "react-bootstrap";
 import PhoneInputImport from "react-phone-input-2";
@@ -266,9 +267,7 @@ const getOptionValue=item=>{
  return String(item?._id||item?.id||item?.value||"");
 };
 
-const getOptionLabel=item=>{
- return item?.name||item?.title||item?.tagline||item?.footer||item?.content||item?.code||item?.legalName||item?.value||"";
-};
+const getOptionLabel=referenceLabel;
 
 const normalizeOptions=items=>{
  return Array.isArray(items)?items.filter(item=>getOptionValue(item)&&getOptionLabel(item)):[];

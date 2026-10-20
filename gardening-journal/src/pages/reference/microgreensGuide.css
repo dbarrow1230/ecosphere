@@ -1,0 +1,8 @@
+.microgreens-guide-header{display:flex;align-items:center;gap:1rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:1.25rem;margin-bottom:1rem;color:var(--primary)}
+.microgreens-guide h1,.microgreens-guide h2,.microgreens-guide h3{color:var(--primary)}
+.microgreens-guide-header p{margin:0}
+.microgreens-guide-filters{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1rem;align-items:center;margin-bottom:1rem}
+.microgreens-facts>div{border-bottom:1px solid var(--border);padding:.45rem 0}
+.microgreens-facts dt{display:flex;gap:.35rem;align-items:center;color:var(--primary)}
+.microgreens-facts dd{margin:.25rem 0 0}
+@media(max-width:600px){.microgreens-guide-filters{grid-template-columns:1fr}}

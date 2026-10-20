@@ -1,3 +1,4 @@
+import {referenceLabel} from "../../utils/inventoryApi.js";
 // /src/forms/ReturnItemForm.jsx
 import React,{useEffect,useRef,useState} from 'react';
 
@@ -86,7 +87,7 @@ return(
 <select className="form-select" name="return" value={form.return} onChange={handleChange} required>
 <option value="">Select Return</option>
 {returns.map(item=>(
-<option key={item._id} value={item._id}>{item.name||item.returnNumber||item._id}</option>
+<option key={item._id} value={item._id}>{referenceLabel(item)}</option>
 ))}
 </select>
 </div>
@@ -106,7 +107,7 @@ return(
 <select className="form-select" name="orderItem" value={form.orderItem} onChange={handleChange}>
 <option value="">Select Order Item</option>
 {orderItems.map(item=>(
-<option key={item._id} value={item._id}>{item.product?.name||item.name||item._id}</option>
+<option key={item._id} value={item._id}>{referenceLabel(item)}</option>
 ))}
 </select>
 </div>
@@ -116,7 +117,7 @@ return(
 <select className="form-select" name="purchaseItem" value={form.purchaseItem} onChange={handleChange}>
 <option value="">Select Purchase Item</option>
 {purchaseItems.map(item=>(
-<option key={item._id} value={item._id}>{item.product?.name||item.name||item._id}</option>
+<option key={item._id} value={item._id}>{referenceLabel(item)}</option>
 ))}
 </select>
 </div>

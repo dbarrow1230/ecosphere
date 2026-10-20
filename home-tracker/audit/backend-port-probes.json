@@ -1,0 +1,56 @@
+[
+  {
+    "port": 6003,
+    "endpoint": "/api/health",
+    "status": 200,
+    "keys": "status"
+  },
+  {
+    "port": 6003,
+    "endpoint": "/api/items",
+    "status": 404,
+    "keys": ""
+  },
+  {
+    "port": 6003,
+    "endpoint": "/api/dashboard",
+    "status": 400,
+    "keys": ""
+  },
+  {
+    "port": 6009,
+    "endpoint": "/api/health",
+    "status": 200,
+    "keys": "status"
+  },
+  {
+    "port": 6009,
+    "endpoint": "/api/items",
+    "status": 404,
+    "keys": ""
+  },
+  {
+    "port": 6009,
+    "endpoint": "/api/dashboard",
+    "status": 200,
+    "keys": "business_id,generatedAt,stats,calendarEvents,lowStockItems,expiringItems,recentItems,missingItems,categoryCosts,budgetInsights,operations"
+  },
+  {
+    "port": 6033,
+    "endpoint": "/api/health",
+    "status": 200,
+    "keys": "status"
+  },
+  {
+    "port": 6033,
+    "endpoint": "/api/items",
+    "status": 200,
+    "keys": "items"
+  },
+  {
+    "port": 6033,
+    "endpoint": "/api/dashboard",
+    "status": 200,
+    "keys": "business_id,locationRef,period,reportDate,summary,items,categories,locations,tasks"
+  }
+]

@@ -15,7 +15,7 @@ import {
 
 export default function WinePairingReference() {
   return (
-    <div className="container py-4">
+    <div className="app-page py-4">
       <div className="row justify-content-center">
         <div className="col-12 col-lg-10">
           <div className="card shadow-sm border-0 mb-4">

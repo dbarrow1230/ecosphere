@@ -1,3 +1,4 @@
+import Barcode from "../../components/Barcode.jsx";
 // /src/forms/ProductForm.jsx
 import React,{useEffect,useRef,useState} from 'react';
 
@@ -124,6 +125,7 @@ return(
 <div className="col-md-4">
 <label className="form-label">Barcode</label>
 <input type="text" className="form-control" name="barcode" value={form.barcode} onChange={handleChange} />
+<Barcode value={form.barcode}/>
 </div>
 
 <div className="col-md-4">

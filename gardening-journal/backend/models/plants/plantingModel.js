@@ -5,6 +5,15 @@ const {Schema,model}=mongoose;
 const noteSchema=new Schema({note:{type:String,trim:true,default:""},date:{type:Date,default:Date.now},createdBy:{type:Schema.Types.ObjectId,ref:"User",default:null}},{_id:false});
 
 const plantingSchema=new Schema({
+sourceName:{type:String,trim:true,default:""},
+seedCost:{type:Number,min:0,default:0},
+sownCount:{type:Number,min:0,default:0},
+sproutedDate:{type:Date,default:null},
+sproutedCount:{type:Number,min:0,default:0},
+transplantedDate:{type:Date,default:null},
+transplantedCount:{type:Number,min:0,default:0},
+soilNotes:{type:String,trim:true,default:""},
+sunNotes:{type:String,trim:true,default:""},
 instanceName:{type:String,trim:true,default:""},
 sourceType:{type:String,trim:true,enum:["seed","plant",""],default:""},
 plant:{type:Schema.Types.ObjectId,ref:"Plant",default:null},

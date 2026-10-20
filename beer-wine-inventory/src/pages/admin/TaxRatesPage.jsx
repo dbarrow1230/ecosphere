@@ -1,3 +1,5 @@
+import {confirmAction} from "../../utils/feedback.js";
+import {referenceLabel} from "../../utils/inventoryApi.js";
 //src/pages/admin/TaxRatesPage.jsx
 import {useEffect,useMemo,useState} from "react";
 import {Button,Card,Col,Form,InputGroup,Modal,Row,Table,Alert,Badge} from "react-bootstrap";
@@ -10,11 +12,7 @@ const getObjectId=value=>{
  return "";
 };
 
-const getStateLabel=value=>{
- if(!value)return "";
- if(typeof value==="string")return value;
- return value?.name||value?.title||value?.code||"";
-};
+const getStateLabel=referenceLabel;
 
 export default function TaxRatesPage(){
  const [rows,setRows]=useState([]);
@@ -125,7 +123,7 @@ export default function TaxRatesPage(){
  const handleDelete=async item=>{
   const targetId=getObjectId(item?._id);
   if(!targetId)return;
-  const confirmed=window.confirm(`Delete tax rate "${item?.name||""}"?`);
+  const confirmed=await confirmAction(`Delete tax rate "${item?.name||""}"?`);
   if(!confirmed)return;
   setDeletingId(targetId);
   try{

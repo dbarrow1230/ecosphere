@@ -67,7 +67,6 @@
 
 .login-card .form-label{
  color:var(--heading);
- font-weight:800;
  font-size:.9rem;
  margin-bottom:.35rem;
 }
@@ -125,7 +124,6 @@
 
 .login-form-options .form-check-label{
  color:var(--text);
- font-weight:700;
  font-size:.95rem;
  cursor:pointer;
 }

@@ -23,6 +23,12 @@ return res.status(400).json({message:"Section name and location type are require
 }
 
 const section=new GardenSection({
+bedLayout:req.body.bedLayout,
+layoutPlan:req.body.layoutPlan,
+sunExposure:req.body.sunExposure,
+locationDescription:req.body.locationDescription,
+drainage:req.body.drainage,
+soilType:req.body.soilType,
 garden,
 name,
 type,
@@ -41,7 +47,7 @@ const populated=await populateSection(GardenSection.findById(saved._id));
 
 return res.status(201).json(populated);
 }catch(error){
-return res.status(500).json({message:error.message});
+return res.status(["ValidationError","CastError"].includes(error.name)?400:500).json({message:error.message});
 }
 };
 
@@ -64,7 +70,7 @@ const sections=await populateSection(GardenSection.find(query)).sort({createdAt:
 
 return res.status(200).json(sections);
 }catch(error){
-return res.status(500).json({message:error.message});
+return res.status(["ValidationError","CastError"].includes(error.name)?400:500).json({message:error.message});
 }
 };
 
@@ -84,7 +90,7 @@ return res.status(404).json({message:"Garden section not found"});
 
 return res.status(200).json(section);
 }catch(error){
-return res.status(500).json({message:error.message});
+return res.status(["ValidationError","CastError"].includes(error.name)?400:500).json({message:error.message});
 }
 };
 
@@ -117,6 +123,12 @@ if(notes!==undefined)section.notes=Array.isArray(notes)?notes:section.notes;
 if(createdBy!==undefined)section.createdBy=createdBy||null;
 if(isActive!==undefined)section.isActive=isActive;
 
+if(req.body.soilType!==undefined)section.soilType=req.body.soilType;
+if(req.body.drainage!==undefined)section.drainage=req.body.drainage;
+if(req.body.locationDescription!==undefined)section.locationDescription=req.body.locationDescription;
+if(req.body.sunExposure!==undefined)section.sunExposure=req.body.sunExposure;
+if(req.body.layoutPlan!==undefined)section.layoutPlan=req.body.layoutPlan;
+if(req.body.bedLayout!==undefined)section.bedLayout=req.body.bedLayout;
 const updated=await section.save();
 if(garden!==undefined&&String(garden)!==previousGarden){
  await Garden.findByIdAndUpdate(previousGarden,{$pull:{sections:updated._id}});
@@ -126,7 +138,7 @@ const populated=await populateSection(GardenSection.findById(updated._id));
 
 return res.status(200).json(populated);
 }catch(error){
-return res.status(500).json({message:error.message});
+return res.status(["ValidationError","CastError"].includes(error.name)?400:500).json({message:error.message});
 }
 };
 
@@ -154,12 +166,17 @@ date,
 createdBy:createdBy||req.user?._id||req.user?.id||null
 });
 
+if(req.body.soilType!==undefined)section.soilType=req.body.soilType;
+if(req.body.drainage!==undefined)section.drainage=req.body.drainage;
+if(req.body.locationDescription!==undefined)section.locationDescription=req.body.locationDescription;
+if(req.body.sunExposure!==undefined)section.sunExposure=req.body.sunExposure;
+if(req.body.layoutPlan!==undefined)section.layoutPlan=req.body.layoutPlan;
 const updated=await section.save();
 const populated=await populateSection(GardenSection.findById(updated._id));
 
 return res.status(200).json(populated);
 }catch(error){
-return res.status(500).json({message:error.message});
+return res.status(["ValidationError","CastError"].includes(error.name)?400:500).json({message:error.message});
 }
 };
 
@@ -180,6 +197,6 @@ await Garden.findByIdAndUpdate(section.garden,{$pull:{sections:section._id}});
 
 return res.status(200).json({message:"Garden section deleted successfully"});
 }catch(error){
-return res.status(500).json({message:error.message});
+return res.status(["ValidationError","CastError"].includes(error.name)?400:500).json({message:error.message});
 }
 };

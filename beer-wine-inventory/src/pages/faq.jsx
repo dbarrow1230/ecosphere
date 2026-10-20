@@ -1,5 +1,5 @@
 // src/pages/faq.jsx
-import {Container,Row,Col,Card} from "react-bootstrap";
+import {Row,Col,Card} from "react-bootstrap";
 import "../styles/FAQ.css";
 import faqTemplate from "../components/FAQTemplate";
 
@@ -9,7 +9,7 @@ function FAQ(){
 
  return(
   <section className="faq-page">
-   <Container className="py-5">
+   <div className="py-5">
 
     <Row className="justify-content-center mb-4">
      <Col lg={8} className="text-center">
@@ -32,7 +32,7 @@ function FAQ(){
      ))}
     </Row>
 
-   </Container>
+   </div>
   </section>
  );
 

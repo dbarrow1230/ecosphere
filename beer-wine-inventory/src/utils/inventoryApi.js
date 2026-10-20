@@ -23,5 +23,11 @@ export async function allRows(url){
  }
 }
 
-export const referenceId=value=>typeof value==="object"?value?._id||"":value||"";
-export const referenceLabel=value=>typeof value==="object"?value?.name||value?.legalName||value?.symbol||value?._id||"":value||"";
+export const referenceId=value=>typeof value==="object"?String(value?._id?.$oid||value?._id||value?.id||value?.$oid||""):String(value||"");
+
+export function referenceLabel(value){
+ if(value==null||value==="")return "—";
+ if(typeof value!=="object")return /^[a-f\d]{24}$/i.test(String(value))?"Missing linked record":String(value);
+ const name=value.displayName||value.fullName||value.name||value.legalName||value.title||value.label||value.username||value.email||value.orderNumber||value.purchaseNumber||value.receiptNumber||value.returnNumber||value.code||value.symbol||value.product?.name;
+ return name?referenceLabel(name):"Unnamed linked record";
+}

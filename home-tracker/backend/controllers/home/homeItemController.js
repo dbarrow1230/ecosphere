@@ -32,20 +32,21 @@ const buildItemFilter=req=>{
  if(req.query.status)filter.status=req.query.status;
  if(req.query.category)filter.category=req.query.category;
  if(req.query.location)filter.location=req.query.location;
- if(req.query.shoppingList==="true")filter.shoppingList=true;
+ if(req.query.shoppingList==="true")filter.$or=[{shoppingList:true},{status:"needed"},{quantity:0}];
 
  if(req.query.lowStock==="true"){
   filter.$expr={$lte:["$quantity","$minimumQuantity"]};
   filter.minimumQuantity={$gt:0};
-  filter.status={$nin:["discarded","used"]};
+  if(!req.query.status)filter.status={$nin:["discarded","used"]};
  }
 
  if(req.query.expiringDays){
   const now=new Date();
+  now.setUTCHours(0,0,0,0);
   const end=new Date(now);
   end.setDate(end.getDate()+Number(req.query.expiringDays||30));
   filter.expirationDate={$gte:now,$lte:end};
-  filter.status={$nin:["discarded","used"]};
+  if(!req.query.status)filter.status={$nin:["discarded","used"]};
  }
 
  if(req.query.search?.trim())filter.$text={$search:req.query.search.trim()};

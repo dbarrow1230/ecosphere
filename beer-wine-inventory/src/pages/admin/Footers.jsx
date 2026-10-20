@@ -1,3 +1,4 @@
+import {referenceLabel} from "../../utils/inventoryApi.js";
 //src/pages/admin/Footers.jsx
 import {useEffect,useMemo,useRef,useState} from "react";
 import {Modal,Button,Alert,Table,Accordion} from "react-bootstrap";
@@ -34,11 +35,7 @@ const getId=value=>{
  return "";
 };
 
-const formatValue=value=>{
- if(value===null||value===undefined||value==="")return "-";
- if(typeof value==="object")return value?.name||value?.legalName||value?.code||value?._id||"-";
- return String(value);
-};
+const formatValue=referenceLabel;
 
 export default function Footers(){
  const [footers,setFooters]=useState([]);

@@ -1,3 +1,4 @@
+import {formatDate as formatAppDate} from "../../utils/dateFormat.js";
 // src/components/dashboard/ExpiringItemsPanel.jsx
 import {Link} from "react-router-dom";
 import {ArrowRight,Clock3} from "lucide-react";
@@ -27,7 +28,7 @@ function ExpiringItemsPanel({expiringItems=[]}){
       <div className="dashboard-list-content">
        <span className="dashboard-item-title">{item.name}</span>
        <span className="dashboard-item-meta">
-        Expires {item.expirationDate||item.expiryDate||"Soon"} · {item.location||item.room||item.category||"Doughnut Ingredient Inventory"}
+        Expires {(item.expirationDate||item.expiryDate?formatAppDate(item.expirationDate||item.expiryDate):"Soon")} · {item.location||item.room||item.category||"Doughnut Ingredient Inventory"}
        </span>
       </div>
      </li>

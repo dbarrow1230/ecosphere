@@ -7,7 +7,7 @@
 }
 
 .footers-wrap{
- width:min(var(--container-max),94%);
+ width:100%;
  margin:0 auto;
 }
 
@@ -189,10 +189,6 @@
 
 .footers-table tbody tr:nth-child(even) td{
  background:var(--table-stripe);
-}
-
-.footers-table tbody tr:hover td{
- background:var(--bg-alt);
 }
 
 .footers-actions{

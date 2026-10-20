@@ -1,6 +1,5 @@
 // backend/models/master/CategoryModel.js
 import mongoose from "mongoose";
-import businessInfoConnection from "../../db/businessInfoConnection.js";
 
 const {Schema}=mongoose;
 
@@ -11,4 +10,4 @@ const CategorySchema=new Schema({
  isActive:{type:Boolean,default:true}
 },{timestamps:true,collection:"categories"});
 
-export default businessInfoConnection.models.Category||businessInfoConnection.model("Category",CategorySchema);
+export default mongoose.models.Category||mongoose.model("Category",CategorySchema);

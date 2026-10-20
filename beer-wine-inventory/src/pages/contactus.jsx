@@ -1,70 +1,17 @@
-import {Container,Row,Col,Form,Button,Card} from "react-bootstrap";
+import {Mail,User,AtSign,Tag,MessageSquare,Send} from "lucide-react";
+import "../styles/contact.css";
 
-function ContactUs(){
-
- return(
-  <Container className="py-5">
-
-   <Row className="justify-content-center mb-4">
-    <Col lg={8} className="text-center">
-     <h1 className="mb-3">Contact Us</h1>
-     <p className="text-muted">
-      Have a question, suggestion, or issue? Send us a message and we'll get back to you.
-     </p>
-    </Col>
-   </Row>
-
-   <Row className="justify-content-center">
-    <Col lg={8}>
-
-     <Card className="shadow-sm">
-      <Card.Body>
-
-       <Form>
-
-        <Row className="mb-3">
-         <Col md={6}>
-          <Form.Group controlId="contactName">
-           <Form.Label>Name</Form.Label>
-           <Form.Control type="text" placeholder="Your name"/>
-          </Form.Group>
-         </Col>
-
-         <Col md={6}>
-          <Form.Group controlId="contactEmail">
-           <Form.Label>Email</Form.Label>
-           <Form.Control type="email" placeholder="name@example.com"/>
-          </Form.Group>
-         </Col>
-        </Row>
-
-        <Form.Group className="mb-3" controlId="contactSubject">
-         <Form.Label>Subject</Form.Label>
-         <Form.Control type="text" placeholder="What is this about?"/>
-        </Form.Group>
-
-        <Form.Group className="mb-4" controlId="contactMessage">
-         <Form.Label>Message</Form.Label>
-         <Form.Control as="textarea" rows={6} placeholder="Write your message here..."/>
-        </Form.Group>
-
-        <div className="d-grid">
-         <Button type="submit" variant="primary" size="lg">
-          Send Message
-         </Button>
-        </div>
-
-       </Form>
-
-      </Card.Body>
-     </Card>
-
-    </Col>
-   </Row>
-
-  </Container>
- );
-
+export default function ContactUs(){
+ return <section className="contact-page">
+  <h1><Mail size={30} aria-hidden="true"/>Contact Us</h1>
+  <form className="contact-form">
+   <div className="contact-details">
+    <div className="contact-field"><label htmlFor="contactName"><User size={16} aria-hidden="true"/>Name:</label><input className="form-control" id="contactName" name="name" type="text" autoComplete="name"/></div>
+    <div className="contact-field"><label htmlFor="contactEmail"><AtSign size={16} aria-hidden="true"/>Email:</label><input className="form-control" id="contactEmail" name="email" type="email" autoComplete="email"/></div>
+   </div>
+   <div className="contact-field contact-subject"><label htmlFor="contactSubject"><Tag size={16} aria-hidden="true"/>Subject:</label><input className="form-control" id="contactSubject" name="subject" type="text"/></div>
+   <div className="contact-field contact-message"><label htmlFor="contactMessage"><MessageSquare size={16} aria-hidden="true"/>Message:</label><textarea className="form-control" id="contactMessage" name="message" rows={8}/></div>
+   <div className="contact-actions"><button type="submit" className="btn btn-primary"><Send size={16} aria-hidden="true"/>Send Message</button></div>
+  </form>
+ </section>;
 }
-
-export default ContactUs;

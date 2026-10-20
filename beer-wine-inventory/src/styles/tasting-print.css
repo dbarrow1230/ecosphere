@@ -1,0 +1,49 @@
+.tasting-print-document { display:none; }
+@media print {
+ @page { size:letter landscape; margin:.25in; }
+ html, body { margin:0; padding:0; background:white; }
+ .tasting-print-document { display:block; }
+ .tasting-print-sheet {
+  display:flex;
+  width:10.5in;
+  justify-content:center;
+  align-items:center;
+  break-after:page;
+  gap:.25in;
+  height:8in;
+  margin:0;
+  padding:0;
+  color:var(--primary);
+  background:transparent;
+ }
+ .tasting-print-sheet:last-child { break-after:auto; }
+ .tasting-paper-card {
+  box-sizing:border-box;
+  flex:0 0 5in;
+  width:5in;
+  height:6in;
+  padding:.2in;
+  border:1px dashed var(--primary);
+  break-inside:avoid;
+  font-family:var(--font-body);
+  font-size:9pt;
+  line-height:1.25;
+ }
+ .tasting-paper-card h1 {
+  margin:0 0 .08in;
+  padding:0 0 .06in;
+  border-bottom:2px solid var(--primary);
+  color:var(--primary);
+  font-size:15pt;
+  line-height:1.2;
+ }
+ .tasting-paper-field { display:flex; align-items:baseline; gap:.06in; height:.27in; min-width:0; }
+ .tasting-paper-field strong, .tasting-paper-notes strong, .tasting-paper-types strong { flex-shrink:0; color:var(--primary); font-weight:700; }
+ .tasting-paper-field > span { flex:1; min-width:0; border-bottom:1px solid var(--primary); height:.21in; }
+ .tasting-paper-row { display:grid; grid-template-columns:1fr 1fr; gap:.15in; }
+ .tasting-paper-types { display:flex; align-items:center; flex-wrap:wrap; gap:.08in; min-height:.29in; }
+ .tasting-paper-types span { white-space:nowrap; }
+ .tasting-paper-notes { margin:.04in 0; }
+ .tasting-paper-notes strong { display:block; line-height:.17in; }
+ .tasting-paper-notes > div { height:.17in; border-bottom:1px solid var(--primary); }
+}

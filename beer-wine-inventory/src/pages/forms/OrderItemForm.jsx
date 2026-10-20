@@ -1,3 +1,4 @@
+import {referenceLabel} from "../../utils/inventoryApi.js";
 // /src/forms/OrderItemForm.jsx
 import React,{useEffect,useRef,useState} from 'react';
 
@@ -112,7 +113,7 @@ return(
 <select className="form-select" name="order" value={form.order} onChange={handleChange} required>
 <option value="">Select Order</option>
 {orders.map(order=>(
-<option key={order._id} value={order._id}>{order.name||order.orderNumber||order._id}</option>
+<option key={order._id} value={order._id}>{referenceLabel(order)}</option>
 ))}
 </select>
 </div>
@@ -132,7 +133,7 @@ return(
 <select className="form-select" name="shoppingListItem" value={form.shoppingListItem} onChange={handleChange}>
 <option value="">Select Shopping List Item</option>
 {shoppingListItems.map(item=>(
-<option key={item._id} value={item._id}>{item.name||item.title||item._id}</option>
+<option key={item._id} value={item._id}>{referenceLabel(item)}</option>
 ))}
 </select>
 </div>

@@ -82,8 +82,12 @@ function Navigation({user,onLogout}){
      <Nav className="me-auto app-nav-links">
       <Nav.Link as={NavLink} to="/dashboard" className="app-nav-link"> <span className="me-2">{FontAwesomeIcons.Home}</span>Dashboard </Nav.Link>
 
-      <NavDropdown title={<><span className="me-2">{FontAwesomeIcons.List}</span>Dropdown</>}  id="inventory-dropdown"   className="app-nav-link"   active={isActive("/items")||isActive("/pantry")||isActive("/household")}      >
-   
+      <NavDropdown title="Travel" id="travel-dropdown" className="app-nav-link" active={isActive("/trips")||isActive("/hiking-logs")||isActive("/reference")}>
+       <NavDropdown.Item as={NavLink} to="/trips">Travel notes</NavDropdown.Item>
+       <NavDropdown.Item as={NavLink} to="/trips/add">Add travel notes</NavDropdown.Item>
+       <NavDropdown.Item as={NavLink} to="/hiking-logs">Hiking logs</NavDropdown.Item>
+       <NavDropdown.Item as={NavLink} to="/hiking-logs/add">Add hiking log</NavDropdown.Item>
+       <NavDropdown.Item as={NavLink} to="/reference">Reference charts &amp; templates</NavDropdown.Item>
       </NavDropdown>
    
       <Nav.Link as={NavLink} to="/contact" className="app-nav-link"> {FontAwesomeIcons.Contact} Contact </Nav.Link>
@@ -92,7 +96,7 @@ function Navigation({user,onLogout}){
       {canSeeAdminMenus&&(
        <NavDropdown  title={<><span className="me-2">{FontAwesomeIcons.Admin}</span>Admin</>} id="admin-dropdown"  className="app-nav-link"
         active={isActive("/admin")||isActive("/users")||isActive("/permissions")}   >
-        <NavDropdown.Item as={NavLink} to="/admin">  <span className="me-2">{FontAwesomeIcons.Admin}</span>Admin Dashboard </NavDropdown.Item>
+        <NavDropdown.Item as={NavLink} to="/admin/dashboard">  <span className="me-2">{FontAwesomeIcons.Admin}</span>Admin Dashboard </NavDropdown.Item>
         <NavDropdown.Item as={NavLink} to="/admin/businesses"> <span className="me-2">{FontAwesomeIcons.List}</span>Businesses </NavDropdown.Item>
         <NavDropdown.Item as={NavLink} to="/admin/business-types"><span className="me-2">{FontAwesomeIcons.List}</span>Business Types </NavDropdown.Item>
         <NavDropdown.Item as={NavLink} to="/admin/app-keys"> <span className="me-2">{FontAwesomeIcons.List}</span>App Keys </NavDropdown.Item>

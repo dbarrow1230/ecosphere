@@ -1,3 +1,4 @@
+import {formatDate as formatAppDate} from "../../utils/dateFormat.js";
 // src/components/dashboard/DashboardCalendar.jsx
 import {useEffect,useMemo,useState} from "react";
 import {Calendar,dateFnsLocalizer} from "react-big-calendar";
@@ -1110,13 +1111,7 @@ const CalendarEventContent=({event})=>{
  },[calendarView]);
 
  const calendarRangeLabel=useMemo(()=>{
-  const formatDate=value=>{
-   return new Intl.DateTimeFormat("en-US",{
-    month:"short",
-    day:"numeric",
-    year:"numeric"
-   }).format(value);
-  };
+  const formatDate=formatAppDate;
 
   if(calendarView==="day")return formatDate(dateRange.start);
 
@@ -1183,7 +1178,7 @@ const CalendarEventContent=({event})=>{
   },
   dayHeaderFormat:"EEEE, MMMM d, yyyy",
   dayRangeHeaderFormat:({start,end},culture,localizer)=>{
-   return `${localizer.format(start,"MMM d",culture)} - ${localizer.format(end,"MMM d, yyyy",culture)}`;
+   return `${formatAppDate(start)} - ${formatAppDate(end)}`;
   },
   monthHeaderFormat:"MMMM yyyy",
   weekdayFormat:"EEE",

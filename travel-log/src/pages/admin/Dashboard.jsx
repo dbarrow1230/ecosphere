@@ -1,6 +1,6 @@
 // src/pages/Dashboard.jsx
 import {useState,useEffect,useMemo} from "react";
-import {Container,Row,Col,Card,Table,Badge,Button,ProgressBar,ListGroup,Modal,Form} from "react-bootstrap";
+import {Container,Row,Col,Card,Table,Badge,Button,ProgressBar,ListGroup,Modal,Form,Alert} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
 
 function Dashboard(){
@@ -25,6 +25,8 @@ function Dashboard(){
  const [tasks,setTasks]=useState([]);
  const [kitchenPrep,setKitchenPrep]=useState([]);
  const [loading,setLoading]=useState(true);
+ const [loadWarning,setLoadWarning]=useState("");
+ const [taskError,setTaskError]=useState("");
  const [showTaskModal,setShowTaskModal]=useState(false);
  const [savingTask,setSavingTask]=useState(false);
  const [taskFormData,setTaskFormData]=useState(initialTaskFormData);
@@ -57,6 +59,7 @@ function Dashboard(){
  const loadDashboardData=async()=>{
   try{
    setLoading(true);
+   setLoadWarning("");
 
    const [
     eventsRes,
@@ -74,6 +77,11 @@ function Dashboard(){
     fetch("/api/kitchen-prep")
    ]);
 
+   const responses=[eventsRes,clientsRes,ordersRes,inventoryRes,tasksRes,kitchenPrepRes];
+   const labels=["Events","Clients","Orders","Inventory","Tasks","Kitchen prep"];
+   const unavailable=responses.flatMap((response,index)=>response.ok ? [] : [labels[index]]);
+   if(unavailable.length)setLoadWarning("Unavailable data: "+unavailable.join(", ")+". Their empty panels do not confirm that no records exist.");
+
    const eventsData=eventsRes&&eventsRes.ok?await eventsRes.json():{};
    const clientsData=clientsRes&&clientsRes.ok?await clientsRes.json():{};
    const ordersData=ordersRes&&ordersRes.ok?await ordersRes.json():{};
@@ -89,6 +97,7 @@ function Dashboard(){
    setKitchenPrep(Array.isArray(kitchenPrepData?.kitchenPrep)?kitchenPrepData.kitchenPrep:Array.isArray(kitchenPrepData?.data)?kitchenPrepData.data:Array.isArray(kitchenPrepData)?kitchenPrepData:[]);
   }catch(err){
    console.error("Error loading dashboard data:",err);
+   setLoadWarning("Dashboard data could not be loaded. Check that the backend is running.");
    setEvents([]);
    setClients([]);
    setOrders([]);
@@ -122,6 +131,7 @@ function Dashboard(){
   e.preventDefault();
   try{
    setSavingTask(true);
+   setTaskError("");
 
    const payload={
     title:taskFormData.title,
@@ -147,10 +157,11 @@ function Dashboard(){
     setTasks(prev=>[savedTask,...prev]);
     closeTaskModal();
    }else{
-    console.error("Failed to save task:",data?.message||"Unknown error");
+    setTaskError(data?.message||"Task could not be saved. This workflow may not be connected yet.");
    }
   }catch(err){
    console.error("Error saving task:",err);
+   setTaskError("Task could not be saved. Check that the task API is available.");
   }finally{
    setSavingTask(false);
   }
@@ -321,6 +332,8 @@ function Dashboard(){
   <>
    <section className="dashboard-page py-4">
     <Container fluid="lg">
+     {loadWarning&&<Alert variant="warning">{loadWarning}</Alert>}
+     {taskError&&<Alert variant="danger">{taskError}</Alert>}
 
      <Row className="g-4 mb-4">
       <Col xl={3} md={6}>

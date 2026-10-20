@@ -2,9 +2,9 @@ import {useId,useState} from "react";
 import {Link} from "react-router-dom";
 import {Archive,Bug,Droplets,House,Leaf,Menu,NotebookPen,Plus,Shovel,SunMedium,Wheat} from "lucide-react";
 
-function DashboardDrawerAction({to,icon,label,text,primary=false}){
+function DashboardDrawerAction({to,icon,label,text}){
  return(
-  <Link to={to} className={`dashboard-drawer-action${primary?" dashboard-drawer-action-primary":""}`}>
+  <Link to={to} className="dashboard-drawer-action">
    <span className="dashboard-drawer-action-icon">{icon}</span>
    <span className="dashboard-drawer-action-copy">
     <span className="dashboard-drawer-action-label">{label}</span>
@@ -48,7 +48,7 @@ function DashboardDrawers(){
   <aside className="dashboard-drawers" aria-label="Dashboard shortcuts and care focus">
    <DashboardDrawer kicker="Quick Actions" title="Garden workflow" icon={<Menu size={18} strokeWidth={2.2}/>}>
     <div className="dashboard-drawer-actions">
-     <DashboardDrawerAction to="/gardens" icon={<Plus size={18} strokeWidth={2.2}/>} label="Start Plant / Seed" text="Create a dated growing instance" primary/>
+     <DashboardDrawerAction to="/gardens" icon={<Plus size={18} strokeWidth={2.2}/>} label="Start Plant / Seed" text="Create a dated growing instance"/>
      <DashboardDrawerAction to="/gardens" icon={<House size={18} strokeWidth={2.2}/>} label="Manage Gardens" text="View garden beds and sections"/>
      <DashboardDrawerAction to="/journal" icon={<NotebookPen size={18} strokeWidth={2.2}/>} label="Write Journal Entry" text="Record observations and progress"/>
      <DashboardDrawerAction to="/tasks" icon={<Shovel size={18} strokeWidth={2.2}/>} label="Garden Tasks" text="Plan watering, feeding, and care"/>

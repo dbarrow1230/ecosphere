@@ -23,3 +23,4 @@ ReactDOM.createRoot(document.getElementById("root")).render(
  </React.StrictMode>
 );
 import "@shared/ecosphereAuthBridge.js";
+import "./styles/forms.css";

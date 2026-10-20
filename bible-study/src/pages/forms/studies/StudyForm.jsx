@@ -147,6 +147,7 @@ const defaultExplorerSections=[
  "Memory Breakdown",
  "Memory Phrase",
  "Visual Aid",
+ "Memory Practice",
  "Keyword Chain",
  "Contrast to Remember",
  "Memory Prayer"
@@ -359,31 +360,40 @@ const explorerSectionAliases={
  "thompson chain reference system":thompsonConnectionsTitle,
  "thompson chain reference themes":thompsonConnectionsTitle,
  "thompson chain reference connections":thompsonConnectionsTitle,
+ "thompson chain index numbers":thompsonConnectionsTitle,
  "historical and cultural context":"Historical & Cultural Context",
  "historical cultural context":"Historical & Cultural Context",
  "commentary insights":"Commentary Insights",
  "kjv study bible perspective":"KJV Study Bible Perspective",
  "kjv study bible traditional evangelical emphasis":"KJV Study Bible Perspective",
  "life application emphasis":"Life Application Emphasis",
+ "life application study bible":"Life Application Emphasis",
  "life application study bible emphasis":"Life Application Emphasis",
  "reese chronological bible perspective":"Reese Chronological Bible Perspective",
  "reese chronological bible connection":"Reese Chronological Bible Perspective",
  "matthew henry style practical insight":"Matthew Henry-Style Practical Insight",
  "doctrinal insight":"Doctrinal Insights",
  "doctrinal insights":"Doctrinal Insights",
+ "doctrinal and practical reading":"Doctrinal Insights",
  "application and reflection":"Application & Reflection",
+ application:"Modern-Day Applications",
  "modern day applications":"Modern-Day Applications",
  "journaling prompts":"Journaling Prompts",
  "prayer points":"Prayer Points",
  "meditation idea":"Meditation Idea",
+ meditation:"Meditation Idea",
  "memorization helps":"Memorization Helps",
  "keyword cues":"Keyword Cues",
  "key verse":"Key Verse",
  "memory cue":"Memory Cue",
+ "four word cue":"Memory Cue",
  "memory breakdown":"Memory Breakdown",
+ "phrase sequence":"Memory Breakdown",
  "simple memory phrase":"Memory Phrase",
  "memory phrase":"Memory Phrase",
  "visual aid":"Visual Aid",
+ practice:"Memory Practice",
+ "memory practice":"Memory Practice",
  "keyword chain":"Keyword Chain",
  "contrast to remember":"Contrast to Remember",
  "memory prayer":"Memory Prayer"
@@ -392,7 +402,11 @@ const explorerSectionAliases={
 const getExplorerSectionTitle=line=>{
  const heading=cleanExplorerHeading(line);
  const key=normalizeExplorerHeadingKey(heading);
- return explorerSectionAliases[key]||defaultExplorerSections.find(title=>normalizeExplorerHeadingKey(title)===key)||"";
+ const exactTitle=explorerSectionAliases[key]||defaultExplorerSections.find(title=>normalizeExplorerHeadingKey(title)===key);
+ if(exactTitle)return exactTitle;
+ // Source names may follow a heading, separated by a dash.
+ const baseHeading=heading.split(/\s+[—–]\s+/)[0];
+ return explorerSectionAliases[normalizeExplorerHeadingKey(baseHeading)]||"";
 };
 
 const splitLabeledExplorerLine=line=>{
@@ -416,6 +430,8 @@ const extractExplorerReference=lines=>{
 };
 
 const getPassageTextFromLines=lines=>{
+ const inlineKjv=lines.find(line=>/^KJV\s*[:：]\s*\S/i.test(cleanExplorerHeading(line)));
+ if(inlineKjv)return cleanExplorerHeading(inlineKjv).replace(/^KJV\s*[:：]\s*/i,"");
  const kjvIndex=lines.findIndex(line=>normalizeExplorerHeadingKey(line)==="kjv");
  if(kjvIndex>=0){
   const nextQuotedLine=lines.slice(kjvIndex+1).find(line=>/^["“]/.test(line));
@@ -482,6 +498,8 @@ const parseScriptureExplorerOutput=rawOutput=>{
   const heading=cleanExplorerHeading(line);
   const headingKey=normalizeExplorerHeadingKey(heading);
 
+  if(!currentSection&&line.match(scriptureReferencePattern)?.[0]===reference&&/full study/i.test(line))return;
+
   if(/^main text\s*:/i.test(heading)||/^verse title\s*:/i.test(heading)){
    return;
   }
@@ -534,6 +552,9 @@ const parseScriptureExplorerOutput=rawOutput=>{
 
   if(currentSection?.title===originalWordStudyTitle&&/[\u0590-\u05ff]/.test(line)){
    currentOriginalWordStudyField="hebrew";
+  }
+  if(currentSection?.title===originalWordStudyTitle&&/[\u0370-\u03ff\u1f00-\u1fff]/.test(line)){
+   currentOriginalWordStudyField="greek";
   }
 
   if(/hebrew text reads|hebrew words|hebrew word study/i.test(line)){

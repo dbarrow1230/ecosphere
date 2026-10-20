@@ -1,5 +1,7 @@
+import {confirmAction} from "../../utils/feedback.js";
+import {formatDate as formatAppDate} from "../../utils/dateFormat.js";
 import {useState,useEffect,useMemo} from "react";
-import {Container,Row,Col,Card,Form,Button,Table,Badge,Alert} from "react-bootstrap";
+import {Row,Col,Card,Form,Button,Table,Badge,Alert} from "react-bootstrap";
 
 function Events(){
 
@@ -156,7 +158,7 @@ function Events(){
 
  const handleDeleteEvent=async eventId=>{
   try{
-   const confirmed=window.confirm("Are you sure you want to delete this event?");
+   const confirmed=await confirmAction("Are you sure you want to delete this event?");
    if(!confirmed) return;
 
    closeAlert();
@@ -310,7 +312,7 @@ function Events(){
 
  return(
   <section className="events-page py-4">
-   <Container fluid="lg">
+   <div>
 
     <Row className="g-4 mb-4">
      <Col lg={8}>
@@ -554,7 +556,7 @@ function Events(){
            <Col md={6}>
             <div className="mb-3">
              <strong>Date</strong>
-             <div>{formatDateForInput(selectedEvent.eventDate)||"-"}</div>
+             <div>{formatAppDate(selectedEvent.eventDate)}</div>
             </div>
            </Col>
 
@@ -777,7 +779,7 @@ function Events(){
             <tr key={event._id} onClick={()=>handleViewEvent(event)} style={{cursor:"pointer"}} className={selectedEvent?._id===event._id?"table-active":""}>
              <td>{event.eventName}</td>
              <td>{event.clientName}</td>
-             <td>{formatDateForInput(event.eventDate)||"-"}</td>
+             <td>{formatAppDate(event.eventDate)}</td>
              <td>{event.eventTime||"-"}</td>
              <td>{event.guestCount||"-"}</td>
              <td>{event.location||"-"}</td>
@@ -800,7 +802,7 @@ function Events(){
 
     </Row>
 
-   </Container>
+   </div>
   </section>
  );
 }

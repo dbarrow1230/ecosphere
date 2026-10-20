@@ -1,3 +1,4 @@
+import {confirmAction} from "../../utils/feedback.js";
 // frontend/src/pages/admin/BusinessRolesPermissionsPage.jsx
 import {useEffect,useMemo,useRef,useState} from "react";
 import {Alert,Badge,Button,ButtonGroup,Card,Col,Form,Row,Spinner,Table,Tabs,Tab} from "react-bootstrap";
@@ -570,7 +571,7 @@ export default function BusinessRolesPermissionsPage(){
  };
 
  const deleteRole=async id=>{
-  if(!window.confirm("Delete this role?"))return;
+  if(!await confirmAction("Delete this role?"))return;
 
   try{
    setMessage({type:"",text:""});
@@ -586,7 +587,7 @@ export default function BusinessRolesPermissionsPage(){
  };
 
  const deleteDepartment=async id=>{
-  if(!window.confirm("Delete this department?"))return;
+  if(!await confirmAction("Delete this department?"))return;
 
   try{
    setMessage({type:"",text:""});
@@ -667,7 +668,7 @@ export default function BusinessRolesPermissionsPage(){
  };
 
  const deletePermission=async id=>{
-  if(!window.confirm("Delete this permission?"))return;
+  if(!await confirmAction("Delete this permission?"))return;
 
   try{
    setMessage({type:"",text:""});

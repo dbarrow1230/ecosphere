@@ -1,3 +1,4 @@
+import {referenceLabel} from "../../../utils/inventoryApi.js";
 //src/pages/forms/admin/footerForm.jsx
 import {useEffect,useMemo,useState} from "react";
 import {Form,Row,Col,Button,Card,Tabs,Tab} from "react-bootstrap";
@@ -27,9 +28,7 @@ const getOptionValue=item=>{
  return String(item?._id||item?.id||item?.value||"");
 };
 
-const getOptionLabel=item=>{
- return item?.name||item?.title||item?.code||item?.legalName||item?.value||"";
-};
+const getOptionLabel=referenceLabel;
 
 const normalizeOptions=items=>{
  return Array.isArray(items)?items.filter(item=>getOptionValue(item)&&getOptionLabel(item)):[];

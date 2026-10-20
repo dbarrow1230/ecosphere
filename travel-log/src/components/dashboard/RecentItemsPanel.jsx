@@ -13,7 +13,7 @@ function RecentItemsPanel({recentItems=[]}){
      <h2 className="dashboard-section-title">New Travel Entries</h2>
     </div>
 
-    <Link to="/items" className="dashboard-section-link">
+    <Link to="/trips" className="dashboard-section-link">
      Browse travel log
      <ArrowRight size={16} strokeWidth={2.1}/>
     </Link>

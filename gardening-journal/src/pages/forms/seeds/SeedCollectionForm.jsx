@@ -2,7 +2,7 @@ import {useEffect,useState} from "react";
 import {Alert,Button,Col,Form,Row} from "react-bootstrap";
 import {Plus, Save} from "lucide-react";
 
-const emptyForm={
+const emptyForm={buyMore:false,germinationRate:"",inventoryYear:"",
 	seed:"",
 	dateCollected:"",
 	seedCount:"",
@@ -78,6 +78,9 @@ function SeedCollectionForm({mode="add",initialCollection=null,seeds=[],vendors=
 
 		if(mode==="edit"&&initialCollection){
 			setForm({
+                inventoryYear:initialCollection.inventoryYear??"",
+                germinationRate:initialCollection.germinationRate??"",
+                buyMore:initialCollection.buyMore??false,
 				seed:getId(initialCollection.seed),
 				dateCollected:getDateInputValue(initialCollection.dateCollected),
 				seedCount:initialCollection.seedCount ?? "",
@@ -105,8 +108,8 @@ function SeedCollectionForm({mode="add",initialCollection=null,seeds=[],vendors=
 	},[selectedSeedId]);
 
 	const handleChange=e=>{
-		const {name,value}=e.target;
-		setForm(prev=>({...prev,[name]:value}));
+		const {name,value,type,checked}=e.target;
+		setForm(prev=>({...prev,[name]:type==="checkbox"?checked:value}));
 	};
 
 	const handleSubmit=async e=>{
@@ -165,6 +168,9 @@ function SeedCollectionForm({mode="add",initialCollection=null,seeds=[],vendors=
 			)}
 
 			<Row className="g-3">
+<Col md={4}><Form.Group controlId="collection-buyMore"><Form.Check label="Buy more" name="buyMore" checked={form.buyMore} onChange={handleChange}/></Form.Group></Col>
+<Col md={4}><Form.Group controlId="collection-germinationRate"><Form.Label>Germination rate (%)</Form.Label><Form.Control type="number" min="0" max="100" step="any" name="germinationRate" value={form.germinationRate} onChange={handleChange}/></Form.Group></Col>
+<Col md={4}><Form.Group controlId="collection-inventoryYear"><Form.Label>Inventory year</Form.Label><Form.Control type="number" min="0"  name="inventoryYear" value={form.inventoryYear} onChange={handleChange}/></Form.Group></Col>
 				<Col xs={12}>
 					<Form.Group>
 						<div className="d-flex align-items-center justify-content-between gap-2 mb-1">

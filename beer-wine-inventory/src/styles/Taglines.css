@@ -7,7 +7,7 @@
 }
 
 .taglines-wrap{
- width:min(var(--max-width),94%);
+ width:100%;
  margin:0 auto;
 }
 
@@ -188,10 +188,6 @@
 
 .taglines-table tbody tr:nth-child(even) td{
  background:var(--table-stripe);
-}
-
-.taglines-table tbody tr:hover td{
- background:var(--bg-alt);
 }
 
 .taglines-actions{

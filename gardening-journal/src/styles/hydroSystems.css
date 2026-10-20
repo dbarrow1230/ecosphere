@@ -649,7 +649,7 @@
 }
 
 .hydro-pod-actions{display:flex;flex-wrap:nowrap;align-items:center;justify-content:center;gap:.35rem;}
-.hydro-pod-actions .btn{white-space:nowrap;padding:.25rem .4rem;font-size:.75rem;}
+.hydro-pod-actions .btn{white-space:nowrap;}
 .hydro-pod-notes{margin:.35rem 0;white-space:pre-wrap;overflow-wrap:anywhere;}
 
 .hydro-pod-seed > button{

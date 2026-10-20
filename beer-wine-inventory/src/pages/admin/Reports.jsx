@@ -1,6 +1,6 @@
 // src/pages/Reports.jsx
 import {useState,useEffect,useMemo} from "react";
-import {Container,Row,Col,Card,Table,Form} from "react-bootstrap";
+import {Row,Col,Card,Table,Form} from "react-bootstrap";
 
 function Reports(){
 
@@ -149,7 +149,7 @@ function Reports(){
 
  return(
   <section className="reports-page py-4">
-   <Container fluid="lg">
+   <div>
 
     <Row className="g-4 mb-4">
 
@@ -307,7 +307,7 @@ function Reports(){
 
     </Row>
 
-   </Container>
+   </div>
   </section>
  );
 }

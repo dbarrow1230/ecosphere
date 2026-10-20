@@ -1,3 +1,4 @@
+import {formatDate as formatAppDate} from "../utils/dateFormat.js";
 // src/pages/Dashboard.jsx
 import {useMemo,useState} from "react";
 import {Link} from "react-router-dom";
@@ -251,7 +252,7 @@ function Dashboard({stats,lowStockItems,expiringItems,recentItems,missingItems,c
          <div className="dashboard-list-content">
           <span className="dashboard-item-title">{item.name}</span>
           <span className="dashboard-item-meta">
-           Expires {item.expirationDate||item.expiryDate||"Soon"} · {item.location||item.storageArea||item.category||"Inventory"}
+           Expires {(item.expirationDate||item.expiryDate?formatAppDate(item.expirationDate||item.expiryDate):"Soon")} · {item.location||item.storageArea||item.category||"Inventory"}
           </span>
          </div>
         </li>

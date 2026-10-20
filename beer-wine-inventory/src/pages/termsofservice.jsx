@@ -1,9 +1,9 @@
-import {Container,Row,Col,Card} from "react-bootstrap";
+import {Row,Col,Card} from "react-bootstrap";
 
 function TermsOfService(){
 
  return(
-  <Container className="py-5">
+  <div className="py-5">
 
    <Row className="justify-content-center mb-4">
     <Col lg={8} className="text-center">
@@ -91,7 +91,7 @@ function TermsOfService(){
     </Col>
    </Row>
 
-  </Container>
+  </div>
  );
 
 }

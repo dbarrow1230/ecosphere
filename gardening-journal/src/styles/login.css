@@ -65,13 +65,6 @@
  font-size:.95rem;
 }
 
-.login-card .form-label{
- color:var(--heading);
- font-weight:800;
- font-size:.9rem;
- margin-bottom:.35rem;
-}
-
 .login-card .form-control{
  min-height:44px;
  border:1px solid var(--border);
@@ -162,7 +155,6 @@
 .login-button,
 .login-form-button{
  width:100%;
- min-height:46px;
  margin-top:.5rem;
  background:var(--primary);
  border:1px solid var(--primary);

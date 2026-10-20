@@ -4,6 +4,7 @@ import {Container,Card,ListGroup,Tabs,Tab,Form,InputGroup,Button} from "react-bo
 import SortedList from "../../components/SortedList.jsx";
 import "./plants.css";
 
+import PlantCareCard from "./components/PlantCareCard.jsx";
 import PlantHeader from "./components/PlantHeader";
 import PlantGrowingConditions from "./components/PlantGrowingConditions";
 import PlantSpacing from "./components/PlantSpacing";
@@ -125,6 +126,7 @@ export default function PlantPage(){
       <PlantGrowingConditions data={selectedPlant.growingConditions}/>
       <PlantSpacing spacing={selectedPlant.spacing} growthDurationDays={selectedPlant.growthDurationDays}/>
      </section>
+     <PlantCareCard key={selectedPlant._id} plant={selectedPlant} onSaved={updated=>{setSelectedPlant(updated);setPlants(previous=>previous.map(plant=>plant._id===updated._id?updated:plant));}}/>
      <section className="plant-detail-library" aria-label="Plant reference sections">
         <Tabs defaultActiveKey="seed" id="plant-detail-tabs" className="plant-detail-tabs" mountOnEnter unmountOnExit>
          <Tab eventKey="seed" title="Seed Information">

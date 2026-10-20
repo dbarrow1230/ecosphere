@@ -6,7 +6,7 @@
 }
 
 .vendors-wrap{
- width:min(var(--max-width),95%);
+ width:100%;
  margin:0 auto;
 }
 
@@ -35,10 +35,14 @@
 
 /* LEFT LIST */
 .vendors-list-item{
+ display:block;
+ cursor:pointer;
  width:100%;
  text-align:left;
  padding:.6rem .8rem;
  border:none;
+ border-bottom:1px solid var(--border);
+ border-left:3px solid transparent;
  background:transparent;
  border-radius:var(--radius-sm);
  color:var(--text);
@@ -50,8 +54,9 @@
 }
 
 .vendors-list-item.active{
- background:var(--primary);
- color:var(--surface);
+ background:var(--selection-bg, var(--bg-alt));
+ color:var(--selection-text, var(--text));
+ border-left-color:var(--primary);
 }
 
 /* DETAILS */

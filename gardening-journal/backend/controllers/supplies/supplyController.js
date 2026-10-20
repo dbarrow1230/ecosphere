@@ -25,6 +25,11 @@ return res.status(400).json({message:"name is required"});
 }
 
 const supply=new Supply({
+bestBefore:req.body.bestBefore||null,
+caution:req.body.caution||"",
+instructions:req.body.instructions||"",
+forPlants:req.body.forPlants||"",
+solvesIssues:req.body.solvesIssues||"",
 name,
 description,
 category:category||null,
@@ -147,6 +152,11 @@ if(notes!==undefined)supply.notes=notes;
 if(images!==undefined)supply.images=Array.isArray(images)?images:supply.images;
 if(createdBy!==undefined)supply.createdBy=createdBy||null;
 
+if(req.body.solvesIssues!==undefined)supply.solvesIssues=req.body.solvesIssues||"";
+if(req.body.forPlants!==undefined)supply.forPlants=req.body.forPlants||"";
+if(req.body.instructions!==undefined)supply.instructions=req.body.instructions||"";
+if(req.body.caution!==undefined)supply.caution=req.body.caution||"";
+if(req.body.bestBefore!==undefined)supply.bestBefore=req.body.bestBefore||null;
 const updated=await supply.save();
 const populated=await Supply.findById(updated._id)
 .populate("category")

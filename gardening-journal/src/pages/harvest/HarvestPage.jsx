@@ -7,7 +7,7 @@ import SortedSelect from "../../components/SortedSelect.jsx";
 import {sortItems} from "../../utils/sortItems.js";
 import "../../styles/harvestPage.css";
 
-const defaultHarvestForm={
+const defaultHarvestForm={currency:"",storeUnitValue:"",quantityUnit:"",harvestQuantity:"",
  planting:"",
  harvestDate:"",
  harvestAmount:{g:"",oz:"",lb:""},
@@ -178,6 +178,10 @@ export default function HarvestPage({user}){
  const openEditModal=item=>{
   setEditingHarvest(item);
   setFormData({
+   harvestQuantity:item.harvestQuantity??"",
+   quantityUnit:item.quantityUnit??"",
+   storeUnitValue:item.storeUnitValue??"",
+   currency:item.currency??"",
    planting:getObjectId(item.planting),
    harvestDate:formatDateForInput(item.harvestDate),
    harvestAmount:{
@@ -232,6 +236,10 @@ export default function HarvestPage({user}){
    setSuccess("");
 
    const payload={
+    harvestQuantity:numberOrZero(formData.harvestQuantity),
+    quantityUnit:formData.quantityUnit,
+    storeUnitValue:numberOrZero(formData.storeUnitValue),
+    currency:formData.currency,
     planting:formData.planting,
     harvestDate:formData.harvestDate||null,
     harvestAmount:{
@@ -355,6 +363,7 @@ export default function HarvestPage({user}){
         <span><strong>Usable:</strong> {formatWeight(item.usableAmount)}</span>
         <span><strong>Waste:</strong> {formatWeight(item.wasteAmount)}</span>
         <span><strong>Quality:</strong> {getQualityLabel(item.quality)}</span>
+        <span><strong>Store value:</strong> {((item.harvestQuantity||0)*(item.storeUnitValue||0)).toFixed(2)} {item.currency} ({item.harvestQuantity||0} {item.quantityUnit} × {item.storeUnitValue||0})</span>
         <span><strong>Days Since Last:</strong> {item.daysSinceLastHarvest ?? "Not listed"}</span>
        </div>
 
@@ -427,6 +436,10 @@ function HarvestModal({show,saving,editing,formData,plantings,qualityScales,onCh
        </InputGroup>
       </Col>
 
+      <Col md={6}><Form.Group controlId="harvest-harvestQuantity"><Form.Label>Harvested quantity</Form.Label><Form.Control type="number" min="0" step="any" name="harvestQuantity" value={formData.harvestQuantity} onChange={onChange}/></Form.Group></Col>
+      <Col md={6}><Form.Group controlId="harvest-quantityUnit"><Form.Label>Quantity unit (each, bunch, lb, etc.)</Form.Label><Form.Control type="text"  name="quantityUnit" value={formData.quantityUnit} onChange={onChange}/></Form.Group></Col>
+      <Col md={6}><Form.Group controlId="harvest-storeUnitValue"><Form.Label>Store value per quantity unit</Form.Label><Form.Control type="number" min="0" step="any" name="storeUnitValue" value={formData.storeUnitValue} onChange={onChange}/></Form.Group></Col>
+      <Col md={6}><Form.Group controlId="harvest-currency"><Form.Label>Currency</Form.Label><Form.Control type="text"  name="currency" value={formData.currency} onChange={onChange}/></Form.Group></Col>
       <WeightInputs title="Harvest Amount" group="harvestAmount" values={formData.harvestAmount} onChange={onChange}/>
       <WeightInputs title="Usable Amount" group="usableAmount" values={formData.usableAmount} onChange={onChange}/>
       <WeightInputs title="Waste Amount" group="wasteAmount" values={formData.wasteAmount} onChange={onChange}/>
