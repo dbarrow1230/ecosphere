@@ -8,6 +8,7 @@ import {applyBusinessTheme,clearBusinessTheme} from "./utils/applyBusinessTheme.
 import Header from "./components/Header.jsx";
 import Navigation from "./components/Navigation.jsx";
 import Footer from "./components/Footer.jsx";
+import FollowUpAlerts from "./components/FollowUpAlerts.jsx";
 
 //pages
 import Home from "./pages/Home";
@@ -339,6 +340,7 @@ function App(){
 
  return(
   <div className="app-layout">
+   <FollowUpAlerts key={getObjectId(user)} userId={getObjectId(user)}/>
    <Header userDetails={user||{}} onTitleChange={setHeaderTitle}/>
    <Navigation user={user} onLogout={handleLogout} brand={headerTitle}/>
    <main className="app-content">

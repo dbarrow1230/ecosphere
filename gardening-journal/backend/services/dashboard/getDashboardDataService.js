@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import {followUpReadingFields,formatFollowUpReading} from "../../../src/utils/dashboard/followUpReadings.js";
 import {buildJournalFollowUpTasks} from "./journalFollowUpTasks.js";
 import Plant from "../../models/plants/plantModel.js";
 import Planting from "../../models/plants/plantingModel.js";
@@ -576,12 +577,20 @@ const getDashboardDataService=async({userId=null,reportDate=new Date()}={})=>{
   plantLifecycleItems:lifecycleItems,
   growingInstanceItems:growingInstances.map(mapGrowingInstanceItem),
   harvestItems:harvests.map(mapHarvestItem),
-  environmentItems:environmentObservations.flatMap(observation=>{
+  environmentItems:[...environmentObservations.flatMap(observation=>{
    const base=mapEnvironmentItem(observation);
    const readings=[["moisture","Moisture","%"],["light","Ambient Light","lux"],["temperature","Temperature","°C"]];
    const items=readings.filter(([key])=>observation[key]!==null&&observation[key]!==undefined).map(([key,label,unit])=>({...base,_id:`${base._id}-${key}`,label,value:`${observation[key]} ${unit}`}));
    return items.length?items:[base];
-  })
+  }),...journalEntries.flatMap(entry=>(entry.notes||[]).flatMap((note,index)=>followUpReadingFields
+   .filter(field=>note.readings?.[field.key]!==undefined&&note.readings?.[field.key]!==null)
+   .map(field=>({
+    _id:`${entry._id}-follow-up-${index}-${field.key}`,
+    label:field.label,
+    value:formatFollowUpReading(field,note.readings[field.key]),
+    helper:[entry.title,getText(entry.hydroSystem)||getText(entry.equipment),getText(entry.garden)].filter(Boolean).join(" · "),
+    observedAt:note.date
+   }))))].sort((a,b)=>new Date(b.observedAt||0)-new Date(a.observedAt||0))
  };
 };
 

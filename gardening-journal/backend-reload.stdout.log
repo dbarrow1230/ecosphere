@@ -1,0 +1,77 @@
+
+> garden-journal@0.1.0 server
+> dotenvx run --env-file backend/.env -- node backend/server.js
+
+⟐ injected env (15) from backend/.env
+MongoDB connected
+Business DB connected
+Normalized seed image filenames for 2 seed records
+Backend running on port 6012
+GET /api/dashboard 200 71.713 ms - 23304
+GET /api/journal-entries 200 52.643 ms - 886708
+GET /api/journal-entries 200 87.866 ms - 886708
+GET /api/health 200 0.304 ms - 15
+GET /api/app/current-business/gardening-journal 304 10.034 ms - -
+GET /api/app/current-business/gardening-journal 304 36.526 ms - -
+GET /api/journal-entries 304 77.562 ms - -
+GET /api/users/69af088d21b4580a8cb6614b 304 74.878 ms - -
+GET /api/app/current-business/gardening-journal 304 17.710 ms - -
+GET /api/journal-entries 304 67.180 ms - -
+GET /api/users/69af088d21b4580a8cb6614b 304 43.773 ms - -
+GET /api/journal-entries 304 97.083 ms - -
+GET /api/users/69af088d21b4580a8cb6614b 304 115.067 ms - -
+GET /api/journal-entries 304 53.232 ms - -
+GET /api/dashboard?userId=69af088d21b4580a8cb6614b 200 175.574 ms - 21113
+GET /api/journal-entries 304 92.690 ms - -
+GET /api/dashboard?userId=69af088d21b4580a8cb6614b 304 117.956 ms - -
+GET /api/journal-entries 304 58.995 ms - -
+GET /api/dashboard?userId=69af088d21b4580a8cb6614b 304 88.450 ms - -
+GET /api/journal-entries 304 52.022 ms - -
+GET /api/dashboard?userId=69af088d21b4580a8cb6614b 304 41.178 ms - -
+GET /api/journal-entries 304 57.176 ms - -
+GET /api/health 200 0.265 ms - 15
+GET /api/app/current-business/gardening-journal 304 6.717 ms - -
+GET /api/app/current-business/gardening-journal 304 23.732 ms - -
+GET /api/journal-entries 304 85.189 ms - -
+GET /api/users/69af088d21b4580a8cb6614b 304 84.719 ms - -
+GET /api/app/current-business/gardening-journal 304 14.164 ms - -
+GET /api/journal-entries 304 60.237 ms - -
+GET /api/users/69af088d21b4580a8cb6614b 304 60.677 ms - -
+GET /api/journal-entries 304 45.477 ms - -
+GET /api/journal-entries 304 39.351 ms - -
+GET /api/health 200 0.197 ms - 15
+GET /api/app/current-business/gardening-journal 304 6.639 ms - -
+GET /api/app/current-business/gardening-journal 304 29.704 ms - -
+GET /api/journal-entries 304 70.710 ms - -
+GET /api/users/69af088d21b4580a8cb6614b 304 67.066 ms - -
+GET /api/app/current-business/gardening-journal 304 8.006 ms - -
+GET /api/journal-entries 304 61.388 ms - -
+GET /api/users/69af088d21b4580a8cb6614b 304 53.036 ms - -
+GET /api/users/69af088d21b4580a8cb6614b 304 72.494 ms - -
+GET /api/journal-entries 304 100.246 ms - -
+GET /api/journal-entries 304 63.528 ms - -
+GET /api/dashboard?userId=69af088d21b4580a8cb6614b 304 178.258 ms - -
+GET /api/journal-entries 304 58.501 ms - -
+GET /api/journal-entries 304 80.806 ms - -
+GET /api/dashboard?userId=69af088d21b4580a8cb6614b 304 141.359 ms - -
+GET /api/journal-entries 304 41.162 ms - -
+GET /api/dashboard?userId=69af088d21b4580a8cb6614b 304 40.643 ms - -
+GET /api/dashboard?userId=69af088d21b4580a8cb6614b 304 32.841 ms - -
+GET /api/health 200 0.188 ms - 15
+GET /api/app/current-business/gardening-journal 304 6.859 ms - -
+GET /api/journal-entries 304 66.605 ms - -
+GET /api/app/current-business/gardening-journal 304 26.541 ms - -
+GET /api/users/69af088d21b4580a8cb6614b 304 58.756 ms - -
+GET /api/journal-entries 304 84.581 ms - -
+GET /api/dashboard?userId=69af088d21b4580a8cb6614b 304 122.351 ms - -
+GET /api/app/current-business/gardening-journal 304 31.743 ms - -
+GET /api/users/69af088d21b4580a8cb6614b 304 28.433 ms - -
+GET /api/journal-entries 304 60.974 ms - -
+GET /api/journal-entries 304 63.828 ms - -
+GET /api/dashboard?userId=69af088d21b4580a8cb6614b 304 147.476 ms - -
+GET /api/journal-entries 304 62.427 ms - -
+GET /api/journal-entries 304 44.050 ms - -
+GET /api/dashboard?userId=69af088d21b4580a8cb6614b 304 108.203 ms - -
+GET /api/dashboard?userId=69af088d21b4580a8cb6614b 304 48.089 ms - -
+GET /api/journal-entries 304 81.365 ms - -
+GET /api/dashboard?userId=69af088d21b4580a8cb6614b 304 48.040 ms - -

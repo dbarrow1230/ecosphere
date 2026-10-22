@@ -26,9 +26,9 @@ function EnvironmentMonitorPanel({items=[],className=""}){
   <section className={`dashboard-section dashboard-environment-monitor ${sectionClassName}`.trim()}>
    <div className="dashboard-monitor-copy">
     <p className="dashboard-section-kicker">Environment Monitor</p>
-    <h2 className="dashboard-section-title">Moisture, light, and temperature readings</h2>
+    <h2 className="dashboard-section-title">Environment & system monitoring</h2>
     <p>
-     Recent condition observations from garden logs and plant records.
+     Recent condition observations and follow-up readings from garden logs and growing systems.
     </p>
    </div>
 
@@ -46,7 +46,7 @@ function EnvironmentMonitorPanel({items=[],className=""}){
      ))}
     </div>
    ):(
-    <DashboardEmpty message="No moisture, light, temperature, or garden condition observations have been logged yet."/>
+    <DashboardEmpty message="No environment or system monitoring readings have been logged yet."/>
    )}
   </section>
  );

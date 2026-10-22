@@ -1,5 +1,6 @@
 // backend/controllers/journal/journalEntryController.js
 import mongoose from "mongoose";
+import {normalizeFollowUpReadings} from "../../../src/utils/dashboard/followUpReadings.js";
 import "../../models/journal/dailyJournalModel.js";
 import "../../models/plants/plantingModel.js";
 import "../../models/seeds/seedModel.js";
@@ -192,9 +193,10 @@ if(!mongoose.Types.ObjectId.isValid(id)){
 return res.status(400).json({message:"Invalid journal entry id"});
 }
 
-if(!note){
-return res.status(400).json({message:"note is required"});
-}
+let readings;
+try{readings=normalizeFollowUpReadings(req.body.readings);}
+catch(error){return res.status(400).json({message:error.message});}
+if(!cleanString(note)&&!Object.keys(readings).length)return res.status(400).json({message:"Enter follow-up notes or at least one monitoring reading"});
 
 const entryDoc=await JournalEntry.findById(id);
 if(!entryDoc){
@@ -202,8 +204,10 @@ return res.status(404).json({message:"Journal entry not found"});
 }
 
 entryDoc.notes.push({
-note,
-date,
+note:cleanString(note),
+readings,
+completedFollowUpDate:entryDoc.followUpDate||null,
+date:cleanDate(date)||new Date(),
 createdBy:createdBy||req.user?._id||req.user?.id||null
 });
 

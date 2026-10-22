@@ -1,8 +1,10 @@
 // backend/models/journal/journalEntryModel.js
 import mongoose from "mongoose";
+import {followUpReadingFields} from "../../../src/utils/dashboard/followUpReadings.js";
 const {Schema,model}=mongoose;
 
-const noteSchema=new Schema({note:{type:String,trim:true,default:""},date:{type:Date,default:Date.now},createdBy:{type:Schema.Types.ObjectId,ref:"User",default:null}},{_id:false});
+const readingsSchema=new Schema(Object.fromEntries(followUpReadingFields.map(field=>[field.key,{type:Number,min:field.min,max:field.max}])),{_id:false});
+const noteSchema=new Schema({note:{type:String,trim:true,default:""},readings:{type:readingsSchema,default:undefined},completedFollowUpDate:{type:Date,default:null},date:{type:Date,default:Date.now},createdBy:{type:Schema.Types.ObjectId,ref:"User",default:null}},{_id:false});
 
 const journalEntrySchema=new Schema({
 dailyJournal:{type:Schema.Types.ObjectId,ref:"DailyJournal",default:null},

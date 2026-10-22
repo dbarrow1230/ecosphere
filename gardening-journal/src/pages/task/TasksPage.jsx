@@ -2,6 +2,7 @@
 import {useEffect,useState} from "react";
 import {Button,Card,Col,Form,Modal,Row,Spinner,Table,Badge} from "react-bootstrap";
 import axios from "axios";
+import {useSearchParams} from "react-router-dom";
 
 const defaultForm={
 	name:"",
@@ -15,6 +16,8 @@ const defaultForm={
 };
 
 function TasksPage(){
+ const [searchParams,setSearchParams]=useSearchParams();
+ const requestedTask=searchParams.get("task");
 
 	const [tasks,setTasks]=useState([]);
 	const [statuses,setStatuses]=useState([]);
@@ -69,10 +72,6 @@ function TasksPage(){
 		}
 	};
 
-	useEffect(()=>{
-		fetchRefs();
-		fetchTasks();
-	},[]);
 
 	const handleFilterChange=(e)=>{
 		const {name,value}=e.target;
@@ -118,6 +117,18 @@ function TasksPage(){
 			setLoading(false);
 		}
 	};
+
+	useEffect(()=>{
+  const timer=setTimeout(()=>{
+		fetchRefs();
+		fetchTasks();
+  if(requestedTask){
+   openEditModal(requestedTask);
+   setSearchParams(params=>{params.delete("task");return params;},{replace:true});
+  }
+  },0);
+  return()=>clearTimeout(timer);
+	},[]);
 
 	const handleSubmit=async(e)=>{
 		e.preventDefault();

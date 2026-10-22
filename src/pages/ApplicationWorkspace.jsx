@@ -1,4 +1,4 @@
-import {useCallback,useEffect,useMemo,useState} from "react";
+import {useCallback,useEffect,useMemo,useRef,useState} from "react";
 import {Link,Navigate,useLocation,useParams} from "react-router-dom";
 import {ArrowLeft} from "lucide-react";
 import apps from "../data/apps.js";
@@ -10,6 +10,22 @@ function ApplicationWorkspace(){
  const app=useMemo(()=>apps.find(item=>item.id===appId),[appId]);
  const appPath=useMemo(()=>new URLSearchParams(location.search).get("appPath")||"",[location.search]);
  const [runtime,setRuntime]=useState({status:"loading",url:"",message:""});
+ const refreshedApp=useRef(performance.getEntriesByType("navigation")[0]?.type==="reload"?appId:null);
+
+ useEffect(()=>{
+  if(runtime.status!=="ready"||!runtime.url||!app)return;
+  const origin=new URL(runtime.url).origin;
+  const rememberPage=event=>{
+   const frame=document.getElementById("application-workspace-frame");
+   if(event.source!==frame?.contentWindow||event.origin!==origin)return;
+   if(event.data?.type!=="ECOSPHERE_PAGE_CHANGED"||event.data?.version!==1)return;
+   const path=event.data.path;
+   if(typeof path!=="string"||!path.startsWith("/")||new URL(path,origin).origin!==origin)return;
+   try{sessionStorage.setItem(`ecosphere:application-page:${app.id}`,path);}catch{/* Storage may be disabled. */}
+  };
+  window.addEventListener("message",rememberPage);
+  return()=>window.removeEventListener("message",rememberPage);
+ },[app,runtime.status,runtime.url]);
 
  const sendAuthentication=event=>{
   if(!runtime.url)return;
@@ -48,9 +64,12 @@ function ApplicationWorkspace(){
 
    const baseUrl=data.url||app.url;
    let applicationUrl=baseUrl;
+   let savedPath="";
+   try{savedPath=sessionStorage.getItem(`ecosphere:application-page:${app.id}`)||"";}catch{/* Use the requested or default page. */}
+   const requestedPath=refreshedApp.current===app.id?(savedPath||appPath):(appPath||savedPath);
 
-   if(appPath.startsWith("/")){
-    const requestedUrl=new URL(appPath,baseUrl);
+   if(requestedPath.startsWith("/")){
+    const requestedUrl=new URL(requestedPath,baseUrl);
     if(requestedUrl.origin===new URL(baseUrl).origin)applicationUrl=requestedUrl.href;
    }
 
@@ -61,7 +80,8 @@ function ApplicationWorkspace(){
  },[app,appPath]);
 
  useEffect(()=>{
-  if(appId!=="recipe-costing")activateApplication();
+  const timer=setTimeout(()=>{if(appId!=="recipe-costing")activateApplication();},0);
+  return()=>clearTimeout(timer);
  },[activateApplication,appId]);
 
  if(appId==="recipe-costing"){
