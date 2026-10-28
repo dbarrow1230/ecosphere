@@ -1,4 +1,4 @@
-.dashboard-daily-tasks{margin:0 0 1rem;}
+.dashboard-daily-tasks{margin:0;}
 .dashboard-daily-tasks .dashboard-section-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;}
 .dashboard-daily-tasks .dashboard-section-head .btn{width:auto;white-space:nowrap;}
 .dashboard-daily-tasks-date{display:flex;align-items:center;gap:.75rem;max-width:19rem;}
@@ -29,7 +29,7 @@
 .dashboard-research-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;align-items:start;min-width:0;}
 .dashboard-research-row .dashboard-research{margin:0;min-width:0;}
 .dashboard-research-row .dashboard-research-queue{min-width:0;}
-.dashboard-planning-row{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:1rem;align-items:start;min-width:0;}
+.dashboard-planning-row{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:1rem;align-items:start;min-width:0;}
 .dashboard-attention-panel ul,.dashboard-research-queue ul{list-style:none;margin:0;padding:0;max-height:12rem;overflow-y:auto;}
 .dashboard-attention-panel li,.dashboard-research-queue li{padding:.55rem 0;border-top:1px solid var(--border);}
 .dashboard-attention-panel a,.dashboard-research-queue li a{display:grid;gap:.1rem;text-decoration:none;}
@@ -52,4 +52,4 @@
 .dashboard .dashboard-board-two{grid-template-columns:repeat(2,minmax(0,1fr));}
 .dashboard>.tab-content .dashboard-priorities-card{margin-bottom:1rem;}
 @media(max-width:1100px){.dashboard .dashboard-board-two{grid-template-columns:1fr;}}
-#today-calendar{margin-top:1rem;}
+

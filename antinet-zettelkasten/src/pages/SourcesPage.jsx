@@ -1,10 +1,10 @@
+import WorkflowContentTabs from "../components/WorkflowContentTabs.jsx";
 import DomainName from "../components/DomainName.jsx";
 import {useCallback,useEffect,useState} from "react";
 import {Alert,Button,ButtonGroup,Container,Modal,Spinner} from "react-bootstrap";
 import {useNavigate,useParams} from "react-router-dom";
 import SourceForm from "./forms/SourceForm.jsx";
 import RichTextContent from "../components/RichTextContent.jsx";
-import {richTextToPlainText} from "../utils/richText.js";
 import LinkedRecordList from "../components/LinkedRecordList.jsx";
 import KnowledgeWorkflowWorkspace from "../components/KnowledgeWorkflowWorkspace.jsx";
 import ProjectRecordList from "../components/ProjectRecordList.jsx";
@@ -482,12 +482,19 @@ function SourcesPage(){
      getRecordId={source=>source.sourceId}
      getRecordTitle={source=>source.title||"Untitled source"}
      onSelect={openDetail}
-     header={<><code>{detail.sourceId}</code><h2>{detail.title||"Source"}</h2><p>{richTextToPlainText(detail.summary)||detail.author||"Preserved source material"}</p></>}
+     header={<>
+      <code>{detail.sourceId}</code>
+      <h2>{detail.title||"Source"}</h2>
+      <p>{[
+       detail.subtype?`${detail.subtype} source`:"Preserved source",
+       detail.author?`By ${detail.author}`:"",
+       detail.publisher&&detail.publisher!==detail.author?`Published by ${detail.publisher}`:""
+      ].filter(Boolean).join(" · ")}</p>
+     </>}
      actions={<ButtonGroup size="sm"><Button variant="outline-secondary" onClick={()=>openEdit(detail)}>Edit</Button><Button variant="outline-warning" disabled={detail.status==="archived"} onClick={()=>archive(detail)}>Archive</Button><Button variant="outline-danger" onClick={()=>remove(detail)}>Delete</Button></ButtonGroup>}
     >
      <article className="record-detail workflow-record-detail">
       <dl className="workflow-record-meta">
-<div className="workflow-domain"><dt>Domain</dt><dd><DomainName domain={detail.domainId}/></dd></div>
        <div className="workflow-record-projects">
         <dt>Projects</dt>
         <dd><ProjectRecordList projects={detail.projectIds} fallback={detail.projectId}/></dd>
@@ -503,24 +510,26 @@ function SourcesPage(){
        <div className="workflow-record-list-value"><dt>Tags</dt><dd>{displayValue(detail.tags)}</dd></div>
       </dl>
 
-      <div className="workflow-record-content-grid source-record-content-grid">
-       <section className="source-record-long-form"><h3>Saved Extract</h3><RichTextContent value={detail.copiedText}/></section>
-       <section className="source-record-long-form"><h3>Summary</h3><RichTextContent value={detail.summary}/></section>
-      </div>
-
-      <div className="workflow-record-relationships workflow-record-relationships-two">
-       <section><h3>Linked Entities</h3><LinkedRecordList records={detail.entityIds} type="entity"/></section>
-       <section><h3>Produced Zettels</h3><LinkedRecordList records={detail.producedZettels} type="zettel"/></section>
-      </div>
-
+      <div className="workflow-related-cards">
+       <section><h3>Domain</h3><DomainName domain={detail.domainId}/></section>
+       <section><h3>Linked Entities</h3><LinkedRecordList records={detail.entityIds} type="entity" scrollAfterFive/></section>
+       <section><h3>Produced Zettels</h3><LinkedRecordList records={detail.producedZettels} type="zettel" scrollAfterFive/></section>
       <section>
        <h3>Associated Files</h3>
        {detailAttachments.length?(
-        <ul className="list-unstyled mb-0">
+        <div className={detailAttachments.length>5?"source-related-scroll":undefined}><ul className="list-unstyled mb-0">
          {detailAttachments.map(attachment=><li key={attachment._id} className="mb-2"><a href={`/api/attachments/${attachment._id}/content?userId=${encodeURIComponent(userId)}`} target="_blank" rel="noreferrer">{attachment.originalName||attachment.fileName}</a> <small className="text-muted">({attachment.fileType||attachment.mimeType||"file"})</small></li>)}
-        </ul>
+        </ul></div>
        ):<p className="text-muted mb-0">No files linked to this source.</p>}
       </section>
+      </div>
+
+      <WorkflowContentTabs recordId={detail._id} defaultTab={detail.copiedText?"extract":"summary"} tabs={[
+       {key:"extract",title:"Saved Extract",value:detail.copiedText},
+       {key:"summary",title:"Summary",value:detail.summary}
+      ]}/>
+
+
      </article>
     </KnowledgeWorkflowWorkspace>
    ):(

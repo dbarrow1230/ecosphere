@@ -1,4 +1,5 @@
 import useDomainIdPreview from "../../hooks/useDomainIdPreview.js";
+import WorkflowTextImport from "../../components/WorkflowTextImport.jsx";
 import {Button,Col,Form,Row} from "react-bootstrap";
 import DomainSelect from "../../components/DomainSelect.jsx";
 import RichTextEditor from "../../components/RichTextEditor.jsx";
@@ -147,6 +148,7 @@ function ConnectionForm({
 
  return(
   <Form onSubmit={onSubmit}>
+   <WorkflowTextImport form={form} setForm={setForm} recordKey="connectionId" disabled={saving}/>
    <DomainSelect value={form.domainId} onChange={(domainId,domain)=>setForm(current=>({...current,domainId,domainCode:domain?.code||""}))}/>
    {editing?._id&&(
     <Form.Group className="mb-3">

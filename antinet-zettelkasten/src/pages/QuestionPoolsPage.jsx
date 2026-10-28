@@ -1,3 +1,4 @@
+import WorkflowTextImport from "../components/WorkflowTextImport.jsx";
 import {useEffect,useMemo,useState} from "react";
 import {Alert,Container,Form,Modal,Spinner,Tab,Tabs} from "react-bootstrap";
 import {useSearchParams} from "react-router-dom";
@@ -309,6 +310,7 @@ export default function QuestionPoolsPage(){
         <button type="button" className="btn btn-outline-secondary" onClick={requestCloseAnswerCard}>Close</button>
        </div>
       </>:<>
+       <WorkflowTextImport form={{answer}} setForm={update=>{const next=typeof update==="function"?update({answer}):update;setAnswer(next.answer);}} recordKey="answer" disabled={savingAnswer}/>
        <Form.Label htmlFor="question-answer-editor">Your answer</Form.Label>
        <div id="question-answer-editor"><RichTextEditor key={selectedQuestion.key} value={answer} onChange={setAnswer} placeholder="Write your answer here…" minHeight="12rem" disabled={savingAnswer}/></div>
        <div className="d-flex flex-wrap gap-2 mt-3">

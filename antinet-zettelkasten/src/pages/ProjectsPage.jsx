@@ -1,3 +1,4 @@
+import WorkflowContentTabs from "../components/WorkflowContentTabs.jsx";
 import DomainName from "../components/DomainName.jsx";
 import {useCallback,useEffect,useState} from "react";
 import {
@@ -418,9 +419,16 @@ function ProjectsPage(){
      No {projectView} projects.
     </Alert>
    ):(
-    <KnowledgeWorkflowWorkspace eyebrow={projectView==="archived"?"Project archive":"Work areas"} title="Projects / Collections" records={visibleProjects} selectedId={detail?._id} getRecordId={record=>record.projectId} getRecordTitle={record=>record.title||"Untitled"} isFavorite={record=>record.isFavorite} onSelect={openDetail} header={detail&&<><code>{detail.projectId}</code><h2>{detail.title||"Projects / Collections"}</h2><p>{detail.description||detail.purpose||detail.summary||"Knowledge workflow record"}</p></>} actions={detail&&<ButtonGroup size="sm"><Button variant={detail.isFavorite?"primary":"outline-primary"} onClick={()=>toggleFavorite(detail)}>{detail.isFavorite?"Unfavorite":"Favorite"}</Button><Button variant="outline-secondary" onClick={()=>openEdit(detail)}>Edit</Button>{projectView==="archived"?<Button variant="outline-success" onClick={()=>restore(detail)}>Restore</Button>:<Button variant="outline-warning" onClick={()=>archive(detail)}>Archive</Button>}<Button variant="outline-danger" onClick={()=>remove(detail)}>Delete</Button></ButtonGroup>}>
-     {detail&&<article className="record-detail"><dl>
-<div className="workflow-domain"><dt>Domain</dt><dd><DomainName domain={detail.domainId}/></dd></div><div><dt>Project</dt><dd>{detail.title||"--"}</dd></div><div><dt>Code</dt><dd>{detail.code||"--"}</dd></div><div><dt>Project Type</dt><dd>{detail.typeId?.name||displayValue(detail.typeId)}</dd></div><div><dt>Status</dt><dd><WorkflowStatusBadge status={detail.status}/></dd></div><div><dt>Tags</dt><dd>{displayValue(detail.tags)}</dd></div></dl><section><h3>Description</h3><p>{detail.description||"--"}</p></section></article>}
+    <KnowledgeWorkflowWorkspace eyebrow={projectView==="archived"?"Project archive":"Work areas"} title="Projects / Collections" records={visibleProjects} selectedId={detail?._id} getRecordId={record=>record.projectId} getRecordTitle={record=>record.title||"Untitled"} isFavorite={record=>record.isFavorite} onSelect={openDetail} header={detail&&<><code>{detail.projectId}</code><h2>{detail.title||"Projects / Collections"}</h2><p>{detail.typeId?.name||"Project / Collection"}</p></>} actions={detail&&<ButtonGroup size="sm"><Button variant={detail.isFavorite?"primary":"outline-primary"} onClick={()=>toggleFavorite(detail)}>{detail.isFavorite?"Unfavorite":"Favorite"}</Button><Button variant="outline-secondary" onClick={()=>openEdit(detail)}>Edit</Button>{projectView==="archived"?<Button variant="outline-success" onClick={()=>restore(detail)}>Restore</Button>:<Button variant="outline-warning" onClick={()=>archive(detail)}>Archive</Button>}<Button variant="outline-danger" onClick={()=>remove(detail)}>Delete</Button></ButtonGroup>}>
+     {detail&&<article className="record-detail workflow-record-detail">
+      <dl className="workflow-record-meta">
+       <div><dt>Project</dt><dd>{detail.title||"--"}</dd></div>
+       <div className="workflow-record-summary"><div><dt>Code</dt><dd>{detail.code||"--"}</dd></div><div><dt>Project Type</dt><dd>{detail.typeId?.name||displayValue(detail.typeId)}</dd></div><div><dt>Status</dt><dd><WorkflowStatusBadge status={detail.status}/></dd></div></div>
+       <div className="workflow-record-list-value"><dt>Tags</dt><dd>{displayValue(detail.tags)}</dd></div>
+      </dl>
+      <div className="workflow-related-cards"><section><h3>Domain</h3><DomainName domain={detail.domainId}/></section></div>
+      <WorkflowContentTabs recordId={detail._id} tabs={[{key:"description",title:"Description",value:detail.description}]}/>
+     </article>}
     </KnowledgeWorkflowWorkspace>
    )}
 

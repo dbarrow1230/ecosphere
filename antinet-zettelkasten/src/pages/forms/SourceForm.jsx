@@ -1,3 +1,4 @@
+import WorkflowTextImport from "../../components/WorkflowTextImport.jsx";
 import useDomainIdPreview from "../../hooks/useDomainIdPreview.js";
 import {useEffect,useMemo,useState} from "react";
 import {Alert,Button,Form,Spinner,Tab,Tabs} from "react-bootstrap";
@@ -266,6 +267,7 @@ function SourceForm({form,setForm,projects=[],entities=[],zettels=[],sourceTypes
 
  return(
   <Form onSubmit={onSubmit}>
+   <WorkflowTextImport form={form} setForm={setForm} recordKey="sourceId" disabled={saving}/>
    <DomainSelect value={form.domainId} onChange={(domainId,domain)=>setForm(current=>({...current,domainId,domainCode:domain?.code||"",sourceId:""}))}/>
    <div className="zettel-form-id"><span>Source ID</span><code>{loadingId&&!editing?._id?"Generating...":(editing?._id?domainIdPreview:form.sourceId)||"Generated when saved"}</code></div>
    {idError&&<div className="text-danger mb-3">{idError}</div>}

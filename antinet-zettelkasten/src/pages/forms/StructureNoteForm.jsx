@@ -1,3 +1,4 @@
+import WorkflowTextImport from "../../components/WorkflowTextImport.jsx";
 import useDomainIdPreview from "../../hooks/useDomainIdPreview.js";
 import {useEffect,useState} from "react";
 import {Button,Col,Form,Row,Tab,Tabs} from "react-bootstrap";
@@ -104,6 +105,7 @@ function StructureNoteForm({
 
  return(
   <Form className="structure-note-form" onSubmit={onSubmit}>
+   <WorkflowTextImport form={form} setForm={setForm} recordKey="structureNoteId" disabled={saving}/>
    <Tabs activeKey={activeTab} onSelect={tab=>setActiveTab(tab||"details")} className="structure-form-tabs">
     <Tab eventKey="details" title="Structure Details">
 

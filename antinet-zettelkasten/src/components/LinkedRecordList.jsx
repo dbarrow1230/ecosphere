@@ -11,7 +11,7 @@ const getObjectId=value=>{
 const getCode=value=>value?.zettelId||value?.sourceId||value?.outputId||value?.entityId||value?.structureNoteId||getObjectId(value);
 const getTitle=value=>value?.title||value?.name||"";
 
-function LinkedRecordList({records=[],type,linkIdOnly=false,previewOnly=false}){
+function LinkedRecordList({records=[],type,linkIdOnly=false,previewOnly=false,scrollAfterFive=false}){
  const values=sortItems(
   [...new Map((Array.isArray(records)?records:[]).map(record=>[String(getObjectId(record)),record])).values()],
   record=>getTitle(record)||getCode(record)
@@ -29,7 +29,7 @@ function LinkedRecordList({records=[],type,linkIdOnly=false,previewOnly=false}){
  };
 
  return(
-  <div className="record-detail-links">
+  <div className={scrollAfterFive&&values.length>5?"record-detail-links source-related-scroll":"record-detail-links"}>
    {values.map(record=>{
     const title=getTitle(record);
 
@@ -45,7 +45,7 @@ function LinkedRecordList({records=[],type,linkIdOnly=false,previewOnly=false}){
        {title&&<span className="record-detail-link-title"><span aria-hidden="true"> — </span>{title}</span>}
       </div>
      ):(
-      <Link className="record-detail-link" key={getObjectId(record)} to={getPath(record)}>
+      <Link className="record-detail-link" title={`${getCode(record)} — ${title}`} key={getObjectId(record)} to={getPath(record)}>
        <code>{getCode(record)}</code>
        {title&&<span className="record-detail-link-title"><span aria-hidden="true"> — </span>{title}</span>}
       </Link>

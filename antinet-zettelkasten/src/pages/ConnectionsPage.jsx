@@ -1,3 +1,4 @@
+import WorkflowContentTabs from "../components/WorkflowContentTabs.jsx";
 import {resolveConnectionRecord} from "../utils/connectionRecords.js";
 import DomainName from "../components/DomainName.jsx";
 import {useCallback,useEffect,useMemo,useState} from "react";
@@ -14,7 +15,6 @@ import {
 } from "react-bootstrap";
 import ConnectionForm from "./forms/ConnectionForm.jsx";
 import RelationTypeForm from "./forms/RelationTypeForm.jsx";
-import RichTextContent from "../components/RichTextContent.jsx";
 import ProjectRecordList from "../components/ProjectRecordList.jsx";
 import WorkflowStatusBadge from "../components/WorkflowStatusBadge.jsx";
 import SortedList from "../components/SortedList.jsx";
@@ -605,14 +605,16 @@ function ConnectionsPage(){
        <span>{connection.relation||connection.relationType||"relates to"}</span>
        <strong>{connectionEndpoint(connection,"to")}</strong>
       </button>}/>
-     <article className="connections-detail">
+     <article className="connections-detail record-detail workflow-record-detail">
       <div className="connections-detail-heading">
        <div><p>{detail.isAutomatic?"Record Association":"Meaningful Connection"}</p><h2>{connectionEndpoint(detail,"from")} <span>{detail.relation||detail.relationType||"relates to"}</span> {connectionEndpoint(detail,"to")}</h2></div>
        {detail.isAutomatic?<Badge bg="info">Generated automatically</Badge>:<ButtonGroup size="sm"><Button variant="outline-secondary" onClick={()=>openEdit(detail)}>Edit</Button><Button variant="outline-warning" disabled={detail.status==="archived"} onClick={()=>archive(detail)}>Archive</Button><Button variant="outline-danger" onClick={()=>remove(detail)}>Delete</Button></ButtonGroup>}
       </div>
-      <dl className="connections-detail-meta">
-<div className="workflow-domain"><dt>Domain</dt><dd><DomainName domain={detail.domainId}/></dd></div><div><dt>From</dt><dd>{recordLabel(detail.fromRecordType||detail.fromModel,detail.fromRecord||detail.fromRecordId,detail.fromDisplayId)}</dd></div><div><dt>Relationship</dt><dd>{detail.relation||detail.relationType||"—"}</dd></div><div><dt>To</dt><dd>{recordLabel(detail.toRecordType||detail.toModel,detail.toRecord||detail.toRecordId,detail.toDisplayId)}</dd></div><div><dt>Projects</dt><dd><ProjectRecordList projects={detail.projectIds} fallback={detail.projectId}/></dd></div><div><dt>Tags</dt><dd>{(detail.tags||[]).join(", ")||"—"}</dd></div><div><dt>Strength</dt><dd><Badge bg={strengthVariant(detail.strength)}>{detail.strength||"medium"}</Badge></dd></div><div><dt>Status</dt><dd><WorkflowStatusBadge status={detail.status}/></dd></div></dl>
-      <section className="connections-reason"><h3>{detail.isAutomatic?"How this association was found":"Reason / Context"}</h3><RichTextContent value={detail.reason}/></section>
+      <dl className="workflow-record-meta">
+<div><dt>From</dt><dd>{recordLabel(detail.fromRecordType||detail.fromModel,detail.fromRecord||detail.fromRecordId,detail.fromDisplayId)}</dd></div><div><dt>Relationship</dt><dd>{detail.relation||detail.relationType||"—"}</dd></div><div><dt>To</dt><dd>{recordLabel(detail.toRecordType||detail.toModel,detail.toRecord||detail.toRecordId,detail.toDisplayId)}</dd></div><div><dt>Projects</dt><dd><ProjectRecordList projects={detail.projectIds} fallback={detail.projectId}/></dd></div><div><dt>Tags</dt><dd>{(detail.tags||[]).join(", ")||"—"}</dd></div><div><dt>Strength</dt><dd><Badge bg={strengthVariant(detail.strength)}>{detail.strength||"medium"}</Badge></dd></div><div><dt>Status</dt><dd><WorkflowStatusBadge status={detail.status}/></dd></div></dl>
+      <div className="workflow-related-cards"><section><h3>Domain</h3><DomainName domain={detail.domainId}/></section></div>
+      <WorkflowContentTabs recordId={detail._id} tabs={[{key:"reason",title:detail.isAutomatic?"How this association was found":"Reason / Context",value:detail.reason}]}/>
+
      </article>
     </div>
    )}

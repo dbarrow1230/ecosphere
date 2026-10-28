@@ -1,3 +1,4 @@
+import WorkflowTextImport from "../../components/WorkflowTextImport.jsx";
 import useDomainIdPreview from "../../hooks/useDomainIdPreview.js";
 import {useEffect} from "react";
 import {Button,Col,Form,Row} from "react-bootstrap";
@@ -76,6 +77,7 @@ function ProjectForm({
 
  return(
   <Form onSubmit={onSubmit}>
+   <WorkflowTextImport form={form} setForm={setForm} recordKey="projectId" disabled={saving}/>
    <DomainSelect value={form.domainId} onChange={(domainId,domain)=>setForm(current=>({...current,domainId,domainCode:domain?.code||""}))}/>
    {editing?._id&&(
     <Form.Group className="mb-3">

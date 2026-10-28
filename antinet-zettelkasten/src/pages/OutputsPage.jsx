@@ -1,3 +1,4 @@
+import WorkflowContentTabs from "../components/WorkflowContentTabs.jsx";
 import DomainName from "../components/DomainName.jsx";
 import {useCallback,useEffect,useMemo,useState} from "react";
 import {useParams,useSearchParams} from "react-router-dom";
@@ -539,20 +540,25 @@ function OutputsPage(){
      No {statusFilter==="all"?"outputs":`${statusFilter} outputs`} found.
     </Alert>
    ):(
-    <KnowledgeWorkflowWorkspace eyebrow={statusFilter==="all"?"Finished work":`${statusFilter} outputs`} title="Outputs" records={visibleOutputs} selectedId={detail?._id} getRecordId={record=>record.outputId} getRecordTitle={record=>record.title||"Untitled"} isFavorite={record=>record.isFavorite} onSelect={openDetail} header={detail&&<><code>{detail.outputId}</code><h2>{detail.title||"Outputs"}</h2><p>{richTextToPlainText(detail.description)||richTextToPlainText(detail.purpose)||richTextToPlainText(detail.summary)||"Knowledge workflow record"}</p></>} actions={detail&&<ButtonGroup size="sm"><Button variant={detail.isFavorite?"primary":"outline-primary"} onClick={()=>toggleFavorite(detail)}>{detail.isFavorite?"Unfavorite":"Favorite"}</Button><Button variant="outline-secondary" onClick={()=>openEdit(detail)}>Edit</Button><Button variant="outline-warning" disabled={detail.status==="archived"} onClick={()=>archive(detail)}>Archive</Button><Button variant="outline-danger" onClick={()=>remove(detail)}>Delete</Button></ButtonGroup>}>
+    <KnowledgeWorkflowWorkspace eyebrow={statusFilter==="all"?"Finished work":`${statusFilter} outputs`} title="Outputs" records={visibleOutputs} selectedId={detail?._id} getRecordId={record=>record.outputId} getRecordTitle={record=>record.title||"Untitled"} isFavorite={record=>record.isFavorite} onSelect={openDetail} header={detail&&<><code>{detail.outputId}</code><h2>{detail.title||"Outputs"}</h2><p>{`${displayValue(detail.outputTypes?.length?detail.outputTypes:detail.outputType)} · ${detail.status||"draft"}`}</p></>} actions={detail&&<ButtonGroup size="sm"><Button variant={detail.isFavorite?"primary":"outline-primary"} onClick={()=>toggleFavorite(detail)}>{detail.isFavorite?"Unfavorite":"Favorite"}</Button><Button variant="outline-secondary" onClick={()=>openEdit(detail)}>Edit</Button><Button variant="outline-warning" disabled={detail.status==="archived"} onClick={()=>archive(detail)}>Archive</Button><Button variant="outline-danger" onClick={()=>remove(detail)}>Delete</Button></ButtonGroup>}>
      {detail&&<article className="record-detail workflow-record-detail output-record-detail">
       <dl className="workflow-record-meta">
-<div className="workflow-domain"><dt>Domain</dt><dd><DomainName domain={detail.domainId}/></dd></div>
        <div><dt>Projects</dt><dd><ProjectRecordList projects={detail.projectIds} fallback={detail.projectId}/></dd></div>
-       <div><dt>Output Types</dt><dd>{displayValue(detail.outputTypes?.length?detail.outputTypes:detail.outputType)}</dd></div>
        <div className="workflow-record-summary">
+        <div><dt>Output Types</dt><dd>{displayValue(detail.outputTypes?.length?detail.outputTypes:detail.outputType)}</dd></div>
         <div><dt>ID</dt><dd>{detail.outputId}</dd></div>
         <div><dt>Status</dt><dd><WorkflowStatusBadge status={detail.status}/></dd></div>
        </div>
        <div className="workflow-record-list-value"><dt>Tags</dt><dd>{displayValue(detail.tags)}</dd></div>
-       <div className="workflow-record-list-value output-stored-documents-meta">
-        <dt>Stored Documents</dt>
-        <dd>
+      </dl>
+
+      <div className="workflow-related-cards">
+       <section><h3>Domain</h3><DomainName domain={detail.domainId}/></section>
+       <section><h3>Sources</h3><LinkedRecordList records={detail.sourceIds} type="source" scrollAfterFive/></section>
+       <section><h3>Zettels</h3><LinkedRecordList records={detail.zettelIds} type="zettel" scrollAfterFive/></section>
+       <section><h3>Stored Documents</h3>
+        <div className={detailAttachments.length>5?"source-related-scroll":undefined}>
+
          {detailAttachments.length?(
           <Table responsive size="sm" className="output-document-table mb-0">
            <thead><tr><th>Document</th><th>Type</th><th>Size</th></tr></thead>
@@ -563,18 +569,14 @@ function OutputsPage(){
            </tr>)}</tbody>
           </Table>
          ):<span className="text-muted">No stored documents.</span>}
-        </dd>
-       </div>
-      </dl>
-
-      <div className="workflow-record-content-grid output-record-content-grid">
-       <section><h3>Description</h3><RichTextContent value={detail.description}/></section>
-
-       <section>
-        <h3>{documentExcerpt.isExcerpt?"Document Excerpt":"Document Content"}</h3>
-        {documentExcerpt.isExcerpt?<p>{documentExcerpt.text}</p>:<RichTextContent value={documentContent}/>}
+        </div>
        </section>
       </div>
+      <WorkflowContentTabs recordId={detail._id} tabs={[
+       {key:"description",title:"Description",value:detail.description},
+       {key:"related",title:"Other Links",content:<div className="workflow-record-content-grid"><section><h3>Entities</h3><LinkedRecordList records={detail.entityIds} type="entity" scrollAfterFive/></section><section><h3>Structure Notes</h3><LinkedRecordList records={detail.structureNoteIds} type="structure" scrollAfterFive/></section></div>},
+       {key:"document",title:documentExcerpt.isExcerpt?"Document Excerpt":"Document Content",content:documentExcerpt.isExcerpt?<p>{documentExcerpt.text}</p>:<RichTextContent value={documentContent}/>}
+      ]}/>
      </article>}
     </KnowledgeWorkflowWorkspace>
    )}

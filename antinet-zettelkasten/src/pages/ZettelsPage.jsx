@@ -18,6 +18,9 @@ const emptyZettel={
  originFleetingNoteId:"",
  futureUse:"",
  questions:"",
+ needsResearchQuestions:[],
+ researchedQuestions:[],
+ questionAnswers:[],
  tags:"",
  status:"draft",
  isFavorite:false
@@ -204,6 +207,9 @@ function ZettelsPage(){
    originFleetingNoteId:getObjectId(zettel.originFleetingNoteId),
    futureUse:textList(zettel.futureUse),
    questions:textList(zettel.questions),
+   needsResearchQuestions:zettel.needsResearchQuestions||[],
+   researchedQuestions:zettel.researchedQuestions||[],
+   questionAnswers:zettel.questionAnswers||[],
    tags:textList(zettel.tags),
    status:zettel.status||"draft",
    isFavorite:Boolean(zettel.isFavorite)
@@ -255,6 +261,9 @@ function ZettelsPage(){
     originFleetingNoteId:form.originFleetingNoteId||null,
     futureUse:splitList(form.futureUse),
     questions:splitList(form.questions),
+    needsResearchQuestions:form.needsResearchQuestions,
+    researchedQuestions:form.researchedQuestions,
+    questionAnswers:form.questionAnswers,
     tags:splitList(form.tags),
     status:form.status,
     isFavorite:form.isFavorite

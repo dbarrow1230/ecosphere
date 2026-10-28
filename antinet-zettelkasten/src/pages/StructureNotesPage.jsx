@@ -1,3 +1,4 @@
+import WorkflowContentTabs from "../components/WorkflowContentTabs.jsx";
 import DomainName from "../components/DomainName.jsx";
 import {useCallback,useEffect,useState} from "react";
 import {
@@ -6,15 +7,11 @@ import {
  ButtonGroup,
  Container,
  Modal,
- Nav,
- Spinner,
- Tab,
- Tabs
+ Spinner
 } from "react-bootstrap";
 import {useParams} from "react-router-dom";
 import StructureNoteForm from "./forms/StructureNoteForm.jsx";
 import StructureWritingModal from "../components/StructureWritingModal.jsx";
-import RichTextContent from "../components/RichTextContent.jsx";
 import {richTextToPlainText} from "../utils/richText.js";
 import LinkedRecordList from "../components/LinkedRecordList.jsx";
 import KnowledgeWorkflowWorkspace from "../components/KnowledgeWorkflowWorkspace.jsx";
@@ -514,60 +511,24 @@ function StructureNotesPage(){
      No structure notes yet.
     </Alert>
    ):(
-    <KnowledgeWorkflowWorkspace eyebrow="Knowledge maps" title="Structure notes" records={structures} selectedId={detail?._id} getRecordId={record=>record.structureNoteId} getRecordTitle={record=>record.title||"Untitled"} getSearchText={record=>[record.purpose,record.summary,record.outline,...(record.tags||[]),...(record.zettelIds||[]).map(note=>`${note.title||""} ${note.mainIdea||""}`)].map(richTextToPlainText).join(" ")} isFavorite={record=>record.isFavorite} onSelect={openDetail} header={detail&&<><h2 className="structure-reader-title"><span>{detail.title||"Structure notes"}</span><code>{detail.structureNoteId}</code></h2><p>{richTextToPlainText(detail.description)||richTextToPlainText(detail.purpose)||richTextToPlainText(detail.summary)||"Knowledge workflow record"}</p></>} actions={detail&&<ButtonGroup size="sm"><Button variant="primary" onClick={()=>setWritingId(detail._id)}>Start writing</Button><Button variant={detail.isFavorite?"primary":"outline-primary"} onClick={()=>toggleFavorite(detail)}>{detail.isFavorite?"Unfavorite":"Favorite"}</Button><Button variant="outline-secondary" onClick={()=>openEdit(detail)}>Edit</Button><Button variant="outline-warning" disabled={detail.status==="archived"} onClick={()=>archive(detail)}>Archive</Button><Button variant="outline-danger" onClick={()=>remove(detail)}>Delete</Button></ButtonGroup>}>
-     {detail&&<Tabs defaultActiveKey="overview" className="structure-detail-tabs">
-      <Tab eventKey="overview" title="Overview">
-       <article className="record-detail structure-detail-panel">
-        <dl>
-<div><dt>Domain</dt><dd><DomainName domain={detail.domainId}/></dd></div>
-         <div><dt>ID</dt><dd>{detail.structureNoteId}</dd></div>
-         <div><dt>Subtype</dt><dd>{displayValue(detail.subtype)}</dd></div>
-         <div><dt>Projects</dt><dd><ProjectRecordList projects={detail.projectIds} fallback={detail.projectId}/></dd></div>
-         <div><dt>Status</dt><dd><WorkflowStatusBadge status={detail.status}/></dd></div>
-         <div><dt>Tags</dt><dd>{displayValue(detail.tags)}</dd></div>
-        </dl>
-
-        <section>
-         <h3>Purpose</h3>
-         <RichTextContent value={detail.purpose}/>
-        </section>
-
-        <section>
-         <h3>Summary</h3>
-         <RichTextContent value={detail.summary}/>
-        </section>
-
-        <section>
-         <h3>Outline</h3>
-         <div style={{whiteSpace:"pre-wrap"}}>
-          {detail.outline||"—"}
-         </div>
-        </section>
-       </article>
-      </Tab>
-
-      <Tab eventKey="relationships" title="Sources & Links">
-       <div className="structure-detail-panel">
-        <Tab.Container defaultActiveKey="zettels">
-         <div className="structure-relationship-layout">
-          <Tab.Content>
-           <Tab.Pane eventKey="zettels"><LinkedRecordList records={detail.zettelIds} type="zettel" previewOnly/></Tab.Pane>
-           <Tab.Pane eventKey="sources"><LinkedRecordList records={detail.sourceIds} type="source" previewOnly/></Tab.Pane>
-           <Tab.Pane eventKey="entities"><LinkedRecordList records={detail.entityIds} type="entity" previewOnly/></Tab.Pane>
-          </Tab.Content>
-
-          <Nav variant="tabs" className="flex-column structure-relationship-tabs">
-           <Nav.Item className="structure-relationship-tab-item"><Nav.Link as="a" eventKey="zettels"><span className="structure-relationship-tab-label">Zettels</span></Nav.Link></Nav.Item>
-           <Nav.Item className="structure-relationship-tab-item"><Nav.Link as="a" eventKey="sources"><span className="structure-relationship-tab-label">Sources</span></Nav.Link></Nav.Item>
-           <Nav.Item className="structure-relationship-tab-item"><Nav.Link as="a" eventKey="entities"><span className="structure-relationship-tab-label">Entities</span></Nav.Link></Nav.Item>
-          </Nav>
-         </div>
-        </Tab.Container>
-       </div>
-      </Tab>
-
-      <Tab eventKey="order" title="Notes">
-       <div className="structure-detail-panel">
+    <KnowledgeWorkflowWorkspace eyebrow="Knowledge maps" title="Structure notes" records={structures} selectedId={detail?._id} getRecordId={record=>record.structureNoteId} getRecordTitle={record=>record.title||"Untitled"} getSearchText={record=>[record.purpose,record.summary,record.outline,...(record.tags||[]),...(record.zettelIds||[]).map(note=>`${note.title||""} ${note.mainIdea||""}`)].map(richTextToPlainText).join(" ")} isFavorite={record=>record.isFavorite} onSelect={openDetail} header={detail&&<><h2 className="structure-reader-title"><span>{detail.title||"Structure notes"}</span><code>{detail.structureNoteId}</code></h2><p>{`Structure note · ${displayValue(detail.subtype)}`}</p></>} actions={detail&&<ButtonGroup size="sm"><Button variant="primary" onClick={()=>setWritingId(detail._id)}>Start writing</Button><Button variant={detail.isFavorite?"primary":"outline-primary"} onClick={()=>toggleFavorite(detail)}>{detail.isFavorite?"Unfavorite":"Favorite"}</Button><Button variant="outline-secondary" onClick={()=>openEdit(detail)}>Edit</Button><Button variant="outline-warning" disabled={detail.status==="archived"} onClick={()=>archive(detail)}>Archive</Button><Button variant="outline-danger" onClick={()=>remove(detail)}>Delete</Button></ButtonGroup>}>
+     {detail&&<article className="record-detail workflow-record-detail">
+      <dl className="workflow-record-meta">
+       <div className="workflow-record-projects"><dt>Projects</dt><dd><ProjectRecordList projects={detail.projectIds} fallback={detail.projectId}/></dd></div>
+       <div className="workflow-record-summary"><div><dt>Subtype</dt><dd>{displayValue(detail.subtype)}</dd></div><div><dt>Status</dt><dd><WorkflowStatusBadge status={detail.status}/></dd></div></div>
+       <div className="workflow-record-list-value"><dt>Tags</dt><dd>{displayValue(detail.tags)}</dd></div>
+      </dl>
+      <div className="workflow-related-cards">
+       <section><h3>Domain</h3><DomainName domain={detail.domainId}/></section>
+       <section><h3>Zettels</h3><LinkedRecordList records={detail.zettelIds} type="zettel" scrollAfterFive/></section>
+       <section><h3>Sources</h3><LinkedRecordList records={detail.sourceIds} type="source" scrollAfterFive/></section>
+       <section><h3>Entities</h3><LinkedRecordList records={detail.entityIds} type="entity" scrollAfterFive/></section>
+      </div>
+      <WorkflowContentTabs recordId={detail._id} tabs={[
+       {key:"purpose",title:"Purpose",value:detail.purpose},
+       {key:"summary",title:"Summary",value:detail.summary},
+       {key:"outline",title:"Outline",content:<pre className="workflow-outline-text">{detail.outline||"—"}</pre>},
+       {key:"notes",title:"Notes",content:(       <div className="structure-detail-panel">
         {structureOrderEntries(detail).length?(
          <ol className="structure-order-list structure-order-list-readonly">
           {structureOrderEntries(detail).map((entry,index)=>{
@@ -605,8 +566,10 @@ function StructureNotesPage(){
          </p>
         )}
        </div>
-      </Tab>
-     </Tabs>}
+)}
+      ]}/>
+     </article>}
+
     </KnowledgeWorkflowWorkspace>
    )}
 

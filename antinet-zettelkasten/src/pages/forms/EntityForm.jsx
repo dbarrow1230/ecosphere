@@ -1,3 +1,4 @@
+import WorkflowTextImport from "../../components/WorkflowTextImport.jsx";
 import useDomainIdPreview from "../../hooks/useDomainIdPreview.js";
 import {useEffect,useState} from "react";
 import {Button,Col,Form,Row,Tab,Tabs} from "react-bootstrap";
@@ -271,6 +272,7 @@ function EntityForm({
 
  return(
   <Form onSubmit={onSubmit}>
+   <WorkflowTextImport form={form} setForm={setForm} recordKey="entityId" disabled={saving} choices={{entityType:entityTypes}}/>
    <div className="entity-form-id">
     <span className="entity-form-id-label">Entity ID:</span>
     <code className="entity-form-id-value">{loadingId&&!editing?._id?"Generating...":(editing?._id?domainIdPreview:form.entityId)||"Generated when saved"}</code>

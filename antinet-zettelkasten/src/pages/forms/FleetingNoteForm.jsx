@@ -1,3 +1,4 @@
+import WorkflowTextImport from "../../components/WorkflowTextImport.jsx";
 import useDomainIdPreview from "../../hooks/useDomainIdPreview.js";
 // src/pages/forms/FleetingNoteForm.jsx
 
@@ -380,6 +381,7 @@ function FleetingNoteForm({
    className="fleeting-capture-form"
    onSubmit={onSubmit}
   >
+   <WorkflowTextImport form={form} setForm={setForm} recordKey="fleetingNoteId" disabled={saving}/>
    <DomainSelect
     value={form.domainId}
     onChange={(domainId,domain)=>

@@ -1,3 +1,4 @@
+import WorkflowContentTabs from "../components/WorkflowContentTabs.jsx";
 import DomainName from "../components/DomainName.jsx";
 import {useCallback,useEffect,useMemo,useState} from "react";
 import {Alert,Button,ButtonGroup,Container,Form,Modal,Spinner} from "react-bootstrap";
@@ -5,7 +6,6 @@ import KnowledgeWorkflowWorkspace from "../components/KnowledgeWorkflowWorkspace
 import ProjectRecordList from "../components/ProjectRecordList.jsx";
 import WorkflowStatusBadge from "../components/WorkflowStatusBadge.jsx";
 import FleetingNoteForm from "./forms/FleetingNoteForm.jsx";
-import RichTextContent from "../components/RichTextContent.jsx";
 import ProcessFleetingNoteForm from "./forms/ProcessFleetingNoteForm.jsx";
 import {richTextToTitle} from "../utils/richText.js";
 import "../styles/FleetingInbox.css";
@@ -639,28 +639,24 @@ const openProcess=capture=>{
       </ButtonGroup>
      )}
     >
-   <article className="record-detail">
- <section className="fleeting-capture-content"><h3>Capture</h3><RichTextContent value={detail.rawCapture}/></section>
- <dl>
-<div className="workflow-domain"><dt>Domain</dt><dd><DomainName domain={detail.domainId}/></dd></div>
-  <div><dt>Capture Type</dt><dd>{detail.captureType||"--"}</dd></div>
-  <div><dt>Projects</dt><dd><ProjectRecordList projects={detail.projectIds} fallback={detail.projectId}/></dd></div>
-  <div><dt>Topic</dt><dd>{detail.topic||"--"}</dd></div>
-  <div><dt>Subject Code</dt><dd>{detail.subjectCode||"--"}</dd></div>
-  <div><dt>Possible Projects</dt><dd>{displayList(detail.possibleProject)}</dd></div>
-  <div><dt>Process Later As</dt><dd>{detail.processLaterAs||"--"}</dd></div>
-  <div><dt>Processed Into</dt><dd><code>{detail.processedInto||"--"}</code></dd></div>
-  <div><dt>Status</dt><dd><WorkflowStatusBadge status={detail.status}/></dd></div>
-  <div>
-   <dt>Notes</dt>
-   <dd className="fleeting-note-list">
-    {normalizeArray(detail.notes).length
-     ?normalizeArray(detail.notes).map((note,index)=><p key={`${detail._id}-note-${index}`}>{note}</p>)
-     :"--"}
-   </dd>
-  </div>
- </dl>
-</article>
+   <article className="record-detail workflow-record-detail">
+    <dl className="workflow-record-meta">
+     <div className="workflow-record-projects"><dt>Projects</dt><dd><ProjectRecordList projects={detail.projectIds} fallback={detail.projectId}/></dd></div>
+     <div className="workflow-record-summary">
+      <div><dt>Capture Type</dt><dd>{detail.captureType||"--"}</dd></div>
+      <div><dt>Subject Code</dt><dd>{detail.subjectCode||"--"}</dd></div>
+      <div><dt>Status</dt><dd><WorkflowStatusBadge status={detail.status}/></dd></div>
+      <div><dt>Process Later As</dt><dd>{detail.processLaterAs||"--"}</dd></div>
+      <div><dt>Processed Into</dt><dd><code>{detail.processedInto||"--"}</code></dd></div>
+     </div>
+     <div className="workflow-record-list-value"><dt>Possible Projects</dt><dd>{displayList(detail.possibleProject)}</dd></div>
+    </dl>
+    <div className="workflow-related-cards"><section><h3>Domain</h3><DomainName domain={detail.domainId}/></section></div>
+    <WorkflowContentTabs recordId={detail._id} tabs={[
+     {key:"capture",title:"Capture",value:detail.rawCapture},
+     {key:"notes",title:"Notes",content:normalizeArray(detail.notes).length?<>{normalizeArray(detail.notes).map((note,index)=><p key={index}>{note}</p>)}</>:<p>--</p>}
+    ]}/>
+   </article>
    </KnowledgeWorkflowWorkspace>
    ):(
     <div className="fleeting-inbox-empty" role="status">No fleeting captures found.</div>

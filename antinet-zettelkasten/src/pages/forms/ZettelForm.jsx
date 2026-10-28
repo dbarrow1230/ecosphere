@@ -1,3 +1,4 @@
+import WorkflowTextImport from "../../components/WorkflowTextImport.jsx";
 import useDomainIdPreview from "../../hooks/useDomainIdPreview.js";
 import {useEffect,useState} from "react";
 import {Button,Col,Form,Row,Tab,Tabs} from "react-bootstrap";
@@ -165,6 +166,18 @@ function ZettelForm({
 
  return(
   <Form onSubmit={onSubmit}>
+   <WorkflowTextImport form={form} setForm={setForm} recordKey="zettelId" disabled={saving}/>
+   <details className="mb-3">
+    <summary>Research questions and answers</summary>
+    {['needsResearchQuestions','researchedQuestions'].map(field=><Form.Group className="my-3" key={field}>
+     <Form.Label>{field==='needsResearchQuestions'?'Needs research':'Researched questions'}</Form.Label>
+     <Form.Control as="textarea" rows={3} value={(form[field]||[]).join('\n')} onChange={event=>updateField(field,event.target.value.split('\n'))}/>
+    </Form.Group>)}
+    {(form.questionAnswers||[]).map((pair,index)=><div className="border rounded p-2 mb-2" key={index}>
+     <Form.Group className="mb-2"><Form.Label>Question {index+1}</Form.Label><Form.Control value={pair.question} onChange={event=>updateField('questionAnswers',form.questionAnswers.map((item,i)=>i===index?{...item,question:event.target.value}:item))}/></Form.Group>
+     <Form.Label>Answer</Form.Label><RichTextEditor value={pair.answer} onChange={value=>updateField('questionAnswers',form.questionAnswers.map((item,i)=>i===index?{...item,answer:value}:item))}/>
+    </div>)}
+   </details>
    <DomainSelect value={form.domainId} onChange={(domainId,domain)=>setForm(current=>({...current,domainId,domainCode:domain?.code||"",zettelId:""}))}/>
    <div className="zettel-form-id"><span>Zettel ID</span><code>{loadingId&&!editing?._id?"Generating...":(editing?._id?domainIdPreview:form.zettelId)||"Generated when saved"}</code></div>
    {idError&&<div className="text-danger mb-3">{idError}</div>}

@@ -525,27 +525,13 @@ function Dashboard({user}){
  },[fleetingNotes,currentTime,reviewIntervalDays]);
 
  const reviewInsights=useMemo(()=>{
-  const total=Math.max(filteredNotes.length,1);
-  const yearlyTotal=yearlyActivityData.reduce((sum,item)=>sum+item.value,0);
-  const monthlyTotal=monthlyActivityData.reduce((sum,item)=>sum+item.value,0);
-  const selectedMonthLabel=months.find(item=>item.value===String(monthFilter))?.label||"Current Month";
-
   return{
-   monthLabel:monthFilter==="all"?"Current Month":selectedMonthLabel,
-   yearlyActivity:[
-    {key:"year-total",category:"Notes this year",value:yearlyTotal,percent:(yearlyTotal/total)*100,meta:yearFilter==="all"?"Current year":"Selected year"},
-    {key:"year-links",category:"Links",value:links.length,percent:(links.length/Math.max(notes.length,1))*100,meta:"System links"}
-   ],
-   monthlyActivity:[
-    {key:"month-total",category:"Notes this month",value:monthlyTotal,percent:(monthlyTotal/total)*100,meta:monthFilter==="all"?"Current month":"Selected month"},
-    {key:"day-total",category:"Notes this day",value:filteredNotes.length,percent:(filteredNotes.length/total)*100,meta:dayFilter==="all"?"All days":"Selected day"}
-   ],
    attentionQueue:[
     ...orphanNotes.map(item=>({key:item._id||item.id,title:getNoteTitle(item),meta:"Unlinked working note"})),
     ...staleNotes.map(item=>({key:item._id||item.id,title:getFleetingTitle(item),meta:"Overdue fleeting note",to:"/inbox"}))
    ].slice(0,8)
   };
- },[filteredNotes,yearlyActivityData,monthlyActivityData,links.length,notes.length,orphanNotes,staleNotes,months,yearFilter,monthFilter,dayFilter]);
+ },[orphanNotes,staleNotes]);
 
  const favoriteNotes=useMemo(()=>{
   return [...favorites]
@@ -628,10 +614,7 @@ function Dashboard({user}){
      draftOutputs={outputs.filter(item=>item.status==="draft")}
     />
     <div className="dashboard-planning-row">
-     <DailyTasksPanel userId={userId} selectedDate={selectedTaskDate} onDateChange={selectTaskDate} onTasksChange={setDailyTasks} selectedTask={selectedTask} onClearSelection={()=>setSelectedTask(null)}/>
-     <AttentionPanel items={reviewInsights.attentionQueue}/>
-    </div>
-    <div id="today-calendar">
+     <div id="today-calendar" className="dashboard-column">
      <DashboardCalendarCard
       year={selectedYearNumber}
       month={selectedMonthNumber}
@@ -648,6 +631,11 @@ function Dashboard({user}){
        setSelectedTaskDate(formatLocalDate(date));
       }}
      />
+    </div>
+     <div className="dashboard-column">
+      <DailyTasksPanel userId={userId} selectedDate={selectedTaskDate} onDateChange={selectTaskDate} onTasksChange={setDailyTasks} selectedTask={selectedTask} onClearSelection={()=>setSelectedTask(null)}/>
+      <AttentionPanel items={reviewInsights.attentionQueue}/>
+     </div>
     </div>
    </Tab>
    <Tab eventKey="research" title="Research">
@@ -687,7 +675,7 @@ function Dashboard({user}){
       <div className="dashboard-column-heading"><p>Patterns over time</p><h2>Knowledge Activity</h2></div>
       <YearlyActivityChart data={yearlyActivityData} yearFilter={yearFilter}/>
       <MonthlyActivityChart data={monthlyActivityData} yearFilter={yearFilter} monthFilter={monthFilter}/>
-     <ReviewInsightCards reviewInsights={reviewInsights} yearFilter={yearFilter} monthFilter={monthFilter}/>
+     <ReviewInsightCards yearlyData={yearlyActivityData} monthlyData={monthlyActivityData} year={selectedYearNumber} monthLabel={months.find(month=>Number(month.value)===selectedMonthNumber)?.label||"Selected month"} linkCount={links.length} noteCount={notes.length}/>
     </div>
 
    </div>

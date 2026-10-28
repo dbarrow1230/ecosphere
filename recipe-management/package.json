@@ -9,7 +9,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "server": "dotenvx run --env-file backend/.env -- node backend/server.js",
+    "server": "dotenvx run -f ../config/.env.mongo -f backend/.env -- node backend/server.js",
     "lint": "eslint .",
     "test:culinary": "node --test tests/culinary*.test.js",
     "jwt:secret": "node -e \"import('crypto').then(c=>console.log(c.randomBytes(64).toString('hex')))\""

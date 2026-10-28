@@ -5,6 +5,7 @@ import DomainSelect from "../../components/DomainSelect.jsx";
 import TextArrayField from "../../components/TextArrayField.jsx";
 import {richTextToPlainText} from "../../utils/richText.js";
 import {sortItems} from "../../utils/sortItems.js";
+import WorkflowTextImport from "../../components/WorkflowTextImport.jsx";
 
 const emptyForm={
  domainId:"",
@@ -18,6 +19,9 @@ const emptyForm={
  idSubtype:"IDEA",
  futureUse:[""],
  questions:[""],
+ needsResearchQuestions:[],
+ researchedQuestions:[],
+ questionAnswers:[],
  tags:[],
  status:"active",
  isFavorite:false,
@@ -137,6 +141,9 @@ function NoteForm({note,onSuccess,userId,autoFocusTitle}){
    idSubtype:note?.idSubtype||getSubtypeCodes(note?.subtype)[0],
    futureUse:normalizeTextArray(note?.futureUse),
    questions:normalizeTextArray(note?.questions),
+   needsResearchQuestions:note?.needsResearchQuestions||[],
+   researchedQuestions:note?.researchedQuestions||[],
+   questionAnswers:note?.questionAnswers||[],
    tags:Array.isArray(note?.tags)?note.tags:[],
    status:note?.status||"active",
    isFavorite:Boolean(note?.isFavorite),
@@ -428,6 +435,9 @@ function NoteForm({note,onSuccess,userId,autoFocusTitle}){
     questions:normalizeTextArray(form.questions)
      .map(item=>item.trim())
      .filter(Boolean),
+    needsResearchQuestions:form.needsResearchQuestions,
+    researchedQuestions:form.researchedQuestions,
+    questionAnswers:form.questionAnswers,
     tags:form.tags
      .map(tag=>String(tag||"").trim())
      .filter(Boolean),
@@ -464,6 +474,18 @@ function NoteForm({note,onSuccess,userId,autoFocusTitle}){
 
  return(
   <Form className="zettel-form" onSubmit={submit}>
+   <WorkflowTextImport form={form} setForm={setForm} recordKey="zettelId" disabled={saving}/>
+   <details className="border rounded p-3 mb-3">
+    <summary>Research questions and answers</summary>
+    <TextArrayField name="needsResearchQuestions" label="Needs research" values={form.needsResearchQuestions} onChange={(_,values)=>setForm(current=>({...current,needsResearchQuestions:values}))}/>
+    <TextArrayField name="researchedQuestions" label="Researched questions" values={form.researchedQuestions} onChange={(_,values)=>setForm(current=>({...current,researchedQuestions:values}))}/>
+    {form.questionAnswers.map((pair,index)=><div className="my-3" key={index}>
+     <Form.Label>Question {index+1}</Form.Label>
+     <Form.Control value={pair.question} onChange={event=>setForm(current=>({...current,questionAnswers:current.questionAnswers.map((item,i)=>i===index?{...item,question:event.target.value}:item)}))}/>
+     <Form.Label>Answer</Form.Label>
+     <RichTextEditor value={pair.answer} onChange={answer=>setForm(current=>({...current,questionAnswers:current.questionAnswers.map((item,i)=>i===index?{...item,answer}:item)}))}/>
+    </div>)}
+   </details>
    {error&&(
     <Alert variant="danger">
      {error}

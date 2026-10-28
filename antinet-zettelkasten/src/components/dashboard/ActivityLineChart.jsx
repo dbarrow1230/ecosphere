@@ -11,7 +11,7 @@ function ActivityLineChart({data=[],valueKey="value",labelKey="label",height=220
  const chartWidth=width-padding.left-padding.right;
  const chartHeight=height-padding.top-padding.bottom;
  const maxValue=Math.max(...data.map((item)=>Number(item?.[valueKey]||0)),0);
- const safeMax=maxValue>0?maxValue:1;
+ const safeMax=Math.max(1,Math.ceil(maxValue/4))*4;
 
  const points=data.map((item,index)=>{
   const x=padding.left+(data.length===1?chartWidth/2:(index*(chartWidth/(data.length-1))));

@@ -112,3 +112,4 @@ GET /api/journal-entries 304 58.359 ms - -
 GET /api/dashboard?userId=69af088d21b4580a8cb6614b 304 61.271 ms - -
 GET /api/journal-entries 304 45.164 ms - -
 GET /api/journal-entries 304 44.566 ms - -
+GET /api/journal-entries 304 40.270 ms - -

@@ -1,3 +1,4 @@
+import WorkflowTextImport from "../../components/WorkflowTextImport.jsx";
 import useDomainIdPreview from "../../hooks/useDomainIdPreview.js";
 import {useState} from "react";
 import {Button,Col,Form,Row,Tab,Tabs} from "react-bootstrap";
@@ -162,6 +163,7 @@ function OutputForm({
 
  return(
   <Form className="output-form" onSubmit={onSubmit}>
+   <WorkflowTextImport form={form} setForm={setForm} recordKey="outputId" disabled={saving}/>
    <DomainSelect value={form.domainId} onChange={(domainId,domain)=>setForm(current=>({...current,domainId,domainCode:domain?.code||""}))}/>
    {editing?._id&&<div className="output-form-id"><span>Output ID</span><code>{domainIdPreview}</code></div>}
 

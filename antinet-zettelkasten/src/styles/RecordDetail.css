@@ -33,6 +33,8 @@
  flex-direction:column;
  align-items:flex-start;
  gap:.25rem;
+ min-width:0;
+ max-width:100%;
 }
 
 .record-detail-link{
@@ -41,11 +43,14 @@
  gap:.35rem .65rem;
  align-items:baseline;
  text-decoration:none;
+ min-width:0;
+ max-width:100%;
 }
 
 .record-detail-link code{
  color:var(--text);
- white-space:nowrap;
+ white-space:normal;
+ overflow-wrap:anywhere;
 }
 
 .record-detail-link span{
@@ -129,6 +134,7 @@
  display:grid;
  grid-template-columns:repeat(3,minmax(0,1fr));
  gap:.75rem;
+ align-items:start;
 }
 
 .record-detail .workflow-record-meta > div{
@@ -225,6 +231,7 @@
 }
 
 .workflow-record-content-grid,
+.workflow-related-cards,
 .workflow-record-relationships{
  display:grid;
  grid-template-columns:repeat(2,minmax(0,1fr));
@@ -236,6 +243,11 @@
  grid-template-columns:repeat(3,minmax(0,1fr));
 }
 
+.workflow-related-cards{
+ grid-template-columns:minmax(7rem,.45fr) repeat(3,minmax(0,1fr));
+}
+
+
 .workflow-record-relationships.workflow-record-relationships-two{
  grid-template-columns:repeat(2,minmax(0,1fr));
 }
@@ -245,6 +257,7 @@
 }
 
 .workflow-record-content-grid > section,
+.workflow-related-cards > section,
 .workflow-record-relationships > section{
  min-width:0;
  margin:0;
@@ -256,6 +269,7 @@
 }
 
 .workflow-record-content-grid h3,
+.workflow-related-cards h3,
 .workflow-record-relationships h3{
  margin:0 0 .65rem;
  font-size:1.05rem;
@@ -263,6 +277,7 @@
 
 @media (max-width:800px){
  .workflow-record-meta,
+ .workflow-related-cards,
  .workflow-record-content-grid,
  .workflow-record-relationships{
   grid-template-columns:1fr;
@@ -484,8 +499,39 @@
  flex:0 0 auto;
  white-space:nowrap;
 }
-.source-record-content-grid .source-record-long-form{
- grid-column:1 / -1;
+.source-related-scroll{
+ max-height:27rem;
+ overflow-y:auto;
+ overflow-x:hidden;
+ overscroll-behavior:contain;
+}
+
+.workflow-content-panel{
+ min-width:0;
+ border:1px solid var(--border);
+ border-radius:var(--radius-md);
+ background:var(--surface);
+}
+
+.workflow-content-tabs{
+ margin:0;
+ padding:.5rem .75rem 0;
+}
+
+.workflow-outline-text{
+ white-space:pre-wrap;
+ overflow-wrap:anywhere;
+ margin:0;
+ font:inherit;
+}
+
+.workflow-content-text{
+ min-width:0;
+ max-height:24rem;
+ overflow:auto;
+ overflow-wrap:anywhere;
+ overscroll-behavior:contain;
+ padding:1rem;
 }
 
 .output-record-content-grid{

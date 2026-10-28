@@ -1,10 +1,10 @@
+import WorkflowContentTabs from "../components/WorkflowContentTabs.jsx";
 import DomainName from "../components/DomainName.jsx";
 import {useCallback,useEffect,useState} from "react";
-import {Alert,Button,ButtonGroup,Container,Modal,Spinner,Tab,Tabs} from "react-bootstrap";
+import {Alert,Button,ButtonGroup,Container,Modal,Spinner} from "react-bootstrap";
 import {useNavigate,useParams} from "react-router-dom";
 import EntityForm from "./forms/EntityForm.jsx";
 import RichTextContent from "../components/RichTextContent.jsx";
-import {richTextToPlainText} from "../utils/richText.js";
 import LinkedRecordList from "../components/LinkedRecordList.jsx";
 import KnowledgeWorkflowWorkspace from "../components/KnowledgeWorkflowWorkspace.jsx";
 import ProjectRecordList from "../components/ProjectRecordList.jsx";
@@ -415,45 +415,30 @@ function EntitiesPage(){
    )}
 
    {entities.length&&detail?(
-    <KnowledgeWorkflowWorkspace eyebrow="Identity index" title="Reusable entities" records={entities} selectedId={detail._id} getRecordId={entity=>entity.entityId} getRecordTitle={entity=>entity.name||"Untitled entity"} onSelect={openDetail} header={<><code>{detail.entityId}</code><h2>{detail.name||"Entity"}</h2><p>{richTextToPlainText(detail.description)||richTextToPlainText(detail.roleUse)||"Reusable subject identity"}</p></>} actions={<ButtonGroup size="sm"><Button variant="outline-secondary" onClick={()=>openEdit(detail)}>Edit</Button><Button variant="outline-warning" disabled={detail.status==="archived"} onClick={()=>archive(detail)}>Archive</Button><Button variant="outline-danger" onClick={()=>remove(detail)}>Delete</Button></ButtonGroup>}>
+    <KnowledgeWorkflowWorkspace eyebrow="Identity index" title="Reusable entities" records={entities} selectedId={detail._id} getRecordId={entity=>entity.entityId} getRecordTitle={entity=>entity.name||"Untitled entity"} onSelect={openDetail} header={<><code>{detail.entityId}</code><h2>{detail.name||"Entity"}</h2><p>{[detail.entityType,detail.code].filter(Boolean).join(" · ")||"Reusable subject identity"}</p></>} actions={<ButtonGroup size="sm"><Button variant="outline-secondary" onClick={()=>openEdit(detail)}>Edit</Button><Button variant="outline-warning" disabled={detail.status==="archived"} onClick={()=>archive(detail)}>Archive</Button><Button variant="outline-danger" onClick={()=>remove(detail)}>Delete</Button></ButtonGroup>}>
      <article className="record-detail workflow-record-detail">
-      <Tabs key={detailId} defaultActiveKey="overview" className="entity-detail-tabs">
-       <Tab eventKey="overview" title="Overview">
       <dl className="workflow-record-meta">
-       <div className="workflow-domain"><dt>Domain</dt><dd><DomainName domain={detail.domainId}/></dd></div><div><dt>Projects</dt><dd><ProjectRecordList projects={detail.projectIds} fallback={detail.projectId}/></dd></div>
+       <div className="workflow-record-projects"><dt>Projects</dt><dd><ProjectRecordList projects={detail.projectIds} fallback={detail.projectId}/></dd></div>
        <div className="workflow-record-summary">
         <div><dt>Entity Type</dt><dd>{detail.entityType||"--"}</dd></div>
         <div><dt>Code</dt><dd>{detail.code||"--"}</dd></div>
         <div><dt>Status</dt><dd><WorkflowStatusBadge status={detail.status}/></dd></div>
+        <div><dt>Aliases</dt><dd>{displayValue(detail.aliases)}</dd></div>
        </div>
-       <div className="workflow-record-list-value"><dt>Aliases</dt><dd>{displayValue(detail.aliases)}</dd></div>
+       <div className="workflow-record-list-value"><dt>Tags</dt><dd>{displayValue(detail.tags)}</dd></div>
       </dl>
-
-      <div className="workflow-record-relationships">
-       <section><h3>Sources</h3><LinkedRecordList records={[...(detail.relatedSourceIds||[]),...(detail.linkedSources||[])]} type="source"/></section>
-       <section><h3>Zettels</h3><LinkedRecordList records={[...(detail.linkedZettelIds||[]),...(detail.linkedZettels||[])]} type="zettel"/></section>
-       <section><h3>Outputs</h3><LinkedRecordList records={[...(detail.linkedOutputIds||[]),...(detail.linkedOutputs||[])]} type="output"/></section>
+      <div className="workflow-related-cards">
+       <section><h3>Domain</h3><DomainName domain={detail.domainId}/></section>
+       <section><h3>Sources</h3><LinkedRecordList records={[...(detail.relatedSourceIds||[]),...(detail.linkedSources||[])]} type="source" scrollAfterFive/></section>
+       <section><h3>Zettels</h3><LinkedRecordList records={[...(detail.linkedZettelIds||[]),...(detail.linkedZettels||[])]} type="zettel" scrollAfterFive/></section>
+       <section><h3>Outputs</h3><LinkedRecordList records={[...(detail.linkedOutputIds||[]),...(detail.linkedOutputs||[])]} type="output" scrollAfterFive/></section>
       </div>
-       </Tab>
-       <Tab eventKey="body" title="Body">
-      <div className="workflow-record-content-grid">
-       <section><h3>Description</h3><RichTextContent value={detail.description}/></section>
-       <section><h3>Role / Use</h3><RichTextContent value={detail.roleUse}/></section>
-      </div>
+      <WorkflowContentTabs recordId={detail._id} tabs={[
+       {key:"description",title:"Description",value:detail.description},
+       {key:"role",title:"Role / Use",value:detail.roleUse},
+       {key:"development",title:"Development",content:detailTypeFields.length?<div className="workflow-record-content-grid entity-template-detail">{detailTypeFields.map(field=><section key={field.key}><h3>{field.label}</h3><RichTextContent value={detail.typeData[field.key]}/></section>)}</div>:<p className="text-muted">No type-specific details yet. Edit this entity to design its template and add details.</p>}
+      ]}/>
 
-       </Tab>
-       <Tab eventKey="development" title="Development">
-      {detailTypeFields.length>0&&(
-       <div className="workflow-record-content-grid entity-template-detail">
-        {detailTypeFields.map(field=><section key={field.key}><h3>{field.label}</h3><RichTextContent value={detail.typeData[field.key]}/></section>)}
-       </div>
-      )}
-
-
-        {!detailTypeFields.length&&<p className="text-muted">No type-specific details yet. Edit this entity to design its template and add details.</p>}
-        <section><h3>Tags</h3><p>{displayValue(detail.tags)}</p></section>
-       </Tab>
-      </Tabs>
      </article>
     </KnowledgeWorkflowWorkspace>
    ):(

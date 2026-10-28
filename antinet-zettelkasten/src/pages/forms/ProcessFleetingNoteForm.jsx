@@ -1,3 +1,4 @@
+import WorkflowTextImport from "../../components/WorkflowTextImport.jsx";
 import {useEffect,useState} from "react";
 import {Button,Col,Form,Row,Tab,Tabs} from "react-bootstrap";
 import RelationshipSelector from "../../components/RelationshipSelector.jsx";
@@ -132,6 +133,7 @@ function ProcessFleetingNoteForm({
 
  return(
   <Form className="process-fleeting-form" onSubmit={onSubmit}>
+   <WorkflowTextImport form={form} setForm={setForm} recordKey={({ZTL:'zettelId',SRC:'sourceId',ENT:'entityId',STR:'structureNoteId',OUT:'outputId'})[form.targetType||'ZTL']} disabled={saving}/>
    <Row>
     <Col xs={12} md={6}>
      <Form.Group className="mb-3">

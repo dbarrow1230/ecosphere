@@ -1,3 +1,4 @@
+import WorkflowContentTabs from "../components/WorkflowContentTabs.jsx";
 import DomainName from "../components/DomainName.jsx";
 import {useCallback,useEffect,useMemo,useState} from "react";
 import {useSearchParams} from "react-router-dom";
@@ -8,7 +9,6 @@ import SortedSelect from "../components/SortedSelect.jsx";
 import ProjectRecordList from "../components/ProjectRecordList.jsx";
 import WorkflowStatusBadge from "../components/WorkflowStatusBadge.jsx";
 import NoteForm from "./forms/NoteForm.jsx";
-import RichTextContent from "../components/RichTextContent.jsx";
 import {richTextToPlainText} from "../utils/richText.js";
 import "../styles/ZettelsIndex.css";
 import "../styles/ZettelSections.css";
@@ -143,7 +143,6 @@ function Notes(){
  const [editing,setEditing]=useState(null);
  const [showForm,setShowForm]=useState(false);
  const [viewing,setViewing]=useState(null);
- const [activeTab,setActiveTab]=useState("overview");
  const [noteSearch,setNoteSearch]=useState("");
  const [sortMode,setSortMode]=useState("title-asc");
  const [letterFilter,setLetterFilter]=useState("ALL");
@@ -243,7 +242,6 @@ function Notes(){
 
 const openDetail=async zettel=>{
   setViewing(zettel);
-  setActiveTab("overview");
 
   try{
    setError("");
@@ -505,7 +503,7 @@ const openDetail=async zettel=>{
           <div>
            <code>{viewing.zettelId}</code>
            <h2>{viewing.title}</h2>
-           <RichTextContent className="zettels-reader-main-idea" value={viewing.mainIdea}/>
+           <p>Zettel · {viewing.status||"active"}</p>
           </div>
 
           <ButtonGroup size="sm" className="zettels-reader-actions">
@@ -520,63 +518,27 @@ const openDetail=async zettel=>{
           </ButtonGroup>
          </header>
 
-         <nav className="zettels-reader-tabs" aria-label="Zettel content">
-          <button type="button" className={activeTab==="overview"?"is-active":""} onClick={()=>setActiveTab("overview")}>Overview</button>
-          <button type="button" className={activeTab==="body"?"is-active":""} onClick={()=>setActiveTab("body")}>Body</button>
-          <button type="button" className={activeTab==="development"?"is-active":""} onClick={()=>setActiveTab("development")}>Development</button>
-         </nav>
-
-         <div className="zettels-reader-content">
-          {activeTab==="overview"&&(
-           <>
-            <dl className="zettels-reader-meta">
-<div className="workflow-domain"><dt>Domain</dt><dd><DomainName domain={viewing.domainId}/></dd></div>
-             <div className="zettels-meta-record-details">
-              <div><dt>Prefix</dt><dd>ZTL</dd></div>
-              <div><dt>Subject</dt><dd>{viewing.subjectCode||"—"}</dd></div>
-              <div><dt>Status</dt><dd><WorkflowStatusBadge status={viewing.status}/></dd></div>
-              <div><dt>Updated</dt><dd>{formatDateTime(viewing.updatedAt)}</dd></div>
-             </div>
-             <div className="zettels-meta-projects"><dt>Projects</dt><dd><ProjectRecordList projects={viewing.projectIds} fallback={viewing.projectId}/></dd></div>
-             <div className="zettels-meta-subtypes">
-              <dt>Subtypes</dt>
-              <dd>
-               {(Array.isArray(viewing.subtype)?viewing.subtype:[viewing.subtype]).filter(Boolean).map((subtype,index)=>(
-                <Badge bg="secondary" key={getObjectId(subtype)||`${displayValue(subtype)}-${index}`}>
-                 {displayValue(subtype)}
-                </Badge>
-               ))}
-              </dd>
-             </div>
-            </dl>
-
-            <div className="zettels-overview-links">
-             <section className="zettels-linked-section">
-              <h3>Sources</h3>
-              <LinkedRecordList records={viewing.sourceIds} type="source"/>
-             </section>
-
-             <section className="zettels-linked-section">
-              <h3>Entities</h3>
-              <LinkedRecordList records={viewing.entityIds} type="entity"/>
-             </section>
-            </div>
-           </>
-          )}
-
-          {activeTab==="body"&&(
-           <section className="zettels-body-tab">
-            <RichTextContent value={viewing.body} empty="No body content has been written yet."/>
-           </section>
-          )}
-
-          {activeTab==="development"&&(
-           <div className="zettels-development-tab">
-            <TextListSection title="Future Use" values={viewing.futureUse}/>
-            <TextListSection title="Questions" values={viewing.questions}/>
-            <TextListSection title="Tags" values={viewing.tags}/>
+         <div className="zettels-reader-content record-detail workflow-record-detail">
+          <dl className="workflow-record-meta">
+           <div className="workflow-record-projects"><dt>Projects</dt><dd><ProjectRecordList projects={viewing.projectIds} fallback={viewing.projectId}/></dd></div>
+           <div className="workflow-record-summary">
+            <div><dt>Subject</dt><dd>{viewing.subjectCode||"—"}</dd></div>
+            <div><dt>Status</dt><dd><WorkflowStatusBadge status={viewing.status}/></dd></div>
+            <div><dt>Updated</dt><dd>{formatDateTime(viewing.updatedAt)}</dd></div>
+            <div><dt>Subtypes</dt><dd>{(Array.isArray(viewing.subtype)?viewing.subtype:[viewing.subtype]).filter(Boolean).map(displayValue).join(", ")||"—"}</dd></div>
            </div>
-          )}
+           <div className="workflow-record-list-value"><dt>Tags</dt><dd>{(viewing.tags||[]).join(", ")||"—"}</dd></div>
+          </dl>
+          <div className="workflow-related-cards">
+           <section><h3>Domain</h3><DomainName domain={viewing.domainId}/></section>
+           <section><h3>Sources</h3><LinkedRecordList records={viewing.sourceIds} type="source" scrollAfterFive/></section>
+           <section><h3>Entities</h3><LinkedRecordList records={viewing.entityIds} type="entity" scrollAfterFive/></section>
+          </div>
+          <WorkflowContentTabs recordId={viewing._id} tabs={[
+           {key:"mainIdea",title:"Main Idea",value:viewing.mainIdea},
+           {key:"body",title:"Body",value:viewing.body},
+           {key:"development",title:"Development",content:<div className="zettels-development-tab"><TextListSection title="Future Use" values={viewing.futureUse}/><TextListSection title="Questions" values={viewing.questions}/></div>}
+          ]}/>
          </div>
         </>
        )}

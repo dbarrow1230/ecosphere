@@ -76,6 +76,11 @@ const buildZettelPayload=(body,partial=false)=>{
  if(!partial||Object.prototype.hasOwnProperty.call(body,"questions"))payload.questions=normalizeStringArray(body.questions);
  if(!partial||Object.prototype.hasOwnProperty.call(body,"needsResearchQuestions"))payload.needsResearchQuestions=normalizeStringArray(body.needsResearchQuestions);
  if(!partial||Object.prototype.hasOwnProperty.call(body,"researchedQuestions"))payload.researchedQuestions=normalizeStringArray(body.researchedQuestions);
+ if(Object.prototype.hasOwnProperty.call(body,"questionAnswers")){
+  payload.questionAnswers=(Array.isArray(body.questionAnswers)?body.questionAnswers:[])
+   .map(item=>({question:String(item.question||"").trim(),answer:String(item.answer||"").trim()}))
+   .filter(item=>item.question);
+ }
  if(!partial||Object.prototype.hasOwnProperty.call(body,"tags"))payload.tags=normalizeStringArray(body.tags);
  if(!partial||Object.prototype.hasOwnProperty.call(body,"status"))payload.status=body.status||"draft";
  if(!partial||Object.prototype.hasOwnProperty.call(body,"isFavorite"))payload.isFavorite=normalizeBoolean(body.isFavorite);
