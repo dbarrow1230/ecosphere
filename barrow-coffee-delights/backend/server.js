@@ -1,3 +1,4 @@
+import publicWebsiteRoutes from "./routes/publicWebsiteRoutes.js";
 import standaloneMenuRoutes from "./routes/standaloneMenuRoutes.js";
 import standaloneInventoryRoutes from "./routes/standaloneInventoryRoutes.js";
 import usdaZonesRoutes from "./routes/reference/usdaZonesRoutes.js";
@@ -177,6 +178,7 @@ const upload=multer({
 /* API's */
 app.get("/api/health",(req,res)=>{res.json({status:"ok"});});
 app.use("/api/app",appRoutes);
+app.use("/api/public-site",publicWebsiteRoutes);
 app.use("/api/app-modules",appModuleRoutes);
 
 /* reference data routes */

@@ -1,3 +1,4 @@
+import barrowAccountingLogo from "../../Barrow Accounting & Tax Services/src/images/logo.png";
 import antinetZettelkastenLogo from "../../antinet-zettelkasten/src/images/logo.png";
 import barrowCoffeeDelightsLogo from "../../barrow-coffee-delights/src/images/logo.png";
 import barrowPublicationsLogo from "../../barrow-publications/src/images/logo.png";
@@ -37,6 +38,7 @@ import musicBuilderLogo from "../../music-builder/src/images/logo.png";
 import itmFireLogo from "../../itm-fire-protection/src/images/logo.png";
 
 const appLogos={
+ "barrow-accounting-tax-services":barrowAccountingLogo,
  "antinet-zettelkasten":antinetZettelkastenLogo,
  "barrow-coffee-delights":barrowCoffeeDelightsLogo,
  "barrow-publications":barrowPublicationsLogo,

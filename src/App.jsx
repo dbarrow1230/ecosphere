@@ -1,3 +1,6 @@
+import {canManagePublicWebsites} from "../shared/public/websiteAccess.js";
+import PublicWebsites from "./pages/PublicWebsites.jsx";
+import PublicWebsiteLauncher from "./pages/PublicWebsiteLauncher.jsx";
 import AllergenForm from "@shared/components/AllergenForm.jsx";
 // src/App.jsx
 import {Routes,Route,useNavigate,useLocation,Navigate,Link} from "react-router-dom";
@@ -59,6 +62,8 @@ function RequireAuth({user,children}){
  const location=useLocation();
  return user?children:<Navigate to="/login" replace state={{from:location.pathname}}/>;
 }
+
+function RequireWebsiteAdmin({user,children}){return <RequireAuth user={user}>{canManagePublicWebsites(user)?children:<Error403/>}</RequireAuth>;}
 
 function App(){
 
@@ -171,7 +176,7 @@ function App(){
 
  const [user,setUser]=useState(()=>getStoredUser());
  const [headerTitle,setHeaderTitle]=useState("");
- const isApplicationWorkspace=location.pathname.startsWith("/applications/");
+ const isApplicationWorkspace=location.pathname.startsWith("/applications/")||location.pathname.startsWith("/public-websites/");
 
  const unwrapBusiness=data=>{
   if(!data||typeof data!=="object")return null;
@@ -395,6 +400,8 @@ return(
 
     <Routes>
      <Route path="/" element={<Home/>}/>
+     <Route path="/public-websites" element={<RequireWebsiteAdmin user={user}><PublicWebsites/></RequireWebsiteAdmin>}/>
+     <Route path="/public-websites/:appId" element={<RequireWebsiteAdmin user={user}><PublicWebsiteLauncher/></RequireWebsiteAdmin>}/>
      <Route path="/contact" element={<ContactUs/>}/>
      <Route path="/faq" element={<FAQ/>}/>
      <Route path="/privacy" element={<Privacy/>}/>

@@ -1,3 +1,4 @@
+import publicWebsiteRoutes from "./routes/publicWebsiteRoutes.js";
 import contactRoutes from "./routes/contactRoutes.js";
 import receiptFooterRoutes from "./routes/reference/receiptFooterRoutes.js";
 import receiptSubHeaderRoutes from "./routes/reference/receiptSubHeaderRoutes.js";
@@ -110,6 +111,7 @@ app.use("/api/states",stateRoutes);
 app.use("/api/countries",countryRoutes);
 app.use("/api/counties",countyRoutes);
 app.use("/api/app",appRoutes);
+app.use("/api/public-site",publicWebsiteRoutes);
 app.use("/api/app-modules",appModuleRoutes);
 app.use("/api/businesses",businessRoutes);
 app.use("/api/business",businessRoutes);

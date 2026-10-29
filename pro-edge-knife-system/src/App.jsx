@@ -1,3 +1,4 @@
+import WebsiteOrders from "@shared/public/WebsiteOrders.jsx";
 import {Routes,Route,useNavigate,useLocation} from "react-router-dom";
 import {useState,useEffect} from "react";
 import {applyBusinessTheme,clearBusinessTheme} from "./utils/applyBusinessTheme.js";
@@ -199,6 +200,7 @@ function App(){
 
    <main className="app-content">
     <Routes>
+     <Route path="/website-orders" element={<WebsiteOrders/>}/>
      {/* App pages */}
      <Route path="/" element={<Home title={headerTitle||"Pro Edge Knife System"}/>}/>
      <Route path="/dashboard" element={<Dashboard/>}/>

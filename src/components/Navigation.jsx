@@ -1,3 +1,4 @@
+import {Globe} from "lucide-react";
 // src/components/Navigation.jsx
 import {Navbar,Nav,Container,NavDropdown} from "react-bootstrap";
 import {useLocation,NavLink} from "react-router-dom";
@@ -69,6 +70,7 @@ function Navigation({user,onLogout,brand="Eco Sphere"}){
     <Navbar.Toggle aria-controls="site-nav" className="app-nav-toggle"/>
     <Navbar.Collapse id="site-nav">
      <Nav className="me-auto app-nav-links">
+      {access.admin&&<NavLink to="/public-websites" className="nav-link app-nav-link"><Globe size={16} aria-hidden="true"/> Public websites</NavLink>}
 
        {/* public */}  
            <NavLink to="/contact" className={({isActive})=>"nav-link app-nav-link"+(isActive?" active":"")}> {FontAwesomeIcons.Contact} Contact </NavLink>

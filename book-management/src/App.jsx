@@ -182,6 +182,17 @@ function App(){
  };
 
  const [user,setUser]=useState(()=>getStoredUser());
+
+ useEffect(()=>{
+  const syncUser=()=>{
+   const currentUser=getStoredUser();
+   setUser(currentUser);
+   if(currentUser&&window.location.pathname==="/login")navigate("/dashboard",{replace:true});
+  };
+  window.addEventListener("ECOSPHERE_AUTH_UPDATED",syncUser);
+  syncUser();
+  return()=>window.removeEventListener("ECOSPHERE_AUTH_UPDATED",syncUser);
+ },[]);
  const [headerTitle,setHeaderTitle]=useState("");
 
  const unwrapBusiness=data=>{

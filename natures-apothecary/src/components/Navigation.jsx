@@ -1,3 +1,5 @@
+import {WebsiteOrdersLink} from "@shared/public/WebsiteOrders.jsx";
+import PublicWebsiteLink from "@shared/public/PublicWebsiteLink.jsx";
 import {getAdminAccess} from "../utils/adminAccess.js";
 // src/components/Navigation.jsx
 import {Navbar,Nav,NavDropdown,Container} from "react-bootstrap";
@@ -28,6 +30,7 @@ function Navigation({user,onLogout,brand="Nature's Apothecary"}){
     <Navbar.Collapse id="site-nav">
 
      <Nav className="me-auto app-nav-links">
+      <PublicWebsiteLink appId="natures-apothecary" user={user}/><WebsiteOrdersLink user={user}/>
 
       <NavLink to="/shop" className={({isActive})=>"nav-link app-nav-link"+(isActive?" active":"")}>
        {FontAwesomeIcons.Book} Shop

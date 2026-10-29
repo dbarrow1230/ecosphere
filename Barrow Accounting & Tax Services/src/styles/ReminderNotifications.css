@@ -1,0 +1,26 @@
+.reminder-notifications{
+ position:fixed;
+ top:var(--notification-top);
+ right:1rem;
+ z-index:1090;
+ width:min(24rem,calc(100vw - 2rem));
+}
+
+.reminder-notifications .toast{
+ width:100%;
+ color:var(--text);
+ background:var(--surface);
+ border:1px solid var(--border);
+ box-shadow:var(--shadow);
+}
+
+.reminder-notifications .toast-header{
+ color:var(--heading);
+ background:var(--surface-2);
+ border-bottom:1px solid var(--border);
+}
+
+.reminder-notifications .toast-body{
+ color:var(--text-soft);
+ line-height:1.55;
+}

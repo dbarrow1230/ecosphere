@@ -1,3 +1,4 @@
+import {sessionToken} from "@shared/public/websiteAccess.js";
 // src/pages/admin/donations/Donations.jsx
 import {useEffect,useMemo,useState} from "react";
 import "./Donations.css";
@@ -17,8 +18,8 @@ const Donations=()=>{
     setError("");
 
     const [donationsRes,donorsRes]=await Promise.all([
-     fetch("/api/donations"),
-     fetch("/api/donor-contacts")
+     fetch("/api/donations",{headers:{Authorization:`Bearer ${sessionToken()}`}}),
+     fetch("/api/donor-contacts",{headers:{Authorization:`Bearer ${sessionToken()}`}})
     ]);
 
     if(!donationsRes.ok||!donorsRes.ok){

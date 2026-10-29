@@ -1,3 +1,4 @@
+import WebsiteOrders from "@shared/public/WebsiteOrders.jsx";
 import AllergenForm from "@shared/components/AllergenForm.jsx";
 import WorkflowPlaceholder from "@shared/components/WorkflowPlaceholder.jsx";
 // src/App.jsx
@@ -191,6 +192,17 @@ function App(){
  };
 
  const [user,setUser]=useState(()=>getStoredUser());
+
+ useEffect(()=>{
+  const syncUser=()=>{
+   const currentUser=getStoredUser();
+   setUser(currentUser);
+   if(currentUser&&window.location.pathname==="/login")navigate("/dashboard",{replace:true});
+  };
+  window.addEventListener("ECOSPHERE_AUTH_UPDATED",syncUser);
+  syncUser();
+  return()=>window.removeEventListener("ECOSPHERE_AUTH_UPDATED",syncUser);
+ },[]);
  const [headerTitle,setHeaderTitle]=useState("ITM Fire Protection & Equipment");
  const isApplicationWorkspace=location.pathname.startsWith("/applications/");
 
@@ -415,6 +427,7 @@ return(
     :null}
 
     <Routes>
+     <Route path="/website-orders" element={<WebsiteOrders/>}/>
      <Route path="/" element={<Home/>}/>
      <Route path="/contact-us" element={<ContactUs/>}/>
      <Route path="/faq" element={<FAQ/>}/>

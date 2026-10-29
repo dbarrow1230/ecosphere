@@ -1,0 +1,6 @@
+export const services=[
+ {number:"01",title:"Accounting",summary:"See the story behind your numbers.",description:"Keep financial records organized and bring your business activity into focus with accounting support tailored to your needs.",items:["Financial record organization","Reporting needs and review","Ongoing accounting support"]},
+ {number:"02",title:"Bookkeeping",summary:"Make room for the work you do best.",description:"Build a consistent approach to recording transactions, organizing supporting documents, and keeping your books up to date.",items:["Transaction recordkeeping","Document organization","Bookkeeping catch-up and maintenance"]},
+ {number:"03",title:"Tax services",summary:"Approach tax season with a plan.",description:"Start a conversation about tax preparation and year-round support for your individual or business needs.",items:["Tax preparation inquiries","Tax document organization","Year-round tax support"]},
+ {number:"04",title:"Notary services",summary:"Support for the documents that matter.",description:"Contact us about notary services for your personal or business documents. We’ll discuss your request, appointment availability, and what to bring.",items:["Personal and business document inquiries","Appointment coordination","Document and identification requirements discussed before your visit"]}
+];

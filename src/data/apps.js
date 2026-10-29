@@ -7,6 +7,7 @@ const getApplicationUrl=appId=>{
 };
 
 const APP_DESCRIPTIONS={
+ "barrow-accounting-tax-services":"Manage accounting, bookkeeping, clients, and tax services.",
  "antinet-zettelkasten":"Capture, connect, and develop permanent notes.",
  "barrow-coffee-delights":"Manage coffee products, production, orders, and inventory.",
  "barrow-publications":"Track manuscripts through editorial, production, and publishing.",
@@ -47,6 +48,10 @@ const APP_DESCRIPTIONS={
 };
 
 const configuredApps=[
+ {
+  id:"barrow-accounting-tax-services",
+  title:"Barrow Accounting & Tax Services"
+ },
  {
   id:"antinet-zettelkasten",
   title:"Antinet Zettelkasten"

@@ -1,0 +1,11 @@
+import {Router} from "express";
+import {protect} from "../../middleware/authMiddleware.js";
+import {clientAccess} from "../../middleware/clientAccess.js";
+import {getAccountingDashboard,createAccountingWork,updateAccountingWork,reviewInquiry} from "../../controllers/dashboard/accountingDashboardController.js";
+const router=Router();
+router.use(protect,clientAccess);
+router.get("/",getAccountingDashboard);
+router.post("/work",createAccountingWork);
+router.put("/work/:id",updateAccountingWork);
+router.put("/inquiries/:id/review",reviewInquiry);
+export default router;

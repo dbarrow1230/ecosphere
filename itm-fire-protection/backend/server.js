@@ -1,3 +1,4 @@
+import publicWebsiteRoutes from "./routes/publicWebsiteRoutes.js";
 // backend/server.js
 import express from "express";
 import mongoose from "mongoose";
@@ -458,6 +459,7 @@ app.post("/api/app-runtime/activate/:appId",async(req,res)=>{
 
 app.use("/api/app-modules",appModuleRoutes);
 app.use("/api/app",appRoutes);
+app.use("/api/public-site",publicWebsiteRoutes);
 app.use("/api/requests",requestRoutes);
 app.use("/api/clients",clientRoutes);
 app.use("/api/inventory",inventoryRoutes);

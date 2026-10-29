@@ -1,3 +1,4 @@
+import WebsiteOrders from "@shared/public/WebsiteOrders.jsx";
 import WorkflowPlaceholder from "@shared/components/WorkflowPlaceholder.jsx";
 // src/App.jsx
 import {Routes,Route,useNavigate,useLocation} from "react-router-dom";
@@ -184,6 +185,7 @@ function App(){
     <Navigation user={user} onLogout={handleLogout} brand={headerTitle}/>
     <main className="app-content">
      <Routes>
+     <Route path="/website-orders" element={<WebsiteOrders/>}/>
       <Route path="/" element={<Home title={headerTitle}/>}/>
       <Route path="/contact" element={<ContactUs/>}/>
       <Route path="/faq" element={<FAQ/>}/>

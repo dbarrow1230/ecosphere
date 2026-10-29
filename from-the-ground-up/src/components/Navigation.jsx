@@ -1,3 +1,4 @@
+import PublicWebsiteLink from "@shared/public/PublicWebsiteLink.jsx";
 // src/components/Navigation.jsx
 import {Navbar,Nav,NavDropdown,Container} from "react-bootstrap";
 import {useLocation,NavLink} from "react-router-dom";
@@ -104,6 +105,7 @@ function Navigation({user,onLogout,brand="From The Ground Up"}){
     <Navbar.Toggle aria-controls="app-nav-collapse" className="app-nav-toggle"/>
     <Navbar.Collapse id="app-nav-collapse">
      <Nav className="app-nav-links me-auto">
+      <PublicWebsiteLink appId="from-the-ground-up" user={user}/>
       <NavLink to="/programs" className={({isActive})=>isActive?"nav-link active":"nav-link"}>Programs</NavLink>
 
       <NavDropdown title="Resources" id="resources-nav-dropdown" active={location.pathname.startsWith("/resources")}>

@@ -4,3 +4,4 @@ dist
 build
 *.log
 .vscode
+dist-public/

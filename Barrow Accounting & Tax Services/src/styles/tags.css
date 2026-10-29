@@ -1,0 +1,9 @@
+.tag-badge
+{
+ background-color:var(--tag-color)!important;
+
+}.tag-list-scroll
+{
+ max-height:700px;
+ overflow-y:auto;
+}

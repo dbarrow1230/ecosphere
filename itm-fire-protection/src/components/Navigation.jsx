@@ -1,3 +1,5 @@
+import {WebsiteOrdersLink} from "@shared/public/WebsiteOrders.jsx";
+import PublicWebsiteLink from "@shared/public/PublicWebsiteLink.jsx";
 // src/components/Navigation.jsx
 import {Navbar,Nav,Container,NavDropdown} from "react-bootstrap";
 import {useLocation,NavLink} from "react-router-dom";
@@ -99,6 +101,7 @@ function Navigation({
     <Navbar.Collapse id="site-nav">
 
      <Nav className="me-auto app-nav-links">
+      <PublicWebsiteLink appId="itm-fire-protection" user={user}/><WebsiteOrdersLink user={user}/>
 
       <NavDropdown
        title={

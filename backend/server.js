@@ -1,3 +1,6 @@
+import {websiteManagementAccess} from "../shared/backend/websiteManagementAccess.js";
+import WebsiteRoleAssignment from "./models/users/userRoleAssignmentModel.js";
+import {protect} from "./middleware/authMiddleware.js";
 // backend/server.js
 import express from "express";
 import mongoose from "mongoose";
@@ -77,7 +80,8 @@ const runtimeConfig=JSON.parse(fs.readFileSync(runtimeConfigPath,"utf8"));
 const getApplicationDirectory=appId=>{
  if(!appIdPattern.test(appId))return null;
  const ecosphereRoot=path.resolve(__dirname,"..");
- const localDirectory=path.join(ecosphereRoot,appId);
+ const localDirectory=path.resolve(ecosphereRoot,runtimeConfig.applicationDirectories?.[appId]||appId);
+ if(!localDirectory.startsWith(ecosphereRoot+path.sep))return null;
  if(fs.existsSync(path.join(localDirectory,"package.json")))return localDirectory;
  return null;
 };
@@ -216,13 +220,14 @@ const activateApplicationBackend=async appId=>{
  }
 };
 
-const startApplicationFrontend=async appId=>{
- const frontendPort=runtimeConfig.applications?.[appId];
+const startApplicationFrontend=async(appId,{publicSite=false}={})=>{
+ const runtimeKey=publicSite?`${appId}:public`:appId;
+ const frontendPort=(publicSite?runtimeConfig.publicApplications:runtimeConfig.applications)?.[appId];
  if(!frontendPort)throw new Error(`No frontend port is configured for "${appId}".`);
  const backendPort=runtimeConfig.backends?.[appId];
  if(!backendPort)throw new Error(`No backend port is configured for "${appId}".`);
  const frontendUrl=`http://${runtimeConfig.host}:${frontendPort}`;
- if(activeFrontendServers.has(appId))return frontendUrl;
+ if(activeFrontendServers.has(runtimeKey))return frontendUrl;
  if(await endpointIsReady(frontendUrl))return frontendUrl;
 
  const applicationDirectory=getApplicationDirectory(appId);
@@ -250,7 +255,7 @@ const startApplicationFrontend=async appId=>{
  };
 
  for(const directory of uploadDirectories){
-  runtimeProxy[`/${directory}`]={target:backendUrl,changeOrigin:true,secure:false};
+  runtimeProxy[`/${directory}${publicSite?"/":""}`]={target:backendUrl,changeOrigin:true,secure:false};
  }
 
  const shellViteEntry=path.resolve(__dirname,"..","node_modules","vite","dist","node","index.js");
@@ -263,7 +268,8 @@ const startApplicationFrontend=async appId=>{
  const {createServer}=await import(pathToFileURL(shellViteEntry).href);
  const sharedDirectory=path.resolve(__dirname,"..","shared");
  const frontendServer=await createServer({
-  root:applicationDirectory,
+  ...(publicSite?{configFile:path.join(applicationDirectory,"vite.public.config.js")}:{}),
+  root:publicSite?path.join(applicationDirectory,"src","webpage"):applicationDirectory,
   resolve:{
    alias:{"@shared":sharedDirectory},
    dedupe:["react","react-dom"]
@@ -279,19 +285,20 @@ const startApplicationFrontend=async appId=>{
  });
 
  await frontendServer.listen();
- activeFrontendServers.set(appId,frontendServer);
+ activeFrontendServers.set(runtimeKey,frontendServer);
  return frontendUrl;
 };
 
-const activateApplicationFrontend=async appId=>{
- const pendingActivation=pendingFrontendActivations.get(appId);
+const activateApplicationFrontend=async(appId,options={})=>{
+ const runtimeKey=options.publicSite?`${appId}:public`:appId;
+ const pendingActivation=pendingFrontendActivations.get(runtimeKey);
  if(pendingActivation)return pendingActivation;
- const activation=startApplicationFrontend(appId);
- pendingFrontendActivations.set(appId,activation);
+ const activation=startApplicationFrontend(appId,options);
+ pendingFrontendActivations.set(runtimeKey,activation);
  try{
   return await activation;
  }finally{
-  if(pendingFrontendActivations.get(appId)===activation)pendingFrontendActivations.delete(appId);
+  if(pendingFrontendActivations.get(runtimeKey)===activation)pendingFrontendActivations.delete(runtimeKey);
  }
 };
 
@@ -411,6 +418,20 @@ app.post("/api/app-runtime/activate/:appId",async(req,res)=>{
     :"Unable to start the selected application.",
    error:error.message
   });
+ }
+});
+
+app.post("/api/app-runtime/activate-public/:appId",protect,websiteManagementAccess(WebsiteRoleAssignment),async(req,res)=>{
+ if(process.env.NODE_ENV==="production")return res.status(403).json({message:"Local website activation is available only in development."});
+ const appId=String(req.params.appId||"").trim().toLowerCase();
+ if(!Object.hasOwn(runtimeConfig.publicApplications||{},appId))return res.status(404).json({message:"No public website is configured for this application."});
+ try{
+  const backendPort=await activateApplicationBackend(appId);
+  const url=await activateApplicationFrontend(appId,{publicSite:true});
+  return res.json({appId,url,port:runtimeConfig.publicApplications[appId],backendPort,status:"ready"});
+ }catch(error){
+  const portInUse=error?.code==="EADDRINUSE"||String(error?.message||"").includes("already in use");
+  return res.status(portInUse?409:500).json({message:"Unable to start the public website.",error:error.message});
  }
 });
 

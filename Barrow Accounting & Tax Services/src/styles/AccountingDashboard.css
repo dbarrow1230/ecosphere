@@ -1,0 +1,28 @@
+.accounting-dashboard{width:100%;max-width:none;min-width:0}
+.accounting-quick-actions{display:flex;flex-wrap:wrap;gap:.75rem}
+.accounting-dashboard-toolbar,.accounting-work-toolbar,.accounting-form-actions{display:flex;align-items:center;flex-wrap:wrap;gap:1rem}
+.accounting-dashboard-toolbar{justify-content:space-between}
+.accounting-dashboard-toolbar p{margin:0;color:var(--text-soft)}
+.accounting-dashboard-columns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.accounting-dashboard .dashboard-section{grid-column:auto}
+.accounting-work-toolbar{margin-bottom:1.25rem;align-items:end}
+.accounting-work-toolbar label,.accounting-work-form label{display:grid;gap:.35rem;font-size:.85rem;font-weight:600}
+.accounting-search{display:flex!important;align-items:center;gap:.5rem;flex:1;min-width:12rem}
+.accounting-dashboard input,.accounting-dashboard select,.accounting-dashboard textarea{width:100%;min-width:0;padding:.65rem .75rem;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--surface);color:var(--text);font:inherit}
+.accounting-dashboard button{display:inline-flex;align-items:center;justify-content:center;gap:.4rem}
+.accounting-work-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;padding:1rem;margin-bottom:1.25rem;background:var(--bg-alt);border-block:1px solid var(--border)}
+.accounting-work-notes,.accounting-form-actions{grid-column:1/-1}
+.accounting-table-wrap{width:100%;overflow-x:auto}
+.accounting-table{width:100%;border-collapse:collapse;text-align:left}
+.accounting-table th,.accounting-table td{padding:.85rem .65rem;border-bottom:1px solid var(--border);vertical-align:top}
+.accounting-table th{font-size:.8rem;color:var(--text-soft)}
+.accounting-table td>span{display:block;color:var(--text-soft);font-size:.9rem;margin-top:.25rem}
+.accounting-table select{min-width:10rem}
+.accounting-table details{max-width:40rem;margin-top:.5rem}
+.accounting-table details p{white-space:pre-wrap;overflow-wrap:anywhere}
+.accounting-inquiries{margin:0;padding:0;list-style:none;display:grid;gap:1rem}
+.accounting-inquiries li{display:flex;justify-content:space-between;align-items:start;gap:1rem;border-bottom:1px solid var(--border);padding-block:1rem}
+.accounting-inquiries a{display:block;overflow-wrap:anywhere}
+.accounting-inquiries p{white-space:pre-wrap;overflow-wrap:anywhere;margin-block:.5rem}
+.accounting-inquiries button{flex-shrink:0}
+@media(max-width:800px){.accounting-dashboard-columns,.accounting-work-form{grid-template-columns:1fr}.accounting-work-toolbar>*{flex:1 1 100%}.accounting-inquiries li{flex-direction:column}}

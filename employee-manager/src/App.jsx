@@ -101,7 +101,18 @@ function App(){
  };
 
  const [headerTitle,setHeaderTitle]=useState("");
- const user=getStoredUser();
+ const [user,setUser]=useState(()=>getStoredUser());
+
+ useEffect(()=>{
+  const syncUser=()=>{
+   const currentUser=getStoredUser();
+   setUser(currentUser);
+   if(currentUser&&window.location.pathname==="/login")navigate("/dashboard",{replace:true});
+  };
+  window.addEventListener("ECOSPHERE_AUTH_UPDATED",syncUser);
+  syncUser();
+  return()=>window.removeEventListener("ECOSPHERE_AUTH_UPDATED",syncUser);
+ },[]);
 
  useEffect(()=>{
   const appKey=getRuntimeAppKey();
@@ -150,6 +161,7 @@ function App(){
  },[]);
 
  const handleLogout=()=>{
+  setUser(null);
   localStorage.removeItem("token");
   localStorage.removeItem("user");
   localStorage.removeItem("userInfo");

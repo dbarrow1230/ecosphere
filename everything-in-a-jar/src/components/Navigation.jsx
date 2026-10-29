@@ -1,3 +1,5 @@
+import {WebsiteOrdersLink} from "@shared/public/WebsiteOrders.jsx";
+import PublicWebsiteLink from "@shared/public/PublicWebsiteLink.jsx";
 // src/components/Navigation.jsx
 import {Navbar,Nav,NavDropdown,Container} from "react-bootstrap";
 import {useLocation,NavLink} from "react-router-dom";
@@ -102,6 +104,7 @@ function Navigation({user,onLogout,brand="Everything in a Jar"}){
     <Navbar.Toggle aria-controls="site-nav" className="app-nav-toggle"/>
     <Navbar.Collapse id="site-nav">
      <Nav className="me-auto app-nav-links">
+      <PublicWebsiteLink appId="everything-in-a-jar" user={user}/><WebsiteOrdersLink user={user}/>
 
       <NavDropdown
        title={<>{FontAwesomeIcons.About} Info</>}

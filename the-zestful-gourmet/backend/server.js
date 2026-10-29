@@ -1,3 +1,4 @@
+import publicWebsiteRoutes from "./routes/publicWebsiteRoutes.js";
 import contactRoutes from "./routes/contactRoutes.js";
 // backend/server.js
 import express from "express";
@@ -168,6 +169,7 @@ const upload=multer({
 app.get("/api/health",(req,res)=>{res.json({status:"ok"});});
 app.use("/api/app-modules",appModuleRoutes);
 app.use("/api/app",appRoutes);
+app.use("/api/public-site",publicWebsiteRoutes);
 
 /* location routes */
 app.use("/api/states",stateRoutes);

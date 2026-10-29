@@ -1,3 +1,4 @@
+import WebsiteOrders from "@shared/public/WebsiteOrders.jsx";
 import AllergenForm from "@shared/components/AllergenForm.jsx";
 // src/App.jsx
 import {Routes,Route,useNavigate,useLocation,Navigate,Link} from "react-router-dom";
@@ -480,6 +481,7 @@ function App(){
     :null}
 
     <Routes>
+     <Route path="/website-orders" element={<WebsiteOrders/>}/>
      <Route path="/" element={<Home/>}/>
      <Route path="/contact" element={<ContactUs/>}/>
      <Route path="/faq" element={<FAQ/>}/>

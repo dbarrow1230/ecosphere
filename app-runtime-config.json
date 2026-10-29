@@ -38,7 +38,11 @@
     "novel-planner": 5209,
     "root-wise-consulting": 5210,
     "shopping-manager": 5211,
-    "itm-fire-protection": 5212
+    "itm-fire-protection": 5212,
+    "barrow-accounting-tax-services": 5213
+  },
+  "applicationDirectories": {
+    "barrow-accounting-tax-services": "Barrow Accounting & Tax Services"
   },
   "backends": {
     "antinet-zettelkasten": 6001,
@@ -77,6 +81,22 @@
     "novel-planner": 6035,
     "root-wise-consulting": 6036,
     "shopping-manager": 6037,
-    "itm-fire-protection": 6038
+    "itm-fire-protection": 6038,
+    "barrow-accounting-tax-services": 6039
+  },
+  "publicApplications": {
+    "barrow-accounting-tax-services": 5214,
+    "barrow-coffee-delights": 5215,
+    "barrow-publications": 5216,
+    "catering-management": 5217,
+    "crazy-cravings-alchemy-delight-doughnuts": 5218,
+    "everything-in-a-jar": 5219,
+    "fresh-roots-flavor-kitchen": 5220,
+    "from-the-ground-up": 5221,
+    "green-table-grocers": 5222,
+    "itm-fire-protection": 5223,
+    "natures-apothecary": 5224,
+    "pro-edge-knife-system": 5225,
+    "the-zestful-gourmet": 5226
   }
 }

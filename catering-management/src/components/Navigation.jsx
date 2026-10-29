@@ -1,3 +1,4 @@
+import PublicWebsiteLink from "@shared/public/PublicWebsiteLink.jsx";
 // Navigation.jsx
 import {Navbar,Nav,NavDropdown,Container} from "react-bootstrap";
 import {useLocation,NavLink} from "react-router-dom";
@@ -97,6 +98,7 @@ function Navigation({user,onLogout,brand="Chorna Lifeboard"}){
     <Navbar.Toggle aria-controls="site-nav" className="app-nav-toggle"/>
     <Navbar.Collapse id="site-nav">
      <Nav className="me-auto app-nav-links">
+      <PublicWebsiteLink appId="catering-management" user={user}/>
       {/* public */}
       <NavDropdown
        title={<>{FontAwesomeIcons.About} Info</>}

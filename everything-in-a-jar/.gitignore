@@ -5,3 +5,5 @@ build
 *.log
 .vscode
 .env.keys
+
+dist-public/

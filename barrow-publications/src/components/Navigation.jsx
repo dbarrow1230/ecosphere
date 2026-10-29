@@ -1,3 +1,4 @@
+import PublicWebsiteLink from "@shared/public/PublicWebsiteLink.jsx";
 // src/components/Navigation.jsx
 import {Navbar,Nav,NavDropdown,Container} from "react-bootstrap";
 import {useLocation,NavLink} from "react-router-dom";
@@ -94,6 +95,7 @@ function Navigation({user,onLogout,brand="Publishing Company"}){
     <Navbar.Collapse id="site-nav">
 
      <Nav className="me-auto app-nav-links">
+      <PublicWebsiteLink appId="barrow-publications" user={user}/>
       <Nav.Link as={NavLink} to="/dashboard" className="app-nav-link">
        <LayoutDashboard size={18}/>Dashboard
       </Nav.Link>

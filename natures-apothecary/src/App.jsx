@@ -1,3 +1,4 @@
+import WebsiteOrders from "@shared/public/WebsiteOrders.jsx";
 // src/App.jsx
 import {Routes,Route,useNavigate,useLocation,Navigate,Link} from "react-router-dom";
 import {useState,useEffect} from "react";
@@ -411,6 +412,7 @@ function App(){
      </div>
     :null}
     <Routes>
+     <Route path="/website-orders" element={<WebsiteOrders/>}/>
 <Route path="/" element={<Home title={headerTitle||undefined}/>}/>
      <Route path="/contact" element={<ContactUs/>}/>
      <Route path="/faq" element={<FAQ/>}/>

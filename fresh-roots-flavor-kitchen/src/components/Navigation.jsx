@@ -1,3 +1,4 @@
+import PublicWebsiteLink from "@shared/public/PublicWebsiteLink.jsx";
 import {Navbar,Nav,NavDropdown,Container} from "react-bootstrap";
 import {NavLink,useLocation} from "react-router-dom";
 import {useIcons} from "@shared";
@@ -59,6 +60,7 @@ function Navigation({user,onLogout}){
     <Navbar.Toggle aria-controls="main-nav" className="app-nav-toggle"/>
     <Navbar.Collapse id="main-nav">
      <Nav className="me-auto app-nav-links">
+      <PublicWebsiteLink appId="fresh-roots-flavor-kitchen" user={user}/>
       {user&&<Nav.Link as={NavLink} to="/dashboard"><span className="me-2">{FontAwesomeIcons.Home}</span>Dashboard</Nav.Link>}
       <Nav.Link as={NavLink} to="/menu"><span className="me-2">{FontAwesomeIcons.List}</span>Menu</Nav.Link>
       <Nav.Link as={NavLink} to="/about"><span className="me-2">{FontAwesomeIcons.About}</span>About</Nav.Link>

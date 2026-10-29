@@ -1,3 +1,5 @@
+import {WebsiteOrdersLink} from "@shared/public/WebsiteOrders.jsx";
+import PublicWebsiteLink from "@shared/public/PublicWebsiteLink.jsx";
 // src/components/Navigation.jsx
 import {Navbar,Nav,NavDropdown,Container} from "react-bootstrap";
 import {Link,useLocation,NavLink} from "react-router-dom";
@@ -80,6 +82,7 @@ function Navigation({user,onLogout}){
     <Navbar.Toggle aria-controls="main-nav" className="app-nav-toggle"/>
     <Navbar.Collapse id="main-nav">
      <Nav className="me-auto app-nav-links">
+      <PublicWebsiteLink appId="crazy-cravings-alchemy-delight-doughnuts" user={user}/><WebsiteOrdersLink user={user}/>
       <Nav.Link as={NavLink} to="/dashboard" className="app-nav-link"> <span className="me-2">{FontAwesomeIcons.Home}</span>Dashboard </Nav.Link>
 
       <NavDropdown title={<><span className="me-2">{FontAwesomeIcons.List}</span>Menus</>}  id="menu-dropdown"   className="app-nav-link"   active={isActive("/menu")||isActive("/menus")||isActive("/orders")}      >

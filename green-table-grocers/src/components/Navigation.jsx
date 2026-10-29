@@ -1,3 +1,5 @@
+import {WebsiteOrdersLink} from "@shared/public/WebsiteOrders.jsx";
+import PublicWebsiteLink from "@shared/public/PublicWebsiteLink.jsx";
 import {Container,Nav,Navbar,NavDropdown} from "react-bootstrap";
 import {Link,NavLink,useLocation} from "react-router-dom";
 import {useIcons} from "@shared";
@@ -101,6 +103,7 @@ export default function Navigation({user,onLogout}){
   <Navbar.Toggle aria-controls="main-nav"/>
   <Navbar.Collapse id="main-nav">
    <Nav className="me-auto">
+      <PublicWebsiteLink appId="green-table-grocers" user={user}/><WebsiteOrdersLink user={user}/>
     <Nav.Link as={NavLink} to="/shop">Shop</Nav.Link>
     <Nav.Link as={NavLink} to="/produce-boxes">Produce Boxes</Nav.Link>
     <Nav.Link as={NavLink} to="/how-it-works">How It Works</Nav.Link>

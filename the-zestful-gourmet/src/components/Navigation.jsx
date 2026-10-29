@@ -1,3 +1,4 @@
+import PublicWebsiteLink from "@shared/public/PublicWebsiteLink.jsx";
 import {Navbar,Nav,NavDropdown,Container} from "react-bootstrap";
 import {useLocation,NavLink,Link} from "react-router-dom";
 import {useIcons} from "@shared";
@@ -11,6 +12,7 @@ const getId=value=>String(typeof value==="string"?value:value?._id?.$oid||value?
 
 export default function Navigation({user,onLogout}){const location=useLocation();const {FontAwesomeIcons}=useIcons();const roles=[user?.role,user?.roleId,user?.currentRole,user?.activeRole,...(user?.roleAssignments||[]).map(item=>item.role)].filter(Boolean);const roleIds=roles.map(getId);const roleNames=roles.map(role=>String(typeof role==="object"?role.name||role.title||"":role||"").toLowerCase());const owner=ADMIN_USER_IDS.includes(getId(user))||roleIds.some(id=>OWNER_ROLE_IDS.includes(id))||roleNames.includes("owner");const admin=owner||roleIds.some(id=>ADMIN_ROLE_IDS.includes(id))||roleNames.some(name=>["admin","administrator"].includes(name));const manager=admin||roleIds.some(id=>MANAGER_ROLE_IDS.includes(id))||roleNames.includes("manager");const canAdmin=admin||manager;const active=path=>location.pathname.startsWith(path);
  return <Navbar expand="lg" className="app-nav"><Container><Navbar.Brand as={Link} to="/" className="app-nav-brand"><span className="me-2">{FontAwesomeIcons.Home}</span>Home</Navbar.Brand><Navbar.Toggle aria-controls="main-nav" className="app-nav-toggle"/><Navbar.Collapse id="main-nav"><Nav className="me-auto app-nav-links">
+      <PublicWebsiteLink appId="the-zestful-gourmet" user={user}/>
   {user&&<Nav.Link as={NavLink} to="/dashboard"><span className="me-2">{FontAwesomeIcons.Feedback}</span>Dashboard</Nav.Link>}
   <Nav.Link as={NavLink} to="/blog"><span className="me-2">{FontAwesomeIcons.Book}</span>Blog</Nav.Link>
   <NavDropdown title={<><span className="me-2">{FontAwesomeIcons.Book}</span>Articles</>} id="articles-dropdown" active={active("/admin/posts")}><NavDropdown.Item as={NavLink} to="/blog">Published Articles</NavDropdown.Item>{user&&<><NavDropdown.Item as={NavLink} to="/admin/posts">Manage Posts</NavDropdown.Item><NavDropdown.Item as={NavLink} to="/admin/posts/new">Create Article</NavDropdown.Item></>}</NavDropdown>

@@ -74,7 +74,7 @@ const getDashboardDataService=async({business_id=null,locationRef=null,period="t
    .limit(25),[])
  ]);
 
- const donationTotal=donations.reduce((sum,donation)=>{
+ const donationTotal=donations.filter(donation=>donation.status==="completed").reduce((sum,donation)=>{
   const amount=Number(donation?.amount?.$numberDecimal??donation?.amount??0);
   return Number.isNaN(amount)?sum:sum+amount;
  },0);

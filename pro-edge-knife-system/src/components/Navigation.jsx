@@ -1,3 +1,5 @@
+import {WebsiteOrdersLink} from "@shared/public/WebsiteOrders.jsx";
+import PublicWebsiteLink from "@shared/public/PublicWebsiteLink.jsx";
 import {Container,Nav,Navbar,NavDropdown} from "react-bootstrap";
 import {Link,NavLink} from "react-router-dom";
 import {useIcons} from "@shared";
@@ -8,6 +10,7 @@ export default function Navigation({user,isAdmin=false,onLogout,brand="Pro Edge 
  return <Navbar expand="lg" className="app-nav"><Container>
   <Navbar.Brand as={Link} to="/" className="app-nav-brand"><span className="me-2">{FontAwesomeIcons.Home}</span>{brand}</Navbar.Brand>
   <Navbar.Toggle aria-controls="main-nav" className="app-nav-toggle"/><Navbar.Collapse id="main-nav"><Nav className="me-auto app-nav-links">
+      <PublicWebsiteLink appId="pro-edge-knife-system" user={user}/><WebsiteOrdersLink user={user}/>
    <Nav.Link as={NavLink} to="/dashboard">Dashboard</Nav.Link><Nav.Link as={NavLink} to="/tiers">Knife Sets</Nav.Link><Nav.Link as={NavLink} to="/custom-builder">Build a Custom Set</Nav.Link><Nav.Link as={NavLink} to="/orders">Orders</Nav.Link>
    {isAdmin&&<Nav.Link as={NavLink} to="/admin/knife-types">Admin: Knife Types</Nav.Link>}{isAdmin&&<Nav.Link as={NavLink} to="/admin/tiers">Admin: Tiers</Nav.Link>}
    <NavDropdown title={<>{FontAwesomeIcons.About} Info</>} id="info-dropdown"><NavDropdown.Item as={NavLink} to="/contact">{FontAwesomeIcons.Contact} Contact</NavDropdown.Item><NavDropdown.Item as={NavLink} to="/about">{FontAwesomeIcons.About} About</NavDropdown.Item></NavDropdown>

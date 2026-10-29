@@ -41,7 +41,13 @@ const applyStorageValues=(storage,values)=>{
  let changed=false;
 
  for(const key of AUTH_STORAGE_KEYS){
-  if(!Object.prototype.hasOwnProperty.call(values,key))continue;
+  if(!Object.prototype.hasOwnProperty.call(values,key)){
+   if(storage.getItem(key)!==null){
+    storage.removeItem(key);
+    changed=true;
+   }
+   continue;
+  }
 
   const nextValue=values[key];
   if(typeof nextValue!=="string"||storage.getItem(key)===nextValue)continue;
