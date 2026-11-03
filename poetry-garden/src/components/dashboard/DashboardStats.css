@@ -1,0 +1,282 @@
+/* src/components/dashboard/DashboardStats.css */
+
+.dashboard-cards .dashboard-card-actionable{
+ transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease;
+}
+
+.dashboard-cards .dashboard-card-actionable:hover{
+ transform:translateY(-2px);
+ border-color:var(--primary);
+ box-shadow:var(--shadow);
+}
+
+.dashboard-cards .dashboard-stat-link{
+ display:inline-flex;
+ align-items:center;
+ justify-content:center;
+ min-height:2rem;
+ padding:.45rem .6rem;
+ border:1px solid var(--primary);
+ border-radius:8px;
+ color:var(--primary);
+ font-size:.82rem;
+ font-weight:800;
+ text-decoration:none;
+}
+
+.dashboard-cards .dashboard-stat-link:hover{
+ background:var(--primary);
+ color:var(--text-inverse);
+}
+
+.dashboard-cards .dashboard-card .dashboard-stat-badges{
+ display:grid;
+ gap:.35rem;
+ width:100%;
+ min-width:0;
+ overflow:hidden;
+}
+
+.dashboard-cards .dashboard-card .dashboard-stat-badge-row{
+ width:100%;
+ max-width:100%;
+ min-width:0;
+ box-sizing:border-box;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:.45rem;
+ min-height:24px;
+ padding:.28rem .45rem;
+ border:1px solid var(--border);
+ border-radius:8px;
+ background:var(--surface2);
+ color:var(--text);
+ font-size:.72rem;
+ font-weight:700;
+ line-height:1.1;
+ overflow:hidden;
+ text-decoration:none;
+}
+
+.dashboard-cards .dashboard-card a.dashboard-stat-badge-row:hover{
+ border-color:var(--primary) !important;
+ color:var(--primary) !important;
+}
+
+.dashboard-cards .dashboard-card .dashboard-stat-badge-label{
+ display:inline-flex;
+ align-items:center;
+ gap:.25rem;
+ min-width:0;
+ flex:1 1 auto;
+ overflow:hidden;
+}
+
+.dashboard-cards .dashboard-card .dashboard-stat-badge-icon{
+ display:inline-flex;
+ align-items:center;
+ justify-content:center;
+ flex:0 0 auto;
+ color:inherit;
+}
+
+.dashboard-cards .dashboard-card .dashboard-stat-badge-label span:last-child{
+ display:block;
+ min-width:0;
+ overflow:hidden;
+ text-overflow:ellipsis;
+ white-space:nowrap;
+ color:inherit;
+}
+
+.dashboard-cards .dashboard-card .dashboard-stat-badge-row strong{
+ flex:0 0 auto;
+ margin-left:auto;
+ color:inherit;
+ font-size:.72rem;
+ font-weight:800;
+ line-height:1;
+ text-align:right;
+}
+
+/* Status colors */
+
+.dashboard-cards .dashboard-card .dashboard-stat-badge-pending,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-open,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-processing,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-private,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-paused{
+ border-color:var(--warning) !important;
+ background:var(--surface2) !important;
+ color:var(--warning) !important;
+}
+
+.dashboard-cards .dashboard-card .dashboard-stat-badge-active,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-in-progress,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-sent,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-scheduled,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-daily,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-weekly,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-monthly,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-yearly{
+ border-color:var(--primary) !important;
+ background:var(--surface2) !important;
+ color:var(--primary) !important;
+}
+
+.dashboard-cards .dashboard-card .dashboard-stat-badge-completed,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-done,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-success,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-calm,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-happy{
+ border-color:var(--success) !important;
+ background:var(--surface2) !important;
+ color:var(--success) !important;
+}
+
+.dashboard-cards .dashboard-card .dashboard-stat-badge-cancelled,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-canceled,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-failed,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-archived,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-dismissed,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-angry,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-sad,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-anxious{
+ border-color:var(--danger) !important;
+ background:var(--surface2) !important;
+ color:var(--danger) !important;
+}
+
+.dashboard-cards .dashboard-card .dashboard-stat-badge-neutral,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-general,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-other,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-memory,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-reflection,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-note,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-reference{
+ border-color:var(--info) !important;
+ background:var(--surface2) !important;
+ color:var(--info) !important;
+}
+
+/* Priority colors */
+
+.dashboard-cards .dashboard-card .dashboard-stat-badge-low{
+ border-color:var(--success) !important;
+ background:var(--surface2) !important;
+ color:var(--success) !important;
+}
+
+.dashboard-cards .dashboard-card .dashboard-stat-badge-medium{
+ border-color:var(--info) !important;
+ background:var(--surface2) !important;
+ color:var(--info) !important;
+}
+
+.dashboard-cards .dashboard-card .dashboard-stat-badge-high{
+ border-color:var(--warning) !important;
+ background:var(--surface2) !important;
+ color:var(--warning) !important;
+}
+
+.dashboard-cards .dashboard-card .dashboard-stat-badge-urgent{
+ border-color:var(--danger) !important;
+ background:var(--surface2) !important;
+ color:var(--danger) !important;
+}
+
+/* Journal / reflection colors */
+
+.dashboard-cards .dashboard-card .dashboard-stat-badge-gratitude,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-dream,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-free-write,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-creative,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-intention,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-energized{
+ border-color:var(--accent) !important;
+ background:var(--surface2) !important;
+ color:var(--accent) !important;
+}
+
+.dashboard-cards .dashboard-card .dashboard-stat-badge-breathing,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-body-scan,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-grounding,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-mindfulness,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-check-in{
+ border-color:var(--secondary) !important;
+ background:var(--surface2) !important;
+ color:var(--secondary) !important;
+}
+
+/* Type/category colors */
+
+.dashboard-cards .dashboard-card .dashboard-stat-badge-task,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-goal,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-habit,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-routine,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-journal,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-event,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-calendar-event,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-review{
+ border-color:var(--primary) !important;
+ background:var(--surface2) !important;
+ color:var(--primary) !important;
+}
+
+.dashboard-cards .dashboard-card .dashboard-stat-badge-work,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-study,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-career,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-appointment,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-meeting{
+ border-color:var(--info) !important;
+ background:var(--surface2) !important;
+ color:var(--info) !important;
+}
+
+.dashboard-cards .dashboard-card .dashboard-stat-badge-personal,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-family,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-friendship,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-relationship,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-birthday,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-self-care{
+ border-color:var(--accent2) !important;
+ background:var(--surface2) !important;
+ color:var(--accent2) !important;
+}
+
+.dashboard-cards .dashboard-card .dashboard-stat-badge-health,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-fitness{
+ border-color:var(--success) !important;
+ background:var(--surface2) !important;
+ color:var(--success) !important;
+}
+
+.dashboard-cards .dashboard-card .dashboard-stat-badge-loss,
+.dashboard-cards .dashboard-card .dashboard-stat-badge-stress{
+ border-color:var(--danger) !important;
+ background:var(--surface2) !important;
+ color:var(--danger) !important;
+}
+
+/* Mood colors */
+
+.dashboard-cards .dashboard-card .dashboard-stat-badge-tired{
+ border-color:var(--textSoft) !important;
+ background:var(--surface2) !important;
+ color:var(--textSoft) !important;
+}
+
+.dashboard-cards .dashboard-card .dashboard-stat-badge-energized{
+ border-color:var(--accent) !important;
+ background:var(--surface2) !important;
+ color:var(--accent) !important;
+}
+
+/* Fallback */
+
+.dashboard-cards .dashboard-card .dashboard-stat-badge-default{
+ border-color:var(--border) !important;
+ background:var(--surface2) !important;
+ color:var(--text) !important;
+}

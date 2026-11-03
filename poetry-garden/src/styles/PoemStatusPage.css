@@ -1,0 +1,132 @@
+.poem-status-page{
+ display:grid;
+ gap:1rem;
+ padding:1.5rem 2rem 2.5rem;
+ color:var(--text);
+}
+
+.poem-status-header{
+ display:flex;
+ justify-content:space-between;
+ align-items:flex-start;
+ gap:1rem;
+ flex-wrap:wrap;
+ padding:1.5rem;
+ border:1px solid var(--border);
+ border-radius:var(--radius-lg);
+ background:linear-gradient(135deg,var(--surface),color-mix(in srgb,var(--bg-alt) 52%,var(--surface)));
+ box-shadow:var(--shadow);
+}
+
+.poem-status-eyebrow{
+ margin:0 0 .25rem;
+ color:var(--accent-2);
+ font-size:.8rem;
+ font-weight:800;
+ letter-spacing:.08em;
+ text-transform:uppercase;
+}
+
+.poem-status-header h1{
+ margin:0;
+ font-family:var(--font-heading);
+ font-size:clamp(2rem,4vw,3rem);
+ line-height:1;
+}
+
+.poem-status-header p:last-child{
+ margin:.75rem 0 0;
+ max-width:62ch;
+ color:var(--text-soft);
+ line-height:1.6;
+}
+
+.poem-status-card{
+ border:1px solid var(--border);
+ border-radius:var(--radius-lg);
+ box-shadow:var(--shadow);
+ overflow:hidden;
+}
+
+.poem-status-toolbar{
+ display:flex;
+ justify-content:space-between;
+ gap:.75rem;
+ flex-wrap:wrap;
+ margin-bottom:1rem;
+}
+
+.poem-status-loading{
+ min-height:12rem;
+ display:grid;
+ place-items:center;
+}
+
+.poem-status-table th{
+ background:color-mix(in srgb,var(--primary) 9%,var(--surface));
+ color:var(--text);
+ font-family:var(--font-heading);
+ border-bottom:1px solid var(--border);
+}
+
+.poem-status-table td{
+ border-color:color-mix(in srgb,var(--border) 72%,transparent);
+}
+
+.poem-status-pill{
+ display:inline-flex;
+ align-items:center;
+ min-height:1.65rem;
+ padding:.25rem .55rem;
+ border:1px solid var(--border);
+ border-radius:999px;
+ color:var(--text-soft);
+ font-size:.78rem;
+ font-weight:800;
+}
+
+.poem-status-pill.is-active{
+ border-color:var(--primary);
+ color:var(--primary);
+ background:color-mix(in srgb,var(--primary) 8%,var(--surface));
+}
+
+.poem-feature-date-control{
+ display:grid;
+ gap:.3rem;
+ min-width:10rem;
+}
+
+.poem-feature-date-control input{
+ width:100%;
+ min-height:2rem;
+ padding:.25rem .45rem;
+ border:1px solid var(--border);
+ border-radius:var(--radius-sm);
+ background:var(--surface);
+ color:var(--text);
+ font:inherit;
+}
+
+.poem-feature-date-control span{
+ color:var(--text-soft);
+ font-size:.78rem;
+ font-weight:700;
+}
+
+.poem-status-actions{
+ display:flex;
+ align-items:center;
+ gap:.45rem;
+ flex-wrap:wrap;
+}
+
+@media (max-width:700px){
+ .poem-status-page{
+  padding:1rem;
+ }
+
+ .poem-status-header{
+  padding:1rem;
+ }
+}

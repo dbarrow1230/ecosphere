@@ -1,0 +1,82 @@
+.poetry-workflow-page{
+ display:grid;
+ gap:1rem;
+ padding:1.5rem 2rem 2.5rem;
+ color:var(--text);
+}
+
+.poetry-workflow-header{
+ display:flex;
+ justify-content:space-between;
+ gap:1rem;
+ align-items:flex-start;
+ flex-wrap:wrap;
+ padding:1.5rem;
+ border:1px solid var(--border);
+ border-radius:var(--radius-lg);
+ background:linear-gradient(135deg,var(--surface),color-mix(in srgb,var(--bg-alt) 52%,var(--surface)));
+ box-shadow:var(--shadow);
+}
+
+.poetry-workflow-eyebrow{
+ margin:0 0 .25rem;
+ color:var(--accent-2);
+ font-size:.8rem;
+ font-weight:800;
+ letter-spacing:.08em;
+ text-transform:uppercase;
+}
+
+.poetry-workflow-header h1{
+ margin:0;
+ font-family:var(--font-heading);
+ font-size:clamp(2rem,4vw,3rem);
+ line-height:1;
+}
+
+.poetry-workflow-header p:last-child{
+ margin:.75rem 0 0;
+ max-width:62ch;
+ color:var(--text-soft);
+ line-height:1.6;
+}
+
+.poetry-workflow-actions{
+ display:flex;
+ gap:.5rem;
+ flex-wrap:wrap;
+}
+
+.poetry-workflow-card{
+ border:1px solid var(--border);
+ border-radius:var(--radius-lg);
+ box-shadow:var(--shadow);
+ overflow:hidden;
+}
+
+.poetry-workflow-loading{
+ min-height:12rem;
+ display:grid;
+ place-items:center;
+}
+
+.poetry-workflow-table th{
+ background:color-mix(in srgb,var(--primary) 9%,var(--surface));
+ color:var(--text);
+ font-family:var(--font-heading);
+ border-bottom:1px solid var(--border);
+}
+
+.poetry-workflow-table td{
+ border-color:color-mix(in srgb,var(--border) 72%,transparent);
+}
+
+@media (max-width:700px){
+ .poetry-workflow-page{
+  padding:1rem;
+ }
+
+ .poetry-workflow-header{
+  padding:1rem;
+ }
+}

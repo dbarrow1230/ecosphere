@@ -1,0 +1,4 @@
+import {useState} from "react";
+import {Container,Card,Form,Button,Alert} from "react-bootstrap";
+
+export default function SettingsPage(){const [saved,setSaved]=useState(false);const [settings,setSettings]=useState({weekStartsMonday:true,deadlineWarnings:true,compactBoard:false});const change=key=>setSettings({...settings,[key]:!settings[key]});return <Container fluid="lg" className="py-4"><h1>Project Settings</h1><p className="text-muted">Configure project-tracking behavior for this application.</p>{saved&&<Alert variant="success">Settings saved.</Alert>}<Card><Card.Body>{Object.entries({weekStartsMonday:"Start calendars on Monday",deadlineWarnings:"Show deadline warnings",compactBoard:"Use compact Kanban cards"}).map(([key,label])=><Form.Check className="mb-3" key={key} label={label} checked={settings[key]} onChange={()=>change(key)}/>) }<Button onClick={()=>setSaved(true)}>Save Settings</Button></Card.Body></Card></Container>;}

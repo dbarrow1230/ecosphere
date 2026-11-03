@@ -1,0 +1,3 @@
+import {Link} from "react-router-dom";
+import {usePublicSite} from "../../../../shared/public/PublicSiteContext.jsx";
+export default function Questions(){const {site}=usePublicSite();return (<div className="precision-support-console"><header><p>Owner’s reference</p><h1>{site.faqTitle||'System support'}</h1><p>{site.faqIntro}</p></header><div>{site.faq.map(([q,a],i)=><details key={q} open={i===0}><summary><span>REF {String(i+1).padStart(2,'0')}</span><strong>{q}</strong></summary><div><p>{a}</p></div></details>)}</div><footer><Link to="/custom-builder">Explore configurations →</Link><Link to="/contact">Contact system support ↗</Link></footer></div>);}

@@ -1,0 +1,70 @@
+/* src/styles/login.css */
+.login-container{
+ min-height:70vh;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+}
+
+.login-card{
+ width:420px;
+ box-shadow:var(--ztk-shadow-md);
+ border:1px solid var(--ztk-border);
+}
+
+.login-logo-wrapper{
+ text-align:center;
+ margin-bottom:1rem;
+}
+
+.login-logo{
+ width:80px;
+ height:auto;
+}
+
+.login-title{
+ text-align:center;
+ margin-bottom:1.5rem;
+ color:var(--ztk-heading);
+}
+
+.login-button{
+ width:100%;
+ margin-top:1rem;
+}
+
+.login-forgot{
+ text-align:right;
+ font-size:.9rem;
+ margin-top:-.25rem;
+}
+
+.login-forgot a,
+.login-back-link a{
+ text-decoration:none;
+ color:var(--ztk-link);
+}
+
+.login-forgot a:hover,
+.login-back-link a:hover{
+ color:var(--ztk-link-hover);
+}
+
+.login-back-link{
+ text-align:center;
+ font-size:.95rem;
+ margin-top:1rem;
+}
+
+.reset-link-box{
+ word-break:break-all;
+}
+
+.reset-link-box a{
+ color:var(--ztk-link);
+ text-decoration:none;
+}
+
+.reset-link-box a:hover{
+ color:var(--ztk-link-hover);
+}

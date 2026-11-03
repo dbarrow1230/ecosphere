@@ -1,0 +1,9 @@
+import {useState} from 'react';
+import {Link} from 'react-router-dom';
+import {ArrowUpRight,Scissors,Check} from 'lucide-react';
+import {usePublicSite} from '../../../../shared/public/PublicSiteContext.jsx';
+import {usePublicCatalog,money} from '../Commerce.jsx';
+export default function Home(){const {site}=usePublicSite(),{products,loading,error}=usePublicCatalog();const [choice,setChoice]=useState('');const selected=products.find(product=>product.id===choice)||products[0];return <>
+ <section className="knife-system-stage"><header><p className="pw-eyebrow">Pro Edge Knife System</p><h1>One system.<br/>Your collection.</h1><p>Fixed collections or a custom configuration, with an integrated sharpening system.</p></header><img src={site.hero} alt={site.heroAlt}/></section>
+ <section className="knife-collection-console"><header><h2>Find your configuration.</h2><Link to="/custom-builder"><Scissors size={18}/> Build custom</Link></header>{loading?<p role="status">Loading collections…</p>:error?<p role="alert">{error}</p>:selected?<><div className="knife-collection-switches" role="group" aria-label="Knife collections">{products.map(product=><button key={product.id} aria-pressed={selected.id===product.id} onClick={()=>setChoice(product.id)}>{product.name}</button>)}</div><article className="knife-configuration-readout"><div><p className="pw-eyebrow">The selected collection</p><h3>{selected.name}</h3><p>{selected.description}</p><strong>{money(selected.price)}</strong></div><div><ul>{selected.includedItems?.map((item,index)=><li key={index}><Check size={17}/>{item.quantity} × {item.name}</li>)}</ul>{selected.sharpener&&<p>{selected.sharpener}</p>}<Link className="pw-button" to={selected.customizable?'/custom-builder':'/shop/'+selected.id}>{selected.customizable?'Configure a custom set':'Explore this collection'}<ArrowUpRight size={18}/></Link></div></article></>:<p>The collections are being prepared.</p>}</section>
+ </>;}

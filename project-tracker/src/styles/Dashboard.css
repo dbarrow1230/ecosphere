@@ -1,0 +1,123 @@
+/* src/styles/Dashboard.css */
+
+.dashboard{
+ max-width:var(--max-width);
+ margin:2rem auto;
+ padding:0 1rem;
+}
+
+.dashboard-header{
+ margin-bottom:2rem;
+}
+
+.dashboard-title{
+ margin:0 0 .5rem 0;
+ font-size:2rem;
+ color:var(--heading);
+}
+
+.dashboard-text{
+ margin:0;
+ color:var(--text-soft);
+}
+
+.dashboard-grid{
+ display:grid;
+ gap:1.5rem;
+}
+
+/* stat cards */
+
+.dashboard-cards{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+ gap:1rem;
+}
+
+.dashboard-card{
+ background:var(--surface);
+ border:1px solid var(--border);
+ border-radius:var(--radius-sm);
+ padding:1.25rem;
+ box-shadow:var(--shadow-sm);
+}
+
+.dashboard-card-label{
+ margin:0;
+ font-size:.85rem;
+ color:var(--text-soft);
+}
+
+.dashboard-card-value{
+ margin:.25rem 0 0 0;
+ font-size:1.6rem;
+ font-weight:600;
+ color:var(--heading);
+}
+
+/* sections */
+
+.dashboard-section{
+ background:var(--surface);
+ border:1px solid var(--border);
+ border-radius:var(--radius-sm);
+ padding:1.25rem;
+ box-shadow:var(--shadow-sm);
+}
+
+.dashboard-section-title{
+ margin:0 0 1rem 0;
+ font-size:1.2rem;
+ color:var(--heading);
+}
+
+/* lists */
+
+.dashboard-list{
+ list-style:none;
+ margin:0;
+ padding:0;
+}
+
+.dashboard-list-item{
+ display:flex;
+ justify-content:space-between;
+ padding:.5rem 0;
+ border-bottom:1px solid var(--border);
+}
+
+.dashboard-list-item:last-child{
+ border-bottom:none;
+}
+
+.dashboard-book-title{
+ font-weight:500;
+ color:var(--text);
+}
+
+.dashboard-book-author{
+ color:var(--text-soft);
+ font-size:.9rem;
+}
+
+/* quick actions */
+
+.dashboard-actions{
+ display:flex;
+ flex-wrap:wrap;
+ gap:.75rem;
+}
+
+.dashboard-action{
+ display:inline-block;
+ padding:.5rem 1rem;
+ border-radius:var(--radius-sm);
+ background:var(--primary);
+ color:var(--surface);
+ text-decoration:none;
+ font-size:.9rem;
+}
+
+.dashboard-action:hover{
+ background:var(--primary-hover);
+}
