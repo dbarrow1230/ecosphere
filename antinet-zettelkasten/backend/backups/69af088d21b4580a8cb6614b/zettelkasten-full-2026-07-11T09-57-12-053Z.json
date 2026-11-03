@@ -1,0 +1,1188 @@
+{
+  "backupId": "08fee75b-6605-46ea-878e-0d2f45ad9178",
+  "backupType": "full",
+  "userId": "69af088d21b4580a8cb6614b",
+  "createdAt": "2026-07-11T09:57:12.125Z",
+  "recordCount": 84,
+  "sourceCollections": {
+    "zettels": "zettels",
+    "fleetingNotes": "fleeting_notes",
+    "sources": "sources",
+    "entities": "entities",
+    "connections": "connections",
+    "structureNotes": "structure_notes",
+    "outputs": "outputs",
+    "projects": "projects",
+    "attachments": "attachments",
+    "tags": "tags",
+    "revisions": "revisions",
+    "prefixes": "prefixes",
+    "idSequences": "id_sequences",
+    "projectTypes": "project_types",
+    "relationTypes": "relation_types",
+    "recordSubtypes": "record_subtypes",
+    "settings": "settings"
+  },
+  "data": {
+    "zettels": [
+      {
+        "_id": "6a4fd73fe71115b9f9bc8f20",
+        "userId": "69af088d21b4580a8cb6614b",
+        "projectId": null,
+        "zettelId": "ZTL-POEM-SEED-PARKVOICE-001",
+        "title": "The park can become a speaking presence",
+        "mainIdea": "The park can function as a voice instead of only a setting.",
+        "body": "In the poem, the park can be treated as a living witness. Its voice may come through silence, movement, wind, trees, paths, benches, people passing through, or the memory left behind by those moments.",
+        "subtype": "SEED",
+        "sourceIds": [
+          "6a4fd73fe71115b9f9bc8f1c"
+        ],
+        "entityIds": [
+          "6a4fd73fe71115b9f9bc8f1d",
+          "6a4fd73fe71115b9f9bc8f1e"
+        ],
+        "originFleetingNoteId": "6a4fd73fe71115b9f9bc8f1b",
+        "futureUse": "Can guide the poem's central metaphor and voice.",
+        "questions": "Does the park speak directly, or does the speaker hear meaning through what the park contains?",
+        "tags": [
+          "poetry",
+          "park",
+          "voice",
+          "setting-as-speaker"
+        ],
+        "status": "active",
+        "isFavorite": false,
+        "createdAt": "2026-07-09T17:15:43.836Z",
+        "updatedAt": "2026-07-10T19:15:43.840Z"
+      },
+      {
+        "_id": "6a4fd73fe71115b9f9bc8f21",
+        "userId": "69af088d21b4580a8cb6614b",
+        "projectId": null,
+        "zettelId": "ZTL-POEM-THEM-PARKVOICE-001",
+        "title": "Public spaces can hold private emotion",
+        "mainIdea": "A public place can carry private emotion without exposing it openly.",
+        "body": "A park is shared by many people, but each person may leave behind a private emotional trace. The poem can use the park as a place where public quiet and private feeling overlap.",
+        "subtype": "THEM",
+        "sourceIds": [
+          "6a4fd73fe71115b9f9bc8f1c"
+        ],
+        "entityIds": [
+          "6a4fd73fe71115b9f9bc8f1d",
+          "6a4fd73fe71115b9f9bc8f1f"
+        ],
+        "originFleetingNoteId": null,
+        "futureUse": "Useful for theme mapping around place, memory, solitude, and observation.",
+        "questions": "What private emotions does the park hold without naming them directly?",
+        "tags": [
+          "poetry",
+          "public-space",
+          "private-emotion",
+          "memory"
+        ],
+        "status": "active",
+        "isFavorite": false,
+        "createdAt": "2026-07-09T17:15:43.836Z",
+        "updatedAt": "2026-07-09T17:15:43.836Z"
+      },
+      {
+        "_id": "6a4fd73fe71115b9f9bc8f22",
+        "userId": "69af088d21b4580a8cb6614b",
+        "projectId": null,
+        "zettelId": "ZTL-POEM-IMAGE-PARKVOICE-001",
+        "title": "Natural details can act as a chorus",
+        "mainIdea": "The park's natural details can speak together like a chorus.",
+        "body": "Trees, grass, birds, wind, paths, and benches can carry fragments of voice. Instead of one direct speaker, the poem can let many small details build the park's presence.",
+        "subtype": "THEM",
+        "sourceIds": [
+          "6a4fd73fe71115b9f9bc8f1c"
+        ],
+        "entityIds": [
+          "6a4fd73fe71115b9f9bc8f1d"
+        ],
+        "originFleetingNoteId": null,
+        "futureUse": "Can shape imagery, stanza movement, and visual pacing.",
+        "questions": "Which details should carry sound, silence, memory, or movement?",
+        "tags": [
+          "poetry",
+          "imagery",
+          "park",
+          "chorus"
+        ],
+        "status": "active",
+        "isFavorite": false,
+        "createdAt": "2026-07-09T17:15:43.836Z",
+        "updatedAt": "2026-07-10T19:27:37.690Z"
+      },
+      {
+        "_id": "6a4fd73fe71115b9f9bc8f23",
+        "userId": "69af088d21b4580a8cb6614b",
+        "projectId": null,
+        "zettelId": "ZTL-POEM-IDEA-PARKVOICE-001",
+        "title": "Listening can become the poem's action",
+        "mainIdea": "The poem's movement can come from listening rather than doing.",
+        "body": "The speaker does not need to control the scene. The poem can move by paying attention to what the park reveals through sound, stillness, repeated visits, and unnoticed details.",
+        "subtype": "IDEA",
+        "sourceIds": [
+          "6a4fd73fe71115b9f9bc8f1c"
+        ],
+        "entityIds": [
+          "6a4fd73fe71115b9f9bc8f1e"
+        ],
+        "originFleetingNoteId": null,
+        "futureUse": "Can help keep the poem restrained, observational, and reflective.",
+        "questions": "What does the speaker learn by listening that they would miss by speaking first?",
+        "tags": [
+          "poetry",
+          "listening",
+          "voice",
+          "observation"
+        ],
+        "status": "active",
+        "isFavorite": false,
+        "createdAt": "2026-07-09T17:15:43.836Z",
+        "updatedAt": "2026-07-10T19:26:30.181Z"
+      },
+      {
+        "_id": "6a4fd73fe71115b9f9bc8f24",
+        "userId": "69af088d21b4580a8cb6614b",
+        "projectId": null,
+        "zettelId": "ZTL-POEM-THEM-PARKVOICE-002",
+        "title": "A place can remember what people leave behind",
+        "mainIdea": "The park can hold traces of people after they leave.",
+        "body": "The park's voice can be built from what remains: footsteps, worn paths, empty benches, interrupted conversations, weather, and the feeling of lives passing through the same place.",
+        "subtype": "6a4fd2476f1b448a362fb313",
+        "sourceIds": [
+          "6a4fd73fe71115b9f9bc8f1c"
+        ],
+        "entityIds": [
+          "6a4fd73fe71115b9f9bc8f1d",
+          "6a4fd73fe71115b9f9bc8f1f",
+          "6a4fd73fe71115b9f9bc8f1e"
+        ],
+        "originFleetingNoteId": "6a4fd73fe71115b9f9bc8f1b",
+        "futureUse": [
+          "Can connect this poem to broader themes of memory, witness, solitude, and place."
+        ],
+        "questions": [
+          "What does the park remember, and what does it refuse to say plainly?"
+        ],
+        "tags": [
+          "poetry",
+          "memory",
+          "place",
+          "witness"
+        ],
+        "status": "active",
+        "isFavorite": false,
+        "createdAt": "2026-07-09T17:15:43.836Z",
+        "updatedAt": "2026-07-11T07:35:10.760Z"
+      }
+    ],
+    "fleetingNotes": [
+      {
+        "_id": "6a4fd73fe71115b9f9bc8f1b",
+        "userId": "69af088d21b4580a8cb6614b",
+        "fleetingNoteId": "FLT-POEM-PARKVOICE-001",
+        "rawCapture": "The Voice of the Park",
+        "captureType": "PHRASE",
+        "possibleProject": [
+          "Poetry"
+        ],
+        "processLaterAs": "ENT",
+        "notes": [
+          "Seed idea for a poem where the park functions as more than setting; it becomes a speaking presence."
+        ],
+        "status": "processed",
+        "processedInto": "ENT-POEM-PARKVOICE-001",
+        "hideFromInbox": false,
+        "createdAt": "2026-07-09T17:15:43.836Z",
+        "updatedAt": "2026-07-11T09:03:16.091Z"
+      },
+      {
+        "_id": "6a4fd7a1b8ffb40105c0010f",
+        "userId": "69af088d21b4580a8cb6614b",
+        "fleetingNoteId": "FLT-POEM-SHOTGUNSQUIRREL-001",
+        "captureType": "POEM-IDEA",
+        "createdAt": "2026-07-09T17:17:21.681Z",
+        "hideFromInbox": true,
+        "notes": [
+          "New poem idea: Shotgun Squieral. The squirrel shot the bird after the bird stole his food."
+        ],
+        "possibleProject": [
+          "Poetry"
+        ],
+        "processLaterAs": "ENT",
+        "processedInto": "ENT-POEM-SHOTGUNSQUIRREL-001",
+        "rawCapture": "Shotgun Squirrel",
+        "status": "processed",
+        "updatedAt": "2026-07-11T09:03:43.354Z"
+      }
+    ],
+    "sources": [
+      {
+        "_id": "6a4fd73fe71115b9f9bc8f1c",
+        "userId": "69af088d21b4580a8cb6614b",
+        "projectId": "6a520d561696245ddcfc5336",
+        "sourceId": "SRC-POEM-MANU-PARKVOICE-001",
+        "title": "The Voice of the Park",
+        "sourceType": "MANU",
+        "author": "Darrell Barrow",
+        "creator": "Darrell Barrow",
+        "website": "",
+        "publisher": "",
+        "originalUrl": "",
+        "filePath": "",
+        "accessDate": "2026-07-10T00:00:00.000Z",
+        "archiveType": "Poem",
+        "archiveLocation": "",
+        "copiedText": "",
+        "sourceSummary": "Original poem manuscript or draft source for The Voice of the Park.",
+        "linkedEntities": [
+          "6a4fd73fe71115b9f9bc8f1d",
+          "6a4fd73fe71115b9f9bc8f1e",
+          "6a4fd73fe71115b9f9bc8f1f"
+        ],
+        "linkedZettels": [
+          "6a4fd73fe71115b9f9bc8f20",
+          "6a4fd73fe71115b9f9bc8f21",
+          "6a4fd73fe71115b9f9bc8f22",
+          "6a4fd73fe71115b9f9bc8f23",
+          "6a4fd73fe71115b9f9bc8f24"
+        ],
+        "tags": [
+          "poetry",
+          "park",
+          "voice",
+          "place",
+          "memory"
+        ],
+        "status": "active",
+        "createdAt": "2026-07-09T17:15:43.836Z",
+        "updatedAt": "2026-07-11T09:47:24.162Z",
+        "entityIds": [
+          "6a4fd73fe71115b9f9bc8f1d",
+          "6a4fd73fe71115b9f9bc8f1f",
+          "6a4fd73fe71115b9f9bc8f1e"
+        ],
+        "subtype": "MANU",
+        "summary": "",
+        "subtypeId": "6a4fd2476f1b448a362fb308"
+      }
+    ],
+    "entities": [
+      {
+        "_id": "6a4fd73fe71115b9f9bc8f1d",
+        "userId": "69af088d21b4580a8cb6614b",
+        "entityId": "ENT-POEM-SYMB-PARK-001",
+        "name": "Park",
+        "entityType": "SYMB",
+        "aliases": [
+          "the park"
+        ],
+        "projects": [
+          "Poetry"
+        ],
+        "description": "A public natural space that can function as setting, symbol, witness, and speaker.",
+        "role": "Central symbolic place in The Voice of the Park.",
+        "linkedSources": [
+          "6a4fd73fe71115b9f9bc8f1c"
+        ],
+        "linkedZettels": [
+          "6a4fd73fe71115b9f9bc8f24",
+          "6a4fd73fe71115b9f9bc8f22",
+          "6a4fd73fe71115b9f9bc8f23",
+          "6a4fd73fe71115b9f9bc8f20",
+          "6a4fd73fe71115b9f9bc8f21"
+        ],
+        "linkedOutputs": [
+          "6a4fd73fe71115b9f9bc8f2a"
+        ],
+        "tags": [
+          "park",
+          "place",
+          "symbol"
+        ],
+        "status": "active",
+        "createdAt": "2026-07-09T17:15:43.836Z",
+        "updatedAt": "2026-07-11T09:06:26.826Z",
+        "code": "",
+        "linkedOutputIds": [],
+        "linkedZettelIds": [],
+        "projectId": null,
+        "relatedSourceIds": [],
+        "roleUse": "Park"
+      },
+      {
+        "_id": "6a4fd73fe71115b9f9bc8f1e",
+        "userId": "69af088d21b4580a8cb6614b",
+        "entityId": "ENT-POEM-SYMB-VOICE-001",
+        "name": "Voice",
+        "entityType": "SYMB",
+        "aliases": [
+          "speech",
+          "sound",
+          "witness"
+        ],
+        "projects": [
+          "Poetry"
+        ],
+        "description": "A symbolic voice that lets the place speak, remember, observe, or reveal meaning.",
+        "role": "Core motif in The Voice of the Park.",
+        "linkedSources": [
+          "6a4fd73fe71115b9f9bc8f1c"
+        ],
+        "linkedZettels": [
+          "6a4fd73fe71115b9f9bc8f20",
+          "6a4fd73fe71115b9f9bc8f23"
+        ],
+        "linkedOutputs": [
+          "6a4fd73fe71115b9f9bc8f2a"
+        ],
+        "tags": [
+          "voice",
+          "sound",
+          "symbol"
+        ],
+        "status": "active",
+        "createdAt": "2026-07-09T17:15:43.836Z",
+        "updatedAt": "2026-07-11T09:05:52.568Z",
+        "code": "",
+        "linkedOutputIds": [],
+        "linkedZettelIds": [],
+        "projectId": null,
+        "relatedSourceIds": [],
+        "roleUse": "Emotion of the park"
+      },
+      {
+        "_id": "6a4fd73fe71115b9f9bc8f1f",
+        "userId": "69af088d21b4580a8cb6614b",
+        "entityId": "ENT-POEM-CONC-PUBLICSPACE-001",
+        "name": "Public Space",
+        "entityType": "CONC",
+        "aliases": [
+          "shared place",
+          "common space"
+        ],
+        "projects": [
+          "Poetry"
+        ],
+        "description": "A shared place that holds many private moments without belonging fully to one person.",
+        "role": "Conceptual layer behind the park image.",
+        "linkedSources": [
+          "6a4fd73fe71115b9f9bc8f1c"
+        ],
+        "linkedZettels": [
+          "6a4fd73fe71115b9f9bc8f21",
+          "6a4fd73fe71115b9f9bc8f24"
+        ],
+        "linkedOutputs": [
+          "6a4fd73fe71115b9f9bc8f2a"
+        ],
+        "tags": [
+          "public-space",
+          "place",
+          "memory"
+        ],
+        "status": "active",
+        "createdAt": "2026-07-09T17:15:43.836Z",
+        "updatedAt": "2026-07-11T09:06:15.791Z",
+        "code": "",
+        "linkedOutputIds": [],
+        "linkedZettelIds": [],
+        "projectId": null,
+        "relatedSourceIds": [],
+        "roleUse": "Public space as entity"
+      }
+    ],
+    "connections": [
+      {
+        "_id": "6a4fd73fe71115b9f9bc8f25",
+        "userId": "69af088d21b4580a8cb6614b",
+        "connectionId": "LNK-POEM-PARKVOICE-001",
+        "fromRecord": "6a4fd73fe71115b9f9bc8f20",
+        "fromRecordType": "ZTL",
+        "toRecord": "6a4fd73fe71115b9f9bc8f21",
+        "toRecordType": "ZTL",
+        "relation": "expands",
+        "reason": "The park as a speaking presence expands into the idea that shared places can hold private emotion.",
+        "strength": "strong",
+        "status": "active",
+        "createdAt": "2026-07-09T17:15:43.836Z",
+        "updatedAt": "2026-07-09T17:15:43.836Z"
+      },
+      {
+        "_id": "6a4fd73fe71115b9f9bc8f26",
+        "userId": "69af088d21b4580a8cb6614b",
+        "connectionId": "LNK-POEM-PARKVOICE-002",
+        "fromRecord": "6a4fd73fe71115b9f9bc8f20",
+        "fromRecordType": "ZTL",
+        "toRecord": "6a4fd73fe71115b9f9bc8f22",
+        "toRecordType": "ZTL",
+        "relation": "expands",
+        "reason": "The park's voice can be expressed through natural details instead of direct explanation.",
+        "strength": "strong",
+        "status": "active",
+        "createdAt": "2026-07-09T17:15:43.836Z",
+        "updatedAt": "2026-07-09T17:15:43.836Z"
+      },
+      {
+        "_id": "6a4fd73fe71115b9f9bc8f27",
+        "userId": "69af088d21b4580a8cb6614b",
+        "connectionId": "LNK-POEM-PARKVOICE-003",
+        "fromRecord": "6a4fd73fe71115b9f9bc8f23",
+        "fromRecordType": "ZTL",
+        "toRecord": "6a4fd73fe71115b9f9bc8f20",
+        "toRecordType": "ZTL",
+        "relation": "supports",
+        "reason": "Listening supports the central metaphor because the speaker must receive the park's voice rather than impose meaning on it.",
+        "strength": "medium",
+        "status": "active",
+        "createdAt": "2026-07-09T17:15:43.836Z",
+        "updatedAt": "2026-07-09T17:15:43.836Z"
+      },
+      {
+        "_id": "6a4fd73fe71115b9f9bc8f28",
+        "userId": "69af088d21b4580a8cb6614b",
+        "connectionId": "LNK-POEM-PARKVOICE-004",
+        "fromRecord": "6a4fd73fe71115b9f9bc8f24",
+        "fromRecordType": "ZTL",
+        "toRecord": "6a4fd73fe71115b9f9bc8f21",
+        "toRecordType": "ZTL",
+        "relation": "same pattern as",
+        "reason": "Both notes treat place as a holder of emotion and memory.",
+        "strength": "strong",
+        "status": "active",
+        "createdAt": "2026-07-09T17:15:43.836Z",
+        "updatedAt": "2026-07-09T17:15:43.836Z"
+      }
+    ],
+    "structureNotes": [
+      {
+        "_id": "6a4fd73fe71115b9f9bc8f29",
+        "userId": "69af088d21b4580a8cb6614b",
+        "structureNoteId": "STR-POEM-PARKVOICE-001",
+        "title": "The Voice of the Park Structure Map",
+        "purpose": "Arrange the poem's core zettels into a clear movement from place, to listening, to memory, to voice.",
+        "projects": [
+          "Poetry"
+        ],
+        "orderedZettels": [
+          "6a4fd73fe71115b9f9bc8f20",
+          "6a4fd73fe71115b9f9bc8f23",
+          "6a4fd73fe71115b9f9bc8f22",
+          "6a4fd73fe71115b9f9bc8f21",
+          "6a4fd73fe71115b9f9bc8f24"
+        ],
+        "notes": "Possible movement: the park is introduced as presence; the speaker listens; natural details gather into voice; public space holds private emotion; the park remembers what people leave behind.",
+        "possibleOutput": "OUT-POEM-PARKVOICE-001",
+        "status": "draft",
+        "createdAt": "2026-07-09T17:15:43.836Z",
+        "updatedAt": "2026-07-09T17:15:43.836Z"
+      }
+    ],
+    "outputs": [
+      {
+        "_id": "6a4fd73fe71115b9f9bc8f2a",
+        "userId": "69af088d21b4580a8cb6614b",
+        "outputId": "OUT-POEM-PARKVOICE-001",
+        "title": "The Voice of the Park",
+        "outputType": "POEM",
+        "purpose": "A poem centered on the park as a speaking witness to memory, movement, solitude, and shared human presence.",
+        "audience": "Poetry readers",
+        "usesStructureNote": "6a4fd73fe71115b9f9bc8f29",
+        "usesZettels": [
+          "6a4fd73fe71115b9f9bc8f20",
+          "6a4fd73fe71115b9f9bc8f23",
+          "6a4fd73fe71115b9f9bc8f22",
+          "6a4fd73fe71115b9f9bc8f21",
+          "6a4fd73fe71115b9f9bc8f24"
+        ],
+        "draftContent": "",
+        "status": "published",
+        "publishedLocation": "",
+        "tags": [
+          "poetry",
+          "park",
+          "voice",
+          "memory",
+          "place"
+        ],
+        "createdAt": "2026-07-09T17:15:43.836Z",
+        "updatedAt": "2026-07-11T07:42:42.715Z",
+        "body": "The Voices of the Park\nDarrell Barrow\n© 6/30/2026\n\nGreen spaces,\nas they're called.\nParks. \n\nEach carries a unique color;\ntimbre.\n\t\t\t\t\t\t\t\t\t\t\nIts emotions vary\nthroughout the day.\n\nThe park is\nthe canvas.\n\nMornings,\ncool and open.\n\nA few exercise\nin the fresh air.\n\nPassersby stop with breakfast\nbefore gathering for work—\nsometimes.\n\nTraffic flows in syncopation\nwith the stoplight.\n\nLight high in the sky.\nHumidity moderated\nby the trees.\n\nVoices rise.\nAccents mix.\nChildren laugh.\nChess tables fill.\n\nSome—\nsmoke weed.\nOthers converse and rest.\n\nWind carries:\nWeed,\nFood,\nBarbecue.\nOccasional stench.\nSewer.\nGarbage.\n\nOccasionally,\nsoccer practice takes the field.\nPublic events assemble.\n\"Shakespeare\nin the park.\"\nMusic plays in the background\nlike Goldilocks,\nnot too loud,\nnot too soft,\njust right.\n\nLight lowers.\nBackpacks pass through.\nOthers arrive with bicycles,\nbasketballs,\nscooters.\n\nChess tables fill\nwith teenagers\ntalking about the day.\n\nA group leaves,\nanother takes the seats.\nA chorus of voices,\nthe choir of youth.\n\nLight fades.\nThe air lighter.\nReprieve\nechoes through the trees.\n\nPaper pause,\nbook closed—\nTime to go home.\n",
+        "description": "How the park has many voices throughout the day.",
+        "entityIds": [
+          "6a4fd73fe71115b9f9bc8f1d",
+          "6a4fd73fe71115b9f9bc8f1f",
+          "6a4fd73fe71115b9f9bc8f1e"
+        ],
+        "isFavorite": true,
+        "projectId": null,
+        "sourceIds": [
+          "6a4fd73fe71115b9f9bc8f1c"
+        ],
+        "structureNoteIds": [
+          "6a4fd73fe71115b9f9bc8f29"
+        ],
+        "zettelIds": [
+          "6a4fd73fe71115b9f9bc8f24",
+          "6a4fd73fe71115b9f9bc8f22",
+          "6a4fd73fe71115b9f9bc8f23",
+          "6a4fd73fe71115b9f9bc8f20",
+          "6a4fd73fe71115b9f9bc8f21"
+        ]
+      },
+      {
+        "_id": "6a51a09f0d95278e8a52cd7f",
+        "userId": "69af088d21b4580a8cb6614b",
+        "projectId": null,
+        "outputId": "OUT-INBOX-ARTICLE-001",
+        "title": "Shotgun Squieral",
+        "outputType": "POEM",
+        "description": "New poem idea: Shotgun Squirrel. The squirrel shot the bird after the bird stole his food.",
+        "body": "New poem idea: Shotgun Squieral. The squirrel shot the bird after the bird stole his food.",
+        "zettelIds": [],
+        "sourceIds": [],
+        "entityIds": [],
+        "structureNoteIds": [],
+        "tags": [],
+        "status": "draft",
+        "isFavorite": false,
+        "createdAt": "2026-07-11T01:47:11.087Z",
+        "updatedAt": "2026-07-11T02:47:37.207Z",
+        "__v": 0
+      }
+    ],
+    "projects": [
+      {
+        "_id": "6a520d561696245ddcfc5336",
+        "userId": "69af088d21b4580a8cb6614b",
+        "projectId": "PRJ-VOICEOFTHEPARK-PROJECT-THEVOIOFTHEP-001",
+        "title": "The Voice of the Park",
+        "code": "VOICEOFTHEPARK",
+        "typeId": "6a4fd1616f1b448a362fb2ef",
+        "description": "",
+        "status": "active",
+        "tags": [],
+        "isFavorite": false,
+        "isArchived": false,
+        "createdAt": "2026-07-11T09:31:02.597Z",
+        "updatedAt": "2026-07-11T09:47:02.698Z",
+        "__v": 0
+      }
+    ],
+    "attachments": [],
+    "tags": [],
+    "revisions": [],
+    "prefixes": [
+      {
+        "_id": "6a4fd2b66f1b448a362fb324",
+        "userId": "69af088d21b4580a8cb6614b",
+        "name": "Project / Collection",
+        "code": "PRJ",
+        "recordType": "PRJ",
+        "description": "Work area or broad collection.",
+        "isActive": true
+      },
+      {
+        "_id": "6a4fd2b66f1b448a362fb325",
+        "userId": "69af088d21b4580a8cb6614b",
+        "name": "Fleeting / Inbox",
+        "code": "FLT",
+        "recordType": "FLT",
+        "description": "Quick raw capture before processing.",
+        "isActive": true
+      },
+      {
+        "_id": "6a4fd2b66f1b448a362fb326",
+        "userId": "69af088d21b4580a8cb6614b",
+        "name": "Archived Source",
+        "code": "SRC",
+        "recordType": "SRC",
+        "description": "Saved original material for offline access and citation.",
+        "isActive": true
+      },
+      {
+        "_id": "6a4fd2b66f1b448a362fb327",
+        "userId": "69af088d21b4580a8cb6614b",
+        "name": "Entity",
+        "code": "ENT",
+        "recordType": "ENT",
+        "description": "Reusable subject identity.",
+        "isActive": true
+      },
+      {
+        "_id": "6a4fd2b66f1b448a362fb328",
+        "userId": "69af088d21b4580a8cb6614b",
+        "name": "Zettel",
+        "code": "ZTL",
+        "recordType": "ZTL",
+        "description": "One processed idea written in your own words.",
+        "isActive": true
+      },
+      {
+        "_id": "6a4fd2b66f1b448a362fb329",
+        "userId": "69af088d21b4580a8cb6614b",
+        "name": "Connection",
+        "code": "LNK",
+        "recordType": "LNK",
+        "description": "Reasoned relationship between records.",
+        "isActive": true
+      },
+      {
+        "_id": "6a4fd2b66f1b448a362fb32a",
+        "userId": "69af088d21b4580a8cb6614b",
+        "name": "Structure Note",
+        "code": "STR",
+        "recordType": "STR",
+        "description": "Map or path through related zettels.",
+        "isActive": true
+      },
+      {
+        "_id": "6a4fd2b66f1b448a362fb32b",
+        "userId": "69af088d21b4580a8cb6614b",
+        "name": "Output",
+        "code": "OUT",
+        "recordType": "OUT",
+        "description": "Finished or draft work created from the system.",
+        "isActive": true
+      }
+    ],
+    "idSequences": [
+      {
+        "_id": "6a51a09f0d95278e8a52cd7e",
+        "userId": "69af088d21b4580a8cb6614b",
+        "recordType": "OUT",
+        "projectCode": "INBOX",
+        "subtypeCode": "ARTICLE",
+        "subjectCode": "",
+        "nextNumber": 2,
+        "createdAt": "2026-07-11T01:47:11.083Z",
+        "updatedAt": "2026-07-11T01:47:11.083Z",
+        "__v": 0
+      },
+      {
+        "_id": "6a520d561696245ddcfc5335",
+        "userId": "69af088d21b4580a8cb6614b",
+        "recordType": "PRJ",
+        "projectCode": "VOICEOFTHEPARK",
+        "subtypeCode": "PROJECT",
+        "subjectCode": "THEVOIOFTHEP",
+        "nextNumber": 2,
+        "createdAt": "2026-07-11T09:31:02.584Z",
+        "updatedAt": "2026-07-11T09:31:02.584Z",
+        "__v": 0
+      }
+    ],
+    "projectTypes": [
+      {
+        "_id": "6a4fd1616f1b448a362fb2ec",
+        "userId": "69af088d21b4580a8cb6614b",
+        "name": "Research",
+        "code": "RESEARCH",
+        "description": "General research projects, source collection, study notes, and knowledge development.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd1616f1b448a362fb2ed",
+        "userId": "69af088d21b4580a8cb6614b",
+        "name": "Scripture Study",
+        "code": "SCRIPTURE",
+        "description": "Bible study, theological topics, passages, teaching notes, and study maps.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd1616f1b448a362fb2ee",
+        "userId": "69af088d21b4580a8cb6614b",
+        "name": "Culinary",
+        "code": "CULINARY",
+        "description": "Recipes, ingredient research, kitchen tests, food writing, menus, and culinary development.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd1616f1b448a362fb2ef",
+        "userId": "69af088d21b4580a8cb6614b",
+        "name": "Writing",
+        "code": "WRITING",
+        "description": "Fiction, characters, scenes, outlines, chapters, drafts, and story development.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd1616f1b448a362fb2f0",
+        "userId": "69af088d21b4580a8cb6614b",
+        "name": "Poetry",
+        "code": "POETRY",
+        "description": "Poems, phrases, images, emotional movements, structure notes, and finished poetic works.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd1616f1b448a362fb2f1",
+        "userId": "69af088d21b4580a8cb6614b",
+        "name": "Photography",
+        "code": "PHOTOGRAPHY",
+        "description": "Photo projects, visual references, symbols, locations, captions, and photo essays.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd1616f1b448a362fb2f2",
+        "userId": "69af088d21b4580a8cb6614b",
+        "name": "Blogging",
+        "code": "BLOGGING",
+        "description": "Blog ideas, source notes, post outlines, article drafts, and completed posts.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd1616f1b448a362fb2f3",
+        "userId": "69af088d21b4580a8cb6614b",
+        "name": "Technology",
+        "code": "TECHNOLOGY",
+        "description": "Software, hardware, coding, troubleshooting, systems, and technical documentation.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd1616f1b448a362fb2f4",
+        "userId": "69af088d21b4580a8cb6614b",
+        "name": "Business",
+        "code": "BUSINESS",
+        "description": "Business planning, services, clients, workflows, pricing, operations, and strategy.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd1616f1b448a362fb2f5",
+        "userId": "69af088d21b4580a8cb6614b",
+        "name": "Personal Knowledge System",
+        "code": "PKS",
+        "description": "System design, Zettelkasten workflow, app structure, templates, prefixes, and records.",
+        "status": "active"
+      }
+    ],
+    "relationTypes": [],
+    "recordSubtypes": [
+      {
+        "_id": "6a4fd2476f1b448a362fb2f8",
+        "userId": "69af088d21b4580a8cb6614b",
+        "recordType": "ENT",
+        "name": "Character",
+        "code": "CHAR",
+        "description": "Reusable fictional character identity.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd2476f1b448a362fb2f9",
+        "userId": "69af088d21b4580a8cb6614b",
+        "recordType": "ENT",
+        "name": "Person",
+        "code": "PERS",
+        "description": "Real person or historical person identity.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd2476f1b448a362fb2fa",
+        "userId": "69af088d21b4580a8cb6614b",
+        "recordType": "ENT",
+        "name": "Figure",
+        "code": "FIG",
+        "description": "Biblical, symbolic, mythic, or notable figure.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd2476f1b448a362fb2fb",
+        "userId": "69af088d21b4580a8cb6614b",
+        "recordType": "ENT",
+        "name": "Place",
+        "code": "PLAC",
+        "description": "Location, setting, region, or meaningful place.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd2476f1b448a362fb2fc",
+        "userId": "69af088d21b4580a8cb6614b",
+        "recordType": "ENT",
+        "name": "Concept",
+        "code": "CONC",
+        "description": "Reusable idea, doctrine, theme, or abstract subject.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd2476f1b448a362fb2fd",
+        "userId": "69af088d21b4580a8cb6614b",
+        "recordType": "ENT",
+        "name": "Symbol",
+        "code": "SYMB",
+        "description": "Recurring image, symbol, motif, or visual meaning.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd2476f1b448a362fb2fe",
+        "userId": "69af088d21b4580a8cb6614b",
+        "recordType": "ENT",
+        "name": "Ingredient",
+        "code": "INGR",
+        "description": "Food ingredient or culinary subject.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd2476f1b448a362fb2ff",
+        "userId": "69af088d21b4580a8cb6614b",
+        "recordType": "ENT",
+        "name": "Technique",
+        "code": "TECH",
+        "description": "Method, skill, process, or practical technique.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd2476f1b448a362fb300",
+        "userId": "69af088d21b4580a8cb6614b",
+        "recordType": "ENT",
+        "name": "Term",
+        "code": "TERM",
+        "description": "Defined term, phrase, keyword, or vocabulary item.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd2476f1b448a362fb301",
+        "userId": "69af088d21b4580a8cb6614b",
+        "recordType": "ENT",
+        "name": "Organization",
+        "code": "ORG",
+        "description": "Group, institution, company, ministry, or organization.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd2476f1b448a362fb302",
+        "userId": "69af088d21b4580a8cb6614b",
+        "recordType": "SRC",
+        "name": "Web Page",
+        "code": "WEB",
+        "description": "Archived web page, online reference, or saved URL.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd2476f1b448a362fb303",
+        "userId": "69af088d21b4580a8cb6614b",
+        "recordType": "SRC",
+        "name": "Article",
+        "code": "ART",
+        "description": "Article, essay, post, or written online source.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd2476f1b448a362fb304",
+        "userId": "69af088d21b4580a8cb6614b",
+        "recordType": "SRC",
+        "name": "Video",
+        "code": "VID",
+        "description": "Video source, lecture, sermon, tutorial, or presentation.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd2476f1b448a362fb305",
+        "userId": "69af088d21b4580a8cb6614b",
+        "recordType": "SRC",
+        "name": "Book",
+        "code": "BOOK",
+        "description": "Book source, chapter, excerpt, or publication reference.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd2476f1b448a362fb306",
+        "userId": "69af088d21b4580a8cb6614b",
+        "recordType": "SRC",
+        "name": "Bible Passage",
+        "code": "BIBL",
+        "description": "Scripture passage, translation note, citation, or commentary source.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd2476f1b448a362fb307",
+        "userId": "69af088d21b4580a8cb6614b",
+        "recordType": "SRC",
+        "name": "Recipe",
+        "code": "RECIPE",
+        "description": "Recipe source, kitchen test, class note, or culinary reference.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd2476f1b448a362fb308",
+        "userId": "69af088d21b4580a8cb6614b",
+        "recordType": "SRC",
+        "name": "Manuscript",
+        "code": "MANU",
+        "description": "Manuscript, draft, outline, scene, chapter, or original writing source.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd2476f1b448a362fb309",
+        "userId": "69af088d21b4580a8cb6614b",
+        "recordType": "SRC",
+        "name": "Profile",
+        "code": "PROF",
+        "description": "Full profile, character sheet, entity details, or background document.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd2476f1b448a362fb30a",
+        "userId": "69af088d21b4580a8cb6614b",
+        "recordType": "SRC",
+        "name": "PDF",
+        "code": "PDF",
+        "description": "PDF document, report, scan, paper, or saved file source.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd2476f1b448a362fb30b",
+        "userId": "69af088d21b4580a8cb6614b",
+        "recordType": "SRC",
+        "name": "Observation",
+        "code": "OBS",
+        "description": "Personal observation, field note, test note, or direct experience.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd2476f1b448a362fb30c",
+        "userId": "69af088d21b4580a8cb6614b",
+        "recordType": "ZTL",
+        "name": "Idea",
+        "code": "IDEA",
+        "description": "One processed idea written in your own words.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd2476f1b448a362fb30d",
+        "userId": "69af088d21b4580a8cb6614b",
+        "recordType": "ZTL",
+        "name": "Question",
+        "code": "QUES",
+        "description": "Processed question, inquiry, or issue needing further study.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd2476f1b448a362fb30e",
+        "userId": "69af088d21b4580a8cb6614b",
+        "recordType": "ZTL",
+        "name": "Theme",
+        "code": "THEM",
+        "description": "Theme, pattern, recurring concern, or interpretive thread.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd2476f1b448a362fb30f",
+        "userId": "69af088d21b4580a8cb6614b",
+        "recordType": "ZTL",
+        "name": "Definition",
+        "code": "DEF",
+        "description": "Definition, clarified meaning, or explanation of a term.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd2476f1b448a362fb310",
+        "userId": "69af088d21b4580a8cb6614b",
+        "recordType": "ZTL",
+        "name": "Argument",
+        "code": "ARG",
+        "description": "Claim, argument, position, reasoning, or interpretation.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd2476f1b448a362fb311",
+        "userId": "69af088d21b4580a8cb6614b",
+        "recordType": "ZTL",
+        "name": "Method",
+        "code": "METH",
+        "description": "Method, process, workflow, or repeatable approach.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd2476f1b448a362fb312",
+        "userId": "69af088d21b4580a8cb6614b",
+        "recordType": "ZTL",
+        "name": "Principle",
+        "code": "PRIN",
+        "description": "Principle, rule, lesson, or general insight.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd2476f1b448a362fb313",
+        "userId": "69af088d21b4580a8cb6614b",
+        "recordType": "ZTL",
+        "name": "Seed",
+        "code": "SEED",
+        "description": "Developed seed idea for future writing, study, or creation.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd2476f1b448a362fb314",
+        "userId": "69af088d21b4580a8cb6614b",
+        "recordType": "STR",
+        "name": "Study Map",
+        "code": "STUDYMAP",
+        "description": "Ordered path for Bible study, research study, or learning sequence.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd2476f1b448a362fb315",
+        "userId": "69af088d21b4580a8cb6614b",
+        "recordType": "STR",
+        "name": "Blog Map",
+        "code": "BLOGMAP",
+        "description": "Outline or ordered path for a blog post.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd2476f1b448a362fb316",
+        "userId": "69af088d21b4580a8cb6614b",
+        "recordType": "STR",
+        "name": "Character Map",
+        "code": "CHARMAP",
+        "description": "Path through character-related zettels, entities, conflicts, and themes.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd2476f1b448a362fb317",
+        "userId": "69af088d21b4580a8cb6614b",
+        "recordType": "STR",
+        "name": "Research Map",
+        "code": "RESEARCHMAP",
+        "description": "Ordered research path through sources, zettels, entities, and questions.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd2476f1b448a362fb318",
+        "userId": "69af088d21b4580a8cb6614b",
+        "recordType": "STR",
+        "name": "Recipe Map",
+        "code": "RECIPEMAP",
+        "description": "Recipe, menu-development, culinary testing, or technique structure.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd2476f1b448a362fb319",
+        "userId": "69af088d21b4580a8cb6614b",
+        "recordType": "STR",
+        "name": "Theme Map",
+        "code": "THEMEMAP",
+        "description": "Path through related themes, symbols, images, or recurring patterns.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd2476f1b448a362fb31a",
+        "userId": "69af088d21b4580a8cb6614b",
+        "recordType": "OUT",
+        "name": "Blog Post",
+        "code": "BLOG",
+        "description": "Finished or draft blog post built from sources, zettels, or structure notes.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd2476f1b448a362fb31b",
+        "userId": "69af088d21b4580a8cb6614b",
+        "recordType": "OUT",
+        "name": "Study",
+        "code": "STUDY",
+        "description": "Completed study, teaching note, lesson, or study document.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd2476f1b448a362fb31c",
+        "userId": "69af088d21b4580a8cb6614b",
+        "recordType": "OUT",
+        "name": "Article",
+        "code": "ARTICLE",
+        "description": "Finished or draft article.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd2476f1b448a362fb31d",
+        "userId": "69af088d21b4580a8cb6614b",
+        "recordType": "OUT",
+        "name": "Essay",
+        "code": "ESSAY",
+        "description": "Finished or draft essay.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd2476f1b448a362fb31e",
+        "userId": "69af088d21b4580a8cb6614b",
+        "recordType": "OUT",
+        "name": "Recipe",
+        "code": "RECIPE",
+        "description": "Finished recipe, tested recipe, or recipe note.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd2476f1b448a362fb31f",
+        "userId": "69af088d21b4580a8cb6614b",
+        "recordType": "OUT",
+        "name": "Poem",
+        "code": "POEM",
+        "description": "Finished or draft poem.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd2476f1b448a362fb320",
+        "userId": "69af088d21b4580a8cb6614b",
+        "recordType": "OUT",
+        "name": "Chapter",
+        "code": "CHAPTER",
+        "description": "Finished or draft book chapter.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd2476f1b448a362fb321",
+        "userId": "69af088d21b4580a8cb6614b",
+        "recordType": "OUT",
+        "name": "Menu",
+        "code": "MENU",
+        "description": "Finished menu, menu plan, or menu-development document.",
+        "status": "active"
+      },
+      {
+        "_id": "6a4fd2476f1b448a362fb322",
+        "userId": "69af088d21b4580a8cb6614b",
+        "recordType": "OUT",
+        "name": "Guide",
+        "code": "GUIDE",
+        "description": "Finished guide, reference document, or instructional work.",
+        "status": "active"
+      },
+      {
+        "_id": "6a5204945a6f6d254c5039d9",
+        "userId": "69af088d21b4580a8cb6614b",
+        "recordType": "ENT",
+        "name": "Poem",
+        "code": "POEM",
+        "description": "",
+        "status": "active",
+        "createdAt": "2026-07-11T08:53:40.574Z",
+        "updatedAt": "2026-07-11T08:53:40.574Z",
+        "__v": 0
+      }
+    ],
+    "settings": [
+      {
+        "_id": "6a50f0bebfbe5c2ce63c58a1",
+        "userId": "69af088d21b4580a8cb6614b",
+        "appName": "Antinet Zettelkasten",
+        "theme": "default",
+        "language": "en",
+        "timezone": "",
+        "dateFormat": "MM/DD/YYYY",
+        "timeFormat": "12h",
+        "defaultProjectId": null,
+        "defaultRecordType": "FLT",
+        "defaultSubtypeId": null,
+        "defaultView": "dashboard",
+        "recordsPerPage": 10,
+        "showArchived": false,
+        "enableNotifications": true,
+        "enableAutoSave": true,
+        "enableGraph": true,
+        "defaultGraphDepth": 1,
+        "createdAt": "2026-07-10T13:16:46.642Z",
+        "updatedAt": "2026-07-10T13:17:44.716Z",
+        "__v": 0
+      }
+    ]
+  }
+}
