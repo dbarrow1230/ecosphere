@@ -1,0 +1,103 @@
+.zettel-detail-page{
+ max-width:1320px;
+}
+
+.zettel-detail-card{
+ width:100%;
+ padding:clamp(1.5rem,3vw,2.5rem);
+ background:var(--surface);
+ border:1px solid var(--border);
+ border-left:.5rem solid var(--accent);
+ border-radius:var(--radius-lg);
+ box-shadow:var(--shadow);
+}
+
+.zettel-detail-header{
+ display:flex;
+ align-items:flex-start;
+ justify-content:space-between;
+ gap:2rem;
+ margin-bottom:1.5rem;
+ padding-bottom:1.5rem;
+ border-bottom:1px solid var(--border);
+}
+
+.zettel-detail-heading{
+ min-width:0;
+}
+
+.zettel-detail-heading h1{
+ margin-bottom:.65rem;
+}
+
+.zettel-detail-id{
+ color:var(--text-muted);
+}
+
+.zettel-detail-body{
+ color:var(--text-soft);
+ line-height:1.75;
+}
+
+.zettel-detail-tabs{
+ margin-bottom:0;
+}
+
+.zettel-detail-tab-panel{
+ padding:1.5rem 0 .5rem;
+}
+
+.zettel-detail-meta{
+ display:grid;
+ grid-template-columns:repeat(3,minmax(0,1fr));
+ gap:1rem;
+ margin:1.5rem 0 0;
+}
+
+.zettel-detail-meta div{
+ padding:1rem;
+ border-left:.2rem solid var(--accent);
+ background:var(--surface-soft);
+}
+
+.zettel-detail-meta dt{
+ margin-bottom:.3rem;
+}
+
+.zettel-detail-meta dd{
+ margin:0;
+}
+
+.zettel-detail-related{
+ display:grid;
+ grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:1.5rem;
+ align-items:start;
+}
+
+.zettel-detail-back{
+ display:inline-flex;
+ margin-top:.5rem;
+ font-weight:600;
+}
+
+@media (max-width:640px){
+ .zettel-detail-page{
+  padding-right:1rem;
+  padding-left:1rem;
+ }
+
+ .zettel-detail-card{
+  border-left-width:.35rem;
+ }
+
+ .zettel-detail-header{
+  flex-direction:column;
+  gap:1rem;
+ }
+
+ .zettel-detail-meta,
+ .zettel-detail-related{
+  grid-template-columns:1fr;
+ }
+}

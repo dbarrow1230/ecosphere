@@ -1,0 +1,21 @@
+.activity-metrics-scope{font-size:.75rem;color:var(--text-muted,var(--text));line-height:1.35}
+.activity-metrics-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.5rem;margin:.5rem 0 .75rem}
+.activity-metrics-grid>div{border:1px solid var(--border,#b8cad5);border-radius:6px;padding:.4rem .5rem;min-width:0}
+.activity-metrics-grid dt{font-size:.72rem;font-weight:500}
+.activity-metrics-grid dd{font-size:1.1rem;font-weight:700;color:var(--heading);margin:.15rem 0 0;overflow-wrap:anywhere}
+.activity-metrics-grid small{font-size:.75rem}
+.activity-metrics-toolbar{display:flex;gap:.5rem;flex-wrap:wrap}
+.activity-metrics-chart{overflow-x:auto}
+.activity-metrics-chart svg{display:block;width:100%;min-width:560px;height:180px}
+.activity-metrics-axis{fill:var(--text,#446075);font-size:11px}
+.activity-metrics-value{fill:var(--text,#446075);font-size:11px;font-weight:700}
+.activity-metrics-gridline{stroke:var(--border,#b8cad5);stroke-opacity:.6}
+.activity-metrics-bar{fill:var(--accent,#0c9eac)}
+.activity-metrics-chart g:focus{outline:2px solid var(--heading,#1262a0);outline-offset:2px}
+.activity-metrics-chart g:hover .activity-metrics-bar,.activity-metrics-chart g:focus .activity-metrics-bar{fill:var(--heading,#1262a0)}
+.activity-metrics-table{max-height:18rem;overflow:auto;margin-top:.5rem}
+@media(max-width:600px){.activity-metrics-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+.activity-metrics-card{padding:1rem}
+.activity-metrics-card .dashboard-section-head{margin-bottom:.5rem}
+.activity-metrics-card>details{font-size:.8rem}

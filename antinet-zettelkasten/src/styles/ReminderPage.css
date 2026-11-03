@@ -1,0 +1,198 @@
+.reminder-page{
+ width:100%;
+ min-height:100%;
+ padding:clamp(1.5rem,3vw,3rem) var(--page-x);
+ color:var(--text);
+ background:var(--bg);
+}
+
+.reminder-page-header{
+ display:flex;
+ align-items:flex-end;
+ justify-content:space-between;
+ gap:1.5rem;
+ margin-bottom:1.5rem;
+}
+
+.reminder-page-eyebrow{
+ margin:0 0 .35rem;
+ color:var(--accent);
+ font-size:.72rem;
+ font-weight:800;
+ letter-spacing:.13em;
+ text-transform:uppercase;
+}
+
+.reminder-page-title{
+ margin:0;
+ font-size:clamp(2.25rem,4vw,3.55rem);
+}
+
+.reminder-page-lead{
+ margin:.5rem 0 0;
+ color:var(--text-soft);
+}
+
+.reminder-card{
+ color:var(--text);
+ background:var(--surface);
+ border-color:var(--border);
+ box-shadow:var(--shadow-sm);
+}
+
+.reminder-card-heading{
+ display:flex;
+ align-items:flex-start;
+ justify-content:space-between;
+ margin-bottom:1rem;
+}
+
+.reminder-card-heading .card-text{
+ margin:.35rem 0 0;
+ color:var(--text-soft);
+}
+
+.reminder-table{
+ width:100%;
+ table-layout:fixed;
+}
+
+.reminder-table th:nth-child(1){width:16%;}
+.reminder-table th:nth-child(2){width:10%;}
+.reminder-table th:nth-child(3){width:12%;}
+.reminder-table th:nth-child(4){width:10%;}
+.reminder-table th:nth-child(5){width:10%;}
+.reminder-table th:nth-child(6){width:17%;}
+.reminder-table th:nth-child(7){width:25%;}
+
+.reminder-table th,
+.reminder-table td{
+ overflow-wrap:anywhere;
+ white-space:normal;
+}
+
+.reminder-actions-cell{
+ text-align:right;
+}
+
+.reminder-actions{
+ display:inline-flex;
+ flex-wrap:wrap;
+ justify-content:flex-end;
+}
+
+.reminder-status-badge{
+ min-width:5.5rem;
+ padding:.45rem .65rem;
+ font-size:.75rem;
+ font-weight:700;
+ text-align:center;
+ text-transform:none;
+}
+
+.reminder-status-badge.status-pending{
+ color:var(--text-inverse);
+ background:var(--warning);
+}
+
+.reminder-status-badge.status-processing{
+ color:var(--text-inverse);
+ background:var(--info);
+}
+
+.reminder-status-badge.status-sent{
+ color:var(--text-inverse);
+ background:var(--success);
+}
+
+.reminder-status-badge.status-scheduled-again{
+ color:var(--text-inverse);
+ background:var(--primary);
+}
+
+.reminder-status-badge.status-failed{
+ color:var(--text-inverse);
+ background:var(--danger);
+}
+
+.reminder-status-badge.status-never-ran{
+ color:var(--text-inverse);
+ background:var(--accent-2);
+}
+
+.reminder-status-badge.status-paused{
+ color:var(--text-inverse);
+ background:var(--secondary);
+}
+
+.reminder-status-badge.status-archived{
+ color:var(--text-inverse);
+ background:var(--border-strong);
+}
+
+@media (max-width:900px){
+ .reminder-page-header{
+  align-items:flex-start;
+  flex-direction:column;
+ }
+
+ .reminder-table,
+ .reminder-table tbody,
+ .reminder-table tr,
+ .reminder-table td{
+  display:block;
+  width:100%;
+ }
+
+ .reminder-table thead{
+  position:absolute;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+  clip:rect(0 0 0 0);
+ }
+
+ .reminder-table tr{
+  margin-bottom:1rem;
+  padding:.5rem;
+  background:var(--surface-2);
+  border:1px solid var(--border);
+  border-radius:var(--radius-md);
+ }
+
+ .reminder-table td{
+  display:grid;
+  grid-template-columns:minmax(7rem,35%) minmax(0,1fr);
+  gap:1rem;
+  text-align:left;
+  border:0;
+  border-bottom:1px solid var(--border);
+ }
+
+ .reminder-table td::before{
+  content:attr(data-label);
+  color:var(--heading);
+  font-weight:700;
+ }
+
+ .reminder-table td:last-child{
+  border-bottom:0;
+ }
+
+ .reminder-actions-cell,
+ .reminder-actions{
+  justify-content:flex-start;
+  text-align:left;
+ }
+}
+
+@media (max-width:600px){
+ .reminder-page{
+  padding:1.25rem;
+ }
+
+ .reminder-table td{
+  grid-template-columns:1fr;
+  gap:.3rem;
+ }
+}

@@ -1,0 +1,16 @@
+#popup-alert-root{
+ position:fixed;
+ z-index:2100;
+ top:1rem;
+ right:1rem;
+ width:min(26rem,calc(100vw - 2rem));
+ display:flex;
+ flex-direction:column;
+ gap:.5rem;
+ pointer-events:none;
+}
+#popup-alert-root .popup-alert{
+ pointer-events:auto;
+ margin:0 !important;
+ box-shadow:0 .4rem 1.5rem rgba(0,0,0,.2);
+}

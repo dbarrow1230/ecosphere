@@ -1,0 +1,221 @@
+.backup-page{
+ width:100%;
+ min-height:100%;
+ padding:clamp(1.5rem,3vw,3rem) var(--page-x);
+ background:var(--bg);
+}
+
+.backup-page > .row{
+ width:100%;
+ margin:0;
+}
+
+.backup-page .card{
+ color:var(--text);
+ background:var(--surface);
+ border-color:var(--border);
+ box-shadow:var(--shadow-sm);
+}
+
+.backup-history-card,
+.backup-history-card .card-body,
+.backup-schedules-card,
+.backup-schedules-card .card-body{
+ min-width:0;
+}
+
+.backup-card-heading{
+ display:flex;
+ align-items:flex-start;
+ justify-content:space-between;
+ gap:1rem;
+ margin-bottom:1rem;
+}
+
+.backup-history-table{
+ width:100%;
+ table-layout:fixed;
+}
+
+.backup-history-table th,
+.backup-history-table td{
+ padding:.7rem .6rem;
+ overflow-wrap:anywhere;
+ white-space:normal;
+ vertical-align:middle;
+}
+
+.backup-history-table th:nth-child(1){width:11%;}
+.backup-history-table th:nth-child(2){width:24%;}
+.backup-history-table th:nth-child(3){width:8%;}
+.backup-history-table th:nth-child(4){width:9%;}
+.backup-history-table th:nth-child(5),
+.backup-history-table th:nth-child(6){width:14%;}
+.backup-history-table th:nth-child(7){width:20%;}
+
+.backup-schedule-table{
+ width:100%;
+ table-layout:fixed;
+}
+
+.backup-schedule-table th:nth-child(1){width:11%;}
+.backup-schedule-table th:nth-child(2){width:20%;}
+.backup-schedule-table th:nth-child(3){width:20%;}
+.backup-schedule-table th:nth-child(4){width:10%;}
+.backup-schedule-table th:nth-child(5){width:10%;}
+.backup-schedule-table th:nth-child(6){width:29%;}
+
+.backup-file-name{
+ color:var(--text-soft);
+ font-size:.88rem;
+}
+
+.backup-location-text{
+ display:block;
+ margin-top:.25rem;
+ color:var(--text-soft);
+ font-size:.72rem;
+ line-height:1.35;
+ overflow-wrap:anywhere;
+}
+
+.backup-status{
+ display:inline-flex;
+ align-items:center;
+ justify-content:center;
+ min-width:5.5rem;
+ padding:.35rem .65rem;
+ border-radius:999px;
+ font-weight:700;
+}
+
+.backup-status-completed{
+ color:var(--text-inverse);
+ background:var(--success);
+}
+
+.backup-status-failed{
+ color:var(--text-inverse);
+ background:var(--danger);
+}
+
+.backup-status-started{
+ color:var(--text);
+ background:var(--warning);
+}
+
+.backup-schedule-status-active{
+ color:var(--text-inverse);
+ background:var(--success);
+}
+
+.backup-schedule-status-paused{
+ color:var(--text);
+ background:var(--warning);
+}
+
+.backup-retention-field{
+ display:flex;
+ align-items:center;
+ gap:.65rem;
+}
+
+.backup-retention-field .form-control{
+ width:8rem;
+ flex:0 0 8rem;
+}
+
+.backup-retention-field span{
+ color:var(--text-soft);
+}
+
+.backup-actions-cell{
+ text-align:right;
+}
+
+.backup-actions{
+ display:inline-flex;
+ flex-wrap:wrap;
+ justify-content:flex-end;
+}
+
+@media (max-width:900px){
+ .backup-history-table,
+ .backup-history-table tbody,
+ .backup-history-table tr,
+ .backup-history-table td,
+ .backup-schedule-table,
+ .backup-schedule-table tbody,
+ .backup-schedule-table tr,
+ .backup-schedule-table td{
+  display:block;
+  width:100%;
+ }
+
+ .backup-history-table thead,
+ .backup-schedule-table thead{
+  position:absolute;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+  clip:rect(0 0 0 0);
+ }
+
+ .backup-history-table tr,
+ .backup-schedule-table tr{
+  margin-bottom:1rem;
+  padding:.5rem;
+  background:var(--surface2);
+  border:1px solid var(--border);
+  border-radius:var(--radius-md);
+ }
+
+ .backup-history-table td,
+ .backup-schedule-table td{
+  display:grid;
+  grid-template-columns:minmax(7rem,35%) minmax(0,1fr);
+  gap:1rem;
+  text-align:left;
+  border:0;
+  border-bottom:1px solid var(--border);
+ }
+
+ .backup-history-table td::before,
+ .backup-schedule-table td::before{
+  content:attr(data-label);
+  color:var(--heading);
+  font-weight:700;
+ }
+
+ .backup-history-table td:last-child,
+ .backup-schedule-table td:last-child{
+  border-bottom:0;
+ }
+
+ .backup-actions-cell,
+ .backup-actions{
+  justify-content:flex-start;
+  text-align:left;
+ }
+}
+
+@media (max-width:600px){
+ .backup-page{
+  padding:1.5rem 1rem;
+ }
+
+ .backup-card-heading{
+  align-items:stretch;
+  flex-direction:column;
+ }
+
+ .backup-history-card .card-body{
+  padding:.75rem;
+ }
+
+ .backup-history-table td,
+ .backup-schedule-table td{
+  grid-template-columns:1fr;
+  gap:.3rem;
+ }
+}

@@ -1,0 +1,38 @@
+const faqTemplate={
+ eyebrow:'Herbs & Spices Help',
+ title:'Frequently Asked Questions',
+ lead:'Find help with ingredients, blend recipes, production, stock, orders, and the public website.',
+ sourceCredit:null,
+ faqs:[
+  {question:'What is Herbs & Spices?',answer:'It is your application for creating original spice blends and managing ingredients, production, finished stock, and customer requests.'},
+  {question:'How do I sign in?',answer:'Use the standard login page or open the application from your signed-in Eco Sphere workspace.'},
+  {question:'Where do I start?',answer:'Add your herb and spice records, receive ingredient stock, and then create a blend recipe.'},
+  {question:'Where is the dashboard?',answer:'Use Dashboard in the navigation to see blend, ingredient, finished-stock, and pending-request counts.'},
+  {question:'How is the business assigned?',answer:'Use Admin → App Keys to associate the barrow-herbs-and-spices app key with the correct business.'},
+  {question:'Where do business colors and contact details come from?',answer:'They come from the saved business assigned through the app key.'},
+  {question:'Where do I add herbs?',answer:'Open Ingredients → Herbs and use Add Record.'},
+  {question:'Where do I add spices?',answer:'Open Ingredients → Spices and use Add Record.'},
+  {question:'Which cost unit is used?',answer:'The ingredient form records cost per kilogram. Recipe costing converts the required ingredient weights from grams.'},
+  {question:'How do I receive ingredients?',answer:'Open Ingredient Stock, choose the ingredient, enter the weight in grams, and record the reason or supplier reference.'},
+  {question:'How do I record ingredient waste?',answer:'Use the Remove / waste adjustment in Ingredient Stock and include a reason.'},
+  {question:'Can ingredient stock become negative?',answer:'The inventory update rejects a deduction when the available quantity is insufficient.'},
+  {question:'Can I archive an ingredient used by a blend?',answer:'Remove it from active blend recipes first. The application prevents archiving an ingredient that an active recipe still references.'},
+  {question:'How do I create a blend?',answer:'Open Blending → Add Blend and enter the blend details and ingredient formula.'},
+  {question:'What must the formula total?',answer:'The ingredient percentages must total 100%.'},
+  {question:'Can an ingredient appear twice in one formula?',answer:'No. Use one formula line for each herb or spice.'},
+  {question:'What is included in the displayed pack cost?',answer:'Ingredient costs and the packaging cost entered for that pack. Labor, overhead, tax, and fulfillment are excluded.'},
+  {question:'Are my percentages public?',answer:'No. The storefront receives ingredient names and published product details, not the formula percentages or internal costs.'},
+  {question:'How do I make a batch?',answer:'Open Production, choose a saved blend, enter a whole number of packs, and provide a lot or batch reference.'},
+  {question:'How is a batch scaled?',answer:'The pack weight is multiplied by the number of packs, then each ingredient percentage is applied to that total weight.'},
+  {question:'What happens to stock during production?',answer:'The required ingredient quantities are deducted and the finished packs are added together in the inventory ledger.'},
+  {question:'Where can I see past production?',answer:'Open Batch History to inspect the recorded lot, pack count, ingredient weights, costs, date, and notes.'},
+  {question:'Does changing a recipe change an old batch?',answer:'No. Batch history retains the formula and costing snapshot recorded at production time.'},
+  {question:'What happens if I retry a production submission?',answer:'The operation identifier prevents the same submission from changing stock twice.'},
+  {question:'How do I publish a blend?',answer:'Enable Publish in storefront on the blend form and save it.'},
+  {question:'How do customers order?',answer:'They add available blends to their basket and send their contact details and order request.'},
+  {question:'When is finished stock reserved?',answer:'When you confirm an order. A pending request does not reserve stock.'},
+  {question:'Does the storefront collect payment?',answer:'No. Availability, final pricing, fulfillment, and payment are confirmed separately.'},
+  {question:'What happens when I cancel an order?',answer:'A confirmed order returns its reserved stock. Cancelling a pending request does not change finished stock.'}
+ ]
+};
+export default faqTemplate;
