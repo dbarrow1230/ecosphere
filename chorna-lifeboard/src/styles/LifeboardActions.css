@@ -1,0 +1,67 @@
+/* src/styles/LifeboardActions.css */
+
+.lifeboard-action-button{
+ display:inline-flex;
+ align-items:center;
+ justify-content:center;
+ min-height:34px;
+ padding:.45rem .7rem;
+ border:1px solid var(--border);
+ border-radius:8px;
+ background:var(--surface);
+ color:var(--text);
+ font-size:.85rem;
+ font-weight:600;
+ line-height:1;
+ cursor:pointer;
+}
+
+.lifeboard-action-button:hover{
+ background:var(--selectionBg);
+ color:var(--selectionText);
+}
+
+.lifeboard-action-button:disabled{
+ opacity:.65;
+ cursor:not-allowed;
+}
+
+.lifeboard-action-primary{
+ border-color:var(--primary);
+ color:var(--primary);
+}
+
+.lifeboard-action-secondary{
+ border-color:var(--secondary);
+ color:var(--secondary);
+}
+
+.lifeboard-action-success{
+ border-color:var(--success);
+ color:var(--success);
+}
+
+.lifeboard-action-danger{
+ border-color:var(--danger);
+ color:var(--danger);
+}
+
+.lifeboard-action-primary:hover{
+ background:var(--primary);
+ color:var(--textInverse);
+}
+
+.lifeboard-action-secondary:hover{
+ background:var(--secondary);
+ color:var(--textInverse);
+}
+
+.lifeboard-action-success:hover{
+ background:var(--success);
+ color:var(--textInverse);
+}
+
+.lifeboard-action-danger:hover{
+ background:var(--danger);
+ color:var(--textInverse);
+}

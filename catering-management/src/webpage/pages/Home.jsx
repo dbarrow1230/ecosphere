@@ -1,0 +1,9 @@
+import {useState} from 'react';
+import {Link} from 'react-router-dom';
+import {ArrowUpRight,Utensils} from 'lucide-react';
+import {usePublicSite} from '../../../../shared/public/PublicSiteContext.jsx';
+export default function Home(){const {site}=usePublicSite();const [occasion,setOccasion]=useState('Family celebration'),[guests,setGuests]=useState(''),[date,setDate]=useState('');const topic=occasion+(guests?' · '+guests+' guests':'')+(date?' · '+date:'');return <>
+ <section className="catering-table-scene"><img src={site.hero} alt={site.heroAlt}/><div><Utensils size={35}/><h1>The table brings<br/>people together.</h1><p>The food, the setting, and the service should fit your gathering.</p></div></section>
+ <section className="catering-occasion-book"><header><p className="pw-eyebrow">Tell us about your occasion</p><h2>What are you planning?</h2></header><div className="catering-occasion-options" role="group" aria-label="Occasion">{['Family celebration','Business gathering','A gathering of your own'].map(value=><button key={value} aria-pressed={occasion===value} onClick={()=>setOccasion(value)}>{value}</button>)}</div><div className="catering-brief-inputs"><label>When?<input type="date" value={date} onChange={event=>setDate(event.target.value)}/></label><label>How many guests?<input type="number" min="1" value={guests} onChange={event=>setGuests(event.target.value)}/></label><Link className="pw-button" to={'/contact?topic='+encodeURIComponent(topic)}>Start the event conversation<ArrowUpRight size={18}/></Link></div><p className="pw-note">An inquiry starts the planning conversation. Menus, availability, service, and fees are agreed with you.</p></section>
+ <section className="catering-guest-note"><h2>A menu shaped by your guests.</h2><p>Share the venue, guest count, and dietary preferences. Discuss the style of food and service that fits the gathering.</p><Link to="/catering">Explore catering</Link></section>
+ </>;}

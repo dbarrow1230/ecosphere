@@ -1,0 +1,5 @@
+import {Link} from "react-router-dom";
+import {usePublicSite} from "../../../../shared/public/PublicSiteContext.jsx";
+const copy=s=><>{s.text?.map(t=><p key={t}>{t}</p>)}{s.items&&<ul>{s.items.map(t=><li key={t}>{t}</li>)}</ul>}{s.note&&<p className="pw-note">{s.note}</p>}</>;
+const contact=s=>"/contact?topic="+encodeURIComponent(s.title);
+export default function Offerings({pageKey}){const {site}=usePublicSite();const page=site.pages.find(p=>p.slug===pageKey);if(!page)return <main><h1>Page not found</h1><Link to="/">Return home</Link></main>;return (<div className="cravings-flavor-pages"><header><p>A little more delight</p><h1>{page.title}</h1><p>{page.intro}</p></header>{page.sections.map((s,i)=><section className={'cravings-flavor-stop stop-'+i%2} key={s.title} id={s.anchor||'offering-'+(i+1)}><div className="cravings-flavor-stamp"><span>{String(i+1).padStart(2,'0')}</span><h2>{s.title}</h2></div><div>{copy(s)}<Link to={contact(s)}>Make this your next craving ↗</Link></div></section>)}</div>);}

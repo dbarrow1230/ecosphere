@@ -1,0 +1,71 @@
+/* src/styles/LifeboardColorFields.css */
+
+.lifeboard-color-display{
+ display:flex;
+ align-items:center;
+ gap:.5rem;
+ flex-wrap:wrap;
+}
+
+.lifeboard-color-swatch{
+ width:1.4rem;
+ height:1.4rem;
+ border:1px solid var(--borderStrong);
+ border-radius:999px;
+ flex:0 0 auto;
+}
+
+.lifeboard-color-badge{
+ font-family:monospace;
+ text-transform:uppercase;
+}
+
+.lifeboard-color-field{
+ display:grid;
+ grid-template-columns:52px minmax(130px,180px) auto;
+ align-items:center;
+ gap:.5rem;
+ width:max-content;
+ max-width:100%;
+}
+
+.lifeboard-color-picker{
+ width:52px;
+ height:42px;
+ padding:.2rem;
+ border:1px solid var(--border);
+ border-radius:12px;
+ background:var(--surface);
+ cursor:pointer;
+}
+
+.lifeboard-color-picker::-webkit-color-swatch-wrapper{
+ padding:0;
+}
+
+.lifeboard-color-picker::-webkit-color-swatch{
+ border:0;
+ border-radius:9px;
+}
+
+.lifeboard-color-picker::-moz-color-swatch{
+ border:0;
+ border-radius:9px;
+}
+
+.lifeboard-color-hex-input{
+ width:180px;
+ min-width:130px;
+ text-transform:uppercase;
+}
+
+@media (max-width:700px){
+ .lifeboard-color-field{
+  grid-template-columns:52px 1fr;
+  width:100%;
+ }
+
+ .lifeboard-color-field .lifeboard-color-badge{
+  grid-column:1/-1;
+ }
+}

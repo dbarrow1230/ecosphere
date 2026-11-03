@@ -1,0 +1,80 @@
+.dehydration-filter-card{
+ max-width:1180px;
+ margin:0 auto;
+}
+
+.dehydration-filter-check{
+ display:flex;
+ align-items:center;
+ min-height:auto;
+ margin-bottom:0;
+}
+
+.dehydration-filter-check .form-check-input{
+ margin-top:0;
+}
+
+.dehydration-project-table{
+ background:transparent!important;
+}
+
+.dehydration-project-table thead,
+.dehydration-project-table tbody,
+.dehydration-project-table tr,
+.dehydration-project-table th,
+.dehydration-project-table td{
+ background:transparent!important;
+}
+
+.dehydration-project-table th,
+.dehydration-project-table td{
+ vertical-align:middle;
+ text-align:center;
+}
+
+.dehydration-project-table th:first-child,
+.dehydration-project-table td:first-child,
+.dehydration-project-table th:nth-child(2),
+.dehydration-project-table td:nth-child(2),
+.dehydration-project-table th:nth-child(3),
+.dehydration-project-table td:nth-child(3),
+.dehydration-project-table th:nth-child(4),
+.dehydration-project-table td:nth-child(4),
+.dehydration-project-table th:nth-child(5),
+.dehydration-project-table td:nth-child(5){
+ text-align:left;
+}
+
+.batch-details-modal{
+ max-width:760px;
+}
+
+.batch-details-modal-content{
+ background:var(--surface);
+ border:1px solid var(--border);
+ border-radius:12px;
+}
+
+.batch-details-modal .modal-header{
+ background:var(--surface);
+ color:var(--text);
+ border-bottom:1px solid var(--border);
+}
+
+.batch-details-modal .modal-title{
+ color:var(--text);
+}
+
+.batch-details-modal .modal-body{
+ background:var(--surface);
+}
+
+@media (max-width:991.98px){
+ .dehydration-project-table{
+  min-width:760px;
+ }
+
+ .batch-details-modal{
+  max-width:95vw;
+ }
+}
