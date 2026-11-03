@@ -1,0 +1,4 @@
+import {Link} from "react-router-dom";
+import {ArrowUpRight} from "lucide-react";
+import {useRootWise} from "../RootWiseShell.jsx";
+export default function About(){const {name,content}=useRootWise();return <section className="rw-page rw-about"><header><p className="rw-kicker">About {name}</p><h1>Good food needs<br/>a working operation.</h1></header><div className="rw-about-body"><div className="rw-type-study" aria-hidden="true"><span>Think.</span><span>Prepare.</span><span>Serve.</span></div><div>{content.about.map(text=><p key={text}>{text}</p>)}<h2>Keep the whole operation in view.</h2><p>Menu decisions connect to purchasing, prep, kitchen space, staffing, service, and waste. Consulting begins by looking at those connections and the needs of your business.</p><Link className="rw-action" to="/contact">Introduce your operation<ArrowUpRight size={18}/></Link></div></div></section>;}

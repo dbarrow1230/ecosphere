@@ -1,0 +1,9 @@
+#app-notifications{position:fixed;inset:1.25rem 1rem auto auto;margin:0;width:min(480px,calc(100vw - 2rem));max-height:calc(100vh - 2.5rem);padding:0;border:0;background:transparent;color:inherit;overflow:auto;z-index:2147483647;pointer-events:none;}
+#app-notifications:popover-open{display:block;}
+.app-notification{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:.75rem;padding:1rem 1.25rem;border:2px solid #1671b8;border-radius:.65rem;background:#fff;color:#172c38;box-shadow:0 .5rem 2rem #0005;pointer-events:auto;}
+.app-notification-danger{border-color:#b42318;background:#fff3f2;}
+.app-notification-success{border-color:#16834b;background:#f0fff6;}
+.app-notification-message{margin:.3rem 0;white-space:pre-wrap;overflow-wrap:anywhere;}
+.app-notification small{font-size:.75rem;color:#52616b;}
+.app-notification .btn-close{flex-shrink:0;}
+@media print{#app-notifications{display:none!important;}}

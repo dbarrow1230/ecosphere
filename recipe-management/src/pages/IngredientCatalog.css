@@ -1,0 +1,25 @@
+.ingredients-cost-table {
+ width:100%;
+ table-layout:fixed;
+ font-size:.82rem;
+}
+
+.ingredients-cost-table th,
+.ingredients-cost-table td {
+ padding:.35rem;
+ white-space:nowrap;
+ overflow:hidden;
+ text-overflow:ellipsis;
+ vertical-align:middle;
+}
+
+.ingredients-cost-table td:last-child {
+ overflow:visible;
+ text-overflow:clip;
+}
+
+.ingredients-cost-table .btn-sm {
+ --bs-btn-padding-y:.25rem;
+ --bs-btn-padding-x:.4rem;
+ --bs-btn-font-size:.78rem;
+}

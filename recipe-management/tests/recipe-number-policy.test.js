@@ -1,0 +1,4 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {needsRecipeNumber} from '../backend/services/recipeNumberPolicy.js';
+const recipe={recipeNumber:'AMER-DESS-BAKE-0008',business:'b',primaryCuisine:'c',primaryCourse:'course',primaryCategory:'cat'};
+test('same classifications retain number during ordinary updates and reparsing',()=>{assert.equal(needsRecipeNumber(recipe,{...recipe,name:'Updated',recipeNumber:'',recipeSequence:null}),false);assert.equal(needsRecipeNumber(recipe,{...recipe,primaryCuisine:{_id:'c'}}),false);});
+test('changed primary classification or business requires a new number',()=>{for(const field of ['business','primaryCuisine','primaryCourse','primaryCategory'])assert.equal(needsRecipeNumber(recipe,{...recipe,[field]:'different'}),true);assert.equal(needsRecipeNumber({...recipe,recipeNumber:''}),true);});

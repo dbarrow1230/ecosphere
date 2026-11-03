@@ -1,0 +1,4 @@
+import {Link} from "react-router-dom";
+import {ArrowUpRight} from "lucide-react";
+import {useRootWise} from "../RootWiseShell.jsx";
+export default function Approach(){const {content}=useRootWise();const page=content.pages.find(item=>item.slug==="approach");return <section className="rw-page"><header><p className="rw-kicker">Working together</p><h1>A clear brief.<br/>A practical way forward.</h1><p className="rw-page-lead">Agree on the work before the work begins.</p></header><div className="rw-engagement">{page.sections.map((section,index)=><article key={section.title}><div className="rw-stage"><span>{["The conversation","The engagement","The next steps"][index]}</span></div><div><h2>{section.title}</h2>{section.text.map(text=><p key={text}>{text}</p>)}</div></article>)}</div><Link className="rw-action" to="/contact">Start with your operation<ArrowUpRight size={18}/></Link></section>;}

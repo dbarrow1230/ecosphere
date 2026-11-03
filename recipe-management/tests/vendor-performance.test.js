@@ -1,0 +1,5 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {vendorDeliveryPerformance} from '../backend/services/purchasing/vendorPerformance.js';
+const order={_id:'o',vendorRef:'v',flow:'ingredients',status:'closed',expectedDate:'2026-10-10',lines:[{_id:'l',orderedQty:10,receivedQty:0}],receipts:[{status:'posted',receiptDate:'2026-10-10',lines:[{purchaseOrderLineRef:'l',acceptedQty:8,rejectedQty:2}]}]};
+test('fill rate and delivery timing are calculated separately',()=>{const stats=vendorDeliveryPerformance([order]).v;assert.equal(stats.fillRate,80);assert.equal(stats.onTimeRate,100);});
+test('on-time override supports manual order assessment and open orders are excluded',()=>{const marked={...order,receipts:[{...order.receipts[0],onTime:true}]};assert.equal(vendorDeliveryPerformance([marked]).v.onTimeRate,100);assert.deepEqual(vendorDeliveryPerformance([{...order,status:'partialReceived'}]),{});});
+test('orders with no expected date or manual assessment do not distort on-time rate',()=>{assert.equal(vendorDeliveryPerformance([{...order,expectedDate:null}]).v.onTimeRate,null);});

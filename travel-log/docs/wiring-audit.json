@@ -1,0 +1,1173 @@
+{
+  "filesChecked": 343,
+  "syntaxErrors": 0,
+  "routes": [
+    "/",
+    "/contact",
+    "/faq",
+    "/privacy",
+    "/terms",
+    "/about",
+    "/dashboard",
+    "/users",
+    "/login",
+    "/forgot-password",
+    "/reset-password/:token",
+    "/permissions",
+    "/profile",
+    "/admin",
+    "/admin/dashboard",
+    "/admin/businesses",
+    "/admin/business-types",
+    "/admin/app-keys",
+    "/admin/footers",
+    "/admin/seasons",
+    "/admin/holidays",
+    "/admin/occasions",
+    "/admin/taglines",
+    "/admin/vendors",
+    "/admin/business-roles-permissions",
+    "/admin/inventory",
+    "/admin/reports",
+    "/trips",
+    "/trips/:id",
+    "/trips/:id/edit",
+    "/hiking-logs",
+    "/hiking-logs/add",
+    "/hiking-logs/:id",
+    "/hiking-logs/:id/edit",
+    "/reference",
+    "/reference/:slug",
+    "/reference/wine-pairing",
+    "/400",
+    "/401",
+    "/403",
+    "/404",
+    "/500",
+    "/502",
+    "/503",
+    "/504",
+    "/events",
+    "/clients",
+    "/reports",
+    "*",
+    "/trips/add",
+    "/inventory",
+    "/shopping-lists",
+    "/categories",
+    "/orders",
+    "/purchases",
+    "/returns",
+    "/wishlist",
+    "/budgets",
+    "/coupons",
+    "/stores",
+    "/brands",
+    "/units",
+    "/reminders",
+    "/shopping-list",
+    "/items",
+    "/expiring",
+    "/low-stock"
+  ],
+  "issues": [
+    {
+      "file": "backend\\controllers\\countryController.js",
+      "type": "missing import",
+      "message": "../models/countryModel.js",
+      "active": false
+    },
+    {
+      "file": "backend\\controllers\\counts\\stockCountController.js",
+      "type": "missing import",
+      "message": "../../models/counts/stockCount.js",
+      "active": false
+    },
+    {
+      "file": "backend\\controllers\\countyController.js",
+      "type": "missing import",
+      "message": "../models/countyModel.js",
+      "active": false
+    },
+    {
+      "file": "backend\\controllers\\dashboard\\getDashboardDataController.js",
+      "type": "missing import",
+      "message": "../../services/dashboard/getDashboardDataService.js",
+      "active": false
+    },
+    {
+      "file": "backend\\controllers\\returns\\vendorReturnController.js",
+      "type": "missing import",
+      "message": "../../models/returns/vendorReturnModel.js",
+      "active": false
+    },
+    {
+      "file": "backend\\controllers\\returns\\vendorReturnLineController.js",
+      "type": "missing import",
+      "message": "../../models/returns/vendorReturnLineModel.js",
+      "active": false
+    },
+    {
+      "file": "backend\\controllers\\stateController.js",
+      "type": "missing import",
+      "message": "../models/stateModel.js",
+      "active": false
+    },
+    {
+      "file": "backend\\models\\index.js",
+      "type": "missing import",
+      "message": "./master/metricUnitModel.js",
+      "active": false
+    },
+    {
+      "file": "backend\\models\\index.js",
+      "type": "missing import",
+      "message": "./master/imperialUnitModel.js",
+      "active": false
+    },
+    {
+      "file": "backend\\models\\index.js",
+      "type": "missing import",
+      "message": "./master/recipeModel.js",
+      "active": false
+    },
+    {
+      "file": "backend\\models\\index.js",
+      "type": "missing import",
+      "message": "./returns/vendorReturnModel.js",
+      "active": false
+    },
+    {
+      "file": "backend\\models\\index.js",
+      "type": "missing import",
+      "message": "./returns/vendorReturnLineModel.js",
+      "active": false
+    },
+    {
+      "file": "backend\\models\\index.js",
+      "type": "missing import",
+      "message": "./sales/salesUsageModel.js",
+      "active": false
+    },
+    {
+      "file": "backend\\models\\index.js",
+      "type": "missing import",
+      "message": "./sales/salesUsageLineModel.js",
+      "active": false
+    },
+    {
+      "file": "backend\\models\\index.js",
+      "type": "missing import",
+      "message": "./transfers/stockTransferModel.js",
+      "active": false
+    },
+    {
+      "file": "backend\\models\\index.js",
+      "type": "missing import",
+      "message": "./transfers/stockTransferLineModel.js",
+      "active": false
+    },
+    {
+      "file": "backend\\routes\\receiving\\goodsReceiptLineRoutes.js",
+      "type": "missing import",
+      "message": "../../controllers/receiving/goodsReceiptLineController.js",
+      "active": false
+    },
+    {
+      "file": "backend\\routes\\receiving\\goodsReceiptRoutes.js",
+      "type": "missing import",
+      "message": "../../controllers/receiving/goodsReceiptController.js",
+      "active": false
+    }
+  ],
+  "brokenLinks": [
+    {
+      "file": "src\\components\\dashboard\\DashboardQuickActions.jsx",
+      "target": "/itinerary",
+      "active": false
+    },
+    {
+      "file": "src\\components\\dashboard\\DashboardQuickActions.jsx",
+      "target": "/documents",
+      "active": false
+    },
+    {
+      "file": "src\\components\\dashboard\\DashboardQuickActions.jsx",
+      "target": "/alerts",
+      "active": false
+    },
+    {
+      "file": "src\\components\\dashboard\\DashboardQuickActions.jsx",
+      "target": "/goals",
+      "active": false
+    },
+    {
+      "file": "src\\components\\dashboard\\DashboardQuickActions.jsx",
+      "target": "/bookings",
+      "active": false
+    },
+    {
+      "file": "src\\components\\dashboard\\DashboardQuickActions.jsx",
+      "target": "/transportation",
+      "active": false
+    },
+    {
+      "file": "src\\components\\dashboard\\DashboardQuickActions.jsx",
+      "target": "/health",
+      "active": false
+    },
+    {
+      "file": "src\\components\\dashboard\\DashboardQuickActions.jsx",
+      "target": "/notes",
+      "active": false
+    },
+    {
+      "file": "src\\components\\dashboard\\DashboardQuickActions.jsx",
+      "target": "/calendar",
+      "active": false
+    },
+    {
+      "file": "src\\components\\dashboard\\DashboardQuickActions.jsx",
+      "target": "/history",
+      "active": false
+    }
+  ],
+  "placeholders": [
+    "/events",
+    "/clients",
+    "/shopping-lists",
+    "/categories",
+    "/orders",
+    "/purchases",
+    "/returns",
+    "/wishlist",
+    "/budgets",
+    "/coupons",
+    "/stores",
+    "/brands",
+    "/units",
+    "/reminders",
+    "/shopping-list"
+  ],
+  "mountedRoutes": [
+    {
+      "path": "/api/business-types",
+      "method": "route",
+      "file": "backend\\routes\\reference\\businessTypeRoutes.js"
+    },
+    {
+      "path": "/api/business-types/:id",
+      "method": "route",
+      "file": "backend\\routes\\reference\\businessTypeRoutes.js"
+    },
+    {
+      "path": "/api/app-keys",
+      "method": "route",
+      "file": "backend\\routes\\reference\\appKeyRoutes.js"
+    },
+    {
+      "path": "/api/app-keys/:id",
+      "method": "route",
+      "file": "backend\\routes\\reference\\appKeyRoutes.js"
+    },
+    {
+      "path": "/api/occasions",
+      "method": "route",
+      "file": "backend\\routes\\reference\\occasionRoutes.js"
+    },
+    {
+      "path": "/api/occasions/:id",
+      "method": "route",
+      "file": "backend\\routes\\reference\\occasionRoutes.js"
+    },
+    {
+      "path": "/api/holidays",
+      "method": "route",
+      "file": "backend\\routes\\reference\\holidayRoutes.js"
+    },
+    {
+      "path": "/api/holidays/:id",
+      "method": "route",
+      "file": "backend\\routes\\reference\\holidayRoutes.js"
+    },
+    {
+      "path": "/api/users/roles",
+      "method": "route",
+      "file": "backend\\routes\\users\\userRolesRoutes.js"
+    },
+    {
+      "path": "/api/users/roles/:id",
+      "method": "route",
+      "file": "backend\\routes\\users\\userRolesRoutes.js"
+    },
+    {
+      "path": "/api/users/role-assignments",
+      "method": "route",
+      "file": "backend\\routes\\users\\userRoleAssignmentRoutes.js"
+    },
+    {
+      "path": "/api/users/role-assignments/:id",
+      "method": "route",
+      "file": "backend\\routes\\users\\userRoleAssignmentRoutes.js"
+    },
+    {
+      "path": "/api/users/role-permissions",
+      "method": "route",
+      "file": "backend\\routes\\users\\rolePermissionRoutes.js"
+    },
+    {
+      "path": "/api/users/role-permissions/:id",
+      "method": "route",
+      "file": "backend\\routes\\users\\rolePermissionRoutes.js"
+    },
+    {
+      "path": "/api/users/user-permission-overrides",
+      "method": "route",
+      "file": "backend\\routes\\users\\userPermissionOverrideRoutes.js"
+    },
+    {
+      "path": "/api/users/user-permission-overrides/:id",
+      "method": "route",
+      "file": "backend\\routes\\users\\userPermissionOverrideRoutes.js"
+    },
+    {
+      "path": "/api/travel-logs",
+      "method": "route",
+      "file": "backend\\routes\\travel\\travelLogRoutes.js"
+    },
+    {
+      "path": "/api/travel-logs/:id",
+      "method": "route",
+      "file": "backend\\routes\\travel\\travelLogRoutes.js"
+    }
+  ],
+  "unmountedApiCalls": [
+    {
+      "url": "/api/user-settings",
+      "sources": [
+        "src\\components\\dashboard\\DashboardCalendar.jsx"
+      ],
+      "active": false
+    },
+    {
+      "url": "/api/tasks",
+      "sources": [
+        "src\\components\\dashboard\\DashboardCalendar.jsx",
+        "src\\pages\\admin\\Dashboard.jsx",
+        "src\\pages\\admin\\Dashboard.jsx"
+      ],
+      "active": true
+    },
+    {
+      "url": "/api/habits",
+      "sources": [
+        "src\\components\\dashboard\\DashboardCalendar.jsx"
+      ],
+      "active": false
+    },
+    {
+      "url": "/api/goals",
+      "sources": [
+        "src\\components\\dashboard\\DashboardCalendar.jsx"
+      ],
+      "active": false
+    },
+    {
+      "url": "/api/milestones",
+      "sources": [
+        "src\\components\\dashboard\\DashboardCalendar.jsx"
+      ],
+      "active": false
+    },
+    {
+      "url": "/api/calendar-events",
+      "sources": [
+        "src\\components\\dashboard\\DashboardCalendar.jsx"
+      ],
+      "active": false
+    },
+    {
+      "url": "/api/clients",
+      "sources": [
+        "src\\pages\\admin\\Clients.jsx",
+        "src\\pages\\admin\\Clients.jsx",
+        "src\\pages\\admin\\Dashboard.jsx",
+        "src\\pages\\admin\\Orders.jsx"
+      ],
+      "active": true
+    },
+    {
+      "url": "/api/clients/",
+      "sources": [
+        "src\\pages\\admin\\Clients.jsx"
+      ],
+      "active": false
+    },
+    {
+      "url": "/api/events",
+      "sources": [
+        "src\\pages\\admin\\Dashboard.jsx",
+        "src\\pages\\admin\\Events.jsx",
+        "src\\pages\\admin\\Events.jsx",
+        "src\\pages\\admin\\Orders.jsx",
+        "src\\pages\\admin\\Reports.jsx"
+      ],
+      "active": true
+    },
+    {
+      "url": "/api/orders",
+      "sources": [
+        "src\\pages\\admin\\Dashboard.jsx",
+        "src\\pages\\admin\\Orders.jsx",
+        "src\\pages\\admin\\Orders.jsx",
+        "src\\pages\\admin\\Reports.jsx",
+        "src\\pages\\forms\\OrderForm.jsx"
+      ],
+      "active": true
+    },
+    {
+      "url": "/api/kitchen-prep",
+      "sources": [
+        "src\\pages\\admin\\Dashboard.jsx"
+      ],
+      "active": true
+    },
+    {
+      "url": "/api/donations",
+      "sources": [
+        "src\\pages\\admin\\donations\\Donations.jsx"
+      ],
+      "active": false
+    },
+    {
+      "url": "/api/donorcontacts",
+      "sources": [
+        "src\\pages\\admin\\donations\\Donations.jsx"
+      ],
+      "active": false
+    },
+    {
+      "url": "/api/events/",
+      "sources": [
+        "src\\pages\\admin\\Events.jsx",
+        "src\\pages\\admin\\Events.jsx"
+      ],
+      "active": false
+    },
+    {
+      "url": "/api/menus",
+      "sources": [
+        "src\\pages\\admin\\MenuManager.jsx",
+        "src\\pages\\admin\\MenuManager.jsx"
+      ],
+      "active": false
+    },
+    {
+      "url": "/api/menus/",
+      "sources": [
+        "src\\pages\\admin\\MenuManager.jsx",
+        "src\\pages\\admin\\MenuManager.jsx"
+      ],
+      "active": false
+    },
+    {
+      "url": "/api/orders/",
+      "sources": [
+        "src\\pages\\admin\\Orders.jsx",
+        "src\\pages\\admin\\Orders.jsx"
+      ],
+      "active": false
+    },
+    {
+      "url": "/api/resource-categories",
+      "sources": [
+        "src\\pages\\admin\\resources\\CommunityResourcesAdmin.jsx",
+        "src\\pages\\forms\\resources\\CommunityResourceForm.jsx"
+      ],
+      "active": false
+    },
+    {
+      "url": "/api/community-resources",
+      "sources": [
+        "src\\pages\\admin\\resources\\CommunityResourcesAdmin.jsx",
+        "src\\pages\\forms\\resources\\CommunityResourceForm.jsx"
+      ],
+      "active": false
+    },
+    {
+      "url": "/api/community-resources/",
+      "sources": [
+        "src\\pages\\admin\\resources\\CommunityResourcesAdmin.jsx",
+        "src\\pages\\forms\\resources\\CommunityResourceForm.jsx",
+        "src\\pages\\forms\\resources\\CommunityResourceForm.jsx"
+      ],
+      "active": false
+    },
+    {
+      "url": "/api/brands",
+      "sources": [
+        "src\\pages\\forms\\BrandForm.jsx"
+      ],
+      "active": false
+    },
+    {
+      "url": "/api/budgets",
+      "sources": [
+        "src\\pages\\forms\\BudgetForm.jsx"
+      ],
+      "active": false
+    },
+    {
+      "url": "/api/coupons",
+      "sources": [
+        "src\\pages\\forms\\CouponForm.jsx"
+      ],
+      "active": false
+    },
+    {
+      "url": "/api/currencies",
+      "sources": [
+        "src\\pages\\forms\\CurrencyForm.jsx"
+      ],
+      "active": false
+    },
+    {
+      "url": "/api/inventories",
+      "sources": [
+        "src\\pages\\forms\\InventoryForm.jsx"
+      ],
+      "active": false
+    },
+    {
+      "url": "/api/meeting-methods/",
+      "sources": [
+        "src\\pages\\forms\\MeetingMethodForm.jsx"
+      ],
+      "active": false
+    },
+    {
+      "url": "/api/meeting-methods",
+      "sources": [
+        "src\\pages\\forms\\MeetingMethodForm.jsx",
+        "src\\pages\\forms\\MenteeForm.jsx",
+        "src\\pages\\forms\\WeeklySessionForm.jsx"
+      ],
+      "active": false
+    },
+    {
+      "url": "/api/statuses/list",
+      "sources": [
+        "src\\pages\\forms\\MenteeForm.jsx"
+      ],
+      "active": false
+    },
+    {
+      "url": "/api/programs",
+      "sources": [
+        "src\\pages\\forms\\MenteeForm.jsx",
+        "src\\pages\\forms\\ProgramForm.jsx"
+      ],
+      "active": false
+    },
+    {
+      "url": "/api/mentees/",
+      "sources": [
+        "src\\pages\\forms\\MenteeForm.jsx",
+        "src\\pages\\forms\\MenteeForm.jsx"
+      ],
+      "active": false
+    },
+    {
+      "url": "/api/mentees",
+      "sources": [
+        "src\\pages\\forms\\MenteeForm.jsx"
+      ],
+      "active": false
+    },
+    {
+      "url": "/api/mentees/create",
+      "sources": [
+        "src\\pages\\forms\\MenteeForm.jsx"
+      ],
+      "active": false
+    },
+    {
+      "url": "/api/order-items",
+      "sources": [
+        "src\\pages\\forms\\OrderItemForm.jsx"
+      ],
+      "active": false
+    },
+    {
+      "url": "/api/products",
+      "sources": [
+        "src\\pages\\forms\\ProductForm.jsx"
+      ],
+      "active": false
+    },
+    {
+      "url": "/api/programs/",
+      "sources": [
+        "src\\pages\\forms\\ProgramForm.jsx"
+      ],
+      "active": false
+    },
+    {
+      "url": "/api/purchases",
+      "sources": [
+        "src\\pages\\forms\\PurchaseForm.jsx"
+      ],
+      "active": false
+    },
+    {
+      "url": "/api/purchase-items",
+      "sources": [
+        "src\\pages\\forms\\PurchaseItemForm.jsx"
+      ],
+      "active": false
+    },
+    {
+      "url": "/api/receipts",
+      "sources": [
+        "src\\pages\\forms\\ReceiptForm.jsx"
+      ],
+      "active": false
+    },
+    {
+      "url": "/api/boroughs",
+      "sources": [
+        "src\\pages\\forms\\resources\\CommunityResourceForm.jsx"
+      ],
+      "active": false
+    },
+    {
+      "url": "/api/returns",
+      "sources": [
+        "src\\pages\\forms\\ReturnForm.jsx"
+      ],
+      "active": false
+    },
+    {
+      "url": "/api/return-items",
+      "sources": [
+        "src\\pages\\forms\\ReturnItemForm.jsx"
+      ],
+      "active": false
+    },
+    {
+      "url": "/api/shopping-lists",
+      "sources": [
+        "src\\pages\\forms\\ShoppingListForm.jsx"
+      ],
+      "active": false
+    },
+    {
+      "url": "/api/shopping-list-items",
+      "sources": [
+        "src\\pages\\forms\\ShoppingListItemForm.jsx"
+      ],
+      "active": false
+    },
+    {
+      "url": "/api/statuses",
+      "sources": [
+        "src\\pages\\forms\\StatusForm.jsx"
+      ],
+      "active": false
+    },
+    {
+      "url": "/api/stores",
+      "sources": [
+        "src\\pages\\forms\\StoreForm.jsx"
+      ],
+      "active": false
+    },
+    {
+      "url": "/api/units",
+      "sources": [
+        "src\\pages\\forms\\UnitForm.jsx"
+      ],
+      "active": false
+    },
+    {
+      "url": "/api/meeting-methods/list",
+      "sources": [
+        "src\\pages\\forms\\WeeklySessionForm.jsx"
+      ],
+      "active": false
+    },
+    {
+      "url": "/api/weekly-sessions/",
+      "sources": [
+        "src\\pages\\forms\\WeeklySessionForm.jsx"
+      ],
+      "active": false
+    },
+    {
+      "url": "/api/weekly-sessions/update/",
+      "sources": [
+        "src\\pages\\forms\\WeeklySessionForm.jsx"
+      ],
+      "active": false
+    },
+    {
+      "url": "/api/weekly-sessions",
+      "sources": [
+        "src\\pages\\forms\\WeeklySessionForm.jsx"
+      ],
+      "active": false
+    },
+    {
+      "url": "/api/weekly-sessions/create",
+      "sources": [
+        "src\\pages\\forms\\WeeklySessionForm.jsx"
+      ],
+      "active": false
+    },
+    {
+      "url": "/api/wishlists",
+      "sources": [
+        "src\\pages\\forms\\WishlistForm.jsx"
+      ],
+      "active": false
+    }
+  ],
+  "endpoints": {
+    "/api/app/current-business/": [
+      "src\\App.jsx"
+    ],
+    "/api/user-settings": [
+      "src\\components\\dashboard\\DashboardCalendar.jsx"
+    ],
+    "/api/tasks": [
+      "src\\components\\dashboard\\DashboardCalendar.jsx",
+      "src\\pages\\admin\\Dashboard.jsx",
+      "src\\pages\\admin\\Dashboard.jsx"
+    ],
+    "/api/habits": [
+      "src\\components\\dashboard\\DashboardCalendar.jsx"
+    ],
+    "/api/goals": [
+      "src\\components\\dashboard\\DashboardCalendar.jsx"
+    ],
+    "/api/milestones": [
+      "src\\components\\dashboard\\DashboardCalendar.jsx"
+    ],
+    "/api/reminders": [
+      "src\\components\\dashboard\\DashboardCalendar.jsx",
+      "src\\pages\\ReminderPage.jsx",
+      "src\\pages\\ReminderPage.jsx"
+    ],
+    "/api/calendar-events": [
+      "src\\components\\dashboard\\DashboardCalendar.jsx"
+    ],
+    "/api/app-keys": [
+      "src\\pages\\admin\\AppKeys.jsx",
+      "src\\pages\\admin\\AppKeys.jsx",
+      "src\\pages\\forms\\admin\\AppKeyForm.jsx"
+    ],
+    "/api/businesses": [
+      "src\\pages\\admin\\AppKeys.jsx",
+      "src\\pages\\admin\\BusinessRolesPermissionsPage.jsx",
+      "src\\pages\\admin\\Footers.jsx",
+      "src\\pages\\admin\\Holidays.jsx",
+      "src\\pages\\admin\\Occasions.jsx",
+      "src\\pages\\admin\\Seasons.jsx",
+      "src\\pages\\admin\\Taglines.jsx",
+      "src\\pages\\admin\\Vendors.jsx"
+    ],
+    "/api/app-keys/": [
+      "src\\pages\\admin\\AppKeys.jsx",
+      "src\\pages\\admin\\AppKeys.jsx",
+      "src\\pages\\forms\\admin\\AppKeyForm.jsx"
+    ],
+    "/api/business-types": [
+      "src\\pages\\admin\\BusinessRolesPermissionsPage.jsx",
+      "src\\pages\\admin\\BusinessTypes.jsx",
+      "src\\pages\\admin\\BusinessTypes.jsx",
+      "src\\pages\\forms\\admin\\BusinessTypeForm.jsx"
+    ],
+    "/api/app/app-keys": [
+      "src\\pages\\admin\\BusinessRolesPermissionsPage.jsx"
+    ],
+    "/api/app-modules/app-key/": [
+      "src\\pages\\admin\\BusinessRolesPermissionsPage.jsx"
+    ],
+    "/api/users/roles": [
+      "src\\pages\\admin\\BusinessRolesPermissionsPage.jsx",
+      "src\\pages\\admin\\BusinessRolesPermissionsPage.jsx",
+      "src\\pages\\admin\\users\\PermissionMatrix.jsx",
+      "src\\pages\\users\\PermissionMatrix.jsx"
+    ],
+    "/api/users/role-permissions": [
+      "src\\pages\\admin\\BusinessRolesPermissionsPage.jsx",
+      "src\\pages\\admin\\BusinessRolesPermissionsPage.jsx"
+    ],
+    "/api/users/roles/": [
+      "src\\pages\\admin\\BusinessRolesPermissionsPage.jsx",
+      "src\\pages\\admin\\BusinessRolesPermissionsPage.jsx"
+    ],
+    "/api/users/role-permissions/": [
+      "src\\pages\\admin\\BusinessRolesPermissionsPage.jsx",
+      "src\\pages\\admin\\BusinessRolesPermissionsPage.jsx"
+    ],
+    "/api/business-types/": [
+      "src\\pages\\admin\\BusinessTypes.jsx",
+      "src\\pages\\admin\\BusinessTypes.jsx",
+      "src\\pages\\forms\\admin\\BusinessTypeForm.jsx"
+    ],
+    "/api/clients": [
+      "src\\pages\\admin\\Clients.jsx",
+      "src\\pages\\admin\\Clients.jsx",
+      "src\\pages\\admin\\Dashboard.jsx",
+      "src\\pages\\admin\\Orders.jsx"
+    ],
+    "/api/countries": [
+      "src\\pages\\admin\\Clients.jsx",
+      "src\\pages\\forms\\MenteeForm.jsx",
+      "src\\pages\\forms\\resources\\CommunityResourceForm.jsx"
+    ],
+    "/api/states": [
+      "src\\pages\\admin\\Clients.jsx",
+      "src\\pages\\admin\\TaxRatesPage.jsx",
+      "src\\pages\\forms\\MenteeForm.jsx",
+      "src\\pages\\forms\\resources\\CommunityResourceForm.jsx",
+      "src\\pages\\forms\\users\\UserForm.jsx"
+    ],
+    "/api/clients/": [
+      "src\\pages\\admin\\Clients.jsx"
+    ],
+    "/api/events": [
+      "src\\pages\\admin\\Dashboard.jsx",
+      "src\\pages\\admin\\Events.jsx",
+      "src\\pages\\admin\\Events.jsx",
+      "src\\pages\\admin\\Orders.jsx",
+      "src\\pages\\admin\\Reports.jsx"
+    ],
+    "/api/orders": [
+      "src\\pages\\admin\\Dashboard.jsx",
+      "src\\pages\\admin\\Orders.jsx",
+      "src\\pages\\admin\\Orders.jsx",
+      "src\\pages\\admin\\Reports.jsx",
+      "src\\pages\\forms\\OrderForm.jsx"
+    ],
+    "/api/inventory": [
+      "src\\pages\\admin\\Dashboard.jsx",
+      "src\\pages\\admin\\inventory\\Inventory.jsx",
+      "src\\pages\\admin\\inventory\\Inventory.jsx",
+      "src\\pages\\admin\\Inventory.jsx",
+      "src\\pages\\admin\\Inventory.jsx"
+    ],
+    "/api/kitchen-prep": [
+      "src\\pages\\admin\\Dashboard.jsx"
+    ],
+    "/api/donations": [
+      "src\\pages\\admin\\donations\\Donations.jsx"
+    ],
+    "/api/donorcontacts": [
+      "src\\pages\\admin\\donations\\Donations.jsx"
+    ],
+    "/api/events/": [
+      "src\\pages\\admin\\Events.jsx",
+      "src\\pages\\admin\\Events.jsx"
+    ],
+    "/api/seasons": [
+      "src\\pages\\admin\\Footers.jsx",
+      "src\\pages\\admin\\Holidays.jsx",
+      "src\\pages\\admin\\Occasions.jsx",
+      "src\\pages\\admin\\Seasons.jsx",
+      "src\\pages\\admin\\Seasons.jsx",
+      "src\\pages\\admin\\Taglines.jsx"
+    ],
+    "/api/footers": [
+      "src\\pages\\admin\\Footers.jsx",
+      "src\\pages\\admin\\Footers.jsx"
+    ],
+    "/api/footers/": [
+      "src\\pages\\admin\\Footers.jsx",
+      "src\\pages\\admin\\Footers.jsx"
+    ],
+    "/api/holidays": [
+      "src\\pages\\admin\\Holidays.jsx",
+      "src\\pages\\admin\\Holidays.jsx"
+    ],
+    "/api/holidays/": [
+      "src\\pages\\admin\\Holidays.jsx",
+      "src\\pages\\admin\\Holidays.jsx"
+    ],
+    "/api/inventory/": [
+      "src\\pages\\admin\\inventory\\Inventory.jsx",
+      "src\\pages\\admin\\inventory\\Inventory.jsx",
+      "src\\pages\\admin\\Inventory.jsx",
+      "src\\pages\\admin\\Inventory.jsx"
+    ],
+    "/api/menus": [
+      "src\\pages\\admin\\MenuManager.jsx",
+      "src\\pages\\admin\\MenuManager.jsx"
+    ],
+    "/api/menus/": [
+      "src\\pages\\admin\\MenuManager.jsx",
+      "src\\pages\\admin\\MenuManager.jsx"
+    ],
+    "/api/occasions": [
+      "src\\pages\\admin\\Occasions.jsx",
+      "src\\pages\\admin\\Occasions.jsx",
+      "src\\pages\\admin\\Taglines.jsx"
+    ],
+    "/api/occasions/": [
+      "src\\pages\\admin\\Occasions.jsx",
+      "src\\pages\\admin\\Occasions.jsx"
+    ],
+    "/api/orders/": [
+      "src\\pages\\admin\\Orders.jsx",
+      "src\\pages\\admin\\Orders.jsx"
+    ],
+    "/api/receipt-footers/": [
+      "src\\pages\\admin\\receipt\\ReceiptFooterForm.jsx",
+      "src\\pages\\forms\\admin\\receipt\\ReceiptFooterForm.jsx"
+    ],
+    "/api/receipt-footers": [
+      "src\\pages\\admin\\receipt\\ReceiptFooterForm.jsx",
+      "src\\pages\\forms\\admin\\receipt\\ReceiptFooterForm.jsx"
+    ],
+    "/api/receipt-headers/": [
+      "src\\pages\\admin\\receipt\\ReceiptHeaderForm.jsx",
+      "src\\pages\\forms\\admin\\receipt\\ReceiptHeaderForm.jsx"
+    ],
+    "/api/receipt-headers": [
+      "src\\pages\\admin\\receipt\\ReceiptHeaderForm.jsx",
+      "src\\pages\\forms\\admin\\receipt\\ReceiptHeaderForm.jsx"
+    ],
+    "/api/receipt-sub-headers/": [
+      "src\\pages\\admin\\receipt\\ReceiptSubHeaderForm.jsx",
+      "src\\pages\\forms\\admin\\receipt\\ReceiptSubHeaderForm.jsx"
+    ],
+    "/api/receipt-sub-headers": [
+      "src\\pages\\admin\\receipt\\ReceiptSubHeaderForm.jsx",
+      "src\\pages\\forms\\admin\\receipt\\ReceiptSubHeaderForm.jsx"
+    ],
+    "/api/receipt-templates/": [
+      "src\\pages\\admin\\receipt\\ReceiptTemplateForm.jsx",
+      "src\\pages\\forms\\admin\\receipt\\ReceiptTemplateForm.jsx"
+    ],
+    "/api/receipt-templates": [
+      "src\\pages\\admin\\receipt\\ReceiptTemplateForm.jsx",
+      "src\\pages\\forms\\admin\\receipt\\ReceiptTemplateForm.jsx"
+    ],
+    "/api/resource-categories": [
+      "src\\pages\\admin\\resources\\CommunityResourcesAdmin.jsx",
+      "src\\pages\\forms\\resources\\CommunityResourceForm.jsx"
+    ],
+    "/api/community-resources": [
+      "src\\pages\\admin\\resources\\CommunityResourcesAdmin.jsx",
+      "src\\pages\\forms\\resources\\CommunityResourceForm.jsx"
+    ],
+    "/api/community-resources/": [
+      "src\\pages\\admin\\resources\\CommunityResourcesAdmin.jsx",
+      "src\\pages\\forms\\resources\\CommunityResourceForm.jsx",
+      "src\\pages\\forms\\resources\\CommunityResourceForm.jsx"
+    ],
+    "/api/seasons/": [
+      "src\\pages\\admin\\Seasons.jsx",
+      "src\\pages\\admin\\Seasons.jsx"
+    ],
+    "/api/taglines": [
+      "src\\pages\\admin\\Taglines.jsx",
+      "src\\pages\\admin\\Taglines.jsx"
+    ],
+    "/api/taglines/": [
+      "src\\pages\\admin\\Taglines.jsx",
+      "src\\pages\\admin\\Taglines.jsx"
+    ],
+    "/api/tax-rates": [
+      "src\\pages\\admin\\TaxRatesPage.jsx",
+      "src\\pages\\admin\\TaxRatesPage.jsx"
+    ],
+    "/api/tax-rates/": [
+      "src\\pages\\admin\\TaxRatesPage.jsx",
+      "src\\pages\\admin\\TaxRatesPage.jsx"
+    ],
+    "/api/users": [
+      "src\\pages\\admin\\users\\PermissionMatrix.jsx",
+      "src\\pages\\admin\\users\\Users.jsx",
+      "src\\pages\\forms\\users\\UserForm.jsx",
+      "src\\pages\\ReminderPage.jsx",
+      "src\\pages\\users\\PermissionMatrix.jsx",
+      "src\\pages\\users\\Users.jsx"
+    ],
+    "/api/users/permissions": [
+      "src\\pages\\admin\\users\\PermissionMatrix.jsx",
+      "src\\pages\\admin\\users\\PermissionMatrix.jsx",
+      "src\\pages\\admin\\users\\PermissionMatrix.jsx",
+      "src\\pages\\users\\PermissionMatrix.jsx",
+      "src\\pages\\users\\PermissionMatrix.jsx",
+      "src\\pages\\users\\PermissionMatrix.jsx"
+    ],
+    "/api/users/permissions/": [
+      "src\\pages\\admin\\users\\PermissionMatrix.jsx",
+      "src\\pages\\admin\\users\\PermissionMatrix.jsx",
+      "src\\pages\\users\\PermissionMatrix.jsx",
+      "src\\pages\\users\\PermissionMatrix.jsx"
+    ],
+    "/api/users/": [
+      "src\\pages\\admin\\users\\UserProfilePage.jsx",
+      "src\\pages\\admin\\users\\Users.jsx",
+      "src\\pages\\forms\\users\\UserForm.jsx",
+      "src\\pages\\forms\\users\\UserForm.jsx",
+      "src\\pages\\users\\Users.jsx"
+    ],
+    "/api/users/details/user/": [
+      "src\\pages\\admin\\users\\UserProfilePage.jsx",
+      "src\\pages\\users\\UserProfilePage.jsx"
+    ],
+    "/api/vendors": [
+      "src\\pages\\admin\\Vendors.jsx",
+      "src\\pages\\admin\\Vendors.jsx"
+    ],
+    "/api/vendors/": [
+      "src\\pages\\admin\\Vendors.jsx",
+      "src\\pages\\admin\\Vendors.jsx"
+    ],
+    "/api/users/forgot-password": [
+      "src\\pages\\auth\\ForgotPasswordPage.jsx"
+    ],
+    "/api/users/reset-password/": [
+      "src\\pages\\auth\\ResetPasswordPage.jsx",
+      "src\\pages\\auth\\ResetPasswordPage.jsx"
+    ],
+    "/api/brands": [
+      "src\\pages\\forms\\BrandForm.jsx"
+    ],
+    "/api/budgets": [
+      "src\\pages\\forms\\BudgetForm.jsx"
+    ],
+    "/api/categories": [
+      "src\\pages\\forms\\CategoryForm.jsx"
+    ],
+    "/api/coupons": [
+      "src\\pages\\forms\\CouponForm.jsx"
+    ],
+    "/api/currencies": [
+      "src\\pages\\forms\\CurrencyForm.jsx"
+    ],
+    "/api/inventories": [
+      "src\\pages\\forms\\InventoryForm.jsx"
+    ],
+    "/api/meeting-methods/": [
+      "src\\pages\\forms\\MeetingMethodForm.jsx"
+    ],
+    "/api/meeting-methods": [
+      "src\\pages\\forms\\MeetingMethodForm.jsx",
+      "src\\pages\\forms\\MenteeForm.jsx",
+      "src\\pages\\forms\\WeeklySessionForm.jsx"
+    ],
+    "/api/statuses/list": [
+      "src\\pages\\forms\\MenteeForm.jsx"
+    ],
+    "/api/programs": [
+      "src\\pages\\forms\\MenteeForm.jsx",
+      "src\\pages\\forms\\ProgramForm.jsx"
+    ],
+    "/api/mentees/": [
+      "src\\pages\\forms\\MenteeForm.jsx",
+      "src\\pages\\forms\\MenteeForm.jsx"
+    ],
+    "/api/mentees": [
+      "src\\pages\\forms\\MenteeForm.jsx"
+    ],
+    "/api/mentees/create": [
+      "src\\pages\\forms\\MenteeForm.jsx"
+    ],
+    "/api/order-items": [
+      "src\\pages\\forms\\OrderItemForm.jsx"
+    ],
+    "/api/products": [
+      "src\\pages\\forms\\ProductForm.jsx"
+    ],
+    "/api/programs/": [
+      "src\\pages\\forms\\ProgramForm.jsx"
+    ],
+    "/api/purchases": [
+      "src\\pages\\forms\\PurchaseForm.jsx"
+    ],
+    "/api/purchase-items": [
+      "src\\pages\\forms\\PurchaseItemForm.jsx"
+    ],
+    "/api/receipts": [
+      "src\\pages\\forms\\ReceiptForm.jsx"
+    ],
+    "/api/counties": [
+      "src\\pages\\forms\\resources\\CommunityResourceForm.jsx",
+      "src\\pages\\forms\\users\\UserForm.jsx"
+    ],
+    "/api/boroughs": [
+      "src\\pages\\forms\\resources\\CommunityResourceForm.jsx"
+    ],
+    "/api/returns": [
+      "src\\pages\\forms\\ReturnForm.jsx"
+    ],
+    "/api/return-items": [
+      "src\\pages\\forms\\ReturnItemForm.jsx"
+    ],
+    "/api/shopping-lists": [
+      "src\\pages\\forms\\ShoppingListForm.jsx"
+    ],
+    "/api/shopping-list-items": [
+      "src\\pages\\forms\\ShoppingListItemForm.jsx"
+    ],
+    "/api/statuses": [
+      "src\\pages\\forms\\StatusForm.jsx"
+    ],
+    "/api/stores": [
+      "src\\pages\\forms\\StoreForm.jsx"
+    ],
+    "/api/units": [
+      "src\\pages\\forms\\UnitForm.jsx"
+    ],
+    "/api/users/login": [
+      "src\\pages\\forms\\users\\LoginForm.jsx"
+    ],
+    "/api/users/details": [
+      "src\\pages\\forms\\users\\UserForm.jsx",
+      "src\\pages\\forms\\users\\UserForm.jsx",
+      "src\\pages\\forms\\users\\UserForm.jsx"
+    ],
+    "/api/upload/avatar": [
+      "src\\pages\\forms\\users\\UserForm.jsx"
+    ],
+    "/api/users/details/": [
+      "src\\pages\\forms\\users\\UserForm.jsx"
+    ],
+    "/api/meeting-methods/list": [
+      "src\\pages\\forms\\WeeklySessionForm.jsx"
+    ],
+    "/api/weekly-sessions/": [
+      "src\\pages\\forms\\WeeklySessionForm.jsx"
+    ],
+    "/api/weekly-sessions/update/": [
+      "src\\pages\\forms\\WeeklySessionForm.jsx"
+    ],
+    "/api/weekly-sessions": [
+      "src\\pages\\forms\\WeeklySessionForm.jsx"
+    ],
+    "/api/weekly-sessions/create": [
+      "src\\pages\\forms\\WeeklySessionForm.jsx"
+    ],
+    "/api/wishlists": [
+      "src\\pages\\forms\\WishlistForm.jsx"
+    ],
+    "/api/reminders/": [
+      "src\\pages\\ReminderPage.jsx",
+      "src\\pages\\ReminderPage.jsx"
+    ],
+    "/api/users/effective-permissions": [
+      "src\\pages\\users\\Users.jsx"
+    ],
+    "/api/users/role-assignments": [
+      "src\\pages\\users\\Users.jsx"
+    ],
+    "/api/travel-logs": [
+      "src\\utils\\travelApi.js"
+    ]
+  }
+}

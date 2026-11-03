@@ -1,0 +1,42 @@
+import {useState} from "react";
+import {Modal,Table,Form} from "react-bootstrap";
+export function productPriceHistory(product){
+ const raw=[...(product?.priceHistory||[]).map(item=>({...item})),{...product,current:true}].filter(item=>item.packCost!==null&&item.packCost!==undefined&&Number.isFinite(Number(item.packCost)));
+ const values=raw.sort((a,b)=>(Date.parse(a.effectiveDate)||0)-(Date.parse(b.effectiveDate)||0)).filter((item,index,all)=>!item.effectiveDate||!all.slice(index+1).some(other=>String(other.effectiveDate).slice(0,10)===String(item.effectiveDate).slice(0,10)&&Number(other.packCost)===Number(item.packCost)&&Number(other.unitCost||0)===Number(item.unitCost||0)));
+ return values.map((item,index)=>{const price=Number(item.packCost),previous=index?Number(values[index-1].packCost):null;return {...item,current:index===values.length-1,price,change:previous===null?null:price-previous,percent:previous===null||previous===0?null:(price-previous)/previous*100};});
+}
+export function averagePackPrice(history){
+ const dated=history.filter(item=>item.effectiveDate&&!Number.isNaN(Date.parse(item.effectiveDate))&&Number.isFinite(item.price));
+ if(new Set(dated.map(item=>String(item.effectiveDate).slice(0,10))).size<3)return null;
+ return dated.reduce((sum,item)=>sum+item.price,0)/dated.length;
+}
+export function priceImpact(oldPrice,newPrice,quantity){
+ const values=[oldPrice,newPrice,quantity];if(values.some(value=>value===""||!Number.isFinite(Number(value))||Number(value)<0))return null;
+ const previous=Number(oldPrice)*Number(quantity),next=Number(newPrice)*Number(quantity);return {previous,next,difference:next-previous,percent:Number(oldPrice)===0?null:(Number(newPrice)-Number(oldPrice))/Number(oldPrice)*100};
+}
+const changeClass=value=>value<0?"price-change-negative":value>0?"price-change-positive":"";
+const money=value=>Number(value).toLocaleString(undefined,{style:"currency",currency:"USD"});
+const signed=value=>`${value>0?"+":""}${value.toFixed(1)}%`;
+const date=value=>value&&!Number.isNaN(Date.parse(value))?new Date(String(value).slice(0,10)+"T12:00:00").toLocaleDateString():"—";
+export default function ProductPriceHistory({product,onClose}){
+ const currentYear=new Intl.DateTimeFormat("en-US",{year:"numeric",timeZone:"America/New_York"}).format(new Date());
+ const [year,setYear]=useState(currentYear),[month,setMonth]=useState(""),[from,setFrom]=useState(""),[to,setTo]=useState("");
+ const allHistory=productPriceHistory(product);
+ const [oldPrice,setOldPrice]=useState(()=>String(allHistory.at(-2)?.price??product?.packCost??"")),[newPrice,setNewPrice]=useState(()=>String(allHistory.at(-1)?.price??"")),[quantity,setQuantity]=useState("1");
+ const impact=priceImpact(oldPrice,newPrice,quantity),latest=allHistory.at(-1);
+
+ const years=[...new Set([currentYear,...allHistory.map(item=>String(item.effectiveDate||"").slice(0,4)).filter(value=>/^\d{4}$/.test(value))])].sort().reverse();
+ const history=allHistory.filter(item=>{const day=String(item.effectiveDate||"").slice(0,10);return (!year||day.slice(0,4)===year)&&(!month||day.slice(5,7)===month)&&(!from||day>=from)&&(!to||day<=to);}),prices=history.map(item=>item.price),low=Math.min(...prices),high=Math.max(...prices),range=high-low||1;
+ const average=averagePackPrice(history);
+ const points=history.map((item,index)=>({x:60+(history.length===1?250:index/(history.length-1)*500),y:190-(item.price-low)/range*145,item}));
+ return <Modal show={Boolean(product)} onHide={onClose} size="lg" centered scrollable><Modal.Header closeButton><Modal.Title>{product?.name} — Price History</Modal.Title></Modal.Header><Modal.Body className="vendor-price-dashboard">
+  <div className="vendor-price-history-summary"><span>{product?.brand||""}</span><span>{product?.imperialDisplay||product?.metricDisplay||product?.packSizeName||""}</span></div>
+  <div className="vendor-price-metrics"><div><span>Current pack price</span><strong>{money(latest?.price||0)}</strong></div><div><span>Previous pack price</span><strong>{allHistory.length>1?money(allHistory.at(-2).price):"—"}</strong></div><div><span>Latest change</span><strong className={changeClass(latest?.percent)}>{latest?.percent==null?"—":signed(latest.percent)}</strong></div>{average!==null?<div><span>Average pack price</span><strong>{money(average)}</strong></div>:null}</div>
+  <section className="vendor-price-impact"><h5>Cost Impact Calculator</h5><div className="vendor-price-impact-inputs"><Form.Group><Form.Label>Old price / pack ($)</Form.Label><Form.Control aria-label="Old pack price" type="number" min="0" step="any" value={oldPrice} onChange={event=>setOldPrice(event.target.value)}/></Form.Group><Form.Group><Form.Label>New price / pack ($)</Form.Label><Form.Control aria-label="New pack price" type="number" min="0" step="any" value={newPrice} onChange={event=>setNewPrice(event.target.value)}/></Form.Group><Form.Group><Form.Label>Quantity (packs)</Form.Label><Form.Control aria-label="Pack quantity" type="number" min="0" step="any" value={quantity} onChange={event=>setQuantity(event.target.value)}/></Form.Group></div><div className="vendor-price-impact-results"><div><span>Previous cost</span><strong>{impact?money(impact.previous):"—"}</strong></div><div><span>New cost</span><strong>{impact?money(impact.next):"—"}</strong></div><div><span>Cost difference</span><strong className={changeClass(impact?.difference)}>{impact?(impact.difference>0?"+":"")+money(impact.difference):"—"}</strong></div><div><span>Percentage change</span><strong className={changeClass(impact?.percent)}>{impact?.percent==null?"—":signed(impact.percent)}</strong></div></div></section>
+  <h5 className="vendor-price-trend-heading">Price Trend</h5>
+  <div className="vendor-price-history-filters"><Form.Group><Form.Label>Year</Form.Label><Form.Select value={year} onChange={event=>setYear(event.target.value)}><option value="">All years</option>{years.map(value=><option key={value} value={value}>{value}</option>)}</Form.Select></Form.Group><Form.Group><Form.Label>Month</Form.Label><Form.Select value={month} onChange={event=>setMonth(event.target.value)}><option value="">All months</option>{Array.from({length:12},(_,index)=>{const value=String(index+1).padStart(2,"0");return <option key={value} value={value}>{new Date(2000,index,1).toLocaleString("en-US",{month:"long"})}</option>;})}</Form.Select></Form.Group><Form.Group><Form.Label>From</Form.Label><Form.Control type="date" value={from} max={to||undefined} onChange={event=>{setFrom(event.target.value);setYear("");setMonth("");}}/></Form.Group><Form.Group><Form.Label>To</Form.Label><Form.Control type="date" value={to} min={from||undefined} onChange={event=>{setTo(event.target.value);setYear("");setMonth("");}}/></Form.Group></div>
+  {!history.length?<p>No prices in this period.</p>:null}
+  {history.length>0?<svg className="vendor-price-history-chart" viewBox="0 0 620 240" role="img" aria-label={`Pack price history for ${product?.name}: ${history.map(item=>money(item.price)).join(', ')}`}><line x1="60" y1="190" x2="580" y2="190"/><line x1="60" y1="35" x2="60" y2="190"/><text x="5" y="45">{money(high)}</text><text x="5" y="190">{money(low)}</text><polygon className="vendor-price-chart-area" points={["60,190",...points.map(point=>`${point.x},${point.y}`),`${points.at(-1)?.x||560},190`].join(" ")}/><polyline points={points.map(point=>`${point.x},${point.y}`).join(' ')}/>{points.map(({x,y,item},index)=><circle key={index} cx={x} cy={y} r="4"><title>{date(item.effectiveDate)}: {money(item.price)}{item.percent!==null?` (${signed(item.percent)})`:""}</title></circle>)}<text x="60" y="225">{date(history[0].effectiveDate)}</text><text x="560" y="225" textAnchor="end">{date(history.at(-1).effectiveDate)}</text></svg>:null}
+  <Table size="sm" responsive><thead><tr><th>Effective Date</th><th>Pack</th><th>Pack Price</th><th>Change</th><th>% +/−</th></tr></thead><tbody>{history.map((item,index)=><tr key={index}><td>{date(item.effectiveDate)}{item.current?<span className="vendor-current-price-label"> · Current</span>:null}</td><td>{item.imperialDisplay||item.metricDisplay||item.packSizeName||"—"}</td><td>{money(item.price)}</td><td>{item.change===null?"—":`${item.change>0?"+":""}${money(item.change)}`}</td><td className={item.percent<0?"price-change-negative":item.percent>0?"price-change-positive":""}>{item.percent===null?"—":signed(item.percent)}</td></tr>)}</tbody></Table>
+ </Modal.Body></Modal>;
+}

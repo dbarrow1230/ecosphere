@@ -1,0 +1,703 @@
+@font-face{
+ font-family:"Anaira";
+ src:url("./Anaira.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Anaira";
+ src:url("./Anaira.ttf") format("truetype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Baby Snowman Display";
+ src:url("./Baby Snowman Display.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Baby Snowman";
+ src:url("./Baby Snowman.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Beauty One";
+ src:url("./Beauty One.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Benyoritha G334D";
+ src:url("./Benyoritha-G334D.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Bookman";
+ src:url("./Bookman.ttf") format("truetype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"BrickStoneRegular lgmGd";
+ src:url("./BrickStoneRegular-lgmGd.ttf") format("truetype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Bromoto Bold";
+ src:url("./Bromoto Bold.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Bromoto";
+ src:url("./Bromoto.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Browny Joy";
+ src:url("./Browny Joy.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"CHRICI";
+ src:url("./CHRICI__.TTF") format("truetype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Candcu";
+ src:url("./Candcu__.ttf") format("truetype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Ceylonia";
+ src:url("./Ceylonia.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"CheckIcons";
+ src:url("./CheckIcons.ttf") format("truetype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Christ Type Sans";
+ src:url("./Christ Type Sans.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Christ Type Script";
+ src:url("./Christ Type Script.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Christmas Bell  Personal Use";
+ src:url("./Christmas Bell  Personal Use.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Christmas Jumper";
+ src:url("./Christmas Jumper.ttf") format("truetype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Christmas Ribby  Personal Use";
+ src:url("./Christmas Ribby  Personal Use.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Christmas Time Personal Use";
+ src:url("./Christmas Time Personal Use.ttf") format("truetype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Christmas Time Star Personal Use";
+ src:url("./Christmas Time Star Personal Use.ttf") format("truetype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Christmas and Santona";
+ src:url("./Christmas and Santona.ttf") format("truetype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"ChristmasCandy";
+ src:url("./ChristmasCandy.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"ChristmasSparkle PERSONAL";
+ src:url("./ChristmasSparkle_PERSONAL.ttf") format("truetype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"ChristmasWishCalligraphy";
+ src:url("./ChristmasWishCalligraphy.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Cooljazz";
+ src:url("./Cooljazz.ttf") format("truetype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Fireplace PERSONAL USE ONLY";
+ src:url("./Fireplace_PERSONAL_USE_ONLY.ttf") format("truetype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"FleurDeLeah Regular";
+ src:url("./FleurDeLeah-Regular.ttf") format("truetype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Frontage 3D";
+ src:url("./Frontage-3D.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Frontage Bold";
+ src:url("./Frontage-Bold.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Frontage Bulb";
+ src:url("./Frontage-Bulb.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Frontage Outline";
+ src:url("./Frontage-Outline.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Frontage Regular";
+ src:url("./Frontage-Regular.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Frontage Shadow";
+ src:url("./Frontage-Shadow.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Frostine Snow";
+ src:url("./Frostine Snow.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Ginger Biscuit";
+ src:url("./Ginger Biscuit.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Hallo White Display";
+ src:url("./Hallo White Display.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Hallo White";
+ src:url("./Hallo White.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Happy Clover Display";
+ src:url("./Happy Clover Display.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Happy Clover Leaf";
+ src:url("./Happy Clover Leaf.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Happy Clover";
+ src:url("./Happy Clover.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Harry sunday";
+ src:url("./Harry sunday.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Hessian";
+ src:url("./Hessian.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"ITC Officina Sans Std Book Font";
+ src:url("./ITC-Officina-Sans-Std-Book-Font.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"ITCAvantGardeStd BkCnObl";
+ src:url("./ITCAvantGardeStd-BkCnObl.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"ITCAvantGardeStd BkObl";
+ src:url("./ITCAvantGardeStd-BkObl.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"ITCAvantGardeStd BoldObl";
+ src:url("./ITCAvantGardeStd-BoldObl.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"ITCAvantGardeStd DemiCnObl";
+ src:url("./ITCAvantGardeStd-DemiCnObl.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"ITCAvantGardeStd DemiObl";
+ src:url("./ITCAvantGardeStd-DemiObl.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"ITCAvantGardeStd MdCnObl";
+ src:url("./ITCAvantGardeStd-MdCnObl.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"ITCAvantGardeStd MdObl";
+ src:url("./ITCAvantGardeStd-MdObl.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"ITCAvantGardeStd XLtCn";
+ src:url("./ITCAvantGardeStd-XLtCn.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"ITCAvantGardeStd XLtCnObl";
+ src:url("./ITCAvantGardeStd-XLtCnObl.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Khalliban";
+ src:url("./Khalliban.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Kormulator T3";
+ src:url("./Kormulator-T3.ttf") format("truetype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Leafy Regular";
+ src:url("./Leafy-Regular.ttf") format("truetype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Loving";
+ src:url("./Loving.ttf") format("truetype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Merry Sugar Snow";
+ src:url("./Merry Sugar Snow.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Merry Sugar";
+ src:url("./Merry Sugar.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"MerryChristmasFlake";
+ src:url("./MerryChristmasFlake.ttf") format("truetype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"MerryChristmasStar";
+ src:url("./MerryChristmasStar.ttf") format("truetype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Miraculous Christmas";
+ src:url("./Miraculous_Christmas.ttf") format("truetype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"NaiflostTrasure gxdaq";
+ src:url("./NaiflostTrasure-gxdaq.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"PWHappyChristmas";
+ src:url("./PWHappyChristmas.ttf") format("truetype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Paradise Typeface";
+ src:url("./Paradise Typeface.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Ralgani";
+ src:url("./Ralgani.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Selfie Black";
+ src:url("./Selfie_Black.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Selfie Flags";
+ src:url("./Selfie_Flags.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Selfie Light";
+ src:url("./Selfie_Light.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Selfie Printed";
+ src:url("./Selfie_Printed.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"SnowinterFreeForPersonalUse";
+ src:url("./SnowinterFreeForPersonalUse.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Snowy Christmas  Personal Use";
+ src:url("./Snowy Christmas  Personal Use.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Sobod";
+ src:url("./Sobod.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"SobodSwashOne";
+ src:url("./SobodSwashOne.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"SobodTypefaceSwashTwo";
+ src:url("./SobodTypefaceSwashTwo.ttf") format("truetype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"SpongebobFontCondensedRegular 3zZEy";
+ src:url("./SpongebobFontCondensedRegular-3zZEy.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"SpongebobFontWideRegular x3nzV";
+ src:url("./SpongebobFontWideRegular-x3nzV.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"The Perfect Christmas";
+ src:url("./The Perfect Christmas.ttf") format("truetype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"TimelessMemoriesRegular 2vvwo";
+ src:url("./TimelessMemoriesRegular-2vvwo.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"VIVALDII";
+ src:url("./VIVALDII.TTF") format("truetype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Waving at Christmas";
+ src:url("./Waving at Christmas.ttf") format("truetype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Winter Bells";
+ src:url("./Winter Bells.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"Yumina";
+ src:url("./Yumina.otf") format("opentype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"calisto";
+ src:url("./calisto.ttf") format("truetype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"eenvoudige batik";
+ src:url("./eenvoudige_batik_.ttf") format("truetype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"tokyo font";
+ src:url("./tokyo font.ttf") format("truetype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}
+
+@font-face{
+ font-family:"vivaldi";
+ src:url("./vivaldi.ttf") format("truetype");
+ font-weight:400;
+ font-style:normal;
+ font-display:swap;
+}

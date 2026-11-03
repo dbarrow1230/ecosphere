@@ -1,0 +1,74 @@
+.current-time{
+ display:flex;
+ flex-direction:column;
+ gap:4px;
+}
+
+.date,
+.time{
+ white-space:nowrap;
+}
+
+.time-row{
+ display:flex;
+ align-items:center;
+ gap:12px;
+ flex-wrap:nowrap;
+}
+
+.time-switch{
+ display:flex;
+ align-items:center;
+ margin:0;
+ white-space:nowrap;
+ padding-left:0;
+ min-height:auto;
+}
+
+.time-switch.form-check.form-switch{
+ padding-left:0;
+}
+
+.time-switch.form-check.form-switch .form-check-input{
+ appearance:none!important;
+ -webkit-appearance:none!important;
+ box-shadow:none!important;
+ outline:0!important;
+ cursor:pointer;
+ flex:0 0 auto;
+ float:none;
+ vertical-align:middle;
+ height:1.25rem;
+ width:2.25rem;
+ margin:0 8px 0 0;
+ border:1px solid rgba(255,255,255,.45)!important;
+ border-radius:2em!important;
+ transition:background-position .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+ background:rgba(255,255,255,.35) url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='white'/%3e%3c/svg%3e") no-repeat left center / contain!important;
+}
+
+.time-switch.form-check.form-switch .form-check-input:checked{
+ appearance:none!important;
+ -webkit-appearance:none!important;
+ box-shadow:none!important;
+ outline:0!important;
+ border-color:#9ec5fe!important;
+ background:#9ec5fe url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='white'/%3e%3c/svg%3e") no-repeat right center / contain!important;
+}
+
+.time-switch.form-check.form-switch .form-check-input:focus{
+ box-shadow:none!important;
+ outline:0!important;
+}
+
+.time-switch.form-check.form-switch .form-check-input::before,
+.time-switch.form-check.form-switch .form-check-input::after{
+ content:none!important;
+ display:none!important;
+}
+
+.time-switch .form-check-label{
+ margin:0;
+ white-space:nowrap;
+ cursor:pointer;
+}

@@ -1,0 +1,54 @@
+.zettels-development-tab{
+ display:grid;
+ grid-template-columns:repeat(3,minmax(0,1fr));
+ gap:1rem;
+ align-items:start;
+}
+
+.zettel-development-section{
+ padding:1rem 1.1rem;
+ background:linear-gradient(145deg,color-mix(in srgb,var(--surface) 88%,var(--accent)),var(--surface));
+ border:1px solid var(--border);
+ border-left:.3rem solid var(--accent);
+ border-radius:var(--radius-md);
+ box-shadow:0 .2rem .7rem rgba(28,57,75,.08);
+}
+
+.zettel-development-section h3{
+ margin:0 0 .75rem;
+ font-size:1.2rem;
+}
+
+.zettel-detail-list{
+ display:grid;
+ justify-items:start;
+ gap:.5rem;
+ margin:0;
+ padding:0;
+ list-style:none;
+}
+
+.zettel-detail-list li{
+ position:relative;
+ width:fit-content;
+ max-width:100%;
+ padding:.18rem .25rem .18rem 1.35rem;
+ line-height:1.4;
+}
+
+.zettel-detail-list li::before{
+ content:"";
+ position:absolute;
+ top:.62rem;
+ left:.2rem;
+ width:.55rem;
+ height:.55rem;
+ background:var(--text);
+ clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);
+}
+
+@media (max-width:640px){
+ .zettels-development-tab{
+  grid-template-columns:1fr;
+ }
+}

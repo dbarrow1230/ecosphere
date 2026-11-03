@@ -1,0 +1,26 @@
+.structure-form-id{
+ display:grid;
+ grid-template-columns:var(--form-label-width,9.5rem) minmax(0,1fr);
+ column-gap:var(--form-label-gap,.75rem);
+ align-items:center;
+ margin-bottom:1rem;
+}
+
+.structure-form-id-label{
+ color:var(--heading);
+ font-weight:400;
+ white-space:nowrap;
+}
+
+.structure-form-id-value{
+ color:var(--text);
+ font-family:var(--font-mono,monospace);
+ white-space:nowrap;
+}
+
+@media (max-width:768px){
+ .structure-form-id{
+  grid-template-columns:1fr;
+  row-gap:.35rem;
+ }
+}

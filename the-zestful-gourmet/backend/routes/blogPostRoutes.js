@@ -1,0 +1,10 @@
+import {Router} from "express";
+import {createPost,deletePost,getPost,getPosts,updatePost} from "../controllers/blogPostController.js";
+import {optionalProtect,protect} from "../middleware/authMiddleware.js";
+const router=Router();
+router.get("/",optionalProtect,getPosts);
+router.get("/:key",optionalProtect,getPost);
+router.post("/",protect,createPost);
+router.put("/:id",protect,updatePost);
+router.delete("/:id",protect,deletePost);
+export default router;

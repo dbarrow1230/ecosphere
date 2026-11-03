@@ -1,0 +1,1 @@
+export {IconContext,IconProvider,useIcons} from "./IconContext";

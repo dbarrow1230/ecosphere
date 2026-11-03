@@ -1,0 +1,15 @@
+import {useEffect,useState} from "react";
+import {useLocation} from "react-router-dom";
+import {Mail,Phone,ArrowUpRight} from "lucide-react";
+import {useRootWise} from "../RootWiseShell.jsx";
+export default function Contact(){
+ const {business,name}=useRootWise(),{search}=useLocation();
+ const topic=new URLSearchParams(search).get("topic")||"";
+ const [form,setForm]=useState({name:"",email:"",topic,message:""}),[draft,setDraft]=useState("");
+ useEffect(()=>{setForm(value=>({...value,topic}));setDraft("");},[topic]);
+ const email=typeof business?.email==="string"&&/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(business.email)?business.email:"";
+ const phone=typeof business?.phone==="string"?business.phone:"";
+ function change(event){setForm(value=>({...value,[event.target.name]:event.target.value}));setDraft("");}
+ function prepare(event){event.preventDefault();setDraft(`mailto:${encodeURIComponent(email)}?subject=${encodeURIComponent(form.topic||`Consulting inquiry for ${name}`)}&body=${encodeURIComponent(`Name: ${form.name}\nReply email: ${form.email}\n\n${form.message}`)}`);}
+ return <section className="rw-page rw-contact"><header><p className="rw-kicker">Your consulting brief</p><h1>Bring us<br/>the real challenge.</h1><p className="rw-page-lead">Tell us what you serve, how your operation works, and what you want to change.</p>{email&&<a className="rw-contact-method" href={`mailto:${email}`}><Mail size={19}/>{email}</a>}{phone&&<a className="rw-contact-method" href={`tel:${phone.replace(/[^\d+]/g,"")}`}><Phone size={19}/>{phone}</a>}</header><div className="rw-brief-form">{topic&&<p className="rw-selected-focus">Selected focus: <strong>{topic}</strong></p>}{email?<form onSubmit={prepare}><label htmlFor="rw-name">Your name<input id="rw-name" name="name" autoComplete="name" required maxLength={120} value={form.name} onChange={change}/></label><label htmlFor="rw-email">Reply email<input id="rw-email" name="email" type="email" autoComplete="email" required maxLength={254} value={form.email} onChange={change}/></label><label htmlFor="rw-topic">The area you want to discuss<input id="rw-topic" name="topic" required maxLength={180} value={form.topic} onChange={change}/></label><label htmlFor="rw-message">About your operation<textarea id="rw-message" name="message" rows={6} required maxLength={2000} value={form.message} onChange={change} placeholder="Your operation, the challenge, and the outcome you want to work toward."/></label><p className="rw-form-note">Prepares an email for you to review and send. Leave confidential financial and staff records out of this initial brief.</p><button className="rw-action" type="submit">Prepare the conversation<ArrowUpRight size={18}/></button>{draft&&<div className="rw-draft" role="status"><p>Your brief is ready to open in your email app.</p><a href={draft} className="rw-action">Review email draft<Mail size={18}/></a></div>}</form>:<div><h2>Start with the essentials.</h2><ul><li>Your food-service operation</li><li>The menu, kitchen, or opening challenge</li><li>The outcome and timing you want to discuss</li></ul><p>An email address has not been published yet.</p></div>}</div></section>;
+}

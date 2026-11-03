@@ -1,0 +1,3 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {receivingValidation} from '../lib/receivingValidation.js';
+test('partial receipt saves while unreviewed items remain outstanding',()=>{assert.equal(receivingValidation({deliveryDate:'2026-05-10',lines:[{productName:'Milk',remaining:1,accepted:1},{productName:'Cheese',remaining:1,accepted:0,outcome:'review'}]}),'');});
+test('validation explains missing dates, empty receipts and excess quantities',()=>{assert.match(receivingValidation({}),/delivery date/);assert.match(receivingValidation({deliveryDate:'2026-05-10',lines:[]}),/at least one/);assert.match(receivingValidation({deliveryDate:'2026-05-10',lines:[{productName:'Milk',remaining:1,accepted:2}]}),/Milk/);});

@@ -1,0 +1,2 @@
+import {useRootWise} from "../RootWiseShell.jsx";
+export default function FAQ(){const {content}=useRootWise();return <section className="rw-page rw-questions"><header><p className="rw-kicker">Before we talk</p><h1>A few useful answers.</h1></header>{content.faq.map(([question,answer])=><details key={question}><summary>{question}<span aria-hidden="true">+</span></summary><p>{answer}</p></details>)}</section>;}

@@ -1,0 +1,75 @@
+/* src/styles/BooksIndexPage.css */
+.books-index-page{padding:1rem;background:var(--bg);color:var(--text);min-height:100%;}
+.books-index-toolbar{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1rem;}
+.books-index-heading h1{margin:0 0 .5rem 0;color:var(--heading);}
+.books-index-total{color:var(--text-soft);font-size:.95rem;}
+.books-index-total span{color:var(--primary);font-weight:700;}
+
+.books-index-actions{display:flex;gap:.5rem;flex-wrap:wrap;}
+.books-index-actions .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;white-space:nowrap;}
+.books-index-actions .btn svg{display:inline-block;vertical-align:middle;flex:0 0 auto;}
+.books-index-add-btn,.books-index-add-btn.btn.btn-primary{background:var(--primary);border-color:var(--primary);color:var(--text-inverse);}
+.books-index-add-btn:hover,.books-index-add-btn.btn.btn-primary:hover{background:var(--primary-hover);border-color:var(--primary-hover);color:var(--text-inverse);}
+.books-index-delete-selected-btn,.books-index-delete-selected-btn.btn.btn-primary{background:var(--danger);border-color:var(--danger);color:var(--text-inverse);}
+.books-index-delete-selected-btn:hover,.books-index-delete-selected-btn.btn.btn-primary:hover{background:color-mix(in srgb,var(--danger) 90%,var(--heading));border-color:var(--danger);color:var(--text-inverse);}
+
+.books-index-filters{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1rem;margin-bottom:1rem;}
+.books-index-filter label{display:block;font-weight:600;margin-bottom:.35rem;color:var(--heading);font-size:.9rem;}
+.books-index-filter-row{display:flex;gap:.5rem;}
+.books-index-filter .form-control,.books-index-filter .form-select,.books-index-search .input-group-text{background:var(--surface);border:1px solid var(--border);color:var(--text);}
+.books-index-filter .form-control:focus,.books-index-filter .form-select:focus{border-color:var(--accent);box-shadow:0 0 0 .2rem rgb(from var(--accent) r g b / .15);}
+.books-index-search .input-group-text{color:var(--text-soft);}
+.books-index-filter .btn-outline-secondary,.books-index-clear-btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;border-color:var(--border-strong);color:var(--text);background:var(--surface);}
+.books-index-filter .btn-outline-secondary:hover,.books-index-clear-btn:hover{background:var(--bg-alt);border-color:var(--border-strong);color:var(--heading);}
+
+.books-index-table-wrap{background:var(--surface);border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow-sm);max-height:calc((52px * 15) + 58px);overflow:auto;}
+.books-index-table{margin:0;--bs-table-bg:var(--surface);--bs-table-color:var(--text);--bs-table-border-color:var(--border);}
+.books-index-table thead{position:sticky;top:0;z-index:3;}
+.books-index-table thead th{background:var(--surface-2);border-bottom:1px solid var(--border-strong);color:var(--heading);position:sticky;top:0;z-index:3;white-space:nowrap;vertical-align:middle;}
+.books-index-table tbody td{background:var(--surface);border-color:var(--border);cursor:pointer;vertical-align:middle;color:var(--text);}
+.books-index-table tbody tr:hover td{background:var(--bg-alt);}
+.books-index-table tbody tr.is-selected td{background:rgb(from var(--primary) r g b / .08);}
+
+.books-index-check-col{text-align:center;width:52px;}
+.books-index-actions-col{white-space:nowrap;width:104px;}
+
+.books-index-cover{width:48px;height:64px;border-radius:8px;overflow:hidden;background:var(--surface-2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;}
+.books-index-cover img{width:100%;height:100%;object-fit:cover;}
+.books-index-cover-placeholder{width:48px;height:64px;border-radius:8px;background:var(--surface-2);color:var(--text-soft);display:flex;align-items:center;justify-content:center;font-size:11px;text-align:center;padding:4px;border:1px solid var(--border);}
+
+.books-index-edit-btn,.books-index-edit-btn.btn.btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:.35rem;background:var(--info);border-color:var(--info);color:var(--text-inverse);margin-right:6px;}
+.books-index-edit-btn:hover,.books-index-edit-btn.btn.btn-primary:hover{background:color-mix(in srgb,var(--info) 90%,black);border-color:var(--info);}
+.books-index-delete-btn,.books-index-delete-btn.btn.btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:.35rem;background:var(--danger);border-color:var(--danger);color:var(--text-inverse);}
+.books-index-delete-btn:hover,.books-index-delete-btn.btn.btn-primary:hover{background:color-mix(in srgb,var(--danger) 90%,black);border-color:var(--danger);}
+
+.books-index-empty{color:var(--text-soft);padding:24px;text-align:center;}
+
+.books-index-footer{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:1rem;}
+.books-index-count{color:var(--text-soft);}
+.books-index-pagination{margin:0;}
+.books-index-pagination .page-link{background:var(--surface);border-color:var(--border);color:var(--text);}
+.books-index-pagination .page-link:hover{background:var(--bg-alt);border-color:var(--border-strong);color:var(--heading);}
+.books-index-pagination .page-item.active .page-link{background:var(--primary);border-color:var(--primary);color:var(--text-inverse);}
+
+.books-index-modal .modal-content{background:var(--surface);border:1px solid var(--border);color:var(--text);}
+.books-index-modal .modal-header{background:var(--surface-2);border-bottom:1px solid var(--border);}
+.books-index-modal .modal-title{color:var(--heading);}
+.books-index-modal .btn-close{filter:sepia(.4);}
+.books-index-modal-content{display:grid;gap:20px;grid-template-columns:220px 1fr;}
+.books-index-modal-image img,.books-index-modal-image-placeholder{background:var(--surface-2);border:1px solid var(--border);box-shadow:var(--shadow-sm);height:320px;width:100%;}
+.books-index-modal-image img{object-fit:cover;}
+.books-index-modal-image-placeholder{display:flex;align-items:center;justify-content:center;color:var(--text-soft);}
+.books-index-modal-details{display:grid;gap:8px;}
+.books-index-modal-details .label{color:var(--heading);font-weight:700;margin-right:6px;}
+
+@media(max-width:1200px){
+ .books-index-filters{grid-template-columns:repeat(3,minmax(0,1fr));}
+}
+
+@media(max-width:768px){
+ .books-index-page{padding:16px;}
+ .books-index-toolbar,.books-index-footer{flex-direction:column;align-items:stretch;}
+ .books-index-filters{grid-template-columns:1fr;}
+ .books-index-modal-content{grid-template-columns:1fr;}
+ .books-index-modal-image img,.books-index-modal-image-placeholder{height:280px;max-width:220px;}
+}

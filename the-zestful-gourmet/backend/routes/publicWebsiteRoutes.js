@@ -1,0 +1,11 @@
+import {websiteManagementAccess} from "../../../shared/backend/websiteManagementAccess.js";
+import RoleAssignment from "../models/users/userRoleAssignmentModel.js";
+import {createPublicWebsiteRoutes,publicMoney} from "../../../shared/backend/publicWebsiteRoutes.js";
+import {protect} from "../middleware/authMiddleware.js";
+import Post from "../models/blogPostModel.js";
+import "../models/blogCategoryModel.js";
+const catalog=async()=>[];
+const postFields="title slug excerpt content featuredImage imageAlt category tags publishedAt createdAt";
+const posts=()=>Post.find({status:"published",$or:[{publishedAt:null},{publishedAt:{$lte:new Date()}}]}).select(postFields).populate("category","name slug").sort({publishedAt:-1,createdAt:-1}).limit(100).lean();
+const post=slug=>Post.findOne({slug,status:"published",$or:[{publishedAt:null},{publishedAt:{$lte:new Date()}}]}).select(postFields).populate("category","name slug").lean();
+export default createPublicWebsiteRoutes({appKey:"the-zestful-gourmet",catalog,protect,authorize:websiteManagementAccess(RoleAssignment),posts,post});

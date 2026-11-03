@@ -1,0 +1,3 @@
+import {Link} from "react-router-dom";
+import {usePublicSite} from "../../../../shared/public/PublicSiteContext.jsx";
+export default function Questions(){const {site}=usePublicSite();return (<article className="gourmet-reader-mail"><header><p>Between reader and writer</p><h1>{site.faqTitle||'From the mailbag'}</h1><p>{site.faqIntro}</p></header>{site.faq.map(([q,a])=><section key={q}><h2><span>A reader asks</span>{q}</h2><div><p>{a}</p><span className="gourmet-signoff">— From the journal</span></div></section>)}<footer><Link to="/conversations">Send a question or a food memory →</Link></footer></article>);}

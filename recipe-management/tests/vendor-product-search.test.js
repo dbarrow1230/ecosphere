@@ -1,0 +1,2 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {ingredientSearchText,matchesVendorProduct} from '../src/utils/vendorProductSearch.js';
+test('ingredient lookup removes preparation words and searches product words regardless of order',()=>{assert.equal(ingredientSearchText('Ripe mango flesh'),'mango');assert.equal(matchesVendorProduct('Wegmans Mango, Fresh','mango'),true);assert.equal(matchesVendorProduct('Wegmans Frozen Carrots','mango'),false);assert.equal(matchesVendorProduct('Oil, Toasted Sesame','sesame oil'),true);});

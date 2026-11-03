@@ -1,0 +1,5 @@
+import {Link} from "react-router-dom";
+import {usePublicSite} from "../../../../shared/public/PublicSiteContext.jsx";
+const copy=s=><>{s.text?.map(t=><p key={t}>{t}</p>)}{s.items&&<ul>{s.items.map(t=><li key={t}>{t}</li>)}</ul>}{s.note&&<p className="pw-note">{s.note}</p>}</>;
+const contact=s=>"/contact?topic="+encodeURIComponent(s.title);
+export default function Offerings({pageKey}){const {site}=usePublicSite();const page=site.pages.find(p=>p.slug===pageKey);if(!page)return <main><h1>Page not found</h1><Link to="/">Return home</Link></main>;return (<article className="gourmet-essay-pages"><header><p>From Darrell’s journal</p><h1>{page.title}</h1><p>{page.intro}</p></header><div className="gourmet-essay-body">{page.sections.map((s,i)=><section key={s.title} id={s.anchor||'offering-'+(i+1)}><h2>{s.title}</h2>{copy(s)}<p className="gourmet-margin-invitation"><Link to={contact(s)}>Add your voice to this conversation ↗</Link></p></section>)}</div><footer><Link to="/blog">Keep reading the journal →</Link></footer></article>);}
