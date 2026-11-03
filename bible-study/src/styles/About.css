@@ -1,0 +1,110 @@
+.about-banner{
+ position:relative;
+ width:100%;
+ min-height:320px;
+ overflow:hidden;
+ background:var(--bg-alt);
+}
+
+.about-banner img{
+ display:block;
+ width:100%;
+ height:320px;
+ object-fit:cover;
+}
+
+.about-banner-overlay{
+ position:absolute;
+ inset:0;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ padding:1.5rem;
+ background:linear-gradient(to bottom,rgba(0,0,0,.35),rgba(0,0,0,.5));
+ text-align:center;
+}
+
+.about-banner-overlay h1{
+ margin:0;
+ color:#fff;
+ font-family:var(--font-heading);
+ font-size:clamp(2rem,5vw,3.5rem);
+ line-height:1.1;
+ text-shadow:0 2px 8px rgba(0,0,0,.35);
+}
+
+main{
+ background:var(--bg);
+ color:var(--text);
+}
+
+main .container{
+ color:var(--text);
+}
+
+main p{
+ margin:0 0 1.25rem 0;
+ font-size:1rem;
+ line-height:1.8;
+ color:var(--text-soft);
+ font-family:var(--font-body);
+}
+
+main h2{
+ margin:0;
+ font-family:var(--font-heading);
+ font-size:clamp(1.5rem,3vw,2.1rem);
+ line-height:1.2;
+ color:var(--primary);
+}
+
+main ul{
+ margin:0;
+ padding-left:1.25rem;
+ color:var(--text-soft);
+ font-family:var(--font-body);
+}
+
+main ul li{
+ margin-bottom:.8rem;
+ line-height:1.75;
+}
+
+main ul li:last-child{
+ margin-bottom:0;
+}
+
+main strong{
+ color:var(--text);
+}
+
+@media (max-width:768px){
+ .about-banner{
+  min-height:240px;
+ }
+
+ .about-banner img{
+  height:240px;
+ }
+
+ .about-banner-overlay{
+  padding:1rem;
+ }
+
+ .about-banner-overlay h1{
+  font-size:clamp(1.75rem,7vw,2.5rem);
+ }
+
+ main p{
+  font-size:1rem;
+  line-height:1.7;
+ }
+
+ main h2{
+  font-size:clamp(1.35rem,5vw,1.8rem);
+ }
+
+ main ul li{
+  line-height:1.65;
+ }
+}

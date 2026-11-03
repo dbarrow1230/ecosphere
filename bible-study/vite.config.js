@@ -1,0 +1,34 @@
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const sharedDirectory = path.resolve(__dirname, "..", "shared");
+
+export default defineConfig({
+  plugins: [react()],
+  resolve: {
+    dedupe: ["react", "react-dom"],
+    alias: { "@shared": sharedDirectory }
+  },
+  optimizeDeps: {
+  include:["react","react-dom","axios","react-bootstrap"]
+ },
+ server:{
+  fs:{
+   allow:[".."]
+  },
+  host:true,
+  open:true,
+  watch:{
+   usePolling:true,
+   interval:300
+  },
+    proxy: {
+      "/api": { target: "http://localhost:3001", changeOrigin: true, secure: false },
+      "/images": { target: "http://localhost:3001", changeOrigin: true, secure: false }
+    }
+  }
+});

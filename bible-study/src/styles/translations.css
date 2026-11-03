@@ -1,0 +1,51 @@
+/* src/styles/translations.css */
+.translations-banner{position:relative;width:100%;height:260px;overflow:hidden;}
+.translations-banner img{width:100%;height:100%;object-fit:cover;display:block;}
+.translations-banner-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(20,5,46,.75),rgba(74,45,122,.65));display:flex;align-items:center;justify-content:center;text-align:center;padding:1rem;}
+.translations-banner-overlay h1{color:var(--mauve);font-size:clamp(1.8rem,3vw,2.8rem);font-weight:800;margin:0;}
+
+.translations-page-shell{width:100%;margin:0;padding-inline:1.5rem;}
+.translations-card{height:calc(100vh - 220px);}
+.translations-card-body{display:flex;flex-direction:column;min-height:0;}
+.translations-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;}
+.translations-filter-control{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:.5rem;}
+.translations-filter-control .form-label{margin:0;white-space:nowrap;}
+.translations-filter-control .btn-link{padding:0;border:0;text-decoration:none;font-weight:700;color:var(--primary);white-space:nowrap;}
+.translations-filter-control .btn-link:disabled{color:var(--muted);opacity:.65;}
+.translations-browser{display:grid;grid-template-columns:minmax(17rem,24rem) minmax(0,1fr);gap:1rem;flex:1;min-height:0;align-items:stretch;}
+.translations-list-pane{min-height:0;overflow:auto;border:1px solid var(--border);border-radius:.5rem;background:var(--bg-alt);}
+.translation-list{list-style:none;margin:0;padding:0;}
+.translation-list-item{display:block;width:100%;padding:.75rem .9rem;border-bottom:1px solid var(--border);background:#fff;color:var(--text);text-align:left;cursor:pointer;}
+.translation-list-item:nth-child(even){background:#f4eaf8;}
+.translation-list-item:hover{background:#ead8f2;}
+.translation-list-item:focus{outline:2px solid var(--primary);outline-offset:-2px;}
+.translation-list-item.active{background:var(--primary);color:#fff;}
+.translation-list-title{display:block;font-weight:800;line-height:1.25;text-align:left;}
+.translations-empty{padding:1rem;color:var(--muted);}
+.translation-detail-pane{min-height:0;overflow:auto;padding:1rem;border:1px solid var(--border);border-radius:.5rem;background:#fff;box-shadow:0 .25rem .75rem rgba(75,0,130,.08);}
+.translation-detail-header{display:flex;justify-content:space-between;gap:1rem;margin-bottom:1rem;padding-bottom:.85rem;border-bottom:1px solid var(--border);}
+.translation-detail-header h3{margin:0;color:var(--primary);font-size:1.55rem;}
+.translation-detail-header p{margin:.25rem 0 0;color:var(--muted);font-weight:700;}
+.translation-detail-actions{display:flex;align-items:flex-start;gap:.5rem;white-space:nowrap;}
+.translation-detail{display:grid;gap:1.25rem;}
+.translation-detail-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:.75rem;padding-bottom:1rem;border-bottom:1px solid var(--border);}
+.translation-detail-meta div{display:grid;gap:.15rem;}
+.translation-detail-meta span{color:var(--muted);font-size:.875rem;font-weight:700;}
+.translation-detail-meta strong{color:var(--text);}
+.translation-detail h3{margin:0 0 .35rem;color:var(--primary);font-size:1.05rem;}
+.translation-detail p{margin:0;white-space:pre-wrap;}
+.translation-detail-placeholder{display:grid;align-content:center;justify-items:start;gap:.5rem;min-height:18rem;}
+.translation-detail-placeholder h3{margin:0;color:var(--primary);}
+.translation-detail-placeholder p{margin:0 0 .5rem;color:var(--muted);}
+
+@media (max-width:767.98px){
+ .translations-banner{height:220px;}
+ .translations-header{gap:.75rem;align-items:flex-start;flex-direction:column;}
+ .translations-filter-control{grid-template-columns:1fr auto;}
+ .translations-filter-control .form-control,
+ .translations-filter-control .form-select{grid-column:1 / -1;grid-row:2;}
+ .translations-browser{grid-template-columns:1fr;}
+ .translations-list-pane{max-height:20rem;}
+ .translation-detail-header{flex-direction:column;}
+ .translation-detail-actions{flex-wrap:wrap;}
+}

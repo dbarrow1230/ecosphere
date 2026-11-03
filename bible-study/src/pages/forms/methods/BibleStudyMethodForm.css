@@ -1,0 +1,223 @@
+/* /src/pages/forms/methods/BibleStudyMethodForm.css */
+
+.method-form-field{
+ display:grid;
+ grid-template-columns:10.5rem minmax(0,1fr);
+ gap:.5rem .9rem;
+ align-items:start;
+ width:100%;
+}
+
+.method-form-field .form-label{
+ margin:.38rem 0 0;
+ color:var(--primary-dark);
+ font-weight:800;
+ white-space:normal;
+ line-height:1.25;
+ overflow:visible;
+ text-overflow:clip;
+}
+
+.method-form-control-wrap{
+ min-width:0;
+ width:100%;
+}
+
+.method-form-control-wrap>.form-control,
+.method-form-control-wrap>.form-select,
+.method-form-control-wrap textarea,
+.method-form-control-wrap input{
+ width:100%;
+ min-width:0;
+}
+
+.method-input-action-row,
+.method-lookup-row{
+ display:flex;
+ align-items:stretch;
+ gap:.5rem;
+ width:100%;
+ min-width:0;
+}
+
+.method-input-action-row .form-control,
+.method-lookup-row .form-select{
+ min-width:0;
+ flex:1 1 auto;
+}
+
+.method-input-action-row .btn,
+.method-lookup-actions .btn{
+ flex:0 0 auto;
+ white-space:nowrap;
+}
+
+.method-icon-field{
+ display:grid;
+ grid-template-columns:4.5rem minmax(0,1fr);
+ gap:.65rem;
+ width:100%;
+ min-width:0;
+ align-items:start;
+}
+
+.method-icon-preview{
+ width:4.5rem;
+ height:4.5rem;
+ display:grid;
+ place-items:center;
+ overflow:hidden;
+ border:1px solid var(--border);
+ border-radius:.65rem;
+ background:var(--surface);
+ color:var(--primary-dark);
+ font-size:1.35rem;
+ font-weight:800;
+ text-align:center;
+}
+
+.method-icon-preview img{
+ display:block;
+ width:100%;
+ height:100%;
+ object-fit:cover;
+}
+
+.method-icon-preview span{
+ display:grid;
+ place-items:center;
+ width:100%;
+ height:100%;
+ padding:.35rem;
+ line-height:1;
+}
+
+.method-icon-main{
+ display:grid;
+ gap:.45rem;
+ min-width:0;
+}
+
+.method-icon-main .form-control{
+ min-width:0;
+ width:100%;
+}
+
+.method-icon-actions{
+ display:flex;
+ align-items:center;
+ gap:.4rem;
+ flex-wrap:wrap;
+}
+
+.method-icon-actions .btn{
+ flex:0 0 auto;
+ white-space:nowrap;
+}
+
+.method-icon-browser{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(8rem,1fr));
+ gap:.5rem;
+ margin-top:.65rem;
+ padding:.65rem;
+ border:1px solid var(--border);
+ border-radius:.75rem;
+ background:var(--surface);
+}
+
+.method-icon-option{
+ display:flex;
+ align-items:center;
+ gap:.5rem;
+ min-height:2.5rem;
+ padding:.45rem .55rem;
+ border:1px solid var(--border);
+ border-radius:.55rem;
+ background:var(--bg-alt);
+ color:var(--text);
+ text-align:left;
+ cursor:pointer;
+}
+
+.method-icon-option span{
+ width:1.5rem;
+ min-width:1.5rem;
+ font-size:1.2rem;
+ line-height:1;
+}
+
+.method-icon-option small{
+ font-weight:700;
+ line-height:1.2;
+ overflow:hidden;
+ text-overflow:ellipsis;
+ white-space:nowrap;
+}
+
+.method-icon-option.active,
+.method-icon-option:hover{
+ border-color:var(--primary);
+ background:color-mix(in srgb,var(--primary) 10%,var(--bg-alt));
+ color:var(--primary-dark);
+}
+
+.method-lookup-actions{
+ display:flex;
+ flex-direction:column;
+ gap:.35rem;
+ flex:0 0 auto;
+}
+
+@media (max-width:900px){
+ .method-form-field{
+  grid-template-columns:1fr;
+  align-items:start;
+ }
+
+ .method-form-field .form-label{
+  margin:0;
+ }
+
+ .method-input-action-row,
+ .method-lookup-row{
+  align-items:stretch;
+ }
+
+ .method-input-action-row{
+  flex-wrap:wrap;
+ }
+
+ .method-lookup-row{
+  flex-direction:column;
+ }
+
+ .method-lookup-actions{
+  flex-direction:row;
+ }
+}
+
+@media (max-width:575.98px){
+ .method-input-action-row{
+  flex-direction:column;
+  align-items:stretch;
+ }
+
+ .method-icon-field{
+  grid-template-columns:1fr;
+ }
+
+ .method-icon-preview{
+  width:100%;
+  height:8rem;
+ }
+
+ .method-icon-actions{
+  flex-direction:column;
+  align-items:stretch;
+ }
+
+ .method-icon-actions .btn{
+  width:100%;
+ }
+}

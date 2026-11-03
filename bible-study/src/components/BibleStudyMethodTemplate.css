@@ -1,0 +1,450 @@
+/* src/components/BibleStudyMethodTemplate.css */
+
+.study-method-page{
+ width:100%;
+ padding:1.5rem 0 2.75rem;
+}
+
+.study-method-page-inner{
+ width:100%;
+ max-width:none;
+ margin:0;
+ padding:0 1.5rem;
+}
+
+.study-method-header{
+ width:100%;
+ padding:0 0 1.6rem;
+ margin-bottom:1.65rem;
+ overflow:hidden;
+}
+
+.study-method-title-row{
+ display:flex;
+ align-items:flex-start;
+ gap:1.25rem;
+ min-width:0;
+}
+
+.study-method-title-icon-wrap{
+ display:inline-flex;
+ align-items:center;
+ justify-content:center;
+ flex:0 0 300px;
+ width:300px;
+ height:300px;
+ overflow:hidden;
+}
+
+.study-method-title-icon{
+ display:block;
+ width:300px;
+ height:300px;
+ max-width:300px;
+ max-height:300px;
+ object-fit:contain;
+}
+
+.study-method-title-emoji{
+ display:inline-flex;
+ align-items:center;
+ justify-content:center;
+ flex:0 0 300px;
+ width:300px;
+ height:300px;
+ font-size:150px;
+ line-height:1;
+}
+
+.study-method-title-text{
+ min-width:0;
+ flex:1 1 auto;
+ padding-top:.1rem;
+}
+
+.study-method-header-content{
+ min-width:0;
+ flex:1 1 auto;
+ display:grid;
+ gap:1.1rem;
+ align-content:start;
+}
+
+.study-method-title{
+ margin:0;
+ color:var(--primary-dark);
+ font-size:clamp(2rem,2.4vw,3rem);
+ font-weight:800;
+ line-height:1.08;
+}
+
+.study-method-subtitle{
+ margin:.45rem 0 0;
+ color:var(--text-muted);
+ font-size:1.03rem;
+ line-height:1.45;
+}
+
+.study-method-header-summary{
+ display:grid;
+ grid-template-columns:1fr;
+ gap:1rem;
+ max-width:72rem;
+}
+
+.study-method-summary-item{
+ min-width:0;
+ padding:0;
+}
+
+.study-method-summary-item h2{
+ margin:0 0 .35rem;
+ color:var(--primary-dark);
+ font-size:1.05rem;
+ font-weight:800;
+ line-height:1.2;
+}
+
+.study-method-summary-item p{
+ margin:0;
+ color:var(--text);
+ line-height:1.55;
+}
+
+.study-method-grid{
+ display:grid;
+ grid-template-columns:minmax(0,1.65fr) minmax(300px,.85fr);
+ gap:2.75rem;
+ align-items:start;
+ width:100%;
+}
+
+.study-method-main,
+.study-method-sidebar{
+ display:grid;
+ gap:1.8rem;
+ align-content:start;
+ align-items:start;
+ min-width:0;
+}
+
+.study-method-sidebar{
+ padding-left:1.75rem;
+ border-left:1px solid color-mix(in srgb,var(--border) 55%,transparent);
+}
+
+.study-method-section{
+ min-width:0;
+ padding:0;
+ background:transparent;
+ box-shadow:none;
+}
+
+.study-method-sidebar .study-method-section{
+ padding:0;
+}
+
+.study-method-section h2{
+ display:inline-flex;
+ align-items:center;
+ width:fit-content;
+ margin:0 0 .85rem;
+ padding:.25rem .55rem;
+ color:var(--primary-dark);
+ background:color-mix(in srgb,var(--primary) 10%,transparent);
+ border-left:4px solid var(--primary);
+ font-size:1.2rem;
+ font-weight:800;
+ line-height:1.2;
+}
+
+.study-method-main>.study-method-section>h2{
+ font-size:1.28rem;
+}
+
+.study-method-section p{
+ margin:0;
+ color:var(--text);
+ line-height:1.65;
+}
+
+.study-method-section p+p{
+ margin-top:.65rem;
+}
+
+.study-method-list{
+ margin:0;
+ padding-left:1.1rem;
+}
+
+.study-method-list li{
+ color:var(--text);
+ line-height:1.55;
+ margin-bottom:.35rem;
+}
+
+.study-method-list li:last-child{
+ margin-bottom:0;
+}
+
+.study-method-steps{
+ display:grid;
+ gap:1.05rem;
+}
+
+.study-method-step-card{
+ display:grid;
+ grid-template-columns:2.4rem minmax(0,1fr);
+ gap:.75rem;
+ min-width:0;
+ padding:0;
+ background:transparent;
+}
+
+.study-method-step-card:last-child{
+ padding-bottom:0;
+}
+
+.study-method-step-number{
+ width:1.7rem;
+ height:1.7rem;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ border-radius:50%;
+ background:var(--primary);
+ color:var(--bg-alt);
+ font-weight:800;
+ font-size:.88rem;
+ margin-top:.1rem;
+}
+
+.study-method-step-content{
+ min-width:0;
+}
+
+.study-method-step-title{
+ margin:0 0 .2rem;
+ color:var(--primary-dark);
+ font-size:1rem;
+ font-weight:800;
+ line-height:1.25;
+}
+
+.study-method-step-content p{
+ font-size:.95rem;
+}
+
+.study-method-example-grid{
+ display:grid;
+ grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:1.15rem 1.6rem;
+}
+
+.study-method-example-reference,
+.study-method-example-summary,
+.study-method-example-card{
+ min-width:0;
+ padding:0;
+ background:transparent;
+}
+
+.study-method-example-reference,
+.study-method-example-summary{
+ grid-column:1/-1;
+}
+
+.study-method-example-label{
+ display:block;
+ margin:0 0 .25rem;
+ color:var(--primary-dark);
+ font-size:.88rem;
+ font-weight:800;
+ line-height:1.2;
+}
+
+.study-method-example-card p,
+.study-method-example-reference p,
+.study-method-example-summary p{
+ margin:0;
+}
+
+.study-method-closing{
+ padding-top:1.1rem;
+ padding-bottom:0;
+ border-top:2px solid color-mix(in srgb,var(--primary) 45%,transparent);
+}
+
+.study-method-page img{
+ max-width:100%;
+ height:auto;
+}
+
+.study-method-print-toolbar{
+ display:flex;
+ justify-content:flex-end;
+ margin:0 0 1rem;
+}
+
+@media (max-width:1399.98px){
+ .study-method-title-icon-wrap,
+ .study-method-title-emoji{
+  flex-basis:280px;
+  width:280px;
+  height:280px;
+ }
+
+ .study-method-title-icon{
+  width:280px;
+  height:280px;
+  max-width:280px;
+  max-height:280px;
+ }
+
+ .study-method-title-emoji{
+  font-size:140px;
+ }
+}
+
+@media (max-width:1199.98px){
+ .study-method-grid{
+  grid-template-columns:minmax(0,1.35fr) minmax(280px,.85fr);
+ }
+
+ .study-method-title-icon-wrap,
+ .study-method-title-emoji{
+  flex-basis:240px;
+  width:240px;
+  height:240px;
+ }
+
+ .study-method-title-icon{
+  width:240px;
+  height:240px;
+  max-width:240px;
+  max-height:240px;
+ }
+
+ .study-method-title-emoji{
+  font-size:120px;
+ }
+}
+
+@media (max-width:991.98px){
+ .study-method-page-inner{
+  padding:0 1rem;
+ }
+
+ .study-method-grid{
+  grid-template-columns:1fr;
+ }
+
+ .study-method-sidebar{
+  padding-left:0;
+  border-left:0;
+ }
+
+ .study-method-example-grid{
+  grid-template-columns:1fr;
+ }
+
+ .study-method-header-summary{
+  grid-template-columns:1fr;
+ }
+
+ .study-method-title-icon-wrap,
+ .study-method-title-emoji{
+  flex-basis:200px;
+  width:200px;
+  height:200px;
+ }
+
+ .study-method-title-icon{
+  width:200px;
+  height:200px;
+  max-width:200px;
+  max-height:200px;
+ }
+
+ .study-method-title-emoji{
+  font-size:100px;
+ }
+}
+
+@media (max-width:767.98px){
+ .study-method-title-row{
+  gap:.85rem;
+ }
+
+ .study-method-title-icon-wrap,
+ .study-method-title-emoji{
+  flex-basis:160px;
+  width:160px;
+  height:160px;
+ }
+
+ .study-method-title-icon{
+  width:160px;
+  height:160px;
+  max-width:160px;
+  max-height:160px;
+ }
+
+ .study-method-title-emoji{
+  font-size:80px;
+ }
+
+ .study-method-title{
+  font-size:1.8rem;
+ }
+}
+
+@media (max-width:575.98px){
+ .study-method-page{
+  padding:1rem 0 2rem;
+ }
+
+ .study-method-page-inner{
+  padding:0 .75rem;
+ }
+
+ .study-method-header{
+  padding-bottom:1rem;
+ }
+
+ .study-method-title-row{
+  gap:.7rem;
+ }
+
+ .study-method-title-icon-wrap,
+ .study-method-title-emoji{
+  flex-basis:120px;
+  width:120px;
+  height:120px;
+ }
+
+ .study-method-title-icon{
+  width:120px;
+  height:120px;
+  max-width:120px;
+  max-height:120px;
+ }
+
+ .study-method-title-emoji{
+  font-size:60px;
+ }
+
+ .study-method-title{
+  font-size:1.55rem;
+ }
+
+ .study-method-step-card{
+  grid-template-columns:2.25rem minmax(0,1fr);
+ }
+
+ .study-method-step-number{
+  width:1.65rem;
+  height:1.65rem;
+  font-size:.82rem;
+ }
+}
