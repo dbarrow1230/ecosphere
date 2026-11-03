@@ -1,0 +1,49 @@
+.logbook-call-sign{
+ text-transform:uppercase;
+ letter-spacing:.04em;
+ color:var(--heading);
+ font-weight:800;
+}
+
+.table th{
+ white-space:nowrap;
+ color:var(--heading);
+ background:var(--surface-2);
+ border-color:var(--border);
+}
+
+.table td{
+ color:var(--text);
+ border-color:var(--border);
+}
+
+.table{
+ --bs-table-bg:var(--surface);
+ --bs-table-color:var(--text);
+ --bs-table-border-color:var(--border);
+ --bs-table-hover-bg:var(--surface-2);
+ --bs-table-hover-color:var(--text);
+}
+
+.logbook-qso-modal .modal-content,
+.logbook-qso-modal .modal-header,
+.logbook-qso-modal .modal-body,
+.logbook-qso-modal .modal-footer{
+ color:var(--text);
+ background:var(--surface);
+ border-color:var(--border);
+}
+
+.logbook-qso-modal .modal-title{
+ color:var(--text);
+}
+
+.logbook-qso-modal .form-text{
+ color:var(--text-soft,var(--text))!important;
+ opacity:1;
+}
+
+.logbook-qso-modal .btn-close{
+ color:var(--text);
+ opacity:.85;
+}

@@ -1,0 +1,5 @@
+import {Link} from "react-router-dom";
+import {usePublicSite} from "../../../../shared/public/PublicSiteContext.jsx";
+const copy=s=><>{s.text?.map(t=><p key={t}>{t}</p>)}{s.items&&<ul>{s.items.map(t=><li key={t}>{t}</li>)}</ul>}{s.note&&<p className="pw-note">{s.note}</p>}</>;
+const contact=s=>"/contact?topic="+encodeURIComponent(s.title);
+export default function Offerings({pageKey}){const {site}=usePublicSite();const page=site.pages.find(p=>p.slug===pageKey);if(!page)return <main><h1>Page not found</h1><Link to="/">Return home</Link></main>;return (<div className="renewal-action-pages"><header><h1>{page.title}</h1><p>{page.intro}</p></header><nav aria-label="Ways to take part">{page.sections.map((s,i)=><a key={s.title} href={'#'+(s.anchor||'offering-'+(i+1))}>{s.title} ↓</a>)}</nav>{page.sections.map((s,i)=><section key={s.title} id={s.anchor||'offering-'+(i+1)}><header><span>Take part / {i+1}</span><h2>{s.title}</h2><Link to={contact(s)}>Get involved →</Link></header><div>{copy(s)}</div></section>)}</div>);}

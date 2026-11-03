@@ -1,0 +1,16 @@
+.soil-temperature-reference{display:grid;gap:1rem;padding:1.5rem 2rem;color:var(--primary)}
+.soil-temperature-header{display:flex;align-items:center;gap:1rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:1.25rem}
+.soil-temperature-header h1{color:var(--primary);font-size:1.8rem}
+.soil-temperature-header p{margin:0;color:var(--primary)}
+.soil-temperature-reference h2{display:flex;align-items:center;gap:.4rem;font-size:1.15rem;color:var(--primary)}
+.soil-reference-context{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.soil-reference-table{--bs-table-bg:transparent;--bs-table-color:var(--primary);box-shadow:none}
+.soil-reference-table th{color:var(--primary);font-size:.875rem;white-space:nowrap}
+.soil-reference-table caption{caption-side:bottom;color:var(--primary)}
+.soil-reading-status{font-size:.85rem;font-weight:700}
+.soil-reading-cold,.soil-reading-hot{color:#9b2929}
+.soil-reading-cool,.soil-reading-warm{color:#80571d}
+.soil-reading-preferred{color:var(--primary)}
+.soil-reference-note{font-size:.85rem;margin-bottom:0}
+.soil-reference-sources{display:grid;gap:.4rem;background:var(--surface);border:1px solid var(--border);padding:1rem;border-radius:var(--radius-md)}
+@media(max-width:760px){.soil-temperature-reference{padding:1rem}.soil-reference-context{grid-template-columns:1fr}}

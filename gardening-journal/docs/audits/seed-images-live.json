@@ -1,0 +1,471 @@
+[
+  {
+    "id": "6ae65bd3118c9d8061da9c23",
+    "name": "Fenugreek",
+    "image": "fenugreek.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "6973e2d9e1cd36659ee4975c",
+    "name": "Acorn Squash",
+    "image": "Acorn Squash.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "69738ee1e1cd36659ee4907d",
+    "name": "Bell Pepper",
+    "image": "Bell Pepper.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "69731a3091ecca8c4f567bd3",
+    "name": "Garlic",
+    "image": "garlic_bulb.jpg",
+    "status": 404,
+    "type": "text/html; charset=utf-8"
+  },
+  {
+    "id": "69728a4dca6190b128a887b1",
+    "name": "Echinacea (Purple Coneflower)",
+    "image": "echinacea.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "6971581164364e2cb65323a6",
+    "name": "Pennyroyal Mint",
+    "image": "pennyroyal-mint.png",
+    "status": 200,
+    "type": "image/png"
+  },
+  {
+    "id": "6968188b472fa98a788cfdfc",
+    "name": "Holy Basil (Tulsi)",
+    "image": "holy basil.webp",
+    "status": 200,
+    "type": "image/webp"
+  },
+  {
+    "id": "696971a1def9693e15f71e48",
+    "name": "Calendula (Pot Marigold)",
+    "image": "calendula.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "696a4783a3aee0b195a122fd",
+    "name": "Spearmint",
+    "image": "spearmint.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "696a6678a3aee0b195a12312",
+    "name": "Jalapeño Pepper",
+    "image": "jalapeno Pepper.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "696bee8b5a25a3331b3f2d4b",
+    "name": "Peppermint",
+    "image": "peppermint.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "696cf21ac7e280c841cc52d6",
+    "name": "Hyssop",
+    "image": "hyssop.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "696406d5070148e5b1448e28",
+    "name": "Lemon (grown from seed)",
+    "image": "lemon-seedlings.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "696f5e84ec42813c1bcd2f0d",
+    "name": "Broad Leaf Sage (Garden Sage)",
+    "image": "sage.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "696fa6bcab91d2e0253a590a",
+    "name": "Butter Crunch Lettuce",
+    "image": "Buttercrunch Lettuce.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "696fb9ffde5f5b49e2c6c51c",
+    "name": "Chocolate Beauty Pepper",
+    "image": "chocolate beauty pepper.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "696fba79de5f5b49e2c6c51e",
+    "name": "Lemon Balm",
+    "image": "lemon balm.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "69700a73d2bb508a28fec931",
+    "name": "Thai Basil",
+    "image": "thai-basil.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "69700b27d2bb508a28fec933",
+    "name": "Mini Sweet Peppers",
+    "image": "mini-sweet-pepper-mix.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "69700b61d2bb508a28fec935",
+    "name": "Lemongrass",
+    "image": "Lemongrass.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "696e61722632fe8bf94416dd",
+    "name": "California Wonder Pepper",
+    "image": "California Wonder Pepper.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "69753202400207e36df13768",
+    "name": "Scotch Bonnet Pepper",
+    "image": "scotch bonnet.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "6975411c400207e36df1376d",
+    "name": "Sweet Basil",
+    "image": "basil sweet.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "6975576b400207e36df13773",
+    "name": "Tomato",
+    "image": "tomato.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "6975d040df2f70d624c3cdd2",
+    "name": "Chervil (Curled)",
+    "image": "Chervil Curled.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "6975d42edf2f70d624c3cdd4",
+    "name": "Fennel (Florence)",
+    "image": "fennel florence.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "6975ddc5df2f70d624c3cdd8",
+    "name": "Parsley (Italian Giant)",
+    "image": "parsley italian giant.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "6976386a37eab88f2069d6fa",
+    "name": "Rosemary",
+    "image": "rosemary.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "69763ccc37eab88f2069d6ff",
+    "name": "Chives",
+    "image": "chives.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "69763f4337eab88f2069d702",
+    "name": "Roses",
+    "image": "Roses.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "69763fa737eab88f2069d704",
+    "name": "Carrots",
+    "image": "carrot.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "6976466137eab88f2069d70a",
+    "name": "Oats",
+    "image": "river oats.jpg",
+    "status": 404,
+    "type": "text/html; charset=utf-8"
+  },
+  {
+    "id": "69764ab237eab88f2069d70f",
+    "name": "Scallion",
+    "image": "scallion.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "69765d866b8677138a200971",
+    "name": "Cilantro",
+    "image": "cilantro.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "69765e316b8677138a200973",
+    "name": "Anise",
+    "image": "anise.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "697661fe6b8677138a200978",
+    "name": "Rainbow Carrots",
+    "image": "rainbow carrot.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "697662e06b8677138a20097a",
+    "name": "Garlic Chives",
+    "image": "chives garlic.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "697665516b8677138a20097c",
+    "name": "Genovese Basil",
+    "image": "basil-genovese.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "697667fb6b8677138a200980",
+    "name": "Sunbright Pepper",
+    "image": "pepper sunbright.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "69766bd86b8677138a200983",
+    "name": "Thyme",
+    "image": "thyme common.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "69776730e3721465bca4223e",
+    "name": "Mint (Spearmint)",
+    "image": "spearmint.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "69776d13e3721465bca42240",
+    "name": "Purple Beauty Pepper",
+    "image": "purple beauty pepper.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "69776f98e3721465bca42242",
+    "name": "Orange Sun Pepper",
+    "image": "Orange sun pepper.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "6977717ce3721465bca42244",
+    "name": "Dill Bouquet",
+    "image": "dill bouquet.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "697774cae3721465bca42249",
+    "name": "Oregano",
+    "image": "Oregano.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "69777791e3721465bca4224d",
+    "name": "Sweet Snap Pepper",
+    "image": "sweet snaps peppers.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "69778a37e3721465bca42251",
+    "name": "Rue",
+    "image": "rue.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "6977902fe3721465bca42253",
+    "name": "Mixed Bell Peppers",
+    "image": "bell pepper mix.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "6977a4c772a87dd8e4cdf658",
+    "name": "Celery",
+    "image": "Celery.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "6978122a6baad6126b1d9305",
+    "name": "Boston Lettuce",
+    "image": "boston Lettuce.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "696465774628c7f170cac41c",
+    "name": "Lemon mint",
+    "image": "lemon mint.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "697818d16baad6126b1d9309",
+    "name": "Habanero Pepper",
+    "image": "habanero pepper orange.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "69781c076baad6126b1d9310",
+    "name": "Spinach",
+    "image": "spinach bloomsdale.webp",
+    "status": 200,
+    "type": "image/webp"
+  },
+  {
+    "id": "69781e826baad6126b1d9312",
+    "name": "Lemon Basil",
+    "image": "basil lemon.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "697823ed6baad6126b1d9316",
+    "name": "Chamomile (Roman)",
+    "image": "chamomile roman.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "697825a46baad6126b1d931a",
+    "name": "Borage",
+    "image": "borage.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "697961c3fa9f01845e01c013",
+    "name": "English Lavender",
+    "image": "English Lavender.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "697ec2befbacf78d991a584f",
+    "name": "Russet Potato",
+    "image": "Russet Potato.jpeg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "697816686baad6126b1d9307",
+    "name": "Georgia Southern Collards",
+    "image": "collards gergia southern.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "697ecc28fbacf78d991a585d",
+    "name": "Cabbage",
+    "image": "cabbage.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "697ecff4fbacf78d991a585f",
+    "name": "Brussels Sprouts",
+    "image": "Brussels Sprouts.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "697ed29dfbacf78d991a5862",
+    "name": "Zucchini",
+    "image": "Zucchini.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "697ed60ffbacf78d991a5867",
+    "name": "Tarragon",
+    "image": "tarragon.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "697f25c24e0f099337baab62",
+    "name": "Orange Bright Pepper",
+    "image": "Oranage Pepper.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "697f30084e0f099337baab6a",
+    "name": "Cucumber",
+    "image": "Cucumber.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "697f3b2b4e0f099337baab6e",
+    "name": "Bok Choy",
+    "image": "bok-choy.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  },
+  {
+    "id": "697ec826fbacf78d991a5854",
+    "name": "Corn (Maize)",
+    "image": "corn.jpg",
+    "status": 200,
+    "type": "image/jpeg"
+  }
+]

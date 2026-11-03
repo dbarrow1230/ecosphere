@@ -1,0 +1,88 @@
+[
+  {
+    "model": "Seed",
+    "total": 66,
+    "invalid": 59,
+    "fields": {
+      "user (required)": 59
+    }
+  },
+  {
+    "model": "Species",
+    "total": 71,
+    "invalid": 0,
+    "fields": {}
+  },
+  {
+    "model": "Plant",
+    "total": 24,
+    "invalid": 0,
+    "fields": {}
+  },
+  {
+    "model": "Planting",
+    "total": 65,
+    "invalid": 0,
+    "fields": {}
+  },
+  {
+    "model": "Equipment",
+    "total": 16,
+    "invalid": 0,
+    "fields": {}
+  },
+  {
+    "model": "Garden",
+    "total": 4,
+    "invalid": 0,
+    "fields": {}
+  },
+  {
+    "model": "JournalEntry",
+    "total": 111,
+    "invalid": 0,
+    "fields": {}
+  },
+  {
+    "model": "Observation",
+    "total": 4,
+    "invalid": 0,
+    "fields": {}
+  },
+  {
+    "model": "Harvest",
+    "total": 48,
+    "invalid": 0,
+    "fields": {}
+  },
+  {
+    "model": "Task",
+    "total": 8,
+    "invalid": 0,
+    "fields": {}
+  },
+  {
+    "model": "Pest",
+    "total": 10,
+    "invalid": 0,
+    "fields": {}
+  },
+  {
+    "model": "EquipmentVendor",
+    "total": 27,
+    "invalid": 0,
+    "fields": {}
+  },
+  {
+    "model": "SeedVendor",
+    "total": 24,
+    "invalid": 0,
+    "fields": {}
+  },
+  {
+    "model": "GardenBudget",
+    "total": 7,
+    "invalid": 0,
+    "fields": {}
+  }
+]

@@ -1,0 +1,164 @@
+/* src/pages/plants/plants.css */
+.plant-page{
+ background:var(--gradientSoft);
+ color:var(--text);
+}
+
+.plant-profile-layout{display:grid;grid-template-columns:minmax(220px,300px) minmax(0,1fr);gap:1rem;align-items:start;}
+.plant-profile-sidebar{position:sticky;top:1rem;min-width:0;}
+.plant-profile-main{min-width:0;}
+.plant-sidebar-card .card-header h2{margin:0;font-size:1.4rem;white-space:nowrap;color:var(--heading);}
+.plant-list-search{padding:.75rem;}
+.plant-alpha-tabs{display:flex;flex-wrap:wrap;gap:.25rem;padding:.75rem;border-bottom:1px solid var(--border);}
+.plant-sidebar-card .list-group{max-height:640px;overflow-y:auto;overscroll-behavior:contain;}
+.plant-list-name,.plant-list-type{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.plant-list-name{font-weight:900;}
+.plant-list-type{font-size:.78rem;margin-top:.15rem;}
+.plant-detail-flow{display:grid;gap:.9rem;margin-top:1rem;}
+.plant-detail-overview-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.9rem;}
+.plant-detail-overview-grid > *{min-width:0;}
+.plant-info-card .card-header{background:var(--primary);color:var(--text-inverse);}
+.plant-info-card .list-group-item{background:var(--surface);color:var(--text);border-color:var(--border);}
+
+.plant-sidebar-card,
+.plant-hero-card,
+.plant-info-card{
+ border-radius:14px;
+ background:var(--surface);
+ color:var(--text);
+ border-color:var(--border);
+}
+
+.plant-sidebar-card .list-group-item.active{
+ background-color:#198754;
+ border-color:#198754;
+}
+
+.plant-title{
+ font-size:2rem;
+ font-weight:700;
+}
+
+.plant-hero-row{
+ display:flex;
+ gap:1.5rem;
+ align-items:flex-start;
+}
+
+.plant-hero-image{
+ width:220px;
+ height:220px;
+ object-fit:cover;
+ border-radius:12px;
+ border:1px solid rgba(0,0,0,.125);
+}
+
+.plant-hero-placeholder{
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ background:var(--surface2);
+ color:#6c757d;
+}
+
+.plant-hero-text{
+ flex:1;
+ min-width:0;
+}
+
+.plant-lead{
+ font-size:1.05rem;
+ line-height:1.6;
+}
+
+.plant-header-details{
+ padding:.75rem;
+ background:#f8f9fa;
+ border-radius:10px;
+ margin-bottom:.75rem;
+}
+
+.plant-image-hover-wrap{
+ position:relative;
+ display:inline-block;
+}
+
+.plant-image-preview{
+ display:none;
+ position:absolute;
+ z-index:20;
+ left:100%;
+ top:0;
+ margin-left:1rem;
+ background:#fff;
+ padding:.5rem;
+ border:1px solid rgba(0,0,0,.125);
+ border-radius:12px;
+ box-shadow:0 .5rem 1rem rgba(0,0,0,.15);
+}
+
+.plant-image-preview img{
+ max-width:420px;
+ max-height:420px;
+ object-fit:contain;
+}
+
+.plant-image-hover-wrap:hover .plant-image-preview{
+ display:block;
+}
+
+.text-scientific{
+ color:#0d6efd;
+}
+
+.text-family{
+ color:#198754;
+}
+
+.text-type{
+ color:#6f42c1;
+}
+
+.text-seed{
+ color:#fd7e14;
+}
+
+.plant-detail-tabs{
+ gap:.25rem;
+ border-bottom:1px solid var(--borderStrong);
+}
+
+.plant-detail-tabs .nav-link{
+ color:var(--text-inverse);
+ font-weight:700;
+ padding:.6rem .85rem;
+}
+
+.plant-detail-tabs .nav-link.active{
+ color:var(--text-inverse);
+ background:var(--primary);
+ border-color:var(--primary);
+}
+
+.plant-page .tab-content{
+ padding:.75rem 0;
+}
+
+@media(max-width:768px){
+ .plant-profile-layout,.plant-detail-overview-grid{
+  grid-template-columns:minmax(0,1fr);
+ }
+ .plant-profile-sidebar{ position:static; }
+ .plant-hero-row{
+  flex-direction:column;
+ }
+
+ .plant-hero-image{
+  width:100%;
+  height:260px;
+ }
+
+ .plant-image-preview{
+  display:none!important;
+ }
+}

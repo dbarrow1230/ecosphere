@@ -1,0 +1,38 @@
+.metrics-card .metrics-grid{
+ display:grid;
+ grid-template-columns:repeat(3,minmax(0,1fr));
+ gap:0.75rem;
+}
+
+.metrics-card .metric-item{
+ border:1px solid var(--border,#d9dfd2);
+ border-radius:0.5rem;
+ padding:0.75rem;
+ text-align:center;
+ background:var(--surface,#fff);
+}
+
+.metrics-card .metric-label{
+ color:var(--text-soft,#6c757d);
+ font-size:0.85rem;
+ margin-bottom:0.25rem;
+}
+
+.metrics-card .metric-value{
+ color:var(--heading,#184533);
+ font-size:1.35rem;
+ font-weight:700;
+ line-height:1;
+}
+
+.metrics-card .metric-warning{
+ border-color:var(--warning,#ffc107);
+}
+
+.metrics-card .metric-success{
+ border-color:var(--success,#198754);
+}
+
+.metrics-card .metric-info{
+ border-color:var(--info,#0dcaf0);
+}

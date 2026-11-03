@@ -1,0 +1,1485 @@
+{
+  "pages": [
+    {
+      "route": "/",
+      "component": "Home",
+      "file": "src/pages/Home.jsx"
+    },
+    {
+      "route": "/contact",
+      "component": "ContactUs",
+      "file": "src/pages/contactus.jsx"
+    },
+    {
+      "route": "/faq",
+      "component": "FAQ",
+      "file": "src/pages/faq.jsx"
+    },
+    {
+      "route": "/privacy",
+      "component": "Privacy",
+      "file": "src/pages/privacy.jsx"
+    },
+    {
+      "route": "/terms",
+      "component": "TermsOfService",
+      "file": "src/pages/termsofservice.jsx"
+    },
+    {
+      "route": "/about",
+      "component": "About",
+      "file": "src/pages/about.jsx"
+    },
+    {
+      "route": "/dashboard",
+      "component": "Dashboard",
+      "file": "src/pages/dashboard.jsx"
+    },
+    {
+      "route": "/journalboard",
+      "component": "GardeningJournalBoard",
+      "file": "src/pages/GardeningJournalBoard.jsx"
+    },
+    {
+      "route": "/hydroponics",
+      "component": "HydroSystemsPage",
+      "file": "src/pages/hydroponics/HydroSystemsPage.jsx"
+    },
+    {
+      "route": "/equipment",
+      "component": "EquipmentPage",
+      "file": "src/pages/equipment/EquipmentPage.jsx"
+    },
+    {
+      "route": "/journal",
+      "component": "JournalPage",
+      "file": "src/pages/journal/JournalPage.jsx"
+    },
+    {
+      "route": "/plantings",
+      "component": "PlantingsPage",
+      "file": "src/pages/plantings/PlantingsPage.jsx"
+    },
+    {
+      "route": "/gardens",
+      "component": "GardensPage",
+      "file": "src/pages/gardens/GardensPage.jsx"
+    },
+    {
+      "route": "/gardens/:id",
+      "component": "GardenWorkspacePage",
+      "file": "src/pages/gardens/GardenWorkspacePage.jsx"
+    },
+    {
+      "route": "/garden-budgets",
+      "component": "GardenBudgetsPage",
+      "file": "src/pages/planning/GardenBudgetsPage.jsx"
+    },
+    {
+      "route": "/garden-expenses",
+      "component": "GardenExpensesPage",
+      "file": "src/pages/planning/GardenExpensesPage.jsx"
+    },
+    {
+      "route": "/garden-wishlist",
+      "component": "GardenWishListPage",
+      "file": "src/pages/planning/GardenWishListPage.jsx"
+    },
+    {
+      "route": "/fruit-calendar",
+      "component": "FruitCalendarPage",
+      "file": "src/pages/planning/FruitCalendarPage.jsx"
+    },
+    {
+      "route": "/vegetable-calendar",
+      "component": "VegetableCalendarPage",
+      "file": "src/pages/planning/VegetableCalendarPage.jsx"
+    },
+    {
+      "route": "/trap-crops",
+      "component": "TrapCropsPage",
+      "file": "src/pages/planning/TrapCropsPage.jsx"
+    },
+    {
+      "route": "/cover-crops",
+      "component": "CoverCropsPage",
+      "file": "src/pages/planning/CoverCropsPage.jsx"
+    },
+    {
+      "route": "/companion-planting",
+      "component": "CompanionPlantingPage",
+      "file": "src/pages/planning/CompanionPlantingPage.jsx"
+    },
+    {
+      "route": "/soil-temperatures",
+      "component": "SoilTemperatureReferencePage",
+      "file": "src/pages/reference/SoilTemperatureReferencePage.jsx"
+    },
+    {
+      "route": "/microgreens-guide",
+      "component": "MicrogreensGuidePage",
+      "file": "src/pages/reference/MicrogreensGuidePage.jsx"
+    },
+    {
+      "route": "/supplies",
+      "component": "SuppliesPage",
+      "file": "src/pages/supplies/SuppliesPage.jsx"
+    },
+    {
+      "route": "/observations",
+      "component": "ObservationsPage",
+      "file": "src/pages/observations/ObservationsPage.jsx"
+    },
+    {
+      "route": "/fertilizer-applications",
+      "component": "FertilizerApplicationsPage",
+      "file": "src/pages/fertilizers/FertilizerApplicationsPage.jsx"
+    },
+    {
+      "route": "/issues",
+      "component": "IssuesPage",
+      "file": "src/pages/issues/IssuesPage.jsx"
+    },
+    {
+      "route": "/harvest",
+      "component": "HarvestPage",
+      "file": "src/pages/harvest/HarvestPage.jsx"
+    },
+    {
+      "route": "/pests",
+      "component": "PestsPage",
+      "file": "src/pages/pests/PestsPage.jsx"
+    },
+    {
+      "route": "/tasks",
+      "component": "TasksPage",
+      "file": "src/pages/task/TasksPage.jsx"
+    },
+    {
+      "route": "/seeds/form",
+      "component": "SeedForm",
+      "file": "src/pages/forms/seeds/SeedFormPage.jsx"
+    },
+    {
+      "route": "/hardiness-zones",
+      "component": "USDAZonesReference",
+      "file": "src/pages/reference/USDAZonesReference.jsx"
+    },
+    {
+      "route": "/hydroponic-companion-planting",
+      "component": "HydroponicCompanionPlantingPage",
+      "file": "src/pages/reference/HydroponicCompanionPlantingPage.jsx"
+    },
+    {
+      "route": "/diseases",
+      "component": "DiseasesPage",
+      "file": "src/pages/diseases/diseases.jsx"
+    },
+    {
+      "route": "/seeds",
+      "component": "SeedPage",
+      "file": "src/pages/seeds/SeedPage.jsx"
+    },
+    {
+      "route": "/seed-collections",
+      "component": "SeedCollectionsPage",
+      "file": "src/pages/seeds/SeedCollectionsPage.jsx"
+    },
+    {
+      "route": "/plants",
+      "component": "PlantPage",
+      "file": "src/pages/plants/PlantPage.jsx"
+    },
+    {
+      "route": "/vendors/equipment",
+      "component": "EquipmentVendor",
+      "file": "src/pages/vendors/equipmentVendor.jsx"
+    },
+    {
+      "route": "/vendors/seeds",
+      "component": "SeedVendor",
+      "file": "src/pages/vendors/seedVendor.jsx"
+    },
+    {
+      "route": "/vendors/supplies",
+      "component": "SupplyVendor",
+      "file": "src/pages/vendors/supplyVendor.jsx"
+    },
+    {
+      "route": "/users",
+      "component": "Users",
+      "file": "src/pages/admin/users/Users.jsx"
+    },
+    {
+      "route": "/login",
+      "component": "Login",
+      "file": "src/pages/admin/users/Login.jsx"
+    },
+    {
+      "route": "/forgot-password",
+      "component": "ForgotPasswordPage",
+      "file": "src/pages/auth/ForgotPasswordPage.jsx"
+    },
+    {
+      "route": "/reset-password/:token",
+      "component": "ResetPasswordPage",
+      "file": "src/pages/auth/ResetPasswordPage.jsx"
+    },
+    {
+      "route": "/profile",
+      "component": "UserProfilePage",
+      "file": "src/pages/admin/users/UserProfilePage.jsx"
+    },
+    {
+      "route": "/admin",
+      "component": "AdminDashboard",
+      "file": "src/pages/admin/Dashboard.jsx"
+    },
+    {
+      "route": "/admin/businesses",
+      "component": "Businesses",
+      "file": "src/pages/admin/Businesses.jsx"
+    },
+    {
+      "route": "/admin/business-types",
+      "component": "BusinessTypes",
+      "file": "src/pages/admin/BusinessTypes.jsx"
+    },
+    {
+      "route": "/admin/app-keys",
+      "component": "AppKeys",
+      "file": "src/pages/admin/AppKeys.jsx"
+    },
+    {
+      "route": "/admin/tax-rates",
+      "component": "TaxRatesPage",
+      "file": "src/pages/admin/TaxRatesPage.jsx"
+    },
+    {
+      "route": "/admin/footers",
+      "component": "Footers",
+      "file": "src/pages/admin/Footers.jsx"
+    },
+    {
+      "route": "/admin/seasons",
+      "component": "Seasons",
+      "file": "src/pages/admin/Seasons.jsx"
+    },
+    {
+      "route": "/admin/holidays",
+      "component": "Holidays",
+      "file": "src/pages/admin/Holidays.jsx"
+    },
+    {
+      "route": "/admin/occasions",
+      "component": "Occasions",
+      "file": "src/pages/admin/Occasions.jsx"
+    },
+    {
+      "route": "/admin/taglines",
+      "component": "Taglines",
+      "file": "src/pages/admin/Taglines.jsx"
+    },
+    {
+      "route": "/admin/vendors",
+      "component": "Vendors",
+      "file": "src/pages/admin/Vendors.jsx"
+    },
+    {
+      "route": "/admin/business-roles-permissions",
+      "component": "BusinessRolesPermissionsPage",
+      "file": "src/pages/admin/BusinessRolesPermissionsPage.jsx"
+    },
+    {
+      "route": "/400",
+      "component": "Error400",
+      "file": "src/components/errorpages/Error400.jsx"
+    },
+    {
+      "route": "/401",
+      "component": "Error401",
+      "file": "src/components/errorpages/Error401.jsx"
+    },
+    {
+      "route": "/403",
+      "component": "Error403",
+      "file": "src/components/errorpages/Error403.jsx"
+    },
+    {
+      "route": "/404",
+      "component": "Error404",
+      "file": "src/components/errorpages/Error404.jsx"
+    },
+    {
+      "route": "/500",
+      "component": "Error500",
+      "file": "src/components/errorpages/Error500.jsx"
+    },
+    {
+      "route": "/502",
+      "component": "Error502",
+      "file": "src/components/errorpages/Error502.jsx"
+    },
+    {
+      "route": "/503",
+      "component": "Error503",
+      "file": "src/components/errorpages/Error503.jsx"
+    },
+    {
+      "route": "/504",
+      "component": "Error504",
+      "file": "src/components/errorpages/Error504.jsx"
+    }
+  ],
+  "forms": [
+    {
+      "file": "src/components/SortedSelect.jsx",
+      "fieldPaths": [],
+      "inputNames": [],
+      "apiPaths": [],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/components/usdaZones.jsx",
+      "fieldPaths": [],
+      "inputNames": [],
+      "apiPaths": [],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/contactus.jsx",
+      "fieldPaths": [],
+      "inputNames": [],
+      "apiPaths": [],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/GardeningJournalBoard.jsx",
+      "fieldPaths": [],
+      "inputNames": [],
+      "apiPaths": [
+        "/api/boardjournal${query}"
+      ],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/admin/AppKeys.jsx",
+      "fieldPaths": [],
+      "inputNames": [
+        "appKey",
+        "businessRef",
+        "isActive",
+        "name"
+      ],
+      "apiPaths": [
+        "/api/app-keys",
+        "/api/app-keys/${editingId}",
+        "/api/app-keys/${id}",
+        "/api/businesses"
+      ],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/admin/BusinessRolesPermissionsPage.jsx",
+      "fieldPaths": [],
+      "inputNames": [
+        "accountingCode",
+        "admin",
+        "business",
+        "code",
+        "create",
+        "defaultRole",
+        "delete",
+        "description",
+        "isActive",
+        "isDefault",
+        "module",
+        "name",
+        "read",
+        "update"
+      ],
+      "apiPaths": [
+        "/api/business-types",
+        "/api/businesses",
+        "/api/users/departments",
+        "/api/users/departments/${editingDepartmentId}",
+        "/api/users/departments/${id}",
+        "/api/users/departments?business=${businessId}",
+        "/api/users/permission-modules?business=${encodeURIComponent(String(businessId))}&isActive=true",
+        "/api/users/role-permissions",
+        "/api/users/role-permissions/${id}",
+        "/api/users/role-permissions/${permissionId}",
+        "/api/users/role-permissions?business=${businessId}",
+        "/api/users/roles",
+        "/api/users/roles/${editingRoleId}",
+        "/api/users/roles/${id}",
+        "/api/users/roles?business=${businessId}"
+      ],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/admin/BusinessTypes.jsx",
+      "fieldPaths": [],
+      "inputNames": [
+        "code",
+        "description",
+        "isActive",
+        "name",
+        "notes"
+      ],
+      "apiPaths": [
+        "/api/business-types",
+        "/api/business-types/${editingId}",
+        "/api/business-types/${id}"
+      ],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/admin/Holidays.jsx",
+      "fieldPaths": [],
+      "inputNames": [],
+      "apiPaths": [
+        "/api/businesses",
+        "/api/holidays",
+        "/api/holidays/${selectedHoliday._id}",
+        "/api/seasons"
+      ],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/admin/TaxRatesPage.jsx",
+      "fieldPaths": [],
+      "inputNames": [],
+      "apiPaths": [
+        "/api/states",
+        "/api/tax-rates",
+        "/api/tax-rates/${targetId}"
+      ],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/auth/ForgotPasswordPage.jsx",
+      "fieldPaths": [],
+      "inputNames": [
+        "email"
+      ],
+      "apiPaths": [
+        "/api/users/forgot-password"
+      ],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/auth/ResetPasswordPage.jsx",
+      "fieldPaths": [],
+      "inputNames": [
+        "confirmPassword",
+        "password"
+      ],
+      "apiPaths": [
+        "/api/users/reset-password/${token}"
+      ],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/diseases/diseases.jsx",
+      "fieldPaths": [],
+      "inputNames": [],
+      "apiPaths": [
+        "/api/diseases"
+      ],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/equipment/EquipmentPage.jsx",
+      "fieldPaths": [],
+      "inputNames": [
+        "brand",
+        "category",
+        "condition",
+        "description",
+        "modelNumber",
+        "name",
+        "notes",
+        "purchaseDate",
+        "purchasePrice",
+        "vendor"
+      ],
+      "apiPaths": [
+        "/api/equipment",
+        "/api/equipment-categories",
+        "/api/equipment-vendors",
+        "/api/equipment/${editingId}"
+      ],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/forms/PlantForm.jsx",
+      "fieldPaths": [
+        "description",
+        "family",
+        "growingConditions.soil",
+        "growingConditions.sunlight",
+        "growingConditions.temperature",
+        "growingConditions.water",
+        "growthDurationDays",
+        "images",
+        "name",
+        "newNote",
+        "plantingRecord.batchNumber",
+        "plantingRecord.deathDate",
+        "plantingRecord.indoors",
+        "plantingRecord.location",
+        "plantingRecord.outdoors",
+        "plantingRecord.plantedDate",
+        "plantingRecord.sunDirection",
+        "plantingRecord.sunExposureHours",
+        "scientificName",
+        "seed",
+        "spacing.imperial",
+        "spacing.metric",
+        "status",
+        "tags",
+        "type"
+      ],
+      "inputNames": [],
+      "apiPaths": [
+        "/api/plant-types",
+        "/api/plants",
+        "/api/plants/${plant._id}",
+        "/api/seeds"
+      ],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/gardens/GardenBedPlanner.jsx",
+      "fieldPaths": [],
+      "inputNames": [],
+      "apiPaths": [
+        "/api/garden-sections/${getId(section)}"
+      ],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/gardens/GardensPage.jsx",
+      "fieldPaths": [],
+      "inputNames": [],
+      "apiPaths": [
+        "/api/garden-references",
+        "/api/gardens",
+        "/api/gardens/${getId(garden)}",
+        "/api/gardens/${id}"
+      ],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/gardens/GardenWorkspacePage.jsx",
+      "fieldPaths": [],
+      "inputNames": [
+        "drainage",
+        "gardenSection",
+        "instanceName",
+        "isActive",
+        "layoutPlan",
+        "locationDescription",
+        "name",
+        "newNote",
+        "plantedDate",
+        "quantity",
+        "soilType",
+        "sourceType",
+        "sunExposure",
+        "type"
+      ],
+      "apiPaths": [
+        "/api/garden-references",
+        "/api/garden-sections",
+        "/api/garden-sections/${getId(section)}",
+        "/api/garden-sections/${sectionId}",
+        "/api/garden-sections?garden=${id}&isActive=true",
+        "/api/gardens/${id}",
+        "/api/hydro-systems?garden=${id}",
+        "/api/plantings",
+        "/api/plantings?garden=${id}",
+        "/api/plants",
+        "/api/seeds"
+      ],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/harvest/HarvestPage.jsx",
+      "fieldPaths": [],
+      "inputNames": [
+        "currency",
+        "harvestDate",
+        "harvestQuantity",
+        "isActive",
+        "note",
+        "planting",
+        "quality",
+        "quantityUnit",
+        "storeUnitValue"
+      ],
+      "apiPaths": [
+        "/api/harvest-quality-scales",
+        "/api/harvests",
+        "/api/harvests/${editingId}",
+        "/api/harvests/${id}",
+        "/api/plantings"
+      ],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/hydroponics/HydroSystemsPage.jsx",
+      "fieldPaths": [],
+      "inputNames": [
+        "brand",
+        "equipment",
+        "lastReadingAt",
+        "lightType",
+        "location",
+        "model",
+        "modelNumber",
+        "name",
+        "notes",
+        "nutrientsLevel",
+        "phLevel",
+        "podCount",
+        "productUrl",
+        "pumpType",
+        "reservoirCapacity",
+        "serialNumber",
+        "startedDate",
+        "systemType",
+        "temperature",
+        "waterLevel"
+      ],
+      "apiPaths": [
+        "/api/equipment",
+        "/api/hydro-systems",
+        "/api/hydro-systems/${getObjectId(selectedRun)}",
+        "/api/hydro-systems/${getObjectId(selectedRun)}/pods",
+        "/api/hydro-systems/${runId}",
+        "/api/hydro-systems?garden=${gardenId}",
+        "/api/seeds"
+      ],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/journal/JournalPage.jsx",
+      "fieldPaths": [
+        "durationMinutes",
+        "entry",
+        "entryDate",
+        "entryType",
+        "equipment",
+        "followUpDate",
+        "garden",
+        "gardenSection",
+        "hydroDevice",
+        "hydroPodPosition",
+        "hydroSystem",
+        "maintenanceType",
+        "outcome",
+        "plant",
+        "planting",
+        "seed",
+        "tags",
+        "title"
+      ],
+      "inputNames": [],
+      "apiPaths": [
+        "/api/equipment",
+        "/api/garden-sections",
+        "/api/gardens",
+        "/api/hydro-systems",
+        "/api/journal-entries",
+        "/api/journal-entries/${editingId}",
+        "/api/journal-entries/${getObjectId(viewEntry)}/notes",
+        "/api/plantings",
+        "/api/plants",
+        "/api/seeds"
+      ],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/pests/PestsPage.jsx",
+      "fieldPaths": [],
+      "inputNames": [],
+      "apiPaths": [
+        "/api/pests"
+      ],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/planning/CompanionPlantingPage.jsx",
+      "fieldPaths": [],
+      "inputNames": [],
+      "apiPaths": [
+        "/api/companion-planting"
+      ],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/planning/CropRelationshipsBrowser.jsx",
+      "fieldPaths": [],
+      "inputNames": [],
+      "apiPaths": [
+        "/api/companion-planting/library",
+        "/api/seeds/${selected.sourceSeedId}"
+      ],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/plantings/PlantingsPage.jsx",
+      "fieldPaths": [],
+      "inputNames": [
+        "deathDate",
+        "endDate",
+        "expectedHarvestDate",
+        "failureReason",
+        "garden",
+        "instanceName",
+        "location",
+        "outcomeNotes",
+        "plant",
+        "plantedDate",
+        "quantity",
+        "seed",
+        "seedCost",
+        "soilNotes",
+        "sourceName",
+        "sourceType",
+        "sownCount",
+        "sproutedCount",
+        "sproutedDate",
+        "status",
+        "sunNotes",
+        "transplantedCount",
+        "transplantedDate"
+      ],
+      "apiPaths": [
+        "/api/gardens",
+        "/api/hydro-systems",
+        "/api/plantings",
+        "/api/plantings/${editingId}",
+        "/api/plants",
+        "/api/seeds"
+      ],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/plants/PlantPage.jsx",
+      "fieldPaths": [],
+      "inputNames": [],
+      "apiPaths": [
+        "/api/plants"
+      ],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/reference/MicrogreensGuidePage.jsx",
+      "fieldPaths": [],
+      "inputNames": [],
+      "apiPaths": [],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/reference/SoilTemperatureReferencePage.jsx",
+      "fieldPaths": [],
+      "inputNames": [],
+      "apiPaths": [],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/seeds/SeedPage.jsx",
+      "fieldPaths": [],
+      "inputNames": [],
+      "apiPaths": [
+        "/api/seeds"
+      ],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/task/TasksPage.jsx",
+      "fieldPaths": [],
+      "inputNames": [
+        "description",
+        "dueDate",
+        "message",
+        "name",
+        "priority",
+        "remindAt",
+        "search",
+        "status"
+      ],
+      "apiPaths": [
+        "/api/task-priorities",
+        "/api/task-statuses",
+        "/api/tasks",
+        "/api/tasks/${deleteId}",
+        "/api/tasks/${editId}",
+        "/api/tasks/${taskId}"
+      ],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/plants/components/PlantCareCard.jsx",
+      "fieldPaths": [],
+      "inputNames": [],
+      "apiPaths": [
+        "/api/plants/${plant._id}"
+      ],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/forms/admin/FooterForm.jsx",
+      "fieldPaths": [],
+      "inputNames": [
+        "business_id",
+        "isActive",
+        "isDefault",
+        "name",
+        "notes",
+        "seasonRef",
+        "showCashier",
+        "showDate",
+        "showTime"
+      ],
+      "apiPaths": [],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/forms/admin/HolidayForm.jsx",
+      "fieldPaths": [],
+      "inputNames": [
+        "business_id",
+        "code",
+        "endDate",
+        "isActive",
+        "isRecurringAnnual",
+        "name",
+        "notes",
+        "seasonRef",
+        "startDate"
+      ],
+      "apiPaths": [],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/forms/admin/OccasionForm.jsx",
+      "fieldPaths": [],
+      "inputNames": [
+        "business_id",
+        "code",
+        "endDate",
+        "isActive",
+        "isRecurringAnnual",
+        "name",
+        "notes",
+        "seasonRef",
+        "startDate"
+      ],
+      "apiPaths": [],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/forms/admin/SeasonForm.jsx",
+      "fieldPaths": [],
+      "inputNames": [
+        "business_id",
+        "code",
+        "description",
+        "endDate",
+        "isActive",
+        "isDefault",
+        "isRecurringAnnual",
+        "name",
+        "notes",
+        "startDate"
+      ],
+      "apiPaths": [],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/forms/admin/TaglineForm.jsx",
+      "fieldPaths": [],
+      "inputNames": [
+        "business_id",
+        "isActive",
+        "name",
+        "notes",
+        "occasionRef",
+        "seasonRef",
+        "text"
+      ],
+      "apiPaths": [],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/forms/admin/TaxRateForm.jsx",
+      "fieldPaths": [],
+      "inputNames": [
+        "code",
+        "isActive",
+        "isDefault",
+        "name",
+        "notes",
+        "rate",
+        "stateRef"
+      ],
+      "apiPaths": [],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/forms/admin/VendorForm.jsx",
+      "fieldPaths": [],
+      "inputNames": [
+        "business_id",
+        "code",
+        "dbaName",
+        "email",
+        "legalName",
+        "phone",
+        "vendorCategory"
+      ],
+      "apiPaths": [],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/forms/diseases/diseaseForm.jsx",
+      "fieldPaths": [],
+      "inputNames": [
+        "category",
+        "cause",
+        "description",
+        "diseaseName",
+        "diseaseType",
+        "favorableConditions",
+        "image",
+        "isContagious",
+        "scientificName",
+        "severity",
+        "spreadMethod",
+        "treatment"
+      ],
+      "apiPaths": [
+        "/api/diseases",
+        "/api/diseases/${editId}",
+        "/api/plants",
+        "/api/seeds"
+      ],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/forms/pest/pestform.jsx",
+      "fieldPaths": [],
+      "inputNames": [
+        "category",
+        "description",
+        "isActive",
+        "name",
+        "prevention",
+        "treatmentText",
+        "type"
+      ],
+      "apiPaths": [
+        "/api/pest-ref-treatments",
+        "/api/pest-ref-treatments/${id}",
+        "/api/pest-types",
+        "/api/pests",
+        "/api/pests/${editId}",
+        "/api/plants",
+        "/api/seeds"
+      ],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/forms/planning/CompanionPlantingForm.jsx",
+      "fieldPaths": [],
+      "inputNames": [],
+      "apiPaths": [],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/forms/planning/FruitCalendarForm.jsx",
+      "fieldPaths": [],
+      "inputNames": [],
+      "apiPaths": [],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/forms/planning/GardenBudgetForm.jsx",
+      "fieldPaths": [],
+      "inputNames": [],
+      "apiPaths": [],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/forms/planning/GardenExpenseForm.jsx",
+      "fieldPaths": [],
+      "inputNames": [],
+      "apiPaths": [],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/forms/planning/GardenWishForm.jsx",
+      "fieldPaths": [],
+      "inputNames": [],
+      "apiPaths": [],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/forms/planning/VegetableCalendarForm.jsx",
+      "fieldPaths": [],
+      "inputNames": [],
+      "apiPaths": [],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/forms/seeds/SeedCollectionForm.jsx",
+      "fieldPaths": [],
+      "inputNames": [
+        "amountUnit",
+        "buyMore",
+        "dateCollected",
+        "germinationRate",
+        "inventoryYear",
+        "labelColor",
+        "notes",
+        "seed",
+        "seedCount",
+        "sourceName",
+        "sourceType",
+        "status",
+        "vendor"
+      ],
+      "apiPaths": [
+        "/api/seed-collections",
+        "/api/seed-collections/${initialCollection._id}"
+      ],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/forms/users/LoginForm.jsx",
+      "fieldPaths": [],
+      "inputNames": [
+        "app-key",
+        "password",
+        "rememberMe",
+        "username"
+      ],
+      "apiPaths": [
+        "/api/app/current-business/${encodeURIComponent(appKey)}",
+        "/api/users/${userId}",
+        "/api/users/department-assignments?user=${encodeURIComponent(userId)}&business=${encodeURIComponent(businessId)}&isActive=true",
+        "/api/users/login",
+        "/api/users/role-assignments?user=${encodeURIComponent(userId)}&business=${encodeURIComponent(businessId)}&isActive=true"
+      ],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/forms/users/UserDetailsForm.jsx",
+      "fieldPaths": [],
+      "inputNames": [
+        "address1",
+        "address2",
+        "city",
+        "country",
+        "county",
+        "firstName",
+        "lastName",
+        "postalCode",
+        "state"
+      ],
+      "apiPaths": [],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/forms/users/UserForm.jsx",
+      "fieldPaths": [],
+      "inputNames": [
+        "department",
+        "email",
+        "hardinessZone",
+        "isActive",
+        "password",
+        "role",
+        "username"
+      ],
+      "apiPaths": [
+        "/api/counties",
+        "/api/countries",
+        "/api/reference/usda-zones",
+        "/api/states",
+        "/api/upload/avatars",
+        "/api/users",
+        "/api/users/${createdUser._id}",
+        "/api/users/${user._id}",
+        "/api/users/business-departments?business=${encodeURIComponent(String(businessId))}&isActive=true",
+        "/api/users/department-assignments",
+        "/api/users/department-assignments/${existingAssignment._id}",
+        "/api/users/department-assignments?user=${encodeURIComponent(String(userId))}&business=${encodeURIComponent(String(businessId))}${activeQuery}",
+        "/api/users/details",
+        "/api/users/details/${existingDetailsId}",
+        "/api/users/details/${resolvedDetailsId}",
+        "/api/users/details?user=${user._id}",
+        "/api/users/role-assignments",
+        "/api/users/role-assignments/${existingAssignment._id}",
+        "/api/users/role-assignments?user=${encodeURIComponent(String(userId))}&business=${encodeURIComponent(String(businessId))}${activeQuery}",
+        "/api/users/roles?business=${encodeURIComponent(String(businessId))}"
+      ],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/forms/vendors/equipmentVendorsForm.jsx",
+      "fieldPaths": [],
+      "inputNames": [
+        "address1",
+        "address2",
+        "city",
+        "companyName",
+        "contactName",
+        "country",
+        "description",
+        "email",
+        "isActive",
+        "isInternational",
+        "name",
+        "phone",
+        "postalCode",
+        "state",
+        "website"
+      ],
+      "apiPaths": [
+        "/api/countries",
+        "/api/equipment-vendors",
+        "/api/equipment-vendors/${editId}",
+        "/api/states"
+      ],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/forms/vendors/seedVendorsForm.jsx",
+      "fieldPaths": [],
+      "inputNames": [
+        "address1",
+        "address2",
+        "city",
+        "companyName",
+        "contactName",
+        "country",
+        "description",
+        "email",
+        "isActive",
+        "isInternational",
+        "name",
+        "phone",
+        "postalCode",
+        "state",
+        "website"
+      ],
+      "apiPaths": [
+        "/api/countries",
+        "/api/seed-vendors",
+        "/api/seed-vendors/${editId}",
+        "/api/states",
+        "/api/upload/logos"
+      ],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/forms/vendors/supplyVendorsForm.jsx",
+      "fieldPaths": [],
+      "inputNames": [
+        "address1",
+        "address2",
+        "city",
+        "companyName",
+        "contactName",
+        "country",
+        "description",
+        "email",
+        "isActive",
+        "isInternational",
+        "name",
+        "phone",
+        "postalCode",
+        "state",
+        "website"
+      ],
+      "apiPaths": [
+        "/api/countries",
+        "/api/states",
+        "/api/supply-vendors",
+        "/api/supply-vendors/${editId}"
+      ],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/forms/seeds/tabs/SeedAdminTab.jsx",
+      "fieldPaths": [
+        "dateCollected",
+        "images",
+        "isPublic",
+        "lotNumber",
+        "packedFor"
+      ],
+      "inputNames": [],
+      "apiPaths": [
+        "/api/upload/seed"
+      ],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/forms/seeds/tabs/SeedCulturalTab.jsx",
+      "fieldPaths": [
+        "culturalInformation"
+      ],
+      "inputNames": [],
+      "apiPaths": [],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/forms/seeds/tabs/SeedEnvironmentalTab.jsx",
+      "fieldPaths": [
+        "environmentalImpact.impact"
+      ],
+      "inputNames": [],
+      "apiPaths": [],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/forms/seeds/tabs/SeedFlavorTab.jsx",
+      "fieldPaths": [],
+      "inputNames": [],
+      "apiPaths": [],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/forms/seeds/tabs/SeedGrowingConditionsTab.jsx",
+      "fieldPaths": [
+        "growingConditionsAndRequirements.climateTolerance",
+        "growingConditionsAndRequirements.lightRequirements",
+        "growingConditionsAndRequirements.phRequirements",
+        "growingConditionsAndRequirements.plantSoilTemp",
+        "growingConditionsAndRequirements.soilType",
+        "growingConditionsAndRequirements.watering",
+        "growingConditionsAndRequirements.wateringRequirements"
+      ],
+      "inputNames": [],
+      "apiPaths": [],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/forms/seeds/tabs/SeedGrowthTab.jsx",
+      "fieldPaths": [
+        "growthInformation.bulbSize",
+        "growthInformation.germinationTime.max",
+        "growthInformation.germinationTime.min",
+        "growthInformation.growthRate",
+        "growthInformation.hardinessZonesWithCorrespondingRegionsStates",
+        "growthInformation.matureSize.height.maxCm",
+        "growthInformation.matureSize.height.maxIn",
+        "growthInformation.matureSize.height.minCm",
+        "growthInformation.matureSize.height.minIn",
+        "growthInformation.matureSize.width.maxCm",
+        "growthInformation.matureSize.width.maxIn",
+        "growthInformation.matureSize.width.minCm",
+        "growthInformation.matureSize.width.minIn",
+        "growthInformation.plantSpacing",
+        "growthInformation.plantingDepth",
+        "growthInformation.sunlightRequirements",
+        "growthInformation.usdaZoneRange",
+        "growthInformation.usdaZones"
+      ],
+      "inputNames": [],
+      "apiPaths": [],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/forms/seeds/tabs/SeedHarvestingTab.jsx",
+      "fieldPaths": [
+        "harvestingInformation.harvestTime",
+        "harvestingInformation.harvestTimeAfterGermination",
+        "harvestingInformation.techniques"
+      ],
+      "inputNames": [],
+      "apiPaths": [],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/forms/seeds/tabs/SeedHeaderTab.jsx",
+      "fieldPaths": [
+        "context",
+        "coverImage",
+        "description",
+        "plantName",
+        "vendor"
+      ],
+      "inputNames": [],
+      "apiPaths": [
+        "/api/seed-vendors",
+        "/api/upload/seed"
+      ],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/forms/seeds/tabs/SeedHistoryTab.jsx",
+      "fieldPaths": [
+        "historicalInformation.events",
+        "historicalInformation.foodOrigin"
+      ],
+      "inputNames": [],
+      "apiPaths": [],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/forms/seeds/tabs/SeedLifecycleTab.jsx",
+      "fieldPaths": [
+        "lifecycleInformation.hardiness",
+        "lifecycleInformation.lifecycleType",
+        "lifecycleInformation.lifespan",
+        "lifecycleInformation.lifespanDescription",
+        "plantType"
+      ],
+      "inputNames": [],
+      "apiPaths": [],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/forms/seeds/tabs/SeedNutritionTab.jsx",
+      "fieldPaths": [
+        "nutritionalInformation"
+      ],
+      "inputNames": [],
+      "apiPaths": [],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/forms/seeds/tabs/SeedPestDiseaseTab.jsx",
+      "fieldPaths": [
+        "diseaseManagement",
+        "pestManagement"
+      ],
+      "inputNames": [],
+      "apiPaths": [
+        "/api/diseases",
+        "/api/diseases/${id}",
+        "/api/pests",
+        "/api/pests/${id}"
+      ],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/forms/seeds/tabs/SeedPlantingTab.jsx",
+      "fieldPaths": [
+        "plantingInformation.hydroponicGrowth",
+        "plantingInformation.plantingSeasons",
+        "plantingInformation.seasonDescription",
+        "plantingInformation.startIndoors.timing"
+      ],
+      "inputNames": [],
+      "apiPaths": [
+        "/api/seeds"
+      ],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/forms/seeds/tabs/SeedPollinationTab.jsx",
+      "fieldPaths": [],
+      "inputNames": [],
+      "apiPaths": [],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/forms/seeds/tabs/SeedPropagationTab.jsx",
+      "fieldPaths": [
+        "propagationMethods.method",
+        "propagationMethods.notes"
+      ],
+      "inputNames": [],
+      "apiPaths": [],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/forms/seeds/tabs/SeedResourcesTab.jsx",
+      "fieldPaths": [],
+      "inputNames": [],
+      "apiPaths": [],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/forms/seeds/tabs/SeedSpecialFeaturesTab.jsx",
+      "fieldPaths": [
+        "specialFeatures"
+      ],
+      "inputNames": [],
+      "apiPaths": [],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/forms/seeds/tabs/SeedStorageTab.jsx",
+      "fieldPaths": [
+        "growingNotes",
+        "storageTips"
+      ],
+      "inputNames": [],
+      "apiPaths": [],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/forms/seeds/tabs/SeedStressTab.jsx",
+      "fieldPaths": [
+        "stressRisk.lightStress.excessLight",
+        "stressRisk.lightStress.lowLight",
+        "stressRisk.mitigationTips",
+        "stressRisk.nutrientStress.deficiency",
+        "stressRisk.nutrientStress.excess",
+        "stressRisk.overview",
+        "stressRisk.temperatureStress.above",
+        "stressRisk.temperatureStress.below",
+        "stressRisk.title",
+        "stressRisk.transplantShock",
+        "stressRisk.waterStress.overwatering",
+        "stressRisk.waterStress.underwatering"
+      ],
+      "inputNames": [],
+      "apiPaths": [],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/forms/seeds/tabs/SeedUsesTab.jsx",
+      "fieldPaths": [
+        "usesAndBenefits.edibility",
+        "usesAndBenefits.medicinal",
+        "usesAndBenefits.toxicity"
+      ],
+      "inputNames": [],
+      "apiPaths": [],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/pages/forms/seeds/tabs/SpeciesTab.jsx",
+      "fieldPaths": [
+        "species"
+      ],
+      "inputNames": [],
+      "apiPaths": [
+        "/api/families",
+        "/api/genus",
+        "/api/species",
+        "/api/species/${speciesId}/variety"
+      ],
+      "review": "pending browser and submission checks"
+    },
+    {
+      "file": "src/components/crud/ResourceCrudPage.jsx",
+      "fieldPaths": [],
+      "inputNames": [],
+      "apiPaths": [],
+      "review": "pending browser and submission checks"
+    }
+  ],
+  "pageCount": 66,
+  "formFileCount": 74
+}

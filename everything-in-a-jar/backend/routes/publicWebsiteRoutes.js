@@ -1,0 +1,10 @@
+import {websiteManagementAccess} from "../../../shared/backend/websiteManagementAccess.js";
+import RoleAssignment from "../models/users/userRoleAssignmentModel.js";
+import {createPublicWebsiteRoutes,publicMoney} from "../../../shared/backend/publicWebsiteRoutes.js";
+import {protect} from "../middleware/authMiddleware.js";
+import Product from "../models/production/productModel.js";
+import AppKey from "../models/reference/appKeyModel.js";
+import Business from "../models/reference/businessModel.js";
+import {resolvePublicBusiness} from "../../../shared/backend/publicBusiness.js";
+const catalog=async()=>{const business=await resolvePublicBusiness(AppKey,Business,"everything-in-a-jar");if(!business)return [];const rows=await Product.find({business_id:business._id,isActive:true,status:{$in:["active","seasonal"]}}).select("productName productType description suggestedRetailPrice package label").limit(500).lean();return rows.map(row=>({id:String(row._id),name:row.productName,description:row.description,category:row.productType,price:publicMoney(row.suggestedRetailPrice),stock:null,image:"",size:row.package?.sizeLabel||"",ingredients:row.label?.ingredientStatement||"",allergens:row.label?.allergens||[],storage:row.label?.storageInstructions||""}));};
+export default createPublicWebsiteRoutes({appKey:"everything-in-a-jar",catalog,protect,authorize:websiteManagementAccess(RoleAssignment)});

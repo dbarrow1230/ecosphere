@@ -1,0 +1,22 @@
+{
+  "reason": "User confirmed this is a harvest, not collected seed",
+  "record": {
+    "_id": "6ae68b20a106f3eb70818ea3",
+    "seed": "696cf21ac7e280c841cc52d6",
+    "dateCollected": "2025-03-26T00:00:00.000Z",
+    "user": "69af088d21b4580a8cb6614b",
+    "amountUnit": "seeds",
+    "buyMore": false,
+    "germinationRate": null,
+    "inventoryYear": 2025,
+    "labelColor": "#0f7d4f",
+    "legacyCollectionDate": "2025-03-26T00:00:00.000Z",
+    "legacySeed": "696cf21ac7e280c841cc52d6",
+    "notes": [],
+    "seedCount": null,
+    "sourceName": "",
+    "sourceType": "other",
+    "status": "collected",
+    "vendor": null
+  }
+}

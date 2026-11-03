@@ -1,0 +1,44 @@
+// backend/models/preservation/sugarPreservation/sugarPreservationSetupModel.js
+import mongoose from "mongoose";
+
+const d=v=>v==null||v===""?v:mongoose.Types.Decimal128.fromString(String(v));
+
+const sugarPreservationSetupSchema=new mongoose.Schema({
+ preservationProject:{type:mongoose.Schema.Types.ObjectId,ref:"PreservationProject",required:true},
+
+ name:{type:String,required:true,trim:true},
+ description:{type:String,trim:true,default:""},
+
+ methodType:{type:String,trim:true,default:""}, // jamJelly, marmalade, preserves, syrup, candying, confit
+ containerType:{type:mongoose.Schema.Types.ObjectId,ref:"ContainerType"},
+
+ processing:{
+  sugarRatio:{type:String,trim:true,default:""},
+  pectinType:{type:String,trim:true,default:""},
+  acidType:{type:String,trim:true,default:""},
+  cookingTemperature:{type:String,trim:true,default:""},
+  cookingTime:{type:String,trim:true,default:""}
+ },
+
+ estimatedYield:{
+  quantity:{type:Number,default:0},
+  unit:{type:String,trim:true,default:""}
+ },
+
+ instructions:{
+  preparation:[{type:String,trim:true}],
+  processing:[{type:String,trim:true}],
+  storage:[{type:String,trim:true}],
+  notes:{type:String,trim:true,default:""}
+ },
+
+ pricingDefaults:{
+  baseCost:{type:mongoose.Schema.Types.Decimal128,default:()=>mongoose.Types.Decimal128.fromString("0"),set:d}
+ },
+
+ isActive:{type:Boolean,default:true}
+},{timestamps:true,collection:"sugar_preservation_setups"});
+
+const SugarPreservationSetup=mongoose.models.SugarPreservationSetup||mongoose.model("SugarPreservationSetup",sugarPreservationSetupSchema);
+
+export default SugarPreservationSetup;

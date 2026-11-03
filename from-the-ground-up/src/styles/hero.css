@@ -1,0 +1,22 @@
+.hero{
+ position:relative;
+ background:url("../assets/heroImage.png") center/cover no-repeat;
+ min-height:80vh;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+}
+
+.hero::before{
+ content:"";
+ position:absolute;
+ inset:0;
+ background:rgba(5,73,50,.55);
+}
+
+.hero-content{
+ position:relative;
+ z-index:1;
+ color:var(--brand-surface);
+ text-align:center;
+}

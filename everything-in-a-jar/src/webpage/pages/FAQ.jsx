@@ -1,0 +1,3 @@
+import {Link} from "react-router-dom";
+import {usePublicSite} from "../../../../shared/public/PublicSiteContext.jsx";
+export default function Questions(){const {site}=usePublicSite();return (<div className="pantry-care-ledger"><header><p>Keep this with your pantry notes</p><h1>{site.faqTitle||'Opening, keeping & enjoying'}</h1><p>{site.faqIntro}</p></header><table><caption>Pantry questions and answers</caption><thead><tr><th scope="col">Your question</th><th scope="col">From our pantry</th></tr></thead><tbody>{site.faq.map(([q,a])=><tr key={q}><th scope="row">{q}</th><td>{a}</td></tr>)}</tbody></table><Link to="/contact">Ask another pantry question ↗</Link></div>);}

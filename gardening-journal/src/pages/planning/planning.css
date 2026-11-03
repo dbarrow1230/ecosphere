@@ -1,0 +1,39 @@
+.garden-planning-page{display:grid;gap:1rem;padding:1.5rem 2rem 2.5rem;color:var(--primary)}
+.garden-planning-header{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.25rem;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--surface)}
+.garden-planning-header h1{color:var(--primary);font-size:1.8rem}
+.garden-planning-header p{margin-bottom:0;color:var(--primary)}
+.garden-planning-page td{white-space:pre-wrap}
+.crop-schedules{display:grid;gap:1rem}
+.crop-month-grid{text-align:center;min-width:48rem}
+.crop-month-grid th,.crop-month-grid td{text-align:center;padding:.5rem}
+.crop-month-grid .calendar-active{font-weight:700;background:var(--primary);color:var(--text-inverse)}
+.calendar-month-choices{border:1px solid var(--border);padding:.65rem;border-radius:var(--radius-sm)}
+.calendar-month-choices legend{float:none;width:auto;font-size:1rem;font-weight:700;padding:0 .25rem}
+.calendar-month-choices>div{display:flex;flex-wrap:wrap;gap:.4rem}
+@media(max-width:768px){.garden-planning-page{padding:1rem}.garden-planning-header{align-items:start;flex-direction:column}}
+
+.companion-form-rows,.companion-plans{display:grid;gap:.75rem}
+.companion-row-heading,.companion-plan-heading{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:.75rem}
+.companion-row-heading h4,.companion-plan-heading p{margin:0}
+
+.crop-calendar-fruit{--crop-category:#8b3153;--crop-category-tint:#f5e6ed}
+.crop-calendar-vegetable{--crop-category:#28613c;--crop-category-tint:#e6f0e6}
+.crop-calendar-fruit .garden-planning-header,.crop-calendar-vegetable .garden-planning-header{border-top:4px solid var(--crop-category);background:var(--crop-category-tint)}
+.crop-calendar-category{display:inline-flex;align-items:center;gap:.4rem;color:var(--crop-category);font-weight:700;margin-bottom:.4rem}
+.crop-big-calendar{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:1rem;min-width:0}
+.crop-big-calendar .rbc-calendar{height:clamp(34rem,72vh,54rem);color:var(--primary)}
+.crop-big-calendar .rbc-toolbar{gap:.5rem}
+.crop-big-calendar .rbc-toolbar button{border-color:var(--border);background:var(--surface);color:var(--primary)}
+.crop-big-calendar .rbc-toolbar button.rbc-active{background:var(--primary);color:var(--text-inverse)}
+.crop-big-calendar .rbc-header{padding:.5rem;color:var(--primary);background:var(--bg-alt)}
+.crop-big-calendar .rbc-today{background:var(--bg-alt)}
+.crop-big-calendar .rbc-event{border-radius:var(--radius-sm)}
+.crop-big-calendar .crop-event-sow,.crop-legend-sow{background:#80571d;color:#fff}
+.crop-big-calendar .crop-event-plant,.crop-legend-plant{background:#28613c;color:#fff}
+.crop-big-calendar .crop-event-harvest,.crop-legend-harvest{background:#8b3153;color:#fff}
+.crop-calendar-legend{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:.5rem}
+.crop-calendar-legend span{padding:.2rem .6rem;border-radius:var(--radius-sm);font-weight:600}
+.crop-calendar-help{color:var(--primary);font-size:.875rem}
+.crop-schedule-register{background:var(--surface);padding:1rem;border:1px solid var(--border);border-radius:var(--radius-md)}
+.crop-schedule-register>summary{cursor:pointer;font-weight:700;color:var(--primary)}
+.crop-schedule-register[open]>summary{margin-bottom:1rem}

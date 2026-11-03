@@ -1,0 +1,45 @@
+import ResourceCrudPage from "../../components/crud/ResourceCrudPage.jsx";
+
+const fields=[
+ {name:"name",label:"Supply Name",required:true,md:6},
+ {name:"category",label:"Category",type:"select",optionsKey:"categories",md:6},
+ {name:"vendor",label:"Vendor",type:"select",optionsKey:"vendors",md:6},
+ {name:"brand",label:"Brand",md:6},
+ {name:"type",label:"Type",md:6},
+ {name:"quantity",label:"Quantity",type:"number",md:3},
+ {name:"unit",label:"Unit",md:3},
+ {name:"purchaseDate",label:"Purchase Date",type:"date",md:4},
+ {name:"purchasePrice",label:"Purchase Price",type:"number",md:4},
+ {name:"solvesIssues",label:"Solves issues",type:"textarea",md:6},
+ {name:"forPlants",label:"For plants",type:"textarea",md:6},
+ {name:"instructions",label:"Instructions and dosage",type:"textarea",md:6},
+ {name:"caution",label:"Caution",type:"textarea",md:6},
+ {name:"bestBefore",label:"Best before",type:"date",md:6},
+ {name:"description",label:"Description",type:"textarea",md:12},
+ {name:"notes",label:"Notes",type:"textarea",md:12}
+];
+
+const columns=[
+ {key:"name",label:"Supply"},
+ {key:"category",label:"Category"},
+ {key:"vendor",label:"Vendor"},
+ {key:"quantity",label:"Qty"},
+ {key:"unit",label:"Unit"},
+ {key:"bestBefore",label:"Best before"},
+ {key:"caution",label:"Caution"}
+];
+
+export default function SuppliesPage(){
+ return(
+  <ResourceCrudPage
+   title="Supplies"
+   kicker="Restock & Prepare"
+   description="Track nutrients, growing media, soil, fertilizer, tools, and other garden supply needs."
+   endpoint="/api/supplies"
+   optionLoaders={{categories:"/api/supply-categories",vendors:"/api/supply-vendors"}}
+   fields={fields}
+   columns={columns}
+   emptyText="No supplies found. Add supplies to track quantities and vendors."
+  />
+ );
+}

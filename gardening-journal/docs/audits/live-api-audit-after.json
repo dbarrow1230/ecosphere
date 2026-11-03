@@ -1,0 +1,548 @@
+[
+  {
+    "endpoint": "/api/app-modules",
+    "status": 404
+  },
+  {
+    "endpoint": "/api/app",
+    "status": 404
+  },
+  {
+    "endpoint": "/api/states",
+    "status": 200
+  },
+  {
+    "endpoint": "/api/countries",
+    "status": 200
+  },
+  {
+    "endpoint": "/api/counties",
+    "status": 200
+  },
+  {
+    "endpoint": "/api/growth-rates",
+    "status": 200,
+    "count": 9
+  },
+  {
+    "endpoint": "/api/planting-depths",
+    "status": 200,
+    "count": 15
+  },
+  {
+    "endpoint": "/api/reference/usda-zones",
+    "status": 200,
+    "count": 26
+  },
+  {
+    "endpoint": "/api/reference/fertilizers",
+    "status": 200,
+    "count": 0
+  },
+  {
+    "endpoint": "/api/condition-scales",
+    "status": 200,
+    "count": 0
+  },
+  {
+    "endpoint": "/api/disease-ref-treatments",
+    "status": 200,
+    "count": 0
+  },
+  {
+    "endpoint": "/api/equipment-categories",
+    "status": 200,
+    "count": 0
+  },
+  {
+    "endpoint": "/api/fertilizer-types",
+    "status": 200,
+    "count": 23
+  },
+  {
+    "endpoint": "/api/lighting",
+    "status": 200,
+    "count": 22
+  },
+  {
+    "endpoint": "/api/pest-ref-treatments",
+    "status": 200,
+    "count": 14
+  },
+  {
+    "endpoint": "/api/plant-categories",
+    "status": 200,
+    "count": 0
+  },
+  {
+    "endpoint": "/api/plant-types",
+    "status": 200,
+    "count": 21
+  },
+  {
+    "endpoint": "/api/seasons",
+    "status": 200,
+    "count": 8
+  },
+  {
+    "endpoint": "/api/severity-scales",
+    "status": 200,
+    "count": 0
+  },
+  {
+    "endpoint": "/api/soil-types",
+    "status": 200,
+    "count": 20
+  },
+  {
+    "endpoint": "/api/supply-categories",
+    "status": 200,
+    "count": 0
+  },
+  {
+    "endpoint": "/api/reference/weather-observations",
+    "status": 200,
+    "count": 0
+  },
+  {
+    "endpoint": "/api/reference/lifecycles",
+    "status": 200,
+    "count": 9
+  },
+  {
+    "endpoint": "/api/reference/plant-spacings",
+    "status": 200,
+    "count": 9
+  },
+  {
+    "endpoint": "/api/reference/sunlight-requirements",
+    "status": 200,
+    "count": 7
+  },
+  {
+    "endpoint": "/api/reference/plant-soil-temps",
+    "status": 200,
+    "count": 6
+  },
+  {
+    "endpoint": "/api/reference/watering-requirements",
+    "status": 200,
+    "count": 8
+  },
+  {
+    "endpoint": "/api/reference/propagation-methods",
+    "status": 200,
+    "count": 14
+  },
+  {
+    "endpoint": "/api/reference/lifespans",
+    "status": 200,
+    "count": 0
+  },
+  {
+    "endpoint": "/api/businesses",
+    "status": 200,
+    "count": 40
+  },
+  {
+    "endpoint": "/api/business-types",
+    "status": 200,
+    "count": 35
+  },
+  {
+    "endpoint": "/api/app-keys",
+    "status": 200,
+    "count": 40
+  },
+  {
+    "endpoint": "/api/footers",
+    "status": 200,
+    "count": 32
+  },
+  {
+    "endpoint": "/api/taglines",
+    "status": 200,
+    "count": 42
+  },
+  {
+    "endpoint": "/api/occasions",
+    "status": 200,
+    "count": 30
+  },
+  {
+    "endpoint": "/api/holidays",
+    "status": 200,
+    "count": 22
+  },
+  {
+    "endpoint": "/api/vendors",
+    "status": 200,
+    "count": 15
+  },
+  {
+    "endpoint": "/api/receipt-templates",
+    "status": 200,
+    "count": 0
+  },
+  {
+    "endpoint": "/api/receipt-headers",
+    "status": 200,
+    "count": 0
+  },
+  {
+    "endpoint": "/api/receipt-sub-headers",
+    "status": 200,
+    "count": 0
+  },
+  {
+    "endpoint": "/api/receipt-footers",
+    "status": 200,
+    "count": 0
+  },
+  {
+    "endpoint": "/api/imperial-units",
+    "status": 200,
+    "count": 24
+  },
+  {
+    "endpoint": "/api/metric-units",
+    "status": 200,
+    "count": 24
+  },
+  {
+    "endpoint": "/api/location-types",
+    "status": 200,
+    "count": 10
+  },
+  {
+    "endpoint": "/api/locations",
+    "status": 200,
+    "count": 12
+  },
+  {
+    "endpoint": "/api/tax-rates",
+    "status": 200,
+    "count": 51
+  },
+  {
+    "endpoint": "/api/seeds",
+    "status": 200,
+    "count": 66
+  },
+  {
+    "endpoint": "/api/seed-collections",
+    "status": 200,
+    "count": 0
+  },
+  {
+    "endpoint": "/api/species",
+    "status": 200,
+    "count": 71
+  },
+  {
+    "endpoint": "/api/families",
+    "status": 200,
+    "count": 13
+  },
+  {
+    "endpoint": "/api/genus",
+    "status": 200,
+    "count": 37
+  },
+  {
+    "endpoint": "/api/diseases",
+    "status": 200,
+    "count": 0
+  },
+  {
+    "endpoint": "/api/disease-logs",
+    "status": 200,
+    "count": 0
+  },
+  {
+    "endpoint": "/api/equipment",
+    "status": 200,
+    "count": 16
+  },
+  {
+    "endpoint": "/api/hydro-systems",
+    "status": 200,
+    "count": 0
+  },
+  {
+    "endpoint": "/api/gardens",
+    "status": 200,
+    "count": 4
+  },
+  {
+    "endpoint": "/api/garden-notes",
+    "status": 200,
+    "count": 0
+  },
+  {
+    "endpoint": "/api/garden-sections",
+    "status": 200,
+    "count": 0
+  },
+  {
+    "endpoint": "/api/garden-references",
+    "status": 200
+  },
+  {
+    "endpoint": "/api/garden-budgets",
+    "status": 200,
+    "count": 7
+  },
+  {
+    "endpoint": "/api/garden-expenses",
+    "status": 200,
+    "count": 0
+  },
+  {
+    "endpoint": "/api/garden-wishlist",
+    "status": 200,
+    "count": 0
+  },
+  {
+    "endpoint": "/api/fruit-calendar",
+    "status": 200,
+    "count": 0
+  },
+  {
+    "endpoint": "/api/vegetable-calendar",
+    "status": 200,
+    "count": 0
+  },
+  {
+    "endpoint": "/api/companion-planting",
+    "status": 200,
+    "count": 90
+  },
+  {
+    "endpoint": "/api/supplies",
+    "status": 200,
+    "count": 0
+  },
+  {
+    "endpoint": "/api/activities",
+    "status": 200,
+    "count": 0
+  },
+  {
+    "endpoint": "/api/daily-journals",
+    "status": 200,
+    "count": 0
+  },
+  {
+    "endpoint": "/api/journal-entries",
+    "status": 200,
+    "count": 111
+  },
+  {
+    "endpoint": "/api/observations",
+    "status": 200,
+    "count": 4
+  },
+  {
+    "endpoint": "/api/fertilizer-applications",
+    "status": 200,
+    "count": 0
+  },
+  {
+    "endpoint": "/api/media",
+    "status": 200,
+    "count": 0
+  },
+  {
+    "endpoint": "/api/equipment-vendors",
+    "status": 200,
+    "count": 27
+  },
+  {
+    "endpoint": "/api/seed-vendors",
+    "status": 200,
+    "count": 24
+  },
+  {
+    "endpoint": "/api/supply-vendors",
+    "status": 200,
+    "count": 0
+  },
+  {
+    "endpoint": "/api/task-reminders",
+    "status": 200,
+    "count": 0
+  },
+  {
+    "endpoint": "/api/tasks",
+    "status": 200,
+    "count": 8
+  },
+  {
+    "endpoint": "/api/task-statuses",
+    "status": 200,
+    "count": 0
+  },
+  {
+    "endpoint": "/api/task-priorities",
+    "status": 200,
+    "count": 0
+  },
+  {
+    "endpoint": "/api/harvests",
+    "status": 500,
+    "error": {
+      "message": "Schema hasn't been registered for model \"MarketPrice\".\nUse mongoose.model(name, schema)"
+    }
+  },
+  {
+    "endpoint": "/api/harvest-quality-scales",
+    "status": 200,
+    "count": 0
+  },
+  {
+    "endpoint": "/api/pest-logs",
+    "status": 200,
+    "count": 0
+  },
+  {
+    "endpoint": "/api/pests",
+    "status": 200,
+    "count": 10
+  },
+  {
+    "endpoint": "/api/pest-types",
+    "status": 200,
+    "count": 0
+  },
+  {
+    "endpoint": "/api/issues",
+    "status": 200,
+    "count": 0
+  },
+  {
+    "endpoint": "/api/plantings",
+    "status": 200,
+    "count": 65
+  },
+  {
+    "endpoint": "/api/plants",
+    "status": 200,
+    "count": 24
+  },
+  {
+    "endpoint": "/api/plant-stages",
+    "status": 200,
+    "count": 0
+  },
+  {
+    "endpoint": "/api/plant-varieties",
+    "status": 200,
+    "count": 0
+  },
+  {
+    "endpoint": "/api/users/details",
+    "status": 200
+  },
+  {
+    "endpoint": "/api/users/roles",
+    "status": 200
+  },
+  {
+    "endpoint": "/api/users/permission-modules",
+    "status": 400
+  },
+  {
+    "endpoint": "/api/users/departments",
+    "status": 400
+  },
+  {
+    "endpoint": "/api/users/business-departments",
+    "status": 400
+  },
+  {
+    "endpoint": "/api/users/department-assignments",
+    "status": 200
+  },
+  {
+    "endpoint": "/api/users/role-assignments",
+    "status": 200
+  },
+  {
+    "endpoint": "/api/users/role-permissions",
+    "status": 200
+  },
+  {
+    "endpoint": "/api/users/user-permission-overrides",
+    "status": 200
+  },
+  {
+    "endpoint": "/api/users/effective-permissions",
+    "status": 400
+  },
+  {
+    "endpoint": "/api/users",
+    "status": 200
+  },
+  {
+    "endpoint": "/api/categories",
+    "status": 200,
+    "count": 1
+  },
+  {
+    "endpoint": "/api/courses",
+    "status": 200,
+    "count": 74
+  },
+  {
+    "endpoint": "/api/cuisines",
+    "status": 200,
+    "count": 247
+  },
+  {
+    "endpoint": "/api/dietaries",
+    "status": 200,
+    "count": 14
+  },
+  {
+    "endpoint": "/api/recipes",
+    "status": 200,
+    "count": 889
+  },
+  {
+    "endpoint": "/api/recipe-costings",
+    "status": 200,
+    "count": 2
+  },
+  {
+    "endpoint": "/api/vendor-categories",
+    "status": 200,
+    "count": 24
+  },
+  {
+    "endpoint": "/api/vendor-ingredient-prices",
+    "status": 200,
+    "count": 166
+  },
+  {
+    "endpoint": "/api/reference/planting-seasons",
+    "status": 200,
+    "count": 0
+  },
+  {
+    "endpoint": "/api/boardjournal",
+    "status": 200
+  },
+  {
+    "endpoint": "/api/dashboard",
+    "status": 200
+  },
+  {
+    "endpoint": "/api/weather",
+    "status": 404
+  },
+  {
+    "endpoint": "/api/reminders",
+    "status": 400
+  }
+]

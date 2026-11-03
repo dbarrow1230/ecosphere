@@ -1,0 +1,699 @@
+import {useEffect,useMemo,useState} from "react";
+import {Alert,Badge,Button,Card,Col,Form,InputGroup,Modal,Row,Spinner} from "react-bootstrap";
+import {CalendarDays,Leaf,Pencil,Save,Search,Skull,Sprout} from "lucide-react";
+import {Link,useSearchParams} from "react-router-dom";
+import {combineGrowingRuns,summarizeGrowingRuns} from "../../utils/growing/growingRuns.js";
+import SortedList from "../../components/SortedList.jsx";
+import SortedSelect from "../../components/SortedSelect.jsx";
+import {sortItems} from "../../utils/sortItems.js";
+import "../../styles/plantingsPage.css";
+
+const statusOptions=[
+ {value:"active",label:"Active"},
+ {value:"germinating",label:"Germinating"},
+ {value:"seedling",label:"Seedling"},
+ {value:"transplanted",label:"Transplanted"},
+ {value:"harvested",label:"Harvested"},
+ {value:"failed",label:"Failed"},
+ {value:"dead",label:"Dead"},
+ {value:"archived",label:"Archived"}
+];
+
+const sourceTypeOptions=[
+ {value:"seed",label:"Seed"},
+ {value:"plant",label:"Plant"}
+];
+
+const datePeriodOptions=[
+ {value:"day",label:"Day"},
+ {value:"month",label:"Month"},
+ {value:"year",label:"Year"},
+ {value:"all",label:"All Dates"}
+];
+
+const defaultInstanceForm={sunNotes:"",soilNotes:"",transplantedCount:"",transplantedDate:"",sproutedCount:"",sproutedDate:"",sownCount:"",seedCost:"",sourceName:"",
+ gardenSection:"",variety:"",currentStage:"",newNote:"",isActive:true,
+ instanceName:"",
+ sourceType:"seed",
+ seed:"",
+ plant:"",
+ garden:"",
+ plantedDate:"",
+ expectedHarvestDate:"",
+ endDate:"",
+ deathDate:"",
+ status:"active",
+ quantity:1,
+ location:"",
+ failureReason:"",
+ outcomeNotes:""
+};
+
+const getObjectId=value=>{
+ if(!value)return "";
+ if(typeof value==="string")return value;
+
+ if(typeof value==="object"){
+  if(typeof value.$oid==="string")return value.$oid;
+  if(typeof value._id==="string")return value._id;
+  if(typeof value.id==="string")return value.id;
+  if(typeof value._id?.$oid==="string")return value._id.$oid;
+  if(typeof value.id?.$oid==="string")return value.id.$oid;
+ }
+
+ return "";
+};
+
+const formatDateForInput=value=>{
+ if(!value)return "";
+ const date=new Date(value);
+ if(Number.isNaN(date.getTime()))return "";
+ return date.toISOString().slice(0,10);
+};
+
+const formatDate=value=>{
+ const input=formatDateForInput(value);
+ if(!input)return "Not listed";
+ const [year,month,day]=input.split("-");
+ return `${month}/${day}/${year}`;
+};
+
+const getSeedName=seed=>{
+ if(!seed)return "";
+ if(typeof seed==="string")return seed;
+ return seed.plantName||seed.name||seed.title||"Unnamed Seed";
+};
+
+const getPlantName=plant=>{
+ if(!plant)return "";
+ if(typeof plant==="string")return plant;
+ return plant.name||plant.plantName||plant.title||"Unnamed Plant";
+};
+
+const getGardenName=garden=>{
+ if(!garden)return "";
+ if(typeof garden==="string")return garden;
+ return garden.name||garden.title||"Unnamed Garden";
+};
+
+const getInstanceSource=item=>{
+ if(item?.seed)return getSeedName(item.seed);
+ if(item?.plant)return getPlantName(item.plant);
+ return "No source linked";
+};
+
+const getInstanceName=item=>{
+ return item?.instanceName||getInstanceSource(item);
+};
+
+const statusLabel=value=>statusOptions.find(item=>item.value===value)?.label||value||"Active";
+
+const statusVariant=value=>{
+ if(value==="active"||value==="seedling"||value==="transplanted")return "success";
+ if(value==="germinating")return "primary";
+ if(value==="harvested")return "warning";
+ if(value==="failed"||value==="dead")return "danger";
+ if(value==="archived")return "dark";
+ return "secondary";
+};
+
+export default function PlantingsPage({user}){
+ const [searchParams,setSearchParams]=useSearchParams();
+ const selectedRunId=searchParams.get("run")||"";
+ const requestedLocation=searchParams.get("location")||"";
+ const today=formatDateForInput(new Date());
+ const [instances,setInstances]=useState([]);
+ const [hydroSystems,setHydroSystems]=useState([]);
+ const [gardenFilter,setGardenFilter]=useState("all");
+ const [seeds,setSeeds]=useState([]);
+ const [plants,setPlants]=useState([]);
+ const [gardens,setGardens]=useState([]);
+ const [runReferences,setRunReferences]=useState({sections:[],varieties:[],stages:[]});
+ const [search,setSearch]=useState("");
+ const [statusFilter,setStatusFilter]=useState("all");
+ const [datePeriod,setDatePeriod]=useState(()=>requestedLocation?'all':'year');
+ const [selectedDay,setSelectedDay]=useState(today);
+ const [selectedMonth,setSelectedMonth]=useState(today.slice(0,7));
+ const [selectedYear,setSelectedYear]=useState(today.slice(0,4));
+ const [showModal,setShowModal]=useState(false);
+ const [editingInstance,setEditingInstance]=useState(null);
+ const [formData,setFormData]=useState(defaultInstanceForm);
+ const [loading,setLoading]=useState(true);
+ const [saving,setSaving]=useState(false);
+ const [error,setError]=useState("");
+ const [success,setSuccess]=useState("");
+
+ useEffect(()=>{
+  let ignore=false;
+
+  const loadData=async()=>{
+   try{
+    setLoading(true);
+    setError("");
+
+    const [plantingsRes,seedsRes,plantsRes,gardensRes,hydroRes,sectionsRes,varietiesRes,stagesRes]=await Promise.all([
+     fetch("/api/plantings"),
+     fetch("/api/seeds"),
+     fetch("/api/plants"),
+     fetch("/api/gardens"),
+     fetch("/api/hydro-systems"),fetch("/api/garden-sections"),fetch("/api/plant-varieties"),fetch("/api/plant-stages")
+    ]);
+
+    const plantingsData=await plantingsRes.json().catch(()=>[]);
+    const seedsData=await seedsRes.json().catch(()=>[]);
+    const plantsData=await plantsRes.json().catch(()=>[]);
+    const hydroData=await hydroRes.json().catch(()=>[]);
+    if(!hydroRes.ok)throw new Error(hydroData.message||"Failed to load hydro runs");
+    const gardensData=await gardensRes.json().catch(()=>[]);
+
+    if(!plantingsRes.ok)throw new Error(plantingsData.message||"Failed to load growing instances");
+    if(!seedsRes.ok)throw new Error(seedsData.message||"Failed to load seeds");
+    if(!plantsRes.ok)throw new Error(plantsData.message||"Failed to load plants");
+    if(!gardensRes.ok)throw new Error(gardensData.message||"Failed to load gardens");
+
+    const refs=await Promise.all([sectionsRes,varietiesRes,stagesRes].map(async response=>{const data=await response.json();if(!response.ok)throw new Error(data.message||"Unable to load growing run references");return Array.isArray(data)?data:[];}));
+    if(ignore)return;
+    setRunReferences({sections:refs[0],varieties:refs[1],stages:refs[2]});
+
+    setHydroSystems(Array.isArray(hydroData)?hydroData:[]);
+    setInstances(Array.isArray(plantingsData)?plantingsData:[]);
+    setSeeds(Array.isArray(seedsData)?seedsData:[]);
+    setPlants(Array.isArray(plantsData)?plantsData:[]);
+    setGardens(Array.isArray(gardensData)?gardensData:[]);
+   }catch(err){
+    if(!ignore)setError(err.message||"Failed to load growing instances");
+   }finally{
+    if(!ignore)setLoading(false);
+   }
+  };
+
+  loadData();
+
+  return()=>{
+   ignore=true;
+  };
+ },[]);
+
+ const allRuns=useMemo(()=>combineGrowingRuns(instances,hydroSystems),[instances,hydroSystems]);
+
+ const yearOptions=useMemo(()=>{
+  const years=new Set([today.slice(0,4)]);
+  allRuns.forEach(item=>{
+   const date=formatDateForInput(item.plantedDate);
+   if(date)years.add(date.slice(0,4));
+  });
+  return [...years].sort((a,b)=>b.localeCompare(a)).map(year=>({value:year,label:year}));
+ },[allRuns,today]);
+
+ const dateFilteredInstances=useMemo(()=>{
+  return allRuns.filter(item=>{
+   if(datePeriod==="all")return true;
+   const date=formatDateForInput(item.plantedDate);
+   if(!date)return false;
+   if(datePeriod==="day")return date===selectedDay;
+   if(datePeriod==="month")return date.startsWith(selectedMonth);
+   return date.startsWith(selectedYear);
+  });
+ },[allRuns,datePeriod,selectedDay,selectedMonth,selectedYear]);
+
+ const filteredInstances=useMemo(()=>{
+  const searchText=search.trim().toLowerCase();
+
+  return sortItems(dateFilteredInstances,getInstanceName).filter(item=>{
+   const haystack=[
+    getInstanceName(item),
+    getInstanceSource(item),
+    item.location,
+    getGardenName(item.garden),
+   item.status,
+   item.deathDate,
+   item.failureReason,
+    item.outcomeNotes
+   ].filter(Boolean).join(" ").toLowerCase();
+
+   return (!requestedLocation||item.location===requestedLocation)&&(!selectedRunId||getObjectId(item)===selectedRunId)&&(gardenFilter==="all"||getObjectId(item.garden)===gardenFilter)&&(statusFilter==="all"||item.status===statusFilter)&&(!searchText||haystack.includes(searchText));
+  });
+ },[dateFilteredInstances,search,statusFilter,gardenFilter,selectedRunId,requestedLocation]);
+
+ const metrics=useMemo(()=>summarizeGrowingRuns(filteredInstances),[filteredInstances]);
+
+ const openEditModal=item=>{
+  setEditingInstance(item);
+  setFormData({
+   instanceName:item.instanceName||"",
+   sourceType:item.sourceType||(item.seed?"seed":"plant"),
+   seed:getObjectId(item.seed),
+   plant:getObjectId(item.plant),
+   garden:getObjectId(item.garden),gardenSection:getObjectId(item.gardenSection),variety:getObjectId(item.variety),currentStage:getObjectId(item.currentStage),newNote:"",isActive:item.isActive!==false,
+   plantedDate:formatDateForInput(item.plantedDate),
+   expectedHarvestDate:formatDateForInput(item.expectedHarvestDate),
+   endDate:formatDateForInput(item.endDate),
+   deathDate:formatDateForInput(item.deathDate),
+   status:item.status||"active",
+   sourceName:item.sourceName??"",
+   seedCost:item.seedCost??"",
+   sownCount:item.sownCount??"",
+   sproutedDate:formatDateForInput(item.sproutedDate),
+   sproutedCount:item.sproutedCount??"",
+   transplantedDate:formatDateForInput(item.transplantedDate),
+   transplantedCount:item.transplantedCount??"",
+   soilNotes:item.soilNotes??"",
+   sunNotes:item.sunNotes??"",
+   quantity:item.quantity ?? 1,
+   location:item.location||"",
+   failureReason:item.failureReason||"",
+   outcomeNotes:item.outcomeNotes||""
+  });
+  setShowModal(true);
+ };
+
+ const handleFormChange=e=>{
+  const {name,value,type}=e.target;
+
+  setFormData(prev=>{
+   const next={
+    ...prev,
+    [name]:type==="checkbox" ? e.target.checked : value
+   };
+
+   if(name==="sourceType"){
+    next.seed=value==="seed" ? prev.seed : "";
+    next.plant=value==="plant" ? prev.plant : "";
+   }
+
+   return next;
+  });
+ };
+
+ const handleSubmit=async e=>{
+  e.preventDefault();
+
+  try{
+   setSaving(true);
+   setError("");
+   setSuccess("");
+
+   const payload={
+    ...formData,
+    seed:formData.sourceType==="seed" ? formData.seed||null : null,
+    plant:formData.sourceType==="plant" ? formData.plant||null : null,
+    garden:formData.garden||null,gardenSection:formData.gardenSection||null,variety:formData.variety||null,currentStage:formData.currentStage||null,isActive:formData.isActive,
+    notes:[...(editingInstance?.notes||[]),...(formData.newNote.trim()?[{note:formData.newNote.trim(),date:new Date(),createdBy:getObjectId(user)||null}]:[])],
+    plantedDate:formData.plantedDate||null,
+    expectedHarvestDate:formData.expectedHarvestDate||null,
+    endDate:formData.endDate||null,
+    deathDate:formData.deathDate||null,
+    sourceName:formData.sourceName,
+    seedCost:Number(formData.seedCost)||0,
+    sownCount:Number(formData.sownCount)||0,
+    sproutedDate:formData.sproutedDate||null,
+    sproutedCount:Number(formData.sproutedCount)||0,
+    transplantedDate:formData.transplantedDate||null,
+    transplantedCount:Number(formData.transplantedCount)||0,
+    soilNotes:formData.soilNotes,
+    sunNotes:formData.sunNotes,
+    quantity:formData.quantity==="" ? 1 : Number(formData.quantity),
+    ...(!editingInstance?{createdBy:getObjectId(user)}:{})
+   };
+
+   const editingId=getObjectId(editingInstance);
+   const res=await fetch(editingId?`/api/plantings/${editingId}`:"/api/plantings",{
+    method:editingId?"PUT":"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify(payload)
+   });
+
+   const data=await res.json().catch(()=>({}));
+
+   if(!res.ok)throw new Error(data.message||"Failed to save growing instance");
+
+   setInstances(prev=>{
+    const next=editingId ? prev.map(item=>getObjectId(item)===getObjectId(data)?data:item) : [...prev,data];
+    return sortItems(next,getInstanceName);
+   });
+   setShowModal(false);
+   setSuccess(`${getInstanceName(data)} was saved.`);
+  }catch(err){
+   setError(err.message||"Failed to save growing instance");
+  }finally{
+   setSaving(false);
+  }
+ };
+
+ return(
+  <section className="plantings-page">
+   <header className="plantings-header">
+    <div>
+     <p className="plantings-kicker">Growing Instances</p>
+     <h1>Growing Run Register</h1>
+     {requestedLocation&&<p><strong>Growing location:</strong> {requestedLocation} <Link to="/plantings">View all locations</Link></p>}
+     <p>Find seed starts, plant starts, and hydro runs across every garden. Start new runs inside their garden; use this register to review progress and update outcomes.</p>
+    </div>
+
+    <div className="plantings-header-actions">
+     <Button as={Link} to="/gardens">Open Gardens</Button>
+    </div>
+   </header>
+
+   {!loading&&!gardens.length&&(
+    <Alert variant="info">Create a <Alert.Link as={Link} to="/gardens">named garden</Alert.Link> before starting a seed or plant run.</Alert>
+   )}
+
+   {error&&(
+    <Alert variant="danger" dismissible onClose={()=>setError("")}>{error}</Alert>
+   )}
+
+   {success&&(
+    <Alert variant="success" dismissible onClose={()=>setSuccess("")}>{success}</Alert>
+   )}
+
+   {selectedRunId&&<Alert variant="info">Showing the run selected from its garden. <Button size="sm" variant="outline-primary" onClick={()=>setSearchParams({})}>Show all runs</Button></Alert>}
+
+   <section className="plantings-metrics">
+    <MetricCard icon={<Sprout size={18}/>} label="Runs Shown" value={metrics.total}/>
+    <MetricCard icon={<Leaf size={18}/>} label="Growing" value={metrics.active}/>
+    <MetricCard icon={<Skull size={18}/>} label="Failed / Dead" value={metrics.failed}/>
+    <MetricCard icon={<CalendarDays size={18}/>} label="Harvested" value={metrics.harvested}/>
+   </section>
+
+   <Card className="plantings-card">
+    <Card.Body>
+     <div className="plantings-filter-grid">
+      <SortedSelect value={gardenFilter} onChange={event=>setGardenFilter(event.target.value)} options={[{_id:"all",name:"All Gardens"},...gardens]} getValue={getObjectId} getLabel={getGardenName} includePlaceholder={false} aria-label="Filter runs by garden"/>
+      <InputGroup>
+       <InputGroup.Text><Search size={16}/></InputGroup.Text>
+       <Form.Control value={search} onChange={e=>setSearch(e.target.value)} placeholder="Search runs, seeds, plants, gardens..."/>
+      </InputGroup>
+
+      <SortedSelect
+       value={statusFilter}
+       onChange={e=>setStatusFilter(e.target.value)}
+       options={[{value:"all",label:"All Statuses"},...statusOptions]}
+       getValue={item=>item.value}
+       getLabel={item=>item.label}
+       includePlaceholder={false}
+      />
+
+      <SortedSelect
+       value={datePeriod}
+       onChange={e=>setDatePeriod(e.target.value)}
+       options={datePeriodOptions}
+       getValue={item=>item.value}
+       getLabel={item=>item.label}
+       includePlaceholder={false}
+       aria-label="Date period"
+      />
+
+      {datePeriod==="day"&&(
+       <Form.Control type="date" value={selectedDay} onChange={e=>setSelectedDay(e.target.value)} aria-label="Growing instance day" />
+      )}
+      {datePeriod==="month"&&(
+       <Form.Control type="month" value={selectedMonth} onChange={e=>setSelectedMonth(e.target.value)} aria-label="Growing instance month" />
+      )}
+      {datePeriod==="year"&&(
+       <SortedSelect
+        value={selectedYear}
+        onChange={e=>setSelectedYear(e.target.value)}
+        options={yearOptions}
+        getValue={item=>item.value}
+        getLabel={item=>item.label}
+        includePlaceholder={false}
+        aria-label="Growing instance year"
+       />
+      )}
+     </div>
+    </Card.Body>
+   </Card>
+
+   <p className="plantings-filter-summary">Showing {filteredInstances.length} of {allRuns.length} runs{datePeriod==="year"?` started in ${selectedYear}`:datePeriod==="month"?` started in ${selectedMonth}`:datePeriod==="day"?` started on ${selectedDay}`:" across all dates"}. Date filters use the run’s start date. Each hydro run counts once; devices and pods are managed within it.</p>
+
+   {loading ? (
+    <div className="plantings-loading">
+     <Spinner animation="border" size="sm"/>
+     Loading growing instances...
+    </div>
+   ) : (
+    <SortedList
+     items={filteredInstances}
+     getKey={item=>item.runKey}
+     getLabel={getInstanceName}
+     className="plantings-list"
+     renderItem={item=>(
+      <article className="planting-card">
+       <div className="planting-card-head">
+        <div>
+         <p className="plantings-kicker">{item.runKind==="hydro"?"Hydro Run":item.sourceType==="plant"?"Plant Start":"Seed Start"}</p>
+         <h2>{getInstanceName(item)}</h2>
+         <p>{item.runKind==="hydro"?item.systemType:getInstanceSource(item)}</p>
+        </div>
+
+        <Badge bg={statusVariant(item.status)}>{statusLabel(item.status)}</Badge>
+       </div>
+
+       <div className="planting-card-details">
+        <span><strong>Started:</strong> {formatDate(item.plantedDate)}</span>
+        <span><strong>Expected Harvest:</strong> {formatDate(item.expectedHarvestDate)}</span>
+        <span><strong>Ended:</strong> {formatDate(item.endDate)}</span>
+        {item.deathDate&&(
+         <span><strong>Death Date:</strong> {formatDate(item.deathDate)}</span>
+        )}
+        {item.runKind!=="hydro"&&<span><strong>Quantity:</strong> {item.quantity ?? 1}</span>}
+        <span><strong>Garden:</strong> {getGardenName(item.garden)||"Not assigned"}</span>
+        <span><strong>Location:</strong> {item.location||"Not listed"}</span>
+        <span><strong>Section:</strong> {item.gardenSection?.name||"Not assigned"}</span>
+        <span><strong>Variety:</strong> {item.variety?.name||"Not recorded"}</span>
+        <span><strong>Stage:</strong> {item.currentStage?.name||"Not recorded"}</span>
+        {(item.status==="failed"||item.status==="dead")&&(
+         <span><strong>Reason:</strong> {item.failureReason||"Not listed"}</span>
+        )}
+       </div>
+
+       {item.runKind!=="hydro"&&<p>Seeding: {item.sownCount??0} sown; {item.sproutedCount??0} sprouted{item.sproutedDate?` on ${formatDate(item.sproutedDate)}`:""}; {item.transplantedCount??0} transplanted{item.transplantedDate?` on ${formatDate(item.transplantedDate)}`:""}. Success: {item.sownCount>0?`${((item.sproutedCount||0)/item.sownCount*100).toFixed(1)}%`:"Not recorded"}</p>}
+       {item.outcomeNotes&&(
+        <p className="planting-outcome">{item.outcomeNotes}</p>
+       )}
+       {item.soilNotes&&<p><strong>Soil / growing medium:</strong> {item.soilNotes}</p>}
+       {item.sunNotes&&<p><strong>Sun exposure:</strong> {item.sunNotes}</p>}
+       {(item.notes||[]).filter(note=>note.note).map((note,index)=><p key={index}>{note.note}</p>)}
+
+       <div className="plantings-header-actions">
+        {item.garden&&<Button as={Link} to={`/gardens/${getObjectId(item.garden)}`} size="sm" variant="outline-success">Open Garden</Button>}
+        {item.runKind==="hydro"?<Button as={Link} to={`/hydroponics?run=${getObjectId(item)}${item.garden?`&garden=${getObjectId(item.garden)}`:""}`} size="sm" variant="outline-primary">Manage Hydro Run</Button>:<Button type="button" size="sm" variant="outline-primary" onClick={()=>openEditModal(item)}><Pencil size={15}/> Update Run</Button>}
+       </div>
+      </article>
+     )}
+    >
+     <div className="plantings-empty">No growing instances match those filters.</div>
+    </SortedList>
+   )}
+
+   <InstanceModal
+    show={showModal}
+    saving={saving}
+    editing={!!editingInstance}
+    formData={formData}
+    seeds={seeds}
+    plants={plants}
+    gardens={gardens}
+    references={runReferences}
+    onChange={handleFormChange}
+    onSubmit={handleSubmit}
+    onHide={()=>setShowModal(false)}
+   />
+  </section>
+ );
+}
+
+function MetricCard({icon,label,value}){
+ return(
+  <Card className="plantings-metric-card">
+   <Card.Body>
+    <span className="plantings-metric-icon">{icon}</span>
+    <div>
+     <p>{label}</p>
+     <strong>{value}</strong>
+    </div>
+   </Card.Body>
+  </Card>
+ );
+}
+
+function InstanceModal({show,saving,editing,formData,seeds,plants,gardens,references,onChange,onSubmit,onHide}){
+ return(
+  <Modal show={show} onHide={onHide} size="lg" centered>
+   <Form onSubmit={onSubmit}>
+    <Modal.Header closeButton>
+     <Modal.Title>{editing?"Edit Growing Instance":"Create Growing Instance"}</Modal.Title>
+    </Modal.Header>
+
+    <Modal.Body>
+     <Row className="g-3">
+      <Col md={12}>
+       <InputGroup>
+        <InputGroup.Text>Garden</InputGroup.Text>
+        <SortedSelect
+         name="garden"
+         value={formData.garden}
+         onChange={onChange}
+         options={gardens}
+         getValue={item=>getObjectId(item)}
+         getLabel={getGardenName}
+         placeholder="Select the garden for this run"
+        />
+       </InputGroup>
+      </Col>
+
+      <Col md={6}>
+       <InputGroup>
+        <InputGroup.Text>Source</InputGroup.Text>
+        <SortedSelect
+         name="sourceType"
+         value={formData.sourceType}
+         onChange={onChange}
+         options={sourceTypeOptions}
+         getValue={item=>item.value}
+         getLabel={item=>item.label}
+         includePlaceholder={false}
+        />
+       </InputGroup>
+      </Col>
+
+      <Col md={6}>
+       {formData.sourceType==="seed" ? (
+        <InputGroup>
+         <InputGroup.Text>Seed</InputGroup.Text>
+         <SortedSelect
+          name="seed"
+          value={formData.seed}
+          onChange={onChange}
+          options={seeds}
+          getValue={item=>getObjectId(item)}
+          getLabel={getSeedName}
+          placeholder="Select seed"
+          required
+         />
+        </InputGroup>
+       ) : (
+        <InputGroup>
+         <InputGroup.Text>Plant</InputGroup.Text>
+         <SortedSelect
+          name="plant"
+          value={formData.plant}
+          onChange={onChange}
+          options={plants}
+          getValue={item=>getObjectId(item)}
+          getLabel={getPlantName}
+          placeholder="Select plant"
+          required
+         />
+        </InputGroup>
+       )}
+      </Col>
+
+      <Col md={8}>
+       <InputGroup>
+        <InputGroup.Text>Instance Name</InputGroup.Text>
+        <Form.Control name="instanceName" value={formData.instanceName} onChange={onChange} placeholder="Kitchen thyme run, tray 2 basil, spring tomato #3"/>
+       </InputGroup>
+      </Col>
+
+      <Col md={4}>
+       <InputGroup>
+        <InputGroup.Text>Quantity</InputGroup.Text>
+        <Form.Control type="number" min="0" name="quantity" value={formData.quantity} onChange={onChange}/>
+       </InputGroup>
+      </Col>
+
+      <Col md={4}>
+       <InputGroup>
+        <InputGroup.Text>Started</InputGroup.Text>
+        <Form.Control type="date" name="plantedDate" value={formData.plantedDate} onChange={onChange}/>
+       </InputGroup>
+      </Col>
+
+      <Col md={4}>
+       <InputGroup>
+        <InputGroup.Text>Harvest</InputGroup.Text>
+        <Form.Control type="date" name="expectedHarvestDate" value={formData.expectedHarvestDate} onChange={onChange}/>
+       </InputGroup>
+      </Col>
+
+      <Col md={4}>
+       <InputGroup>
+        <InputGroup.Text>End</InputGroup.Text>
+        <Form.Control type="date" name="endDate" value={formData.endDate} onChange={onChange}/>
+       </InputGroup>
+      </Col>
+
+      {formData.status==="dead"&&(
+       <Col md={4}>
+        <InputGroup>
+         <InputGroup.Text>Death</InputGroup.Text>
+         <Form.Control type="date" name="deathDate" value={formData.deathDate} onChange={onChange}/>
+        </InputGroup>
+       </Col>
+      )}
+
+      <Col md={6}>
+       <InputGroup>
+        <InputGroup.Text>Status</InputGroup.Text>
+        <SortedSelect
+         name="status"
+         value={formData.status}
+         onChange={onChange}
+         options={statusOptions}
+         getValue={item=>item.value}
+         getLabel={item=>item.label}
+         includePlaceholder={false}
+        />
+       </InputGroup>
+      </Col>
+
+      <Col md={6}>
+       <InputGroup>
+        <InputGroup.Text>Location</InputGroup.Text>
+        <Form.Control name="location" value={formData.location} onChange={onChange} placeholder="Hydro run, pod 4, raised bed A"/>
+       </InputGroup>
+      </Col>
+
+      {(formData.status==="failed"||formData.status==="dead")&&(
+       <Col md={12}>
+        <InputGroup>
+         <InputGroup.Text>Reason</InputGroup.Text>
+         <Form.Control name="failureReason" value={formData.failureReason} onChange={onChange} placeholder="Did not germinate, root rot, dried out, pest damage"/>
+        </InputGroup>
+       </Col>
+      )}
+
+      <Col md={6}><Form.Group controlId="run-sourceName"><Form.Label>Source</Form.Label><Form.Control type="text"  name="sourceName" value={formData.sourceName} onChange={onChange}/></Form.Group></Col>
+      <Col md={6}><Form.Group controlId="run-seedCost"><Form.Label>Seed cost</Form.Label><Form.Control type="number" min="0" step="any" name="seedCost" value={formData.seedCost} onChange={onChange}/></Form.Group></Col>
+      <Col md={6}><Form.Group controlId="run-sownCount"><Form.Label>Number sown</Form.Label><Form.Control type="number" min="0" step="any" name="sownCount" value={formData.sownCount} onChange={onChange}/></Form.Group></Col>
+      <Col md={6}><Form.Group controlId="run-sproutedDate"><Form.Label>Sprouted date</Form.Label><Form.Control type="date"  name="sproutedDate" value={formData.sproutedDate} onChange={onChange}/></Form.Group></Col>
+      <Col md={6}><Form.Group controlId="run-sproutedCount"><Form.Label>Number sprouted</Form.Label><Form.Control type="number" min="0" step="any" name="sproutedCount" value={formData.sproutedCount} onChange={onChange}/></Form.Group></Col>
+      <Col md={6}><Form.Group controlId="run-transplantedDate"><Form.Label>Transplanted date</Form.Label><Form.Control type="date"  name="transplantedDate" value={formData.transplantedDate} onChange={onChange}/></Form.Group></Col>
+      <Col md={6}><Form.Group controlId="run-transplantedCount"><Form.Label>Number transplanted</Form.Label><Form.Control type="number" min="0" step="any" name="transplantedCount" value={formData.transplantedCount} onChange={onChange}/></Form.Group></Col>
+      <Col md={6}><Form.Group controlId="run-soilNotes"><Form.Label>Soil / growing medium</Form.Label><Form.Control type="text"  name="soilNotes" value={formData.soilNotes} onChange={onChange}/></Form.Group></Col>
+      <Col md={6}><Form.Group controlId="run-sunNotes"><Form.Label>Sun exposure</Form.Label><Form.Control type="text"  name="sunNotes" value={formData.sunNotes} onChange={onChange}/></Form.Group></Col>
+      <Col md={12}>
+       <InputGroup>
+        <InputGroup.Text>Outcome Notes</InputGroup.Text>
+        <Form.Control as="textarea" rows={3} name="outcomeNotes" value={formData.outcomeNotes} onChange={onChange}/>
+       </InputGroup>
+      </Col>
+      {[["gardenSection","Garden section",references.sections.filter(section=>!formData.garden||getObjectId(section.garden)===formData.garden)],["variety","Variety",references.varieties],["currentStage","Current stage",references.stages]].map(([name,label,options])=><Col md={4} key={name}><Form.Group controlId={`run-${name}`}><Form.Label>{label}</Form.Label><SortedSelect name={name} value={formData[name]} onChange={onChange} options={options} getValue={getObjectId} getLabel={item=>item.name||item.stageName||item.varietyName} placeholder={`Select ${label.toLowerCase()}`}/></Form.Group></Col>)}
+      <Col xs={12}><Form.Group controlId="run-new-note"><Form.Label>Add note</Form.Label><Form.Control as="textarea" name="newNote" value={formData.newNote} onChange={onChange}/></Form.Group></Col>
+      <Col xs={12}><Form.Check label="Active record" name="isActive" checked={formData.isActive} onChange={onChange}/></Col>
+     </Row>
+    </Modal.Body>
+
+    <Modal.Footer>
+     <Button type="button" variant="outline-secondary" onClick={onHide}>Cancel</Button>
+     <Button type="submit" disabled={saving}>
+      <Save size={16}/>
+      {saving?"Saving...":"Save Instance"}
+     </Button>
+    </Modal.Footer>
+   </Form>
+  </Modal>
+ );
+}

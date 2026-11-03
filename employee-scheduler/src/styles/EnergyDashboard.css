@@ -1,0 +1,131 @@
+/* src/styles/EnergyDashboard.css */
+
+.energy-dashboard{
+ background:var(--bg);
+ color:var(--text);
+}
+
+.energy-dashboard-eyebrow{
+ margin:0;
+ font-size:.85rem;
+ font-weight:700;
+ letter-spacing:.16em;
+ text-transform:uppercase;
+ color:var(--accent);
+}
+
+.energy-dashboard-title{
+ margin:0;
+ font-family:var(--font-heading);
+ font-size:clamp(2.2rem,5vw,3.5rem);
+ line-height:1.1;
+ color:var(--text);
+}
+
+.energy-dashboard-text{
+ margin:0 auto;
+ max-width:760px;
+ font-size:1.05rem;
+ line-height:1.75;
+ color:var(--text-soft);
+}
+
+.energy-dashboard-card{
+ background:var(--surface);
+ border:1px solid var(--border);
+ border-radius:var(--radius-md);
+ box-shadow:var(--shadow);
+}
+
+.energy-dashboard-card .card-body{
+ color:var(--text-soft);
+}
+
+.energy-dashboard-stat-label{
+ margin:0;
+ font-size:.85rem;
+ font-weight:700;
+ letter-spacing:.08em;
+ text-transform:uppercase;
+ color:var(--accent-2);
+}
+
+.energy-dashboard-stat-value{
+ margin:0;
+ font-family:var(--font-heading);
+ font-size:clamp(1.8rem,3vw,2.5rem);
+ line-height:1.1;
+ color:var(--text);
+}
+
+.energy-dashboard-section-eyebrow{
+ margin:0;
+ font-size:.8rem;
+ font-weight:700;
+ letter-spacing:.14em;
+ text-transform:uppercase;
+ color:var(--accent);
+}
+
+.energy-dashboard-section-title{
+ margin:0;
+ font-family:var(--font-heading);
+ font-size:1.45rem;
+ line-height:1.2;
+ color:var(--text);
+}
+
+.energy-dashboard-chart{
+ width:100%;
+ min-height:340px;
+}
+
+.energy-dashboard .input-group-text{
+ background:var(--surface-2);
+ border-color:var(--border);
+ color:var(--text);
+}
+
+.energy-dashboard .form-select{
+ background:var(--surface);
+ border-color:var(--border);
+ color:var(--text);
+}
+
+.energy-dashboard .form-select:focus{
+ border-color:var(--accent);
+ box-shadow:0 0 0 .2rem color-mix(in srgb,var(--accent) 25%,transparent);
+}
+
+.energy-dashboard .recharts-cartesian-axis-tick-value,
+.energy-dashboard .recharts-legend-item-text{
+ fill:var(--text-soft);
+ color:var(--text-soft);
+}
+
+.energy-dashboard .recharts-default-tooltip{
+ border:1px solid var(--border)!important;
+ border-radius:var(--radius-sm)!important;
+ background:var(--surface)!important;
+ box-shadow:var(--shadow)!important;
+}
+
+.energy-dashboard .recharts-tooltip-label{
+ color:var(--text)!important;
+}
+
+@media (max-width:767.98px){
+
+ .energy-dashboard-title{
+  font-size:clamp(2rem,6vw,2.8rem);
+ }
+
+ .energy-dashboard-text{
+  font-size:1rem;
+ }
+
+ .energy-dashboard-chart{
+  min-height:300px;
+ }
+
+}

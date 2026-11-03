@@ -1,0 +1,43 @@
+.morse-practice-page .morse-practice-message,
+.morse-practice-page .morse-practice-reveal{
+ background:var(--surface-2);
+ color:var(--text);
+ border:1px solid var(--border);
+ border-radius:var(--radius-sm);
+ padding:1rem;
+ font-weight:500;
+ line-height:1.5;
+}
+
+.morse-practice-page .morse-practice-reveal.is-revealed{
+ color:var(--heading);
+ font-size:1.05rem;
+ font-weight:700;
+ letter-spacing:.04em;
+ white-space:pre-wrap;
+ overflow-wrap:anywhere;
+}
+
+.morse-practice-page .morse-practice-answer.form-control,
+.morse-practice-page .morse-practice-answer.form-control:disabled{
+ background:var(--surface-2);
+ color:var(--heading);
+ border-color:var(--border);
+ caret-color:var(--accent);
+ opacity:1;
+ font-size:1.05rem;
+ font-weight:600;
+ line-height:1.5;
+}
+
+.morse-practice-page .morse-practice-answer.form-control::placeholder{
+ color:var(--text-soft);
+ opacity:1;
+}
+
+.morse-practice-page .morse-practice-answer.form-control:focus{
+ background:var(--surface-2);
+ color:var(--heading);
+ border-color:var(--accent);
+ box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 35%,transparent);
+}

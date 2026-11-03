@@ -1,0 +1,239 @@
+/* src/pages/admin/Taglines.css */
+.taglines-page{
+ width:100%;
+ padding:2rem 0 3rem;
+ background:var(--bg);
+ color:var(--text);
+}
+
+.taglines-wrap{
+ width:min(var(--max-width),94%);
+ margin:0 auto;
+}
+
+.taglines-topbar{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ margin-bottom:1.5rem;
+}
+
+.taglines-topbar h1{
+ margin:0;
+ color:var(--heading);
+ font-family:var(--font-heading);
+}
+
+.taglines-loading,
+.taglines-empty-state{
+ background:var(--surface);
+ border:1px solid var(--border);
+ border-radius:var(--radius-lg);
+ padding:1.25rem 1.5rem;
+ box-shadow:var(--shadow-sm);
+ color:var(--text-soft);
+}
+
+.taglines-accordion{
+ display:flex;
+ flex-direction:column;
+ gap:1rem;
+}
+
+.taglines-accordion .accordion-item,
+.taglines-accordion-item{
+ border:1px solid var(--border);
+ border-radius:var(--radius-lg);
+ overflow:hidden;
+ background:var(--surface);
+ box-shadow:var(--shadow-sm);
+}
+
+.taglines-accordion .accordion-button{
+ background:var(--surface);
+ color:var(--heading);
+ padding:1rem 1.25rem;
+ box-shadow:none;
+ transition:var(--transition);
+}
+
+.taglines-accordion .accordion-button:not(.collapsed){
+ background:var(--surface-2);
+ color:var(--heading);
+ box-shadow:none;
+}
+
+.taglines-accordion .accordion-button:focus{
+ box-shadow:var(--focus-ring);
+ border-color:var(--accent);
+}
+
+.taglines-accordion .accordion-body{
+ background:var(--surface);
+}
+
+.taglines-business-heading{
+ display:flex;
+ flex-direction:column;
+ gap:.2rem;
+ text-align:left;
+}
+
+.taglines-business-title{
+ font-size:1.5rem;
+ font-weight:700;
+ line-height:1.2;
+ color:var(--heading);
+ font-family:var(--font-heading);
+}
+
+.taglines-business-code{
+ font-size:.82rem;
+ letter-spacing:.04em;
+ text-transform:uppercase;
+ color:var(--text-soft);
+ font-family:var(--font-accent);
+}
+
+.taglines-business-toolbar{
+ display:flex;
+ justify-content:flex-end;
+ align-items:center;
+ margin-bottom:1rem;
+}
+
+.taglines-action-btn{
+ background:var(--primary);
+ border:1px solid var(--primary);
+ color:var(--surface);
+ border-radius:var(--radius-pill);
+ font-family:var(--font-accent);
+ font-weight:600;
+ transition:var(--transition);
+}
+
+.taglines-action-btn:hover,
+.taglines-action-btn:focus,
+.taglines-action-btn:active{
+ background:var(--primary-hover)!important;
+ border-color:var(--primary-hover)!important;
+ color:var(--surface)!important;
+ box-shadow:none!important;
+}
+
+.taglines-action-btn:focus-visible,
+.taglines-delete-btn:focus-visible{
+ outline:none;
+ box-shadow:var(--focus-ring)!important;
+}
+
+.taglines-delete-btn{
+ background:var(--danger);
+ border:1px solid var(--danger);
+ color:var(--surface);
+ border-radius:var(--radius-pill);
+ font-family:var(--font-accent);
+ font-weight:600;
+ transition:var(--transition);
+}
+
+.taglines-delete-btn:hover,
+.taglines-delete-btn:focus,
+.taglines-delete-btn:active{
+ background:var(--primary-hover)!important;
+ border-color:var(--primary-hover)!important;
+ color:var(--surface)!important;
+ box-shadow:none!important;
+}
+
+.taglines-table-wrap{
+ width:100%;
+ overflow-x:auto;
+ border:1px solid var(--border);
+ border-radius:var(--radius-md);
+ background:var(--surface);
+}
+
+.taglines-table{
+ margin-bottom:0;
+ background:var(--surface);
+ color:var(--text);
+}
+
+.taglines-table thead th{
+ background:var(--surface-2);
+ color:var(--heading);
+ font-size:.78rem;
+ font-weight:700;
+ letter-spacing:.02em;
+ text-transform:uppercase;
+ white-space:nowrap;
+ border-bottom:1px solid var(--border-strong);
+ border-color:var(--border);
+ vertical-align:middle;
+ font-family:var(--font-accent);
+}
+
+.taglines-table td{
+ vertical-align:middle;
+ color:var(--text);
+ background:var(--surface);
+}
+
+.taglines-table th,
+.taglines-table td{
+ padding:.85rem .75rem;
+ border-color:var(--border);
+}
+
+.taglines-table tbody tr:nth-child(even) td{
+ background:var(--table-stripe);
+}
+
+.taglines-table tbody tr:hover td{
+ background:var(--bg-alt);
+}
+
+.taglines-actions{
+ display:flex;
+ gap:.5rem;
+ flex-wrap:wrap;
+}
+
+.taglines-empty-cell{
+ text-align:center;
+ color:var(--text-soft);
+ padding:1.25rem!important;
+ background:var(--surface)!important;
+}
+
+.taglines-page ::selection{
+ background:var(--selection-bg);
+ color:var(--selection-text);
+}
+
+@media (max-width:768px){
+ .taglines-page{
+  padding:1rem 0 2rem;
+ }
+
+ .taglines-wrap{
+  width:96%;
+ }
+
+ .taglines-topbar{
+  margin-bottom:1rem;
+ }
+
+ .taglines-business-title{
+  font-size:1.15rem;
+ }
+
+ .taglines-accordion .accordion-button{
+  padding:.9rem 1rem;
+ }
+
+ .taglines-business-toolbar{
+  justify-content:flex-start;
+ }
+}

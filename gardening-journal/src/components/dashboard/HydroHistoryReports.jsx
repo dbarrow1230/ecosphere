@@ -1,0 +1,42 @@
+import {useEffect,useRef,useState} from "react";
+import {Alert,Button,Card,Col,Form,Row,Table} from "react-bootstrap";
+import {useReactToPrint} from "react-to-print";
+import {Bar,BarChart,CartesianGrid,Legend,Tooltip,XAxis,YAxis} from "recharts";
+import {Link} from "react-router-dom";
+import "./hydroHistoryReports.css";
+
+import {hydroReportTable,reportTypes} from "../../utils/hydroReportTables.js";
+const text=value=>value instanceof Date?value.toISOString():value===null||value===undefined||value===""?"Unrecorded":typeof value==="number"?String(Math.round(value*100)/100):String(value);
+const marker=state=>state==="Germinated"?"✓ Germinated":state==="Failed Germination"?"✗ Failed Germination":state;
+export default function HydroHistoryReports({runId="",podId="",initialType=reportTypes[0],revision="",retryDrag=false}){
+ return <HydroHistoryWorkspace key={`${runId}:${podId}`} {...{runId,podId,initialType,revision,retryDrag}}/>;
+}
+
+function HydroHistoryWorkspace({runId,podId,initialType,revision,retryDrag}){
+ const [result,setResult]=useState({key:"",data:null,error:""}),[available,setAvailable]=useState([]),[filters,setFilters]=useState({runs:runId,pod:podId,from:"",to:"",item:"",status:"",phMin:"",phMax:"",temperatureMin:"",temperatureMax:""}),[type,setType]=useState(initialType),[choicesError,setChoicesError]=useState("");
+ const plantedItems=[...new Map(available.flatMap(run=>(run.devices||[]).flatMap(device=>(device.pods||[]).filter(pod=>pod.seed).map(pod=>[String(pod.seed._id||pod.seed),pod.plantedItemName||pod.seed.plantName||pod.seed.name||"Unnamed planted item"])))).entries()];
+ const requestKey=JSON.stringify([filters,revision]);
+ const report=result.data,error=result.error||choicesError,loading=result.key!==requestKey;
+ const contentRef=useRef(null);
+ const print=useReactToPrint({contentRef,documentTitle:`Hydroponic ${type}`,pageStyle:""});
+ useEffect(()=>{let ignore=false;fetch("/api/hydro-systems").then(async response=>{const data=await response.json();if(!response.ok)throw new Error(data.message||"Unable to load historical runs");if(!ignore){setAvailable(data);setChoicesError("");}}).catch(error=>{if(!ignore)setChoicesError(error.message);});return()=>{ignore=true;};},[revision]);
+ useEffect(()=>{let ignore=false;const [selectedFilters]=JSON.parse(requestKey);const query=new URLSearchParams(Object.entries(selectedFilters).filter(([,value])=>value!==""));fetch(`/api/hydro-systems/reports?${query}`).then(async response=>{const data=await response.json();if(!response.ok)throw new Error(data.message||"Unable to retrieve hydro reports");if(!ignore)setResult({key:requestKey,data,error:""});}).catch(error=>{if(!ignore)setResult({key:requestKey,data:null,error:error.message});});return()=>{ignore=true;};},[requestKey]);
+ const update=(key,value)=>setFilters(previous=>({...previous,[key]:value}));
+ return <Card className="hydro-card my-3"><Card.Body><h2>Hydroponic Historical Reports</h2>
+  <Row className="g-2 mb-3"><Col md={6}><Form.Label>Report</Form.Label><Form.Select value={type} onChange={event=>setType(event.target.value)}>{reportTypes.map(value=><option key={value}>{value}</option>)}</Form.Select></Col><Col md={6}><Form.Label>Compare runs (select one or more)</Form.Label><Form.Select multiple value={filters.runs?filters.runs.split(","):[]} onChange={event=>update("runs",Array.from(event.target.selectedOptions,option=>option.value).join(","))}>{available.map(run=><option key={run._id} value={run._id}>{run.name} · {run.startedDate?.slice(0,10)||"Start unrecorded"} · {run.isActive===false?"Completed":"Active"}</option>)}</Form.Select><Button size="sm" variant="outline-primary" onClick={()=>update("runs","")}>All runs</Button></Col>
+  {[["from","Run start from","date"],["to","Run start through","date"],["phMin","Minimum recorded pH","number"],["phMax","Maximum recorded pH","number"],["temperatureMin","Minimum temperature °C","number"],["temperatureMax","Maximum temperature °C","number"]].map(([key,label,inputType])=><Col md={3} key={key}><Form.Label>{label}</Form.Label><Form.Control type={inputType} step="any" value={filters[key]} onChange={event=>update(key,event.target.value)}/></Col>)}<Col md={3}><Form.Label>Planted item</Form.Label><Form.Select value={filters.item} onChange={event=>update("item",event.target.value)}><option value="">All planted items</option>{plantedItems.map(([id,name])=><option key={id} value={id}>{name}</option>)}</Form.Select></Col><Col md={3}><Form.Label>Germination result</Form.Label><Form.Select value={filters.status} onChange={event=>update("status",event.target.value)}><option value="">All results</option>{["Germinated","Failed Germination","Awaiting Germination","Germination Overdue","Unknown or Unrecorded"].map(value=><option key={value}>{value}</option>)}</Form.Select></Col></Row>
+  {error&&<Alert variant="danger">{error}</Alert>}{loading&&<p role="status">Loading historical records…</p>}
+  <Button disabled={!report||loading||!!error} onClick={()=>print()}>Print / Save as PDF</Button><p>Select “Save as PDF” in the print dialog for a PDF copy.</p>
+  {report&&<section ref={contentRef} className="hydro-research-report" aria-label="Printable hydroponic research report"><HydroPrintableReport report={report} type={type}/></section>}
+  {retryDrag&&report&&<section aria-label="Failed planting retry list"><h3>Available for retry</h3><p>Drag a failed planting to an empty pod in a different active run. The original planting remains unchanged.</p>{report.retries.map(row=><div key={row.originalPod} draggable onDragStart={event=>{event.dataTransfer.setData("application/x-hydro-retry",JSON.stringify(row));event.dataTransfer.effectAllowed="copy";}}><strong>{row.item}</strong> · {row.runName} · {row.originalRun} / {row.originalPod} · Failed {text(row.failedAt)} · {text(row.seedCount)} seeds · <Button size="sm" variant="link" onClick={()=>update("runs",row.originalRun)}>Original run summary</Button></div>)}{!report.retries.length&&<p>No confirmed failures available for retry in these runs.</p>}</section>}
+ </Card.Body></Card>;
+}
+
+export function HydroPrintableReport({report,type}){
+ const table=hydroReportTable(report,type);
+ return <><h3>{type}</h3><p>Generated: {text(report.generatedAt)} · Filters: {JSON.stringify(report.filters)}</p><p>{report.integrity}</p><p>Runs: {report.runs.map(run=>`${run.runName} (${run.run})`).join("; ")||"No runs match"}</p>
+   {type===reportTypes[1]&&report.runs.length>0&&<BarChart width={600} height={220} data={report.runs}><CartesianGrid/><XAxis dataKey="runName"/><YAxis allowDecimals={false}/><Tooltip/><Legend/><Bar name="Confirmed germinated pods" dataKey="germinated" fill="var(--success)"/><Bar name="Confirmed failed pods" dataKey="failed" fill="var(--danger)"/></BarChart>}
+   <Table bordered size="sm"><thead><tr>{table.columns.map(([key,label])=><th key={key} scope="col">{label}</th>)}</tr></thead><tbody>{table.rows.map((row,index)=><tr key={index}>{table.columns.map(([key])=><td key={key}>{key==="state"?marker(row[key]):key==="pod"&&row[key]?<Link to={`/journal?${new URLSearchParams({hydroSystem:row.run,hydroPod:row.pod,hydroDevice:row.device||report.plantings.find(item=>item.pod===row.pod)?.device||"",hydroPodPosition:String(row.position||report.plantings.find(item=>item.pod===row.pod)?.position||"")})}`}>{row[key]}</Link>:key==="journalEntry"&&row[key]?<Link to={`/journal?entry=${row[key]}`}>{row[key]}</Link>:key==="readings"?JSON.stringify(row[key]||[]):text(row[key])}</td>)}</tr>)}{!table.rows.length&&<tr><td colSpan={table.columns.length}>No recorded information matches this report.</td></tr>}</tbody></Table>
+   {type===reportTypes[0]&&<><h4>Planted items and confirmed outcomes</h4><Table bordered size="sm"><thead><tr><th>Run / planting identifiers</th><th>Item</th><th>Seeds planted</th><th>Result</th></tr></thead><tbody>{report.plantings.map(row=><tr key={row.pod}><td>{row.run} / {row.pod}</td><td>{row.item}</td><td>{text(row.seedCount)}</td><td>{marker(row.state)}</td></tr>)}</tbody></Table><h4>Environmental records</h4>{report.environment.map((row,index)=><p key={index}>{row.runName} / {row.deviceName} · {text(row.recordedAt)} · pH {text(row.phLevel)} · Temperature {text(row.temperature)} °C · Water {text(row.waterLevel)}% · Nutrients {text(row.nutrientsLevel)}%</p>)}<h4>Run and pod notes / observations</h4>{report.notes.map((note,index)=><p key={index}>{note.runName} / {text(note.pod)} · {note.type}: {note.text}</p>)}</>}
+  </>;
+}

@@ -1,0 +1,5465 @@
+{
+  "checkedAt": "2026-11-01T00:55:12.973Z",
+  "pages": [
+    {
+      "route": "/",
+      "page": "Home",
+      "redirect": false,
+      "file": "src/pages/Home.jsx",
+      "displayVerification": "pending",
+      "requests": []
+    },
+    {
+      "route": "/contact",
+      "page": "ContactUs",
+      "redirect": false,
+      "file": "src/pages/contactus.jsx",
+      "displayVerification": "pending",
+      "requests": []
+    },
+    {
+      "route": "/faq",
+      "page": "FAQ",
+      "redirect": false,
+      "file": "src/pages/faq.jsx",
+      "displayVerification": "pending",
+      "requests": []
+    },
+    {
+      "route": "/privacy",
+      "page": "Privacy",
+      "redirect": false,
+      "file": "src/pages/privacy.jsx",
+      "displayVerification": "pending",
+      "requests": []
+    },
+    {
+      "route": "/terms",
+      "page": "TermsOfService",
+      "redirect": false,
+      "file": "src/pages/termsofservice.jsx",
+      "displayVerification": "pending",
+      "requests": []
+    },
+    {
+      "route": "/about",
+      "page": "About",
+      "redirect": false,
+      "file": "src/pages/about.jsx",
+      "displayVerification": "pending",
+      "requests": []
+    },
+    {
+      "route": "/dashboard",
+      "page": "Dashboard",
+      "redirect": false,
+      "file": "src/pages/dashboard.jsx",
+      "displayVerification": "pending",
+      "requests": [
+        {
+          "endpoint": "/api/dashboard",
+          "router": "backend/routes/dashboard/dashboardRoutes.js",
+          "models": [
+            {
+              "name": "Plant",
+              "file": "backend/models/plants/plantModel.js",
+              "collection": "plants",
+              "connection": "gardening"
+            },
+            {
+              "name": "Planting",
+              "file": "backend/models/plants/plantingModel.js",
+              "collection": "plantings",
+              "connection": "gardening"
+            },
+            {
+              "name": "Garden",
+              "file": "backend/models/gardens/gardenModel.js",
+              "collection": "gardens",
+              "connection": "gardening"
+            },
+            {
+              "name": "GardenSection",
+              "file": "backend/models/gardens/gardenSectionModel.js",
+              "collection": "garden_sections",
+              "connection": "gardening"
+            },
+            {
+              "name": "HydroSystem",
+              "file": "backend/models/hydroponics/hydroSystemModel.js",
+              "collection": "hydro_systems",
+              "connection": "gardening"
+            },
+            {
+              "name": "Task",
+              "file": "backend/models/tasks/taskModel.js",
+              "collection": "tasks",
+              "connection": "gardening"
+            },
+            {
+              "name": "Seed",
+              "file": "backend/models/seeds/seedModel.js",
+              "collection": "seeds",
+              "connection": "gardening"
+            },
+            {
+              "name": "Supply",
+              "file": "backend/models/supplies/supplyModel.js",
+              "collection": "supplies",
+              "connection": "gardening"
+            },
+            {
+              "name": "JournalEntry",
+              "file": "backend/models/journal/journalEntryModel.js",
+              "collection": "journal_entries",
+              "connection": "gardening"
+            },
+            {
+              "name": "Observation",
+              "file": "backend/models/journal/observationModel.js",
+              "collection": "observations",
+              "connection": "gardening"
+            },
+            {
+              "name": "Harvest",
+              "file": "backend/models/harvest/harvestModel.js",
+              "collection": "harvests",
+              "connection": "gardening"
+            },
+            {
+              "name": "DiseaseLog",
+              "file": "backend/models/diseases/diseaseLogModel.js",
+              "collection": "disease_logs",
+              "connection": "gardening"
+            },
+            {
+              "name": "Issue",
+              "file": "backend/models/issues/issueModel.js",
+              "collection": "issues",
+              "connection": "gardening"
+            },
+            {
+              "name": "PestLog",
+              "file": "backend/models/pests/pestLogModel.js",
+              "collection": "pest_logs",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/journal-entries",
+          "router": "backend/routes/journal/journalEntryRoutes.js",
+          "models": [
+            {
+              "name": "JournalEntry",
+              "file": "backend/models/journal/journalEntryModel.js",
+              "collection": "journal_entries",
+              "connection": "gardening"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/journalboard",
+      "page": "GardeningJournalBoard",
+      "redirect": false,
+      "file": "src/pages/GardeningJournalBoard.jsx",
+      "displayVerification": "pending",
+      "requests": [
+        {
+          "endpoint": "/api/boardjournal",
+          "router": "backend/routes/dashboard/dashboardSnapshotRoutes.js",
+          "models": [
+            {
+              "name": "DashboardSnapshot",
+              "file": "backend/models/dashboard/dashboardSnapshotModel.js",
+              "collection": "dashboard_snapshots",
+              "connection": "gardening"
+            },
+            {
+              "name": "Planting",
+              "file": "backend/models/plants/plantingModel.js",
+              "collection": "plantings",
+              "connection": "gardening"
+            },
+            {
+              "name": "Garden",
+              "file": "backend/models/gardens/gardenModel.js",
+              "collection": "gardens",
+              "connection": "gardening"
+            },
+            {
+              "name": "GardenSection",
+              "file": "backend/models/gardens/gardenSectionModel.js",
+              "collection": "garden_sections",
+              "connection": "gardening"
+            },
+            {
+              "name": "Harvest",
+              "file": "backend/models/harvest/harvestModel.js",
+              "collection": "harvests",
+              "connection": "gardening"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/hydroponics",
+      "page": "HydroSystemsPage",
+      "redirect": false,
+      "file": "src/pages/hydroponics/HydroSystemsPage.jsx",
+      "displayVerification": "pending",
+      "requests": [
+        {
+          "endpoint": "/api/hydro-systems",
+          "router": "backend/routes/hydroponics/hydroSystemRoutes.js",
+          "models": [
+            {
+              "name": "HydroSystem",
+              "file": "backend/models/hydroponics/hydroSystemModel.js",
+              "collection": "hydro_systems",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/seeds",
+          "router": "backend/routes/seed/seedRoutes.js",
+          "models": [
+            {
+              "name": "Seed",
+              "file": "backend/models/seeds/seedModel.js",
+              "collection": "seeds",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/equipment",
+          "router": "backend/routes/equipment/equipmentRoutes.js",
+          "models": [
+            {
+              "name": "Equipment",
+              "file": "backend/models/equipment/equipmentModel.js",
+              "collection": "equipment",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/journal-entries",
+          "router": "backend/routes/journal/journalEntryRoutes.js",
+          "models": [
+            {
+              "name": "JournalEntry",
+              "file": "backend/models/journal/journalEntryModel.js",
+              "collection": "journal_entries",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/plantings",
+          "router": "backend/routes/plants/plantingRoutes.js",
+          "models": [
+            {
+              "name": "Planting",
+              "file": "backend/models/plants/plantingModel.js",
+              "collection": "plantings",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/plants",
+          "router": "backend/routes/plants/plantRoutes.js",
+          "models": [
+            {
+              "name": "Plant",
+              "file": "backend/models/plants/plantModel.js",
+              "collection": "plants",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/gardens",
+          "router": "backend/routes/gardens/gardenRoutes.js",
+          "models": [
+            {
+              "name": "Garden",
+              "file": "backend/models/gardens/gardenModel.js",
+              "collection": "gardens",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/garden-sections",
+          "router": "backend/routes/gardens/gardenSectionRoutes.js",
+          "models": [
+            {
+              "name": "GardenSection",
+              "file": "backend/models/gardens/gardenSectionModel.js",
+              "collection": "garden_sections",
+              "connection": "gardening"
+            },
+            {
+              "name": "Garden",
+              "file": "backend/models/gardens/gardenModel.js",
+              "collection": "gardens",
+              "connection": "gardening"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/equipment",
+      "page": "EquipmentPage",
+      "redirect": false,
+      "file": "src/pages/equipment/EquipmentPage.jsx",
+      "displayVerification": "pending",
+      "requests": [
+        {
+          "endpoint": "/api/equipment",
+          "router": "backend/routes/equipment/equipmentRoutes.js",
+          "models": [
+            {
+              "name": "Equipment",
+              "file": "backend/models/equipment/equipmentModel.js",
+              "collection": "equipment",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/equipment-categories",
+          "router": "backend/routes/reference/equipmentCategoryRoutes.js",
+          "models": [
+            {
+              "name": "EquipmentCategory",
+              "file": "backend/models/reference/equipmentCategoryModel.js",
+              "collection": "equipment_categories",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/equipment-vendors",
+          "router": "backend/routes/vendors/equipmentVendorRoutes.js",
+          "models": [
+            {
+              "name": "EquipmentVendor",
+              "file": "backend/models/vendors/equipmentVendorModel.js",
+              "collection": "equipment_vendors",
+              "connection": "gardening"
+            },
+            {
+              "name": "State",
+              "file": "backend/models/locations/stateModel.js",
+              "collection": "states",
+              "connection": "business"
+            },
+            {
+              "name": "Country",
+              "file": "backend/models/locations/countryModel.js",
+              "collection": "countries",
+              "connection": "business"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/journal",
+      "page": "JournalPage",
+      "redirect": false,
+      "file": "src/pages/journal/JournalPage.jsx",
+      "displayVerification": "pending",
+      "requests": [
+        {
+          "endpoint": "/api/journal-entries",
+          "router": "backend/routes/journal/journalEntryRoutes.js",
+          "models": [
+            {
+              "name": "JournalEntry",
+              "file": "backend/models/journal/journalEntryModel.js",
+              "collection": "journal_entries",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/plantings",
+          "router": "backend/routes/plants/plantingRoutes.js",
+          "models": [
+            {
+              "name": "Planting",
+              "file": "backend/models/plants/plantingModel.js",
+              "collection": "plantings",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/seeds",
+          "router": "backend/routes/seed/seedRoutes.js",
+          "models": [
+            {
+              "name": "Seed",
+              "file": "backend/models/seeds/seedModel.js",
+              "collection": "seeds",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/plants",
+          "router": "backend/routes/plants/plantRoutes.js",
+          "models": [
+            {
+              "name": "Plant",
+              "file": "backend/models/plants/plantModel.js",
+              "collection": "plants",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/gardens",
+          "router": "backend/routes/gardens/gardenRoutes.js",
+          "models": [
+            {
+              "name": "Garden",
+              "file": "backend/models/gardens/gardenModel.js",
+              "collection": "gardens",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/garden-sections",
+          "router": "backend/routes/gardens/gardenSectionRoutes.js",
+          "models": [
+            {
+              "name": "GardenSection",
+              "file": "backend/models/gardens/gardenSectionModel.js",
+              "collection": "garden_sections",
+              "connection": "gardening"
+            },
+            {
+              "name": "Garden",
+              "file": "backend/models/gardens/gardenModel.js",
+              "collection": "gardens",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/hydro-systems",
+          "router": "backend/routes/hydroponics/hydroSystemRoutes.js",
+          "models": [
+            {
+              "name": "HydroSystem",
+              "file": "backend/models/hydroponics/hydroSystemModel.js",
+              "collection": "hydro_systems",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/equipment",
+          "router": "backend/routes/equipment/equipmentRoutes.js",
+          "models": [
+            {
+              "name": "Equipment",
+              "file": "backend/models/equipment/equipmentModel.js",
+              "collection": "equipment",
+              "connection": "gardening"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/plantings",
+      "page": "PlantingsPage",
+      "redirect": false,
+      "file": "src/pages/plantings/PlantingsPage.jsx",
+      "displayVerification": "pending",
+      "requests": [
+        {
+          "endpoint": "/api/plantings",
+          "router": "backend/routes/plants/plantingRoutes.js",
+          "models": [
+            {
+              "name": "Planting",
+              "file": "backend/models/plants/plantingModel.js",
+              "collection": "plantings",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/seeds",
+          "router": "backend/routes/seed/seedRoutes.js",
+          "models": [
+            {
+              "name": "Seed",
+              "file": "backend/models/seeds/seedModel.js",
+              "collection": "seeds",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/plants",
+          "router": "backend/routes/plants/plantRoutes.js",
+          "models": [
+            {
+              "name": "Plant",
+              "file": "backend/models/plants/plantModel.js",
+              "collection": "plants",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/gardens",
+          "router": "backend/routes/gardens/gardenRoutes.js",
+          "models": [
+            {
+              "name": "Garden",
+              "file": "backend/models/gardens/gardenModel.js",
+              "collection": "gardens",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/hydro-systems",
+          "router": "backend/routes/hydroponics/hydroSystemRoutes.js",
+          "models": [
+            {
+              "name": "HydroSystem",
+              "file": "backend/models/hydroponics/hydroSystemModel.js",
+              "collection": "hydro_systems",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/garden-sections",
+          "router": "backend/routes/gardens/gardenSectionRoutes.js",
+          "models": [
+            {
+              "name": "GardenSection",
+              "file": "backend/models/gardens/gardenSectionModel.js",
+              "collection": "garden_sections",
+              "connection": "gardening"
+            },
+            {
+              "name": "Garden",
+              "file": "backend/models/gardens/gardenModel.js",
+              "collection": "gardens",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/plant-varieties",
+          "router": "backend/routes/plants/plantVarietyRoutes.js",
+          "models": [
+            {
+              "name": "PlantVariety",
+              "file": "backend/models/plants/plantVarietyModel.js",
+              "collection": "plant_varieties",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/plant-stages",
+          "router": "backend/routes/plants/plantStageRoutes.js",
+          "models": [
+            {
+              "name": "PlantStage",
+              "file": "backend/models/plants/plantStageModel.js",
+              "collection": "plant_stages",
+              "connection": "gardening"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/gardens",
+      "page": "GardensPage",
+      "redirect": false,
+      "file": "src/pages/gardens/GardensPage.jsx",
+      "displayVerification": "pending",
+      "requests": [
+        {
+          "endpoint": "/api/gardens",
+          "router": "backend/routes/gardens/gardenRoutes.js",
+          "models": [
+            {
+              "name": "Garden",
+              "file": "backend/models/gardens/gardenModel.js",
+              "collection": "gardens",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/garden-references",
+          "router": "backend/routes/gardens/gardenReferenceRoutes.js",
+          "models": [
+            {
+              "name": "gardenReferenceModels.js",
+              "file": "backend/models/gardens/gardenReferenceModels.js",
+              "collection": null,
+              "connection": "gardening"
+            },
+            {
+              "name": "MetricUnit",
+              "file": "backend/models/reference/MetricUnitModel.js",
+              "collection": "metric_units",
+              "connection": "business"
+            },
+            {
+              "name": "ImperialUnit",
+              "file": "backend/models/reference/ImperialUnitModel.js",
+              "collection": "imperial_units",
+              "connection": "business"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/gardens/:id",
+      "page": "GardenWorkspacePage",
+      "redirect": false,
+      "file": "src/pages/gardens/GardenWorkspacePage.jsx",
+      "displayVerification": "pending",
+      "requests": [
+        {
+          "endpoint": "/api/gardens",
+          "router": "backend/routes/gardens/gardenRoutes.js",
+          "models": [
+            {
+              "name": "Garden",
+              "file": "backend/models/gardens/gardenModel.js",
+              "collection": "gardens",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/plantings",
+          "router": "backend/routes/plants/plantingRoutes.js",
+          "models": [
+            {
+              "name": "Planting",
+              "file": "backend/models/plants/plantingModel.js",
+              "collection": "plantings",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/hydro-systems",
+          "router": "backend/routes/hydroponics/hydroSystemRoutes.js",
+          "models": [
+            {
+              "name": "HydroSystem",
+              "file": "backend/models/hydroponics/hydroSystemModel.js",
+              "collection": "hydro_systems",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/seeds",
+          "router": "backend/routes/seed/seedRoutes.js",
+          "models": [
+            {
+              "name": "Seed",
+              "file": "backend/models/seeds/seedModel.js",
+              "collection": "seeds",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/plants",
+          "router": "backend/routes/plants/plantRoutes.js",
+          "models": [
+            {
+              "name": "Plant",
+              "file": "backend/models/plants/plantModel.js",
+              "collection": "plants",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/garden-sections",
+          "router": "backend/routes/gardens/gardenSectionRoutes.js",
+          "models": [
+            {
+              "name": "GardenSection",
+              "file": "backend/models/gardens/gardenSectionModel.js",
+              "collection": "garden_sections",
+              "connection": "gardening"
+            },
+            {
+              "name": "Garden",
+              "file": "backend/models/gardens/gardenModel.js",
+              "collection": "gardens",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/garden-references",
+          "router": "backend/routes/gardens/gardenReferenceRoutes.js",
+          "models": [
+            {
+              "name": "gardenReferenceModels.js",
+              "file": "backend/models/gardens/gardenReferenceModels.js",
+              "collection": null,
+              "connection": "gardening"
+            },
+            {
+              "name": "MetricUnit",
+              "file": "backend/models/reference/MetricUnitModel.js",
+              "collection": "metric_units",
+              "connection": "business"
+            },
+            {
+              "name": "ImperialUnit",
+              "file": "backend/models/reference/ImperialUnitModel.js",
+              "collection": "imperial_units",
+              "connection": "business"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/garden-budgets",
+      "page": "GardenBudgetsPage",
+      "redirect": false,
+      "file": "src/pages/planning/GardenBudgetsPage.jsx",
+      "displayVerification": "pending",
+      "requests": [
+        {
+          "endpoint": "/api/garden-budgets",
+          "router": "backend/routes/planning/gardenBudgetRoutes.js",
+          "models": [
+            {
+              "name": "GardenBudget",
+              "file": "backend/models/planning/gardenBudgetModel.js",
+              "collection": "garden_budgets",
+              "connection": "gardening"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/garden-expenses",
+      "page": "GardenExpensesPage",
+      "redirect": false,
+      "file": "src/pages/planning/GardenExpensesPage.jsx",
+      "displayVerification": "pending",
+      "requests": [
+        {
+          "endpoint": "/api/garden-expenses",
+          "router": "backend/routes/planning/gardenExpenseRoutes.js",
+          "models": [
+            {
+              "name": "GardenExpense",
+              "file": "backend/models/planning/gardenExpenseModel.js",
+              "collection": "garden_expenses",
+              "connection": "gardening"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/garden-wishlist",
+      "page": "GardenWishListPage",
+      "redirect": false,
+      "file": "src/pages/planning/GardenWishListPage.jsx",
+      "displayVerification": "pending",
+      "requests": [
+        {
+          "endpoint": "/api/garden-wishlist",
+          "router": "backend/routes/planning/gardenWishRoutes.js",
+          "models": [
+            {
+              "name": "GardenWish",
+              "file": "backend/models/planning/gardenWishModel.js",
+              "collection": "garden_wishlist",
+              "connection": "gardening"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/fruit-calendar",
+      "page": "FruitCalendarPage",
+      "redirect": false,
+      "file": "src/pages/planning/FruitCalendarPage.jsx",
+      "displayVerification": "pending",
+      "requests": [
+        {
+          "endpoint": "/api/fruit-calendar",
+          "router": "backend/routes/planning/fruitCalendarRoutes.js",
+          "models": [
+            {
+              "name": "FruitCalendar",
+              "file": "backend/models/planning/fruitCalendarModel.js",
+              "collection": "fruit_calendar",
+              "connection": "gardening"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/vegetable-calendar",
+      "page": "VegetableCalendarPage",
+      "redirect": false,
+      "file": "src/pages/planning/VegetableCalendarPage.jsx",
+      "displayVerification": "pending",
+      "requests": [
+        {
+          "endpoint": "/api/vegetable-calendar",
+          "router": "backend/routes/planning/vegetableCalendarRoutes.js",
+          "models": [
+            {
+              "name": "VegetableCalendar",
+              "file": "backend/models/planning/vegetableCalendarModel.js",
+              "collection": "vegetable_calendar",
+              "connection": "gardening"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/trap-crops",
+      "page": "TrapCropsPage",
+      "redirect": false,
+      "file": "src/pages/planning/TrapCropsPage.jsx",
+      "displayVerification": "pending",
+      "requests": [
+        {
+          "endpoint": "/api/companion-planting/library",
+          "router": "backend/routes/planning/companionPlantingRoutes.js",
+          "models": [
+            {
+              "name": "Seed",
+              "file": "backend/models/seeds/seedModel.js",
+              "collection": "seeds",
+              "connection": "gardening"
+            },
+            {
+              "name": "Plant",
+              "file": "backend/models/plants/plantModel.js",
+              "collection": "plants",
+              "connection": "gardening"
+            },
+            {
+              "name": "CompanionPlanting",
+              "file": "backend/models/planning/companionPlantingModel.js",
+              "collection": "companion_planting",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/seeds",
+          "router": "backend/routes/seed/seedRoutes.js",
+          "models": [
+            {
+              "name": "Seed",
+              "file": "backend/models/seeds/seedModel.js",
+              "collection": "seeds",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/species",
+          "router": "backend/routes/species/speciesRoutes.js",
+          "models": [
+            {
+              "name": "Species",
+              "file": "backend/models/species/speciesModel.js",
+              "collection": "species",
+              "connection": "gardening"
+            },
+            {
+              "name": "Family",
+              "file": "backend/models/species/familyModel.js",
+              "collection": "families",
+              "connection": "gardening"
+            },
+            {
+              "name": "Genus",
+              "file": "backend/models/species/genusModel.js",
+              "collection": "genus",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/seed-vendors",
+          "router": "backend/routes/vendors/seedVendorRoutes.js",
+          "models": [
+            {
+              "name": "SeedVendor",
+              "file": "backend/models/vendors/seedVendorModel.js",
+              "collection": "seed_vendors",
+              "connection": "gardening"
+            },
+            {
+              "name": "State",
+              "file": "backend/models/locations/stateModel.js",
+              "collection": "states",
+              "connection": "business"
+            },
+            {
+              "name": "Country",
+              "file": "backend/models/locations/countryModel.js",
+              "collection": "countries",
+              "connection": "business"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/plant-types",
+          "router": "backend/routes/reference/plantTypeRoutes.js",
+          "models": [
+            {
+              "name": "PlantType",
+              "file": "backend/models/reference/plantTypeModel.js",
+              "collection": "plant_types",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/reference/lifecycles",
+          "router": "backend/routes/reference/lifecycleRoutes.js",
+          "models": [
+            {
+              "name": "Lifecycle",
+              "file": "backend/models/reference/lifecycleModel.js",
+              "collection": "life_cycles",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/reference/lifespans",
+          "router": "backend/routes/reference/lifespanRoutes.js",
+          "models": [
+            {
+              "name": "Lifespan",
+              "file": "backend/models/reference/lifespansModel.js",
+              "collection": "lifespans",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/growth-rates",
+          "router": "backend/routes/growth/growthRateRoutes.js",
+          "models": [
+            {
+              "name": "GrowthRate",
+              "file": "backend/models/growth/growthRateModel.js",
+              "collection": "growth_rates",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/planting-depths",
+          "router": "backend/routes/growth/plantingDepthRoutes.js",
+          "models": [
+            {
+              "name": "PlantingDepth",
+              "file": "backend/models/growth/plantingDepthModel.js",
+              "collection": "planting_depths",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/reference/plant-spacings",
+          "router": "backend/routes/reference/plantSpacingRoutes.js",
+          "models": [
+            {
+              "name": "PlantSpacing",
+              "file": "backend/models/reference/plantSpacingModel.js",
+              "collection": "plant_spacings",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/reference/sunlight-requirements",
+          "router": "backend/routes/reference/sunlightRequirementRoutes.js",
+          "models": [
+            {
+              "name": "SunlightRequirement",
+              "file": "backend/models/reference/sunlightRequirementModel.js",
+              "collection": "sunlight_requirements",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/reference/usda-zones",
+          "router": "backend/routes/reference/usdaZonesRoutes.js",
+          "models": [
+            {
+              "name": "USDAZones",
+              "file": "backend/models/reference/usdaZonesModel.js",
+              "collection": "usda_zones",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/soil-types",
+          "router": "backend/routes/reference/soilTypeRoutes.js",
+          "models": [
+            {
+              "name": "SoilType",
+              "file": "backend/models/reference/soilTypeModel.js",
+              "collection": "soil_types",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/reference/plant-soil-temps",
+          "router": "backend/routes/reference/plantSoilTempRoutes.js",
+          "models": [
+            {
+              "name": "PlantSoilTemp",
+              "file": "backend/models/reference/plantSoilTempModel.js",
+              "collection": "plant_soil_temps",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/reference/watering-requirements",
+          "router": "backend/routes/reference/wateringRequirementRoutes.js",
+          "models": [
+            {
+              "name": "WateringRequirement",
+              "file": "backend/models/reference/wateringRequirementModel.js",
+              "collection": "watering_requirements",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/lighting",
+          "router": "backend/routes/reference/lightingRoutes.js",
+          "models": [
+            {
+              "name": "Lighting",
+              "file": "backend/models/reference/lightingModel.js",
+              "collection": "lighting",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/reference/planting-seasons",
+          "router": "backend/routes/reference/plantingSeasonRoutes.js",
+          "models": [
+            {
+              "name": "PlantingSeason",
+              "file": "backend/models/reference/plantingSeasonModel.js",
+              "collection": "planting_seasons",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/reference/propagation-methods",
+          "router": "backend/routes/reference/propagationMethodRoutes.js",
+          "models": [
+            {
+              "name": "PropagationMethod",
+              "file": "backend/models/reference/propagationMethodModel.js",
+              "collection": "propagation_methods",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/pests",
+          "router": "backend/routes/pest/pestRoutes.js",
+          "models": [
+            {
+              "name": "Pest",
+              "file": "backend/models/pests/pestmodel.js",
+              "collection": "pests",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/diseases",
+          "router": "backend/routes/diseases/diseaseRoutes.js",
+          "models": [
+            {
+              "name": "Disease",
+              "file": "backend/models/diseases/diseaseModel.js",
+              "collection": "diseases",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/upload/seed",
+          "router": null,
+          "models": []
+        },
+        {
+          "endpoint": "/api/families",
+          "router": "backend/routes/species/familyRoutes.js",
+          "models": [
+            {
+              "name": "Family",
+              "file": "backend/models/species/familyModel.js",
+              "collection": "families",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/genus",
+          "router": "backend/routes/species/genusRoutes.js",
+          "models": [
+            {
+              "name": "Genus",
+              "file": "backend/models/species/genusModel.js",
+              "collection": "genus",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/pest-types",
+          "router": "backend/routes/pest/pestTypeRoutes.js",
+          "models": [
+            {
+              "name": "PestType",
+              "file": "backend/models/pests/pesttypemodel.js",
+              "collection": "pest_types",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/plants",
+          "router": "backend/routes/plants/plantRoutes.js",
+          "models": [
+            {
+              "name": "Plant",
+              "file": "backend/models/plants/plantModel.js",
+              "collection": "plants",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/pest-ref-treatments",
+          "router": "backend/routes/reference/pestRefTreatmentRoutes.js",
+          "models": [
+            {
+              "name": "PestRefTreatment",
+              "file": "backend/models/reference/pestRefTreatmentModel.js",
+              "collection": "pest_ref_treatments",
+              "connection": "gardening"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/cover-crops",
+      "page": "CoverCropsPage",
+      "redirect": false,
+      "file": "src/pages/planning/CoverCropsPage.jsx",
+      "displayVerification": "pending",
+      "requests": [
+        {
+          "endpoint": "/api/companion-planting/library",
+          "router": "backend/routes/planning/companionPlantingRoutes.js",
+          "models": [
+            {
+              "name": "Seed",
+              "file": "backend/models/seeds/seedModel.js",
+              "collection": "seeds",
+              "connection": "gardening"
+            },
+            {
+              "name": "Plant",
+              "file": "backend/models/plants/plantModel.js",
+              "collection": "plants",
+              "connection": "gardening"
+            },
+            {
+              "name": "CompanionPlanting",
+              "file": "backend/models/planning/companionPlantingModel.js",
+              "collection": "companion_planting",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/seeds",
+          "router": "backend/routes/seed/seedRoutes.js",
+          "models": [
+            {
+              "name": "Seed",
+              "file": "backend/models/seeds/seedModel.js",
+              "collection": "seeds",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/species",
+          "router": "backend/routes/species/speciesRoutes.js",
+          "models": [
+            {
+              "name": "Species",
+              "file": "backend/models/species/speciesModel.js",
+              "collection": "species",
+              "connection": "gardening"
+            },
+            {
+              "name": "Family",
+              "file": "backend/models/species/familyModel.js",
+              "collection": "families",
+              "connection": "gardening"
+            },
+            {
+              "name": "Genus",
+              "file": "backend/models/species/genusModel.js",
+              "collection": "genus",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/seed-vendors",
+          "router": "backend/routes/vendors/seedVendorRoutes.js",
+          "models": [
+            {
+              "name": "SeedVendor",
+              "file": "backend/models/vendors/seedVendorModel.js",
+              "collection": "seed_vendors",
+              "connection": "gardening"
+            },
+            {
+              "name": "State",
+              "file": "backend/models/locations/stateModel.js",
+              "collection": "states",
+              "connection": "business"
+            },
+            {
+              "name": "Country",
+              "file": "backend/models/locations/countryModel.js",
+              "collection": "countries",
+              "connection": "business"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/plant-types",
+          "router": "backend/routes/reference/plantTypeRoutes.js",
+          "models": [
+            {
+              "name": "PlantType",
+              "file": "backend/models/reference/plantTypeModel.js",
+              "collection": "plant_types",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/reference/lifecycles",
+          "router": "backend/routes/reference/lifecycleRoutes.js",
+          "models": [
+            {
+              "name": "Lifecycle",
+              "file": "backend/models/reference/lifecycleModel.js",
+              "collection": "life_cycles",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/reference/lifespans",
+          "router": "backend/routes/reference/lifespanRoutes.js",
+          "models": [
+            {
+              "name": "Lifespan",
+              "file": "backend/models/reference/lifespansModel.js",
+              "collection": "lifespans",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/growth-rates",
+          "router": "backend/routes/growth/growthRateRoutes.js",
+          "models": [
+            {
+              "name": "GrowthRate",
+              "file": "backend/models/growth/growthRateModel.js",
+              "collection": "growth_rates",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/planting-depths",
+          "router": "backend/routes/growth/plantingDepthRoutes.js",
+          "models": [
+            {
+              "name": "PlantingDepth",
+              "file": "backend/models/growth/plantingDepthModel.js",
+              "collection": "planting_depths",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/reference/plant-spacings",
+          "router": "backend/routes/reference/plantSpacingRoutes.js",
+          "models": [
+            {
+              "name": "PlantSpacing",
+              "file": "backend/models/reference/plantSpacingModel.js",
+              "collection": "plant_spacings",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/reference/sunlight-requirements",
+          "router": "backend/routes/reference/sunlightRequirementRoutes.js",
+          "models": [
+            {
+              "name": "SunlightRequirement",
+              "file": "backend/models/reference/sunlightRequirementModel.js",
+              "collection": "sunlight_requirements",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/reference/usda-zones",
+          "router": "backend/routes/reference/usdaZonesRoutes.js",
+          "models": [
+            {
+              "name": "USDAZones",
+              "file": "backend/models/reference/usdaZonesModel.js",
+              "collection": "usda_zones",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/soil-types",
+          "router": "backend/routes/reference/soilTypeRoutes.js",
+          "models": [
+            {
+              "name": "SoilType",
+              "file": "backend/models/reference/soilTypeModel.js",
+              "collection": "soil_types",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/reference/plant-soil-temps",
+          "router": "backend/routes/reference/plantSoilTempRoutes.js",
+          "models": [
+            {
+              "name": "PlantSoilTemp",
+              "file": "backend/models/reference/plantSoilTempModel.js",
+              "collection": "plant_soil_temps",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/reference/watering-requirements",
+          "router": "backend/routes/reference/wateringRequirementRoutes.js",
+          "models": [
+            {
+              "name": "WateringRequirement",
+              "file": "backend/models/reference/wateringRequirementModel.js",
+              "collection": "watering_requirements",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/lighting",
+          "router": "backend/routes/reference/lightingRoutes.js",
+          "models": [
+            {
+              "name": "Lighting",
+              "file": "backend/models/reference/lightingModel.js",
+              "collection": "lighting",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/reference/planting-seasons",
+          "router": "backend/routes/reference/plantingSeasonRoutes.js",
+          "models": [
+            {
+              "name": "PlantingSeason",
+              "file": "backend/models/reference/plantingSeasonModel.js",
+              "collection": "planting_seasons",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/reference/propagation-methods",
+          "router": "backend/routes/reference/propagationMethodRoutes.js",
+          "models": [
+            {
+              "name": "PropagationMethod",
+              "file": "backend/models/reference/propagationMethodModel.js",
+              "collection": "propagation_methods",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/pests",
+          "router": "backend/routes/pest/pestRoutes.js",
+          "models": [
+            {
+              "name": "Pest",
+              "file": "backend/models/pests/pestmodel.js",
+              "collection": "pests",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/diseases",
+          "router": "backend/routes/diseases/diseaseRoutes.js",
+          "models": [
+            {
+              "name": "Disease",
+              "file": "backend/models/diseases/diseaseModel.js",
+              "collection": "diseases",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/upload/seed",
+          "router": null,
+          "models": []
+        },
+        {
+          "endpoint": "/api/families",
+          "router": "backend/routes/species/familyRoutes.js",
+          "models": [
+            {
+              "name": "Family",
+              "file": "backend/models/species/familyModel.js",
+              "collection": "families",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/genus",
+          "router": "backend/routes/species/genusRoutes.js",
+          "models": [
+            {
+              "name": "Genus",
+              "file": "backend/models/species/genusModel.js",
+              "collection": "genus",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/pest-types",
+          "router": "backend/routes/pest/pestTypeRoutes.js",
+          "models": [
+            {
+              "name": "PestType",
+              "file": "backend/models/pests/pesttypemodel.js",
+              "collection": "pest_types",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/plants",
+          "router": "backend/routes/plants/plantRoutes.js",
+          "models": [
+            {
+              "name": "Plant",
+              "file": "backend/models/plants/plantModel.js",
+              "collection": "plants",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/pest-ref-treatments",
+          "router": "backend/routes/reference/pestRefTreatmentRoutes.js",
+          "models": [
+            {
+              "name": "PestRefTreatment",
+              "file": "backend/models/reference/pestRefTreatmentModel.js",
+              "collection": "pest_ref_treatments",
+              "connection": "gardening"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/companion-planting",
+      "page": "CompanionPlantingPage",
+      "redirect": false,
+      "file": "src/pages/planning/CompanionPlantingPage.jsx",
+      "displayVerification": "pending",
+      "requests": [
+        {
+          "endpoint": "/api/companion-planting",
+          "router": "backend/routes/planning/companionPlantingRoutes.js",
+          "models": [
+            {
+              "name": "Seed",
+              "file": "backend/models/seeds/seedModel.js",
+              "collection": "seeds",
+              "connection": "gardening"
+            },
+            {
+              "name": "Plant",
+              "file": "backend/models/plants/plantModel.js",
+              "collection": "plants",
+              "connection": "gardening"
+            },
+            {
+              "name": "CompanionPlanting",
+              "file": "backend/models/planning/companionPlantingModel.js",
+              "collection": "companion_planting",
+              "connection": "gardening"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/planning/budgets",
+      "page": "Navigate",
+      "redirect": true,
+      "file": null,
+      "displayVerification": "pending",
+      "requests": []
+    },
+    {
+      "route": "/planning/expenses",
+      "page": "Navigate",
+      "redirect": true,
+      "file": null,
+      "displayVerification": "pending",
+      "requests": []
+    },
+    {
+      "route": "/planning/wishlist",
+      "page": "Navigate",
+      "redirect": true,
+      "file": null,
+      "displayVerification": "pending",
+      "requests": []
+    },
+    {
+      "route": "/planning/companions",
+      "page": "Navigate",
+      "redirect": true,
+      "file": null,
+      "displayVerification": "pending",
+      "requests": []
+    },
+    {
+      "route": "/planning/crop-calendar",
+      "page": "Navigate",
+      "redirect": true,
+      "file": null,
+      "displayVerification": "pending",
+      "requests": []
+    },
+    {
+      "route": "/soil-temperatures",
+      "page": "SoilTemperatureReferencePage",
+      "redirect": false,
+      "file": "src/pages/reference/SoilTemperatureReferencePage.jsx",
+      "displayVerification": "pending",
+      "requests": []
+    },
+    {
+      "route": "/microgreens-guide",
+      "page": "MicrogreensGuidePage",
+      "redirect": false,
+      "file": "src/pages/reference/MicrogreensGuidePage.jsx",
+      "displayVerification": "pending",
+      "requests": []
+    },
+    {
+      "route": "/garden-reference",
+      "page": "Navigate",
+      "redirect": true,
+      "file": null,
+      "displayVerification": "pending",
+      "requests": []
+    },
+    {
+      "route": "/supplies",
+      "page": "SuppliesPage",
+      "redirect": false,
+      "file": "src/pages/supplies/SuppliesPage.jsx",
+      "displayVerification": "pending",
+      "requests": [
+        {
+          "endpoint": "/api/supplies",
+          "router": "backend/routes/supplies/supplyRoutes.js",
+          "models": [
+            {
+              "name": "Supply",
+              "file": "backend/models/supplies/supplyModel.js",
+              "collection": "supplies",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/supply-categories",
+          "router": "backend/routes/reference/supplyCategoryRoutes.js",
+          "models": [
+            {
+              "name": "SupplyCategory",
+              "file": "backend/models/reference/supplyCategoryModel.js",
+              "collection": "supply_categories",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/supply-vendors",
+          "router": "backend/routes/vendors/supplyVendorRoutes.js",
+          "models": [
+            {
+              "name": "SupplyVendor",
+              "file": "backend/models/vendors/supplyVendorModel.js",
+              "collection": "supply_vendors",
+              "connection": "gardening"
+            },
+            {
+              "name": "State",
+              "file": "backend/models/locations/stateModel.js",
+              "collection": "states",
+              "connection": "business"
+            },
+            {
+              "name": "Country",
+              "file": "backend/models/locations/countryModel.js",
+              "collection": "countries",
+              "connection": "business"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/observations",
+      "page": "ObservationsPage",
+      "redirect": false,
+      "file": "src/pages/observations/ObservationsPage.jsx",
+      "displayVerification": "pending",
+      "requests": [
+        {
+          "endpoint": "/api/observations",
+          "router": "backend/routes/journal/observationRoutes.js",
+          "models": [
+            {
+              "name": "Observation",
+              "file": "backend/models/journal/observationModel.js",
+              "collection": "observations",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/plantings",
+          "router": "backend/routes/plants/plantingRoutes.js",
+          "models": [
+            {
+              "name": "Planting",
+              "file": "backend/models/plants/plantingModel.js",
+              "collection": "plantings",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/gardens",
+          "router": "backend/routes/gardens/gardenRoutes.js",
+          "models": [
+            {
+              "name": "Garden",
+              "file": "backend/models/gardens/gardenModel.js",
+              "collection": "gardens",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/garden-sections",
+          "router": "backend/routes/gardens/gardenSectionRoutes.js",
+          "models": [
+            {
+              "name": "GardenSection",
+              "file": "backend/models/gardens/gardenSectionModel.js",
+              "collection": "garden_sections",
+              "connection": "gardening"
+            },
+            {
+              "name": "Garden",
+              "file": "backend/models/gardens/gardenModel.js",
+              "collection": "gardens",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/journal-entries",
+          "router": "backend/routes/journal/journalEntryRoutes.js",
+          "models": [
+            {
+              "name": "JournalEntry",
+              "file": "backend/models/journal/journalEntryModel.js",
+              "collection": "journal_entries",
+              "connection": "gardening"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/fertilizer-applications",
+      "page": "FertilizerApplicationsPage",
+      "redirect": false,
+      "file": "src/pages/fertilizers/FertilizerApplicationsPage.jsx",
+      "displayVerification": "pending",
+      "requests": [
+        {
+          "endpoint": "/api/fertilizer-applications",
+          "router": "backend/routes/fertilizers/fertilizerApplicationRoutes.js",
+          "models": [
+            {
+              "name": "FertilizerApplication",
+              "file": "backend/models/fertilizers/fertilizerApplicationModel.js",
+              "collection": "fertilizer_applications",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/reference/fertilizers",
+          "router": "backend/routes/reference/fertilizerRoutes.js",
+          "models": [
+            {
+              "name": "Fertilizer",
+              "file": "backend/models/reference/fertilizerModel.js",
+              "collection": "fertilizers",
+              "connection": "gardening"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/issues",
+      "page": "IssuesPage",
+      "redirect": false,
+      "file": "src/pages/issues/IssuesPage.jsx",
+      "displayVerification": "pending",
+      "requests": [
+        {
+          "endpoint": "/api/issues",
+          "router": "backend/routes/issues/issueRoutes.js",
+          "models": [
+            {
+              "name": "Issue",
+              "file": "backend/models/issues/issueModel.js",
+              "collection": "issues",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/seeds",
+          "router": "backend/routes/seed/seedRoutes.js",
+          "models": [
+            {
+              "name": "Seed",
+              "file": "backend/models/seeds/seedModel.js",
+              "collection": "seeds",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/plants",
+          "router": "backend/routes/plants/plantRoutes.js",
+          "models": [
+            {
+              "name": "Plant",
+              "file": "backend/models/plants/plantModel.js",
+              "collection": "plants",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/plantings",
+          "router": "backend/routes/plants/plantingRoutes.js",
+          "models": [
+            {
+              "name": "Planting",
+              "file": "backend/models/plants/plantingModel.js",
+              "collection": "plantings",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/gardens",
+          "router": "backend/routes/gardens/gardenRoutes.js",
+          "models": [
+            {
+              "name": "Garden",
+              "file": "backend/models/gardens/gardenModel.js",
+              "collection": "gardens",
+              "connection": "gardening"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/harvest",
+      "page": "HarvestPage",
+      "redirect": false,
+      "file": "src/pages/harvest/HarvestPage.jsx",
+      "displayVerification": "pending",
+      "requests": [
+        {
+          "endpoint": "/api/harvests",
+          "router": "backend/routes/harvest/harvestRoutes.js",
+          "models": [
+            {
+              "name": "Harvest",
+              "file": "backend/models/harvest/harvestModel.js",
+              "collection": "harvests",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/plantings",
+          "router": "backend/routes/plants/plantingRoutes.js",
+          "models": [
+            {
+              "name": "Planting",
+              "file": "backend/models/plants/plantingModel.js",
+              "collection": "plantings",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/harvest-quality-scales",
+          "router": "backend/routes/reference/harvestQualityScaleRoutes.js",
+          "models": [
+            {
+              "name": "HarvestQualityScale",
+              "file": "backend/models/reference/harvestQualityScaleModel.js",
+              "collection": "harvest_quality_scales",
+              "connection": "gardening"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/pests",
+      "page": "PestsPage",
+      "redirect": false,
+      "file": "src/pages/pests/PestsPage.jsx",
+      "displayVerification": "pending",
+      "requests": [
+        {
+          "endpoint": "/api/pests",
+          "router": "backend/routes/pest/pestRoutes.js",
+          "models": [
+            {
+              "name": "Pest",
+              "file": "backend/models/pests/pestmodel.js",
+              "collection": "pests",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/pest-types",
+          "router": "backend/routes/pest/pestTypeRoutes.js",
+          "models": [
+            {
+              "name": "PestType",
+              "file": "backend/models/pests/pesttypemodel.js",
+              "collection": "pest_types",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/seeds",
+          "router": "backend/routes/seed/seedRoutes.js",
+          "models": [
+            {
+              "name": "Seed",
+              "file": "backend/models/seeds/seedModel.js",
+              "collection": "seeds",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/plants",
+          "router": "backend/routes/plants/plantRoutes.js",
+          "models": [
+            {
+              "name": "Plant",
+              "file": "backend/models/plants/plantModel.js",
+              "collection": "plants",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/pest-ref-treatments",
+          "router": "backend/routes/reference/pestRefTreatmentRoutes.js",
+          "models": [
+            {
+              "name": "PestRefTreatment",
+              "file": "backend/models/reference/pestRefTreatmentModel.js",
+              "collection": "pest_ref_treatments",
+              "connection": "gardening"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/tasks",
+      "page": "TasksPage",
+      "redirect": false,
+      "file": "src/pages/task/TasksPage.jsx",
+      "displayVerification": "pending",
+      "requests": [
+        {
+          "endpoint": "/api/task-statuses",
+          "router": "backend/routes/reference/taskStatusRoutes.js",
+          "models": [
+            {
+              "name": "TaskStatus",
+              "file": "backend/models/reference/taskStatusModel.js",
+              "collection": "task_statuses",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/task-priorities",
+          "router": "backend/routes/reference/taskPriorityRoutes.js",
+          "models": [
+            {
+              "name": "TaskPriority",
+              "file": "backend/models/reference/taskPriorityModel.js",
+              "collection": "task_priorities",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/tasks",
+          "router": "backend/routes/tasks/taskRoutes.js",
+          "models": [
+            {
+              "name": "Task",
+              "file": "backend/models/tasks/taskModel.js",
+              "collection": "tasks",
+              "connection": "gardening"
+            },
+            {
+              "name": "Reminder",
+              "file": "backend/models/tasks/taskReminderModel.js",
+              "collection": "reminders",
+              "connection": "gardening"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/seeds/form",
+      "page": "SeedForm",
+      "redirect": false,
+      "file": "src/pages/forms/seeds/SeedFormPage.jsx",
+      "displayVerification": "pending",
+      "requests": [
+        {
+          "endpoint": "/api/species",
+          "router": "backend/routes/species/speciesRoutes.js",
+          "models": [
+            {
+              "name": "Species",
+              "file": "backend/models/species/speciesModel.js",
+              "collection": "species",
+              "connection": "gardening"
+            },
+            {
+              "name": "Family",
+              "file": "backend/models/species/familyModel.js",
+              "collection": "families",
+              "connection": "gardening"
+            },
+            {
+              "name": "Genus",
+              "file": "backend/models/species/genusModel.js",
+              "collection": "genus",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/seed-vendors",
+          "router": "backend/routes/vendors/seedVendorRoutes.js",
+          "models": [
+            {
+              "name": "SeedVendor",
+              "file": "backend/models/vendors/seedVendorModel.js",
+              "collection": "seed_vendors",
+              "connection": "gardening"
+            },
+            {
+              "name": "State",
+              "file": "backend/models/locations/stateModel.js",
+              "collection": "states",
+              "connection": "business"
+            },
+            {
+              "name": "Country",
+              "file": "backend/models/locations/countryModel.js",
+              "collection": "countries",
+              "connection": "business"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/plant-types",
+          "router": "backend/routes/reference/plantTypeRoutes.js",
+          "models": [
+            {
+              "name": "PlantType",
+              "file": "backend/models/reference/plantTypeModel.js",
+              "collection": "plant_types",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/reference/lifecycles",
+          "router": "backend/routes/reference/lifecycleRoutes.js",
+          "models": [
+            {
+              "name": "Lifecycle",
+              "file": "backend/models/reference/lifecycleModel.js",
+              "collection": "life_cycles",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/reference/lifespans",
+          "router": "backend/routes/reference/lifespanRoutes.js",
+          "models": [
+            {
+              "name": "Lifespan",
+              "file": "backend/models/reference/lifespansModel.js",
+              "collection": "lifespans",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/growth-rates",
+          "router": "backend/routes/growth/growthRateRoutes.js",
+          "models": [
+            {
+              "name": "GrowthRate",
+              "file": "backend/models/growth/growthRateModel.js",
+              "collection": "growth_rates",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/planting-depths",
+          "router": "backend/routes/growth/plantingDepthRoutes.js",
+          "models": [
+            {
+              "name": "PlantingDepth",
+              "file": "backend/models/growth/plantingDepthModel.js",
+              "collection": "planting_depths",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/reference/plant-spacings",
+          "router": "backend/routes/reference/plantSpacingRoutes.js",
+          "models": [
+            {
+              "name": "PlantSpacing",
+              "file": "backend/models/reference/plantSpacingModel.js",
+              "collection": "plant_spacings",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/reference/sunlight-requirements",
+          "router": "backend/routes/reference/sunlightRequirementRoutes.js",
+          "models": [
+            {
+              "name": "SunlightRequirement",
+              "file": "backend/models/reference/sunlightRequirementModel.js",
+              "collection": "sunlight_requirements",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/reference/usda-zones",
+          "router": "backend/routes/reference/usdaZonesRoutes.js",
+          "models": [
+            {
+              "name": "USDAZones",
+              "file": "backend/models/reference/usdaZonesModel.js",
+              "collection": "usda_zones",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/soil-types",
+          "router": "backend/routes/reference/soilTypeRoutes.js",
+          "models": [
+            {
+              "name": "SoilType",
+              "file": "backend/models/reference/soilTypeModel.js",
+              "collection": "soil_types",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/reference/plant-soil-temps",
+          "router": "backend/routes/reference/plantSoilTempRoutes.js",
+          "models": [
+            {
+              "name": "PlantSoilTemp",
+              "file": "backend/models/reference/plantSoilTempModel.js",
+              "collection": "plant_soil_temps",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/reference/watering-requirements",
+          "router": "backend/routes/reference/wateringRequirementRoutes.js",
+          "models": [
+            {
+              "name": "WateringRequirement",
+              "file": "backend/models/reference/wateringRequirementModel.js",
+              "collection": "watering_requirements",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/lighting",
+          "router": "backend/routes/reference/lightingRoutes.js",
+          "models": [
+            {
+              "name": "Lighting",
+              "file": "backend/models/reference/lightingModel.js",
+              "collection": "lighting",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/reference/planting-seasons",
+          "router": "backend/routes/reference/plantingSeasonRoutes.js",
+          "models": [
+            {
+              "name": "PlantingSeason",
+              "file": "backend/models/reference/plantingSeasonModel.js",
+              "collection": "planting_seasons",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/reference/propagation-methods",
+          "router": "backend/routes/reference/propagationMethodRoutes.js",
+          "models": [
+            {
+              "name": "PropagationMethod",
+              "file": "backend/models/reference/propagationMethodModel.js",
+              "collection": "propagation_methods",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/seeds",
+          "router": "backend/routes/seed/seedRoutes.js",
+          "models": [
+            {
+              "name": "Seed",
+              "file": "backend/models/seeds/seedModel.js",
+              "collection": "seeds",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/pests",
+          "router": "backend/routes/pest/pestRoutes.js",
+          "models": [
+            {
+              "name": "Pest",
+              "file": "backend/models/pests/pestmodel.js",
+              "collection": "pests",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/diseases",
+          "router": "backend/routes/diseases/diseaseRoutes.js",
+          "models": [
+            {
+              "name": "Disease",
+              "file": "backend/models/diseases/diseaseModel.js",
+              "collection": "diseases",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/upload/seed",
+          "router": null,
+          "models": []
+        },
+        {
+          "endpoint": "/api/families",
+          "router": "backend/routes/species/familyRoutes.js",
+          "models": [
+            {
+              "name": "Family",
+              "file": "backend/models/species/familyModel.js",
+              "collection": "families",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/genus",
+          "router": "backend/routes/species/genusRoutes.js",
+          "models": [
+            {
+              "name": "Genus",
+              "file": "backend/models/species/genusModel.js",
+              "collection": "genus",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/pest-types",
+          "router": "backend/routes/pest/pestTypeRoutes.js",
+          "models": [
+            {
+              "name": "PestType",
+              "file": "backend/models/pests/pesttypemodel.js",
+              "collection": "pest_types",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/plants",
+          "router": "backend/routes/plants/plantRoutes.js",
+          "models": [
+            {
+              "name": "Plant",
+              "file": "backend/models/plants/plantModel.js",
+              "collection": "plants",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/pest-ref-treatments",
+          "router": "backend/routes/reference/pestRefTreatmentRoutes.js",
+          "models": [
+            {
+              "name": "PestRefTreatment",
+              "file": "backend/models/reference/pestRefTreatmentModel.js",
+              "collection": "pest_ref_treatments",
+              "connection": "gardening"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/hardiness-zones",
+      "page": "USDAZonesReference",
+      "redirect": false,
+      "file": "src/pages/reference/USDAZonesReference.jsx",
+      "displayVerification": "pending",
+      "requests": [
+        {
+          "endpoint": "/api/reference/usda-zones",
+          "router": "backend/routes/reference/usdaZonesRoutes.js",
+          "models": [
+            {
+              "name": "USDAZones",
+              "file": "backend/models/reference/usdaZonesModel.js",
+              "collection": "usda_zones",
+              "connection": "gardening"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/hydroponic-companion-planting",
+      "page": "HydroponicCompanionPlantingPage",
+      "redirect": false,
+      "file": "src/pages/reference/HydroponicCompanionPlantingPage.jsx",
+      "displayVerification": "pending",
+      "requests": []
+    },
+    {
+      "route": "/diseases",
+      "page": "DiseasesPage",
+      "redirect": false,
+      "file": "src/pages/diseases/diseases.jsx",
+      "displayVerification": "pending",
+      "requests": [
+        {
+          "endpoint": "/api/diseases",
+          "router": "backend/routes/diseases/diseaseRoutes.js",
+          "models": [
+            {
+              "name": "Disease",
+              "file": "backend/models/diseases/diseaseModel.js",
+              "collection": "diseases",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/seeds",
+          "router": "backend/routes/seed/seedRoutes.js",
+          "models": [
+            {
+              "name": "Seed",
+              "file": "backend/models/seeds/seedModel.js",
+              "collection": "seeds",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/plants",
+          "router": "backend/routes/plants/plantRoutes.js",
+          "models": [
+            {
+              "name": "Plant",
+              "file": "backend/models/plants/plantModel.js",
+              "collection": "plants",
+              "connection": "gardening"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/seeds",
+      "page": "SeedPage",
+      "redirect": false,
+      "file": "src/pages/seeds/SeedPage.jsx",
+      "displayVerification": "pending",
+      "requests": [
+        {
+          "endpoint": "/api/seeds",
+          "router": "backend/routes/seed/seedRoutes.js",
+          "models": [
+            {
+              "name": "Seed",
+              "file": "backend/models/seeds/seedModel.js",
+              "collection": "seeds",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/species",
+          "router": "backend/routes/species/speciesRoutes.js",
+          "models": [
+            {
+              "name": "Species",
+              "file": "backend/models/species/speciesModel.js",
+              "collection": "species",
+              "connection": "gardening"
+            },
+            {
+              "name": "Family",
+              "file": "backend/models/species/familyModel.js",
+              "collection": "families",
+              "connection": "gardening"
+            },
+            {
+              "name": "Genus",
+              "file": "backend/models/species/genusModel.js",
+              "collection": "genus",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/seed-vendors",
+          "router": "backend/routes/vendors/seedVendorRoutes.js",
+          "models": [
+            {
+              "name": "SeedVendor",
+              "file": "backend/models/vendors/seedVendorModel.js",
+              "collection": "seed_vendors",
+              "connection": "gardening"
+            },
+            {
+              "name": "State",
+              "file": "backend/models/locations/stateModel.js",
+              "collection": "states",
+              "connection": "business"
+            },
+            {
+              "name": "Country",
+              "file": "backend/models/locations/countryModel.js",
+              "collection": "countries",
+              "connection": "business"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/plant-types",
+          "router": "backend/routes/reference/plantTypeRoutes.js",
+          "models": [
+            {
+              "name": "PlantType",
+              "file": "backend/models/reference/plantTypeModel.js",
+              "collection": "plant_types",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/reference/lifecycles",
+          "router": "backend/routes/reference/lifecycleRoutes.js",
+          "models": [
+            {
+              "name": "Lifecycle",
+              "file": "backend/models/reference/lifecycleModel.js",
+              "collection": "life_cycles",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/reference/lifespans",
+          "router": "backend/routes/reference/lifespanRoutes.js",
+          "models": [
+            {
+              "name": "Lifespan",
+              "file": "backend/models/reference/lifespansModel.js",
+              "collection": "lifespans",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/growth-rates",
+          "router": "backend/routes/growth/growthRateRoutes.js",
+          "models": [
+            {
+              "name": "GrowthRate",
+              "file": "backend/models/growth/growthRateModel.js",
+              "collection": "growth_rates",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/planting-depths",
+          "router": "backend/routes/growth/plantingDepthRoutes.js",
+          "models": [
+            {
+              "name": "PlantingDepth",
+              "file": "backend/models/growth/plantingDepthModel.js",
+              "collection": "planting_depths",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/reference/plant-spacings",
+          "router": "backend/routes/reference/plantSpacingRoutes.js",
+          "models": [
+            {
+              "name": "PlantSpacing",
+              "file": "backend/models/reference/plantSpacingModel.js",
+              "collection": "plant_spacings",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/reference/sunlight-requirements",
+          "router": "backend/routes/reference/sunlightRequirementRoutes.js",
+          "models": [
+            {
+              "name": "SunlightRequirement",
+              "file": "backend/models/reference/sunlightRequirementModel.js",
+              "collection": "sunlight_requirements",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/reference/usda-zones",
+          "router": "backend/routes/reference/usdaZonesRoutes.js",
+          "models": [
+            {
+              "name": "USDAZones",
+              "file": "backend/models/reference/usdaZonesModel.js",
+              "collection": "usda_zones",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/soil-types",
+          "router": "backend/routes/reference/soilTypeRoutes.js",
+          "models": [
+            {
+              "name": "SoilType",
+              "file": "backend/models/reference/soilTypeModel.js",
+              "collection": "soil_types",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/reference/plant-soil-temps",
+          "router": "backend/routes/reference/plantSoilTempRoutes.js",
+          "models": [
+            {
+              "name": "PlantSoilTemp",
+              "file": "backend/models/reference/plantSoilTempModel.js",
+              "collection": "plant_soil_temps",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/reference/watering-requirements",
+          "router": "backend/routes/reference/wateringRequirementRoutes.js",
+          "models": [
+            {
+              "name": "WateringRequirement",
+              "file": "backend/models/reference/wateringRequirementModel.js",
+              "collection": "watering_requirements",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/lighting",
+          "router": "backend/routes/reference/lightingRoutes.js",
+          "models": [
+            {
+              "name": "Lighting",
+              "file": "backend/models/reference/lightingModel.js",
+              "collection": "lighting",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/reference/planting-seasons",
+          "router": "backend/routes/reference/plantingSeasonRoutes.js",
+          "models": [
+            {
+              "name": "PlantingSeason",
+              "file": "backend/models/reference/plantingSeasonModel.js",
+              "collection": "planting_seasons",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/reference/propagation-methods",
+          "router": "backend/routes/reference/propagationMethodRoutes.js",
+          "models": [
+            {
+              "name": "PropagationMethod",
+              "file": "backend/models/reference/propagationMethodModel.js",
+              "collection": "propagation_methods",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/pests",
+          "router": "backend/routes/pest/pestRoutes.js",
+          "models": [
+            {
+              "name": "Pest",
+              "file": "backend/models/pests/pestmodel.js",
+              "collection": "pests",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/diseases",
+          "router": "backend/routes/diseases/diseaseRoutes.js",
+          "models": [
+            {
+              "name": "Disease",
+              "file": "backend/models/diseases/diseaseModel.js",
+              "collection": "diseases",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/upload/seed",
+          "router": null,
+          "models": []
+        },
+        {
+          "endpoint": "/api/families",
+          "router": "backend/routes/species/familyRoutes.js",
+          "models": [
+            {
+              "name": "Family",
+              "file": "backend/models/species/familyModel.js",
+              "collection": "families",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/genus",
+          "router": "backend/routes/species/genusRoutes.js",
+          "models": [
+            {
+              "name": "Genus",
+              "file": "backend/models/species/genusModel.js",
+              "collection": "genus",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/pest-types",
+          "router": "backend/routes/pest/pestTypeRoutes.js",
+          "models": [
+            {
+              "name": "PestType",
+              "file": "backend/models/pests/pesttypemodel.js",
+              "collection": "pest_types",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/plants",
+          "router": "backend/routes/plants/plantRoutes.js",
+          "models": [
+            {
+              "name": "Plant",
+              "file": "backend/models/plants/plantModel.js",
+              "collection": "plants",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/pest-ref-treatments",
+          "router": "backend/routes/reference/pestRefTreatmentRoutes.js",
+          "models": [
+            {
+              "name": "PestRefTreatment",
+              "file": "backend/models/reference/pestRefTreatmentModel.js",
+              "collection": "pest_ref_treatments",
+              "connection": "gardening"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/seed-collections",
+      "page": "SeedCollectionsPage",
+      "redirect": false,
+      "file": "src/pages/seeds/SeedCollectionsPage.jsx",
+      "displayVerification": "pending",
+      "requests": [
+        {
+          "endpoint": "/api/seed-collections/user",
+          "router": "backend/routes/seed/seedCollectionRoutes.js",
+          "models": [
+            {
+              "name": "SeedCollection",
+              "file": "backend/models/seeds/seedCollectionModel.js",
+              "collection": "seed_collection",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/seed-collections",
+          "router": "backend/routes/seed/seedCollectionRoutes.js",
+          "models": [
+            {
+              "name": "SeedCollection",
+              "file": "backend/models/seeds/seedCollectionModel.js",
+              "collection": "seed_collection",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/seeds",
+          "router": "backend/routes/seed/seedRoutes.js",
+          "models": [
+            {
+              "name": "Seed",
+              "file": "backend/models/seeds/seedModel.js",
+              "collection": "seeds",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/seed-vendors",
+          "router": "backend/routes/vendors/seedVendorRoutes.js",
+          "models": [
+            {
+              "name": "SeedVendor",
+              "file": "backend/models/vendors/seedVendorModel.js",
+              "collection": "seed_vendors",
+              "connection": "gardening"
+            },
+            {
+              "name": "State",
+              "file": "backend/models/locations/stateModel.js",
+              "collection": "states",
+              "connection": "business"
+            },
+            {
+              "name": "Country",
+              "file": "backend/models/locations/countryModel.js",
+              "collection": "countries",
+              "connection": "business"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/species",
+          "router": "backend/routes/species/speciesRoutes.js",
+          "models": [
+            {
+              "name": "Species",
+              "file": "backend/models/species/speciesModel.js",
+              "collection": "species",
+              "connection": "gardening"
+            },
+            {
+              "name": "Family",
+              "file": "backend/models/species/familyModel.js",
+              "collection": "families",
+              "connection": "gardening"
+            },
+            {
+              "name": "Genus",
+              "file": "backend/models/species/genusModel.js",
+              "collection": "genus",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/plant-types",
+          "router": "backend/routes/reference/plantTypeRoutes.js",
+          "models": [
+            {
+              "name": "PlantType",
+              "file": "backend/models/reference/plantTypeModel.js",
+              "collection": "plant_types",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/reference/lifecycles",
+          "router": "backend/routes/reference/lifecycleRoutes.js",
+          "models": [
+            {
+              "name": "Lifecycle",
+              "file": "backend/models/reference/lifecycleModel.js",
+              "collection": "life_cycles",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/reference/lifespans",
+          "router": "backend/routes/reference/lifespanRoutes.js",
+          "models": [
+            {
+              "name": "Lifespan",
+              "file": "backend/models/reference/lifespansModel.js",
+              "collection": "lifespans",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/growth-rates",
+          "router": "backend/routes/growth/growthRateRoutes.js",
+          "models": [
+            {
+              "name": "GrowthRate",
+              "file": "backend/models/growth/growthRateModel.js",
+              "collection": "growth_rates",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/planting-depths",
+          "router": "backend/routes/growth/plantingDepthRoutes.js",
+          "models": [
+            {
+              "name": "PlantingDepth",
+              "file": "backend/models/growth/plantingDepthModel.js",
+              "collection": "planting_depths",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/reference/plant-spacings",
+          "router": "backend/routes/reference/plantSpacingRoutes.js",
+          "models": [
+            {
+              "name": "PlantSpacing",
+              "file": "backend/models/reference/plantSpacingModel.js",
+              "collection": "plant_spacings",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/reference/sunlight-requirements",
+          "router": "backend/routes/reference/sunlightRequirementRoutes.js",
+          "models": [
+            {
+              "name": "SunlightRequirement",
+              "file": "backend/models/reference/sunlightRequirementModel.js",
+              "collection": "sunlight_requirements",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/reference/usda-zones",
+          "router": "backend/routes/reference/usdaZonesRoutes.js",
+          "models": [
+            {
+              "name": "USDAZones",
+              "file": "backend/models/reference/usdaZonesModel.js",
+              "collection": "usda_zones",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/soil-types",
+          "router": "backend/routes/reference/soilTypeRoutes.js",
+          "models": [
+            {
+              "name": "SoilType",
+              "file": "backend/models/reference/soilTypeModel.js",
+              "collection": "soil_types",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/reference/plant-soil-temps",
+          "router": "backend/routes/reference/plantSoilTempRoutes.js",
+          "models": [
+            {
+              "name": "PlantSoilTemp",
+              "file": "backend/models/reference/plantSoilTempModel.js",
+              "collection": "plant_soil_temps",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/reference/watering-requirements",
+          "router": "backend/routes/reference/wateringRequirementRoutes.js",
+          "models": [
+            {
+              "name": "WateringRequirement",
+              "file": "backend/models/reference/wateringRequirementModel.js",
+              "collection": "watering_requirements",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/lighting",
+          "router": "backend/routes/reference/lightingRoutes.js",
+          "models": [
+            {
+              "name": "Lighting",
+              "file": "backend/models/reference/lightingModel.js",
+              "collection": "lighting",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/reference/planting-seasons",
+          "router": "backend/routes/reference/plantingSeasonRoutes.js",
+          "models": [
+            {
+              "name": "PlantingSeason",
+              "file": "backend/models/reference/plantingSeasonModel.js",
+              "collection": "planting_seasons",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/reference/propagation-methods",
+          "router": "backend/routes/reference/propagationMethodRoutes.js",
+          "models": [
+            {
+              "name": "PropagationMethod",
+              "file": "backend/models/reference/propagationMethodModel.js",
+              "collection": "propagation_methods",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/pests",
+          "router": "backend/routes/pest/pestRoutes.js",
+          "models": [
+            {
+              "name": "Pest",
+              "file": "backend/models/pests/pestmodel.js",
+              "collection": "pests",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/diseases",
+          "router": "backend/routes/diseases/diseaseRoutes.js",
+          "models": [
+            {
+              "name": "Disease",
+              "file": "backend/models/diseases/diseaseModel.js",
+              "collection": "diseases",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/upload/seed",
+          "router": null,
+          "models": []
+        },
+        {
+          "endpoint": "/api/families",
+          "router": "backend/routes/species/familyRoutes.js",
+          "models": [
+            {
+              "name": "Family",
+              "file": "backend/models/species/familyModel.js",
+              "collection": "families",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/genus",
+          "router": "backend/routes/species/genusRoutes.js",
+          "models": [
+            {
+              "name": "Genus",
+              "file": "backend/models/species/genusModel.js",
+              "collection": "genus",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/pest-types",
+          "router": "backend/routes/pest/pestTypeRoutes.js",
+          "models": [
+            {
+              "name": "PestType",
+              "file": "backend/models/pests/pesttypemodel.js",
+              "collection": "pest_types",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/plants",
+          "router": "backend/routes/plants/plantRoutes.js",
+          "models": [
+            {
+              "name": "Plant",
+              "file": "backend/models/plants/plantModel.js",
+              "collection": "plants",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/pest-ref-treatments",
+          "router": "backend/routes/reference/pestRefTreatmentRoutes.js",
+          "models": [
+            {
+              "name": "PestRefTreatment",
+              "file": "backend/models/reference/pestRefTreatmentModel.js",
+              "collection": "pest_ref_treatments",
+              "connection": "gardening"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/plants",
+      "page": "PlantPage",
+      "redirect": false,
+      "file": "src/pages/plants/PlantPage.jsx",
+      "displayVerification": "pending",
+      "requests": [
+        {
+          "endpoint": "/api/plants",
+          "router": "backend/routes/plants/plantRoutes.js",
+          "models": [
+            {
+              "name": "Plant",
+              "file": "backend/models/plants/plantModel.js",
+              "collection": "plants",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/plant-types",
+          "router": "backend/routes/reference/plantTypeRoutes.js",
+          "models": [
+            {
+              "name": "PlantType",
+              "file": "backend/models/reference/plantTypeModel.js",
+              "collection": "plant_types",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/seeds",
+          "router": "backend/routes/seed/seedRoutes.js",
+          "models": [
+            {
+              "name": "Seed",
+              "file": "backend/models/seeds/seedModel.js",
+              "collection": "seeds",
+              "connection": "gardening"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/vendors/equipment",
+      "page": "EquipmentVendor",
+      "redirect": false,
+      "file": "src/pages/vendors/equipmentVendor.jsx",
+      "displayVerification": "pending",
+      "requests": [
+        {
+          "endpoint": "/api/equipment-vendors",
+          "router": "backend/routes/vendors/equipmentVendorRoutes.js",
+          "models": [
+            {
+              "name": "EquipmentVendor",
+              "file": "backend/models/vendors/equipmentVendorModel.js",
+              "collection": "equipment_vendors",
+              "connection": "gardening"
+            },
+            {
+              "name": "State",
+              "file": "backend/models/locations/stateModel.js",
+              "collection": "states",
+              "connection": "business"
+            },
+            {
+              "name": "Country",
+              "file": "backend/models/locations/countryModel.js",
+              "collection": "countries",
+              "connection": "business"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/states",
+          "router": "backend/routes/locations/stateRoutes.js",
+          "models": []
+        },
+        {
+          "endpoint": "/api/countries",
+          "router": "backend/routes/locations/countryRoutes.js",
+          "models": [
+            {
+              "name": "Country",
+              "file": "backend/models/locations/countryModel.js",
+              "collection": "countries",
+              "connection": "business"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/vendors/seeds",
+      "page": "SeedVendor",
+      "redirect": false,
+      "file": "src/pages/vendors/seedVendor.jsx",
+      "displayVerification": "pending",
+      "requests": [
+        {
+          "endpoint": "/api/seed-vendors",
+          "router": "backend/routes/vendors/seedVendorRoutes.js",
+          "models": [
+            {
+              "name": "SeedVendor",
+              "file": "backend/models/vendors/seedVendorModel.js",
+              "collection": "seed_vendors",
+              "connection": "gardening"
+            },
+            {
+              "name": "State",
+              "file": "backend/models/locations/stateModel.js",
+              "collection": "states",
+              "connection": "business"
+            },
+            {
+              "name": "Country",
+              "file": "backend/models/locations/countryModel.js",
+              "collection": "countries",
+              "connection": "business"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/states",
+          "router": "backend/routes/locations/stateRoutes.js",
+          "models": []
+        },
+        {
+          "endpoint": "/api/countries",
+          "router": "backend/routes/locations/countryRoutes.js",
+          "models": [
+            {
+              "name": "Country",
+              "file": "backend/models/locations/countryModel.js",
+              "collection": "countries",
+              "connection": "business"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/upload/logos",
+          "router": null,
+          "models": []
+        }
+      ]
+    },
+    {
+      "route": "/vendors/supplies",
+      "page": "SupplyVendor",
+      "redirect": false,
+      "file": "src/pages/vendors/supplyVendor.jsx",
+      "displayVerification": "pending",
+      "requests": [
+        {
+          "endpoint": "/api/supply-vendors",
+          "router": "backend/routes/vendors/supplyVendorRoutes.js",
+          "models": [
+            {
+              "name": "SupplyVendor",
+              "file": "backend/models/vendors/supplyVendorModel.js",
+              "collection": "supply_vendors",
+              "connection": "gardening"
+            },
+            {
+              "name": "State",
+              "file": "backend/models/locations/stateModel.js",
+              "collection": "states",
+              "connection": "business"
+            },
+            {
+              "name": "Country",
+              "file": "backend/models/locations/countryModel.js",
+              "collection": "countries",
+              "connection": "business"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/states",
+          "router": "backend/routes/locations/stateRoutes.js",
+          "models": []
+        },
+        {
+          "endpoint": "/api/countries",
+          "router": "backend/routes/locations/countryRoutes.js",
+          "models": [
+            {
+              "name": "Country",
+              "file": "backend/models/locations/countryModel.js",
+              "collection": "countries",
+              "connection": "business"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/users",
+      "page": "Users",
+      "redirect": false,
+      "file": "src/pages/admin/users/Users.jsx",
+      "displayVerification": "pending",
+      "requests": [
+        {
+          "endpoint": "/api/users",
+          "router": "backend/routes/users/userRoutes.js",
+          "models": [
+            {
+              "name": "User",
+              "file": "backend/models/users/userModel.js",
+              "collection": "users",
+              "connection": "gardening"
+            },
+            {
+              "name": "Role",
+              "file": "backend/models/users/userRolesModel.js",
+              "collection": "roles",
+              "connection": "business"
+            },
+            {
+              "name": "UserRoleAssignment",
+              "file": "backend/models/users/userRoleAssignmentModel.js",
+              "collection": "user_role_assignments",
+              "connection": "business"
+            },
+            {
+              "name": "UserDepartmentAssignment",
+              "file": "backend/models/users/userDepartmentAssignmentModel.js",
+              "collection": "user_department_assignments",
+              "connection": "business"
+            },
+            {
+              "name": "USDAZones",
+              "file": "backend/models/reference/usdaZonesModel.js",
+              "collection": "usda_zones",
+              "connection": "gardening"
+            },
+            {
+              "name": "State",
+              "file": "backend/models/locations/stateModel.js",
+              "collection": "states",
+              "connection": "business"
+            },
+            {
+              "name": "County",
+              "file": "backend/models/locations/countyModel.js",
+              "collection": "counties",
+              "connection": "business"
+            },
+            {
+              "name": "Country",
+              "file": "backend/models/locations/countryModel.js",
+              "collection": "countries",
+              "connection": "business"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/users/roles",
+          "router": "backend/routes/users/userRolesRoutes.js",
+          "models": [
+            {
+              "name": "Role",
+              "file": "backend/models/users/userRolesModel.js",
+              "collection": "roles",
+              "connection": "business"
+            },
+            {
+              "name": "Business",
+              "file": "backend/models/reference/businessModel.js",
+              "collection": "businesses",
+              "connection": "business"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/users/role-assignments",
+          "router": "backend/routes/users/userRoleAssignmentRoutes.js",
+          "models": [
+            {
+              "name": "User",
+              "file": "backend/models/users/userModel.js",
+              "collection": "users",
+              "connection": "gardening"
+            },
+            {
+              "name": "Role",
+              "file": "backend/models/users/userRolesModel.js",
+              "collection": "roles",
+              "connection": "business"
+            },
+            {
+              "name": "Business",
+              "file": "backend/models/reference/businessModel.js",
+              "collection": "businesses",
+              "connection": "business"
+            },
+            {
+              "name": "UserRoleAssignment",
+              "file": "backend/models/users/userRoleAssignmentModel.js",
+              "collection": "user_role_assignments",
+              "connection": "business"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/users/department-assignments",
+          "router": "backend/routes/users/userDepartmentAssignmentRoutes.js",
+          "models": [
+            {
+              "name": "User",
+              "file": "backend/models/users/userModel.js",
+              "collection": "users",
+              "connection": "gardening"
+            },
+            {
+              "name": "Business",
+              "file": "backend/models/reference/businessModel.js",
+              "collection": "businesses",
+              "connection": "business"
+            },
+            {
+              "name": "BusinessDepartment",
+              "file": "backend/models/users/businessDepartmentModel.js",
+              "collection": "business_departments",
+              "connection": "business"
+            },
+            {
+              "name": "Role",
+              "file": "backend/models/users/userRolesModel.js",
+              "collection": "roles",
+              "connection": "business"
+            },
+            {
+              "name": "UserDepartmentAssignment",
+              "file": "backend/models/users/userDepartmentAssignmentModel.js",
+              "collection": "user_department_assignments",
+              "connection": "business"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/users/effective-permissions",
+          "router": "backend/routes/users/effectivePermissionRoutes.js",
+          "models": [
+            {
+              "name": "User",
+              "file": "backend/models/users/userModel.js",
+              "collection": "users",
+              "connection": "gardening"
+            },
+            {
+              "name": "Business",
+              "file": "backend/models/reference/businessModel.js",
+              "collection": "businesses",
+              "connection": "business"
+            },
+            {
+              "name": "UserRoleAssignment",
+              "file": "backend/models/users/userRoleAssignmentModel.js",
+              "collection": "user_role_assignments",
+              "connection": "business"
+            },
+            {
+              "name": "UserDepartmentAssignment",
+              "file": "backend/models/users/userDepartmentAssignmentModel.js",
+              "collection": "user_department_assignments",
+              "connection": "business"
+            },
+            {
+              "name": "RolePermission",
+              "file": "backend/models/users/rolePermissionModel.js",
+              "collection": "role_permissions",
+              "connection": "business"
+            },
+            {
+              "name": "UserPermissionOverride",
+              "file": "backend/models/users/userPermissionOverrideModel.js",
+              "collection": "user_permission_overrides",
+              "connection": "business"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/states",
+          "router": "backend/routes/locations/stateRoutes.js",
+          "models": []
+        },
+        {
+          "endpoint": "/api/counties",
+          "router": "backend/routes/locations/countyRoutes.js",
+          "models": [
+            {
+              "name": "County",
+              "file": "backend/models/locations/countyModel.js",
+              "collection": "counties",
+              "connection": "business"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/countries",
+          "router": "backend/routes/locations/countryRoutes.js",
+          "models": [
+            {
+              "name": "Country",
+              "file": "backend/models/locations/countryModel.js",
+              "collection": "countries",
+              "connection": "business"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/users/business-departments",
+          "router": "backend/routes/users/businessDepartmentRoutes.js",
+          "models": [
+            {
+              "name": "Business",
+              "file": "backend/models/reference/businessModel.js",
+              "collection": "businesses",
+              "connection": "business"
+            },
+            {
+              "name": "Role",
+              "file": "backend/models/users/userRolesModel.js",
+              "collection": "roles",
+              "connection": "business"
+            },
+            {
+              "name": "BusinessDepartment",
+              "file": "backend/models/users/businessDepartmentModel.js",
+              "collection": "business_departments",
+              "connection": "business"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/reference/usda-zones",
+          "router": "backend/routes/reference/usdaZonesRoutes.js",
+          "models": [
+            {
+              "name": "USDAZones",
+              "file": "backend/models/reference/usdaZonesModel.js",
+              "collection": "usda_zones",
+              "connection": "gardening"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/users/details",
+          "router": "backend/routes/users/userDetailsRoutes.js",
+          "models": []
+        },
+        {
+          "endpoint": "/api/upload/avatars",
+          "router": null,
+          "models": []
+        },
+        {
+          "endpoint": "/api/app/current-business",
+          "router": "backend/routes/app/appRoutes.js",
+          "models": [
+            {
+              "name": "AppKey",
+              "file": "backend/models/reference/appKeyModel.js",
+              "collection": "app_keys",
+              "connection": "business"
+            },
+            {
+              "name": "Business",
+              "file": "backend/models/reference/businessModel.js",
+              "collection": "businesses",
+              "connection": "business"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/login",
+      "page": "Login",
+      "redirect": false,
+      "file": "src/pages/admin/users/Login.jsx",
+      "displayVerification": "pending",
+      "requests": [
+        {
+          "endpoint": "/api/app/current-business",
+          "router": "backend/routes/app/appRoutes.js",
+          "models": [
+            {
+              "name": "AppKey",
+              "file": "backend/models/reference/appKeyModel.js",
+              "collection": "app_keys",
+              "connection": "business"
+            },
+            {
+              "name": "Business",
+              "file": "backend/models/reference/businessModel.js",
+              "collection": "businesses",
+              "connection": "business"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/users/role-assignments",
+          "router": "backend/routes/users/userRoleAssignmentRoutes.js",
+          "models": [
+            {
+              "name": "User",
+              "file": "backend/models/users/userModel.js",
+              "collection": "users",
+              "connection": "gardening"
+            },
+            {
+              "name": "Role",
+              "file": "backend/models/users/userRolesModel.js",
+              "collection": "roles",
+              "connection": "business"
+            },
+            {
+              "name": "Business",
+              "file": "backend/models/reference/businessModel.js",
+              "collection": "businesses",
+              "connection": "business"
+            },
+            {
+              "name": "UserRoleAssignment",
+              "file": "backend/models/users/userRoleAssignmentModel.js",
+              "collection": "user_role_assignments",
+              "connection": "business"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/users/department-assignments",
+          "router": "backend/routes/users/userDepartmentAssignmentRoutes.js",
+          "models": [
+            {
+              "name": "User",
+              "file": "backend/models/users/userModel.js",
+              "collection": "users",
+              "connection": "gardening"
+            },
+            {
+              "name": "Business",
+              "file": "backend/models/reference/businessModel.js",
+              "collection": "businesses",
+              "connection": "business"
+            },
+            {
+              "name": "BusinessDepartment",
+              "file": "backend/models/users/businessDepartmentModel.js",
+              "collection": "business_departments",
+              "connection": "business"
+            },
+            {
+              "name": "Role",
+              "file": "backend/models/users/userRolesModel.js",
+              "collection": "roles",
+              "connection": "business"
+            },
+            {
+              "name": "UserDepartmentAssignment",
+              "file": "backend/models/users/userDepartmentAssignmentModel.js",
+              "collection": "user_department_assignments",
+              "connection": "business"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/users",
+          "router": "backend/routes/users/userRoutes.js",
+          "models": [
+            {
+              "name": "User",
+              "file": "backend/models/users/userModel.js",
+              "collection": "users",
+              "connection": "gardening"
+            },
+            {
+              "name": "Role",
+              "file": "backend/models/users/userRolesModel.js",
+              "collection": "roles",
+              "connection": "business"
+            },
+            {
+              "name": "UserRoleAssignment",
+              "file": "backend/models/users/userRoleAssignmentModel.js",
+              "collection": "user_role_assignments",
+              "connection": "business"
+            },
+            {
+              "name": "UserDepartmentAssignment",
+              "file": "backend/models/users/userDepartmentAssignmentModel.js",
+              "collection": "user_department_assignments",
+              "connection": "business"
+            },
+            {
+              "name": "USDAZones",
+              "file": "backend/models/reference/usdaZonesModel.js",
+              "collection": "usda_zones",
+              "connection": "gardening"
+            },
+            {
+              "name": "State",
+              "file": "backend/models/locations/stateModel.js",
+              "collection": "states",
+              "connection": "business"
+            },
+            {
+              "name": "County",
+              "file": "backend/models/locations/countyModel.js",
+              "collection": "counties",
+              "connection": "business"
+            },
+            {
+              "name": "Country",
+              "file": "backend/models/locations/countryModel.js",
+              "collection": "countries",
+              "connection": "business"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/users/login",
+          "router": "backend/routes/users/userRoutes.js",
+          "models": [
+            {
+              "name": "User",
+              "file": "backend/models/users/userModel.js",
+              "collection": "users",
+              "connection": "gardening"
+            },
+            {
+              "name": "Role",
+              "file": "backend/models/users/userRolesModel.js",
+              "collection": "roles",
+              "connection": "business"
+            },
+            {
+              "name": "UserRoleAssignment",
+              "file": "backend/models/users/userRoleAssignmentModel.js",
+              "collection": "user_role_assignments",
+              "connection": "business"
+            },
+            {
+              "name": "UserDepartmentAssignment",
+              "file": "backend/models/users/userDepartmentAssignmentModel.js",
+              "collection": "user_department_assignments",
+              "connection": "business"
+            },
+            {
+              "name": "USDAZones",
+              "file": "backend/models/reference/usdaZonesModel.js",
+              "collection": "usda_zones",
+              "connection": "gardening"
+            },
+            {
+              "name": "State",
+              "file": "backend/models/locations/stateModel.js",
+              "collection": "states",
+              "connection": "business"
+            },
+            {
+              "name": "County",
+              "file": "backend/models/locations/countyModel.js",
+              "collection": "counties",
+              "connection": "business"
+            },
+            {
+              "name": "Country",
+              "file": "backend/models/locations/countryModel.js",
+              "collection": "countries",
+              "connection": "business"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/forgot-password",
+      "page": "ForgotPasswordPage",
+      "redirect": false,
+      "file": "src/pages/auth/ForgotPasswordPage.jsx",
+      "displayVerification": "pending",
+      "requests": [
+        {
+          "endpoint": "/api/users/forgot-password",
+          "router": "backend/routes/users/userRoutes.js",
+          "models": [
+            {
+              "name": "User",
+              "file": "backend/models/users/userModel.js",
+              "collection": "users",
+              "connection": "gardening"
+            },
+            {
+              "name": "Role",
+              "file": "backend/models/users/userRolesModel.js",
+              "collection": "roles",
+              "connection": "business"
+            },
+            {
+              "name": "UserRoleAssignment",
+              "file": "backend/models/users/userRoleAssignmentModel.js",
+              "collection": "user_role_assignments",
+              "connection": "business"
+            },
+            {
+              "name": "UserDepartmentAssignment",
+              "file": "backend/models/users/userDepartmentAssignmentModel.js",
+              "collection": "user_department_assignments",
+              "connection": "business"
+            },
+            {
+              "name": "USDAZones",
+              "file": "backend/models/reference/usdaZonesModel.js",
+              "collection": "usda_zones",
+              "connection": "gardening"
+            },
+            {
+              "name": "State",
+              "file": "backend/models/locations/stateModel.js",
+              "collection": "states",
+              "connection": "business"
+            },
+            {
+              "name": "County",
+              "file": "backend/models/locations/countyModel.js",
+              "collection": "counties",
+              "connection": "business"
+            },
+            {
+              "name": "Country",
+              "file": "backend/models/locations/countryModel.js",
+              "collection": "countries",
+              "connection": "business"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/reset-password/:token",
+      "page": "ResetPasswordPage",
+      "redirect": false,
+      "file": "src/pages/auth/ResetPasswordPage.jsx",
+      "displayVerification": "pending",
+      "requests": [
+        {
+          "endpoint": "/api/users/reset-password",
+          "router": "backend/routes/users/userRoutes.js",
+          "models": [
+            {
+              "name": "User",
+              "file": "backend/models/users/userModel.js",
+              "collection": "users",
+              "connection": "gardening"
+            },
+            {
+              "name": "Role",
+              "file": "backend/models/users/userRolesModel.js",
+              "collection": "roles",
+              "connection": "business"
+            },
+            {
+              "name": "UserRoleAssignment",
+              "file": "backend/models/users/userRoleAssignmentModel.js",
+              "collection": "user_role_assignments",
+              "connection": "business"
+            },
+            {
+              "name": "UserDepartmentAssignment",
+              "file": "backend/models/users/userDepartmentAssignmentModel.js",
+              "collection": "user_department_assignments",
+              "connection": "business"
+            },
+            {
+              "name": "USDAZones",
+              "file": "backend/models/reference/usdaZonesModel.js",
+              "collection": "usda_zones",
+              "connection": "gardening"
+            },
+            {
+              "name": "State",
+              "file": "backend/models/locations/stateModel.js",
+              "collection": "states",
+              "connection": "business"
+            },
+            {
+              "name": "County",
+              "file": "backend/models/locations/countyModel.js",
+              "collection": "counties",
+              "connection": "business"
+            },
+            {
+              "name": "Country",
+              "file": "backend/models/locations/countryModel.js",
+              "collection": "countries",
+              "connection": "business"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/profile",
+      "page": "UserProfilePage",
+      "redirect": false,
+      "file": "src/pages/admin/users/UserProfilePage.jsx",
+      "displayVerification": "pending",
+      "requests": [
+        {
+          "endpoint": "/api/users",
+          "router": "backend/routes/users/userRoutes.js",
+          "models": [
+            {
+              "name": "User",
+              "file": "backend/models/users/userModel.js",
+              "collection": "users",
+              "connection": "gardening"
+            },
+            {
+              "name": "Role",
+              "file": "backend/models/users/userRolesModel.js",
+              "collection": "roles",
+              "connection": "business"
+            },
+            {
+              "name": "UserRoleAssignment",
+              "file": "backend/models/users/userRoleAssignmentModel.js",
+              "collection": "user_role_assignments",
+              "connection": "business"
+            },
+            {
+              "name": "UserDepartmentAssignment",
+              "file": "backend/models/users/userDepartmentAssignmentModel.js",
+              "collection": "user_department_assignments",
+              "connection": "business"
+            },
+            {
+              "name": "USDAZones",
+              "file": "backend/models/reference/usdaZonesModel.js",
+              "collection": "usda_zones",
+              "connection": "gardening"
+            },
+            {
+              "name": "State",
+              "file": "backend/models/locations/stateModel.js",
+              "collection": "states",
+              "connection": "business"
+            },
+            {
+              "name": "County",
+              "file": "backend/models/locations/countyModel.js",
+              "collection": "counties",
+              "connection": "business"
+            },
+            {
+              "name": "Country",
+              "file": "backend/models/locations/countryModel.js",
+              "collection": "countries",
+              "connection": "business"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/users/role-assignments",
+          "router": "backend/routes/users/userRoleAssignmentRoutes.js",
+          "models": [
+            {
+              "name": "User",
+              "file": "backend/models/users/userModel.js",
+              "collection": "users",
+              "connection": "gardening"
+            },
+            {
+              "name": "Role",
+              "file": "backend/models/users/userRolesModel.js",
+              "collection": "roles",
+              "connection": "business"
+            },
+            {
+              "name": "Business",
+              "file": "backend/models/reference/businessModel.js",
+              "collection": "businesses",
+              "connection": "business"
+            },
+            {
+              "name": "UserRoleAssignment",
+              "file": "backend/models/users/userRoleAssignmentModel.js",
+              "collection": "user_role_assignments",
+              "connection": "business"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/users/department-assignments",
+          "router": "backend/routes/users/userDepartmentAssignmentRoutes.js",
+          "models": [
+            {
+              "name": "User",
+              "file": "backend/models/users/userModel.js",
+              "collection": "users",
+              "connection": "gardening"
+            },
+            {
+              "name": "Business",
+              "file": "backend/models/reference/businessModel.js",
+              "collection": "businesses",
+              "connection": "business"
+            },
+            {
+              "name": "BusinessDepartment",
+              "file": "backend/models/users/businessDepartmentModel.js",
+              "collection": "business_departments",
+              "connection": "business"
+            },
+            {
+              "name": "Role",
+              "file": "backend/models/users/userRolesModel.js",
+              "collection": "roles",
+              "connection": "business"
+            },
+            {
+              "name": "UserDepartmentAssignment",
+              "file": "backend/models/users/userDepartmentAssignmentModel.js",
+              "collection": "user_department_assignments",
+              "connection": "business"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/app/current-business",
+          "router": "backend/routes/app/appRoutes.js",
+          "models": [
+            {
+              "name": "AppKey",
+              "file": "backend/models/reference/appKeyModel.js",
+              "collection": "app_keys",
+              "connection": "business"
+            },
+            {
+              "name": "Business",
+              "file": "backend/models/reference/businessModel.js",
+              "collection": "businesses",
+              "connection": "business"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/businesses",
+      "page": "Navigate",
+      "redirect": true,
+      "file": null,
+      "displayVerification": "pending",
+      "requests": []
+    },
+    {
+      "route": "/admin",
+      "page": "AdminDashboard",
+      "redirect": false,
+      "file": "src/pages/admin/Dashboard.jsx",
+      "displayVerification": "pending",
+      "requests": []
+    },
+    {
+      "route": "/admin/dashboard",
+      "page": "Navigate",
+      "redirect": true,
+      "file": null,
+      "displayVerification": "pending",
+      "requests": []
+    },
+    {
+      "route": "/admin/businesses",
+      "page": "Businesses",
+      "redirect": false,
+      "file": "src/pages/admin/Businesses.jsx",
+      "displayVerification": "pending",
+      "requests": []
+    },
+    {
+      "route": "/admin/business-types",
+      "page": "BusinessTypes",
+      "redirect": false,
+      "file": "src/pages/admin/BusinessTypes.jsx",
+      "displayVerification": "pending",
+      "requests": [
+        {
+          "endpoint": "/api/business-types",
+          "router": "backend/routes/reference/businessTypeRoutes.js",
+          "models": [
+            {
+              "name": "BusinessType",
+              "file": "backend/models/reference/businessTypeModel.js",
+              "collection": "business_types",
+              "connection": "business"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/admin/app-keys",
+      "page": "AppKeys",
+      "redirect": false,
+      "file": "src/pages/admin/AppKeys.jsx",
+      "displayVerification": "pending",
+      "requests": [
+        {
+          "endpoint": "/api/app-keys",
+          "router": "backend/routes/reference/appKeyRoutes.js",
+          "models": [
+            {
+              "name": "AppKey",
+              "file": "backend/models/reference/appKeyModel.js",
+              "collection": "app_keys",
+              "connection": "business"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/businesses",
+          "router": "backend/routes/reference/businessRoutes.js",
+          "models": [
+            {
+              "name": "Business",
+              "file": "backend/models/reference/businessModel.js",
+              "collection": "businesses",
+              "connection": "business"
+            },
+            {
+              "name": "BusinessType",
+              "file": "backend/models/reference/businessTypeModel.js",
+              "collection": "business_types",
+              "connection": "business"
+            },
+            {
+              "name": "Tagline",
+              "file": "backend/models/reference/taglineModel.js",
+              "collection": "tag_lines",
+              "connection": "business"
+            },
+            {
+              "name": "Footer",
+              "file": "backend/models/reference/footerModel.js",
+              "collection": "footers",
+              "connection": "business"
+            },
+            {
+              "name": "ReceiptTemplate",
+              "file": "backend/models/reference/receiptTemplateModel.js",
+              "collection": "receipt_templates",
+              "connection": "business"
+            },
+            {
+              "name": "ReceiptHeader",
+              "file": "backend/models/reference/receiptHeaderModel.js",
+              "collection": "receipt_headers",
+              "connection": "business"
+            },
+            {
+              "name": "ReceiptSubHeader",
+              "file": "backend/models/reference/receiptSubHeaderModel.js",
+              "collection": "receipt_subheaders",
+              "connection": "business"
+            },
+            {
+              "name": "ReceiptFooter",
+              "file": "backend/models/reference/receiptFooterModel.js",
+              "collection": "receipt_footers",
+              "connection": "business"
+            },
+            {
+              "name": "Occasion",
+              "file": "backend/models/reference/occasionModel.js",
+              "collection": "occasions",
+              "connection": "business"
+            },
+            {
+              "name": "Season",
+              "file": "backend/models/reference/seasonsModel.js",
+              "collection": "seasons",
+              "connection": "business"
+            },
+            {
+              "name": "State",
+              "file": "backend/models/locations/stateModel.js",
+              "collection": "states",
+              "connection": "business"
+            },
+            {
+              "name": "County",
+              "file": "backend/models/locations/countyModel.js",
+              "collection": "counties",
+              "connection": "business"
+            },
+            {
+              "name": "Country",
+              "file": "backend/models/locations/countryModel.js",
+              "collection": "countries",
+              "connection": "business"
+            },
+            {
+              "name": "AppKey",
+              "file": "backend/models/reference/appKeyModel.js",
+              "collection": "app_keys",
+              "connection": "business"
+            },
+            {
+              "name": "TaxRate",
+              "file": "backend/models/reference/TaxRateModel.js",
+              "collection": "tax_rates",
+              "connection": "business"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/admin/tax-rates",
+      "page": "TaxRatesPage",
+      "redirect": false,
+      "file": "src/pages/admin/TaxRatesPage.jsx",
+      "displayVerification": "pending",
+      "requests": [
+        {
+          "endpoint": "/api/tax-rates",
+          "router": "backend/routes/reference/taxRateRoutes.js",
+          "models": [
+            {
+              "name": "TaxRate",
+              "file": "backend/models/reference/TaxRateModel.js",
+              "collection": "tax_rates",
+              "connection": "business"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/states",
+          "router": "backend/routes/locations/stateRoutes.js",
+          "models": []
+        }
+      ]
+    },
+    {
+      "route": "/admin/footers",
+      "page": "Footers",
+      "redirect": false,
+      "file": "src/pages/admin/Footers.jsx",
+      "displayVerification": "pending",
+      "requests": [
+        {
+          "endpoint": "/api/businesses",
+          "router": "backend/routes/reference/businessRoutes.js",
+          "models": [
+            {
+              "name": "Business",
+              "file": "backend/models/reference/businessModel.js",
+              "collection": "businesses",
+              "connection": "business"
+            },
+            {
+              "name": "BusinessType",
+              "file": "backend/models/reference/businessTypeModel.js",
+              "collection": "business_types",
+              "connection": "business"
+            },
+            {
+              "name": "Tagline",
+              "file": "backend/models/reference/taglineModel.js",
+              "collection": "tag_lines",
+              "connection": "business"
+            },
+            {
+              "name": "Footer",
+              "file": "backend/models/reference/footerModel.js",
+              "collection": "footers",
+              "connection": "business"
+            },
+            {
+              "name": "ReceiptTemplate",
+              "file": "backend/models/reference/receiptTemplateModel.js",
+              "collection": "receipt_templates",
+              "connection": "business"
+            },
+            {
+              "name": "ReceiptHeader",
+              "file": "backend/models/reference/receiptHeaderModel.js",
+              "collection": "receipt_headers",
+              "connection": "business"
+            },
+            {
+              "name": "ReceiptSubHeader",
+              "file": "backend/models/reference/receiptSubHeaderModel.js",
+              "collection": "receipt_subheaders",
+              "connection": "business"
+            },
+            {
+              "name": "ReceiptFooter",
+              "file": "backend/models/reference/receiptFooterModel.js",
+              "collection": "receipt_footers",
+              "connection": "business"
+            },
+            {
+              "name": "Occasion",
+              "file": "backend/models/reference/occasionModel.js",
+              "collection": "occasions",
+              "connection": "business"
+            },
+            {
+              "name": "Season",
+              "file": "backend/models/reference/seasonsModel.js",
+              "collection": "seasons",
+              "connection": "business"
+            },
+            {
+              "name": "State",
+              "file": "backend/models/locations/stateModel.js",
+              "collection": "states",
+              "connection": "business"
+            },
+            {
+              "name": "County",
+              "file": "backend/models/locations/countyModel.js",
+              "collection": "counties",
+              "connection": "business"
+            },
+            {
+              "name": "Country",
+              "file": "backend/models/locations/countryModel.js",
+              "collection": "countries",
+              "connection": "business"
+            },
+            {
+              "name": "AppKey",
+              "file": "backend/models/reference/appKeyModel.js",
+              "collection": "app_keys",
+              "connection": "business"
+            },
+            {
+              "name": "TaxRate",
+              "file": "backend/models/reference/TaxRateModel.js",
+              "collection": "tax_rates",
+              "connection": "business"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/seasons",
+          "router": "backend/routes/reference/seasonRoutes.js",
+          "models": [
+            {
+              "name": "Season",
+              "file": "backend/models/reference/seasonsModel.js",
+              "collection": "seasons",
+              "connection": "business"
+            },
+            {
+              "name": "Business",
+              "file": "backend/models/reference/businessModel.js",
+              "collection": "businesses",
+              "connection": "business"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/footers",
+          "router": "backend/routes/reference/footerRoutes.js",
+          "models": [
+            {
+              "name": "Footer",
+              "file": "backend/models/reference/footerModel.js",
+              "collection": "footers",
+              "connection": "business"
+            },
+            {
+              "name": "Business",
+              "file": "backend/models/reference/businessModel.js",
+              "collection": "businesses",
+              "connection": "business"
+            },
+            {
+              "name": "Season",
+              "file": "backend/models/reference/seasonsModel.js",
+              "collection": "seasons",
+              "connection": "business"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/admin/seasons",
+      "page": "Seasons",
+      "redirect": false,
+      "file": "src/pages/admin/Seasons.jsx",
+      "displayVerification": "pending",
+      "requests": [
+        {
+          "endpoint": "/api/businesses",
+          "router": "backend/routes/reference/businessRoutes.js",
+          "models": [
+            {
+              "name": "Business",
+              "file": "backend/models/reference/businessModel.js",
+              "collection": "businesses",
+              "connection": "business"
+            },
+            {
+              "name": "BusinessType",
+              "file": "backend/models/reference/businessTypeModel.js",
+              "collection": "business_types",
+              "connection": "business"
+            },
+            {
+              "name": "Tagline",
+              "file": "backend/models/reference/taglineModel.js",
+              "collection": "tag_lines",
+              "connection": "business"
+            },
+            {
+              "name": "Footer",
+              "file": "backend/models/reference/footerModel.js",
+              "collection": "footers",
+              "connection": "business"
+            },
+            {
+              "name": "ReceiptTemplate",
+              "file": "backend/models/reference/receiptTemplateModel.js",
+              "collection": "receipt_templates",
+              "connection": "business"
+            },
+            {
+              "name": "ReceiptHeader",
+              "file": "backend/models/reference/receiptHeaderModel.js",
+              "collection": "receipt_headers",
+              "connection": "business"
+            },
+            {
+              "name": "ReceiptSubHeader",
+              "file": "backend/models/reference/receiptSubHeaderModel.js",
+              "collection": "receipt_subheaders",
+              "connection": "business"
+            },
+            {
+              "name": "ReceiptFooter",
+              "file": "backend/models/reference/receiptFooterModel.js",
+              "collection": "receipt_footers",
+              "connection": "business"
+            },
+            {
+              "name": "Occasion",
+              "file": "backend/models/reference/occasionModel.js",
+              "collection": "occasions",
+              "connection": "business"
+            },
+            {
+              "name": "Season",
+              "file": "backend/models/reference/seasonsModel.js",
+              "collection": "seasons",
+              "connection": "business"
+            },
+            {
+              "name": "State",
+              "file": "backend/models/locations/stateModel.js",
+              "collection": "states",
+              "connection": "business"
+            },
+            {
+              "name": "County",
+              "file": "backend/models/locations/countyModel.js",
+              "collection": "counties",
+              "connection": "business"
+            },
+            {
+              "name": "Country",
+              "file": "backend/models/locations/countryModel.js",
+              "collection": "countries",
+              "connection": "business"
+            },
+            {
+              "name": "AppKey",
+              "file": "backend/models/reference/appKeyModel.js",
+              "collection": "app_keys",
+              "connection": "business"
+            },
+            {
+              "name": "TaxRate",
+              "file": "backend/models/reference/TaxRateModel.js",
+              "collection": "tax_rates",
+              "connection": "business"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/seasons",
+          "router": "backend/routes/reference/seasonRoutes.js",
+          "models": [
+            {
+              "name": "Season",
+              "file": "backend/models/reference/seasonsModel.js",
+              "collection": "seasons",
+              "connection": "business"
+            },
+            {
+              "name": "Business",
+              "file": "backend/models/reference/businessModel.js",
+              "collection": "businesses",
+              "connection": "business"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/admin/holidays",
+      "page": "Holidays",
+      "redirect": false,
+      "file": "src/pages/admin/Holidays.jsx",
+      "displayVerification": "pending",
+      "requests": [
+        {
+          "endpoint": "/api/businesses",
+          "router": "backend/routes/reference/businessRoutes.js",
+          "models": [
+            {
+              "name": "Business",
+              "file": "backend/models/reference/businessModel.js",
+              "collection": "businesses",
+              "connection": "business"
+            },
+            {
+              "name": "BusinessType",
+              "file": "backend/models/reference/businessTypeModel.js",
+              "collection": "business_types",
+              "connection": "business"
+            },
+            {
+              "name": "Tagline",
+              "file": "backend/models/reference/taglineModel.js",
+              "collection": "tag_lines",
+              "connection": "business"
+            },
+            {
+              "name": "Footer",
+              "file": "backend/models/reference/footerModel.js",
+              "collection": "footers",
+              "connection": "business"
+            },
+            {
+              "name": "ReceiptTemplate",
+              "file": "backend/models/reference/receiptTemplateModel.js",
+              "collection": "receipt_templates",
+              "connection": "business"
+            },
+            {
+              "name": "ReceiptHeader",
+              "file": "backend/models/reference/receiptHeaderModel.js",
+              "collection": "receipt_headers",
+              "connection": "business"
+            },
+            {
+              "name": "ReceiptSubHeader",
+              "file": "backend/models/reference/receiptSubHeaderModel.js",
+              "collection": "receipt_subheaders",
+              "connection": "business"
+            },
+            {
+              "name": "ReceiptFooter",
+              "file": "backend/models/reference/receiptFooterModel.js",
+              "collection": "receipt_footers",
+              "connection": "business"
+            },
+            {
+              "name": "Occasion",
+              "file": "backend/models/reference/occasionModel.js",
+              "collection": "occasions",
+              "connection": "business"
+            },
+            {
+              "name": "Season",
+              "file": "backend/models/reference/seasonsModel.js",
+              "collection": "seasons",
+              "connection": "business"
+            },
+            {
+              "name": "State",
+              "file": "backend/models/locations/stateModel.js",
+              "collection": "states",
+              "connection": "business"
+            },
+            {
+              "name": "County",
+              "file": "backend/models/locations/countyModel.js",
+              "collection": "counties",
+              "connection": "business"
+            },
+            {
+              "name": "Country",
+              "file": "backend/models/locations/countryModel.js",
+              "collection": "countries",
+              "connection": "business"
+            },
+            {
+              "name": "AppKey",
+              "file": "backend/models/reference/appKeyModel.js",
+              "collection": "app_keys",
+              "connection": "business"
+            },
+            {
+              "name": "TaxRate",
+              "file": "backend/models/reference/TaxRateModel.js",
+              "collection": "tax_rates",
+              "connection": "business"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/seasons",
+          "router": "backend/routes/reference/seasonRoutes.js",
+          "models": [
+            {
+              "name": "Season",
+              "file": "backend/models/reference/seasonsModel.js",
+              "collection": "seasons",
+              "connection": "business"
+            },
+            {
+              "name": "Business",
+              "file": "backend/models/reference/businessModel.js",
+              "collection": "businesses",
+              "connection": "business"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/holidays",
+          "router": "backend/routes/reference/holidayRoutes.js",
+          "models": [
+            {
+              "name": "Holiday",
+              "file": "backend/models/reference/holidayModel.js",
+              "collection": "holidays",
+              "connection": "business"
+            },
+            {
+              "name": "Business",
+              "file": "backend/models/reference/businessModel.js",
+              "collection": "businesses",
+              "connection": "business"
+            },
+            {
+              "name": "Season",
+              "file": "backend/models/reference/seasonsModel.js",
+              "collection": "seasons",
+              "connection": "business"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/admin/occasions",
+      "page": "Occasions",
+      "redirect": false,
+      "file": "src/pages/admin/Occasions.jsx",
+      "displayVerification": "pending",
+      "requests": [
+        {
+          "endpoint": "/api/businesses",
+          "router": "backend/routes/reference/businessRoutes.js",
+          "models": [
+            {
+              "name": "Business",
+              "file": "backend/models/reference/businessModel.js",
+              "collection": "businesses",
+              "connection": "business"
+            },
+            {
+              "name": "BusinessType",
+              "file": "backend/models/reference/businessTypeModel.js",
+              "collection": "business_types",
+              "connection": "business"
+            },
+            {
+              "name": "Tagline",
+              "file": "backend/models/reference/taglineModel.js",
+              "collection": "tag_lines",
+              "connection": "business"
+            },
+            {
+              "name": "Footer",
+              "file": "backend/models/reference/footerModel.js",
+              "collection": "footers",
+              "connection": "business"
+            },
+            {
+              "name": "ReceiptTemplate",
+              "file": "backend/models/reference/receiptTemplateModel.js",
+              "collection": "receipt_templates",
+              "connection": "business"
+            },
+            {
+              "name": "ReceiptHeader",
+              "file": "backend/models/reference/receiptHeaderModel.js",
+              "collection": "receipt_headers",
+              "connection": "business"
+            },
+            {
+              "name": "ReceiptSubHeader",
+              "file": "backend/models/reference/receiptSubHeaderModel.js",
+              "collection": "receipt_subheaders",
+              "connection": "business"
+            },
+            {
+              "name": "ReceiptFooter",
+              "file": "backend/models/reference/receiptFooterModel.js",
+              "collection": "receipt_footers",
+              "connection": "business"
+            },
+            {
+              "name": "Occasion",
+              "file": "backend/models/reference/occasionModel.js",
+              "collection": "occasions",
+              "connection": "business"
+            },
+            {
+              "name": "Season",
+              "file": "backend/models/reference/seasonsModel.js",
+              "collection": "seasons",
+              "connection": "business"
+            },
+            {
+              "name": "State",
+              "file": "backend/models/locations/stateModel.js",
+              "collection": "states",
+              "connection": "business"
+            },
+            {
+              "name": "County",
+              "file": "backend/models/locations/countyModel.js",
+              "collection": "counties",
+              "connection": "business"
+            },
+            {
+              "name": "Country",
+              "file": "backend/models/locations/countryModel.js",
+              "collection": "countries",
+              "connection": "business"
+            },
+            {
+              "name": "AppKey",
+              "file": "backend/models/reference/appKeyModel.js",
+              "collection": "app_keys",
+              "connection": "business"
+            },
+            {
+              "name": "TaxRate",
+              "file": "backend/models/reference/TaxRateModel.js",
+              "collection": "tax_rates",
+              "connection": "business"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/seasons",
+          "router": "backend/routes/reference/seasonRoutes.js",
+          "models": [
+            {
+              "name": "Season",
+              "file": "backend/models/reference/seasonsModel.js",
+              "collection": "seasons",
+              "connection": "business"
+            },
+            {
+              "name": "Business",
+              "file": "backend/models/reference/businessModel.js",
+              "collection": "businesses",
+              "connection": "business"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/occasions",
+          "router": "backend/routes/reference/occasionRoutes.js",
+          "models": [
+            {
+              "name": "Occasion",
+              "file": "backend/models/reference/occasionModel.js",
+              "collection": "occasions",
+              "connection": "business"
+            },
+            {
+              "name": "Business",
+              "file": "backend/models/reference/businessModel.js",
+              "collection": "businesses",
+              "connection": "business"
+            },
+            {
+              "name": "Season",
+              "file": "backend/models/reference/seasonsModel.js",
+              "collection": "seasons",
+              "connection": "business"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/admin/taglines",
+      "page": "Taglines",
+      "redirect": false,
+      "file": "src/pages/admin/Taglines.jsx",
+      "displayVerification": "pending",
+      "requests": [
+        {
+          "endpoint": "/api/businesses",
+          "router": "backend/routes/reference/businessRoutes.js",
+          "models": [
+            {
+              "name": "Business",
+              "file": "backend/models/reference/businessModel.js",
+              "collection": "businesses",
+              "connection": "business"
+            },
+            {
+              "name": "BusinessType",
+              "file": "backend/models/reference/businessTypeModel.js",
+              "collection": "business_types",
+              "connection": "business"
+            },
+            {
+              "name": "Tagline",
+              "file": "backend/models/reference/taglineModel.js",
+              "collection": "tag_lines",
+              "connection": "business"
+            },
+            {
+              "name": "Footer",
+              "file": "backend/models/reference/footerModel.js",
+              "collection": "footers",
+              "connection": "business"
+            },
+            {
+              "name": "ReceiptTemplate",
+              "file": "backend/models/reference/receiptTemplateModel.js",
+              "collection": "receipt_templates",
+              "connection": "business"
+            },
+            {
+              "name": "ReceiptHeader",
+              "file": "backend/models/reference/receiptHeaderModel.js",
+              "collection": "receipt_headers",
+              "connection": "business"
+            },
+            {
+              "name": "ReceiptSubHeader",
+              "file": "backend/models/reference/receiptSubHeaderModel.js",
+              "collection": "receipt_subheaders",
+              "connection": "business"
+            },
+            {
+              "name": "ReceiptFooter",
+              "file": "backend/models/reference/receiptFooterModel.js",
+              "collection": "receipt_footers",
+              "connection": "business"
+            },
+            {
+              "name": "Occasion",
+              "file": "backend/models/reference/occasionModel.js",
+              "collection": "occasions",
+              "connection": "business"
+            },
+            {
+              "name": "Season",
+              "file": "backend/models/reference/seasonsModel.js",
+              "collection": "seasons",
+              "connection": "business"
+            },
+            {
+              "name": "State",
+              "file": "backend/models/locations/stateModel.js",
+              "collection": "states",
+              "connection": "business"
+            },
+            {
+              "name": "County",
+              "file": "backend/models/locations/countyModel.js",
+              "collection": "counties",
+              "connection": "business"
+            },
+            {
+              "name": "Country",
+              "file": "backend/models/locations/countryModel.js",
+              "collection": "countries",
+              "connection": "business"
+            },
+            {
+              "name": "AppKey",
+              "file": "backend/models/reference/appKeyModel.js",
+              "collection": "app_keys",
+              "connection": "business"
+            },
+            {
+              "name": "TaxRate",
+              "file": "backend/models/reference/TaxRateModel.js",
+              "collection": "tax_rates",
+              "connection": "business"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/seasons",
+          "router": "backend/routes/reference/seasonRoutes.js",
+          "models": [
+            {
+              "name": "Season",
+              "file": "backend/models/reference/seasonsModel.js",
+              "collection": "seasons",
+              "connection": "business"
+            },
+            {
+              "name": "Business",
+              "file": "backend/models/reference/businessModel.js",
+              "collection": "businesses",
+              "connection": "business"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/occasions",
+          "router": "backend/routes/reference/occasionRoutes.js",
+          "models": [
+            {
+              "name": "Occasion",
+              "file": "backend/models/reference/occasionModel.js",
+              "collection": "occasions",
+              "connection": "business"
+            },
+            {
+              "name": "Business",
+              "file": "backend/models/reference/businessModel.js",
+              "collection": "businesses",
+              "connection": "business"
+            },
+            {
+              "name": "Season",
+              "file": "backend/models/reference/seasonsModel.js",
+              "collection": "seasons",
+              "connection": "business"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/taglines",
+          "router": "backend/routes/reference/taglineRoutes.js",
+          "models": [
+            {
+              "name": "Tagline",
+              "file": "backend/models/reference/taglineModel.js",
+              "collection": "tag_lines",
+              "connection": "business"
+            },
+            {
+              "name": "Business",
+              "file": "backend/models/reference/businessModel.js",
+              "collection": "businesses",
+              "connection": "business"
+            },
+            {
+              "name": "Season",
+              "file": "backend/models/reference/seasonsModel.js",
+              "collection": "seasons",
+              "connection": "business"
+            },
+            {
+              "name": "Occasion",
+              "file": "backend/models/reference/occasionModel.js",
+              "collection": "occasions",
+              "connection": "business"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/admin/vendors",
+      "page": "Vendors",
+      "redirect": false,
+      "file": "src/pages/admin/Vendors.jsx",
+      "displayVerification": "pending",
+      "requests": [
+        {
+          "endpoint": "/api/businesses",
+          "router": "backend/routes/reference/businessRoutes.js",
+          "models": [
+            {
+              "name": "Business",
+              "file": "backend/models/reference/businessModel.js",
+              "collection": "businesses",
+              "connection": "business"
+            },
+            {
+              "name": "BusinessType",
+              "file": "backend/models/reference/businessTypeModel.js",
+              "collection": "business_types",
+              "connection": "business"
+            },
+            {
+              "name": "Tagline",
+              "file": "backend/models/reference/taglineModel.js",
+              "collection": "tag_lines",
+              "connection": "business"
+            },
+            {
+              "name": "Footer",
+              "file": "backend/models/reference/footerModel.js",
+              "collection": "footers",
+              "connection": "business"
+            },
+            {
+              "name": "ReceiptTemplate",
+              "file": "backend/models/reference/receiptTemplateModel.js",
+              "collection": "receipt_templates",
+              "connection": "business"
+            },
+            {
+              "name": "ReceiptHeader",
+              "file": "backend/models/reference/receiptHeaderModel.js",
+              "collection": "receipt_headers",
+              "connection": "business"
+            },
+            {
+              "name": "ReceiptSubHeader",
+              "file": "backend/models/reference/receiptSubHeaderModel.js",
+              "collection": "receipt_subheaders",
+              "connection": "business"
+            },
+            {
+              "name": "ReceiptFooter",
+              "file": "backend/models/reference/receiptFooterModel.js",
+              "collection": "receipt_footers",
+              "connection": "business"
+            },
+            {
+              "name": "Occasion",
+              "file": "backend/models/reference/occasionModel.js",
+              "collection": "occasions",
+              "connection": "business"
+            },
+            {
+              "name": "Season",
+              "file": "backend/models/reference/seasonsModel.js",
+              "collection": "seasons",
+              "connection": "business"
+            },
+            {
+              "name": "State",
+              "file": "backend/models/locations/stateModel.js",
+              "collection": "states",
+              "connection": "business"
+            },
+            {
+              "name": "County",
+              "file": "backend/models/locations/countyModel.js",
+              "collection": "counties",
+              "connection": "business"
+            },
+            {
+              "name": "Country",
+              "file": "backend/models/locations/countryModel.js",
+              "collection": "countries",
+              "connection": "business"
+            },
+            {
+              "name": "AppKey",
+              "file": "backend/models/reference/appKeyModel.js",
+              "collection": "app_keys",
+              "connection": "business"
+            },
+            {
+              "name": "TaxRate",
+              "file": "backend/models/reference/TaxRateModel.js",
+              "collection": "tax_rates",
+              "connection": "business"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/vendors",
+          "router": "backend/routes/reference/vendorRoutes.js",
+          "models": [
+            {
+              "name": "Vendor",
+              "file": "backend/models/reference/vendorModel.js",
+              "collection": "vendors",
+              "connection": "business"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/admin/business-roles-permissions",
+      "page": "BusinessRolesPermissionsPage",
+      "redirect": false,
+      "file": "src/pages/admin/BusinessRolesPermissionsPage.jsx",
+      "displayVerification": "pending",
+      "requests": [
+        {
+          "endpoint": "/api/businesses",
+          "router": "backend/routes/reference/businessRoutes.js",
+          "models": [
+            {
+              "name": "Business",
+              "file": "backend/models/reference/businessModel.js",
+              "collection": "businesses",
+              "connection": "business"
+            },
+            {
+              "name": "BusinessType",
+              "file": "backend/models/reference/businessTypeModel.js",
+              "collection": "business_types",
+              "connection": "business"
+            },
+            {
+              "name": "Tagline",
+              "file": "backend/models/reference/taglineModel.js",
+              "collection": "tag_lines",
+              "connection": "business"
+            },
+            {
+              "name": "Footer",
+              "file": "backend/models/reference/footerModel.js",
+              "collection": "footers",
+              "connection": "business"
+            },
+            {
+              "name": "ReceiptTemplate",
+              "file": "backend/models/reference/receiptTemplateModel.js",
+              "collection": "receipt_templates",
+              "connection": "business"
+            },
+            {
+              "name": "ReceiptHeader",
+              "file": "backend/models/reference/receiptHeaderModel.js",
+              "collection": "receipt_headers",
+              "connection": "business"
+            },
+            {
+              "name": "ReceiptSubHeader",
+              "file": "backend/models/reference/receiptSubHeaderModel.js",
+              "collection": "receipt_subheaders",
+              "connection": "business"
+            },
+            {
+              "name": "ReceiptFooter",
+              "file": "backend/models/reference/receiptFooterModel.js",
+              "collection": "receipt_footers",
+              "connection": "business"
+            },
+            {
+              "name": "Occasion",
+              "file": "backend/models/reference/occasionModel.js",
+              "collection": "occasions",
+              "connection": "business"
+            },
+            {
+              "name": "Season",
+              "file": "backend/models/reference/seasonsModel.js",
+              "collection": "seasons",
+              "connection": "business"
+            },
+            {
+              "name": "State",
+              "file": "backend/models/locations/stateModel.js",
+              "collection": "states",
+              "connection": "business"
+            },
+            {
+              "name": "County",
+              "file": "backend/models/locations/countyModel.js",
+              "collection": "counties",
+              "connection": "business"
+            },
+            {
+              "name": "Country",
+              "file": "backend/models/locations/countryModel.js",
+              "collection": "countries",
+              "connection": "business"
+            },
+            {
+              "name": "AppKey",
+              "file": "backend/models/reference/appKeyModel.js",
+              "collection": "app_keys",
+              "connection": "business"
+            },
+            {
+              "name": "TaxRate",
+              "file": "backend/models/reference/TaxRateModel.js",
+              "collection": "tax_rates",
+              "connection": "business"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/business-types",
+          "router": "backend/routes/reference/businessTypeRoutes.js",
+          "models": [
+            {
+              "name": "BusinessType",
+              "file": "backend/models/reference/businessTypeModel.js",
+              "collection": "business_types",
+              "connection": "business"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/users/permission-modules",
+          "router": "backend/routes/users/permissionModuleRoutes.js",
+          "models": [
+            {
+              "name": "PermissionModule",
+              "file": "backend/models/users/permissionModuleModel.js",
+              "collection": "permission_modules",
+              "connection": "business"
+            },
+            {
+              "name": "RolePermission",
+              "file": "backend/models/users/rolePermissionModel.js",
+              "collection": "role_permissions",
+              "connection": "business"
+            },
+            {
+              "name": "AppKey",
+              "file": "backend/models/reference/appKeyModel.js",
+              "collection": "app_keys",
+              "connection": "business"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/users/roles",
+          "router": "backend/routes/users/userRolesRoutes.js",
+          "models": [
+            {
+              "name": "Role",
+              "file": "backend/models/users/userRolesModel.js",
+              "collection": "roles",
+              "connection": "business"
+            },
+            {
+              "name": "Business",
+              "file": "backend/models/reference/businessModel.js",
+              "collection": "businesses",
+              "connection": "business"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/users/departments",
+          "router": "backend/routes/users/businessDepartmentRoutes.js",
+          "models": [
+            {
+              "name": "Business",
+              "file": "backend/models/reference/businessModel.js",
+              "collection": "businesses",
+              "connection": "business"
+            },
+            {
+              "name": "Role",
+              "file": "backend/models/users/userRolesModel.js",
+              "collection": "roles",
+              "connection": "business"
+            },
+            {
+              "name": "BusinessDepartment",
+              "file": "backend/models/users/businessDepartmentModel.js",
+              "collection": "business_departments",
+              "connection": "business"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/users/role-permissions",
+          "router": "backend/routes/users/rolePermissionRoutes.js",
+          "models": [
+            {
+              "name": "Business",
+              "file": "backend/models/reference/businessModel.js",
+              "collection": "businesses",
+              "connection": "business"
+            },
+            {
+              "name": "Role",
+              "file": "backend/models/users/userRolesModel.js",
+              "collection": "roles",
+              "connection": "business"
+            },
+            {
+              "name": "RolePermission",
+              "file": "backend/models/users/rolePermissionModel.js",
+              "collection": "role_permissions",
+              "connection": "business"
+            },
+            {
+              "name": "PermissionModule",
+              "file": "backend/models/users/permissionModuleModel.js",
+              "collection": "permission_modules",
+              "connection": "business"
+            },
+            {
+              "name": "AppKey",
+              "file": "backend/models/reference/appKeyModel.js",
+              "collection": "app_keys",
+              "connection": "business"
+            }
+          ]
+        },
+        {
+          "endpoint": "/api/app/current-business",
+          "router": "backend/routes/app/appRoutes.js",
+          "models": [
+            {
+              "name": "AppKey",
+              "file": "backend/models/reference/appKeyModel.js",
+              "collection": "app_keys",
+              "connection": "business"
+            },
+            {
+              "name": "Business",
+              "file": "backend/models/reference/businessModel.js",
+              "collection": "businesses",
+              "connection": "business"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/admin/inventory",
+      "page": "Navigate",
+      "redirect": true,
+      "file": null,
+      "displayVerification": "pending",
+      "requests": []
+    },
+    {
+      "route": "/400",
+      "page": "Error400",
+      "redirect": false,
+      "file": "src/components/errorpages/Error400.jsx",
+      "displayVerification": "pending",
+      "requests": []
+    },
+    {
+      "route": "/401",
+      "page": "Error401",
+      "redirect": false,
+      "file": "src/components/errorpages/Error401.jsx",
+      "displayVerification": "pending",
+      "requests": []
+    },
+    {
+      "route": "/403",
+      "page": "Error403",
+      "redirect": false,
+      "file": "src/components/errorpages/Error403.jsx",
+      "displayVerification": "pending",
+      "requests": []
+    },
+    {
+      "route": "/404",
+      "page": "Error404",
+      "redirect": false,
+      "file": "src/components/errorpages/Error404.jsx",
+      "displayVerification": "pending",
+      "requests": []
+    },
+    {
+      "route": "/500",
+      "page": "Error500",
+      "redirect": false,
+      "file": "src/components/errorpages/Error500.jsx",
+      "displayVerification": "pending",
+      "requests": []
+    },
+    {
+      "route": "/502",
+      "page": "Error502",
+      "redirect": false,
+      "file": "src/components/errorpages/Error502.jsx",
+      "displayVerification": "pending",
+      "requests": []
+    },
+    {
+      "route": "/503",
+      "page": "Error503",
+      "redirect": false,
+      "file": "src/components/errorpages/Error503.jsx",
+      "displayVerification": "pending",
+      "requests": []
+    },
+    {
+      "route": "/504",
+      "page": "Error504",
+      "redirect": false,
+      "file": "src/components/errorpages/Error504.jsx",
+      "displayVerification": "pending",
+      "requests": []
+    },
+    {
+      "route": "*",
+      "page": "Error404",
+      "redirect": false,
+      "file": "src/components/errorpages/Error404.jsx",
+      "displayVerification": "pending",
+      "requests": []
+    }
+  ],
+  "limitations": [
+    "This traces source routes and model connections; it does not claim every workflow passed.",
+    "Related lookup models are listed separately from page records.",
+    "Missing stored HydroSystem records cannot be replaced with equipment or location records.",
+    "Manual SeedCollection entries cannot be replaced with Seed packet counts."
+  ]
+}

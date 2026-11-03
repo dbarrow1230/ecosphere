@@ -1,0 +1,12 @@
+{
+  "checkedAt": "2026-10-31T21:35:32.223Z",
+  "originalRecordsChecked": 106,
+  "capitalizedFormatRecordsChecked": 60,
+  "liveEntryCount": 111,
+  "failures": [],
+  "limitations": [
+    "Verifies saved text, original dates, measured-value labels and image references against the live API.",
+    "Image references do not prove image files exist.",
+    "Unresolvable source relationships are not guessed."
+  ]
+}

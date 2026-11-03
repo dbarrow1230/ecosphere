@@ -1,0 +1,3370 @@
+[
+  {
+    "path": "/plants",
+    "mode": "create",
+    "requests": [
+      {
+        "method": "POST",
+        "payload": {
+          "createdBy": "696c2279c74050a65b3dc18f",
+          "description": "Audit field",
+          "family": "Audit field",
+          "growingConditions": {
+            "soil": "Audit field",
+            "sunlight": "Audit field",
+            "temperature": "Audit field",
+            "water": "Audit field"
+          },
+          "growthDurationDays": 1,
+          "images": [
+            "https://example.test"
+          ],
+          "isActive": true,
+          "name": "Audit field",
+          "notes": [
+            {
+              "createdBy": "696c2279c74050a65b3dc18f",
+              "date": "2026-10-31T21:57:23.154Z",
+              "note": "Audit field"
+            }
+          ],
+          "plantingRecord": {
+            "batchNumber": "Audit field",
+            "deathDate": "2026-10-31",
+            "indoors": true,
+            "location": "Audit field",
+            "outdoors": true,
+            "plantedDate": "2026-10-31",
+            "sunDirection": "Audit field",
+            "sunExposureHours": 1
+          },
+          "scientificName": "Audit field",
+          "seed": "6ae65bd3118c9d8061da9c23",
+          "spacing": {
+            "imperial": 1,
+            "metric": 1
+          },
+          "status": "active",
+          "tags": [
+            "Audit field"
+          ],
+          "type": "69555243665e92102248fac9"
+        },
+        "url": "/api/plants"
+      }
+    ]
+  },
+  {
+    "path": "/seed-collections",
+    "opener": "Add Collection",
+    "filled": 8,
+    "buttons": [
+      {
+        "disabled": false,
+        "text": "Add Collection",
+        "type": "button"
+      },
+      {
+        "disabled": false,
+        "text": "Add Seed",
+        "type": "button"
+      },
+      {
+        "disabled": false,
+        "text": "Save Collection",
+        "type": "submit"
+      }
+    ],
+    "invalid": [],
+    "alerts": [],
+    "readErrors": [],
+    "requests": [
+      {
+        "method": "POST",
+        "payload": {
+          "amountUnit": "seeds",
+          "buyMore": false,
+          "dateCollected": "",
+          "germinationRate": "1",
+          "inventoryYear": "2026",
+          "labelColor": "#0f7d4f",
+          "notes": [
+            "Audit field"
+          ],
+          "seed": "6ae65bd3118c9d8061da9c23",
+          "seedCount": 1,
+          "sourceName": "Audit field",
+          "sourceType": "harvested",
+          "status": "collected",
+          "user": "696c2279c74050a65b3dc18f",
+          "vendor": "697812fcd68cec3dea0bbdbf"
+        },
+        "url": "/api/seed-collections"
+      }
+    ],
+    "status": "submitted"
+  },
+  {
+    "path": "/pests",
+    "opener": "Add Pest",
+    "filled": 7,
+    "buttons": [
+      {
+        "disabled": false,
+        "text": "Add Pest",
+        "type": "button"
+      },
+      {
+        "disabled": false,
+        "text": "Add Treatment",
+        "type": "button"
+      },
+      {
+        "disabled": false,
+        "text": "Save",
+        "type": "submit"
+      }
+    ],
+    "invalid": [],
+    "alerts": [],
+    "readErrors": [],
+    "requests": [],
+    "status": "blocked"
+  },
+  {
+    "path": "/diseases",
+    "opener": "Add Disease",
+    "filled": 18,
+    "buttons": [
+      {
+        "disabled": false,
+        "text": "Add Disease",
+        "type": "button"
+      },
+      {
+        "disabled": false,
+        "text": "Save",
+        "type": "submit"
+      }
+    ],
+    "invalid": [],
+    "alerts": [],
+    "readErrors": [],
+    "requests": [],
+    "status": "blocked"
+  },
+  {
+    "path": "/equipment",
+    "opener": "Add Equipment",
+    "filled": 8,
+    "buttons": [
+      {
+        "disabled": false,
+        "text": "Add Equipment",
+        "type": "button"
+      },
+      {
+        "disabled": false,
+        "text": "Save Equipment",
+        "type": "submit"
+      }
+    ],
+    "invalid": [],
+    "alerts": [
+      "Audit field was saved."
+    ],
+    "readErrors": [],
+    "requests": [
+      {
+        "method": "POST",
+        "payload": {
+          "brand": "Audit field",
+          "category": null,
+          "condition": "good",
+          "description": "Audit field",
+          "modelNumber": "Audit field",
+          "name": "Audit field",
+          "notes": "Audit field",
+          "purchaseDate": null,
+          "purchasePrice": 1,
+          "vendor": "696d0f896b463b7c9719d741"
+        },
+        "url": "/api/equipment"
+      }
+    ],
+    "status": "submitted"
+  },
+  {
+    "path": "/gardens",
+    "opener": "Add Garden",
+    "filled": 11,
+    "buttons": [
+      {
+        "disabled": false,
+        "text": "Add Garden",
+        "type": "button"
+      },
+      {
+        "disabled": false,
+        "text": "Save Garden",
+        "type": "submit"
+      }
+    ],
+    "invalid": [],
+    "alerts": [
+      "Audit field was saved."
+    ],
+    "readErrors": [],
+    "requests": [
+      {
+        "method": "POST",
+        "payload": {
+          "createdBy": "696c2279c74050a65b3dc18f",
+          "gardenPurpose": [],
+          "gardenType": "6ae624b9f5091c5f239b638c",
+          "isActive": true,
+          "name": "Audit field",
+          "notes": [
+            {
+              "createdBy": "696c2279c74050a65b3dc18f",
+              "date": "2026-10-31T21:58:16.617Z",
+              "note": "Audit field"
+            }
+          ],
+          "overallSize": {
+            "imperial": [
+              {
+                "label": "Length",
+                "unit": "6a385b5c97eace101807d23d",
+                "value": 1
+              },
+              {
+                "label": "Width",
+                "unit": "6a385b5c97eace101807d23d",
+                "value": 1
+              }
+            ],
+            "metric": [
+              {
+                "label": "Length",
+                "unit": "69d96ed345dc0c6f68ce4d8c",
+                "value": 1
+              },
+              {
+                "label": "Width",
+                "unit": "69d96ed345dc0c6f68ce4d8c",
+                "value": 1
+              }
+            ]
+          },
+          "userReason": []
+        },
+        "url": "/api/gardens"
+      }
+    ],
+    "status": "submitted"
+  },
+  {
+    "path": "/garden-budgets",
+    "opener": "Add Budget Item",
+    "filled": 5,
+    "buttons": [
+      {
+        "disabled": false,
+        "text": "Add Budget Item",
+        "type": "button"
+      },
+      {
+        "disabled": false,
+        "text": "Save Budget Item",
+        "type": "submit"
+      }
+    ],
+    "invalid": [],
+    "alerts": [
+      "Budget Item saved."
+    ],
+    "readErrors": [],
+    "requests": [
+      {
+        "method": "POST",
+        "payload": {
+          "allottedBudget": "1",
+          "currency": "USD",
+          "description": "Audit field",
+          "name": "Audit field",
+          "quantity": 1,
+          "unitCost": "1",
+          "year": "2026"
+        },
+        "url": "/api/garden-budgets"
+      }
+    ],
+    "status": "submitted"
+  },
+  {
+    "path": "/garden-expenses",
+    "opener": "Add Expense",
+    "filled": 7,
+    "buttons": [
+      {
+        "disabled": false,
+        "text": "Add Expense",
+        "type": "button"
+      },
+      {
+        "disabled": false,
+        "text": "Save Expense",
+        "type": "submit"
+      }
+    ],
+    "invalid": [],
+    "alerts": [
+      "Expense saved."
+    ],
+    "readErrors": [],
+    "requests": [
+      {
+        "method": "POST",
+        "payload": {
+          "currency": "USD",
+          "name": "Audit field",
+          "notes": "Audit field",
+          "purchaseDate": "2026-10-31",
+          "quantity": 1,
+          "savedAmount": "1",
+          "unitCost": "1",
+          "vendor": "Audit field",
+          "warranty": "Audit field"
+        },
+        "url": "/api/garden-expenses"
+      }
+    ],
+    "status": "submitted"
+  },
+  {
+    "path": "/garden-wishlist",
+    "opener": "Add Wish List Item",
+    "filled": 5,
+    "buttons": [
+      {
+        "disabled": false,
+        "text": "Add Wish List Item",
+        "type": "button"
+      },
+      {
+        "disabled": false,
+        "text": "Save Wish List Item",
+        "type": "submit"
+      }
+    ],
+    "invalid": [],
+    "alerts": [
+      "Wish List Item saved."
+    ],
+    "readErrors": [],
+    "requests": [
+      {
+        "method": "POST",
+        "payload": {
+          "currency": "USD",
+          "description": "Audit field",
+          "name": "Audit field",
+          "purchased": false,
+          "quantity": 1,
+          "unitCost": "1",
+          "vendor": "Audit field",
+          "warranty": "Audit field"
+        },
+        "url": "/api/garden-wishlist"
+      }
+    ],
+    "status": "submitted"
+  },
+  {
+    "path": "/fruit-calendar",
+    "opener": "Add Fruit Schedule",
+    "filled": 4,
+    "buttons": [
+      {
+        "disabled": false,
+        "text": "Add Fruit Schedule",
+        "type": "button"
+      },
+      {
+        "disabled": false,
+        "text": "Save Fruit Schedule",
+        "type": "submit"
+      }
+    ],
+    "invalid": [],
+    "alerts": [
+      "Select at least one sowing, planting, or harvest month so this crop appears on the calendar."
+    ],
+    "readErrors": [],
+    "requests": [],
+    "status": "blocked"
+  },
+  {
+    "path": "/vegetable-calendar",
+    "opener": "Add Vegetable Schedule",
+    "filled": 4,
+    "buttons": [
+      {
+        "disabled": false,
+        "text": "Add Vegetable Schedule",
+        "type": "button"
+      },
+      {
+        "disabled": false,
+        "text": "Save Vegetable Schedule",
+        "type": "submit"
+      }
+    ],
+    "invalid": [],
+    "alerts": [
+      "Select at least one sowing, planting, or harvest month so this crop appears on the calendar."
+    ],
+    "readErrors": [],
+    "requests": [],
+    "status": "blocked"
+  },
+  {
+    "path": "/pests",
+    "opener": "Add Pest",
+    "filled": 7,
+    "buttons": [
+      {
+        "disabled": false,
+        "text": "Add Pest",
+        "type": "button"
+      },
+      {
+        "disabled": false,
+        "text": "Add Treatment",
+        "type": "button"
+      },
+      {
+        "disabled": false,
+        "text": "Save",
+        "type": "submit"
+      }
+    ],
+    "invalid": [],
+    "alerts": [],
+    "readErrors": [],
+    "requests": [
+      {
+        "method": "POST",
+        "payload": {
+          "category": "Audit field",
+          "createdBy": null,
+          "description": "Audit field",
+          "isActive": true,
+          "name": "Audit field",
+          "plants": [
+            "696f90bdab91d2e0253a5907"
+          ],
+          "prevention": "Audit field",
+          "seeds": [
+            "6973e2d9e1cd36659ee4975c"
+          ],
+          "treatment": [],
+          "treatmentText": "Audit field",
+          "type": null
+        },
+        "url": "/api/pests"
+      }
+    ],
+    "status": "submitted"
+  },
+  {
+    "path": "/diseases",
+    "opener": "Add Disease",
+    "filled": 18,
+    "buttons": [
+      {
+        "disabled": false,
+        "text": "Add Disease",
+        "type": "button"
+      },
+      {
+        "disabled": false,
+        "text": "Save",
+        "type": "submit"
+      }
+    ],
+    "invalid": [],
+    "alerts": [
+      "Disease created successfully."
+    ],
+    "readErrors": [],
+    "requests": [
+      {
+        "method": "POST",
+        "payload": {
+          "affectedParts": [
+            "Audit field"
+          ],
+          "category": "Audit field",
+          "cause": "Audit field",
+          "chemicalTreatment": [
+            "Audit field"
+          ],
+          "description": "Audit field",
+          "diseaseName": "Audit field",
+          "diseaseType": "Audit field",
+          "favorableConditions": "Audit field",
+          "image": "Audit field",
+          "isContagious": false,
+          "organicTreatment": [
+            "Audit field"
+          ],
+          "plants": [
+            "696f90bdab91d2e0253a5907"
+          ],
+          "prevention": [
+            "Audit field"
+          ],
+          "references": [
+            "Audit field"
+          ],
+          "scientificName": "Audit field",
+          "seeds": [
+            "6973e2d9e1cd36659ee4975c"
+          ],
+          "severity": "moderate",
+          "spreadMethod": "Audit field",
+          "symptoms": [
+            "Audit field"
+          ],
+          "treatment": "Audit field",
+          "treatments": []
+        },
+        "url": "/api/diseases"
+      }
+    ],
+    "status": "submitted"
+  },
+  {
+    "path": "/vegetable-calendar",
+    "status": "submitted",
+    "requests": [
+      {
+        "url": "/api/vegetable-calendar",
+        "method": "POST",
+        "payload": {
+          "name": "Audit field",
+          "variety": "Audit field",
+          "location": "Audit field",
+          "sowMonths": [
+            1
+          ],
+          "plantMonths": [],
+          "harvestMonths": [],
+          "notes": "Audit field"
+        }
+      }
+    ]
+  },
+  {
+    "path": "/supplies",
+    "opener": "Add Supplie",
+    "filled": 14,
+    "buttons": [
+      {
+        "disabled": false,
+        "text": "Add Supplie",
+        "type": "button"
+      },
+      {
+        "disabled": false,
+        "text": "Save",
+        "type": "submit"
+      }
+    ],
+    "invalid": [],
+    "alerts": [
+      "Supplies saved."
+    ],
+    "readErrors": [],
+    "requests": [
+      {
+        "method": "POST",
+        "payload": {
+          "bestBefore": "2026-10-31",
+          "brand": "Audit field",
+          "category": null,
+          "caution": "Audit field",
+          "description": "Audit field",
+          "forPlants": "Audit field",
+          "instructions": "Audit field",
+          "name": "Audit field",
+          "notes": "Audit field",
+          "purchaseDate": "2026-10-31",
+          "purchasePrice": 1,
+          "quantity": 1,
+          "solvesIssues": "Audit field",
+          "type": "Audit field",
+          "unit": "Audit field",
+          "vendor": null
+        },
+        "url": "/api/supplies"
+      }
+    ],
+    "status": "submitted"
+  },
+  {
+    "path": "/observations",
+    "opener": "Add Observation",
+    "filled": 8,
+    "buttons": [
+      {
+        "disabled": false,
+        "text": "Add Observation",
+        "type": "button"
+      },
+      {
+        "disabled": false,
+        "text": "Save",
+        "type": "submit"
+      }
+    ],
+    "invalid": [],
+    "alerts": [
+      "Observations saved."
+    ],
+    "readErrors": [],
+    "requests": [
+      {
+        "method": "POST",
+        "payload": {
+          "details": "Audit field",
+          "isActive": true,
+          "light": 1,
+          "moisture": 1,
+          "name": "Audit field",
+          "observationType": "Audit field",
+          "observedAt": "2026-10-31",
+          "tags": [
+            "Audit field"
+          ],
+          "temperature": 1
+        },
+        "url": "/api/observations"
+      }
+    ],
+    "status": "submitted"
+  },
+  {
+    "path": "/fertilizer-applications",
+    "opener": "Add Fertilizer & Soil Amendment",
+    "filled": 10,
+    "buttons": [
+      {
+        "disabled": false,
+        "text": "Add Fertilizer & Soil Amendment",
+        "type": "button"
+      },
+      {
+        "disabled": false,
+        "text": "Save",
+        "type": "submit"
+      }
+    ],
+    "invalid": [],
+    "alerts": [
+      "Fertilizer & Soil Amendments saved."
+    ],
+    "readErrors": [],
+    "requests": [
+      {
+        "method": "POST",
+        "payload": {
+          "applicationDate": "2026-10-31",
+          "description": "Audit field",
+          "fertilizer": null,
+          "isActive": true,
+          "location": "Audit field",
+          "method": "Audit field",
+          "name": "Audit field",
+          "plantName": "Audit field",
+          "problem": "Audit field",
+          "results": "Audit field",
+          "timing": "Audit field",
+          "treatment": "Audit field"
+        },
+        "url": "/api/fertilizer-applications"
+      }
+    ],
+    "status": "submitted"
+  },
+  {
+    "path": "/issues",
+    "opener": "Add Issue",
+    "filled": 7,
+    "buttons": [
+      {
+        "disabled": false,
+        "text": "Add Issue",
+        "type": "button"
+      },
+      {
+        "disabled": false,
+        "text": "Save",
+        "type": "submit"
+      }
+    ],
+    "invalid": [],
+    "alerts": [
+      "Issues saved."
+    ],
+    "readErrors": [],
+    "requests": [
+      {
+        "method": "POST",
+        "payload": {
+          "actionTaken": "Audit field",
+          "description": "Audit field",
+          "isActive": true,
+          "issueType": "Audit field",
+          "observedAt": "2026-10-31",
+          "severity": "Audit field",
+          "status": "Audit field",
+          "title": "Audit field"
+        },
+        "url": "/api/issues"
+      }
+    ],
+    "status": "submitted"
+  },
+  {
+    "path": "/harvest",
+    "opener": "Add Harvest",
+    "filled": 15,
+    "buttons": [
+      {
+        "disabled": false,
+        "text": "Add Harvest",
+        "type": "button"
+      },
+      {
+        "disabled": false,
+        "text": "Save Harvest",
+        "type": "submit"
+      }
+    ],
+    "invalid": [],
+    "alerts": [
+      "Unknown source harvest was saved."
+    ],
+    "readErrors": [],
+    "requests": [
+      {
+        "method": "POST",
+        "payload": {
+          "createdBy": "696c2279c74050a65b3dc18f",
+          "currency": "Audit field",
+          "harvestAmount": {
+            "g": 1,
+            "lb": 1,
+            "oz": 1
+          },
+          "harvestDate": "2026-10-31",
+          "harvestQuantity": 1,
+          "isActive": true,
+          "notes": [
+            {
+              "createdBy": "696c2279c74050a65b3dc18f",
+              "note": "Audit field"
+            }
+          ],
+          "planting": "69795d98ad169090c6104ef7",
+          "quality": null,
+          "quantityUnit": "Audit field",
+          "storeUnitValue": 1,
+          "usableAmount": {
+            "g": 1,
+            "lb": 1,
+            "oz": 1
+          },
+          "wasteAmount": {
+            "g": 1,
+            "lb": 1,
+            "oz": 1
+          }
+        },
+        "url": "/api/harvests"
+      }
+    ],
+    "status": "submitted"
+  },
+  {
+    "path": "/tasks",
+    "opener": "Add Task",
+    "status": "error",
+    "error": "Error: Browser Use encountered an error interacting with this webpage's clipboard: Active element is no longer the expected input target: target token mismatch\nlocator.fill failed for selector input,select,textarea >> nth=1\nLocator diagnostics: {\"kind\":\"action_failed\",\"action\":\"fill\",\"locator\":\"input,select,textarea >> nth=1\",\"matchCount\":1,\"matches\":[{\"ariaLabel\":null,\"disabled\":false,\"role\":null,\"tag\":\"input\",\"text\":\"\",\"type\":null,\"visible\":true}],\"visibleCount\":1,\"truncated\":false}"
+  },
+  {
+    "path": "/journal",
+    "opener": "New entry",
+    "filled": 10,
+    "buttons": [
+      {
+        "disabled": false,
+        "text": "Save entry",
+        "type": "submit"
+      }
+    ],
+    "invalid": [],
+    "alerts": [
+      "Journal entry saved."
+    ],
+    "readErrors": [],
+    "requests": [
+      {
+        "method": "POST",
+        "payload": {
+          "createdBy": "696c2279c74050a65b3dc18f",
+          "durationMinutes": 1,
+          "entry": "Audit field",
+          "entryDate": "2026-10-31",
+          "entryType": "maintenance",
+          "equipment": "696d2060ccfc59b7de2a97a0",
+          "followUpDate": "2026-10-31",
+          "garden": "6955680ee70dc59f22debb81",
+          "gardenSection": "",
+          "hydroDevice": "",
+          "hydroPodPosition": null,
+          "hydroSystem": "",
+          "maintenanceType": "Audit field",
+          "outcome": "completed",
+          "plant": "696f90bdab91d2e0253a5907",
+          "planting": "69795d98ad169090c6104ef7",
+          "seed": "69765e316b8677138a200973",
+          "tags": [
+            "Audit field"
+          ],
+          "title": "Audit field"
+        },
+        "url": "/api/journal-entries"
+      }
+    ],
+    "status": "submitted"
+  },
+  {
+    "path": "/hydroponics",
+    "opener": "Add Run",
+    "filled": 14,
+    "buttons": [
+      {
+        "disabled": false,
+        "text": "Add Run",
+        "type": "button"
+      },
+      {
+        "disabled": false,
+        "text": "Save Run",
+        "type": "submit"
+      }
+    ],
+    "invalid": [],
+    "alerts": [
+      "Aunifun was added."
+    ],
+    "readErrors": [],
+    "requests": [
+      {
+        "method": "POST",
+        "payload": {
+          "createdBy": "696c2279c74050a65b3dc18f",
+          "devices": [
+            {
+              "brand": "Aunifun",
+              "equipment": "696d2060ccfc59b7de2a97a0",
+              "lastReadingAt": null,
+              "lightType": "cool-white",
+              "location": "Audit field",
+              "model": "Audit field",
+              "name": "Aunifun",
+              "notes": "<ul><li><p>Color and Material: the hydroponics planting container is <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"http://gray.It\">gray.It</a> is made of high quality evironmentally PVC-U,exquisite and durable. Size: 28x19x1 3.5cm</p></li><li><p>Package includs: 1 x Hydroponics Planting Box,1 x Buoy,6 x Planting Baskets,6 x Planting Sponges,1 x Air Pump,1 x Bubble Stone,1 x Check Valve,1 x Tweezers. A complete hydroponic system kits can meet your planting needs</p></li><li><p>Wide Application: hydroponic system can be used indoor or outdoor,balcony use, office use, garden use, market use, parterre use, hotel use, <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"http://etc.No\">etc.No</a> soil <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"http://needed.It\">needed.It</a> is convenient for the growth of a variety of plant operations and plant</p></li><li><p>The hydroponic grow kit are suspended in the reservoir beneath the net pots. The roots bathe in nutrient-rich solution throughout the entire grow cycle, which helps plants grow 3-5 times faster than soil grown</p></li><li><p>The Planting Container basin cover and the planting basket adopt the dark material, which can effectively prevent the light from entering the basin, thereby reducing the growth of green algae in the nutrient solution</p></li></ul><p></p>",
+              "nutrientsLevel": 1,
+              "phLevel": 1,
+              "podCount": 12,
+              "productUrl": "https://example.test",
+              "pumpType": "Audit field",
+              "reservoirCapacity": "Audit field",
+              "serialNumber": "Audit field",
+              "systemType": "hydroponic",
+              "temperature": 1,
+              "waterLevel": 1
+            }
+          ],
+          "garden": null,
+          "name": "Aunifun",
+          "notes": "<ul><li><p>Color and Material: the hydroponics planting container is <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"http://gray.It\">gray.It</a> is made of high quality evironmentally PVC-U,exquisite and durable. Size: 28x19x1 3.5cm</p></li><li><p>Package includs: 1 x Hydroponics Planting Box,1 x Buoy,6 x Planting Baskets,6 x Planting Sponges,1 x Air Pump,1 x Bubble Stone,1 x Check Valve,1 x Tweezers. A complete hydroponic system kits can meet your planting needs</p></li><li><p>Wide Application: hydroponic system can be used indoor or outdoor,balcony use, office use, garden use, market use, parterre use, hotel use, <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"http://etc.No\">etc.No</a> soil <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"http://needed.It\">needed.It</a> is convenient for the growth of a variety of plant operations and plant</p></li><li><p>The hydroponic grow kit are suspended in the reservoir beneath the net pots. The roots bathe in nutrient-rich solution throughout the entire grow cycle, which helps plants grow 3-5 times faster than soil grown</p></li><li><p>The Planting Container basin cover and the planting basket adopt the dark material, which can effectively prevent the light from entering the basin, thereby reducing the growth of green algae in the nutrient solution</p></li></ul><p></p>",
+          "startedDate": "2026-10-31",
+          "systemType": "hydroponic"
+        },
+        "url": "/api/hydro-systems"
+      }
+    ],
+    "status": "submitted"
+  },
+  {
+    "path": "/companion-planting",
+    "opener": "Add companions",
+    "filled": 1,
+    "buttons": [
+      {
+        "disabled": false,
+        "text": "Add companions",
+        "type": "button"
+      },
+      {
+        "disabled": false,
+        "text": "Add another companion",
+        "type": "button"
+      },
+      {
+        "disabled": false,
+        "text": "Save companions",
+        "type": "submit"
+      }
+    ],
+    "invalid": [],
+    "alerts": [
+      "Companions saved."
+    ],
+    "readErrors": [],
+    "requests": [
+      {
+        "method": "POST",
+        "payload": {
+          "companions": [],
+          "libraryId": "6973e2d9e1cd36659ee4975c",
+          "libraryType": "seed",
+          "name": "Acorn Squash",
+          "notes": "Audit field"
+        },
+        "url": "/api/companion-planting"
+      }
+    ],
+    "status": "submitted"
+  },
+  {
+    "path": "/vendors/equipment",
+    "opener": "Add Vendor",
+    "filled": 13,
+    "buttons": [
+      {
+        "disabled": false,
+        "text": "Add Vendor",
+        "type": "button"
+      },
+      {
+        "disabled": false,
+        "text": "Save Vendor",
+        "type": "submit"
+      }
+    ],
+    "invalid": [],
+    "alerts": [],
+    "readErrors": [],
+    "requests": [
+      {
+        "method": "POST",
+        "payload": {
+          "address1": "Audit field",
+          "address2": "Audit field",
+          "city": "Audit field",
+          "companyName": "Audit field",
+          "contactName": "Audit field",
+          "country": "69c69960e6ad14a1646991a6",
+          "description": "Audit field",
+          "email": "audit@example.test",
+          "isActive": true,
+          "isInternational": false,
+          "name": "Audit field",
+          "phone": "Audit field",
+          "postalCode": "10001",
+          "state": "6953d308d9df87ca20ba9196",
+          "website": "https://example.test"
+        },
+        "url": "/api/equipment-vendors"
+      }
+    ],
+    "status": "submitted"
+  },
+  {
+    "path": "/vendors/seeds",
+    "opener": "Add Vendor",
+    "filled": 13,
+    "buttons": [
+      {
+        "disabled": false,
+        "text": "Add Vendor",
+        "type": "button"
+      },
+      {
+        "disabled": false,
+        "text": "Save Vendor",
+        "type": "submit"
+      }
+    ],
+    "invalid": [],
+    "alerts": [],
+    "readErrors": [],
+    "requests": [
+      {
+        "method": "POST",
+        "payload": {
+          "address1": "Audit field",
+          "address2": "Audit field",
+          "city": "Audit field",
+          "companyName": "Audit field",
+          "contactName": "Audit field",
+          "country": "69c69960e6ad14a1646991a6",
+          "description": "Audit field",
+          "email": "audit@example.test",
+          "isActive": true,
+          "isInternational": false,
+          "logo": "",
+          "name": "Audit field",
+          "phone": "Audit field",
+          "postalCode": "10001",
+          "state": "6953d308d9df87ca20ba9196",
+          "website": "https://example.test"
+        },
+        "url": "/api/seed-vendors"
+      }
+    ],
+    "status": "submitted"
+  },
+  {
+    "path": "/vendors/supplies",
+    "opener": "Add Vendor",
+    "filled": 13,
+    "buttons": [
+      {
+        "disabled": false,
+        "text": "Add Vendor",
+        "type": "button"
+      },
+      {
+        "disabled": false,
+        "text": "Save Vendor",
+        "type": "submit"
+      }
+    ],
+    "invalid": [],
+    "alerts": [],
+    "readErrors": [],
+    "requests": [
+      {
+        "method": "POST",
+        "payload": {
+          "address1": "Audit field",
+          "address2": "Audit field",
+          "city": "Audit field",
+          "companyName": "Audit field",
+          "contactName": "Audit field",
+          "country": "69c69960e6ad14a1646991a6",
+          "description": "Audit field",
+          "email": "audit@example.test",
+          "isActive": true,
+          "isInternational": false,
+          "name": "Audit field",
+          "phone": "Audit field",
+          "postalCode": "10001",
+          "state": "6953d308d9df87ca20ba9196",
+          "website": "https://example.test"
+        },
+        "url": "/api/supply-vendors"
+      }
+    ],
+    "status": "submitted"
+  },
+  {
+    "path": "/contact",
+    "opener": null,
+    "status": "error",
+    "error": "Cannot read properties of null (reading 'unicode')"
+  },
+  {
+    "path": "/gardens/:id",
+    "opener": "Add Seed",
+    "filled": 2,
+    "buttons": [
+      {
+        "disabled": false,
+        "text": "Add Seed",
+        "type": "button"
+      },
+      {
+        "disabled": false,
+        "text": "Add Plant",
+        "type": "button"
+      },
+      {
+        "disabled": false,
+        "text": "Add Section",
+        "type": "button"
+      }
+    ],
+    "invalid": [],
+    "alerts": [],
+    "readErrors": [],
+    "requests": [],
+    "status": "blocked"
+  },
+  {
+    "path": "/gardens/:id",
+    "opener": "Add Plant",
+    "filled": 2,
+    "buttons": [
+      {
+        "disabled": false,
+        "text": "Add Seed",
+        "type": "button"
+      },
+      {
+        "disabled": false,
+        "text": "Add Plant",
+        "type": "button"
+      },
+      {
+        "disabled": false,
+        "text": "Add Section",
+        "type": "button"
+      }
+    ],
+    "invalid": [],
+    "alerts": [],
+    "readErrors": [],
+    "requests": [],
+    "status": "blocked"
+  },
+  {
+    "path": "/gardens/:id",
+    "opener": "Add Section",
+    "filled": 16,
+    "buttons": [
+      {
+        "disabled": false,
+        "text": "Add Seed",
+        "type": "button"
+      },
+      {
+        "disabled": false,
+        "text": "Add Plant",
+        "type": "button"
+      },
+      {
+        "disabled": false,
+        "text": "Add Section",
+        "type": "button"
+      },
+      {
+        "disabled": false,
+        "text": "Save Section",
+        "type": "submit"
+      }
+    ],
+    "invalid": [],
+    "alerts": [
+      "Audit field was saved."
+    ],
+    "readErrors": [],
+    "requests": [
+      {
+        "method": "POST",
+        "payload": {
+          "createdBy": "696c2279c74050a65b3dc18f",
+          "drainage": "Audit field",
+          "garden": "6955680ee70dc59f22debb80",
+          "isActive": true,
+          "layoutPlan": "Audit field",
+          "locationDescription": "Audit field",
+          "name": "Audit field",
+          "notes": [
+            {
+              "createdBy": "696c2279c74050a65b3dc18f",
+              "date": "2026-10-31T22:02:58.951Z",
+              "note": "Audit field"
+            }
+          ],
+          "size": {
+            "imperial": [
+              {
+                "label": "Length",
+                "unit": "6a385b5c97eace101807d23d",
+                "value": 1
+              },
+              {
+                "label": "Width",
+                "unit": "6a385b5c97eace101807d23d",
+                "value": 1
+              }
+            ],
+            "metric": [
+              {
+                "label": "Length",
+                "unit": "69d96ed345dc0c6f68ce4d8c",
+                "value": 1
+              },
+              {
+                "label": "Width",
+                "unit": "69d96ed345dc0c6f68ce4d8c",
+                "value": 1
+              }
+            ]
+          },
+          "soilType": "Audit field",
+          "sunExposure": "Audit field",
+          "type": "6ae624b9f5091c5f239b6396"
+        },
+        "url": "/api/garden-sections"
+      }
+    ],
+    "status": "submitted"
+  },
+  {
+    "path": "/admin/businesses",
+    "opener": "Add Business",
+    "filled": 16,
+    "buttons": [
+      {
+        "disabled": false,
+        "text": "Add Business",
+        "type": "button"
+      },
+      {
+        "disabled": false,
+        "text": "Add",
+        "type": "button"
+      },
+      {
+        "disabled": false,
+        "text": "Save Business",
+        "type": "submit"
+      }
+    ],
+    "invalid": [],
+    "alerts": [],
+    "readErrors": [
+      {
+        "status": 404,
+        "url": "/api/businesses/6ae000000000000000000001"
+      }
+    ],
+    "requests": [
+      {
+        "method": "POST",
+        "payload": {
+          "addressLine1": "Audit field",
+          "addressLine2": "Audit field",
+          "city": "Audit field",
+          "code": "audfie",
+          "countryRef": "69c69960e6ad14a1646991a6",
+          "countyRef": "69d2fa9adf576c3b6b179fcb",
+          "email": "audit@example.test",
+          "fax": "",
+          "footerId": "6a4ac33c82a2e24e933db6eb",
+          "isActive": true,
+          "legalName": "Audit field",
+          "logo": "Audit field",
+          "notes": "Audit field",
+          "phone": "",
+          "postalCode": "10001",
+          "receiptFooterId": null,
+          "receiptHeaderId": null,
+          "receiptSubHeaderId": null,
+          "receiptTemplateId": null,
+          "receiptsEnabled": true,
+          "showAddressOnReceipt": true,
+          "showEmailOnReceipt": true,
+          "showFaxOnReceipt": false,
+          "showLogoOnReceipt": true,
+          "showPhoneOnReceipt": true,
+          "showTaxRateOnReceipt": true,
+          "showWebsiteOnReceipt": true,
+          "slug": "",
+          "stateRef": "6953d308d9df87ca20ba9196",
+          "taglineId": "6a358f1ec4ca1493e0c83053",
+          "taxRateRef": "6a42947bd8cc8b54ecba97a6",
+          "themeColors": {
+            "accent": {
+              "colorName": "",
+              "value": "#c9902e"
+            },
+            "accent2": {
+              "colorName": "",
+              "value": "#b85d3d"
+            },
+            "accentHover": {
+              "colorName": "",
+              "value": "#a8731f"
+            },
+            "backgroundTreatment": {
+              "gradientDirection": "180deg",
+              "gradientDirectionMode": "preset",
+              "gradientEnd": "#b7c9ad",
+              "gradientEndStop": 100,
+              "gradientStart": "#cfdcc8",
+              "gradientStartStop": 0,
+              "gradientToken": "gradientSoft",
+              "gradientType": "linear",
+              "image": "",
+              "imageOpacity": 0.08,
+              "imagePosition": "center",
+              "imageRepeat": "no-repeat",
+              "imageSize": "cover",
+              "mode": "color",
+              "overlayOpacity": 0
+            },
+            "bg": {
+              "colorName": "",
+              "value": "#e9f4f1"
+            },
+            "bgAlt": {
+              "colorName": "",
+              "value": "#cfdcc8"
+            },
+            "border": {
+              "colorName": "",
+              "value": "#94a619"
+            },
+            "borderStrong": {
+              "colorName": "",
+              "value": "#054713"
+            },
+            "danger": {
+              "colorName": "",
+              "value": "#a7472f"
+            },
+            "fontBody": {
+              "fallbackFont": "",
+              "fontName": ""
+            },
+            "fontHeading": {
+              "fallbackFont": "",
+              "fontName": ""
+            },
+            "gradientMain": "linear-gradient(90deg,#e9f4f1 0%,#cfdcc8 100%)",
+            "gradientSoft": "linear-gradient(90deg,#6b8c59 0%,#99c581 100%)",
+            "heading": {
+              "colorName": "",
+              "value": "#173f2a"
+            },
+            "info": {
+              "colorName": "",
+              "value": "#547f84"
+            },
+            "overlay": {
+              "colorName": "",
+              "value": "#111c15"
+            },
+            "primary": {
+              "colorName": "",
+              "value": "#0f4a2f"
+            },
+            "primaryHover": {
+              "colorName": "",
+              "value": "#183126"
+            },
+            "secondary": {
+              "colorName": "",
+              "value": "#7f935f"
+            },
+            "secondaryHover": {
+              "colorName": "",
+              "value": "#657748"
+            },
+            "selectionBg": {
+              "colorName": "",
+              "value": "#ecd29d"
+            },
+            "selectionText": {
+              "colorName": "",
+              "value": "#b9e7c5"
+            },
+            "success": {
+              "colorName": "",
+              "value": "#2f7d57"
+            },
+            "surface": {
+              "colorName": "",
+              "value": "#f6f2dd"
+            },
+            "surface2": {
+              "colorName": "",
+              "value": "#eef3e8"
+            },
+            "tableStripe": {
+              "colorName": "",
+              "value": "#136810"
+            },
+            "text": {
+              "colorName": "",
+              "value": "#243f2e"
+            },
+            "textInverse": {
+              "colorName": "",
+              "value": "#fff8e8"
+            },
+            "textSoft": {
+              "colorName": "",
+              "value": "#38a6a6"
+            },
+            "warning": {
+              "colorName": "",
+              "value": "#c98a24"
+            }
+          },
+          "typeRef": "69d5a1439f7816a494bba831",
+          "website": "https://example.test"
+        },
+        "url": "/api/businesses"
+      }
+    ],
+    "status": "submitted"
+  },
+  {
+    "path": "/admin/business-types",
+    "opener": "Add Business Type",
+    "filled": 4,
+    "buttons": [
+      {
+        "disabled": false,
+        "text": "Add Business Type",
+        "type": "button"
+      },
+      {
+        "disabled": false,
+        "text": "Create",
+        "type": "submit"
+      }
+    ],
+    "invalid": [],
+    "alerts": [
+      "Business type created"
+    ],
+    "readErrors": [],
+    "requests": [
+      {
+        "method": "POST",
+        "payload": {
+          "code": "AUDIT-FIELDAUDIT-FIELD",
+          "description": "Audit field",
+          "isActive": true,
+          "name": "Audit field",
+          "notes": "Audit field"
+        },
+        "url": "/api/business-types"
+      }
+    ],
+    "status": "submitted"
+  },
+  {
+    "path": "/admin/app-keys",
+    "opener": "Add App Key",
+    "filled": 3,
+    "buttons": [
+      {
+        "disabled": false,
+        "text": "Add App Key",
+        "type": "button"
+      },
+      {
+        "disabled": false,
+        "text": "Create",
+        "type": "submit"
+      }
+    ],
+    "invalid": [],
+    "alerts": [
+      "App key created"
+    ],
+    "readErrors": [],
+    "requests": [
+      {
+        "method": "POST",
+        "payload": {
+          "appKey": "audit-fieldaudit-field",
+          "businessRef": "69ddf9eeec8e53cfd2436847",
+          "isActive": true,
+          "name": "Audit field"
+        },
+        "url": "/api/app-keys"
+      }
+    ],
+    "status": "submitted"
+  },
+  {
+    "path": "/admin/tax-rates",
+    "opener": "Add Tax Rate",
+    "filled": 5,
+    "buttons": [
+      {
+        "disabled": false,
+        "text": "Add Tax Rate",
+        "type": "button"
+      },
+      {
+        "disabled": false,
+        "text": "Save Tax Rate",
+        "type": "submit"
+      }
+    ],
+    "invalid": [],
+    "alerts": [
+      "Tax rate created successfully."
+    ],
+    "readErrors": [],
+    "requests": [
+      {
+        "method": "POST",
+        "payload": {
+          "code": "Audit field",
+          "isActive": true,
+          "isDefault": false,
+          "name": "Audit field",
+          "notes": "Audit field",
+          "rate": 1,
+          "stateRef": "6953d308d9df87ca20ba9196"
+        },
+        "url": "/api/tax-rates"
+      }
+    ],
+    "status": "submitted"
+  },
+  {
+    "path": "/admin/seasons",
+    "opener": "Add Season",
+    "filled": 7,
+    "buttons": [
+      {
+        "disabled": false,
+        "text": "Add Season",
+        "type": "button"
+      },
+      {
+        "disabled": false,
+        "text": "Save Season",
+        "type": "submit"
+      }
+    ],
+    "invalid": [
+      {
+        "id": "",
+        "message": "Please fill out this field.",
+        "type": "datetime-local"
+      },
+      {
+        "id": "",
+        "message": "Please fill out this field.",
+        "type": "datetime-local"
+      }
+    ],
+    "alerts": [],
+    "readErrors": [],
+    "requests": [],
+    "status": "blocked"
+  },
+  {
+    "path": "/admin/holidays",
+    "opener": "Add Holiday",
+    "filled": 6,
+    "buttons": [
+      {
+        "disabled": false,
+        "text": "Add Holiday",
+        "type": "button"
+      },
+      {
+        "disabled": false,
+        "text": "Save Holiday",
+        "type": "submit"
+      }
+    ],
+    "invalid": [
+      {
+        "id": "",
+        "message": "Please fill out this field.",
+        "type": "datetime-local"
+      },
+      {
+        "id": "",
+        "message": "Please fill out this field.",
+        "type": "datetime-local"
+      }
+    ],
+    "alerts": [],
+    "readErrors": [],
+    "requests": [],
+    "status": "blocked"
+  },
+  {
+    "path": "/admin/vendors",
+    "opener": "Add",
+    "filled": 7,
+    "buttons": [
+      {
+        "disabled": false,
+        "text": "Add",
+        "type": "button"
+      },
+      {
+        "disabled": false,
+        "text": "Save Vendor",
+        "type": "submit"
+      }
+    ],
+    "invalid": [],
+    "alerts": [],
+    "readErrors": [],
+    "requests": [
+      {
+        "method": "POST",
+        "payload": {
+          "addresses": [],
+          "business_id": "69ddf9eeec8e53cfd2436847",
+          "code": "Audit field",
+          "compliance": {},
+          "contacts": [],
+          "dbaName": "Audit field",
+          "email": "audit@example.test",
+          "fax": "",
+          "isActive": true,
+          "isPreferred": false,
+          "legalName": "Audit field",
+          "logo": "",
+          "notes": "",
+          "ordering": {},
+          "payment": {},
+          "performance": {},
+          "phone": "Audit field",
+          "vendorCategory": "Audit field",
+          "website": ""
+        },
+        "url": "/api/vendors"
+      }
+    ],
+    "status": "submitted"
+  },
+  {
+    "path": "/gardens/:id",
+    "opener": "Add Seed",
+    "requests": [
+      {
+        "url": "/api/plantings",
+        "method": "POST",
+        "payload": {
+          "sourceType": "seed",
+          "seed": "6973e2d9e1cd36659ee4975c",
+          "plant": null,
+          "gardenSection": "",
+          "instanceName": "Audit field",
+          "plantedDate": "2026-10-31",
+          "quantity": 1,
+          "garden": "6955680ee70dc59f22debb80",
+          "status": "active",
+          "createdBy": "696c2279c74050a65b3dc18f"
+        }
+      }
+    ]
+  },
+  {
+    "path": "/tasks",
+    "requests": [
+      {
+        "url": "/api/tasks",
+        "method": "POST",
+        "payload": {
+          "name": "Audit task",
+          "description": "Audit task notes",
+          "dueDate": "2026-10-31T12:00",
+          "status": "pending",
+          "priority": "Medium",
+          "message": ""
+        }
+      }
+    ]
+  },
+  {
+    "path": "/seeds/form",
+    "sections": [
+      {
+        "name": "Basic Information",
+        "filled": 4,
+        "alerts": []
+      },
+      {
+        "name": "Flavor Profile",
+        "filled": 9,
+        "alerts": []
+      },
+      {
+        "name": "Species",
+        "filled": 1,
+        "alerts": []
+      },
+      {
+        "name": "Lifecycle",
+        "filled": 4,
+        "alerts": []
+      },
+      {
+        "name": "Growth",
+        "filled": 13,
+        "alerts": []
+      },
+      {
+        "name": "Conditions",
+        "filled": 7,
+        "alerts": []
+      },
+      {
+        "name": "Stress",
+        "filled": 11,
+        "alerts": []
+      },
+      {
+        "name": "Planting",
+        "filled": 1,
+        "alerts": []
+      },
+      {
+        "name": "Pest/Disease",
+        "filled": 0,
+        "alerts": []
+      },
+      {
+        "name": "Propagation",
+        "filled": 0,
+        "alerts": []
+      },
+      {
+        "name": "Pollination",
+        "filled": 0,
+        "alerts": []
+      },
+      {
+        "name": "Harvesting",
+        "filled": 2,
+        "alerts": []
+      },
+      {
+        "name": "Storage",
+        "filled": 1,
+        "alerts": []
+      },
+      {
+        "name": "Uses/Benefits",
+        "filled": 2,
+        "alerts": []
+      },
+      {
+        "name": "Nutrition",
+        "filled": 0,
+        "alerts": []
+      },
+      {
+        "name": "Environmental",
+        "filled": 0,
+        "alerts": []
+      },
+      {
+        "name": "Features",
+        "filled": 0,
+        "alerts": []
+      },
+      {
+        "name": "History",
+        "filled": 1,
+        "alerts": []
+      },
+      {
+        "name": "Culture",
+        "filled": 0,
+        "alerts": []
+      },
+      {
+        "name": "Resources",
+        "filled": 0,
+        "alerts": []
+      },
+      {
+        "name": "Admin Details",
+        "filled": 4,
+        "alerts": []
+      }
+    ],
+    "requests": [
+      {
+        "url": "/api/seeds",
+        "method": "POST",
+        "payload": {
+          "plantName": "Audit field",
+          "description": "Audit field",
+          "context": "Audit field",
+          "coverImage": "",
+          "taste": [
+            "Audit field",
+            "Audit field",
+            "Audit field"
+          ],
+          "aroma": [
+            "Audit field",
+            "Audit field",
+            "Audit field"
+          ],
+          "mouthfeel": [
+            "Audit field",
+            "Audit field",
+            "Audit field"
+          ],
+          "species": "69765f6263bd70b0328ae3d6",
+          "plantType": "697ec9a2fbacf78d991a5859",
+          "lifecycleInformation": {
+            "lifecycleType": "695548f3665e92102248fa3a",
+            "lifespan": "",
+            "lifespanDescription": "Audit field",
+            "hardiness": "Audit field"
+          },
+          "growthInformation": {
+            "germinationTime": {
+              "min": "Audit field",
+              "max": "Audit field"
+            },
+            "growthRate": "69556496e70dc59f22debb30",
+            "bulbSize": "Audit field",
+            "matureSize": {
+              "height": {
+                "minIn": 1,
+                "maxIn": 1,
+                "minCm": 2.54,
+                "maxCm": 2.54
+              },
+              "width": {
+                "minIn": 1,
+                "maxIn": 1,
+                "minCm": 2.54,
+                "maxCm": 2.54
+              }
+            },
+            "plantingDepth": "69554d14665e92102248fa89",
+            "plantSpacing": "69556bf9e70dc59f22debbcb",
+            "sunlightRequirements": "Audit field",
+            "usdaZoneRange": "Audit field",
+            "usdaZones": [
+              "695e988c7dc0456e29eba70c"
+            ],
+            "hardinessZonesWithCorrespondingRegionsStates": [
+              {
+                "zone": "1A",
+                "region": "High Arctic / Extreme Polar",
+                "states": [
+                  "Alaska"
+                ],
+                "temperatureRange": {
+                  "fahrenheit": {
+                    "min": -60,
+                    "max": -55
+                  },
+                  "celsius": {
+                    "min": -51.1,
+                    "max": -48.3
+                  }
+                },
+                "description": "-60°F to -55°F / -51.1°C to -48.3°C",
+                "avgFrostDates": {},
+                "plantingWindows": {}
+              }
+            ]
+          },
+          "growingConditionsAndRequirements": {
+            "soilType": "69555028665e92102248fac0",
+            "plantSoilTemp": "69555094665e92102248fac2",
+            "phRequirements": "Audit field",
+            "climateTolerance": "Audit field",
+            "wateringRequirements": "695554d9665e92102248fb11",
+            "lightRequirements": "69929dafc4f2b353add52d1d",
+            "watering": "Audit field",
+            "seasonalCareTips": {
+              "pruning": [],
+              "fertilizing": [],
+              "protection": []
+            }
+          },
+          "sustainableGrowingPractices": {
+            "organicMethods": [],
+            "waterConservation": [],
+            "soilHealthImprovement": [],
+            "encouragingBiodiversity": []
+          },
+          "stressRisk": {
+            "title": "Audit field",
+            "overview": "Audit field",
+            "temperatureStress": {
+              "above": "Audit field",
+              "below": "Audit field"
+            },
+            "waterStress": {
+              "overwatering": "Audit field",
+              "underwatering": "Audit field"
+            },
+            "nutrientStress": {
+              "deficiency": "Audit field",
+              "excess": "Audit field"
+            },
+            "lightStress": {
+              "lowLight": "Audit field",
+              "excessLight": "Audit field"
+            },
+            "transplantShock": "Audit field",
+            "mitigationTips": []
+          },
+          "plantingInformation": {
+            "plantingSeasons": "",
+            "seasonDescription": "",
+            "startIndoors": {
+              "timing": "Audit field",
+              "materialsNeeded": [],
+              "careTips": []
+            },
+            "companionPlants": [],
+            "coverCrops": [],
+            "trapCrops": [],
+            "directSowOutdoors": {
+              "guidelines": []
+            },
+            "hydroponicGrowth": false,
+            "growingFromScraps": [],
+            "apartmentGardening": []
+          },
+          "pestManagement": [],
+          "diseaseManagement": [],
+          "propagationMethods": {
+            "method": [],
+            "notes": []
+          },
+          "pollinationInformation": [],
+          "attractingPollinators": [],
+          "harvestingInformation": {
+            "harvestTime": "Audit field",
+            "harvestTimeAfterGermination": "Audit field",
+            "techniques": []
+          },
+          "storageTips": [],
+          "growingNotes": "Audit field",
+          "usesAndBenefits": {
+            "edibility": "Audit field",
+            "medicinal": false,
+            "medicinalUses": {
+              "pros": [],
+              "cons": []
+            },
+            "toxicity": "Audit field"
+          },
+          "nutritionalInformation": [],
+          "environmentalImpact": {
+            "impact": []
+          },
+          "specialFeatures": [],
+          "historicalInformation": {
+            "foodOrigin": "Audit field",
+            "events": []
+          },
+          "culturalInformation": [],
+          "resourcesAndLinks": {
+            "notableReferenceLinks": [],
+            "suggestedSeedLinks": []
+          },
+          "vendor": [],
+          "lotNumber": "Audit field",
+          "dateCollected": "",
+          "packedFor": "Audit field",
+          "images": [],
+          "tags": [
+            "Audit field"
+          ],
+          "isPublic": false,
+          "user": "696c2279c74050a65b3dc18f"
+        }
+      }
+    ]
+  },
+  {
+    "path": "/seeds/form",
+    "requests": [
+      {
+        "url": "/api/seeds",
+        "method": "POST",
+        "payload": {
+          "plantName": "Audit field",
+          "description": "Audit field",
+          "context": "Audit field",
+          "coverImage": "",
+          "taste": [
+            "Audit field",
+            "Audit field",
+            "Audit field"
+          ],
+          "aroma": [
+            "Audit field",
+            "Audit field",
+            "Audit field"
+          ],
+          "mouthfeel": [
+            "Audit field",
+            "Audit field",
+            "Audit field"
+          ],
+          "species": "69765f6263bd70b0328ae3d6",
+          "plantType": "697ec9a2fbacf78d991a5859",
+          "lifecycleInformation": {
+            "lifecycleType": "695548f3665e92102248fa3a",
+            "lifespan": "",
+            "lifespanDescription": "Audit field",
+            "hardiness": "Audit field"
+          },
+          "growthInformation": {
+            "germinationTime": {
+              "min": "Audit field",
+              "max": "Audit field"
+            },
+            "growthRate": "69556496e70dc59f22debb30",
+            "bulbSize": "Audit field",
+            "matureSize": {
+              "height": {
+                "minIn": 1,
+                "maxIn": 1,
+                "minCm": 2.54,
+                "maxCm": 2.54
+              },
+              "width": {
+                "minIn": 1,
+                "maxIn": 1,
+                "minCm": 2.54,
+                "maxCm": 2.54
+              }
+            },
+            "plantingDepth": "69554d14665e92102248fa89",
+            "plantSpacing": "69556bf9e70dc59f22debbcb",
+            "sunlightRequirements": "Audit field",
+            "usdaZoneRange": "Audit field",
+            "usdaZones": [
+              "695e988c7dc0456e29eba70c"
+            ],
+            "hardinessZonesWithCorrespondingRegionsStates": [
+              {
+                "zone": "1A",
+                "region": "High Arctic / Extreme Polar",
+                "states": [
+                  "Alaska"
+                ],
+                "temperatureRange": {
+                  "fahrenheit": {
+                    "min": -60,
+                    "max": -55
+                  },
+                  "celsius": {
+                    "min": -51.1,
+                    "max": -48.3
+                  }
+                },
+                "description": "-60°F to -55°F / -51.1°C to -48.3°C",
+                "avgFrostDates": {},
+                "plantingWindows": {}
+              }
+            ]
+          },
+          "growingConditionsAndRequirements": {
+            "soilType": "69555028665e92102248fac0",
+            "plantSoilTemp": "69555094665e92102248fac2",
+            "phRequirements": "Audit field",
+            "climateTolerance": "Audit field",
+            "wateringRequirements": "695554d9665e92102248fb11",
+            "lightRequirements": "69929dafc4f2b353add52d1d",
+            "watering": "Audit field",
+            "seasonalCareTips": {
+              "pruning": [],
+              "fertilizing": [],
+              "protection": []
+            }
+          },
+          "sustainableGrowingPractices": {
+            "organicMethods": [],
+            "waterConservation": [],
+            "soilHealthImprovement": [],
+            "encouragingBiodiversity": []
+          },
+          "stressRisk": {
+            "title": "Audit field",
+            "overview": "Audit field",
+            "temperatureStress": {
+              "above": "Audit field",
+              "below": "Audit field"
+            },
+            "waterStress": {
+              "overwatering": "Audit field",
+              "underwatering": "Audit field"
+            },
+            "nutrientStress": {
+              "deficiency": "Audit field",
+              "excess": "Audit field"
+            },
+            "lightStress": {
+              "lowLight": "Audit field",
+              "excessLight": "Audit field"
+            },
+            "transplantShock": "Audit field",
+            "mitigationTips": []
+          },
+          "plantingInformation": {
+            "plantingSeasons": "",
+            "seasonDescription": "",
+            "startIndoors": {
+              "timing": "Audit field",
+              "materialsNeeded": [],
+              "careTips": []
+            },
+            "companionPlants": [],
+            "coverCrops": [],
+            "trapCrops": [],
+            "directSowOutdoors": {
+              "guidelines": []
+            },
+            "hydroponicGrowth": false,
+            "growingFromScraps": [],
+            "apartmentGardening": []
+          },
+          "pestManagement": [],
+          "diseaseManagement": [],
+          "propagationMethods": {
+            "method": [],
+            "notes": []
+          },
+          "pollinationInformation": [],
+          "attractingPollinators": [],
+          "harvestingInformation": {
+            "harvestTime": "Audit field",
+            "harvestTimeAfterGermination": "Audit field",
+            "techniques": []
+          },
+          "storageTips": [],
+          "growingNotes": "Audit field",
+          "usesAndBenefits": {
+            "edibility": "Audit field",
+            "medicinal": false,
+            "medicinalUses": {
+              "pros": [],
+              "cons": []
+            },
+            "toxicity": "Audit field"
+          },
+          "nutritionalInformation": [],
+          "environmentalImpact": {
+            "impact": []
+          },
+          "specialFeatures": [],
+          "historicalInformation": {
+            "foodOrigin": "Audit field",
+            "events": []
+          },
+          "culturalInformation": [],
+          "resourcesAndLinks": {
+            "notableReferenceLinks": [],
+            "suggestedSeedLinks": []
+          },
+          "vendor": [],
+          "lotNumber": "Audit field",
+          "dateCollected": "",
+          "packedFor": "Audit field",
+          "images": [],
+          "tags": [
+            "Audit field"
+          ],
+          "isPublic": false,
+          "user": "696c2279c74050a65b3dc18f"
+        }
+      },
+      {
+        "url": "/api/seeds",
+        "method": "POST",
+        "payload": {
+          "plantName": "",
+          "description": "",
+          "context": "",
+          "coverImage": "",
+          "taste": [],
+          "aroma": [],
+          "mouthfeel": [],
+          "species": "",
+          "plantType": "",
+          "lifecycleInformation": {
+            "lifecycleType": "",
+            "lifespan": "",
+            "lifespanDescription": "",
+            "hardiness": ""
+          },
+          "growthInformation": {
+            "germinationTime": {
+              "min": "",
+              "max": ""
+            },
+            "growthRate": "",
+            "bulbSize": "",
+            "matureSize": {
+              "height": {
+                "minIn": "",
+                "maxIn": "",
+                "minCm": "",
+                "maxCm": ""
+              },
+              "width": {
+                "minIn": "",
+                "maxIn": "",
+                "minCm": "",
+                "maxCm": ""
+              }
+            },
+            "plantingDepth": "",
+            "plantSpacing": "",
+            "sunlightRequirements": "",
+            "usdaZoneRange": "",
+            "usdaZones": [],
+            "hardinessZonesWithCorrespondingRegionsStates": []
+          },
+          "growingConditionsAndRequirements": {
+            "soilType": "",
+            "plantSoilTemp": "",
+            "phRequirements": "",
+            "climateTolerance": "",
+            "wateringRequirements": "",
+            "lightRequirements": "",
+            "watering": "",
+            "seasonalCareTips": {
+              "pruning": [],
+              "fertilizing": [],
+              "protection": []
+            }
+          },
+          "sustainableGrowingPractices": {
+            "organicMethods": [],
+            "waterConservation": [],
+            "soilHealthImprovement": [],
+            "encouragingBiodiversity": []
+          },
+          "stressRisk": {
+            "title": "",
+            "overview": "",
+            "temperatureStress": {
+              "above": "",
+              "below": ""
+            },
+            "waterStress": {
+              "overwatering": "",
+              "underwatering": ""
+            },
+            "nutrientStress": {
+              "deficiency": "",
+              "excess": ""
+            },
+            "lightStress": {
+              "lowLight": "",
+              "excessLight": ""
+            },
+            "transplantShock": "",
+            "mitigationTips": []
+          },
+          "plantingInformation": {
+            "plantingSeasons": "",
+            "seasonDescription": "Saved season details",
+            "startIndoors": {
+              "timing": "",
+              "materialsNeeded": [],
+              "careTips": []
+            },
+            "companionPlants": [],
+            "coverCrops": [],
+            "trapCrops": [],
+            "directSowOutdoors": {
+              "guidelines": []
+            },
+            "hydroponicGrowth": false,
+            "growingFromScraps": [],
+            "apartmentGardening": []
+          },
+          "pestManagement": [],
+          "diseaseManagement": [],
+          "propagationMethods": {
+            "method": [],
+            "notes": []
+          },
+          "pollinationInformation": [],
+          "attractingPollinators": [],
+          "harvestingInformation": {
+            "harvestTime": "",
+            "harvestTimeAfterGermination": "",
+            "techniques": []
+          },
+          "storageTips": [],
+          "growingNotes": "",
+          "usesAndBenefits": {
+            "edibility": "",
+            "medicinal": false,
+            "medicinalUses": {
+              "pros": [],
+              "cons": []
+            },
+            "toxicity": ""
+          },
+          "nutritionalInformation": [],
+          "environmentalImpact": {
+            "impact": []
+          },
+          "specialFeatures": [],
+          "historicalInformation": {
+            "foodOrigin": "",
+            "events": []
+          },
+          "culturalInformation": [],
+          "resourcesAndLinks": {
+            "notableReferenceLinks": [],
+            "suggestedSeedLinks": []
+          },
+          "vendor": [],
+          "lotNumber": "",
+          "dateCollected": "",
+          "packedFor": "",
+          "images": [],
+          "tags": [],
+          "isPublic": false,
+          "user": "696c2279c74050a65b3dc18f"
+        }
+      }
+    ]
+  },
+  {
+    "path": "/plants",
+    "opener": "Edit Plant",
+    "mode": "unchanged edit",
+    "requests": [
+      {
+        "url": "/api/plants/695dd663d1cd09c94013e1a9",
+        "method": "PUT",
+        "payload": {
+          "name": "Sweet Basil",
+          "scientificName": "",
+          "family": "",
+          "type": null,
+          "seed": null,
+          "description": "It didn't take well being transferred to soil from hydroponics.",
+          "growingConditions": {
+            "sunlight": "West · 4 hours",
+            "water": "",
+            "soil": "",
+            "temperature": ""
+          },
+          "spacing": {
+            "metric": null,
+            "imperial": null
+          },
+          "growthDurationDays": null,
+          "status": "active",
+          "isActive": true,
+          "images": [],
+          "tags": [],
+          "notes": [],
+          "plantingRecord": {
+            "plantedDate": "2024-03-06",
+            "deathDate": "2024-04-09",
+            "indoors": true,
+            "outdoors": false,
+            "sunDirection": "West",
+            "sunExposureHours": 4,
+            "batchNumber": "",
+            "location": "Hydroponic System"
+          }
+        }
+      }
+    ],
+    "alerts": [],
+    "invalid": [],
+    "readErrors": []
+  },
+  {
+    "path": "/equipment",
+    "opener": "Edit",
+    "mode": "unchanged edit",
+    "requests": [
+      {
+        "url": "/api/equipment/696d2060ccfc59b7de2a97a0",
+        "method": "PUT",
+        "payload": {
+          "name": "Aunifun",
+          "description": "Hydroponics Grower Kit DIY Self Watering Indoor Hydroponics Tools Hydroponic System Planting Container Include Aquarium Air Pump Buoy Planting Box",
+          "category": null,
+          "vendor": "696d203cccfc59b7de2a979b",
+          "brand": "Aunifun",
+          "modelNumber": "",
+          "purchaseDate": "2024-05-04",
+          "purchasePrice": 23.71,
+          "condition": "good",
+          "notes": "<ul><li><p>Color and Material: the hydroponics planting container is <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"http://gray.It\">gray.It</a> is made of high quality evironmentally PVC-U,exquisite and durable. Size: 28x19x1 3.5cm</p></li><li><p>Package includs: 1 x Hydroponics Planting Box,1 x Buoy,6 x Planting Baskets,6 x Planting Sponges,1 x Air Pump,1 x Bubble Stone,1 x Check Valve,1 x Tweezers. A complete hydroponic system kits can meet your planting needs</p></li><li><p>Wide Application: hydroponic system can be used indoor or outdoor,balcony use, office use, garden use, market use, parterre use, hotel use, <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"http://etc.No\">etc.No</a> soil <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"http://needed.It\">needed.It</a> is convenient for the growth of a variety of plant operations and plant</p></li><li><p>The hydroponic grow kit are suspended in the reservoir beneath the net pots. The roots bathe in nutrient-rich solution throughout the entire grow cycle, which helps plants grow 3-5 times faster than soil grown</p></li><li><p>The Planting Container basin cover and the planting basket adopt the dark material, which can effectively prevent the light from entering the basin, thereby reducing the growth of green algae in the nutrient solution</p></li></ul><p></p>"
+        }
+      }
+    ],
+    "alerts": [
+      "Aunifun was saved."
+    ],
+    "invalid": [],
+    "readErrors": []
+  },
+  {
+    "path": "/gardens",
+    "opener": "Edit",
+    "mode": "unchanged edit",
+    "requests": [],
+    "alerts": [],
+    "invalid": [
+      {
+        "id": "",
+        "message": "Please select an item in the list.",
+        "name": ""
+      }
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/garden-budgets",
+    "opener": "Edit",
+    "mode": "unchanged edit",
+    "requests": [
+      {
+        "url": "/api/garden-budgets/695567aee70dc59f22debb74",
+        "method": "PUT",
+        "payload": {
+          "name": "Heirloom tomato seeds",
+          "description": "Heirloom tomato seeds",
+          "year": 2025,
+          "quantity": 1,
+          "unitCost": 24.99,
+          "allottedBudget": 0,
+          "currency": "USD"
+        }
+      }
+    ],
+    "alerts": [
+      "Budget Item saved."
+    ],
+    "invalid": [],
+    "readErrors": []
+  },
+  {
+    "path": "/harvest",
+    "opener": "Edit",
+    "mode": "unchanged edit",
+    "requests": [
+      {
+        "url": "/api/harvests/69875a87c1b7c29549772f50",
+        "method": "PUT",
+        "payload": {
+          "harvestQuantity": 15,
+          "quantityUnit": "g",
+          "storeUnitValue": 0,
+          "currency": "",
+          "planting": "697814dfd68cec3dea0bc25f",
+          "harvestDate": "2026-01-09",
+          "harvestAmount": {
+            "g": 0,
+            "oz": 0,
+            "lb": 0
+          },
+          "usableAmount": {
+            "g": 0,
+            "oz": 0,
+            "lb": 0
+          },
+          "wasteAmount": {
+            "g": 0,
+            "oz": 0,
+            "lb": 0
+          },
+          "quality": null,
+          "notes": [],
+          "createdBy": "696c2279c74050a65b3dc18f",
+          "isActive": true
+        }
+      }
+    ],
+    "alerts": [
+      "Unknown source harvest was saved."
+    ],
+    "invalid": [],
+    "readErrors": []
+  },
+  {
+    "path": "/tasks",
+    "opener": "Edit",
+    "mode": "unchanged edit",
+    "requests": [
+      {
+        "url": "/api/tasks/697f38a8dbe22b45ed172ae0",
+        "method": "PUT",
+        "payload": {
+          "name": "Order hydroponic nutrients",
+          "description": "Look on Amazon for larger premixed hydroponic nutrients",
+          "dueDate": "2025-02-08T00:00",
+          "status": "completed",
+          "priority": "Low",
+          "message": ""
+        }
+      }
+    ],
+    "alerts": [],
+    "invalid": [],
+    "readErrors": []
+  },
+  {
+    "path": "/gardens",
+    "opener": "Edit",
+    "mode": "unchanged edit",
+    "requests": [
+      {
+        "url": "/api/gardens/6955680ee70dc59f22debb80",
+        "method": "PUT",
+        "payload": {
+          "name": "Main Kitchen Garden",
+          "gardenType": null,
+          "gardenPurpose": [],
+          "userReason": [],
+          "overallSize": {
+            "metric": [
+              {
+                "label": "Length",
+                "value": 0,
+                "unit": null
+              },
+              {
+                "label": "Width",
+                "value": 0,
+                "unit": null
+              }
+            ],
+            "imperial": [
+              {
+                "label": "Length",
+                "value": 0,
+                "unit": null
+              },
+              {
+                "label": "Width",
+                "value": 0,
+                "unit": null
+              }
+            ]
+          },
+          "notes": [
+            {
+              "createdBy": null,
+              "note": "Primary food-producing garden supporting daily kitchen needs.",
+              "date": "2026-10-31T22:07:19.757Z"
+            },
+            {
+              "createdBy": null,
+              "note": "Food Production",
+              "date": "2026-10-31T22:07:19.757Z"
+            },
+            {
+              "createdBy": null,
+              "note": "Fresh Herbs",
+              "date": "2026-10-31T22:07:19.757Z"
+            },
+            {
+              "createdBy": null,
+              "note": "Seasonal Vegetables",
+              "date": "2026-10-31T22:07:19.757Z"
+            },
+            {
+              "createdBy": null,
+              "note": "Health",
+              "date": "2026-10-31T22:07:19.757Z"
+            },
+            {
+              "createdBy": null,
+              "note": "Focus on organic practices",
+              "date": "2026-10-31T22:07:19.757Z"
+            },
+            {
+              "createdBy": null,
+              "note": "High-yield crops prioritized",
+              "date": "2026-10-31T22:07:19.757Z"
+            }
+          ],
+          "createdBy": "696c2279c74050a65b3dc18f",
+          "isActive": true
+        }
+      }
+    ],
+    "alerts": [
+      "Main Kitchen Garden was saved."
+    ],
+    "invalid": [],
+    "readErrors": []
+  },
+  {
+    "path": "/observations",
+    "opener": "Edit",
+    "mode": "unchanged edit",
+    "requests": [
+      {
+        "url": "/api/observations/6955b493a7ce7cc5a9e276a8",
+        "method": "PUT",
+        "payload": {
+          "name": "Fruiting",
+          "observationType": "growth",
+          "observedAt": "2025-04-20",
+          "tags": [],
+          "moisture": null,
+          "light": null,
+          "temperature": null,
+          "details": "Healthy\nHeight: 90 cm\nLeaves: 30\nFruit set observed; continue current feeding schedule.",
+          "isActive": true
+        }
+      }
+    ],
+    "alerts": [
+      "Observations saved."
+    ],
+    "invalid": [],
+    "readErrors": []
+  },
+  {
+    "path": "/vendors/equipment",
+    "opener": "Edit",
+    "mode": "unchanged edit",
+    "requests": [
+      {
+        "url": "/api/equipment-vendors/696d27ef33f1ae3fb0722b2d",
+        "method": "PUT",
+        "payload": {
+          "name": "MUQING",
+          "companyName": "",
+          "contactName": "",
+          "email": "",
+          "phone": "",
+          "website": "",
+          "address1": "",
+          "address2": "",
+          "city": "",
+          "state": "6953d308d9df87ca20ba91a3",
+          "postalCode": "",
+          "country": null,
+          "isInternational": false,
+          "description": "",
+          "isActive": true
+        }
+      }
+    ],
+    "alerts": [],
+    "invalid": [],
+    "readErrors": []
+  },
+  {
+    "path": "/vendors/seeds",
+    "opener": "Edit",
+    "mode": "unchanged edit",
+    "requests": [
+      {
+        "url": "/api/seed-vendors/697812fcd68cec3dea0bbdbf",
+        "method": "PUT",
+        "payload": {
+          "name": "Food Bazaar Supermarket",
+          "companyName": "",
+          "contactName": [],
+          "email": "info@bogopausa.com",
+          "phone": "8005538341",
+          "website": "https://www.foodbazaar.com/",
+          "address1": "2784 Linden Blvd",
+          "address2": "",
+          "city": "Brooklyn",
+          "state": "6953d308d9df87ca20ba91b5",
+          "postalCode": "11208",
+          "country": "",
+          "isInternational": false,
+          "description": "",
+          "logo": "foodbazaar.png",
+          "isActive": true
+        }
+      }
+    ],
+    "alerts": [],
+    "invalid": [],
+    "readErrors": []
+  },
+  {
+    "path": "/seeds",
+    "opener": "Edit Seed",
+    "mode": "unchanged edit",
+    "requests": [
+      {
+        "url": "/api/seeds/6ae65bd3118c9d8061da9c23",
+        "method": "PUT",
+        "payload": {
+          "plantName": "Fenugreek",
+          "description": "Fenugreek is an aromatic, herbaceous annual belonging to the legume family (Fabaceae). It produces trifoliate green leaves, small white to pale-yellow flowers, and elongated seed pods containing hard, golden-brown seeds. Both its leaves and seeds are valued for culinary applications, while the plant is also cultivated for forage, traditional medicinal uses, and soil improvement.",
+          "context": "Fenugreek is cultivated extensively in India, North Africa, the Middle East, and Mediterranean regions. Its fresh leaves, commonly called methi, are used as leafy vegetables, while the dried leaves, known as kasuri methi, provide aromatic seasoning. Its seeds are used whole, roasted, ground, and incorporated into spice blends, pickles, curries, and breads.",
+          "coverImage": "fenugreek.jpg",
+          "taste": [
+            "Distinctively bittersweet",
+            "earthy",
+            "nutty",
+            "with maple-like sweetness and a lingering bitterness. Young leaves are herbaceous and mildly bitter",
+            "mature seeds are more intensely bitter."
+          ],
+          "aroma": [
+            "Warm",
+            "sweet",
+            "maple-syrup-like fragrance with toasted nut",
+            "caramel",
+            "and subtle hay-like undertones."
+          ],
+          "mouthfeel": [
+            "Tender",
+            "slightly fibrous fresh leaves",
+            "hard",
+            "crunchy whole seeds",
+            "smooth",
+            "somewhat mucilaginous texture when seeds are soaked or cooked."
+          ],
+          "species": "696fce0125f9dbf198548439",
+          "plantType": "697811d56baad6126b1d9303",
+          "lifecycleInformation": {
+            "lifespanDescription": "",
+            "lifecycleType": "695548f3665e92102248fa3a",
+            "lifespan": "",
+            "hardiness": "Frost-sensitive annual; tolerates cool growing weather but can be damaged by substantial freezing and prolonged heat."
+          },
+          "growthInformation": {
+            "germinationTime": {
+              "min": "5",
+              "max": "10"
+            },
+            "matureSize": {
+              "height": {
+                "minIn": 12,
+                "maxIn": 24,
+                "minCm": 30.48,
+                "maxCm": 60.96
+              },
+              "width": {
+                "minIn": 12,
+                "maxIn": 24,
+                "minCm": 30.48,
+                "maxCm": 60.96
+              }
+            },
+            "growthRate": "69556496e70dc59f22debb2c",
+            "bulbSize": "Not applicable; fenugreek does not produce bulbs.",
+            "plantingDepth": "",
+            "plantSpacing": "",
+            "sunlightRequirements": "Full sun, ideally 6-8 hours of direct sunlight daily.",
+            "usdaZoneRange": "",
+            "usdaZones": [],
+            "hardinessZonesWithCorrespondingRegionsStates": [
+              {
+                "zone": "Zone",
+                "regionsStates": "Regions/States",
+                "_id": "6ae65bea118c9d8061daa3a6"
+              },
+              {
+                "zone": "3-4",
+                "regionsStates": "Northern Minnesota, North Dakota, northern Maine, colder areas of Montana",
+                "_id": "6ae65bea118c9d8061daa3a7"
+              },
+              {
+                "zone": "5-6",
+                "regionsStates": "Much of upstate New York, Pennsylvania, Ohio, Illinois, and Colorado",
+                "_id": "6ae65bea118c9d8061daa3a8"
+              },
+              {
+                "zone": "7-8",
+                "regionsStates": "Parts of Virginia, North Carolina, Tennessee, Georgia, and the Pacific Northwest",
+                "_id": "6ae65bea118c9d8061daa3a9"
+              },
+              {
+                "zone": "9-10",
+                "regionsStates": "Florida, southern Texas, Arizona, southern California, and Gulf Coast areas",
+                "_id": "6ae65bea118c9d8061daa3aa"
+              },
+              {
+                "zone": "11",
+                "regionsStates": "Hawaii, extreme southern Florida, and tropical U.S. territories",
+                "_id": "6ae65bea118c9d8061daa3ab"
+              }
+            ]
+          },
+          "growingConditionsAndRequirements": {
+            "soilType": "69555028665e92102248faad",
+            "plantSoilTemp": "",
+            "phRequirements": "Approximately 6.0-7.5, with near-neutral soil generally preferred.",
+            "climateTolerance": "Performs best under cool to moderately warm conditions. Established plants tolerate brief dry periods but can suffer from excessive humidity, prolonged drought, and heat.",
+            "wateringRequirements": "",
+            "lightRequirements": "",
+            "watering": "Check soil moisture 2-3 times weekly; irrigate when needed. Containers may require more frequent watering.",
+            "seasonalCareTips": {
+              "pruning": [
+                "Harvest tender tips and young foliage to encourage branching. Avoid excessive cutting when growing plants for seed."
+              ],
+              "fertilizing": [
+                "Incorporate compost before planting. Avoid excessive nitrogen fertilizer because fenugreek is a legume capable of biological nitrogen fixation when compatible rhizobia are present."
+              ],
+              "protection": [
+                "Provide frost protection during unexpected freezes and afternoon shade during extreme heat."
+              ]
+            }
+          },
+          "sustainableGrowingPractices": {
+            "organicMethods": [
+              "Use compost",
+              "mulch",
+              "crop rotation",
+              "hand weeding",
+              "and biological pest management."
+            ],
+            "waterConservation": [
+              "Apply organic mulch",
+              "water at soil level",
+              "and collect rainwater where appropriate."
+            ],
+            "soilHealthImprovement": [
+              "Grow fenugreek as a short-season cover crop. Incorporate or terminate the crop before mature seed formation to reduce unwanted reseeding."
+            ],
+            "encouragingBiodiversity": [
+              "Include flowering herbs nearby",
+              "reduce unnecessary insecticide applications",
+              "and maintain mixed planting areas to support beneficial insects."
+            ]
+          },
+          "stressRisk": {
+            "title": "Environmental and Cultivation Stress in Fenugreek",
+            "overview": "Fenugreek grows rapidly when soil, temperature, water, and sunlight remain balanced. Excessive moisture, sustained heat, poor drainage, and nutrient imbalances can reduce leaf quality, interfere with flowering, and increase susceptibility to disease.",
+            "temperatureStress": {
+              "above": "Approximately 85-95°F (29-35°C): Prolonged heat can accelerate flowering, increase bitterness, reduce tender leaf production, and contribute to moisture stress.",
+              "below": "Approximately 32-40°F (0-4°C): Growth slows markedly, and freezing temperatures may injure or kill exposed plants. These are approximate stress ranges rather than absolute thresholds."
+            },
+            "waterStress": {
+              "overwatering": "Promotes root rot, damping-off, yellowing foliage, and poor oxygen availability in the root zone.",
+              "underwatering": "Causes wilting, reduced leaf expansion, stunted growth, and premature seed formation."
+            },
+            "nutrientStress": {
+              "deficiency": "Inadequate nitrogen fixation or deficiencies in phosphorus, potassium, or other essential nutrients may cause pale leaves, restricted root growth, and low productivity.",
+              "excess": "Excessive nitrogen can favor soft vegetative growth and delay seed production; excessive fertilizer salts may injure roots."
+            },
+            "lightStress": {
+              "lowLight": "Encourages weak, elongated stems, reduced leaf production, and poor flowering.",
+              "excessLight": "Intense sunlight combined with high temperatures can cause leaf scorch and water stress."
+            },
+            "transplantShock": "Fenugreek develops a taproot and generally establishes best through direct sowing. Root disturbance can temporarily slow growth or cause wilting.",
+            "mitigationTips": [
+              "Maintain well-drained soil with moderate, consistent moisture.",
+              "Plant during favorable cool-season weather.",
+              "Avoid unnecessary root disturbance.",
+              "Use mulch to moderate soil temperature.",
+              "Avoid excessive nitrogen fertilization.",
+              "Improve airflow to limit foliar diseases.",
+              "Rotate with non-leguminous crops.",
+              "Use shade cloth during extreme heat when necessary.",
+              "Remove infected plants and plant debris promptly."
+            ]
+          },
+          "plantingInformation": {
+            "startIndoors": {
+              "timing": "Approximately 4-5 weeks before the anticipated last frost, when transplanting is necessary. Direct sowing is normally preferred.",
+              "materialsNeeded": [
+                "Fenugreek seeds",
+                "biodegradable pots or deep seed trays",
+                "well-draining seed-starting mix",
+                "water",
+                "and a sunny window or grow light."
+              ],
+              "careTips": [
+                "Sow seeds approximately ¼ inch (0.6 cm) deep."
+              ]
+            },
+            "directSowOutdoors": {
+              "guidelines": [
+                "Select a sunny location with well-drained soil."
+              ]
+            },
+            "seasonDescription": "",
+            "plantingSeasons": "",
+            "companionPlants": [],
+            "coverCrops": [],
+            "trapCrops": [],
+            "hydroponicGrowth": true,
+            "growingFromScraps": [
+              "Fenugreek cannot reliably regenerate from detached leaves or dried culinary stems.",
+              "Select a fresh plant with an intact root system.",
+              "Remove damaged foliage while preserving the growing point.",
+              "Replant roots in moist, well-drained soil.",
+              "Provide bright light and moderate moisture.",
+              "Allow new foliage to develop before harvesting.",
+              "Seed propagation is the most reliable cultivation method."
+            ],
+            "apartmentGardening": [
+              "Fenugreek is suitable for balcony containers, windowsill microgreen trays, and indoor herb-growing systems.",
+              "Use pots approximately 6-8 inches (15-20 cm) deep for young foliage and larger containers for mature seed-producing plants.",
+              "Ensure drainage, airflow, and adequate light."
+            ]
+          },
+          "pestManagement": [
+            {
+              "pest": null,
+              "type": "Sap-Sucking Pest",
+              "category": "Insect",
+              "name": "Cowpea aphid (Aphis craccivora)",
+              "description": "Clusters on tender shoots, causing curling, yellowing, and sticky honeydew.",
+              "treatment": "Water spray; insecticidal soap labeled for edible fenugreek.",
+              "prevention": "Encourage beneficial insects; inspect regularly.",
+              "_id": "6ae65bea118c9d8061daa3ac"
+            },
+            {
+              "pest": null,
+              "type": "Sap-Sucking Pest",
+              "category": "Insect",
+              "name": "Thrips (Scirtothrips dorsalis)",
+              "description": "Feeding causes silvering, scarring, and distorted foliage.",
+              "treatment": "Remove infested foliage; use appropriately labeled controls.",
+              "prevention": "Manage weeds and monitor young growth.",
+              "_id": "6ae65bea118c9d8061daa3ad"
+            },
+            {
+              "pest": null,
+              "type": "Leaf-Mining Pest",
+              "category": "Insect",
+              "name": "Serpentine leafminer (Liriomyza trifolii)",
+              "description": "Larvae create winding tunnels inside leaves.",
+              "treatment": "Remove affected leaves; conserve parasitoid wasps.",
+              "prevention": "Inspect foliage and remove infested debris.",
+              "_id": "6ae65bea118c9d8061daa3ae"
+            },
+            {
+              "pest": null,
+              "type": "Mite Pest",
+              "category": "Mite",
+              "name": "Spider mites (Tetranychus spp.)",
+              "description": "Cause fine stippling, bronzing, and sometimes webbing.",
+              "treatment": "Water spray and approved miticides or soaps where appropriate.",
+              "prevention": "Prevent severe drought stress; monitor leaf undersides.",
+              "_id": "6ae65bea118c9d8061daa3af"
+            },
+            {
+              "pest": null,
+              "type": "Chewing Pest",
+              "category": "Insect",
+              "name": "Cutworms",
+              "description": "Larvae sever young seedlings near soil level.",
+              "treatment": "Hand removal; protective seedling collars.",
+              "prevention": "Remove weeds and plant debris before sowing.",
+              "_id": "6ae65bea118c9d8061daa3b0"
+            },
+            {
+              "pest": null,
+              "type": "Soil Pest",
+              "category": "Insect",
+              "name": "Wireworms",
+              "description": "Soil-dwelling larvae feed on seeds and roots.",
+              "treatment": "Remove severely infested plants; use locally recommended controls.",
+              "prevention": "Rotate crops and monitor soil history.",
+              "_id": "6ae65bea118c9d8061daa3b1"
+            },
+            {
+              "pest": null,
+              "type": "Chewing Pest",
+              "category": "Insect",
+              "name": "Spotted pod borer (Maruca vitrata)",
+              "description": "Caterpillars feed on flowers and developing pods.",
+              "treatment": "Remove infested pods; use registered biological controls when appropriate.",
+              "prevention": "Monitor flowering plants and maintain field sanitation.",
+              "_id": "6ae65bea118c9d8061daa3b2"
+            },
+            {
+              "pest": null,
+              "type": "Chewing Pest",
+              "category": "Insect",
+              "name": "Grasshoppers",
+              "description": "Chew foliage and may damage seed pods.",
+              "treatment": "Hand removal, barriers, or locally approved controls.",
+              "prevention": "Monitor surrounding vegetation and young plants.",
+              "_id": "6ae65bea118c9d8061daa3b3"
+            }
+          ],
+          "diseaseManagement": [
+            {
+              "disease": null,
+              "type": "Leaf Spot/Blight",
+              "name": "Cercospora leaf spot",
+              "diseaseName": "Cercospora leaf spot",
+              "scientificName": "",
+              "diseaseType": "Leaf Spot/Blight",
+              "category": "Fungal",
+              "description": "Brown or gray lesions develop on leaves, potentially causing defoliation.",
+              "cause": "",
+              "symptoms": "",
+              "affectedParts": "",
+              "spreadMethod": "",
+              "favorableConditions": "",
+              "treatment": "Remove affected foliage; use approved fungicides where available.",
+              "treatments": "Remove affected foliage; use approved fungicides where available.",
+              "prevention": "Improve airflow; rotate crops; avoid overhead irrigation.",
+              "organicTreatment": "",
+              "chemicalTreatment": "",
+              "severity": "moderate",
+              "isContagious": false,
+              "_id": "6ae65bea118c9d8061daa3b4"
+            },
+            {
+              "disease": null,
+              "type": "Powdery Mildew",
+              "name": "Powdery mildew",
+              "diseaseName": "Powdery mildew",
+              "scientificName": "",
+              "diseaseType": "Powdery Mildew",
+              "category": "Fungal",
+              "description": "White powdery growth on leaves and stems.",
+              "cause": "",
+              "symptoms": "",
+              "affectedParts": "",
+              "spreadMethod": "",
+              "favorableConditions": "",
+              "treatment": "Remove heavily infected foliage; use labeled treatments.",
+              "treatments": "Remove heavily infected foliage; use labeled treatments.",
+              "prevention": "Improve ventilation and avoid overcrowding.",
+              "organicTreatment": "",
+              "chemicalTreatment": "",
+              "severity": "moderate",
+              "isContagious": false,
+              "_id": "6ae65bea118c9d8061daa3b5"
+            },
+            {
+              "disease": null,
+              "type": "Seedling Disease",
+              "name": "Damping-off",
+              "diseaseName": "Damping-off",
+              "scientificName": "",
+              "diseaseType": "Seedling Disease",
+              "category": "Oomycete/Fungal",
+              "description": "Germinating seeds or seedlings rot or collapse near soil level.",
+              "cause": "",
+              "symptoms": "",
+              "affectedParts": "",
+              "spreadMethod": "",
+              "favorableConditions": "",
+              "treatment": "Remove affected seedlings and contaminated growing media.",
+              "treatments": "Remove affected seedlings and contaminated growing media.",
+              "prevention": "Use clean media and avoid overwatering.",
+              "organicTreatment": "",
+              "chemicalTreatment": "",
+              "severity": "moderate",
+              "isContagious": false,
+              "_id": "6ae65bea118c9d8061daa3b6"
+            },
+            {
+              "disease": null,
+              "type": "Vascular Wilt",
+              "name": "Fusarium wilt",
+              "diseaseName": "Fusarium wilt",
+              "scientificName": "",
+              "diseaseType": "Vascular Wilt",
+              "category": "Fungal",
+              "description": "Yellowing, wilting, vascular discoloration, and eventual decline.",
+              "cause": "",
+              "symptoms": "",
+              "affectedParts": "",
+              "spreadMethod": "",
+              "favorableConditions": "",
+              "treatment": "Remove infected plants; no reliable cure once systemically infected.",
+              "treatments": "Remove infected plants; no reliable cure once systemically infected.",
+              "prevention": "Rotate crops and use healthy seed.",
+              "organicTreatment": "",
+              "chemicalTreatment": "",
+              "severity": "moderate",
+              "isContagious": false,
+              "_id": "6ae65bea118c9d8061daa3b7"
+            },
+            {
+              "disease": null,
+              "type": "Root/Collar Rot",
+              "name": "Rhizoctonia root rot",
+              "diseaseName": "Rhizoctonia root rot",
+              "scientificName": "",
+              "diseaseType": "Root/Collar Rot",
+              "category": "Fungal",
+              "description": "Roots and lower stems develop dark lesions and decay.",
+              "cause": "",
+              "symptoms": "",
+              "affectedParts": "",
+              "spreadMethod": "",
+              "favorableConditions": "",
+              "treatment": "Remove infected plants; improve drainage.",
+              "treatments": "Remove infected plants; improve drainage.",
+              "prevention": "Avoid saturated soil and excessive planting density.",
+              "organicTreatment": "",
+              "chemicalTreatment": "",
+              "severity": "moderate",
+              "isContagious": false,
+              "_id": "6ae65bea118c9d8061daa3b8"
+            },
+            {
+              "disease": null,
+              "type": "Downy Mildew",
+              "name": "Downy mildew",
+              "diseaseName": "Downy mildew",
+              "scientificName": "",
+              "diseaseType": "Downy Mildew",
+              "category": "Oomycete",
+              "description": "Yellowish foliage with fungal-like growth on leaf undersides.",
+              "cause": "",
+              "symptoms": "",
+              "affectedParts": "",
+              "spreadMethod": "",
+              "favorableConditions": "",
+              "treatment": "Remove infected material; use registered treatments if available.",
+              "treatments": "Remove infected material; use registered treatments if available.",
+              "prevention": "Reduce prolonged leaf wetness.",
+              "organicTreatment": "",
+              "chemicalTreatment": "",
+              "severity": "moderate",
+              "isContagious": false,
+              "_id": "6ae65bea118c9d8061daa3b9"
+            },
+            {
+              "disease": null,
+              "type": "Rust Disease",
+              "name": "Fenugreek rust",
+              "diseaseName": "Fenugreek rust",
+              "scientificName": "",
+              "diseaseType": "Rust Disease",
+              "category": "Fungal",
+              "description": "Rust-colored pustules develop on infected plant tissue.",
+              "cause": "",
+              "symptoms": "",
+              "affectedParts": "",
+              "spreadMethod": "",
+              "favorableConditions": "",
+              "treatment": "Remove infected leaves; use approved controls when warranted.",
+              "treatments": "Remove infected leaves; use approved controls when warranted.",
+              "prevention": "Improve spacing and remove crop debris.",
+              "organicTreatment": "",
+              "chemicalTreatment": "",
+              "severity": "moderate",
+              "isContagious": false,
+              "_id": "6ae65bea118c9d8061daa3ba"
+            },
+            {
+              "disease": null,
+              "type": "Viral Mosaic Disease",
+              "name": "Bean yellow mosaic",
+              "diseaseName": "Bean yellow mosaic",
+              "scientificName": "",
+              "diseaseType": "Viral Mosaic Disease",
+              "category": "Viral",
+              "description": "Yellow-green mottling, distortion, and reduced vigor.",
+              "cause": "",
+              "symptoms": "",
+              "affectedParts": "",
+              "spreadMethod": "",
+              "favorableConditions": "",
+              "treatment": "Remove infected plants; control relevant insect vectors.",
+              "treatments": "Remove infected plants; control relevant insect vectors.",
+              "prevention": "Use healthy seed and control aphid populations.",
+              "organicTreatment": "",
+              "chemicalTreatment": "",
+              "severity": "moderate",
+              "isContagious": false,
+              "_id": "6ae65bea118c9d8061daa3bb"
+            },
+            {
+              "disease": null,
+              "type": "Root/Stem Rot",
+              "name": "Charcoal rot",
+              "diseaseName": "Charcoal rot",
+              "scientificName": "",
+              "diseaseType": "Root/Stem Rot",
+              "category": "Fungal",
+              "description": "Root and stem tissue deteriorates, particularly during heat and drought stress.",
+              "cause": "",
+              "symptoms": "",
+              "affectedParts": "",
+              "spreadMethod": "",
+              "favorableConditions": "",
+              "treatment": "Remove infected plants; improve growing conditions.",
+              "treatments": "Remove infected plants; improve growing conditions.",
+              "prevention": "Rotate crops and reduce drought stress.",
+              "organicTreatment": "",
+              "chemicalTreatment": "",
+              "severity": "moderate",
+              "isContagious": false,
+              "_id": "6ae65bea118c9d8061daa3bc"
+            }
+          ],
+          "propagationMethods": {
+            "method": [],
+            "notes": [
+              "Primarily by seed. Direct sowing is preferred. Plants with intact roots can sometimes be transplanted",
+              "although root disturbance reduces reliability. Vegetative propagation by cuttings is not commonly practiced."
+            ]
+          },
+          "pollinationInformation": [
+            "Fenugreek is predominantly self-pollinating.",
+            "Its small, pea-like flowers contain reproductive structures capable of self-fertilization, although limited insect-assisted cross-pollination can occur.",
+            "Seed production generally does not require a separate pollinator variety."
+          ],
+          "attractingPollinators": [
+            "Fenugreek's flowers may attract bees and other small insects, although most fertilization occurs through self-pollination."
+          ],
+          "harvestingInformation": {
+            "harvestTime": "Leaves approximately 30-40 days after sowing; mature seeds approximately 95-110 days after sowing.",
+            "harvestTimeAfterGermination": "Leaves approximately 23-35 days; mature seeds approximately 85-105 days.",
+            "techniques": [
+              "Harvest young leaves using scissors, leaving sufficient foliage and growing points for regrowth.",
+              "For seed production, allow flowers to form elongated pods.",
+              "Harvest when pods become dry and yellow-brown, then dry thoroughly and thresh or split pods to collect seeds."
+            ]
+          },
+          "storageTips": [
+            "Refrigerate fresh leaves in a breathable or lightly wrapped container and use promptly.",
+            "Dry leaves in a shaded, well-ventilated area or food dehydrator at a low temperature.",
+            "Store dried leaves in airtight containers away from heat and direct sunlight.",
+            "Dry mature seeds completely before storage.",
+            "Store seeds whole in airtight containers in a cool, dry, dark location.",
+            "Grind seeds shortly before culinary use to preserve aroma.",
+            "Label stored seeds with the harvest date and check periodically for moisture or insect damage."
+          ],
+          "growingNotes": "",
+          "usesAndBenefits": {
+            "edibility": "Young leaves, shoots, sprouts, and seeds are edible when properly handled and prepared. Fresh leaves are cooked as vegetables; dried leaves are used as seasoning; seeds are incorporated into curries, spice blends, pickles, breads, and sauces. Sprouted seeds require careful food-safety handling because raw sprouts can carry harmful microorganisms.",
+            "medicinal": false,
+            "medicinalUses": {
+              "pros": [
+                "Traditionally used for digestive complaints, menstrual discomfort, blood-glucose management, and lactation support.",
+                "Some small studies suggest possible metabolic effects, but clinical evidence is insufficient for firm conclusions."
+              ],
+              "cons": [
+                "Supplemental doses can cause gastrointestinal discomfort, diarrhea, allergic reactions, and potentially excessive blood-glucose lowering.",
+                "Fenugreek may interact with medications and is not recommended in amounts greater than normal food consumption during pregnancy without medical guidance."
+              ]
+            },
+            "toxicity": "Generally recognized as a culinary food ingredient in normal amounts. Legume allergies are a concern, particularly in individuals sensitive to peanuts or related plants. Concentrated supplements carry additional risks."
+          },
+          "nutritionalInformation": [
+            "Seeds contain substantial dietary fiber, including soluble galactomannan.",
+            "Seeds provide plant-based protein.",
+            "Contain carbohydrates and moderate amounts of fat.",
+            "Supply minerals including iron, magnesium, phosphorus, potassium, and calcium.",
+            "Contain small amounts of several B vitamins.",
+            "Leaves provide fiber and micronutrients, including carotenoid pigments.",
+            "Fenugreek contains phytochemicals such as saponins, flavonoids, trigonelline, and diosgenin-related compounds.",
+            "Nutrient composition varies by plant part, growing conditions, and processing method."
+          ],
+          "environmentalImpact": {
+            "impact": [
+              "Fenugreek can contribute to crop diversification, short-season soil cover, and improved soil fertility through nitrogen fixation when suitable rhizobia are present.",
+              "Its relatively short growing cycle provides opportunities for integration into vegetable rotations.",
+              "Environmental outcomes depend on irrigation, fertilizer inputs, soil management, and local growing conditions."
+            ]
+          },
+          "specialFeatures": [
+            "Fenugreek produces a characteristic maple-like aroma associated partly with the compound sotolon. Its seeds become mucilaginous after soaking because of soluble polysaccharides. The plant offers three distinct culinary products: fresh methi leaves",
+            "dried kasuri methi",
+            "and whole or ground fenugreek seeds. It also serves as a forage and soil-improvement crop."
+          ],
+          "historicalInformation": {
+            "foodOrigin": "Botanical evidence places the native distribution of Trigonella foenum-graecum primarily from Iraq eastward to northern Pakistan, including Iran and Afghanistan. The species was subsequently cultivated throughout western Asia, the Mediterranean, North Africa, and South Asia. Its precise original domestication location remains uncertain. Historical cultivation in several regions should not be confused with the plant's botanical native range.",
+            "events": [
+              {
+                "date": "Ancient era, exact date uncertain",
+                "timePeriod": "Early agricultural civilizations",
+                "event": "Fenugreek became established as a food, fodder, and medicinal plant across western Asia and neighboring regions.",
+                "_id": "6ae65bea118c9d8061daa3bd"
+              },
+              {
+                "date": "Second millennium BCE",
+                "timePeriod": "Ancient Near East and Egypt",
+                "event": "Archaeological and historical traditions indicate early familiarity with fenugreek and its uses.",
+                "_id": "6ae65bea118c9d8061daa3be"
+              },
+              {
+                "date": "Classical antiquity",
+                "timePeriod": "Greek and Roman periods",
+                "event": "Fenugreek was known as a forage plant and used in food and traditional remedies.",
+                "_id": "6ae65bea118c9d8061daa3bf"
+              },
+              {
+                "date": "Medieval period",
+                "timePeriod": "South Asian, Middle Eastern, and Mediterranean culinary traditions",
+                "event": "Fenugreek became established in regional food preparations and medicinal traditions.",
+                "_id": "6ae65bea118c9d8061daa3c0"
+              },
+              {
+                "date": "1753",
+                "timePeriod": "Linnaean botanical classification",
+                "event": "Carl Linnaeus formally published the accepted botanical name Trigonella foenum-graecum in Species Plantarum.",
+                "_id": "6ae65bea118c9d8061daa3c1"
+              },
+              {
+                "date": "19th-20th centuries",
+                "timePeriod": "Agricultural development",
+                "event": "Cultivation expanded through commercial spice production, fodder systems, and crop improvement.",
+                "_id": "6ae65bea118c9d8061daa3c2"
+              },
+              {
+                "date": "21st century",
+                "timePeriod": "Contemporary agriculture and food systems",
+                "event": "Fenugreek remains an important spice, leafy vegetable, functional food ingredient, and subject of crop and nutrition research.",
+                "_id": "6ae65bea118c9d8061daa3c3"
+              }
+            ]
+          },
+          "culturalInformation": [
+            "Fenugreek holds a significant place in Indian cooking, where fresh methi is used in flatbreads, vegetables, and curries, while kasuri methi adds a distinctive finishing aroma.",
+            "In Ethiopian and Eritrean culinary traditions, fenugreek contributes to traditional spice preparations.",
+            "In Yemen and other parts of the Middle East, ground or soaked fenugreek is used in preparations such as hilbeh.",
+            "The plant also appears in North African spice traditions and longstanding herbal practices.",
+            "Its historical significance extends beyond cuisine to livestock feed, traditional household remedies, and agricultural soil management."
+          ],
+          "resourcesAndLinks": {
+            "notableReferenceLinks": [],
+            "suggestedSeedLinks": []
+          },
+          "vendor": [
+            "696973d9e886d616a44bdb03"
+          ],
+          "lotNumber": "",
+          "dateCollected": "",
+          "packedFor": "",
+          "images": [],
+          "tags": [],
+          "isPublic": false,
+          "user": "696c2279c74050a65b3dc18f",
+          "_id": "6ae65bd3118c9d8061da9c23",
+          "status": "active",
+          "isActive": true,
+          "createdAt": "2026-10-31T21:21:23.120Z",
+          "updatedAt": "2026-10-31T21:21:46.482Z",
+          "__v": 1
+        }
+      }
+    ],
+    "alerts": [
+      "Seed updated successfully."
+    ],
+    "invalid": [],
+    "readErrors": []
+  }
+]

@@ -1,0 +1,2941 @@
+[
+  {
+    "endpoint": "/api/app-modules",
+    "status": 404,
+    "shape": [
+      "message",
+      "stack"
+    ],
+    "sample": {
+      "message": "Not Found - /api/app-modules",
+      "stack": "Error: Not Found - /api/app-modules\n    at notFound (file:///F:/react-projects/ecosphere/gardening-journal/backend/middleware/errorMiddleware.js:8:14)\n    at Layer.handleRequest (F:\\react-projects\\ecosphere\\gardening-journal\\node_modules\\router\\lib\\layer.js:152:17)\n    at trimPrefix (F:\\react-projects\\ecosphere\\gardening-journal\\node_modules\\router\\index.js:342:13)\n    at F:\\react-projects\\ecosphere\\gardening-journal\\node_modules\\router\\index.js:297:9\n    at processParams (F:\\react-projects\\ecosphere\\gardening-journal\\node_modules\\router\\index.js:582:12)\n    at next (F:\\react-projects\\ecosphere\\gardening-journal\\node_modules\\router\\index.js:291:5)\n    at F:\\react-projects\\ecosphere\\gardening-journal\\node_modules\\router\\index.js:688:15\n    at next (F:\\react-projects\\ecosphere\\gardening-journal\\node_modules\\router\\index.js:276:14)\n    at router.handle (F:\\react-projects\\ecosphere\\gardening-journal\\node_modules\\router\\index.js:186:3)\n    at router (F:\\react-projects\\ecosphere\\gardening-journal\\node_modules\\router\\index.js:60:12)"
+    }
+  },
+  {
+    "endpoint": "/api/app",
+    "status": 404,
+    "shape": [
+      "message",
+      "stack"
+    ],
+    "sample": {
+      "message": "Not Found - /api/app",
+      "stack": "Error: Not Found - /api/app\n    at notFound (file:///F:/react-projects/ecosphere/gardening-journal/backend/middleware/errorMiddleware.js:8:14)\n    at Layer.handleRequest (F:\\react-projects\\ecosphere\\gardening-journal\\node_modules\\router\\lib\\layer.js:152:17)\n    at trimPrefix (F:\\react-projects\\ecosphere\\gardening-journal\\node_modules\\router\\index.js:342:13)\n    at F:\\react-projects\\ecosphere\\gardening-journal\\node_modules\\router\\index.js:297:9\n    at processParams (F:\\react-projects\\ecosphere\\gardening-journal\\node_modules\\router\\index.js:582:12)\n    at next (F:\\react-projects\\ecosphere\\gardening-journal\\node_modules\\router\\index.js:291:5)\n    at F:\\react-projects\\ecosphere\\gardening-journal\\node_modules\\router\\index.js:688:15\n    at next (F:\\react-projects\\ecosphere\\gardening-journal\\node_modules\\router\\index.js:276:14)\n    at router.handle (F:\\react-projects\\ecosphere\\gardening-journal\\node_modules\\router\\index.js:186:3)\n    at router (F:\\react-projects\\ecosphere\\gardening-journal\\node_modules\\router\\index.js:60:12)"
+    }
+  },
+  {
+    "endpoint": "/api/states",
+    "status": 200,
+    "shape": [
+      "success",
+      "count",
+      "data"
+    ]
+  },
+  {
+    "endpoint": "/api/countries",
+    "status": 200,
+    "shape": [
+      "success",
+      "count",
+      "data"
+    ]
+  },
+  {
+    "endpoint": "/api/counties",
+    "status": 200,
+    "shape": [
+      "success",
+      "count",
+      "data"
+    ]
+  },
+  {
+    "endpoint": "/api/growth-rates",
+    "status": 200,
+    "shape": "array",
+    "count": 9,
+    "sample": {
+      "_id": "69556496e70dc59f22debb29",
+      "growth_rate": "Very Slow"
+    }
+  },
+  {
+    "endpoint": "/api/planting-depths",
+    "status": 200,
+    "shape": "array",
+    "count": 15,
+    "sample": {
+      "_id": "69554d14665e92102248fa88",
+      "description": "Surface sow",
+      "depth": "On soil surface; do not cover"
+    }
+  },
+  {
+    "endpoint": "/api/reference/usda-zones",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/reference/fertilizers",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/condition-scales",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/disease-ref-treatments",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/equipment-categories",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/fertilizer-types",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/lighting",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/pest-ref-treatments",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/plant-categories",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/plant-types",
+    "status": 200,
+    "shape": "array",
+    "count": 21,
+    "sample": {
+      "name": "",
+      "isActive": true,
+      "_id": "69555243665e92102248fac9",
+      "type_name": "Leafy Greens",
+      "description": "Fast-growing plants harvested primarily for leaves.",
+      "wateringRule": "64f300000000000000000001"
+    }
+  },
+  {
+    "endpoint": "/api/seasons",
+    "status": 200,
+    "shape": "array",
+    "count": 8,
+    "sample": {
+      "_id": "69d2d49307254e5485459c7c",
+      "name": "Summer",
+      "code": "SUM",
+      "description": "Hot season",
+      "startDate": "2026-06-01T00:00:00.000Z",
+      "endDate": "2026-08-31T23:59:59.000Z",
+      "isRecurringAnnual": true,
+      "isDefault": false,
+      "isActive": true,
+      "notes": ""
+    }
+  },
+  {
+    "endpoint": "/api/severity-scales",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/soil-types",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/supply-categories",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/reference/weather-observations",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/reference/lifecycles",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/reference/plant-spacings",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/reference/sunlight-requirements",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/reference/plant-soil-temps",
+    "status": 200,
+    "shape": "array",
+    "count": 6,
+    "sample": {
+      "_id": "69555094665e92102248fac2",
+      "temperature_f_min": 32,
+      "temperature_f_max": 40,
+      "temperature_c_min": 0,
+      "temperature_c_max": 4,
+      "description": "Cold soil temperatures; microbial activity is minimal.",
+      "optimal_for_plants": "Dormant perennials, cold-stratified seeds",
+      "stress_risk_id": "64f200000000000000000001"
+    }
+  },
+  {
+    "endpoint": "/api/reference/watering-requirements",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/reference/propagation-methods",
+    "status": 200,
+    "shape": "array",
+    "count": 14,
+    "sample": {
+      "requiresPollination": false,
+      "selfFertile": false,
+      "selfPollinating": false,
+      "crossPollinationRequired": false,
+      "parentPlantRequired": false,
+      "seedSavingSuitable": false,
+      "trueToType": false,
+      "_id": "6966627ce72c18535ed65211",
+      "name": "Air Layering",
+      "description": "Inducing roots on an aerial stem before detaching it.",
+      "active": true
+    }
+  },
+  {
+    "endpoint": "/api/reference/lifespans",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/businesses",
+    "status": 200,
+    "shape": "array",
+    "count": 40,
+    "sample": {
+      "_id": "6ae372ed782ed203bba50bbe",
+      "legalName": "Barrow Account and Tax Services",
+      "code": "bats",
+      "typeRef": {
+        "_id": "69d5c34a397429860cdb57c1",
+        "name": "Business",
+        "code": "BUSINESS",
+        "description": "Business realted projects",
+        "isActive": true,
+        "notes": "",
+        "createdAt": "2026-04-08T02:54:02.569Z",
+        "updatedAt": "2026-05-03T23:49:02.609Z",
+        "__v": 0
+      },
+      "taxRateRef": {
+        "_id": "69ee1aef0280d93528489ec8",
+        "name": "New York City Sales Tax",
+        "code": "nyc_sales_tax",
+        "stateRef": "69ae52e7146a7429a4ddd2aa",
+        "rate": 8.875,
+        "isDefault": true,
+        "isActive": true,
+        "notes": "Combined NYC rate: 4.5% NYC + 4% NY State + 0.375% MCTD surcharge.",
+        "updatedAt": "2026-06-29T15:48:55.542Z"
+      },
+      "website": "",
+      "taglineId": null,
+      "logo": "",
+      "themeColors": {
+        "bg": {
+          "value": "#fbf1dc",
+          "colorName": ""
+        },
+        "bgAlt": {
+          "value": "#ead3a4",
+          "colorName": ""
+        },
+        "surface": {
+          "value": "#fff8e9",
+          "colorName": ""
+        },
+        "surface2": {
+          "value": "#e7c98f",
+          "colorName": ""
+        },
+        "backgroundTreatment": {
+          "mode": "color",
+          "image": "",
+          "imageOpacity": 0.08,
+          "imageSize": "cover",
+          "imagePosition": "center",
+          "imageRepeat": "no-repeat",
+          "overlayOpacity": 0,
+          "gradientToken": "gradientSoft",
+          "gradientType": "linear",
+          "gradientDirectionMode": "preset",
+          "gradientDirection": "180deg",
+          "gradientStart": "#cfdcc8",
+          "gradientEnd": "#b7c9ad",
+          "gradientStartStop": 0,
+          "gradientEndStop": 100
+        },
+        "text": {
+          "value": "#d8711e",
+          "colorName": ""
+        },
+        "textSoft": {
+          "value": "#7a5732",
+          "colorName": ""
+        },
+        "textInverse": {
+          "value": "#fff8e9",
+          "colorName": ""
+        },
+        "heading": {
+          "value": "#8f1f2d",
+          "colorName": ""
+        },
+        "primary": {
+          "value": "#355f2e",
+          "colorName": ""
+        },
+        "primaryHover": {
+          "value": "#294a23",
+          "colorName": ""
+        },
+        "secondary": {
+          "value": "#8f1f2d",
+          "colorName": ""
+        },
+        "secondaryHover": {
+          "value": "#6f1724",
+          "colorName": ""
+        },
+        "accent": {
+          "value": "#e0a11b",
+          "colorName": ""
+        },
+        "accentHover": {
+          "value": "#b87908",
+          "colorName": ""
+        },
+        "accent2": {
+          "value": "#c85a2e",
+          "colorName": ""
+        },
+        "success": {
+          "value": "#426b2f",
+          "colorName": ""
+        },
+        "warning": {
+          "value": "#d78914",
+          "colorName": ""
+        },
+        "danger": {
+          "value": "#a73426",
+          "colorName": ""
+        },
+        "info": {
+          "value": "#3f6f7f",
+          "colorName": ""
+        },
+        "border": {
+          "value": "#c79856",
+          "colorName": ""
+        },
+        "borderStrong": {
+          "value": "#7d4b24",
+          "colorName": ""
+        },
+        "gradientMain": "linear-gradient(135deg,#355f2e 0%,#8f1f2d 55%,#e0a11b 100%)",
+        "gradientSoft": "linear-gradient(270deg,#e9dcb9 0%,#e4bd77 100%)",
+        "overlay": {
+          "value": "#2b1d12",
+          "colorName": ""
+        },
+        "tableStripe": {
+          "value": "#f0d9ab",
+          "colorName": ""
+        },
+        "selectionBg": {
+          "value": "#8f1f2d",
+          "colorName": ""
+        },
+        "selectionText": {
+          "value": "#fff8e9",
+          "colorName": ""
+        },
+        "fontHeading": {
+          "fontName": "",
+          "fallbackFont": ""
+        },
+        "fontBody": {
+          "fontName": "",
+          "fallbackFont": ""
+        }
+      },
+      "phone": "",
+      "fax": "",
+      "email": "",
+      "footerId": null,
+      "receiptsEnabled": true,
+      "receiptTemplateId": null,
+      "receiptHeaderId": null,
+      "receiptSubHeaderId": null,
+      "receiptFooterId": null,
+      "addressLine1": "",
+      "addressLine2": "",
+      "city": "Brooklyn",
+      "stateRef": {
+        "_id": "69ae52e7146a7429a4ddd2aa",
+        "name": "New York",
+        "abbreviation": "NY"
+      },
+      "countyRef": null,
+      "countryRef": {
+        "_id": "69c69960e6ad14a16469928f",
+        "name": "United States",
+        "iso2": "US",
+        "iso3": "USA",
+        "flag": "🇺🇸",
+        "phoneCode": "+1",
+        "currency": "USD",
+        "timezone": "America/New_York",
+        "utcOffset": "-04:00"
+      },
+      "postalCode": "11207",
+      "showLogoOnReceipt": true,
+      "showTaxRateOnReceipt": true,
+      "showWebsiteOnReceipt": true,
+      "showEmailOnReceipt": true,
+      "showPhoneOnReceipt": true,
+      "showFaxOnReceipt": false,
+      "showAddressOnReceipt": true,
+      "isActive": true,
+      "notes": "",
+      "createdAt": "2026-10-29T16:23:09.304Z",
+      "updatedAt": "2026-10-29T16:23:09.304Z",
+      "__v": 0,
+      "appKey": {
+        "_id": "6ae3b7ce1fb36cf4a341b8d7",
+        "businessRef": "6ae372ed782ed203bba50bbe",
+        "name": "Barrow Account and Tax Services",
+        "appKey": "barrow-accounting-tax-services",
+        "isActive": true,
+        "createdAt": "2026-10-29T21:17:02.632Z",
+        "updatedAt": "2026-10-29T21:17:02.632Z",
+        "__v": 0
+      }
+    }
+  },
+  {
+    "endpoint": "/api/business-types",
+    "status": 200,
+    "shape": "array",
+    "count": 35,
+    "sample": {
+      "_id": "69d5a1439f7816a494bba831",
+      "name": "Bakery",
+      "code": "BAKERY",
+      "description": "Business specializing in baked goods such as breads, cakes, pastries, and desserts.",
+      "isActive": true,
+      "notes": "Retail or custom-order bakery."
+    }
+  },
+  {
+    "endpoint": "/api/app-keys",
+    "status": 200,
+    "shape": "array",
+    "count": 40,
+    "sample": {
+      "_id": "69d52756f54300a53766e0f1",
+      "name": "Antinet Zettlekasten",
+      "appKey": "antinet-zettlekasten",
+      "isActive": true,
+      "createdAt": "2026-04-07T15:48:38.550Z",
+      "updatedAt": "2026-04-14T08:50:35.577Z",
+      "__v": 0,
+      "businessRef": {
+        "_id": "69ddf9eeec8e53cfd2436847",
+        "legalName": "Antinet Zettlekasten",
+        "code": "antzet",
+        "typeRef": "69d5c19e397429860cdb57bf",
+        "taxRateRef": "69ee1aef0280d93528489ec8",
+        "website": "",
+        "taglineId": null,
+        "logo": "",
+        "themeColors": {
+          "bg": {
+            "value": "#eef3f7",
+            "colorName": ""
+          },
+          "bgAlt": {
+            "value": "#e2eaf1",
+            "colorName": ""
+          },
+          "surface": {
+            "value": "#ebf2f6",
+            "colorName": ""
+          },
+          "surface2": {
+            "value": "#cfd9e3",
+            "colorName": ""
+          },
+          "backgroundTreatment": {
+            "mode": "gradient",
+            "image": "",
+            "imageOpacity": 0.08,
+            "imageSize": "cover",
+            "imagePosition": "center",
+            "imageRepeat": "no-repeat",
+            "overlayOpacity": 0,
+            "gradientToken": "gradientSoft",
+            "gradientType": "linear",
+            "gradientDirectionMode": "preset",
+            "gradientDirection": "270deg",
+            "gradientStart": "#bbe7db",
+            "gradientEnd": "#0ea2b1",
+            "gradientStartStop": 0,
+            "gradientEndStop": 100
+          },
+          "text": {
+            "value": "#d63384",
+            "colorName": "Fuchsia"
+          },
+          "textSoft": {
+            "value": "#5f7284",
+            "colorName": ""
+          },
+          "textInverse": {
+            "value": "#f8fbfd",
+            "colorName": ""
+          },
+          "heading": {
+            "value": "#0d67ba",
+            "colorName": ""
+          },
+          "primary": {
+            "value": "#0ea2b1",
+            "colorName": ""
+          },
+          "primaryHover": {
+            "value": "#7ed4d4",
+            "colorName": ""
+          },
+          "secondary": {
+            "value": "#319e93",
+            "colorName": ""
+          },
+          "secondaryHover": {
+            "value": "#bbe7db",
+            "colorName": ""
+          },
+          "accent": {
+            "value": "#0f8b8d",
+            "colorName": ""
+          },
+          "accentHover": {
+            "value": "#0b6f71",
+            "colorName": ""
+          },
+          "accent2": {
+            "value": "#d9a441",
+            "colorName": ""
+          },
+          "success": {
+            "value": "#2e8b57",
+            "colorName": ""
+          },
+          "warning": {
+            "value": "#c7892f",
+            "colorName": ""
+          },
+          "danger": {
+            "value": "#b44949",
+            "colorName": ""
+          },
+          "info": {
+            "value": "#3f7ea6",
+            "colorName": ""
+          },
+          "border": {
+            "value": "#b7c4cf",
+            "colorName": ""
+          },
+          "borderStrong": {
+            "value": "#315475",
+            "colorName": ""
+          },
+          "gradientMain": "linear-gradient(135deg,#4c5bd4 0%,#0f8b8d 100%)",
+          "gradientSoft": "linear-gradient(270deg,#bbe7db 0%,#0ea2b1 100%)",
+          "overlay": {
+            "value": "#0f1a24",
+            "colorName": ""
+          },
+          "tableStripe": {
+            "value": "#f2f7fb",
+            "colorName": ""
+          },
+          "selectionBg": {
+            "value": "#cdd8ff",
+            "colorName": ""
+          },
+          "selectionText": {
+            "value": "#0f1a24",
+            "colorName": ""
+          },
+          "fontHeading": {
+            "fontName": "Inter",
+            "fallbackFont": "system-ui, sans-serif"
+          },
+          "fontBody": {
+            "fontName": "IBM Plex Serif",
+            "fallbackFont": "Georgia, serif"
+          }
+        },
+        "phone": "13478674590",
+        "fax": "",
+        "email": "dpender@verizon.net",
+        "footerId": null,
+        "receiptsEnabled": false,
+        "receiptTemplateId": null,
+        "receiptHeaderId": null,
+        "receiptSubHeaderId": null,
+        "receiptFooterId": null,
+        "addressLine1": "679 Van Sinderen Ave",
+        "addressLine2": "703",
+        "city": "Brooklyn",
+        "stateRef": "69ae52e7146a7429a4ddd2aa",
+        "countyRef": "69d2fa9adf576c3b6b179fcc",
+        "countryRef": "69c69960e6ad14a16469928f",
+        "postalCode": "11207",
+        "showLogoOnReceipt": false,
+        "showTaxRateOnReceipt": false,
+        "showWebsiteOnReceipt": false,
+        "showEmailOnReceipt": false,
+        "showPhoneOnReceipt": false,
+        "showFaxOnReceipt": false,
+        "showAddressOnReceipt": false,
+        "isActive": true,
+        "notes": "",
+        "createdAt": "2026-04-14T08:25:18.233Z",
+        "updatedAt": "2026-09-17T02:46:16.190Z",
+        "__v": 0
+      }
+    }
+  },
+  {
+    "endpoint": "/api/footers",
+    "status": 200,
+    "shape": "array",
+    "count": 32,
+    "sample": {
+      "_id": "69d28d1e30a2afa70396ee9f",
+      "business_id": {
+        "_id": "69d1ee92dfcabd1b499727e8",
+        "legalName": "Beer Wine Inventory",
+        "code": "beewininv",
+        "website": "www.beerwinebeverageinventory.com",
+        "taglineId": null,
+        "logo": "",
+        "themeColors": {
+          "bg": {
+            "value": "#ece4cd",
+            "colorName": ""
+          },
+          "bgAlt": {
+            "value": "#edd7d2",
+            "colorName": ""
+          },
+          "surface": {
+            "value": "#f1f3ed",
+            "colorName": ""
+          },
+          "surface2": {
+            "value": "#edd7d2",
+            "colorName": ""
+          },
+          "text": {
+            "value": "#c72c41",
+            "colorName": ""
+          },
+          "textSoft": {
+            "value": "#d932f0",
+            "colorName": ""
+          },
+          "textInverse": {
+            "value": "#fd9ca9",
+            "colorName": ""
+          },
+          "heading": {
+            "value": "#ff4500",
+            "colorName": ""
+          },
+          "primary": {
+            "value": "#8f071d",
+            "colorName": ""
+          },
+          "primaryHover": {
+            "value": "#9b2b36",
+            "colorName": ""
+          },
+          "secondary": {
+            "value": "#f04d69",
+            "colorName": ""
+          },
+          "secondaryHover": {
+            "value": "#d9536d",
+            "colorName": ""
+          },
+          "accent": {
+            "value": "#d39c9c",
+            "colorName": ""
+          },
+          "accentHover": {
+            "value": "#fce4e4",
+            "colorName": ""
+          },
+          "accent2": {
+            "value": "#ff6f61",
+            "colorName": ""
+          },
+          "success": {
+            "value": "#3a8e3b",
+            "colorName": ""
+          },
+          "warning": {
+            "value": "#fbbf24",
+            "colorName": ""
+          },
+          "danger": {
+            "value": "#ff6347",
+            "colorName": ""
+          },
+          "info": {
+            "value": "#6a1b27",
+            "colorName": ""
+          },
+          "border": {
+            "value": "#d3635d",
+            "colorName": ""
+          },
+          "borderStrong": {
+            "value": "#84033f",
+            "colorName": ""
+          },
+          "gradientMain": "",
+          "gradientSoft": "",
+          "overlay": {
+            "value": "#aa1937",
+            "colorName": ""
+          },
+          "tableStripe": {
+            "value": "#f43f5e",
+            "colorName": ""
+          },
+          "selectionBg": {
+            "value": "#aa1937",
+            "colorName": ""
+          },
+          "selectionText": {
+            "value": "#ff6f61",
+            "colorName": ""
+          },
+          "fontHeading": {
+            "fontName": "Anton'",
+            "fallbackFont": "'Segoe UI',sans-serif"
+          },
+          "fontBody": {
+            "fontName": "Inter",
+            "fallbackFont": "Segoe UI',sans-serif"
+          },
+          "backgroundTreatment": {
+            "mode": "color",
+            "image": "",
+            "imageOpacity": 0.08,
+            "imageSize": "cover",
+            "imagePosition": "center",
+            "imageRepeat": "no-repeat",
+            "overlayOpacity": 0,
+            "gradientToken": "gradientSoft",
+            "gradientType": "linear",
+            "gradientDirectionMode": "preset",
+            "gradientDirection": "180deg",
+            "gradientStart": "#cfdcc8",
+            "gradientEnd": "#b7c9ad",
+            "gradientStartStop": 0,
+            "gradientEndStop": 100
+          }
+        },
+        "phone": "13478674550",
+        "fax": "",
+        "email": "info@beerwinebeverageinventory.com",
+        "footerId": null,
+        "addressLine1": "",
+        "addressLine2": "",
+        "city": "Brooklyn",
+        "stateRef": "69ae52e7146a7429a4ddd2aa",
+        "countyRef": "69d2fa9adf576c3b6b179fcc",
+        "countryRef": "69c69960e6ad14a16469928f",
+        "postalCode": "11207",
+        "receiptHeader": "Beer Wine Inventory",
+        "receiptSubHeader": "Track. Stock. Serve.",
+        "receiptFooter": "Inventory made simple and precise.",
+        "showLogoOnReceipt": true,
+        "showTaxRateOnReceipt": true,
+        "showWebsiteOnReceipt": true,
+        "showEmailOnReceipt": true,
+        "showPhoneOnReceipt": true,
+        "showFaxOnReceipt": false,
+        "showAddressOnReceipt": true,
+        "isActive": true,
+        "notes": "",
+        "colorName": "",
+        "updatedAt": "2026-09-15T16:07:37.485Z",
+        "receiptFooterId": null,
+        "receiptHeaderId": null,
+        "receiptSubHeaderId": null,
+        "receiptTemplateId": null,
+        "typeRef": "69d5c299397429860cdb57c0",
+        "receiptsEnabled": true,
+        "taxRateRef": "69ee1aef0280d93528489ec8"
+      },
+      "seasonRef": null,
+      "name": "some text",
+      "lines": [],
+      "showDate": true,
+      "showTime": true,
+      "showCashier": false,
+      "isDefault": true,
+      "isActive": true,
+      "notes": "",
+      "createdAt": "2026-04-05T16:26:06.402Z",
+      "updatedAt": "2026-04-05T16:26:06.402Z",
+      "__v": 0
+    }
+  },
+  {
+    "endpoint": "/api/taglines",
+    "status": 200,
+    "shape": "array",
+    "count": 42,
+    "sample": {
+      "_id": "6a358f1ec4ca1493e0c83046",
+      "business_id": {
+        "_id": "69e38fc17a05a4674146e04a",
+        "legalName": "Ham Radio Logger",
+        "code": "hamradlog",
+        "typeRef": "69d5c19e397429860cdb57bf",
+        "taxRateRef": "69ee1aef0280d93528489ec8",
+        "website": "",
+        "taglineId": "6a358f1ec4ca1493e0c83046",
+        "logo": "",
+        "themeColors": {
+          "bg": {
+            "value": "#071824",
+            "colorName": "Midnight Receiver Blue"
+          },
+          "bgAlt": {
+            "value": "#0d2333",
+            "colorName": "Deep Signal Blue"
+          },
+          "surface": {
+            "value": "#133247",
+            "colorName": "Radio Console Blue"
+          },
+          "surface2": {
+            "value": "#1a425a",
+            "colorName": "Raised Control Surface"
+          },
+          "backgroundTreatment": {
+            "mode": "gradient",
+            "image": "",
+            "imageOpacity": 0.08,
+            "imageSize": "cover",
+            "imagePosition": "center",
+            "imageRepeat": "no-repeat",
+            "overlayOpacity": 0.26,
+            "gradientToken": "gradientMain",
+            "gradientType": "linear",
+            "gradientDirectionMode": "preset",
+            "gradientDirection": "90deg",
+            "gradientStart": "#0b5a91",
+            "gradientEnd": "#069bff",
+            "gradientStartStop": 0,
+            "gradientEndStop": 100
+          },
+          "text": {
+            "value": "#eef8ff",
+            "colorName": "Signal White"
+          },
+          "textSoft": {
+            "value": "#b7d1e4",
+            "colorName": "Soft Signal Blue"
+          },
+          "textInverse": {
+            "value": "#06111d",
+            "colorName": "Dark Receiver Ink"
+          },
+          "heading": {
+            "value": "#ffffff",
+            "colorName": "Station White"
+          },
+          "primary": {
+            "value": "#2ec4ff",
+            "colorName": "Electric Waterfall Blue"
+          },
+          "primaryHover": {
+            "value": "#68d6ff",
+            "colorName": "Bright Waterfall Blue"
+          },
+          "secondary": {
+            "value": "#14d6b5",
+            "colorName": "Signal Teal"
+          },
+          "secondaryHover": {
+            "value": "#52ead0",
+            "colorName": "Bright Signal Teal"
+          },
+          "accent": {
+            "value": "#ff5f8f",
+            "colorName": "Signal Coral"
+          },
+          "accentHover": {
+            "value": "#ff8fb1",
+            "colorName": "Bright Signal Coral"
+          },
+          "accent2": {
+            "value": "#7b8cff",
+            "colorName": "DX Violet"
+          },
+          "success": {
+            "value": "#35d07f",
+            "colorName": "Confirmed Contact Green"
+          },
+          "warning": {
+            "value": "#ffb547",
+            "colorName": "Alert Amber"
+          },
+          "danger": {
+            "value": "#ff6177",
+            "colorName": "Emergency Signal Red"
+          },
+          "info": {
+            "value": "#7ad7ff",
+            "colorName": "Scope Info Blue"
+          },
+          "border": {
+            "value": "#31556d",
+            "colorName": "Radio Panel Border"
+          },
+          "borderStrong": {
+            "value": "#2ec4ff",
+            "colorName": "Active Signal Border"
+          },
+          "gradientMain": "linear-gradient(90deg,#0b5a91 0%,#069bff 100%)",
+          "gradientSoft": "linear-gradient(180deg,rgba(46,196,255,0.18) 0%,rgba(20,214,181,0.12) 48%,rgba(7,24,36,0.96) 100%)",
+          "overlay": {
+            "value": "#071824",
+            "colorName": "Receiver Overlay"
+          },
+          "tableStripe": {
+            "value": "#2ec4ff",
+            "colorName": "Waterfall Stripe"
+          },
+          "selectionBg": {
+            "value": "#2ec4ff",
+            "colorName": "Selected Waterfall Blue"
+          },
+          "selectionText": {
+            "value": "#06111d",
+            "colorName": "Selected Receiver Ink"
+          },
+          "fontHeading": {
+            "fontName": "Orbitron",
+            "fallbackFont": "Arial, sans-serif"
+          },
+          "fontBody": {
+            "fontName": "Inter",
+            "fallbackFont": "Arial, sans-serif"
+          }
+        },
+        "phone": "13478674590",
+        "fax": "",
+        "email": "",
+        "footerId": "6a358ec1c4ca1493e0c8303c",
+        "receiptsEnabled": true,
+        "receiptTemplateId": null,
+        "receiptHeaderId": null,
+        "receiptSubHeaderId": null,
+        "receiptFooterId": null,
+        "addressLine1": "",
+        "addressLine2": "",
+        "city": "Brooklyn",
+        "stateRef": "69ae52e7146a7429a4ddd2aa",
+        "countyRef": "69d2fa9adf576c3b6b179fcc",
+        "countryRef": "69c69960e6ad14a16469928f",
+        "postalCode": "11207",
+        "showLogoOnReceipt": true,
+        "showTaxRateOnReceipt": true,
+        "showWebsiteOnReceipt": false,
+        "showEmailOnReceipt": false,
+        "showPhoneOnReceipt": true,
+        "showFaxOnReceipt": false,
+        "showAddressOnReceipt": false,
+        "isActive": true,
+        "notes": "",
+        "createdAt": "2026-04-18T14:05:53.817Z",
+        "updatedAt": "2026-08-07T16:30:04.994Z",
+        "__v": 0
+      },
+      "name": "Default Ham Radio Tagline",
+      "isActive": true,
+      "notes": "Default tagline for the Ham Radio Logger app.",
+      "occasionRef": null,
+      "seasonRef": null,
+      "text": "Log every contact. Track every signal. Preserve your station history."
+    }
+  },
+  {
+    "endpoint": "/api/occasions",
+    "status": 200,
+    "shape": "array",
+    "count": 30,
+    "sample": {
+      "seasonRef": null,
+      "isRecurringAnnual": false,
+      "_id": "69d273a050decaf653f1ab45",
+      "name": "Weekend Special",
+      "code": "WKND",
+      "startDate": "2026-01-03T00:00:00.000Z",
+      "endDate": "2026-01-04T23:59:59.999Z",
+      "isActive": true,
+      "isRecurring": true,
+      "notes": "Recurring weekend occasion"
+    }
+  },
+  {
+    "endpoint": "/api/holidays",
+    "status": 200,
+    "shape": "array",
+    "count": 22,
+    "sample": {
+      "_id": "6a429ef7d8cc8b54ecba980f",
+      "business_id": {
+        "_id": "6a3fedfb0589c14c944e34a5",
+        "legalName": "Novel Writing Planner",
+        "code": "novwripla",
+        "typeRef": "69d5c19e397429860cdb57bf",
+        "taxRateRef": "69ee1aef0280d93528489ec8",
+        "website": "",
+        "taglineId": null,
+        "logo": "",
+        "themeColors": {
+          "bg": {
+            "value": "#eee7d9",
+            "colorName": "Sunlit Writing Desk"
+          },
+          "bgAlt": {
+            "value": "#efe4d8",
+            "colorName": "Soft Desk Light"
+          },
+          "surface": {
+            "value": "#fff9ef",
+            "colorName": "Notebook Paper"
+          },
+          "surface2": {
+            "value": "#f7ebdd",
+            "colorName": "Index Card Paper"
+          },
+          "backgroundTreatment": {
+            "mode": "gradient",
+            "image": "",
+            "imageOpacity": 0.08,
+            "imageSize": "cover",
+            "imagePosition": "center",
+            "imageRepeat": "no-repeat",
+            "overlayOpacity": 0,
+            "gradientToken": "gradientSoft",
+            "gradientType": "linear",
+            "gradientDirectionMode": "preset",
+            "gradientDirection": "180deg",
+            "gradientStart": "#e1c299",
+            "gradientEnd": "#eca85b",
+            "gradientStartStop": 0,
+            "gradientEndStop": 100
+          },
+          "text": {
+            "value": "#e30444",
+            "colorName": "Manuscript Ink"
+          },
+          "textSoft": {
+            "value": "#752121",
+            "colorName": "Soft Draft Ink"
+          },
+          "textInverse": {
+            "value": "#fff9ef",
+            "colorName": "Notebook Light"
+          },
+          "heading": {
+            "value": "#950d44",
+            "colorName": "Deep Story Ink"
+          },
+          "primary": {
+            "value": "#8f003e",
+            "colorName": "Creative Wine"
+          },
+          "primaryHover": {
+            "value": "#6b002f",
+            "colorName": "Deep Creative Wine"
+          },
+          "secondary": {
+            "value": "#b7376a",
+            "colorName": "Clear Rose Companion"
+          },
+          "secondaryHover": {
+            "value": "#942a55",
+            "colorName": "Deep Rose Companion"
+          },
+          "accent": {
+            "value": "#d6b34e",
+            "colorName": "Pen Nib Gold"
+          },
+          "accentHover": {
+            "value": "#b89435",
+            "colorName": "Deep Pen Nib Gold"
+          },
+          "accent2": {
+            "value": "#d98976",
+            "colorName": "Soft Lamp Coral"
+          },
+          "success": {
+            "value": "#9a9567",
+            "colorName": "Quiet Progress Moss"
+          },
+          "warning": {
+            "value": "#d6b34e",
+            "colorName": "Pen Gold Warning"
+          },
+          "danger": {
+            "value": "#b94d5d",
+            "colorName": "Revision Wine"
+          },
+          "info": {
+            "value": "#b76c82",
+            "colorName": "Soft Story Rose"
+          },
+          "border": {
+            "value": "#ded1c4",
+            "colorName": "Paper Stack Edge"
+          },
+          "borderStrong": {
+            "value": "#a98e85",
+            "colorName": "Focused Paper Edge"
+          },
+          "gradientMain": "linear-gradient(135deg,#8F003E 0%,#B7376A 44%,#D98976 68%,#D6B34E 100%)",
+          "gradientSoft": "linear-gradient(180deg,#e1c299 0%,#eca85b 100%)",
+          "overlay": {
+            "value": "#8f003e",
+            "colorName": "Clear Wine Overlay"
+          },
+          "tableStripe": {
+            "value": "#faf2e8",
+            "colorName": "Soft Notebook Stripe"
+          },
+          "selectionBg": {
+            "value": "#d6b34e",
+            "colorName": "Pen Gold Selection"
+          },
+          "selectionText": {
+            "value": "#24151b",
+            "colorName": "Ink Selection Text"
+          },
+          "fontHeading": {
+            "fontName": "Baskerville",
+            "fallbackFont": "sans-serif"
+          },
+          "fontBody": {
+            "fontName": "Sora",
+            "fallbackFont": "sans-serif"
+          }
+        },
+        "phone": "",
+        "fax": "",
+        "email": "",
+        "footerId": null,
+        "receiptsEnabled": false,
+        "receiptTemplateId": null,
+        "receiptHeaderId": null,
+        "receiptSubHeaderId": null,
+        "receiptFooterId": null,
+        "addressLine1": "",
+        "addressLine2": "",
+        "city": "Brooklyn",
+        "stateRef": "69ae52e7146a7429a4ddd2aa",
+        "countyRef": "69d2fa9adf576c3b6b179fcc",
+        "countryRef": "69c69960e6ad14a16469928f",
+        "postalCode": "11207",
+        "showLogoOnReceipt": false,
+        "showTaxRateOnReceipt": false,
+        "showWebsiteOnReceipt": false,
+        "showEmailOnReceipt": false,
+        "showPhoneOnReceipt": false,
+        "showFaxOnReceipt": false,
+        "showAddressOnReceipt": false,
+        "isActive": true,
+        "notes": "Novel planner system by Digicraft",
+        "createdAt": "2026-06-27T15:36:27.975Z",
+        "updatedAt": "2026-07-18T09:44:43.965Z",
+        "__v": 0
+      },
+      "seasonRef": null,
+      "name": "New Year's Day",
+      "code": "NEW_YEARS_DAY",
+      "startDate": "2026-01-01T00:00:00.000Z",
+      "endDate": "2026-01-01T23:59:59.999Z",
+      "isRecurringAnnual": true,
+      "isActive": true,
+      "notes": "Holiday reference for novel planning, timelines, scenes, and setting details.",
+      "createdAt": "2026-06-29T00:00:00.000Z",
+      "updatedAt": "2026-06-29T00:00:00.000Z"
+    }
+  },
+  {
+    "endpoint": "/api/vendors",
+    "status": 200,
+    "shape": "array",
+    "count": 15,
+    "sample": {
+      "_id": "6a2b4c6e2184d3a67eec27a1",
+      "business_id": "69d7902f87c1b31adaf38c0e",
+      "legalName": "Amazon",
+      "code": "AMZFRSH",
+      "dbaName": "Amazon Fresh",
+      "vendorCategories": [],
+      "website": "",
+      "logo": "",
+      "email": "",
+      "phone": "",
+      "fax": "",
+      "supportsIngredients": true,
+      "supportsEquipment": false,
+      "supportsPackaging": false,
+      "supportsServices": false,
+      "contacts": [],
+      "addresses": [],
+      "payment": {
+        "paymentTerms": "",
+        "preferredPaymentMethod": "",
+        "currencyCode": "USD"
+      },
+      "ordering": {
+        "orderingEmail": "",
+        "vendorPortalUrl": "",
+        "leadTimeDays": 0,
+        "minimumOrderValue": 0
+      },
+      "performance": {
+        "rating": 4,
+        "onTimeRate": 0,
+        "fillRate": 0
+      },
+      "compliance": {
+        "taxId": "",
+        "insuranceExpiration": null,
+        "notes": ""
+      },
+      "preferredContactRef": null,
+      "primaryAddressRef": null,
+      "isPreferred": true,
+      "isActive": true,
+      "notes": "",
+      "createdAt": "2026-06-12T00:01:50.664Z",
+      "updatedAt": "2026-10-14T08:53:07.499Z",
+      "__v": 0,
+      "vendorCategory": "Grocery Store"
+    }
+  },
+  {
+    "endpoint": "/api/receipt-templates",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/receipt-headers",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/receipt-sub-headers",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/receipt-footers",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/imperial-units",
+    "status": 200,
+    "shape": "array",
+    "count": 24,
+    "sample": {
+      "description": "",
+      "isActive": true,
+      "_id": "699766cc67f48acfc4539df7",
+      "name": "Clove",
+      "abbreviation": "clove"
+    }
+  },
+  {
+    "endpoint": "/api/metric-units",
+    "status": 200,
+    "shape": "array",
+    "count": 24,
+    "sample": {
+      "description": "",
+      "isActive": true,
+      "_id": "6953d36ed9df87ca20ba91d2",
+      "unitName": "Milligram",
+      "unitAbbreviation": "mg"
+    }
+  },
+  {
+    "endpoint": "/api/location-types",
+    "status": 200,
+    "shape": "array",
+    "count": 10,
+    "sample": {
+      "_id": "69d980514dae17b811007c1f",
+      "name": "Cold Storage",
+      "description": "Walk-in cold storage",
+      "isActive": true
+    }
+  },
+  {
+    "endpoint": "/api/locations",
+    "status": 200,
+    "shape": "array",
+    "count": 12,
+    "sample": {
+      "_id": "6acf9a77736ba251807c6e81",
+      "name": "Dairy",
+      "business": {
+        "_id": "69d7902f87c1b31adaf38c0e",
+        "legalName": "Recipe Management",
+        "code": "recman",
+        "typeRef": "69d5c19e397429860cdb57bf",
+        "website": "",
+        "taglineId": null,
+        "logo": "",
+        "themeColors": {
+          "bg": {
+            "value": "#d7e4f0",
+            "colorName": "Blue Teal Mist"
+          },
+          "bgAlt": {
+            "value": "#c5d5e5",
+            "colorName": "Soft Teal Sorrel Wash"
+          },
+          "surface": {
+            "value": "#f6faf8",
+            "colorName": "Cool Porcelain"
+          },
+          "surface2": {
+            "value": "#e3bfd8",
+            "colorName": "Pale Sorrel Surface"
+          },
+          "backgroundTreatment": {
+            "mode": "gradient",
+            "image": "",
+            "imageOpacity": 0.08,
+            "imageSize": "cover",
+            "imagePosition": "center",
+            "imageRepeat": "no-repeat",
+            "overlayOpacity": 0,
+            "gradientToken": "gradientSoft",
+            "gradientType": "linear",
+            "gradientDirectionMode": "preset",
+            "gradientDirection": "90deg",
+            "gradientStart": "#d7e4f0",
+            "gradientEnd": "#c5d5e5",
+            "gradientStartStop": 0,
+            "gradientEndStop": 100
+          },
+          "text": {
+            "value": "#1f3a44",
+            "colorName": "Blue Charcoal"
+          },
+          "textSoft": {
+            "value": "#496a70",
+            "colorName": "Muted Teal Slate"
+          },
+          "textInverse": {
+            "value": "#ffffff",
+            "colorName": "White"
+          },
+          "heading": {
+            "value": "#142f3a",
+            "colorName": "Deep Blue Ink"
+          },
+          "primary": {
+            "value": "#1b4a73",
+            "colorName": "Deep Recipe Blue"
+          },
+          "primaryHover": {
+            "value": "#124758",
+            "colorName": "Midnight Blue Teal"
+          },
+          "secondary": {
+            "value": "#2e7d8f",
+            "colorName": "Fresh Teal"
+          },
+          "secondaryHover": {
+            "value": "#236f69",
+            "colorName": "Deep Teal"
+          },
+          "accent": {
+            "value": "#b56f4d",
+            "colorName": "Sorrel"
+          },
+          "accentHover": {
+            "value": "#8f5135",
+            "colorName": "Deep Sorrel"
+          },
+          "accent2": {
+            "value": "#d79a78",
+            "colorName": "Soft Sorrel"
+          },
+          "success": {
+            "value": "#2e7d67",
+            "colorName": "Teal Green"
+          },
+          "warning": {
+            "value": "#fde943",
+            "colorName": "Warm Yellow"
+          },
+          "danger": {
+            "value": "#a84f46",
+            "colorName": "Sorrel Red"
+          },
+          "info": {
+            "value": "#2a84a0",
+            "colorName": "Clear Blue"
+          },
+          "border": {
+            "value": "#8fbab5",
+            "colorName": "Soft Teal Border"
+          },
+          "borderStrong": {
+            "value": "#5a918f",
+            "colorName": "Strong Teal Border"
+          },
+          "gradientMain": "linear-gradient(135deg,#1B5E73 0%,#2E8F86 55%,#B56F4D 100%)",
+          "gradientSoft": "linear-gradient(90deg,#d7e4f0 0%,#c5d5e5 100%)",
+          "overlay": {
+            "value": "#142f3a",
+            "colorName": "Blue Teal Overlay"
+          },
+          "tableStripe": {
+            "value": "#eef6f4",
+            "colorName": "Soft Teal Stripe"
+          },
+          "selectionBg": {
+            "value": "#e8d8cf",
+            "colorName": "Sorrel Selection"
+          },
+          "selectionText": {
+            "value": "#abdcf0",
+            "colorName": "Deep Blue Ink"
+          },
+          "fontHeading": {
+            "fontName": "Playfair Display",
+            "fallbackFont": "serif"
+          },
+          "fontBody": {
+            "fontName": "Inter",
+            "fallbackFont": "sans-serif"
+          }
+        },
+        "phone": "",
+        "fax": "",
+        "email": "",
+        "footerId": null,
+        "receiptsEnabled": false,
+        "receiptTemplateId": null,
+        "receiptHeaderId": null,
+        "receiptSubHeaderId": null,
+        "receiptFooterId": null,
+        "addressLine1": "679 Van Sinderen Ave",
+        "addressLine2": "",
+        "city": "Brooklyn",
+        "stateRef": "69ae52e7146a7429a4ddd2aa",
+        "countyRef": "69d2fa9adf576c3b6b179fcc",
+        "countryRef": "69c69960e6ad14a16469928f",
+        "postalCode": "11207",
+        "showLogoOnReceipt": false,
+        "showTaxRateOnReceipt": false,
+        "showWebsiteOnReceipt": false,
+        "showEmailOnReceipt": false,
+        "showPhoneOnReceipt": false,
+        "showFaxOnReceipt": false,
+        "showAddressOnReceipt": false,
+        "isActive": true,
+        "notes": "Recipe Management Database",
+        "createdAt": "2026-04-09T11:40:31.886Z",
+        "updatedAt": "2026-07-12T21:59:11.762Z",
+        "__v": 0,
+        "taxRateRef": "69ee1aef0280d93528489ec8"
+      },
+      "code": "DAIRY",
+      "createdAt": "2026-10-14T15:06:31.017Z",
+      "description": "Refrigerated milk, cream, cheese, butter, and other dairy products.",
+      "isActive": true,
+      "parentLocation": null,
+      "type": {
+        "_id": "69d980514dae17b811007c19",
+        "name": "Fridge",
+        "description": "Refrigerated storage",
+        "isActive": true
+      },
+      "updatedAt": "2026-10-14T15:06:31.017Z"
+    }
+  },
+  {
+    "endpoint": "/api/tax-rates",
+    "status": 200,
+    "shape": "array",
+    "count": 51,
+    "sample": {
+      "_id": "6a42947bd8cc8b54ecba97a6",
+      "name": "Alabama State Sales Tax",
+      "code": "al-state-sales-tax",
+      "stateRef": {
+        "_id": "69ae52e7146a7429a4ddd28b",
+        "name": "Alabama",
+        "abbreviation": "AL"
+      },
+      "rate": 4,
+      "isDefault": true,
+      "isActive": true,
+      "notes": "Base Alabama state-level sales tax rate. Local rates may apply.",
+      "createdAt": "2026-06-29T00:00:00.000Z",
+      "updatedAt": "2026-06-29T00:00:00.000Z"
+    }
+  },
+  {
+    "endpoint": "/api/seeds",
+    "status": 200,
+    "shape": "array",
+    "count": 66,
+    "sample": {
+      "lifecycleInformation": {
+        "lifespan": null,
+        "lifecycleType": null,
+        "hardiness": "Frost sensitive"
+      },
+      "growthInformation": {
+        "germinationTime": {
+          "min": "5",
+          "max": "10"
+        },
+        "matureSize": {
+          "height": {
+            "minCm": null,
+            "maxCm": null,
+            "minIn": 2,
+            "maxIn": 2
+          },
+          "width": {
+            "minCm": null,
+            "maxCm": null,
+            "minIn": 10,
+            "maxIn": 10
+          }
+        },
+        "usdaZoneRange": "",
+        "usdaZones": [],
+        "growthRate": {
+          "_id": "69556496e70dc59f22debb2b",
+          "growth_rate": "Moderate"
+        },
+        "bulbSize": "",
+        "plantingDepth": {
+          "_id": "69554d14665e92102248fa89",
+          "description": "Light cover",
+          "depth": "1–3 mm (1/16–1/8 in)"
+        },
+        "plantSpacing": null,
+        "sunlightRequirements": "Full sun",
+        "hardinessZonesWithCorrespondingRegionsStates": [
+          {
+            "_id": "6ae6273eba34c2cafdf297bb",
+            "zone": "3",
+            "regionsStates": "Northern Midwest, Upper New England (short season)"
+          },
+          {
+            "_id": "6ae6273eba34c2cafdf297bc",
+            "zone": "4",
+            "regionsStates": "Northern Midwest, Upper New England (short season)"
+          },
+          {
+            "_id": "6ae6273eba34c2cafdf297bd",
+            "zone": "5",
+            "regionsStates": "Midwest, Northeast, Pacific Northwest"
+          },
+          {
+            "_id": "6ae6273eba34c2cafdf297be",
+            "zone": "6",
+            "regionsStates": "Midwest, Northeast, Pacific Northwest"
+          },
+          {
+            "_id": "6ae6273eba34c2cafdf297bf",
+            "zone": "7",
+            "regionsStates": "Midwest, Northeast, Pacific Northwest"
+          },
+          {
+            "_id": "6ae6273eba34c2cafdf297c0",
+            "zone": "8",
+            "regionsStates": "Southern US, Coastal California, Southwest"
+          },
+          {
+            "_id": "6ae6273eba34c2cafdf297c1",
+            "zone": "9",
+            "regionsStates": "Southern US, Coastal California, Southwest"
+          },
+          {
+            "_id": "6ae6273eba34c2cafdf297c2",
+            "zone": "10",
+            "regionsStates": "Southern US, Coastal California, Southwest"
+          },
+          {
+            "_id": "6ae6273eba34c2cafdf297c3",
+            "zone": "11",
+            "regionsStates": "Southern US, Coastal California, Southwest"
+          }
+        ]
+      },
+      "growingConditionsAndRequirements": {
+        "seasonalCareTips": {
+          "pruning": [
+            "Remove excess vines to focus fruit growth"
+          ],
+          "fertilizing": [
+            "Balanced fertilizer early, higher potassium during flowering"
+          ],
+          "protection": [
+            "Mulch to retain moisture and suppress weeds"
+          ]
+        },
+        "soilType": null,
+        "plantSoilTemp": {
+          "_id": "69555094665e92102248fac6",
+          "temperature_f_min": 76,
+          "temperature_f_max": 85,
+          "temperature_c_min": 25,
+          "temperature_c_max": 29,
+          "description": "Hot soil conditions; moisture management becomes critical.",
+          "optimal_for_plants": "Okra, eggplant, melons",
+          "stress_risk_id": "64f200000000000000000004"
+        },
+        "phRequirements": "6.0–6.8",
+        "climateTolerance": "Warm temperate climates",
+        "wateringRequirements": null,
+        "watering": "Moderate, consistent moisture",
+        "lightRequirements": null
+      },
+      "sustainableGrowingPractices": {
+        "organicMethods": [
+          "Compost enrichment, organic pest control"
+        ],
+        "waterConservation": [
+          "Drip irrigation, mulching"
+        ],
+        "soilHealthImprovement": [
+          "Crop rotation, compost"
+        ],
+        "encouragingBiodiversity": [
+          "Plant pollinator-friendly flowers nearby"
+        ]
+      },
+      "stressRisk": {
+        "temperatureStress": {
+          "above": "",
+          "below": ""
+        },
+        "waterStress": {
+          "overwatering": "",
+          "underwatering": ""
+        },
+        "nutrientStress": {
+          "deficiency": "",
+          "excess": ""
+        },
+        "lightStress": {
+          "lowLight": "",
+          "excessLight": ""
+        },
+        "title": "",
+        "overview": "",
+        "transplantShock": "",
+        "mitigationTips": []
+      },
+      "plantingInformation": {
+        "startIndoors": {
+          "timing": "3–4 weeks before last frost",
+          "materialsNeeded": [
+            "Seed trays, potting mix, grow light"
+          ],
+          "careTips": [
+            "Warm soil, gentle transplanting"
+          ]
+        },
+        "directSowOutdoors": {
+          "guidelines": [
+            "Sow after soil warms above 65°F / 18°C"
+          ]
+        },
+        "plantingSeasons": null,
+        "apartmentGardening": [],
+        "companionPlants": [],
+        "coverCrops": [],
+        "trapCrops": [],
+        "hydroponicGrowth": false,
+        "growingFromScraps": [
+          "Save mature seeds, clean, dry, and replant"
+        ]
+      },
+      "propagationMethods": {
+        "notes": [],
+        "method": [
+          {
+            "requiresPollination": false,
+            "selfFertile": false,
+            "selfPollinating": false,
+            "crossPollinationRequired": false,
+            "parentPlantRequired": false,
+            "seedSavingSuitable": false,
+            "trueToType": false,
+            "_id": "6966627ce72c18535ed6520d",
+            "name": "Seed",
+            "description": "Propagation by sowing seeds under appropriate conditions.",
+            "active": true
+          }
+        ]
+      },
+      "harvestingInformation": {
+        "harvestTime": "75–100 days",
+        "harvestTimeAfterGermination": "75–100 days",
+        "techniques": [
+          "Harvest when rind is hard and deep green; cut with stem intact."
+        ]
+      },
+      "usesAndBenefits": {
+        "medicinalUses": {
+          "pros": [
+            ""
+          ],
+          "cons": [
+            ""
+          ]
+        },
+        "edibility": "Edible flesh and seeds",
+        "medicinal": false,
+        "toxicity": "Non-toxic"
+      },
+      "environmentalImpact": {
+        "impact": [
+          "Low environmental impact when grown organically; supports pollinator populations."
+        ]
+      },
+      "historicalInformation": {
+        "foodOrigin": "Originated in North America and was cultivated by Indigenous peoples before European contact.",
+        "events": [
+          {
+            "_id": "6ae6273eba34c2cafdf297c4",
+            "date": "Pre-1500",
+            "timePeriod": "Pre-Columbian",
+            "event": "Cultivated by Native American tribes"
+          },
+          {
+            "_id": "6ae6273eba34c2cafdf297c5",
+            "date": "1800s",
+            "timePeriod": "19th Century",
+            "event": "Introduced to wider US agriculture"
+          }
+        ]
+      },
+      "resourcesAndLinks": {
+        "notableReferenceLinks": [],
+        "suggestedSeedLinks": []
+      },
+      "dateCollected": null,
+      "packedFor": "",
+      "pollinationInformation": [],
+      "growingNotes": "",
+      "tags": [],
+      "status": "active",
+      "isActive": true,
+      "isPublic": false,
+      "_id": "6973e2d9e1cd36659ee4975c",
+      "species_id": "6973dd46e1cd36659ee4973d",
+      "name": "Acorn Squash",
+      "description": "Acorn squash is a winter squash variety known for its distinctive ribbed, acorn-like shape and dark green skin, often with orange or yellow highlights. It has sweet, nutty flesh that becomes tender and creamy when cooked, making it a popular culinary squash.",
+      "context": "Widely cultivated in home gardens and commercial farms, acorn squash is valued for its storage life, nutritional density, and versatility in both savory and sweet dishes. It is commonly grown in temperate regions during warm seasons and harvested in late summer to fall.",
+      "flavor_profile": {
+        "taste": "mildly sweet, nutty, earthy",
+        "aroma": "warm roasted squash, nutty, vegetal",
+        "mouthfeel": "tender cooked flesh, creamy texture, smooth"
+      },
+      "plant_type_id": "69555243665e92102248facb",
+      "lifecycle_id": "695548f3665e92102248fa3a",
+      "seedbatchnumber": "09182024",
+      "date_created": "2024-10-05T04:00:00.000Z",
+      "packed_date": null,
+      "expiration_date": null,
+      "collection_dates": [],
+      "lot_number": "10052024",
+      "vendor_id": [
+        "696299443ff45de3dbe24b84"
+      ],
+      "soil_temp_id": "69555094665e92102248fac6",
+      "plant_spaces_id": "69556bf9e70dc59f22debbcd",
+      "growing_instruction": "",
+      "image_path": "acorn squash.webp",
+      "gmo": false,
+      "heirloom": false,
+      "medicinal": false,
+      "certified_organic": false,
+      "is_correct_plant": true,
+      "seed_count": 15,
+      "harvest_time": "75–100 days",
+      "seed_packet_date": null,
+      "plant_life_span": "Single growing season (90–110 days)",
+      "hardiness": "Frost sensitive",
+      "bulb_size": "",
+      "hydroponic": {
+        "growing": false,
+        "steps": null,
+        "description": "",
+        "instructions": ""
+      },
+      "cover_crops": [],
+      "trap_crops": [],
+      "companion_plants": [],
+      "food_origin": "Originated in North America and was cultivated by Indigenous peoples before European contact.",
+      "notes": [],
+      "growth_info": {
+        "min_days_germination": 5,
+        "max_days_germination": 10,
+        "min_days_maturity": 75,
+        "max_days_maturity": 100,
+        "germination_time": "5–10 days",
+        "harvest_time_after_germination": "75–100 days",
+        "growth_rate_id": "69556496e70dc59f22debb2b",
+        "mature_size": {
+          "height": {
+            "value": 2,
+            "unit": "in"
+          },
+          "width": {
+            "value": 10,
+            "unit": "in"
+          }
+        },
+        "watering_id": "695554d9665e92102248fb0c",
+        "planting_depth_id": "69554d14665e92102248fa89",
+        "plant_spacing_id": "69556bf9e70dc59f22debbcd",
+        "sunlight_requirements": "Full sun",
+        "usda_zones": [
+          "3A",
+          "3B",
+          "4A",
+          "4B",
+          "5A",
+          "5B"
+        ],
+        "hardiness_zones": [
+          {
+            "zone": "3",
+            "regions": [
+              "Northern Midwest, Upper New England (short season)"
+            ],
+            "_id": "6973e2d9e1cd36659ee4975d"
+          },
+          {
+            "zone": "4",
+            "regions": [
+              "Northern Midwest, Upper New England (short season)"
+            ],
+            "_id": "6973e2d9e1cd36659ee4975e"
+          },
+          {
+            "zone": "5",
+            "regions": [
+              "Midwest, Northeast, Pacific Northwest"
+            ],
+            "_id": "6973e2d9e1cd36659ee4975f"
+          },
+          {
+            "zone": "6",
+            "regions": [
+              "Midwest, Northeast, Pacific Northwest"
+            ],
+            "_id": "6973e2d9e1cd36659ee49760"
+          },
+          {
+            "zone": "7",
+            "regions": [
+              "Midwest, Northeast, Pacific Northwest"
+            ],
+            "_id": "6973e2d9e1cd36659ee49761"
+          },
+          {
+            "zone": "8",
+            "regions": [
+              "Southern US, Coastal California, Southwest"
+            ],
+            "_id": "6973e2d9e1cd36659ee49762"
+          },
+          {
+            "zone": "9",
+            "regions": [
+              "Southern US, Coastal California, Southwest"
+            ],
+            "_id": "6973e2d9e1cd36659ee49763"
+          },
+          {
+            "zone": "10",
+            "regions": [
+              "Southern US, Coastal California, Southwest"
+            ],
+            "_id": "6973e2d9e1cd36659ee49764"
+          },
+          {
+            "zone": "11",
+            "regions": [
+              "Southern US, Coastal California, Southwest"
+            ],
+            "_id": "6973e2d9e1cd36659ee49765"
+          }
+        ]
+      },
+      "growing_conditions": {
+        "soil_type_id": "69555028665e92102248faae",
+        "soil_temp_id": "69555094665e92102248fac6",
+        "ph_requirements": "6.0–6.8",
+        "climate_tolerance": "Warm temperate climates",
+        "watering_requirements": "Moderate, consistent moisture",
+        "light_id": "69554d4a665e92102248fa98",
+        "light_requirements": "Full sun (6–8 hours)"
+      },
+      "seasonal_care": {
+        "pruning": "Remove excess vines to focus fruit growth",
+        "fertilizing": "Balanced fertilizer early, higher potassium during flowering",
+        "protection": "Mulch to retain moisture and suppress weeds"
+      },
+      "sustainable_practices": {
+        "organic_methods": "Compost enrichment, organic pest control",
+        "water_conservation": "Drip irrigation, mulching",
+        "soil_health_improvement": "Crop rotation, compost",
+        "encouraging_biodiversity": "Plant pollinator-friendly flowers nearby"
+      },
+      "planting_seasons": [
+        "Spring"
+      ],
+      "start_indoors": {
+        "timing": "3–4 weeks before last frost",
+        "materials_needed": "Seed trays, potting mix, grow light",
+        "care_tips": "Warm soil, gentle transplanting",
+        "direct_sow_outdoors": "Sow after soil warms above 65°F / 18°C"
+      },
+      "growing_from_scraps": [
+        "Save mature seeds, clean, dry, and replant"
+      ],
+      "reproduction": {
+        "propagation_methods": [
+          "6966627ce72c18535ed6520d"
+        ],
+        "pollination_method": null
+      },
+      "harvesting_techniques": [
+        "Harvest when rind is hard and deep green; cut with stem intact."
+      ],
+      "storage_tips": [
+        "Cure 7–10 days, store cool and dry for up to 2–3 months."
+      ],
+      "uses_and_benefits": {
+        "edibility": "Edible flesh and seeds"
+      },
+      "medicinal_uses": {
+        "pros": "",
+        "cons": "",
+        "toxicity": "Non-toxic"
+      },
+      "attracting_pollinators": "Large yellow flowers attract honeybees, native bees, and squash bees, especially during warm morning hours when flowers are open.",
+      "nutritional_info": [
+        "High in vitamin A",
+        "Good source of fiber",
+        "Contains potassium",
+        "Low in calories"
+      ],
+      "environmental_impact": "Low environmental impact when grown organically; supports pollinator populations.",
+      "special_features": [
+        "Distinct acorn shape, excellent storage for a winter squash."
+      ],
+      "cultural_info": "Common in North American fall and winter cuisine, associated with harvest and seasonal meals.",
+      "historical_info": [
+        {
+          "date": "Pre-1500",
+          "time_period": "Pre-Columbian",
+          "event": "Cultivated by Native American tribes"
+        },
+        {
+          "date": "1800s",
+          "time_period": "19th Century",
+          "event": "Introduced to wider US agriculture"
+        }
+      ],
+      "resources_links": {
+        "notable_references": [],
+        "suggested_seed_links": []
+      },
+      "images": [
+        {
+          "stage": "",
+          "alt": "",
+          "caption": "",
+          "_id": "6ae6273eba34c2cafdf297b8",
+          "filename": "acornsquash_image1.jpg",
+          "description": "Acorn Squash"
+        },
+        {
+          "stage": "",
+          "alt": "",
+          "caption": "",
+          "_id": "6ae6273eba34c2cafdf297b9",
+          "filename": "acornsquash_image2.jpg",
+          "description": "Acorn Squash"
+        },
+        {
+          "stage": "",
+          "alt": "",
+          "caption": "",
+          "_id": "6ae6273eba34c2cafdf297ba",
+          "filename": "acornsquash_image3.webp",
+          "description": "Acorn Squash"
+        }
+      ],
+      "createdAt": "2026-01-23T21:06:33.494Z",
+      "updatedAt": "2026-01-24T23:27:04.638Z",
+      "disease_management": [],
+      "pest_management": [],
+      "stress_risk": {
+        "title": "Stress Risk",
+        "overview": "",
+        "temperature_stress": {
+          "below": {
+            "range": "",
+            "impact": ""
+          },
+          "above": {
+            "range": "",
+            "impact": ""
+          }
+        },
+        "water_stress": {
+          "underwatering": {
+            "range": "",
+            "impact": ""
+          },
+          "overwatering": {
+            "range": "",
+            "impact": ""
+          }
+        },
+        "nutrient_stress": {
+          "low_fertility": {
+            "range": "",
+            "impact": ""
+          },
+          "excess_nitrogen": {
+            "range": "",
+            "impact": ""
+          }
+        },
+        "light_stress": {
+          "insufficient_light": {
+            "range": "",
+            "impact": ""
+          },
+          "excess_intense_sun": {
+            "range": "",
+            "impact": ""
+          }
+        },
+        "transplant_shock": {
+          "notes": ""
+        },
+        "stress_mitigation_tips": []
+      },
+      "plantName": "Acorn Squash",
+      "coverImage": "Acorn Squash.jpg",
+      "species": {
+        "family": null,
+        "genus": null,
+        "botanicalName": "",
+        "commonName": "",
+        "description": "",
+        "_id": "6973dd46e1cd36659ee4973d",
+        "familyId": "696fcb6825f9dbf198548413",
+        "genusId": "696fcb7425f9dbf198548425",
+        "species": "Cucurbita pepo",
+        "botanical_name": "Cucurbita pepo var. turbinata",
+        "common_names": "Acorn squash",
+        "variety": [
+          "Queen, Honey Bear, Autumn Delight"
+        ],
+        "synonyms": [
+          "Des Moines squash, Pepper squash"
+        ],
+        "createdAt": "2026-01-23T20:42:46.380Z",
+        "updatedAt": "2026-01-23T20:45:32.767Z"
+      },
+      "plantType": {
+        "name": "",
+        "isActive": true,
+        "_id": "69555243665e92102248facb",
+        "type_name": "Fruit Vegetables",
+        "description": "Plants producing edible fruits such as tomatoes and peppers.",
+        "wateringRule": "64f300000000000000000003"
+      },
+      "vendor": [
+        {
+          "companyName": "",
+          "contactName": [],
+          "email": "",
+          "phone": "",
+          "address1": "",
+          "address2": "",
+          "state": null,
+          "postalCode": "",
+          "country": null,
+          "isInternational": false,
+          "description": "",
+          "isActive": true,
+          "_id": "696299443ff45de3dbe24b84",
+          "name": "W. Atlee Burpee & Co.",
+          "address": "300 Park Avenue",
+          "city": "Warminster",
+          "state_id": "6953d308d9df87ca20ba91bb",
+          "zip": "18974",
+          "wholesale_customer_service_phone": "2156744900",
+          "retail_customer_service_phone": "8004447333",
+          "other_phone": null,
+          "fax": "",
+          "ext": "",
+          "website": "https://www.burpee.com/",
+          "email_retail": "",
+          "email_customer_service": "",
+          "time_zone_id": "69555495665e92102248faf2",
+          "catalog": [
+            "Online",
+            "Print"
+          ],
+          "gmo_seeds": "No",
+          "logo": "burpee.svg",
+          "createdAt": "2026-01-10T18:24:04.603Z",
+          "updatedAt": "2026-01-10T18:24:04.603Z",
+          "address_type": "US",
+          "country_code": "US",
+          "province_region": null,
+          "postal_code": null
+        }
+      ],
+      "lotNumber": "10052024",
+      "taste": [
+        "mildly sweet, nutty, earthy"
+      ],
+      "aroma": [
+        "warm roasted squash, nutty, vegetal"
+      ],
+      "mouthfeel": [
+        "tender cooked flesh, creamy texture, smooth"
+      ],
+      "storageTips": [
+        "Cure 7–10 days, store cool and dry for up to 2–3 months."
+      ],
+      "attractingPollinators": [
+        "Large yellow flowers attract honeybees, native bees, and squash bees, especially during warm morning hours when flowers are open."
+      ],
+      "nutritionalInformation": [
+        "High in vitamin A",
+        "Good source of fiber",
+        "Contains potassium",
+        "Low in calories"
+      ],
+      "specialFeatures": [
+        "Distinct acorn shape, excellent storage for a winter squash."
+      ],
+      "culturalInformation": [
+        "Common in North American fall and winter cuisine, associated with harvest and seasonal meals."
+      ],
+      "pestManagement": [],
+      "diseaseManagement": []
+    }
+  },
+  {
+    "endpoint": "/api/seed-collections",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/species",
+    "status": 200,
+    "shape": "array",
+    "count": 71,
+    "sample": {
+      "family": null,
+      "genus": null,
+      "botanicalName": "",
+      "commonName": "",
+      "description": "",
+      "synonyms": [],
+      "_id": "696fce0125f9dbf198548440",
+      "familyId": "696fcb6825f9dbf198548417",
+      "genusId": "696fcb7425f9dbf198548429",
+      "species": "Calendula officinalis",
+      "botanical_name": "Calendula officinalis",
+      "common_names": "Calendula, Pot Marigold",
+      "variety": [
+        "Numerous cultivars (e.g., ‘Pacific Beauty’, ‘Resina’)"
+      ]
+    }
+  },
+  {
+    "endpoint": "/api/families",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/genus",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/diseases",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/disease-logs",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/equipment",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/hydro-systems",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/gardens",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/garden-notes",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/garden-sections",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/garden-references",
+    "status": 200,
+    "shape": [
+      "types",
+      "purposes",
+      "reasons",
+      "locationTypes",
+      "metricUnits",
+      "imperialUnits"
+    ]
+  },
+  {
+    "endpoint": "/api/garden-budgets",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/garden-expenses",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/garden-wishlist",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/fruit-calendar",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/vegetable-calendar",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/companion-planting",
+    "status": 200,
+    "shape": "array",
+    "count": 90,
+    "sample": {
+      "libraryKey": "seed:6973e2d9e1cd36659ee4975c",
+      "libraryType": "seed",
+      "libraryId": "6973e2d9e1cd36659ee4975c",
+      "name": "Acorn Squash",
+      "sourceSeedId": "6973e2d9e1cd36659ee4975c",
+      "trapCrops": [],
+      "coverCrops": [],
+      "companions": [],
+      "_id": null,
+      "notes": ""
+    }
+  },
+  {
+    "endpoint": "/api/supplies",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/activities",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/daily-journals",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/journal-entries",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/observations",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/fertilizer-applications",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/media",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/equipment-vendors",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/seed-vendors",
+    "status": 200,
+    "shape": "array",
+    "count": 24,
+    "sample": {
+      "companyName": "",
+      "contactName": [],
+      "email": "",
+      "phone": "",
+      "address1": "",
+      "address2": "",
+      "state": null,
+      "postalCode": "",
+      "country": null,
+      "isInternational": false,
+      "description": "",
+      "isActive": true,
+      "_id": "697812fcd68cec3dea0bbdbf",
+      "name": "Food Bazaar Supermarket",
+      "address": "2784 Linden Blvd",
+      "city": "Brooklyn",
+      "state_id": "6953d308d9df87ca20ba91b5",
+      "zip": "11208",
+      "address_type": "US",
+      "country_code": "US",
+      "province_region": null,
+      "postal_code": null,
+      "wholesale_customer_service_phone": "3473815855",
+      "retail_customer_service_phone": "8005538341",
+      "other_phone": null,
+      "fax": "",
+      "ext": "",
+      "website": "https://www.foodbazaar.com/",
+      "email_retail": "info@bogopausa.com",
+      "email_customer_service": "",
+      "time_zone_id": "69652f9df9f31c0ec08f534a",
+      "catalog": [
+        "Online"
+      ],
+      "gmo_seeds": "No",
+      "logo": "foodbazaar.png",
+      "createdAt": "2026-01-27T01:21:00.436Z",
+      "updatedAt": "2026-01-27T01:21:00.436Z"
+    }
+  },
+  {
+    "endpoint": "/api/supply-vendors",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/task-reminders",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/tasks",
+    "status": 200,
+    "shape": "array",
+    "count": 8,
+    "sample": {
+      "name": "",
+      "dueDate": null,
+      "status": "pending",
+      "isActive": true,
+      "_id": "697f38a8dbe22b45ed172ae0",
+      "task_type": "69729ecb042bf7cb76a9a703",
+      "targetType": "general",
+      "targetModel": "Plants",
+      "target_id": null,
+      "task_date": "2025-01-08T11:25:15.000Z",
+      "task_name": "Order hydroponic nutrients",
+      "task_time_end": "",
+      "description": "Look on Amazon for larger premixed hydroponic nutrients",
+      "start_date": "2025-02-08T13:00:00.000Z",
+      "due_date": "2025-02-08T05:00:00.000Z",
+      "assigned_to": "Darrell Barrow",
+      "priority": "Low",
+      "category": "Other",
+      "notes": "",
+      "is_completed": true,
+      "createdAt": "2026-02-01T11:27:36.980Z",
+      "updatedAt": "2026-02-01T11:30:08.379Z"
+    }
+  },
+  {
+    "endpoint": "/api/task-statuses",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/task-priorities",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/harvests",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/harvest-quality-scales",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/pest-logs",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/pests",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/pest-types",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/issues",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/plantings",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/plants",
+    "status": 200,
+    "shape": "array",
+    "count": 24,
+    "sample": {
+      "careCard": {
+        "variety": "",
+        "lifespan": "",
+        "plantCategory": "",
+        "currentHeight": "",
+        "matureHeight": "",
+        "currentWidth": "",
+        "matureWidth": "",
+        "soilPh": "",
+        "pruningNeeds": "",
+        "bloomCharacteristics": "",
+        "foliageCharacteristics": "",
+        "bloomMonths": "",
+        "edibleLifecycle": "",
+        "sunExposure": "",
+        "vendor": "",
+        "purchaseCost": "",
+        "purchaseDate": "",
+        "fertilizers": "",
+        "repellingPests": "",
+        "repellentFor": "",
+        "attractorFor": "",
+        "compatible": "",
+        "incompatible": "",
+        "careNotes": ""
+      },
+      "growingConditions": {
+        "sunlight": "",
+        "water": "",
+        "soil": "",
+        "temperature": ""
+      },
+      "spacing": {
+        "metric": null,
+        "imperial": null
+      },
+      "name": "",
+      "scientificName": "",
+      "seed": null,
+      "family": "",
+      "type": null,
+      "description": "",
+      "growthDurationDays": null,
+      "images": [],
+      "tags": [],
+      "status": "active",
+      "createdBy": null,
+      "isActive": true,
+      "_id": "695dd663d1cd09c94013e1a9",
+      "LightingID": "10",
+      "ContainerID": "10",
+      "SoilID": "5",
+      "GrowingMethodID": null,
+      "DatePlanted": "2024-03-06",
+      "HarvestID": null,
+      "LocationID": "695549a8665e92102248fa4b",
+      "indoors": true,
+      "outdoors": false,
+      "SeedPacketDate": null,
+      "IsCorrectPlant": null,
+      "SunDirection": "West",
+      "SunExposureTime": "4",
+      "WateringHabitsID": null,
+      "FertilizerID": null,
+      "PlantLifespan": null,
+      "UntimelyDeathDate": "2024-04-09",
+      "GrowthProblems": "It didn't take well being transferred to soil from hydroponics.",
+      "pest_id": "0",
+      "pest_control_id": null,
+      "plant_type_id": "4",
+      "Plant_FormID": "4",
+      "batch_number": null,
+      "garden_design_id": "0",
+      "active": true,
+      "plant_name": "Sweet Basil",
+      "notes": []
+    }
+  },
+  {
+    "endpoint": "/api/plant-stages",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/plant-varieties",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/users/details",
+    "status": 200,
+    "shape": [
+      "success",
+      "count",
+      "data"
+    ]
+  },
+  {
+    "endpoint": "/api/users/roles",
+    "status": 200,
+    "shape": [
+      "success",
+      "count",
+      "data"
+    ]
+  },
+  {
+    "endpoint": "/api/users/permission-modules",
+    "status": 400,
+    "shape": [
+      "success",
+      "message"
+    ],
+    "sample": {
+      "success": false,
+      "message": "Business is required"
+    }
+  },
+  {
+    "endpoint": "/api/users/departments",
+    "status": 400,
+    "shape": [
+      "success",
+      "message"
+    ],
+    "sample": {
+      "success": false,
+      "message": "Business is required"
+    }
+  },
+  {
+    "endpoint": "/api/users/business-departments",
+    "status": 400,
+    "shape": [
+      "success",
+      "message"
+    ],
+    "sample": {
+      "success": false,
+      "message": "Business is required"
+    }
+  },
+  {
+    "endpoint": "/api/users/department-assignments",
+    "status": 200,
+    "shape": [
+      "success",
+      "count",
+      "data"
+    ]
+  },
+  {
+    "endpoint": "/api/users/role-assignments",
+    "status": 200,
+    "shape": [
+      "success",
+      "count",
+      "data"
+    ]
+  },
+  {
+    "endpoint": "/api/users/role-permissions",
+    "status": 200,
+    "shape": [
+      "success",
+      "count",
+      "data"
+    ]
+  },
+  {
+    "endpoint": "/api/users/user-permission-overrides",
+    "status": 500,
+    "shape": [
+      "success",
+      "message",
+      "error"
+    ],
+    "sample": {
+      "success": false,
+      "message": "fetch failed",
+      "error": "Schema hasn't been registered for model \"User\".\nUse mongoose.model(name, schema)"
+    }
+  },
+  {
+    "endpoint": "/api/users/effective-permissions",
+    "status": 400,
+    "shape": [
+      "success",
+      "message"
+    ],
+    "sample": {
+      "success": false,
+      "message": "User is required"
+    }
+  },
+  {
+    "endpoint": "/api/users",
+    "status": 200,
+    "shape": [
+      "success",
+      "count",
+      "data"
+    ]
+  },
+  {
+    "endpoint": "/api/categories",
+    "status": 200,
+    "shape": "array",
+    "count": 1,
+    "sample": {
+      "_id": "6abda13dc6af9313889565b4",
+      "name": "Chapbook",
+      "slug": "chapbook",
+      "description": "",
+      "isActive": true,
+      "createdAt": "2026-09-30T23:54:37.329Z",
+      "updatedAt": "2026-09-30T23:54:37.329Z",
+      "__v": 0
+    }
+  },
+  {
+    "endpoint": "/api/courses",
+    "status": 200,
+    "shape": "array",
+    "count": 74,
+    "sample": {
+      "isActive": true,
+      "_id": "69552803665e92102248f9a2",
+      "name": "Amuse Bouche",
+      "description": "A small complimentary bite served before a meal to stimulate the appetite."
+    }
+  },
+  {
+    "endpoint": "/api/cuisines",
+    "status": 200,
+    "shape": "array",
+    "count": 247,
+    "sample": {
+      "description": "",
+      "isActive": true,
+      "_id": "695527be665e92102248f98a",
+      "name": "African"
+    }
+  },
+  {
+    "endpoint": "/api/dietaries",
+    "status": 200,
+    "shape": "array",
+    "count": 14,
+    "sample": {
+      "_id": "6a54672e47c5d504f80cbf1d",
+      "name": "Contains Alcohol",
+      "slug": "contains-alcohol",
+      "description": "",
+      "isActive": true,
+      "createdAt": "2026-07-13T04:18:54.646Z",
+      "updatedAt": "2026-07-13T04:18:54.646Z",
+      "__v": 0
+    }
+  },
+  {
+    "endpoint": "/api/recipes",
+    "status": 500,
+    "shape": [
+      "message",
+      "error"
+    ],
+    "sample": {
+      "message": "Failed to fetch recipes",
+      "error": "Schema hasn't been registered for model \"Equipment\".\nUse mongoose.model(name, schema)"
+    }
+  },
+  {
+    "endpoint": "/api/recipe-costings",
+    "status": 500,
+    "shape": [
+      "message",
+      "error"
+    ],
+    "sample": {
+      "message": "Failed to fetch recipe costings",
+      "error": "Schema hasn't been registered for model \"Ingredient\".\nUse mongoose.model(name, schema)"
+    }
+  },
+  {
+    "endpoint": "/api/vendor-categories",
+    "status": 200,
+    "shape": "array",
+    "count": 24,
+    "sample": {
+      "_id": "69d96c4e45dc0c6f68ce4d51",
+      "name": "Bakery Supplier",
+      "code": "BAKERY",
+      "description": "Flour, yeast, grains, and baking ingredients",
+      "isActive": true,
+      "slug": "bakery-supplier",
+      "updatedAt": "2026-04-10T22:04:03.143Z"
+    }
+  },
+  {
+    "endpoint": "/api/vendor-ingredient-prices",
+    "status": 500,
+    "shape": [
+      "message",
+      "error"
+    ],
+    "sample": {
+      "message": "Failed to fetch vendor ingredient prices",
+      "error": "Schema hasn't been registered for model \"Ingredient\".\nUse mongoose.model(name, schema)"
+    }
+  },
+  {
+    "endpoint": "/api/reference/planting-seasons",
+    "status": 200,
+    "shape": "array",
+    "count": 0
+  },
+  {
+    "endpoint": "/api/boardjournal",
+    "status": 200,
+    "shape": [
+      "year",
+      "years",
+      "months",
+      "progress",
+      "seeds",
+      "plants",
+      "harvestItems",
+      "gardenAreas",
+      "calendars"
+    ]
+  },
+  {
+    "endpoint": "/api/dashboard",
+    "status": 200,
+    "shape": [
+      "stats",
+      "lowStockItems",
+      "expiringItems",
+      "recentItems",
+      "missingItems",
+      "categoryCosts",
+      "gardenTasks",
+      "recentJournalEntries",
+      "plantHealthItems",
+      "plantLifecycleItems",
+      "growingInstanceItems",
+      "harvestItems",
+      "environmentItems"
+    ]
+  },
+  {
+    "endpoint": "/api/weather",
+    "status": 404,
+    "shape": [
+      "message",
+      "stack"
+    ],
+    "sample": {
+      "message": "Not Found - /api/weather",
+      "stack": "Error: Not Found - /api/weather\n    at notFound (file:///F:/react-projects/ecosphere/gardening-journal/backend/middleware/errorMiddleware.js:8:14)\n    at Layer.handleRequest (F:\\react-projects\\ecosphere\\gardening-journal\\node_modules\\router\\lib\\layer.js:152:17)\n    at trimPrefix (F:\\react-projects\\ecosphere\\gardening-journal\\node_modules\\router\\index.js:342:13)\n    at F:\\react-projects\\ecosphere\\gardening-journal\\node_modules\\router\\index.js:297:9\n    at processParams (F:\\react-projects\\ecosphere\\gardening-journal\\node_modules\\router\\index.js:582:12)\n    at next (F:\\react-projects\\ecosphere\\gardening-journal\\node_modules\\router\\index.js:291:5)\n    at F:\\react-projects\\ecosphere\\gardening-journal\\node_modules\\router\\index.js:688:15\n    at next (F:\\react-projects\\ecosphere\\gardening-journal\\node_modules\\router\\index.js:276:14)\n    at router.handle (F:\\react-projects\\ecosphere\\gardening-journal\\node_modules\\router\\index.js:186:3)\n    at router (F:\\react-projects\\ecosphere\\gardening-journal\\node_modules\\router\\index.js:60:12)"
+    }
+  },
+  {
+    "endpoint": "/api/reminders",
+    "status": 400,
+    "shape": [
+      "message"
+    ],
+    "sample": {
+      "message": "User is required."
+    }
+  }
+]

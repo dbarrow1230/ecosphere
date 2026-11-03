@@ -1,0 +1,1144 @@
+[
+  {
+    "path": "/",
+    "alerts": [],
+    "buttons": [
+      "Reset page"
+    ],
+    "headings": [
+      "Gardening Journal"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/contact",
+    "alerts": [],
+    "buttons": [
+      "Reset page",
+      "Send Message"
+    ],
+    "headings": [
+      "Contact Us"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/faq",
+    "alerts": [],
+    "buttons": [
+      "Reset page"
+    ],
+    "headings": [
+      "Gardening Journal"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/privacy",
+    "alerts": [],
+    "buttons": [
+      "Reset page"
+    ],
+    "headings": [
+      "Privacy Policy",
+      "1. Information We Collect",
+      "2. How We Use Information",
+      "3. Cookies and Analytics",
+      "4. Third-Party Services",
+      "5. Data Security",
+      "6. Your Choices",
+      "7. Children's Privacy",
+      "8. Changes to This Policy",
+      "9. Contact"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/terms",
+    "alerts": [],
+    "buttons": [
+      "Reset page"
+    ],
+    "headings": [
+      "Terms of Service",
+      "1. Acceptance of Terms",
+      "2. Use of the Website",
+      "3. User Content",
+      "4. Intellectual Property",
+      "5. Limitation of Liability",
+      "6. Termination",
+      "7. Changes to Terms",
+      "8. Contact"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/about",
+    "alerts": [],
+    "buttons": [
+      "Reset page"
+    ],
+    "headings": [
+      " Gardening Journal",
+      "Why I Keep It",
+      "What I Record",
+      "My Purpose",
+      "What This Journal Helps Me Do"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/dashboard",
+    "alerts": [],
+    "buttons": [
+      "Reset page",
+      "Clear filter",
+      "Quick ActionsGarden workflow",
+      "Care FocusToday's priorities",
+      "Today",
+      "Back",
+      "Next",
+      "Month",
+      "Week",
+      "Agenda"
+    ],
+    "headings": [
+      "Viewing October 2026",
+      "Garden schedule",
+      "Environment & system monitoring",
+      "Recent Journal Entries",
+      "Recent Harvests",
+      "Low Garden Supplies",
+      "Needed Garden Supplies",
+      "Cost by Garden Category",
+      "Upcoming Garden Tasks",
+      "Plant Health & Issues",
+      "Plant Deaths & Ended Starts"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/journalboard",
+    "alerts": [],
+    "buttons": [
+      "Reset page",
+      "Inspect"
+    ],
+    "headings": [
+      "Seasonal Review"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/hydroponics",
+    "alerts": [],
+    "buttons": [
+      "Reset page",
+      "Add Run"
+    ],
+    "headings": [
+      "Hydro Runs, Devices & Seed Placement",
+      "Select a hydro run"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/equipment",
+    "alerts": [],
+    "buttons": [
+      "Reset page",
+      "Add Equipment",
+      "Details",
+      "Edit",
+      "Details",
+      "Edit",
+      "Details",
+      "Edit",
+      "Details",
+      "Edit"
+    ],
+    "headings": [
+      "Equipment by Category",
+      "Category Breakdown",
+      "Vendor Breakdown",
+      "Condition Breakdown",
+      "Recent Equipment",
+      "Uncategorized"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/journal",
+    "alerts": [],
+    "buttons": [
+      "Reset page",
+      "New entry",
+      "Entry history",
+      "← Previous month",
+      "Next month →",
+      "Today",
+      "Clear filters",
+      "← Previous day",
+      "Next day →"
+    ],
+    "headings": [
+      "Daily Work & Growing Notes",
+      "October 2026"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/plantings",
+    "alerts": [],
+    "buttons": [
+      "Reset page",
+      "Update Run",
+      "Update Run"
+    ],
+    "headings": [
+      "Growing Run Register",
+      "Boston Lettuce",
+      "Butter Crunch Lettuce"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/gardens",
+    "alerts": [],
+    "buttons": [
+      "Reset page",
+      "Refresh",
+      "Add Garden",
+      "Open Garden",
+      "Edit",
+      "Delete",
+      "Open Garden",
+      "Edit",
+      "Delete",
+      "Open Garden"
+    ],
+    "headings": [
+      "Gardens"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/gardens/:id",
+    "alerts": [],
+    "buttons": [
+      "Reset page",
+      "Add Seed",
+      "Add Plant",
+      "Add Section"
+    ],
+    "headings": [
+      "Main Kitchen Garden",
+      "Bed Planner",
+      "Nothing growing here yet"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/garden-budgets",
+    "alerts": [],
+    "buttons": [
+      "Reset page",
+      "Refresh",
+      "Add Budget Item",
+      "Edit",
+      "Delete",
+      "Edit",
+      "Delete",
+      "Edit",
+      "Delete",
+      "Edit"
+    ],
+    "headings": [
+      "Garden Budgets"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/garden-expenses",
+    "alerts": [],
+    "buttons": [
+      "Reset page",
+      "Refresh",
+      "Add Expense"
+    ],
+    "headings": [
+      "Garden Expenses"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/garden-wishlist",
+    "alerts": [],
+    "buttons": [
+      "Reset page",
+      "Refresh",
+      "Add Wish List Item"
+    ],
+    "headings": [
+      "Garden Wish List"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/fruit-calendar",
+    "alerts": [],
+    "buttons": [
+      "Reset page",
+      "Refresh",
+      "Add Fruit Schedule",
+      "Today",
+      "Back",
+      "Next",
+      "Month",
+      "Week",
+      "Agenda",
+      "27"
+    ],
+    "headings": [
+      "Fruit Calendar"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/vegetable-calendar",
+    "alerts": [],
+    "buttons": [
+      "Reset page",
+      "Refresh",
+      "Add Vegetable Schedule",
+      "Today",
+      "Back",
+      "Next",
+      "Month",
+      "Week",
+      "Agenda",
+      "27"
+    ],
+    "headings": [
+      "Vegetable Calendar"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/trap-crops",
+    "alerts": [],
+    "buttons": [
+      "Reset page",
+      "Refresh",
+      "Seeds",
+      "Plants",
+      "Acorn Squash",
+      "Anise",
+      "Bell Pepper",
+      "Bok Choy",
+      "Borage",
+      "Boston Lettuce"
+    ],
+    "headings": [
+      "Trap Crops",
+      "Acorn Squash"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/cover-crops",
+    "alerts": [],
+    "buttons": [
+      "Reset page",
+      "Refresh",
+      "Seeds",
+      "Plants",
+      "Acorn Squash",
+      "Anise",
+      "Bell Pepper",
+      "Bok Choy",
+      "Borage",
+      "Boston Lettuce"
+    ],
+    "headings": [
+      "Cover Crops",
+      "Acorn Squash"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/companion-planting",
+    "alerts": [],
+    "buttons": [
+      "Reset page",
+      "Refresh",
+      "Seeds",
+      "Plants",
+      "Acorn Squash",
+      "Anise",
+      "Bell Pepper",
+      "Bok Choy",
+      "Borage",
+      "Boston Lettuce"
+    ],
+    "headings": [
+      "Companion Planting",
+      "Acorn Squash"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/soil-temperatures",
+    "alerts": [],
+    "buttons": [
+      "Reset page"
+    ],
+    "headings": [
+      "Soil Temperature Reference",
+      " Growing-zone context",
+      " Compare a soil reading",
+      " Germination temperatures",
+      "Reference sources"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/microgreens-guide",
+    "alerts": [],
+    "buttons": [
+      "Reset page"
+    ],
+    "headings": [
+      "Microgreens Guide",
+      "Start a tray",
+      "Broccoli",
+      "Sunflower",
+      "Pea shoots",
+      "Radish",
+      "Kale",
+      "Mustard",
+      "Basil",
+      "Cilantro",
+      "Beetroot"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/supplies",
+    "alerts": [],
+    "buttons": [
+      "Reset page",
+      "Refresh",
+      "Add Supplie"
+    ],
+    "headings": [
+      "Supplies"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/observations",
+    "alerts": [],
+    "buttons": [
+      "Reset page",
+      "Refresh",
+      "Add Observation",
+      "Edit",
+      "Delete",
+      "Edit",
+      "Delete",
+      "Edit",
+      "Delete",
+      "Edit"
+    ],
+    "headings": [
+      "Observations"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/fertilizer-applications",
+    "alerts": [],
+    "buttons": [
+      "Reset page",
+      "Refresh",
+      "Add Fertilizer & Soil Amendment"
+    ],
+    "headings": [
+      "Fertilizer & Soil Amendments"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/issues",
+    "alerts": [],
+    "buttons": [
+      "Reset page",
+      "Refresh",
+      "Add Issue"
+    ],
+    "headings": [
+      "Issues"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/harvest",
+    "alerts": [],
+    "buttons": [
+      "Reset page",
+      "Add Harvest",
+      "Edit",
+      "Delete"
+    ],
+    "headings": [
+      "Harvest Records",
+      "Boston Lettuce"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/pests",
+    "alerts": [],
+    "buttons": [
+      "Reset page",
+      "Add Pest",
+      "Clear Filters",
+      "No type assigned10",
+      "Reset"
+    ],
+    "headings": [
+      "Pests",
+      "10 Pests"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/tasks",
+    "alerts": [],
+    "buttons": [
+      "Reset page",
+      "Add Task",
+      "Filter",
+      "Edit",
+      "Delete",
+      "Edit",
+      "Delete",
+      "Edit",
+      "Delete",
+      "Edit"
+    ],
+    "headings": [
+      "Tasks"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/seeds/form",
+    "alerts": [],
+    "buttons": [
+      "Reset page",
+      "Save Seed",
+      "Parse to Form",
+      "Basic Information",
+      "Flavor Profile",
+      "Species",
+      "Lifecycle",
+      "Growth",
+      "Conditions",
+      "Stress"
+    ],
+    "headings": [
+      "Create Seed",
+      "Parse Seed Reference Text"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/hardiness-zones",
+    "alerts": [],
+    "buttons": [
+      "Reset page",
+      "Find Zone",
+      "1A",
+      "1B",
+      "2A",
+      "2B",
+      "3A",
+      "3B",
+      "4A",
+      "4B"
+    ],
+    "headings": [],
+    "readErrors": []
+  },
+  {
+    "path": "/hydroponic-companion-planting",
+    "alerts": [
+      "I found out that in hydroponics, it is usually better to grow fast-growing plants with other fast-growing plants, and slower-growing plants with other slower-growing plants. Mixing them can throw off nutrient uptake and pH balance in a shared system."
+    ],
+    "buttons": [
+      "Reset page"
+    ],
+    "headings": [
+      "Companion Planting in Hydroponics",
+      "What Fast-Growing Plants Can Affect",
+      "Nutrient Balance",
+      "pH Stability",
+      "Better Grouping Strategy",
+      "What This Changed for Me",
+      "Final Thought"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/diseases",
+    "alerts": [],
+    "buttons": [
+      "Reset page",
+      "Add Disease",
+      "Clear Filters",
+      "Low0",
+      "Moderate0",
+      "High0",
+      "Severe0",
+      "Reset"
+    ],
+    "headings": [
+      "Diseases",
+      "0 Diseases"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/seeds",
+    "alerts": [],
+    "buttons": [
+      "Reset page",
+      "Add",
+      "All",
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G"
+    ],
+    "headings": [
+      "Seed List",
+      "Fenugreek"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/seed-collections",
+    "alerts": [],
+    "buttons": [
+      "Reset page",
+      "Add Collection"
+    ],
+    "headings": [
+      "Seed Collection",
+      "Seeds With Collections"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/plants",
+    "alerts": [],
+    "buttons": [
+      "Reset page",
+      "Add Plant",
+      "All",
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G"
+    ],
+    "headings": [
+      "Plant List",
+      "Sweet Basil",
+      "Plant Care Card"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/vendors/equipment",
+    "alerts": [],
+    "buttons": [
+      "Reset page",
+      "Add Vendor",
+      "Amazon",
+      "Amazon",
+      "AnuniFun",
+      "Aunifun",
+      "Bootstrap Farmersupport@bootstrapfarmer.com",
+      "Dayimado",
+      "Espoma",
+      "Gardener's Supply Companyservice@gardeners.com"
+    ],
+    "headings": [
+      "Equipment Vendors"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/vendors/seeds",
+    "alerts": [],
+    "buttons": [
+      "Reset page",
+      "Add Vendor",
+      "Amazon Fresh",
+      "Back to The Rootscontact@backtotheroots.com",
+      "Baker Creek Heirloom Seedsinfo@rareseeds.com",
+      "Bluestone Perennials",
+      "Botanical Interestsreorders@botanicalinterests.com",
+      "Ferry Morseinfo@ferrymorse.com",
+      "Food Bazaar Supermarketinfo@bogopausa.com",
+      "Great Garden Plantsinfo@greatgardenplants.com"
+    ],
+    "headings": [
+      "Seed Vendors"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/vendors/supplies",
+    "alerts": [],
+    "buttons": [
+      "Reset page",
+      "Add Vendor"
+    ],
+    "headings": [
+      "Supply Vendors"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/users",
+    "alerts": [
+      "You do not have permission to view this page."
+    ],
+    "buttons": [
+      "Reset page",
+      "Add User"
+    ],
+    "headings": [
+      "Users"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/login",
+    "alerts": [],
+    "buttons": [
+      "Reset page"
+    ],
+    "headings": [],
+    "readErrors": []
+  },
+  {
+    "path": "/forgot-password",
+    "alerts": [],
+    "buttons": [
+      "Reset page",
+      "Generate Reset Link"
+    ],
+    "headings": [
+      "Forgot Password"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/reset-password/:token",
+    "alerts": [
+      "Not Found - /api/users/reset-password/audit-token"
+    ],
+    "buttons": [
+      "Reset page"
+    ],
+    "headings": [
+      "Reset Password"
+    ],
+    "readErrors": [
+      {
+        "status": 404,
+        "url": "/api/users/reset-password/audit-token"
+      }
+    ]
+  },
+  {
+    "path": "/profile",
+    "alerts": [],
+    "buttons": [
+      "Reset page"
+    ],
+    "headings": [
+      "User Profile"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/admin",
+    "alerts": [],
+    "buttons": [
+      "Reset page"
+    ],
+    "headings": [
+      "Admin Dashboard",
+      "No Admin Access"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/admin/businesses",
+    "alerts": [],
+    "buttons": [
+      "Reset page",
+      "Add Business",
+      "Edit Business",
+      "Antinet ZettlekastenantzetActive",
+      "Barrow Account and Tax ServicesbatsActive",
+      "Barrow Coffee DelightsbarcofdelActive",
+      "Barrow PublicationsbarpubActive",
+      "Beer Wine InventorybeewininvActive",
+      "Bible Study MethodsbibstumetActive",
+      "Book ManagementboomanActive"
+    ],
+    "headings": [
+      "Businesses"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/admin/business-types",
+    "alerts": [],
+    "buttons": [
+      "Reset page",
+      "Add Business Type"
+    ],
+    "headings": [],
+    "readErrors": []
+  },
+  {
+    "path": "/admin/app-keys",
+    "alerts": [],
+    "buttons": [
+      "Reset page",
+      "Add App Key"
+    ],
+    "headings": [],
+    "readErrors": []
+  },
+  {
+    "path": "/admin/tax-rates",
+    "alerts": [],
+    "buttons": [
+      "Reset page",
+      "Add Tax Rate",
+      "Edit",
+      "Delete",
+      "Edit",
+      "Delete",
+      "Edit",
+      "Delete",
+      "Edit",
+      "Delete"
+    ],
+    "headings": [],
+    "readErrors": []
+  },
+  {
+    "path": "/admin/footers",
+    "alerts": [],
+    "buttons": [
+      "Reset page",
+      "Antinet Zettlekastenantzet",
+      "Barrow Account and Tax Servicesbats",
+      "Barrow Coffee Delightsbarcofdel",
+      "Barrow Publicationsbarpub",
+      "Beer Wine Inventorybeewininv",
+      "Bible Study Methodsbibstumet",
+      "Book Managementbooman",
+      "Chorna Life Boardcholifboa",
+      "Crazy Cravings Alchemy Delights Doughnutscracraalcdeldou"
+    ],
+    "headings": [
+      "Footers",
+      "Antinet Zettlekastenantzet",
+      "Barrow Account and Tax Servicesbats",
+      "Barrow Coffee Delightsbarcofdel",
+      "Barrow Publicationsbarpub",
+      "Beer Wine Inventorybeewininv",
+      "Bible Study Methodsbibstumet",
+      "Book Managementbooman",
+      "Chorna Life Boardcholifboa",
+      "Crazy Cravings Alchemy Delights Doughnutscracraalcdeldou",
+      "Culinary Mentorship Trackerculmentra",
+      "Echosphereechospher",
+      "Employee Scheduleempsch",
+      "Everything in a Jareverything-in-a-jar",
+      "Food Preservation Managerfoopreman",
+      "Fresh Roots Catering Managementfreroocatman",
+      "Fresh Roots Employee Managerfrerooempman",
+      "Fresh Roots Flavor Kitchenfreshroots",
+      "From the Ground Upfrothegroup",
+      "Gardening Journalgarjou",
+      "Green Table Grocersgreentable",
+      "Ham Radio Loggerhamradlog",
+      "Home Tracker Inventoryhomtrainv",
+      "ITM Fire Protectionitmfirpro",
+      "Menusmen",
+      "Music Buildermusbui",
+      "Natures Apothecarynaturesapoth",
+      "Novel Writing Plannernovwripla",
+      "Photo Latticepholat",
+      "Plannerspla",
+      "Poetry Gardenpoetrygarden",
+      "Pro Edge Knife Systemproedgknisys",
+      "Project Trackerprotra",
+      "Recipe Costingreccos",
+      "Recipe Managementrecman",
+      "Regenerative Earth Cuisineregearthcuis",
+      "Root Wise Culinary Consultingroowisculcon",
+      "Shopping Managershoman",
+      "The Zestful Gourmetzestfulgourmet",
+      "Travel Loggertralog",
+      "Website Plannerwebpla"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/admin/seasons",
+    "alerts": [],
+    "buttons": [
+      "Reset page",
+      "Add Season",
+      "Edit Season",
+      "Delete Season",
+      "Antinet Zettlekastenantzet",
+      "Barrow Account and Tax Servicesbats",
+      "Barrow Coffee Delightsbarcofdel",
+      "Barrow Publicationsbarpub",
+      "Beer Wine Inventorybeewininv",
+      "Bible Study Methodsbibstumet"
+    ],
+    "headings": [
+      "Seasons",
+      "Antinet Zettlekastenantzet",
+      "Barrow Account and Tax Servicesbats",
+      "Barrow Coffee Delightsbarcofdel",
+      "Barrow Publicationsbarpub",
+      "Beer Wine Inventorybeewininv",
+      "Bible Study Methodsbibstumet",
+      "Book Managementbooman",
+      "Chorna Life Boardcholifboa",
+      "Crazy Cravings Alchemy Delights Doughnutscracraalcdeldou",
+      "Culinary Mentorship Trackerculmentra",
+      "Echosphereechospher",
+      "Employee Scheduleempsch",
+      "Everything in a Jareverything-in-a-jar",
+      "Food Preservation Managerfoopreman",
+      "Fresh Roots Catering Managementfreroocatman",
+      "Fresh Roots Employee Managerfrerooempman",
+      "Fresh Roots Flavor Kitchenfreshroots",
+      "From the Ground Upfrothegroup",
+      "Gardening Journalgarjou",
+      "Green Table Grocersgreentable",
+      "Ham Radio Loggerhamradlog",
+      "Home Tracker Inventoryhomtrainv",
+      "ITM Fire Protectionitmfirpro",
+      "Menusmen",
+      "Music Buildermusbui",
+      "Natures Apothecarynaturesapoth",
+      "Novel Writing Plannernovwripla",
+      "Photo Latticepholat",
+      "Plannerspla",
+      "Poetry Gardenpoetrygarden",
+      "Pro Edge Knife Systemproedgknisys",
+      "Project Trackerprotra",
+      "Recipe Costingreccos",
+      "Recipe Managementrecman",
+      "Regenerative Earth Cuisineregearthcuis",
+      "Root Wise Culinary Consultingroowisculcon",
+      "Shopping Managershoman",
+      "The Zestful Gourmetzestfulgourmet",
+      "Travel Loggertralog",
+      "Website Plannerwebpla"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/admin/holidays",
+    "alerts": [],
+    "buttons": [
+      "Reset page",
+      "Add Holiday",
+      "Edit Holiday",
+      "Delete Holiday"
+    ],
+    "headings": [
+      "Holidays"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/admin/occasions",
+    "alerts": [],
+    "buttons": [
+      "Reset page",
+      "Antinet Zettlekastenantzet",
+      "Barrow Account and Tax Servicesbats",
+      "Barrow Coffee Delightsbarcofdel",
+      "Barrow Publicationsbarpub",
+      "Beer Wine Inventorybeewininv",
+      "Bible Study Methodsbibstumet",
+      "Book Managementbooman",
+      "Chorna Life Boardcholifboa",
+      "Crazy Cravings Alchemy Delights Doughnutscracraalcdeldou"
+    ],
+    "headings": [
+      "Occasions",
+      "Antinet Zettlekastenantzet",
+      "Barrow Account and Tax Servicesbats",
+      "Barrow Coffee Delightsbarcofdel",
+      "Barrow Publicationsbarpub",
+      "Beer Wine Inventorybeewininv",
+      "Bible Study Methodsbibstumet",
+      "Book Managementbooman",
+      "Chorna Life Boardcholifboa",
+      "Crazy Cravings Alchemy Delights Doughnutscracraalcdeldou",
+      "Culinary Mentorship Trackerculmentra",
+      "Echosphereechospher",
+      "Employee Scheduleempsch",
+      "Everything in a Jareverything-in-a-jar",
+      "Food Preservation Managerfoopreman",
+      "Fresh Roots Catering Managementfreroocatman",
+      "Fresh Roots Employee Managerfrerooempman",
+      "Fresh Roots Flavor Kitchenfreshroots",
+      "From the Ground Upfrothegroup",
+      "Gardening Journalgarjou",
+      "Green Table Grocersgreentable",
+      "Ham Radio Loggerhamradlog",
+      "Home Tracker Inventoryhomtrainv",
+      "ITM Fire Protectionitmfirpro",
+      "Menusmen",
+      "Music Buildermusbui",
+      "Natures Apothecarynaturesapoth",
+      "Novel Writing Plannernovwripla",
+      "Photo Latticepholat",
+      "Plannerspla",
+      "Poetry Gardenpoetrygarden",
+      "Pro Edge Knife Systemproedgknisys",
+      "Project Trackerprotra",
+      "Recipe Costingreccos",
+      "Recipe Managementrecman",
+      "Regenerative Earth Cuisineregearthcuis",
+      "Root Wise Culinary Consultingroowisculcon",
+      "Shopping Managershoman",
+      "The Zestful Gourmetzestfulgourmet",
+      "Travel Loggertralog",
+      "Website Plannerwebpla"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/admin/taglines",
+    "alerts": [],
+    "buttons": [
+      "Reset page",
+      "Antinet Zettlekastenantzet",
+      "Barrow Account and Tax Servicesbats",
+      "Barrow Coffee Delightsbarcofdel",
+      "Barrow Publicationsbarpub",
+      "Beer Wine Inventorybeewininv",
+      "Bible Study Methodsbibstumet",
+      "Book Managementbooman",
+      "Chorna Life Boardcholifboa",
+      "Crazy Cravings Alchemy Delights Doughnutscracraalcdeldou"
+    ],
+    "headings": [
+      "Taglines",
+      "Antinet Zettlekastenantzet",
+      "Barrow Account and Tax Servicesbats",
+      "Barrow Coffee Delightsbarcofdel",
+      "Barrow Publicationsbarpub",
+      "Beer Wine Inventorybeewininv",
+      "Bible Study Methodsbibstumet",
+      "Book Managementbooman",
+      "Chorna Life Boardcholifboa",
+      "Crazy Cravings Alchemy Delights Doughnutscracraalcdeldou",
+      "Culinary Mentorship Trackerculmentra",
+      "Echosphereechospher",
+      "Employee Scheduleempsch",
+      "Everything in a Jareverything-in-a-jar",
+      "Food Preservation Managerfoopreman",
+      "Fresh Roots Catering Managementfreroocatman",
+      "Fresh Roots Employee Managerfrerooempman",
+      "Fresh Roots Flavor Kitchenfreshroots",
+      "From the Ground Upfrothegroup",
+      "Gardening Journalgarjou",
+      "Green Table Grocersgreentable",
+      "Ham Radio Loggerhamradlog",
+      "Home Tracker Inventoryhomtrainv",
+      "ITM Fire Protectionitmfirpro",
+      "Menusmen",
+      "Music Buildermusbui",
+      "Natures Apothecarynaturesapoth",
+      "Novel Writing Plannernovwripla",
+      "Photo Latticepholat",
+      "Plannerspla",
+      "Poetry Gardenpoetrygarden",
+      "Pro Edge Knife Systemproedgknisys",
+      "Project Trackerprotra",
+      "Recipe Costingreccos",
+      "Recipe Managementrecman",
+      "Regenerative Earth Cuisineregearthcuis",
+      "Root Wise Culinary Consultingroowisculcon",
+      "Shopping Managershoman",
+      "The Zestful Gourmetzestfulgourmet",
+      "Travel Loggertralog",
+      "Website Plannerwebpla"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/admin/vendors",
+    "alerts": [],
+    "buttons": [
+      "Reset page",
+      "Add",
+      "Edit",
+      "Delete",
+      "Amazon",
+      "Anheuser-Busch InBev",
+      "Baldor Specialty Foods",
+      "Big Apple Produce Inc.",
+      "Boar's Head Brand",
+      "Coca-Cola Bottling Co."
+    ],
+    "headings": [
+      "Vendors"
+    ],
+    "readErrors": []
+  },
+  {
+    "path": "/admin/business-roles-permissions",
+    "alerts": [],
+    "buttons": [
+      "Reset page",
+      "Roles",
+      "Departments",
+      "Permissions",
+      "Add Role",
+      "New Role",
+      "Clear"
+    ],
+    "headings": [],
+    "readErrors": []
+  }
+]

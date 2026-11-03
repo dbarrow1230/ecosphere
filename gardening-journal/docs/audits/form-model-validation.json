@@ -1,0 +1,261 @@
+[
+  {
+    "page": "/plants",
+    "endpoint": "plants",
+    "method": "POST",
+    "valid": true,
+    "errors": []
+  },
+  {
+    "page": "/seed-collections",
+    "endpoint": "seed-collections",
+    "method": "POST",
+    "valid": true,
+    "errors": []
+  },
+  {
+    "page": "/equipment",
+    "endpoint": "equipment",
+    "method": "POST",
+    "valid": true,
+    "errors": []
+  },
+  {
+    "page": "/gardens",
+    "endpoint": "gardens",
+    "method": "POST",
+    "valid": true,
+    "errors": []
+  },
+  {
+    "page": "/garden-budgets",
+    "endpoint": "garden-budgets",
+    "method": "POST",
+    "valid": true,
+    "errors": []
+  },
+  {
+    "page": "/garden-expenses",
+    "endpoint": "garden-expenses",
+    "method": "POST",
+    "valid": true,
+    "errors": []
+  },
+  {
+    "page": "/garden-wishlist",
+    "endpoint": "garden-wishlist",
+    "method": "POST",
+    "valid": true,
+    "errors": []
+  },
+  {
+    "page": "/pests",
+    "endpoint": "pests",
+    "method": "POST",
+    "valid": true,
+    "errors": []
+  },
+  {
+    "page": "/diseases",
+    "endpoint": "diseases",
+    "method": "POST",
+    "valid": true,
+    "errors": []
+  },
+  {
+    "page": "/vegetable-calendar",
+    "endpoint": "vegetable-calendar",
+    "method": "POST",
+    "valid": true,
+    "errors": []
+  },
+  {
+    "page": "/supplies",
+    "endpoint": "supplies",
+    "method": "POST",
+    "valid": true,
+    "errors": []
+  },
+  {
+    "page": "/observations",
+    "endpoint": "observations",
+    "method": "POST",
+    "valid": true,
+    "errors": []
+  },
+  {
+    "page": "/fertilizer-applications",
+    "endpoint": "fertilizer-applications",
+    "method": "POST",
+    "valid": true,
+    "errors": []
+  },
+  {
+    "page": "/issues",
+    "endpoint": "issues",
+    "method": "POST",
+    "valid": true,
+    "errors": []
+  },
+  {
+    "page": "/harvest",
+    "endpoint": "harvests",
+    "method": "POST",
+    "valid": true,
+    "errors": []
+  },
+  {
+    "page": "/journal",
+    "endpoint": "journal-entries",
+    "method": "POST",
+    "valid": true,
+    "errors": []
+  },
+  {
+    "page": "/hydroponics",
+    "endpoint": "hydro-systems",
+    "method": "POST",
+    "valid": true,
+    "errors": []
+  },
+  {
+    "page": "/companion-planting",
+    "endpoint": "companion-planting",
+    "method": "POST",
+    "valid": true,
+    "errors": []
+  },
+  {
+    "page": "/vendors/equipment",
+    "endpoint": "equipment-vendors",
+    "method": "POST",
+    "valid": true,
+    "errors": []
+  },
+  {
+    "page": "/vendors/seeds",
+    "endpoint": "seed-vendors",
+    "method": "POST",
+    "valid": true,
+    "errors": []
+  },
+  {
+    "page": "/vendors/supplies",
+    "endpoint": "supply-vendors",
+    "method": "POST",
+    "valid": true,
+    "errors": []
+  },
+  {
+    "page": "/gardens/:id",
+    "endpoint": "garden-sections",
+    "method": "POST",
+    "valid": true,
+    "errors": []
+  },
+  {
+    "page": "/gardens/:id",
+    "endpoint": "plantings",
+    "method": "POST",
+    "valid": true,
+    "errors": []
+  },
+  {
+    "page": "/tasks",
+    "endpoint": "tasks",
+    "method": "POST",
+    "valid": true,
+    "errors": []
+  },
+  {
+    "page": "/seeds/form",
+    "endpoint": "seeds",
+    "method": "POST",
+    "valid": true,
+    "errors": []
+  },
+  {
+    "page": "/seeds/form",
+    "endpoint": "seeds",
+    "method": "POST",
+    "valid": true,
+    "errors": []
+  },
+  {
+    "page": "/seeds/form",
+    "endpoint": "seeds",
+    "method": "POST",
+    "valid": true,
+    "errors": []
+  },
+  {
+    "page": "/plants",
+    "endpoint": "plants",
+    "method": "PUT",
+    "valid": true,
+    "errors": []
+  },
+  {
+    "page": "/equipment",
+    "endpoint": "equipment",
+    "method": "PUT",
+    "valid": true,
+    "errors": []
+  },
+  {
+    "page": "/garden-budgets",
+    "endpoint": "garden-budgets",
+    "method": "PUT",
+    "valid": true,
+    "errors": []
+  },
+  {
+    "page": "/harvest",
+    "endpoint": "harvests",
+    "method": "PUT",
+    "valid": true,
+    "errors": []
+  },
+  {
+    "page": "/tasks",
+    "endpoint": "tasks",
+    "method": "PUT",
+    "valid": true,
+    "errors": []
+  },
+  {
+    "page": "/gardens",
+    "endpoint": "gardens",
+    "method": "PUT",
+    "valid": true,
+    "errors": []
+  },
+  {
+    "page": "/observations",
+    "endpoint": "observations",
+    "method": "PUT",
+    "valid": true,
+    "errors": []
+  },
+  {
+    "page": "/vendors/equipment",
+    "endpoint": "equipment-vendors",
+    "method": "PUT",
+    "valid": true,
+    "errors": []
+  },
+  {
+    "page": "/vendors/seeds",
+    "endpoint": "seed-vendors",
+    "method": "PUT",
+    "valid": true,
+    "errors": []
+  },
+  {
+    "page": "/seeds",
+    "endpoint": "seeds",
+    "method": "PUT",
+    "valid": true,
+    "errors": []
+  }
+]

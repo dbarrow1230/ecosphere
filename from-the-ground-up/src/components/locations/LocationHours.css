@@ -1,0 +1,170 @@
+/* src/components/locations/LocationHours.css */
+
+.location-hours{
+ color:inherit;
+ font-family:var(--font-body);
+ min-width:0;
+}
+
+.location-hours-header{
+ margin-bottom:.5rem;
+}
+
+.location-hours-title{
+ margin:0;
+ font-family:var(--font-heading);
+ font-size:1rem;
+ font-weight:700;
+ color:inherit;
+ line-height:1.2;
+}
+
+.location-hours-control{
+ margin-bottom:.55rem;
+ min-width:0;
+}
+
+.location-hours-label{
+ display:flex;
+ align-items:center;
+ gap:.55rem;
+ margin-bottom:.2rem;
+ color:inherit;
+ font-weight:600;
+ font-size:.92rem;
+ white-space:nowrap;
+ min-width:0;
+ line-height:1.2;
+}
+
+.location-hours-label-text{
+ flex:0 0 auto;
+}
+
+.location-hours-select{
+ display:inline-block;
+ flex:1 1 auto;
+ width:100%;
+ min-width:160px;
+ max-width:100%;
+ min-height:34px;
+ padding:.45rem .7rem;
+ background:var(--brand-surface);
+ color:var(--brand-text);
+ border:1px solid var(--brand-border);
+ border-radius:4px;
+ transition:.2s ease;
+ line-height:1.2;
+}
+
+.location-hours-select:hover{
+ border-color:var(--brand-accent);
+}
+
+.location-hours-select:focus{
+ outline:none;
+ border-color:var(--brand-accent);
+ box-shadow:0 0 0 2px var(--brand-border-strong);
+}
+
+.location-hours-select option{
+ color:var(--brand-text);
+ background:var(--brand-surface);
+}
+
+.location-hours-card{
+ margin-top:.45rem;
+ min-width:0;
+}
+
+.location-hours-name{
+ margin:0 0 .2rem;
+ font-family:var(--font-heading);
+ font-size:.9rem;
+ font-weight:700;
+ color:inherit;
+ line-height:1.2;
+}
+
+.location-hours-address,
+.location-hours-phone,
+.location-hours-status{
+ margin:0 0 .3rem;
+ color:inherit;
+ font-size:.92rem;
+ line-height:1.35;
+}
+
+.location-hours-phone{
+ overflow-wrap:anywhere;
+}
+
+.location-hours-phone-inline{
+ display:flex;
+ align-items:flex-start;
+ gap:.85rem;
+ flex-wrap:nowrap;
+ white-space:nowrap;
+}
+
+.location-hours-meta-label{
+ color:var(--brand-accent-soft);
+ font-weight:700;
+}
+
+.location-hours-meta-value{
+ color:inherit;
+}
+
+.location-hours-list{
+ list-style:none;
+ padding:0;
+ margin:.35rem 0 0;
+}
+
+.location-hours-item{
+ display:grid;
+ grid-template-columns:96px auto;
+ align-items:center;
+ column-gap:.6rem;
+ padding:.22rem 0;
+}
+
+.location-hours-day{
+ color:inherit;
+ font-weight:700;
+ font-size:.9rem;
+ line-height:1.2;
+}
+
+.location-hours-time{
+ color:inherit;
+ font-size:.9rem;
+ text-align:left;
+ white-space:nowrap;
+ line-height:1.2;
+}
+
+@media (max-width:767.98px){
+ .location-hours-label{
+  flex-wrap:wrap;
+  white-space:normal;
+ }
+
+ .location-hours-select{
+  max-width:100%;
+ }
+
+ .location-hours-phone-inline{
+  flex-direction:column;
+  gap:.15rem;
+  white-space:normal;
+ }
+
+ .location-hours-item{
+  grid-template-columns:90px auto;
+ }
+}
+.location-hours-address{
+ white-space:pre-line;
+}

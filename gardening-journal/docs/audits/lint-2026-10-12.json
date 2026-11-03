@@ -1,0 +1,1540 @@
+{
+  "scope": "Full src and backend lint snapshot during application cleanup",
+  "errors": 140,
+  "warnings": 17,
+  "files": [
+    {
+      "file": "backend/controllers/users/authController.js",
+      "errors": 1,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "no-undef",
+          "severity": 2,
+          "line": 64,
+          "column": 7,
+          "message": "'process' is not defined."
+        }
+      ]
+    },
+    {
+      "file": "backend/db/businessInfoConnection.js",
+      "errors": 1,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "no-undef",
+          "severity": 2,
+          "line": 4,
+          "column": 56,
+          "message": "'process' is not defined."
+        }
+      ]
+    },
+    {
+      "file": "backend/jobs/noaa.js",
+      "errors": 1,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "no-unused-vars",
+          "severity": 2,
+          "line": 12,
+          "column": 23,
+          "message": "'zip' is defined but never used."
+        }
+      ]
+    },
+    {
+      "file": "backend/middleware/authMiddleware.js",
+      "errors": 1,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "no-undef",
+          "severity": 2,
+          "line": 28,
+          "column": 34,
+          "message": "'process' is not defined."
+        }
+      ]
+    },
+    {
+      "file": "backend/middleware/errorMiddleware.js",
+      "errors": 2,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "no-unused-vars",
+          "severity": 2,
+          "line": 13,
+          "column": 33,
+          "message": "'next' is defined but never used."
+        },
+        {
+          "ruleId": "no-undef",
+          "severity": 2,
+          "line": 37,
+          "column": 9,
+          "message": "'process' is not defined."
+        }
+      ]
+    },
+    {
+      "file": "backend/middleware/permissionMiddleware.js",
+      "errors": 1,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "no-undef",
+          "severity": 2,
+          "line": 21,
+          "column": 1,
+          "message": "'module' is not defined."
+        }
+      ]
+    },
+    {
+      "file": "backend/models/gardens/gardenNoteModel.js",
+      "errors": 1,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "no-unused-vars",
+          "severity": 2,
+          "line": 3,
+          "column": 15,
+          "message": "'model' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u."
+        }
+      ]
+    },
+    {
+      "file": "backend/models/harvest/harvestModel.js",
+      "errors": 1,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "no-unused-vars",
+          "severity": 2,
+          "line": 3,
+          "column": 15,
+          "message": "'model' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u."
+        }
+      ]
+    },
+    {
+      "file": "backend/models/journal/activityModel.js",
+      "errors": 1,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "no-unused-vars",
+          "severity": 2,
+          "line": 2,
+          "column": 15,
+          "message": "'model' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u."
+        }
+      ]
+    },
+    {
+      "file": "backend/models/journal/dailyJournalModel.js",
+      "errors": 1,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "no-unused-vars",
+          "severity": 2,
+          "line": 3,
+          "column": 15,
+          "message": "'model' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u."
+        }
+      ]
+    },
+    {
+      "file": "backend/models/journal/journalEntryModel.js",
+      "errors": 1,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "no-unused-vars",
+          "severity": 2,
+          "line": 3,
+          "column": 15,
+          "message": "'model' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u."
+        }
+      ]
+    },
+    {
+      "file": "backend/models/media/mediaModel.js",
+      "errors": 1,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "no-unused-vars",
+          "severity": 2,
+          "line": 3,
+          "column": 15,
+          "message": "'model' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u."
+        }
+      ]
+    },
+    {
+      "file": "backend/models/pests/pestLogModel.js",
+      "errors": 1,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "no-unused-vars",
+          "severity": 2,
+          "line": 3,
+          "column": 15,
+          "message": "'model' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u."
+        }
+      ]
+    },
+    {
+      "file": "backend/models/pests/pestmodel.js",
+      "errors": 1,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "no-unused-vars",
+          "severity": 2,
+          "line": 3,
+          "column": 15,
+          "message": "'model' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u."
+        }
+      ]
+    },
+    {
+      "file": "backend/models/plants/plantModel.js",
+      "errors": 1,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "no-unused-vars",
+          "severity": 2,
+          "line": 3,
+          "column": 15,
+          "message": "'model' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u."
+        }
+      ]
+    },
+    {
+      "file": "backend/models/plants/plantStageModel.js",
+      "errors": 1,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "no-unused-vars",
+          "severity": 2,
+          "line": 2,
+          "column": 15,
+          "message": "'model' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u."
+        }
+      ]
+    },
+    {
+      "file": "backend/models/plants/plantVarietyModel.js",
+      "errors": 1,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "no-unused-vars",
+          "severity": 2,
+          "line": 2,
+          "column": 15,
+          "message": "'model' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u."
+        }
+      ]
+    },
+    {
+      "file": "backend/models/plants/plantingModel.js",
+      "errors": 1,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "no-unused-vars",
+          "severity": 2,
+          "line": 3,
+          "column": 15,
+          "message": "'model' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u."
+        }
+      ]
+    },
+    {
+      "file": "backend/models/reference/diseaseRefTreatmentModel.js",
+      "errors": 1,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "no-unused-vars",
+          "severity": 2,
+          "line": 2,
+          "column": 15,
+          "message": "'model' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u."
+        }
+      ]
+    },
+    {
+      "file": "backend/models/reference/pestRefTreatmentModel.js",
+      "errors": 1,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "no-unused-vars",
+          "severity": 2,
+          "line": 2,
+          "column": 15,
+          "message": "'model' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u."
+        }
+      ]
+    },
+    {
+      "file": "backend/server.js",
+      "errors": 29,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "no-unused-vars",
+          "severity": 2,
+          "line": 20,
+          "column": 8,
+          "message": "'startReminderJob' is defined but never used. Allowed unused vars must match /^[A-Z_]/u."
+        },
+        {
+          "ruleId": "no-unused-vars",
+          "severity": 2,
+          "line": 165,
+          "column": 9,
+          "message": "'registerReminderSocket' is defined but never used. Allowed unused vars must match /^[A-Z_]/u."
+        },
+        {
+          "ruleId": "no-unused-vars",
+          "severity": 2,
+          "line": 166,
+          "column": 9,
+          "message": "'startReminderCron' is defined but never used. Allowed unused vars must match /^[A-Z_]/u."
+        },
+        {
+          "ruleId": "no-unused-vars",
+          "severity": 2,
+          "line": 168,
+          "column": 9,
+          "message": "'startNOAAJobs' is defined but never used. Allowed unused vars must match /^[A-Z_]/u."
+        },
+        {
+          "ruleId": "no-undef",
+          "severity": 2,
+          "line": 178,
+          "column": 12,
+          "message": "'process' is not defined."
+        },
+        {
+          "ruleId": "no-undef",
+          "severity": 2,
+          "line": 190,
+          "column": 20,
+          "message": "'process' is not defined."
+        },
+        {
+          "ruleId": "no-undef",
+          "severity": 2,
+          "line": 197,
+          "column": 38,
+          "message": "'process' is not defined."
+        },
+        {
+          "ruleId": "no-undef",
+          "severity": 2,
+          "line": 198,
+          "column": 23,
+          "message": "'process' is not defined."
+        },
+        {
+          "ruleId": "no-control-regex",
+          "severity": 2,
+          "line": 211,
+          "column": 12,
+          "message": "Unexpected control character(s) in regular expression: \\x00, \\x1f."
+        },
+        {
+          "ruleId": "no-control-regex",
+          "severity": 2,
+          "line": 269,
+          "column": 38,
+          "message": "Unexpected control character(s) in regular expression: \\x00, \\x1f."
+        },
+        {
+          "ruleId": "no-undef",
+          "severity": 2,
+          "line": 281,
+          "column": 28,
+          "message": "'process' is not defined."
+        },
+        {
+          "ruleId": "no-undef",
+          "severity": 2,
+          "line": 547,
+          "column": 6,
+          "message": "'process' is not defined."
+        },
+        {
+          "ruleId": "no-undef",
+          "severity": 2,
+          "line": 548,
+          "column": 4,
+          "message": "'process' is not defined."
+        },
+        {
+          "ruleId": "no-undef",
+          "severity": 2,
+          "line": 549,
+          "column": 4,
+          "message": "'process' is not defined."
+        },
+        {
+          "ruleId": "no-undef",
+          "severity": 2,
+          "line": 552,
+          "column": 3,
+          "message": "'process' is not defined."
+        },
+        {
+          "ruleId": "no-undef",
+          "severity": 2,
+          "line": 553,
+          "column": 3,
+          "message": "'process' is not defined."
+        },
+        {
+          "ruleId": "no-undef",
+          "severity": 2,
+          "line": 555,
+          "column": 3,
+          "message": "'process' is not defined."
+        },
+        {
+          "ruleId": "no-undef",
+          "severity": 2,
+          "line": 556,
+          "column": 3,
+          "message": "'process' is not defined."
+        },
+        {
+          "ruleId": "no-undef",
+          "severity": 2,
+          "line": 566,
+          "column": 3,
+          "message": "'process' is not defined."
+        },
+        {
+          "ruleId": "no-undef",
+          "severity": 2,
+          "line": 569,
+          "column": 3,
+          "message": "'process' is not defined."
+        },
+        {
+          "ruleId": "no-undef",
+          "severity": 2,
+          "line": 574,
+          "column": 6,
+          "message": "'process' is not defined."
+        },
+        {
+          "ruleId": "no-undef",
+          "severity": 2,
+          "line": 576,
+          "column": 2,
+          "message": "'process' is not defined."
+        },
+        {
+          "ruleId": "no-undef",
+          "severity": 2,
+          "line": 577,
+          "column": 2,
+          "message": "'process' is not defined."
+        },
+        {
+          "ruleId": "no-undef",
+          "severity": 2,
+          "line": 578,
+          "column": 2,
+          "message": "'process' is not defined."
+        },
+        {
+          "ruleId": "no-undef",
+          "severity": 2,
+          "line": 580,
+          "column": 2,
+          "message": "'process' is not defined."
+        },
+        {
+          "ruleId": "no-undef",
+          "severity": 2,
+          "line": 592,
+          "column": 6,
+          "message": "'process' is not defined."
+        },
+        {
+          "ruleId": "no-undef",
+          "severity": 2,
+          "line": 594,
+          "column": 21,
+          "message": "'process' is not defined."
+        },
+        {
+          "ruleId": "no-undef",
+          "severity": 2,
+          "line": 604,
+          "column": 1,
+          "message": "'process' is not defined."
+        },
+        {
+          "ruleId": "no-undef",
+          "severity": 2,
+          "line": 605,
+          "column": 1,
+          "message": "'process' is not defined."
+        }
+      ]
+    },
+    {
+      "file": "backend/services/reminderEmailService.js",
+      "errors": 6,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "no-undef",
+          "severity": 2,
+          "line": 4,
+          "column": 17,
+          "message": "'process' is not defined."
+        },
+        {
+          "ruleId": "no-undef",
+          "severity": 2,
+          "line": 5,
+          "column": 23,
+          "message": "'process' is not defined."
+        },
+        {
+          "ruleId": "no-undef",
+          "severity": 2,
+          "line": 6,
+          "column": 25,
+          "message": "'process' is not defined."
+        },
+        {
+          "ruleId": "no-undef",
+          "severity": 2,
+          "line": 7,
+          "column": 17,
+          "message": "'process' is not defined."
+        },
+        {
+          "ruleId": "no-undef",
+          "severity": 2,
+          "line": 8,
+          "column": 17,
+          "message": "'process' is not defined."
+        },
+        {
+          "ruleId": "no-undef",
+          "severity": 2,
+          "line": 9,
+          "column": 17,
+          "message": "'process' is not defined."
+        }
+      ]
+    },
+    {
+      "file": "backend/services/reminderSmsService.js",
+      "errors": 3,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "no-undef",
+          "severity": 2,
+          "line": 4,
+          "column": 18,
+          "message": "'process' is not defined."
+        },
+        {
+          "ruleId": "no-undef",
+          "severity": 2,
+          "line": 5,
+          "column": 17,
+          "message": "'process' is not defined."
+        },
+        {
+          "ruleId": "no-undef",
+          "severity": 2,
+          "line": 6,
+          "column": 18,
+          "message": "'process' is not defined."
+        }
+      ]
+    },
+    {
+      "file": "backend/utils/generateToken.js",
+      "errors": 1,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "no-undef",
+          "severity": 2,
+          "line": 5,
+          "column": 23,
+          "message": "'process' is not defined."
+        }
+      ]
+    },
+    {
+      "file": "backend/utils/getAppModules.js",
+      "errors": 3,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "no-undef",
+          "severity": 2,
+          "line": 18,
+          "column": 30,
+          "message": "'process' is not defined."
+        },
+        {
+          "ruleId": "no-useless-escape",
+          "severity": 2,
+          "line": 31,
+          "column": 16,
+          "message": "Unnecessary escape character: \\-."
+        },
+        {
+          "ruleId": "no-undef",
+          "severity": 2,
+          "line": 37,
+          "column": 36,
+          "message": "'process' is not defined."
+        }
+      ]
+    },
+    {
+      "file": "backend/utils/sendEmail.js",
+      "errors": 5,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "no-undef",
+          "severity": 2,
+          "line": 5,
+          "column": 7,
+          "message": "'process' is not defined."
+        },
+        {
+          "ruleId": "no-undef",
+          "severity": 2,
+          "line": 6,
+          "column": 14,
+          "message": "'process' is not defined."
+        },
+        {
+          "ruleId": "no-undef",
+          "severity": 2,
+          "line": 9,
+          "column": 8,
+          "message": "'process' is not defined."
+        },
+        {
+          "ruleId": "no-undef",
+          "severity": 2,
+          "line": 10,
+          "column": 8,
+          "message": "'process' is not defined."
+        },
+        {
+          "ruleId": "no-undef",
+          "severity": 2,
+          "line": 16,
+          "column": 8,
+          "message": "'process' is not defined."
+        }
+      ]
+    },
+    {
+      "file": "backend/utils/sendSms.js",
+      "errors": 3,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "no-undef",
+          "severity": 2,
+          "line": 4,
+          "column": 21,
+          "message": "'process' is not defined."
+        },
+        {
+          "ruleId": "no-undef",
+          "severity": 2,
+          "line": 4,
+          "column": 44,
+          "message": "'process' is not defined."
+        },
+        {
+          "ruleId": "no-undef",
+          "severity": 2,
+          "line": 9,
+          "column": 8,
+          "message": "'process' is not defined."
+        }
+      ]
+    },
+    {
+      "file": "src/App.jsx",
+      "errors": 1,
+      "warnings": 3,
+      "messages": [
+        {
+          "ruleId": "react-hooks/exhaustive-deps",
+          "severity": 1,
+          "line": 224,
+          "column": 4,
+          "message": "React Hook useEffect has a missing dependency: 'getStoredUser'. Either include it or remove the dependency array."
+        },
+        {
+          "ruleId": "react-hooks/set-state-in-effect",
+          "severity": 2,
+          "line": 229,
+          "column": 3,
+          "message": "Error: Calling setState synchronously within an effect can trigger cascading renders\n\nEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:\n* Update external systems with the latest state from React.\n* Subscribe for updates from some external system, calling setState in a callback function when external state changes.\n\nCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).\n\n  227 |\n  228 |  useEffect(()=>{\n> 229 |   setUser(getStoredUser());\n      |   ^^^^^^^ Avoid calling setState() directly within an effect\n  230 |  },[location.pathname]);\n  231 |\n  232 |  useEffect(()=>{"
+        },
+        {
+          "ruleId": "react-hooks/exhaustive-deps",
+          "severity": 1,
+          "line": 230,
+          "column": 4,
+          "message": "React Hook useEffect has a missing dependency: 'getStoredUser'. Either include it or remove the dependency array."
+        },
+        {
+          "ruleId": "react-hooks/exhaustive-deps",
+          "severity": 1,
+          "line": 263,
+          "column": 4,
+          "message": "React Hook useEffect has a missing dependency: 'getStoredUser'. Either include it or remove the dependency array."
+        }
+      ]
+    },
+    {
+      "file": "src/components/SortedList.jsx",
+      "errors": 1,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "no-unused-vars",
+          "severity": 2,
+          "line": 10,
+          "column": 5,
+          "message": "'Component' is assigned a value but never used."
+        }
+      ]
+    },
+    {
+      "file": "src/components/usdaZones.jsx",
+      "errors": 2,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "react-hooks/set-state-in-effect",
+          "severity": 2,
+          "line": 13,
+          "column": 3,
+          "message": "Error: Calling setState synchronously within an effect can trigger cascading renders\n\nEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:\n* Update external systems with the latest state from React.\n* Subscribe for updates from some external system, calling setState in a callback function when external state changes.\n\nCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).\n\n  11 |\n  12 |  useEffect(()=>{\n> 13 |   setInputZipCode(zipCode||\"\");\n     |   ^^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect\n  14 |  },[zipCode]);\n  15 |\n  16 |  const fetchZone=async(zip)=>{"
+        },
+        {
+          "ruleId": "no-unused-vars",
+          "severity": 2,
+          "line": 56,
+          "column": 9,
+          "message": "'err' is defined but never used."
+        }
+      ]
+    },
+    {
+      "file": "src/pages/admin/AppKeys.jsx",
+      "errors": 2,
+      "warnings": 1,
+      "messages": [
+        {
+          "ruleId": "react-hooks/immutability",
+          "severity": 2,
+          "line": 34,
+          "column": 3,
+          "message": "Error: Cannot access variable before it is declared\n\n`fetchAppKeys` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.\n\n  32 |\n  33 |  useEffect(()=>{\n> 34 |   fetchAppKeys();\n     |   ^^^^^^^^^^^^ `fetchAppKeys` accessed before it is declared\n  35 |   fetchBusinesses();\n  36 |  },[]);\n  37 |\n\n  59 |  };\n  60 |\n> 61 |  const fetchAppKeys=async()=>{\n     |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n> 62 |   try{\n     | ^^^^^^\n> 63 |    setLoading(true);\n     …\n     | ^^^^^^\n> 71 |   }\n     | ^^^^^^\n> 72 |  };\n     | ^^^^ `fetchAppKeys` is declared here\n  73 |\n  74 |  const fetchBusinesses=async()=>{\n  75 |   try{"
+        },
+        {
+          "ruleId": "react-hooks/immutability",
+          "severity": 2,
+          "line": 35,
+          "column": 3,
+          "message": "Error: Cannot access variable before it is declared\n\n`fetchBusinesses` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.\n\n  33 |  useEffect(()=>{\n  34 |   fetchAppKeys();\n> 35 |   fetchBusinesses();\n     |   ^^^^^^^^^^^^^^^ `fetchBusinesses` accessed before it is declared\n  36 |  },[]);\n  37 |\n  38 |  const api=async(url,options={})=>{\n\n  72 |  };\n  73 |\n> 74 |  const fetchBusinesses=async()=>{\n     |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n> 75 |   try{\n     | ^^^^^^\n> 76 |    const res=await api(\"/api/businesses\");\n     …\n     | ^^^^^^\n> 88 |   }\n     | ^^^^^^\n> 89 |  };\n     | ^^^^ `fetchBusinesses` is declared here\n  90 |\n  91 |  const openAddModal=()=>{\n  92 |   setEditingId(\"\");"
+        },
+        {
+          "ruleId": "react-hooks/exhaustive-deps",
+          "severity": 1,
+          "line": 36,
+          "column": 4,
+          "message": "React Hook useEffect has missing dependencies: 'fetchAppKeys' and 'fetchBusinesses'. Either include them or remove the dependency array."
+        }
+      ]
+    },
+    {
+      "file": "src/pages/admin/BusinessRolesPermissionsPage.jsx",
+      "errors": 11,
+      "warnings": 2,
+      "messages": [
+        {
+          "ruleId": "react-hooks/purity",
+          "severity": 2,
+          "line": 45,
+          "column": 48,
+          "message": "Error: Cannot call impure function during render\n\n`Date.now` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).\n\n  43 |\n  44 |  const api=async(url,options={})=>{\n> 45 |   const finalUrl=url.includes(\"?\")?`${url}&_=${Date.now()}`:`${url}?_=${Date.now()}`;\n     |                                                ^^^^^^^^^^ Cannot call impure function\n  46 |\n  47 |   const res=await fetch(finalUrl,{\n  48 |    cache:\"no-store\","
+        },
+        {
+          "ruleId": "react-hooks/purity",
+          "severity": 2,
+          "line": 45,
+          "column": 73,
+          "message": "Error: Cannot call impure function during render\n\n`Date.now` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).\n\n  43 |\n  44 |  const api=async(url,options={})=>{\n> 45 |   const finalUrl=url.includes(\"?\")?`${url}&_=${Date.now()}`:`${url}?_=${Date.now()}`;\n     |                                                                         ^^^^^^^^^^ Cannot call impure function\n  46 |\n  47 |   const res=await fetch(finalUrl,{\n  48 |    cache:\"no-store\","
+        },
+        {
+          "ruleId": "react-hooks/immutability",
+          "severity": 2,
+          "line": 178,
+          "column": 27,
+          "message": "Error: Cannot access variable before it is declared\n\n`loadCurrentAppBusiness` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.\n\n  176 |  useEffect(()=>{\n  177 |   const init=async()=>{\n> 178 |    const businessId=await loadCurrentAppBusiness();\n      |                           ^^^^^^^^^^^^^^^^^^^^^^ `loadCurrentAppBusiness` accessed before it is declared\n  179 |    fetchBusinesses(businessId);\n  180 |    fetchBusinessTypes();\n  181 |   };\n\n  227 |  },[roleOptions,selectedBusiness,selectedPermissionRole]);\n  228 |\n> 229 |  const loadCurrentAppBusiness=async()=>{\n      |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n> 230 |   try{\n      | ^^^^^^\n> 231 |    setLoadingCurrentBusiness(true);\n      …\n      | ^^^^^^\n> 243 |   }\n      | ^^^^^^\n> 244 |  };\n      | ^^^^ `loadCurrentAppBusiness` is declared here\n  245 |\n  246 |  const fetchBusinesses=async(preferredBusinessId=currentAppBusinessId)=>{\n  247 |   try{"
+        },
+        {
+          "ruleId": "react-hooks/immutability",
+          "severity": 2,
+          "line": 179,
+          "column": 4,
+          "message": "Error: Cannot access variable before it is declared\n\n`fetchBusinesses` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.\n\n  177 |   const init=async()=>{\n  178 |    const businessId=await loadCurrentAppBusiness();\n> 179 |    fetchBusinesses(businessId);\n      |    ^^^^^^^^^^^^^^^ `fetchBusinesses` accessed before it is declared\n  180 |    fetchBusinessTypes();\n  181 |   };\n  182 |\n\n  244 |  };\n  245 |\n> 246 |  const fetchBusinesses=async(preferredBusinessId=currentAppBusinessId)=>{\n      |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n> 247 |   try{\n      | ^^^^^^\n> 248 |    setLoadingBusinesses(true);\n      …\n      | ^^^^^^\n> 265 |   }\n      | ^^^^^^\n> 266 |  };\n      | ^^^^ `fetchBusinesses` is declared here\n  267 |\n  268 |  const fetchBusinessTypes=async()=>{\n  269 |   try{"
+        },
+        {
+          "ruleId": "react-hooks/immutability",
+          "severity": 2,
+          "line": 180,
+          "column": 4,
+          "message": "Error: Cannot access variable before it is declared\n\n`fetchBusinessTypes` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.\n\n  178 |    const businessId=await loadCurrentAppBusiness();\n  179 |    fetchBusinesses(businessId);\n> 180 |    fetchBusinessTypes();\n      |    ^^^^^^^^^^^^^^^^^^ `fetchBusinessTypes` accessed before it is declared\n  181 |   };\n  182 |\n  183 |   init();\n\n  266 |  };\n  267 |\n> 268 |  const fetchBusinessTypes=async()=>{\n      |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n> 269 |   try{\n      | ^^^^^^\n> 270 |    setLoadingBusinessTypes(true);\n      …\n      | ^^^^^^\n> 278 |   }\n      | ^^^^^^\n> 279 |  };\n      | ^^^^ `fetchBusinessTypes` is declared here\n  280 |\n  281 |  const fetchModules=async businessId=>{\n  282 |   if(!businessId)"
+        },
+        {
+          "ruleId": "react-hooks/exhaustive-deps",
+          "severity": 1,
+          "line": 184,
+          "column": 4,
+          "message": "React Hook useEffect has missing dependencies: 'fetchBusinessTypes', 'fetchBusinesses', and 'loadCurrentAppBusiness'. Either include them or remove the dependency array."
+        },
+        {
+          "ruleId": "react-hooks/set-state-in-effect",
+          "severity": 2,
+          "line": 189,
+          "column": 4,
+          "message": "Error: Calling setState synchronously within an effect can trigger cascading renders\n\nEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:\n* Update external systems with the latest state from React.\n* Subscribe for updates from some external system, calling setState in a callback function when external state changes.\n\nCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).\n\n  187 |   if(!selectedBusiness)\n  188 |   {\n> 189 |    setRoles([]);\n      |    ^^^^^^^^ Avoid calling setState() directly within an effect\n  190 |    setDepartments([]);\n  191 |    setPermissions([]);\n  192 |    setModuleOptions([]);"
+        },
+        {
+          "ruleId": "react-hooks/immutability",
+          "severity": 2,
+          "line": 204,
+          "column": 3,
+          "message": "Error: Cannot access variable before it is declared\n\n`fetchRoles` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.\n\n  202 |   setRoleForm(prev=>({...prev,business:businessId}));\n  203 |   setDepartmentForm(prev=>({...prev,business:businessId}));\n> 204 |   fetchRoles(businessId);\n      |   ^^^^^^^^^^ `fetchRoles` accessed before it is declared\n  205 |   fetchDepartments(businessId);\n  206 |   fetchPermissions(businessId);\n  207 |   fetchModules(businessId);\n\n  298 |  };\n  299 |\n> 300 |  const fetchRoles=async businessId=>{\n      |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n> 301 |   try{\n      | ^^^^^^\n> 302 |    setLoadingRoles(true);\n      …\n      | ^^^^^^\n> 310 |   }\n      | ^^^^^^\n> 311 |  };\n      | ^^^^ `fetchRoles` is declared here\n  312 |\n  313 |  const fetchDepartments=async businessId=>{\n  314 |   try{"
+        },
+        {
+          "ruleId": "react-hooks/immutability",
+          "severity": 2,
+          "line": 205,
+          "column": 3,
+          "message": "Error: Cannot access variable before it is declared\n\n`fetchDepartments` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.\n\n  203 |   setDepartmentForm(prev=>({...prev,business:businessId}));\n  204 |   fetchRoles(businessId);\n> 205 |   fetchDepartments(businessId);\n      |   ^^^^^^^^^^^^^^^^ `fetchDepartments` accessed before it is declared\n  206 |   fetchPermissions(businessId);\n  207 |   fetchModules(businessId);\n  208 |  },[selectedBusiness]);\n\n  311 |  };\n  312 |\n> 313 |  const fetchDepartments=async businessId=>{\n      |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n> 314 |   try{\n      | ^^^^^^\n> 315 |    setLoadingDepartments(true);\n      …\n      | ^^^^^^\n> 323 |   }\n      | ^^^^^^\n> 324 |  };\n      | ^^^^ `fetchDepartments` is declared here\n  325 |\n  326 |  const fetchPermissions=async businessId=>{\n  327 |   try{"
+        },
+        {
+          "ruleId": "react-hooks/immutability",
+          "severity": 2,
+          "line": 206,
+          "column": 3,
+          "message": "Error: Cannot access variable before it is declared\n\n`fetchPermissions` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.\n\n  204 |   fetchRoles(businessId);\n  205 |   fetchDepartments(businessId);\n> 206 |   fetchPermissions(businessId);\n      |   ^^^^^^^^^^^^^^^^ `fetchPermissions` accessed before it is declared\n  207 |   fetchModules(businessId);\n  208 |  },[selectedBusiness]);\n  209 |\n\n  324 |  };\n  325 |\n> 326 |  const fetchPermissions=async businessId=>{\n      |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n> 327 |   try{\n      | ^^^^^^\n> 328 |    setLoadingPermissions(true);\n      …\n      | ^^^^^^\n> 335 |   }\n      | ^^^^^^\n> 336 |  };\n      | ^^^^ `fetchPermissions` is declared here\n  337 |\n  338 |  const resetRoleForm=(businessId=selectedBusiness)=>{\n  339 |   setRoleForm({...emptyRoleForm,business:businessId,isActive:true});"
+        },
+        {
+          "ruleId": "react-hooks/immutability",
+          "severity": 2,
+          "line": 207,
+          "column": 3,
+          "message": "Error: Cannot access variable before it is declared\n\n`fetchModules` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.\n\n  205 |   fetchDepartments(businessId);\n  206 |   fetchPermissions(businessId);\n> 207 |   fetchModules(businessId);\n      |   ^^^^^^^^^^^^ `fetchModules` accessed before it is declared\n  208 |  },[selectedBusiness]);\n  209 |\n  210 |  useEffect(()=>{\n\n  279 |  };\n  280 |\n> 281 |  const fetchModules=async businessId=>{\n      |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n> 282 |   if(!businessId)\n      | ^^^^^^^^^^^^^^^^^\n> 283 |   {\n      …\n      | ^^^^^^^^^^^^^^^^^\n> 297 |   }\n      | ^^^^^^^^^^^^^^^^^\n> 298 |  };\n      | ^^^^ `fetchModules` is declared here\n  299 |\n  300 |  const fetchRoles=async businessId=>{\n  301 |   try{"
+        },
+        {
+          "ruleId": "react-hooks/exhaustive-deps",
+          "severity": 1,
+          "line": 208,
+          "column": 4,
+          "message": "React Hook useEffect has missing dependencies: 'fetchDepartments', 'fetchModules', 'fetchPermissions', and 'fetchRoles'. Either include them or remove the dependency array."
+        },
+        {
+          "ruleId": "react-hooks/set-state-in-effect",
+          "severity": 2,
+          "line": 213,
+          "column": 4,
+          "message": "Error: Calling setState synchronously within an effect can trigger cascading renders\n\nEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:\n* Update external systems with the latest state from React.\n* Subscribe for updates from some external system, calling setState in a callback function when external state changes.\n\nCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).\n\n  211 |   if(!selectedBusiness)\n  212 |   {\n> 213 |    setSelectedPermissionRole(\"\");\n      |    ^^^^^^^^^^^^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect\n  214 |    return;\n  215 |   }\n  216 |"
+        }
+      ]
+    },
+    {
+      "file": "src/pages/admin/BusinessTypes.jsx",
+      "errors": 1,
+      "warnings": 1,
+      "messages": [
+        {
+          "ruleId": "react-hooks/immutability",
+          "severity": 2,
+          "line": 18,
+          "column": 3,
+          "message": "Error: Cannot access variable before it is declared\n\n`fetchBusinessTypes` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.\n\n  16 |\n  17 |  useEffect(()=>{\n> 18 |   fetchBusinessTypes();\n     |   ^^^^^^^^^^^^^^^^^^ `fetchBusinessTypes` accessed before it is declared\n  19 |  },[]);\n  20 |\n  21 |  const api=async(url,options={})=>{\n\n  42 |  };\n  43 |\n> 44 |  const fetchBusinessTypes=async()=>{\n     |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n> 45 |   try{\n     | ^^^^^^\n> 46 |    setLoading(true);\n     …\n     | ^^^^^^\n> 54 |   }\n     | ^^^^^^\n> 55 |  };\n     | ^^^^ `fetchBusinessTypes` is declared here\n  56 |\n  57 |  const openAddModal=()=>{\n  58 |   setEditingId(\"\");"
+        },
+        {
+          "ruleId": "react-hooks/exhaustive-deps",
+          "severity": 1,
+          "line": 19,
+          "column": 4,
+          "message": "React Hook useEffect has a missing dependency: 'fetchBusinessTypes'. Either include it or remove the dependency array."
+        }
+      ]
+    },
+    {
+      "file": "src/pages/admin/Footers.jsx",
+      "errors": 3,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "no-unused-vars",
+          "severity": 2,
+          "line": 99,
+          "column": 11,
+          "message": "'err' is defined but never used."
+        },
+        {
+          "ruleId": "no-unused-vars",
+          "severity": 2,
+          "line": 166,
+          "column": 10,
+          "message": "'err' is defined but never used."
+        },
+        {
+          "ruleId": "no-unused-vars",
+          "severity": 2,
+          "line": 184,
+          "column": 10,
+          "message": "'err' is defined but never used."
+        }
+      ]
+    },
+    {
+      "file": "src/pages/admin/Holidays.jsx",
+      "errors": 1,
+      "warnings": 1,
+      "messages": [
+        {
+          "ruleId": "react-hooks/set-state-in-effect",
+          "severity": 2,
+          "line": 136,
+          "column": 3,
+          "message": "Error: Calling setState synchronously within an effect can trigger cascading renders\n\nEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:\n* Update external systems with the latest state from React.\n* Subscribe for updates from some external system, calling setState in a callback function when external state changes.\n\nCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).\n\n  134 |\n  135 |  useEffect(()=>{\n> 136 |   loadPageData();\n      |   ^^^^^^^^^^^^ Avoid calling setState() directly within an effect\n  137 |   return()=>clearSuccessTimer();\n  138 |  },[]);\n  139 |"
+        },
+        {
+          "ruleId": "react-hooks/exhaustive-deps",
+          "severity": 1,
+          "line": 138,
+          "column": 4,
+          "message": "React Hook useEffect has a missing dependency: 'loadPageData'. Either include it or remove the dependency array."
+        }
+      ]
+    },
+    {
+      "file": "src/pages/admin/Seasons.jsx",
+      "errors": 1,
+      "warnings": 1,
+      "messages": [
+        {
+          "ruleId": "react-hooks/set-state-in-effect",
+          "severity": 2,
+          "line": 117,
+          "column": 3,
+          "message": "Error: Calling setState synchronously within an effect can trigger cascading renders\n\nEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:\n* Update external systems with the latest state from React.\n* Subscribe for updates from some external system, calling setState in a callback function when external state changes.\n\nCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).\n\n  115 |\n  116 |  useEffect(()=>{\n> 117 |   loadPageData();\n      |   ^^^^^^^^^^^^ Avoid calling setState() directly within an effect\n  118 |   return()=>clearSuccessTimer();\n  119 |  },[]);\n  120 |"
+        },
+        {
+          "ruleId": "react-hooks/exhaustive-deps",
+          "severity": 1,
+          "line": 119,
+          "column": 4,
+          "message": "React Hook useEffect has a missing dependency: 'loadPageData'. Either include it or remove the dependency array."
+        }
+      ]
+    },
+    {
+      "file": "src/pages/admin/Vendors.jsx",
+      "errors": 1,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "react-hooks/set-state-in-effect",
+          "severity": 2,
+          "line": 30,
+          "column": 17,
+          "message": "Error: Calling setState synchronously within an effect can trigger cascading renders\n\nEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:\n* Update external systems with the latest state from React.\n* Subscribe for updates from some external system, calling setState in a callback function when external state changes.\n\nCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).\n\n  28 |  };\n  29 |\n> 30 |  useEffect(()=>{load().catch(err=>setError(err.message));return()=>t.current&&clearTimeout(t.current)},[]);\n     |                 ^^^^ Avoid calling setState() directly within an effect\n  31 |\n  32 |  const selected=useMemo(()=>rows.find(x=>String(x._id)===String(selectedId)),[rows,selectedId]);\n  33 |"
+        }
+      ]
+    },
+    {
+      "file": "src/pages/admin/users/UserProfilePage.jsx",
+      "errors": 0,
+      "warnings": 1,
+      "messages": [
+        {
+          "ruleId": "react-hooks/exhaustive-deps",
+          "severity": 1,
+          "line": 406,
+          "column": 4,
+          "message": "React Hook useEffect has missing dependencies: 'getStoredUser' and 'getUserId'. Either include them or remove the dependency array."
+        }
+      ]
+    },
+    {
+      "file": "src/pages/admin/users/Users.jsx",
+      "errors": 0,
+      "warnings": 1,
+      "messages": [
+        {
+          "ruleId": "react-hooks/exhaustive-deps",
+          "severity": 1,
+          "line": 413,
+          "column": 4,
+          "message": "React Hook useEffect has missing dependencies: 'getStoredUser' and 'isAdminUser'. Either include them or remove the dependency array."
+        }
+      ]
+    },
+    {
+      "file": "src/pages/diseases/diseases.jsx",
+      "errors": 1,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "react-hooks/set-state-in-effect",
+          "severity": 2,
+          "line": 80,
+          "column": 3,
+          "message": "Error: Calling setState synchronously within an effect can trigger cascading renders\n\nEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:\n* Update external systems with the latest state from React.\n* Subscribe for updates from some external system, calling setState in a callback function when external state changes.\n\nCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).\n\n  78 |\n  79 |  useEffect(()=>{\n> 80 |   load();\n     |   ^^^^ Avoid calling setState() directly within an effect\n  81 |  },[]);\n  82 |\n  83 |  const categories=useMemo(()=>{"
+        }
+      ]
+    },
+    {
+      "file": "src/pages/forms/admin/FooterForm.jsx",
+      "errors": 1,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "react-hooks/set-state-in-effect",
+          "severity": 2,
+          "line": 74,
+          "column": 3,
+          "message": "Error: Calling setState synchronously within an effect can trigger cascading renders\n\nEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:\n* Update external systems with the latest state from React.\n* Subscribe for updates from some external system, calling setState in a callback function when external state changes.\n\nCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).\n\n  72 |    lines:Array.isArray(initialData?.lines)&&initialData.lines.length>0?initialData.lines:[\"\"]\n  73 |   };\n> 74 |   setFormData(nextData);\n     |   ^^^^^^^^^^^ Avoid calling setState() directly within an effect\n  75 |  },[initialData]);\n  76 |\n  77 |  const handleChange=e=>{"
+        }
+      ]
+    },
+    {
+      "file": "src/pages/forms/admin/HolidayForm.jsx",
+      "errors": 1,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "react-hooks/set-state-in-effect",
+          "severity": 2,
+          "line": 84,
+          "column": 3,
+          "message": "Error: Calling setState synchronously within an effect can trigger cascading renders\n\nEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:\n* Update external systems with the latest state from React.\n* Subscribe for updates from some external system, calling setState in a callback function when external state changes.\n\nCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).\n\n  82 |    endDate:formatDateTimeLocal(initialData?.endDate)\n  83 |   };\n> 84 |   setFormData(nextData);\n     |   ^^^^^^^^^^^ Avoid calling setState() directly within an effect\n  85 |  },[initialData]);\n  86 |\n  87 |  const handleChange=e=>{"
+        }
+      ]
+    },
+    {
+      "file": "src/pages/forms/admin/OccasionForm.jsx",
+      "errors": 1,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "react-hooks/set-state-in-effect",
+          "severity": 2,
+          "line": 85,
+          "column": 3,
+          "message": "Error: Calling setState synchronously within an effect can trigger cascading renders\n\nEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:\n* Update external systems with the latest state from React.\n* Subscribe for updates from some external system, calling setState in a callback function when external state changes.\n\nCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).\n\n  83 |    endDate:formatDateTimeLocal(initialData?.endDate)\n  84 |   };\n> 85 |   setFormData(nextData);\n     |   ^^^^^^^^^^^ Avoid calling setState() directly within an effect\n  86 |  },[initialData]);\n  87 |\n  88 |  const handleChange=e=>{"
+        }
+      ]
+    },
+    {
+      "file": "src/pages/forms/admin/SeasonForm.jsx",
+      "errors": 1,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "react-hooks/set-state-in-effect",
+          "severity": 2,
+          "line": 53,
+          "column": 3,
+          "message": "Error: Calling setState synchronously within an effect can trigger cascading renders\n\nEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:\n* Update external systems with the latest state from React.\n* Subscribe for updates from some external system, calling setState in a callback function when external state changes.\n\nCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).\n\n  51 |\n  52 |  useEffect(()=>{\n> 53 |   setFormData({\n     |   ^^^^^^^^^^^ Avoid calling setState() directly within an effect\n  54 |    ...defaultFormData,\n  55 |    ...initialData,\n  56 |    business_id:getObjectId(initialData?.business_id),"
+        }
+      ]
+    },
+    {
+      "file": "src/pages/forms/admin/TaglineForm.jsx",
+      "errors": 1,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "react-hooks/set-state-in-effect",
+          "severity": 2,
+          "line": 85,
+          "column": 3,
+          "message": "Error: Calling setState synchronously within an effect can trigger cascading renders\n\nEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:\n* Update external systems with the latest state from React.\n* Subscribe for updates from some external system, calling setState in a callback function when external state changes.\n\nCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).\n\n  83 |    occasionRef:getObjectId(initialData?.occasionRef)\n  84 |   };\n> 85 |   setFormData(nextData);\n     |   ^^^^^^^^^^^ Avoid calling setState() directly within an effect\n  86 |  },[initialData]);\n  87 |\n  88 |  const handleChange=e=>{"
+        }
+      ]
+    },
+    {
+      "file": "src/pages/forms/admin/VendorForm.jsx",
+      "errors": 1,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "react-hooks/set-state-in-effect",
+          "severity": 2,
+          "line": 47,
+          "column": 3,
+          "message": "Error: Calling setState synchronously within an effect can trigger cascading renders\n\nEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:\n* Update external systems with the latest state from React.\n* Subscribe for updates from some external system, calling setState in a callback function when external state changes.\n\nCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).\n\n  45 |\n  46 |  useEffect(()=>{\n> 47 |   setFormData({\n     |   ^^^^^^^^^^^ Avoid calling setState() directly within an effect\n  48 |    ...defaultFormData,\n  49 |    ...initialData,\n  50 |    business_id:getId(initialData?.business_id)"
+        }
+      ]
+    },
+    {
+      "file": "src/pages/forms/diseases/diseaseForm.jsx",
+      "errors": 1,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "react-hooks/set-state-in-effect",
+          "severity": 2,
+          "line": 97,
+          "column": 1,
+          "message": "Error: Calling setState synchronously within an effect can trigger cascading renders\n\nEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:\n* Update external systems with the latest state from React.\n* Subscribe for updates from some external system, calling setState in a callback function when external state changes.\n\nCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).\n\n   95 | if(!show)return;\n   96 |\n>  97 | setForm(normalizeInitialData(initialData));\n      | ^^^^^^^ Avoid calling setState() directly within an effect\n   98 | setError(\"\");\n   99 | setSuccess(\"\");\n  100 | setLoading(false);"
+        }
+      ]
+    },
+    {
+      "file": "src/pages/forms/pest/pestform.jsx",
+      "errors": 1,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "react-hooks/set-state-in-effect",
+          "severity": 2,
+          "line": 143,
+          "column": 1,
+          "message": "Error: Calling setState synchronously within an effect can trigger cascading renders\n\nEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:\n* Update external systems with the latest state from React.\n* Subscribe for updates from some external system, calling setState in a callback function when external state changes.\n\nCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).\n\n  141 | if(!show)return;\n  142 |\n> 143 | setForm(normalizeInitialData(initialData));\n      | ^^^^^^^ Avoid calling setState() directly within an effect\n  144 | setError(\"\");\n  145 | setSuccess(\"\");\n  146 | setLoading(false);"
+        }
+      ]
+    },
+    {
+      "file": "src/pages/forms/seeds/SeedCollectionForm.jsx",
+      "errors": 2,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "react-hooks/set-state-in-effect",
+          "severity": 2,
+          "line": 77,
+          "column": 3,
+          "message": "Error: Calling setState synchronously within an effect can trigger cascading renders\n\nEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:\n* Update external systems with the latest state from React.\n* Subscribe for updates from some external system, calling setState in a callback function when external state changes.\n\nCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).\n\n  75 |\n  76 | \tuseEffect(()=>{\n> 77 | \t\tsetMessage(null);\n     | \t\t^^^^^^^^^^ Avoid calling setState() directly within an effect\n  78 |\n  79 | \t\tif(mode===\"edit\"&&initialCollection){\n  80 | \t\t\tsetForm({"
+        },
+        {
+          "ruleId": "react-hooks/set-state-in-effect",
+          "severity": 2,
+          "line": 104,
+          "column": 3,
+          "message": "Error: Calling setState synchronously within an effect can trigger cascading renders\n\nEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:\n* Update external systems with the latest state from React.\n* Subscribe for updates from some external system, calling setState in a callback function when external state changes.\n\nCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).\n\n  102 | \tuseEffect(()=>{\n  103 | \t\tif(!selectedSeedId)return;\n> 104 | \t\tsetForm(prev=>({...prev,seed:selectedSeedId}));\n      | \t\t^^^^^^^ Avoid calling setState() directly within an effect\n  105 | \t},[selectedSeedId]);\n  106 |\n  107 | \tconst handleChange=e=>{"
+        }
+      ]
+    },
+    {
+      "file": "src/pages/forms/seeds/SeedFormPage.jsx",
+      "errors": 1,
+      "warnings": 1,
+      "messages": [
+        {
+          "ruleId": "react-hooks/set-state-in-effect",
+          "severity": 2,
+          "line": 544,
+          "column": 5,
+          "message": "Error: Calling setState synchronously within an effect can trigger cascading renders\n\nEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:\n* Update external systems with the latest state from React.\n* Subscribe for updates from some external system, calling setState in a callback function when external state changes.\n\nCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).\n\n  542 |\n  543 |   useEffect(() => {\n> 544 |     setFormMessage(null);\n      |     ^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect\n  545 |\n  546 |     if(mode === \"edit\" && initialSeed){\n  547 |       setFormData(normalizeSeedForForm(initialSeed));"
+        },
+        {
+          "ruleId": "react-hooks/exhaustive-deps",
+          "severity": 1,
+          "line": 554,
+          "column": 6,
+          "message": "React Hook useEffect has missing dependencies: 'getEmptySeedForUser' and 'normalizeSeedForForm'. Either include them or remove the dependency array."
+        }
+      ]
+    },
+    {
+      "file": "src/pages/forms/seeds/tabs/SeedPestDiseaseTab.jsx",
+      "errors": 2,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "react-hooks/set-state-in-effect",
+          "severity": 2,
+          "line": 95,
+          "column": 7,
+          "message": "Error: Calling setState synchronously within an effect can trigger cascading renders\n\nEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:\n* Update external systems with the latest state from React.\n* Subscribe for updates from some external system, calling setState in a callback function when external state changes.\n\nCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).\n\n  93 |   useEffect(()=>{\n  94 |     if(Array.isArray(pests) && pests.length){\n> 95 |       setLoadedPests(pests);\n     |       ^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect\n  96 |       return;\n  97 |     }\n  98 |"
+        },
+        {
+          "ruleId": "react-hooks/set-state-in-effect",
+          "severity": 2,
+          "line": 127,
+          "column": 7,
+          "message": "Error: Calling setState synchronously within an effect can trigger cascading renders\n\nEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:\n* Update external systems with the latest state from React.\n* Subscribe for updates from some external system, calling setState in a callback function when external state changes.\n\nCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).\n\n  125 |   useEffect(()=>{\n  126 |     if(Array.isArray(diseases) && diseases.length){\n> 127 |       setLoadedDiseases(diseases);\n      |       ^^^^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect\n  128 |       return;\n  129 |     }\n  130 |"
+        }
+      ]
+    },
+    {
+      "file": "src/pages/forms/seeds/tabs/SeedPlantingTab.jsx",
+      "errors": 0,
+      "warnings": 1,
+      "messages": [
+        {
+          "ruleId": "react-hooks/exhaustive-deps",
+          "severity": 1,
+          "line": 56,
+          "column": 5,
+          "message": "React Hook useEffect has a missing dependency: 'seeds'. Either include it or remove the dependency array."
+        }
+      ]
+    },
+    {
+      "file": "src/pages/forms/seeds/tabs/SpeciesTab.jsx",
+      "errors": 2,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "react-hooks/set-state-in-effect",
+          "severity": 2,
+          "line": 99,
+          "column": 5,
+          "message": "Error: Calling setState synchronously within an effect can trigger cascading renders\n\nEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:\n* Update external systems with the latest state from React.\n* Subscribe for updates from some external system, calling setState in a callback function when external state changes.\n\nCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).\n\n   97 |   useEffect(()=>{\n   98 |     const currentVariety=Array.isArray(selectedSpecies?.variety) ? selectedSpecies.variety : [];\n>  99 |     setVarietyDraft(currentVariety.length ? currentVariety : [\"\"]);\n      |     ^^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect\n  100 |     setEditingVariety(false);\n  101 |   },[selectedSpecies]);\n  102 |"
+        },
+        {
+          "ruleId": "react-hooks/set-state-in-effect",
+          "severity": 2,
+          "line": 122,
+          "column": 5,
+          "message": "Error: Calling setState synchronously within an effect can trigger cascading renders\n\nEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:\n* Update external systems with the latest state from React.\n* Subscribe for updates from some external system, calling setState in a callback function when external state changes.\n\nCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).\n\n  120 |\n  121 |   useEffect(()=>{\n> 122 |     loadTaxonomyOptions().catch(error=>console.error(error));\n      |     ^^^^^^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect\n  123 |   },[]);\n  124 |\n  125 |   const handleSpeciesSelect=value=>{"
+        }
+      ]
+    },
+    {
+      "file": "src/pages/forms/users/UserForm.jsx",
+      "errors": 2,
+      "warnings": 2,
+      "messages": [
+        {
+          "ruleId": "react-hooks/set-state-in-effect",
+          "severity": 2,
+          "line": 465,
+          "column": 3,
+          "message": "Error: Calling setState synchronously within an effect can trigger cascading renders\n\nEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:\n* Update external systems with the latest state from React.\n* Subscribe for updates from some external system, calling setState in a callback function when external state changes.\n\nCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).\n\n  463 |\n  464 |  useEffect(()=>{\n> 465 |   fetchStates();\n      |   ^^^^^^^^^^^ Avoid calling setState() directly within an effect\n  466 |   fetchCounties();\n  467 |   fetchCountries();\n  468 |   fetchRoles();"
+        },
+        {
+          "ruleId": "react-hooks/exhaustive-deps",
+          "severity": 1,
+          "line": 471,
+          "column": 4,
+          "message": "React Hook useEffect has missing dependencies: 'fetchDepartments' and 'fetchRoles'. Either include them or remove the dependency array."
+        },
+        {
+          "ruleId": "react-hooks/exhaustive-deps",
+          "severity": 1,
+          "line": 571,
+          "column": 4,
+          "message": "React Hook useEffect has missing dependencies: 'emptyDetails', 'fetchBusinessDepartmentAssignment', 'fetchBusinessRoleAssignment', 'getRoleId', and 'normalizeDetails'. Either include them or remove the dependency array."
+        },
+        {
+          "ruleId": "react-hooks/set-state-in-effect",
+          "severity": 2,
+          "line": 580,
+          "column": 3,
+          "message": "Error: Calling setState synchronously within an effect can trigger cascading renders\n\nEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:\n* Update external systems with the latest state from React.\n* Subscribe for updates from some external system, calling setState in a callback function when external state changes.\n\nCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).\n\n  578 |\n  579 |   const objectUrl=URL.createObjectURL(avatarFile);\n> 580 |   setAvatarPreview(objectUrl);\n      |   ^^^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect\n  581 |\n  582 |   return()=>{\n  583 |    URL.revokeObjectURL(objectUrl);"
+        }
+      ]
+    },
+    {
+      "file": "src/pages/forms/vendors/equipmentVendorsForm.jsx",
+      "errors": 2,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "no-unused-vars",
+          "severity": 2,
+          "line": 42,
+          "column": 11,
+          "message": "'err' is defined but never used."
+        },
+        {
+          "ruleId": "react-hooks/set-state-in-effect",
+          "severity": 2,
+          "line": 52,
+          "column": 4,
+          "message": "Error: Calling setState synchronously within an effect can trigger cascading renders\n\nEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:\n* Update external systems with the latest state from React.\n* Subscribe for updates from some external system, calling setState in a callback function when external state changes.\n\nCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).\n\n  50 | \tuseEffect(()=>{\n  51 | \t\tif(show&&initialData){\n> 52 | \t\t\tsetForm({\n     | \t\t\t^^^^^^^ Avoid calling setState() directly within an effect\n  53 | \t\t\t\tname:initialData.name||'',\n  54 | \t\t\t\tcompanyName:initialData.companyName||'',\n  55 | \t\t\t\tcontactName:initialData.contactName||'',"
+        }
+      ]
+    },
+    {
+      "file": "src/pages/forms/vendors/seedVendorsForm.jsx",
+      "errors": 3,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "no-unused-vars",
+          "severity": 2,
+          "line": 46,
+          "column": 11,
+          "message": "'err' is defined but never used."
+        },
+        {
+          "ruleId": "react-hooks/set-state-in-effect",
+          "severity": 2,
+          "line": 56,
+          "column": 4,
+          "message": "Error: Calling setState synchronously within an effect can trigger cascading renders\n\nEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:\n* Update external systems with the latest state from React.\n* Subscribe for updates from some external system, calling setState in a callback function when external state changes.\n\nCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).\n\n  54 | \tuseEffect(()=>{\n  55 | \t\tif(show&&initialData){\n> 56 | \t\t\tsetForm({\n     | \t\t\t^^^^^^^ Avoid calling setState() directly within an effect\n  57 | \t\t\t\tname:initialData.name||'',\n  58 | \t\t\t\tcompanyName:initialData.companyName||'',\n  59 | \t\t\t\tcontactName:initialData.contactName||'',"
+        },
+        {
+          "ruleId": "react-hooks/immutability",
+          "severity": 2,
+          "line": 75,
+          "column": 36,
+          "message": "Error: Cannot access variable before it is declared\n\n`getLogoUrl` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.\n\n  73 | \t\t\t});\n  74 | \t\t\tsetLogoFile(null);\n> 75 | \t\t\tsetLogoPreview(initialData.logo?getLogoUrl(initialData.logo):'');\n     | \t\t\t                                ^^^^^^^^^^ `getLogoUrl` accessed before it is declared\n  76 | \t\t\tsetRemoveLogo(false);\n  77 | \t\t}\n  78 | \t\tif(show&&!initialData){\n\n  111 | \t},[logoPreview]);\n  112 |\n> 113 | \tconst getLogoUrl=value=>{\n      | \t^^^^^^^^^^^^^^^^^^^^^^^^^\n> 114 | \t\tif(!value)return '';\n      | ^^^^^^^^^^^^^^^^^^^^^^\n> 115 | \t\tif(value.startsWith('blob:'))return value;\n      | ^^^^^^^^^^^^^^^^^^^^^^\n> 116 | \t\tif(value.startsWith('http'))return value;\n      | ^^^^^^^^^^^^^^^^^^^^^^\n> 117 | \t\tif(value.startsWith('/'))return value;\n      | ^^^^^^^^^^^^^^^^^^^^^^\n> 118 | \t\treturn `/logos/${value}`;\n      | ^^^^^^^^^^^^^^^^^^^^^^\n> 119 | \t};\n      | ^^^^ `getLogoUrl` is declared here\n  120 |\n  121 | \tconst handleChange=e=>{\n  122 | \t\tconst {name,value,type,checked}=e.target;"
+        }
+      ]
+    },
+    {
+      "file": "src/pages/forms/vendors/supplyVendorsForm.jsx",
+      "errors": 2,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "no-unused-vars",
+          "severity": 2,
+          "line": 42,
+          "column": 11,
+          "message": "'err' is defined but never used."
+        },
+        {
+          "ruleId": "react-hooks/set-state-in-effect",
+          "severity": 2,
+          "line": 52,
+          "column": 4,
+          "message": "Error: Calling setState synchronously within an effect can trigger cascading renders\n\nEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:\n* Update external systems with the latest state from React.\n* Subscribe for updates from some external system, calling setState in a callback function when external state changes.\n\nCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).\n\n  50 | \tuseEffect(()=>{\n  51 | \t\tif(show&&initialData){\n> 52 | \t\t\tsetForm({\n     | \t\t\t^^^^^^^ Avoid calling setState() directly within an effect\n  53 | \t\t\t\tname:initialData.name||'',\n  54 | \t\t\t\tcompanyName:initialData.companyName||'',\n  55 | \t\t\t\tcontactName:initialData.contactName||'',"
+        }
+      ]
+    },
+    {
+      "file": "src/pages/seeds/SeedCollectionsPage.jsx",
+      "errors": 1,
+      "warnings": 1,
+      "messages": [
+        {
+          "ruleId": "react-hooks/set-state-in-effect",
+          "severity": 2,
+          "line": 160,
+          "column": 3,
+          "message": "Error: Calling setState synchronously within an effect can trigger cascading renders\n\nEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:\n* Update external systems with the latest state from React.\n* Subscribe for updates from some external system, calling setState in a callback function when external state changes.\n\nCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).\n\n  158 |\n  159 | \tuseEffect(()=>{\n> 160 | \t\tfetchData();\n      | \t\t^^^^^^^^^ Avoid calling setState() directly within an effect\n  161 | \t},[userId]);\n  162 |\n  163 | \tconst openAddForm=()=>{"
+        },
+        {
+          "ruleId": "react-hooks/exhaustive-deps",
+          "severity": 1,
+          "line": 161,
+          "column": 4,
+          "message": "React Hook useEffect has a missing dependency: 'fetchData'. Either include it or remove the dependency array."
+        }
+      ]
+    },
+    {
+      "file": "src/pages/seeds/SeedPage.jsx",
+      "errors": 1,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "react-hooks/set-state-in-effect",
+          "severity": 2,
+          "line": 129,
+          "column": 5,
+          "message": "Error: Calling setState synchronously within an effect can trigger cascading renders\n\nEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:\n* Update external systems with the latest state from React.\n* Subscribe for updates from some external system, calling setState in a callback function when external state changes.\n\nCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).\n\n  127 |\n  128 |   useEffect(()=>{\n> 129 |     fetchSeeds();\n      |     ^^^^^^^^^^ Avoid calling setState() directly within an effect\n  130 |   },[]);\n  131 |\n  132 |   const openAddSeedForm=()=>{"
+        }
+      ]
+    },
+    {
+      "file": "src/pages/seeds/components/SeedResources.jsx",
+      "errors": 1,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "no-unused-vars",
+          "severity": 2,
+          "line": 48,
+          "column": 31,
+          "message": "'Icon' is defined but never used."
+        }
+      ]
+    },
+    {
+      "file": "src/pages/task/TasksPage.jsx",
+      "errors": 1,
+      "warnings": 1,
+      "messages": [
+        {
+          "ruleId": "react-hooks/set-state-in-effect",
+          "severity": 2,
+          "line": 73,
+          "column": 3,
+          "message": "Error: Calling setState synchronously within an effect can trigger cascading renders\n\nEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:\n* Update external systems with the latest state from React.\n* Subscribe for updates from some external system, calling setState in a callback function when external state changes.\n\nCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).\n\n  71 |\n  72 | \tuseEffect(()=>{\n> 73 | \t\tfetchRefs();\n     | \t\t^^^^^^^^^ Avoid calling setState() directly within an effect\n  74 | \t\tfetchTasks();\n  75 | \t},[]);\n  76 |"
+        },
+        {
+          "ruleId": "react-hooks/exhaustive-deps",
+          "severity": 1,
+          "line": 75,
+          "column": 4,
+          "message": "React Hook useEffect has a missing dependency: 'fetchTasks'. Either include it or remove the dependency array."
+        }
+      ]
+    },
+    {
+      "file": "src/pages/vendors/seedVendor.jsx",
+      "errors": 16,
+      "warnings": 0,
+      "messages": [
+        {
+          "ruleId": "react-hooks/set-state-in-effect",
+          "severity": 2,
+          "line": 36,
+          "column": 3,
+          "message": "Error: Calling setState synchronously within an effect can trigger cascading renders\n\nEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:\n* Update external systems with the latest state from React.\n* Subscribe for updates from some external system, calling setState in a callback function when external state changes.\n\nCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).\n\n  34 |\n  35 | \tuseEffect(()=>{\n> 36 | \t\tloadItems();\n     | \t\t^^^^^^^^^ Avoid calling setState() directly within an effect\n  37 | \t},[]);\n  38 |\n  39 | \tconst handleAdd=()=>{"
+        },
+        {
+          "ruleId": "react-hooks/static-components",
+          "severity": 2,
+          "line": 165,
+          "column": 43,
+          "message": "Error: Cannot create components during render\n\nComponents created during render will reset their state each time they are created. Declare components outside of render.\n\n  163 | \t\t\t\t\t\t\t\t\t\t<Col md={8}>\n  164 | \t\t\t\t\t\t\t\t\t\t\t<Row>\n> 165 | \t\t\t\t\t\t\t\t\t\t\t\t<Col md={6} className=\"mb-3\"><Field label=\"Name\" value={selectedItem.name} /></Col>\n      | \t\t\t\t\t\t\t\t\t\t\t\t                              ^^^^^ This component is created during render\n  166 | \t\t\t\t\t\t\t\t\t\t\t\t<Col md={6} className=\"mb-3\"><Field label=\"Company Name\" value={selectedItem.companyName} /></Col>\n  167 | \t\t\t\t\t\t\t\t\t\t\t</Row>\n  168 | \t\t\t\t\t\t\t\t\t\t\t<Row>\n\n  88 | \t};\n  89 |\n> 90 | \tconst Field=({label,value})=>(\n     | \t            ^^^^^^^^^^^^^^^^^^\n> 91 | \t\t<div><span className=\"vendor-label\">{label}:</span> <span className=\"vendor-field\">{value||'Not listed'}</span></div>\n     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n> 92 | \t);\n     | ^^^ The component is created during render here\n  93 |\n  94 | \tconst LinkField=({label,value,type})=>(\n  95 | \t\t<div>"
+        },
+        {
+          "ruleId": "react-hooks/static-components",
+          "severity": 2,
+          "line": 166,
+          "column": 43,
+          "message": "Error: Cannot create components during render\n\nComponents created during render will reset their state each time they are created. Declare components outside of render.\n\n  164 | \t\t\t\t\t\t\t\t\t\t\t<Row>\n  165 | \t\t\t\t\t\t\t\t\t\t\t\t<Col md={6} className=\"mb-3\"><Field label=\"Name\" value={selectedItem.name} /></Col>\n> 166 | \t\t\t\t\t\t\t\t\t\t\t\t<Col md={6} className=\"mb-3\"><Field label=\"Company Name\" value={selectedItem.companyName} /></Col>\n      | \t\t\t\t\t\t\t\t\t\t\t\t                              ^^^^^ This component is created during render\n  167 | \t\t\t\t\t\t\t\t\t\t\t</Row>\n  168 | \t\t\t\t\t\t\t\t\t\t\t<Row>\n  169 | \t\t\t\t\t\t\t\t\t\t\t\t<Col md={6} className=\"mb-3\"><Field label=\"Contact Name\" value={formatContactName(selectedItem.contactName)} /></Col>\n\n  88 | \t};\n  89 |\n> 90 | \tconst Field=({label,value})=>(\n     | \t            ^^^^^^^^^^^^^^^^^^\n> 91 | \t\t<div><span className=\"vendor-label\">{label}:</span> <span className=\"vendor-field\">{value||'Not listed'}</span></div>\n     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n> 92 | \t);\n     | ^^^ The component is created during render here\n  93 |\n  94 | \tconst LinkField=({label,value,type})=>(\n  95 | \t\t<div>"
+        },
+        {
+          "ruleId": "react-hooks/static-components",
+          "severity": 2,
+          "line": 169,
+          "column": 43,
+          "message": "Error: Cannot create components during render\n\nComponents created during render will reset their state each time they are created. Declare components outside of render.\n\n  167 | \t\t\t\t\t\t\t\t\t\t\t</Row>\n  168 | \t\t\t\t\t\t\t\t\t\t\t<Row>\n> 169 | \t\t\t\t\t\t\t\t\t\t\t\t<Col md={6} className=\"mb-3\"><Field label=\"Contact Name\" value={formatContactName(selectedItem.contactName)} /></Col>\n      | \t\t\t\t\t\t\t\t\t\t\t\t                              ^^^^^ This component is created during render\n  170 | \t\t\t\t\t\t\t\t\t\t\t\t<Col md={6} className=\"mb-3\"><LinkField label=\"Email\" value={selectedItem.email} type=\"email\" /></Col>\n  171 | \t\t\t\t\t\t\t\t\t\t\t</Row>\n  172 | \t\t\t\t\t\t\t\t\t\t\t<Row>\n\n  88 | \t};\n  89 |\n> 90 | \tconst Field=({label,value})=>(\n     | \t            ^^^^^^^^^^^^^^^^^^\n> 91 | \t\t<div><span className=\"vendor-label\">{label}:</span> <span className=\"vendor-field\">{value||'Not listed'}</span></div>\n     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n> 92 | \t);\n     | ^^^ The component is created during render here\n  93 |\n  94 | \tconst LinkField=({label,value,type})=>(\n  95 | \t\t<div>"
+        },
+        {
+          "ruleId": "react-hooks/static-components",
+          "severity": 2,
+          "line": 170,
+          "column": 43,
+          "message": "Error: Cannot create components during render\n\nComponents created during render will reset their state each time they are created. Declare components outside of render.\n\n  168 | \t\t\t\t\t\t\t\t\t\t\t<Row>\n  169 | \t\t\t\t\t\t\t\t\t\t\t\t<Col md={6} className=\"mb-3\"><Field label=\"Contact Name\" value={formatContactName(selectedItem.contactName)} /></Col>\n> 170 | \t\t\t\t\t\t\t\t\t\t\t\t<Col md={6} className=\"mb-3\"><LinkField label=\"Email\" value={selectedItem.email} type=\"email\" /></Col>\n      | \t\t\t\t\t\t\t\t\t\t\t\t                              ^^^^^^^^^ This component is created during render\n  171 | \t\t\t\t\t\t\t\t\t\t\t</Row>\n  172 | \t\t\t\t\t\t\t\t\t\t\t<Row>\n  173 | \t\t\t\t\t\t\t\t\t\t\t\t<Col md={6} className=\"mb-3\"><Field label=\"Phone\" value={selectedItem.phone} /></Col>\n\n   92 | \t);\n   93 |\n>  94 | \tconst LinkField=({label,value,type})=>(\n      | \t                ^^^^^^^^^^^^^^^^^^^^^^^\n>  95 | \t\t<div>\n      | ^^^^^^^\n>  96 | \t\t\t<span className=\"vendor-label\">{label}:</span>{' '}\n      …\n      | ^^^^^^^\n> 104 | \t\t</div>\n      | ^^^^^^^\n> 105 | \t);\n      | ^^^ The component is created during render here\n  106 |\n  107 | \treturn(\n  108 | \t\t<Container fluid className=\"py-4\">"
+        },
+        {
+          "ruleId": "react-hooks/static-components",
+          "severity": 2,
+          "line": 173,
+          "column": 43,
+          "message": "Error: Cannot create components during render\n\nComponents created during render will reset their state each time they are created. Declare components outside of render.\n\n  171 | \t\t\t\t\t\t\t\t\t\t\t</Row>\n  172 | \t\t\t\t\t\t\t\t\t\t\t<Row>\n> 173 | \t\t\t\t\t\t\t\t\t\t\t\t<Col md={6} className=\"mb-3\"><Field label=\"Phone\" value={selectedItem.phone} /></Col>\n      | \t\t\t\t\t\t\t\t\t\t\t\t                              ^^^^^ This component is created during render\n  174 | \t\t\t\t\t\t\t\t\t\t\t\t<Col md={6} className=\"mb-3\"><Field label=\"Fax\" value={selectedItem.fax} /></Col>\n  175 | \t\t\t\t\t\t\t\t\t\t\t</Row>\n  176 | \t\t\t\t\t\t\t\t\t\t\t<Row>\n\n  88 | \t};\n  89 |\n> 90 | \tconst Field=({label,value})=>(\n     | \t            ^^^^^^^^^^^^^^^^^^\n> 91 | \t\t<div><span className=\"vendor-label\">{label}:</span> <span className=\"vendor-field\">{value||'Not listed'}</span></div>\n     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n> 92 | \t);\n     | ^^^ The component is created during render here\n  93 |\n  94 | \tconst LinkField=({label,value,type})=>(\n  95 | \t\t<div>"
+        },
+        {
+          "ruleId": "react-hooks/static-components",
+          "severity": 2,
+          "line": 174,
+          "column": 43,
+          "message": "Error: Cannot create components during render\n\nComponents created during render will reset their state each time they are created. Declare components outside of render.\n\n  172 | \t\t\t\t\t\t\t\t\t\t\t<Row>\n  173 | \t\t\t\t\t\t\t\t\t\t\t\t<Col md={6} className=\"mb-3\"><Field label=\"Phone\" value={selectedItem.phone} /></Col>\n> 174 | \t\t\t\t\t\t\t\t\t\t\t\t<Col md={6} className=\"mb-3\"><Field label=\"Fax\" value={selectedItem.fax} /></Col>\n      | \t\t\t\t\t\t\t\t\t\t\t\t                              ^^^^^ This component is created during render\n  175 | \t\t\t\t\t\t\t\t\t\t\t</Row>\n  176 | \t\t\t\t\t\t\t\t\t\t\t<Row>\n  177 | \t\t\t\t\t\t\t\t\t\t\t\t<Col md={6} className=\"mb-3\"><LinkField label=\"Website\" value={selectedItem.website} type=\"website\" /></Col>\n\n  88 | \t};\n  89 |\n> 90 | \tconst Field=({label,value})=>(\n     | \t            ^^^^^^^^^^^^^^^^^^\n> 91 | \t\t<div><span className=\"vendor-label\">{label}:</span> <span className=\"vendor-field\">{value||'Not listed'}</span></div>\n     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n> 92 | \t);\n     | ^^^ The component is created during render here\n  93 |\n  94 | \tconst LinkField=({label,value,type})=>(\n  95 | \t\t<div>"
+        },
+        {
+          "ruleId": "react-hooks/static-components",
+          "severity": 2,
+          "line": 177,
+          "column": 43,
+          "message": "Error: Cannot create components during render\n\nComponents created during render will reset their state each time they are created. Declare components outside of render.\n\n  175 | \t\t\t\t\t\t\t\t\t\t\t</Row>\n  176 | \t\t\t\t\t\t\t\t\t\t\t<Row>\n> 177 | \t\t\t\t\t\t\t\t\t\t\t\t<Col md={6} className=\"mb-3\"><LinkField label=\"Website\" value={selectedItem.website} type=\"website\" /></Col>\n      | \t\t\t\t\t\t\t\t\t\t\t\t                              ^^^^^^^^^ This component is created during render\n  178 | \t\t\t\t\t\t\t\t\t\t\t\t<Col md={6} className=\"mb-3\">\n  179 | \t\t\t\t\t\t\t\t\t\t\t\t\t<span className=\"vendor-label\">Status:</span>{' '}\n  180 | \t\t\t\t\t\t\t\t\t\t\t\t\t<Badge bg={selectedItem.isActive?'success':'secondary'}>{selectedItem.isActive?'Active':'Inactive'}</Badge>\n\n   92 | \t);\n   93 |\n>  94 | \tconst LinkField=({label,value,type})=>(\n      | \t                ^^^^^^^^^^^^^^^^^^^^^^^\n>  95 | \t\t<div>\n      | ^^^^^^^\n>  96 | \t\t\t<span className=\"vendor-label\">{label}:</span>{' '}\n      …\n      | ^^^^^^^\n> 104 | \t\t</div>\n      | ^^^^^^^\n> 105 | \t);\n      | ^^^ The component is created during render here\n  106 |\n  107 | \treturn(\n  108 | \t\t<Container fluid className=\"py-4\">"
+        },
+        {
+          "ruleId": "react-hooks/static-components",
+          "severity": 2,
+          "line": 184,
+          "column": 43,
+          "message": "Error: Cannot create components during render\n\nComponents created during render will reset their state each time they are created. Declare components outside of render.\n\n  182 | \t\t\t\t\t\t\t\t\t\t\t</Row>\n  183 | \t\t\t\t\t\t\t\t\t\t\t<Row>\n> 184 | \t\t\t\t\t\t\t\t\t\t\t\t<Col md={6} className=\"mb-3\"><Field label=\"Address 1\" value={selectedItem.address1} /></Col>\n      | \t\t\t\t\t\t\t\t\t\t\t\t                              ^^^^^ This component is created during render\n  185 | \t\t\t\t\t\t\t\t\t\t\t\t<Col md={6} className=\"mb-3\"><Field label=\"Address 2\" value={selectedItem.address2} /></Col>\n  186 | \t\t\t\t\t\t\t\t\t\t\t</Row>\n  187 | \t\t\t\t\t\t\t\t\t\t\t<Row>\n\n  88 | \t};\n  89 |\n> 90 | \tconst Field=({label,value})=>(\n     | \t            ^^^^^^^^^^^^^^^^^^\n> 91 | \t\t<div><span className=\"vendor-label\">{label}:</span> <span className=\"vendor-field\">{value||'Not listed'}</span></div>\n     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n> 92 | \t);\n     | ^^^ The component is created during render here\n  93 |\n  94 | \tconst LinkField=({label,value,type})=>(\n  95 | \t\t<div>"
+        },
+        {
+          "ruleId": "react-hooks/static-components",
+          "severity": 2,
+          "line": 185,
+          "column": 43,
+          "message": "Error: Cannot create components during render\n\nComponents created during render will reset their state each time they are created. Declare components outside of render.\n\n  183 | \t\t\t\t\t\t\t\t\t\t\t<Row>\n  184 | \t\t\t\t\t\t\t\t\t\t\t\t<Col md={6} className=\"mb-3\"><Field label=\"Address 1\" value={selectedItem.address1} /></Col>\n> 185 | \t\t\t\t\t\t\t\t\t\t\t\t<Col md={6} className=\"mb-3\"><Field label=\"Address 2\" value={selectedItem.address2} /></Col>\n      | \t\t\t\t\t\t\t\t\t\t\t\t                              ^^^^^ This component is created during render\n  186 | \t\t\t\t\t\t\t\t\t\t\t</Row>\n  187 | \t\t\t\t\t\t\t\t\t\t\t<Row>\n  188 | \t\t\t\t\t\t\t\t\t\t\t\t<Col md={4} className=\"mb-3\"><Field label=\"City\" value={selectedItem.city} /></Col>\n\n  88 | \t};\n  89 |\n> 90 | \tconst Field=({label,value})=>(\n     | \t            ^^^^^^^^^^^^^^^^^^\n> 91 | \t\t<div><span className=\"vendor-label\">{label}:</span> <span className=\"vendor-field\">{value||'Not listed'}</span></div>\n     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n> 92 | \t);\n     | ^^^ The component is created during render here\n  93 |\n  94 | \tconst LinkField=({label,value,type})=>(\n  95 | \t\t<div>"
+        },
+        {
+          "ruleId": "react-hooks/static-components",
+          "severity": 2,
+          "line": 188,
+          "column": 43,
+          "message": "Error: Cannot create components during render\n\nComponents created during render will reset their state each time they are created. Declare components outside of render.\n\n  186 | \t\t\t\t\t\t\t\t\t\t\t</Row>\n  187 | \t\t\t\t\t\t\t\t\t\t\t<Row>\n> 188 | \t\t\t\t\t\t\t\t\t\t\t\t<Col md={4} className=\"mb-3\"><Field label=\"City\" value={selectedItem.city} /></Col>\n      | \t\t\t\t\t\t\t\t\t\t\t\t                              ^^^^^ This component is created during render\n  189 | \t\t\t\t\t\t\t\t\t\t\t\t<Col md={4} className=\"mb-3\"><Field label=\"State\" value={selectedItem.state?.name||selectedItem.state} /></Col>\n  190 | \t\t\t\t\t\t\t\t\t\t\t\t<Col md={4} className=\"mb-3\"><Field label=\"Postal Code\" value={selectedItem.postalCode} /></Col>\n  191 | \t\t\t\t\t\t\t\t\t\t\t</Row>\n\n  88 | \t};\n  89 |\n> 90 | \tconst Field=({label,value})=>(\n     | \t            ^^^^^^^^^^^^^^^^^^\n> 91 | \t\t<div><span className=\"vendor-label\">{label}:</span> <span className=\"vendor-field\">{value||'Not listed'}</span></div>\n     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n> 92 | \t);\n     | ^^^ The component is created during render here\n  93 |\n  94 | \tconst LinkField=({label,value,type})=>(\n  95 | \t\t<div>"
+        },
+        {
+          "ruleId": "react-hooks/static-components",
+          "severity": 2,
+          "line": 189,
+          "column": 43,
+          "message": "Error: Cannot create components during render\n\nComponents created during render will reset their state each time they are created. Declare components outside of render.\n\n  187 | \t\t\t\t\t\t\t\t\t\t\t<Row>\n  188 | \t\t\t\t\t\t\t\t\t\t\t\t<Col md={4} className=\"mb-3\"><Field label=\"City\" value={selectedItem.city} /></Col>\n> 189 | \t\t\t\t\t\t\t\t\t\t\t\t<Col md={4} className=\"mb-3\"><Field label=\"State\" value={selectedItem.state?.name||selectedItem.state} /></Col>\n      | \t\t\t\t\t\t\t\t\t\t\t\t                              ^^^^^ This component is created during render\n  190 | \t\t\t\t\t\t\t\t\t\t\t\t<Col md={4} className=\"mb-3\"><Field label=\"Postal Code\" value={selectedItem.postalCode} /></Col>\n  191 | \t\t\t\t\t\t\t\t\t\t\t</Row>\n  192 | \t\t\t\t\t\t\t\t\t\t\t<Row>\n\n  88 | \t};\n  89 |\n> 90 | \tconst Field=({label,value})=>(\n     | \t            ^^^^^^^^^^^^^^^^^^\n> 91 | \t\t<div><span className=\"vendor-label\">{label}:</span> <span className=\"vendor-field\">{value||'Not listed'}</span></div>\n     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n> 92 | \t);\n     | ^^^ The component is created during render here\n  93 |\n  94 | \tconst LinkField=({label,value,type})=>(\n  95 | \t\t<div>"
+        },
+        {
+          "ruleId": "react-hooks/static-components",
+          "severity": 2,
+          "line": 190,
+          "column": 43,
+          "message": "Error: Cannot create components during render\n\nComponents created during render will reset their state each time they are created. Declare components outside of render.\n\n  188 | \t\t\t\t\t\t\t\t\t\t\t\t<Col md={4} className=\"mb-3\"><Field label=\"City\" value={selectedItem.city} /></Col>\n  189 | \t\t\t\t\t\t\t\t\t\t\t\t<Col md={4} className=\"mb-3\"><Field label=\"State\" value={selectedItem.state?.name||selectedItem.state} /></Col>\n> 190 | \t\t\t\t\t\t\t\t\t\t\t\t<Col md={4} className=\"mb-3\"><Field label=\"Postal Code\" value={selectedItem.postalCode} /></Col>\n      | \t\t\t\t\t\t\t\t\t\t\t\t                              ^^^^^ This component is created during render\n  191 | \t\t\t\t\t\t\t\t\t\t\t</Row>\n  192 | \t\t\t\t\t\t\t\t\t\t\t<Row>\n  193 | \t\t\t\t\t\t\t\t\t\t\t\t<Col md={6} className=\"mb-3\"><Field label=\"Country\" value={selectedItem.country?.name||selectedItem.country} /></Col>\n\n  88 | \t};\n  89 |\n> 90 | \tconst Field=({label,value})=>(\n     | \t            ^^^^^^^^^^^^^^^^^^\n> 91 | \t\t<div><span className=\"vendor-label\">{label}:</span> <span className=\"vendor-field\">{value||'Not listed'}</span></div>\n     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n> 92 | \t);\n     | ^^^ The component is created during render here\n  93 |\n  94 | \tconst LinkField=({label,value,type})=>(\n  95 | \t\t<div>"
+        },
+        {
+          "ruleId": "react-hooks/static-components",
+          "severity": 2,
+          "line": 193,
+          "column": 43,
+          "message": "Error: Cannot create components during render\n\nComponents created during render will reset their state each time they are created. Declare components outside of render.\n\n  191 | \t\t\t\t\t\t\t\t\t\t\t</Row>\n  192 | \t\t\t\t\t\t\t\t\t\t\t<Row>\n> 193 | \t\t\t\t\t\t\t\t\t\t\t\t<Col md={6} className=\"mb-3\"><Field label=\"Country\" value={selectedItem.country?.name||selectedItem.country} /></Col>\n      | \t\t\t\t\t\t\t\t\t\t\t\t                              ^^^^^ This component is created during render\n  194 | \t\t\t\t\t\t\t\t\t\t\t\t<Col md={6} className=\"mb-3\"><Field label=\"International\" value={selectedItem.isInternational?'Yes':'No'} /></Col>\n  195 | \t\t\t\t\t\t\t\t\t\t\t</Row>\n  196 | \t\t\t\t\t\t\t\t\t\t</Col>\n\n  88 | \t};\n  89 |\n> 90 | \tconst Field=({label,value})=>(\n     | \t            ^^^^^^^^^^^^^^^^^^\n> 91 | \t\t<div><span className=\"vendor-label\">{label}:</span> <span className=\"vendor-field\">{value||'Not listed'}</span></div>\n     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n> 92 | \t);\n     | ^^^ The component is created during render here\n  93 |\n  94 | \tconst LinkField=({label,value,type})=>(\n  95 | \t\t<div>"
+        },
+        {
+          "ruleId": "react-hooks/static-components",
+          "severity": 2,
+          "line": 194,
+          "column": 43,
+          "message": "Error: Cannot create components during render\n\nComponents created during render will reset their state each time they are created. Declare components outside of render.\n\n  192 | \t\t\t\t\t\t\t\t\t\t\t<Row>\n  193 | \t\t\t\t\t\t\t\t\t\t\t\t<Col md={6} className=\"mb-3\"><Field label=\"Country\" value={selectedItem.country?.name||selectedItem.country} /></Col>\n> 194 | \t\t\t\t\t\t\t\t\t\t\t\t<Col md={6} className=\"mb-3\"><Field label=\"International\" value={selectedItem.isInternational?'Yes':'No'} /></Col>\n      | \t\t\t\t\t\t\t\t\t\t\t\t                              ^^^^^ This component is created during render\n  195 | \t\t\t\t\t\t\t\t\t\t\t</Row>\n  196 | \t\t\t\t\t\t\t\t\t\t</Col>\n  197 |\n\n  88 | \t};\n  89 |\n> 90 | \tconst Field=({label,value})=>(\n     | \t            ^^^^^^^^^^^^^^^^^^\n> 91 | \t\t<div><span className=\"vendor-label\">{label}:</span> <span className=\"vendor-field\">{value||'Not listed'}</span></div>\n     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n> 92 | \t);\n     | ^^^ The component is created during render here\n  93 |\n  94 | \tconst LinkField=({label,value,type})=>(\n  95 | \t\t<div>"
+        },
+        {
+          "ruleId": "react-hooks/static-components",
+          "severity": 2,
+          "line": 205,
+          "column": 42,
+          "message": "Error: Cannot create components during render\n\nComponents created during render will reset their state each time they are created. Declare components outside of render.\n\n  203 |\n  204 | \t\t\t\t\t\t\t\t\t<Row>\n> 205 | \t\t\t\t\t\t\t\t\t\t<Col md={12} className=\"mb-3\"><Field label=\"Description\" value={selectedItem.description} /></Col>\n      | \t\t\t\t\t\t\t\t\t\t                               ^^^^^ This component is created during render\n  206 | \t\t\t\t\t\t\t\t\t</Row>\n  207 | \t\t\t\t\t\t\t\t</Card.Body>\n  208 | \t\t\t\t\t\t\t</Card>\n\n  88 | \t};\n  89 |\n> 90 | \tconst Field=({label,value})=>(\n     | \t            ^^^^^^^^^^^^^^^^^^\n> 91 | \t\t<div><span className=\"vendor-label\">{label}:</span> <span className=\"vendor-field\">{value||'Not listed'}</span></div>\n     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n> 92 | \t);\n     | ^^^ The component is created during render here\n  93 |\n  94 | \tconst LinkField=({label,value,type})=>(\n  95 | \t\t<div>"
+        }
+      ]
+    }
+  ]
+}

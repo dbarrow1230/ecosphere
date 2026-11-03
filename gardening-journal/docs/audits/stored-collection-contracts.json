@@ -1,0 +1,1547 @@
+{
+  "database": "gardening_journal",
+  "collections": [
+    {
+      "collection": "counters",
+      "count": 1,
+      "fields": [
+        "_id",
+        "key",
+        "seq"
+      ]
+    },
+    {
+      "collection": "plant_equipment",
+      "count": 16,
+      "fields": [
+        "_id",
+        "vendorid",
+        "brand",
+        "description",
+        "qty",
+        "price",
+        "notes",
+        "qtyonhand",
+        "reordermin",
+        "purchaseDate",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    {
+      "collection": "users",
+      "count": 1,
+      "fields": [
+        "_id",
+        "user_id",
+        "username",
+        "password",
+        "email",
+        "role_id",
+        "hardiness_zone_id",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    {
+      "collection": "garden_layout",
+      "count": 0,
+      "fields": []
+    },
+    {
+      "collection": "task_types",
+      "count": 10,
+      "fields": [
+        "_id",
+        "name",
+        "description"
+      ]
+    },
+    {
+      "collection": "condition_scales",
+      "count": 0,
+      "fields": []
+    },
+    {
+      "collection": "food_vendors",
+      "count": 3,
+      "fields": [
+        "_id",
+        "name",
+        "vendor_type_id",
+        "website",
+        "phone",
+        "email",
+        "address_1",
+        "address_2",
+        "city",
+        "state_id",
+        "postal_code",
+        "notes",
+        "is_active"
+      ]
+    },
+    {
+      "collection": "seeds_to_prep",
+      "count": 6,
+      "fields": [
+        "_id",
+        "seed_id",
+        "batch_number",
+        "prep_date",
+        "planting_date",
+        "prepped",
+        "planting_id",
+        "updatedAt",
+        "createdAt",
+        "task_id"
+      ]
+    },
+    {
+      "collection": "categories",
+      "count": 14,
+      "fields": [
+        "_id",
+        "name"
+      ]
+    },
+    {
+      "collection": "pest_logs",
+      "count": 0,
+      "fields": []
+    },
+    {
+      "collection": "weather_observations",
+      "count": 0,
+      "fields": []
+    },
+    {
+      "collection": "container_size",
+      "count": 22,
+      "fields": [
+        "_id",
+        "containertype"
+      ]
+    },
+    {
+      "collection": "plant_types",
+      "count": 21,
+      "fields": [
+        "_id",
+        "type_name",
+        "description",
+        "wateringRule",
+        "name"
+      ]
+    },
+    {
+      "collection": "garden_budgets",
+      "count": 7,
+      "fields": [
+        "_id",
+        "amount",
+        "category_id",
+        "date",
+        "description",
+        "name",
+        "quantity",
+        "totalCost",
+        "unitCost",
+        "year"
+      ]
+    },
+    {
+      "collection": "garden_reasons",
+      "count": 7,
+      "fields": [
+        "_id",
+        "name",
+        "__v",
+        "createdAt",
+        "description",
+        "isActive",
+        "updatedAt"
+      ]
+    },
+    {
+      "collection": "fertilizers",
+      "count": 0,
+      "fields": []
+    },
+    {
+      "collection": "sunlight_requirements",
+      "count": 7,
+      "fields": [
+        "_id",
+        "description",
+        "name"
+      ]
+    },
+    {
+      "collection": "species_genera",
+      "count": 37,
+      "fields": [
+        "_id",
+        "familyId",
+        "name"
+      ]
+    },
+    {
+      "collection": "harvest_quality_scales",
+      "count": 0,
+      "fields": []
+    },
+    {
+      "collection": "plant_waterings",
+      "count": 8,
+      "fields": [
+        "_id",
+        "habit",
+        "frequency",
+        "description"
+      ]
+    },
+    {
+      "collection": "planting_seasons",
+      "count": 0,
+      "fields": []
+    },
+    {
+      "collection": "audit_logs_archive",
+      "count": 0,
+      "fields": []
+    },
+    {
+      "collection": "vegetable_calendar",
+      "count": 0,
+      "fields": []
+    },
+    {
+      "collection": "weather_hourly",
+      "count": 0,
+      "fields": []
+    },
+    {
+      "collection": "bed_layouts",
+      "count": 6,
+      "fields": [
+        "_id",
+        "layout_id",
+        "title",
+        "rows",
+        "cols",
+        "grid"
+      ]
+    },
+    {
+      "collection": "user_details",
+      "count": 2,
+      "fields": [
+        "_id",
+        "userid",
+        "firstname",
+        "lastname",
+        "address",
+        "city",
+        "state_id",
+        "zip",
+        "phone",
+        "mobile"
+      ]
+    },
+    {
+      "collection": "userpageaccesses",
+      "count": 4,
+      "fields": [
+        "_id",
+        "user_id",
+        "__v",
+        "allowed_paths",
+        "createdAt",
+        "denied_paths",
+        "hidden_nav_paths",
+        "updatedAt"
+      ]
+    },
+    {
+      "collection": "garden_notes",
+      "count": 0,
+      "fields": []
+    },
+    {
+      "collection": "reminders",
+      "count": 0,
+      "fields": []
+    },
+    {
+      "collection": "severity_scales",
+      "count": 0,
+      "fields": []
+    },
+    {
+      "collection": "plant_pest_controls",
+      "count": 14,
+      "fields": [
+        "_id",
+        "pest_control_solution"
+      ]
+    },
+    {
+      "collection": "media",
+      "count": 0,
+      "fields": []
+    },
+    {
+      "collection": "plants",
+      "count": 24,
+      "fields": [
+        "_id",
+        "LightingID",
+        "ContainerID",
+        "SoilID",
+        "GrowingMethodID",
+        "DatePlanted",
+        "HarvestID",
+        "LocationID",
+        "indoors",
+        "outdoors",
+        "SeedPacketDate",
+        "IsCorrectPlant",
+        "SunDirection",
+        "SunExposureTime",
+        "WateringHabitsID",
+        "FertilizerID",
+        "PlantLifespan",
+        "UntimelyDeathDate",
+        "GrowthProblems",
+        "pest_id",
+        "pest_control_id",
+        "plant_type_id",
+        "Plant_FormID",
+        "batch_number",
+        "garden_design_id",
+        "active",
+        "plant_name",
+        "name",
+        "isActive",
+        "description",
+        "careCard",
+        "plantingRecord",
+        "growingConditions"
+      ]
+    },
+    {
+      "collection": "plant_harvest",
+      "count": 48,
+      "fields": [
+        "_id",
+        "plant_instance_id",
+        "harvest_date",
+        "quantity",
+        "unit",
+        "price_per_unit",
+        "total_value"
+      ]
+    },
+    {
+      "collection": "garden_sections",
+      "count": 0,
+      "fields": []
+    },
+    {
+      "collection": "issues",
+      "count": 0,
+      "fields": []
+    },
+    {
+      "collection": "stress_risks",
+      "count": 3,
+      "fields": [
+        "_id",
+        "level",
+        "description",
+        "impact_on_plants"
+      ]
+    },
+    {
+      "collection": "plant_journals",
+      "count": 106,
+      "fields": [
+        "_id",
+        "plant_instance_id",
+        "journal_date",
+        "soil_type",
+        "watering_schedule",
+        "expected_germination",
+        "medium",
+        "container_id",
+        "location_id",
+        "is_indoor",
+        "growth_stage",
+        "stage_progress",
+        "growth_height",
+        "fertilizer_notes",
+        "nutrients",
+        "phLevel",
+        "weather",
+        "lighting_id",
+        "pestsObserved",
+        "plantIssues",
+        "actionsTaken",
+        "notes",
+        "photos"
+      ]
+    },
+    {
+      "collection": "audit_retention_settings",
+      "count": 0,
+      "fields": []
+    },
+    {
+      "collection": "plant_maintenance",
+      "count": 0,
+      "fields": []
+    },
+    {
+      "collection": "plant_garden_reasons",
+      "count": 9,
+      "fields": [
+        "_id",
+        "plant_garden_id",
+        "garden_design_id",
+        "reason",
+        "notes"
+      ]
+    },
+    {
+      "collection": "journal_entries",
+      "count": 111,
+      "fields": [
+        "_id",
+        "actionsTaken",
+        "container_id",
+        "entry",
+        "entryDate",
+        "expected_germination",
+        "fertilizer_notes",
+        "growth_height",
+        "growth_stage",
+        "images",
+        "is_indoor",
+        "journal_date",
+        "lighting_id",
+        "location_id",
+        "medium",
+        "notes",
+        "nutrients",
+        "pestsObserved",
+        "phLevel",
+        "photos",
+        "plantIssues",
+        "plant_instance_id",
+        "planting",
+        "soil_type",
+        "stage_progress",
+        "title",
+        "watering_schedule",
+        "weather",
+        "legacyJournalMappingVersion"
+      ]
+    },
+    {
+      "collection": "plant_monitoring_methods",
+      "count": 7,
+      "fields": [
+        "_id",
+        "planting_id",
+        "method_name",
+        "description",
+        "grade",
+        "progress"
+      ]
+    },
+    {
+      "collection": "item_types",
+      "count": 0,
+      "fields": []
+    },
+    {
+      "collection": "garden_location_types",
+      "count": 10,
+      "fields": [
+        "_id",
+        "name",
+        "__v",
+        "createdAt",
+        "description",
+        "isActive",
+        "updatedAt"
+      ]
+    },
+    {
+      "collection": "gardens",
+      "count": 4,
+      "fields": [
+        "_id",
+        "description",
+        "name",
+        "notes",
+        "purpose",
+        "reason"
+      ]
+    },
+    {
+      "collection": "plant_soil",
+      "count": 20,
+      "fields": [
+        "_id",
+        "soil"
+      ]
+    },
+    {
+      "collection": "budget_items",
+      "count": 7,
+      "fields": [
+        "_id",
+        "budget_item_id",
+        "description",
+        "category_id",
+        "amount",
+        "date"
+      ]
+    },
+    {
+      "collection": "plant_varieties",
+      "count": 0,
+      "fields": []
+    },
+    {
+      "collection": "dashboard_snapshots",
+      "count": 0,
+      "fields": []
+    },
+    {
+      "collection": "plant_fertilizer_types",
+      "count": 23,
+      "fields": [
+        "_id",
+        "fertilizer_type",
+        "fertilizer_category"
+      ]
+    },
+    {
+      "collection": "sunlight",
+      "count": 7,
+      "fields": [
+        "_id",
+        "name",
+        "description"
+      ]
+    },
+    {
+      "collection": "garden_purposes",
+      "count": 7,
+      "fields": [
+        "_id",
+        "name",
+        "__v",
+        "createdAt",
+        "description",
+        "isActive",
+        "updatedAt"
+      ]
+    },
+    {
+      "collection": "task_priorities",
+      "count": 0,
+      "fields": []
+    },
+    {
+      "collection": "supply_vendors",
+      "count": 0,
+      "fields": []
+    },
+    {
+      "collection": "propagation_methods",
+      "count": 14,
+      "fields": [
+        "_id",
+        "name",
+        "description",
+        "active"
+      ]
+    },
+    {
+      "collection": "weather_daily",
+      "count": 0,
+      "fields": []
+    },
+    {
+      "collection": "activities",
+      "count": 0,
+      "fields": []
+    },
+    {
+      "collection": "bed_planner",
+      "count": 3,
+      "fields": [
+        "_id",
+        "bed_id",
+        "bed_name",
+        "garden_design_id",
+        "location_id",
+        "size",
+        "soil_type_id",
+        "plant_ids",
+        "watering_method_id",
+        "sunlight_id",
+        "notes"
+      ]
+    },
+    {
+      "collection": "watering_requirements",
+      "count": 8,
+      "fields": [
+        "_id",
+        "description",
+        "frequency",
+        "habit",
+        "name"
+      ]
+    },
+    {
+      "collection": "daily_journals",
+      "count": 0,
+      "fields": []
+    },
+    {
+      "collection": "equipment",
+      "count": 16,
+      "fields": [
+        "_id",
+        "brand",
+        "createdAt",
+        "description",
+        "name",
+        "notes",
+        "price",
+        "purchaseDate",
+        "purchasePrice",
+        "qty",
+        "qtyonhand",
+        "reordermin",
+        "updatedAt",
+        "vendor",
+        "vendorid"
+      ]
+    },
+    {
+      "collection": "unit_prices",
+      "count": 0,
+      "fields": []
+    },
+    {
+      "collection": "seed_collections",
+      "count": 0,
+      "fields": []
+    },
+    {
+      "collection": "equipment_vendors",
+      "count": 27,
+      "fields": [
+        "_id",
+        "address",
+        "address1",
+        "city",
+        "contactName",
+        "contactperson",
+        "country",
+        "email",
+        "name",
+        "phone",
+        "postalCode",
+        "region",
+        "state",
+        "state_id",
+        "updatedAt",
+        "website",
+        "zip"
+      ]
+    },
+    {
+      "collection": "garden_expenses",
+      "count": 0,
+      "fields": []
+    },
+    {
+      "collection": "diseases",
+      "count": 0,
+      "fields": []
+    },
+    {
+      "collection": "nurseries",
+      "count": 4,
+      "fields": [
+        "_id",
+        "name",
+        "address",
+        "city",
+        "state_id",
+        "zip",
+        "phone",
+        "fax",
+        "email",
+        "website",
+        "time_zone_id",
+        "logo",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    {
+      "collection": "growth_rates",
+      "count": 9,
+      "fields": [
+        "_id",
+        "growth_rate",
+        "name"
+      ]
+    },
+    {
+      "collection": "seed_vendors",
+      "count": 24,
+      "fields": [
+        "_id",
+        "name",
+        "address",
+        "city",
+        "state_id",
+        "zip",
+        "wholesale_customer_service_phone",
+        "retail_customer_service_phone",
+        "other_phone",
+        "fax",
+        "ext",
+        "website",
+        "email_retail",
+        "email_customer_service",
+        "time_zone_id",
+        "catalog",
+        "gmo_seeds",
+        "logo",
+        "address_type",
+        "country_code",
+        "province_region",
+        "postal_code",
+        "updatedAt",
+        "address1",
+        "state",
+        "postalCode",
+        "phone",
+        "email"
+      ]
+    },
+    {
+      "collection": "plant_spacings",
+      "count": 9,
+      "fields": [
+        "_id",
+        "description",
+        "label",
+        "space"
+      ]
+    },
+    {
+      "collection": "plant_containers",
+      "count": 22,
+      "fields": [
+        "_id",
+        "containertype"
+      ]
+    },
+    {
+      "collection": "pollination_methods",
+      "count": 7,
+      "fields": [
+        "_id",
+        "method"
+      ]
+    },
+    {
+      "collection": "plant_forms",
+      "count": 20,
+      "fields": [
+        "_id",
+        "form"
+      ]
+    },
+    {
+      "collection": "food_vendor_types",
+      "count": 6,
+      "fields": [
+        "_id",
+        "name"
+      ]
+    },
+    {
+      "collection": "user_permissions",
+      "count": 7,
+      "fields": [
+        "_id",
+        "role_id",
+        "role",
+        "permissions"
+      ]
+    },
+    {
+      "collection": "harvests",
+      "count": 48,
+      "fields": [
+        "_id",
+        "harvestDate",
+        "harvestQuantity",
+        "harvest_date",
+        "plant_instance_id",
+        "planting",
+        "price_per_unit",
+        "quantity",
+        "quantityUnit",
+        "storeUnitValue",
+        "total_value",
+        "unit"
+      ]
+    },
+    {
+      "collection": "species",
+      "count": 71,
+      "fields": [
+        "_id",
+        "familyId",
+        "genusId",
+        "species",
+        "botanical_name",
+        "common_names",
+        "variety",
+        "synonyms",
+        "updatedAt",
+        "family",
+        "genus",
+        "botanicalName",
+        "commonName"
+      ]
+    },
+    {
+      "collection": "species_families",
+      "count": 13,
+      "fields": [
+        "_id",
+        "name"
+      ]
+    },
+    {
+      "collection": "seeds",
+      "count": 67,
+      "fields": [
+        "_id",
+        "species_id",
+        "name",
+        "description",
+        "context",
+        "flavor_profile",
+        "plant_type_id",
+        "lifecycle_id",
+        "seedbatchnumber",
+        "date_created",
+        "soil_temp_id",
+        "plant_spaces_id",
+        "growing_instruction",
+        "vendor_id",
+        "packed_date",
+        "expiration_date",
+        "collection_dates",
+        "lot_number",
+        "gmo",
+        "heirloom",
+        "medicinal",
+        "seed_count",
+        "harvest_time",
+        "image_path",
+        "hydroponic",
+        "seed_packet_date",
+        "is_correct_plant",
+        "plant_life_span",
+        "hardiness",
+        "certified_organic",
+        "bulb_size",
+        "cover_crops",
+        "trap_crops",
+        "companion_plants",
+        "food_origin",
+        "notes",
+        "growth_info",
+        "stress_risk_id",
+        "start_outdoors_steps",
+        "apartment_gardening",
+        "hydroponic_growth",
+        "growing_conditions",
+        "seasonal_care",
+        "sustainable_practices",
+        "planting_info",
+        "planting_seasons",
+        "start_indoors",
+        "growing_from_scraps",
+        "pest_disease_management",
+        "reproduction",
+        "harvesting_techniques",
+        "storage_tips",
+        "uses_and_benefits",
+        "medicinal_uses",
+        "attracting_pollinators",
+        "nutritional_info",
+        "environmental_impact",
+        "special_features",
+        "cultural_info",
+        "historical_info",
+        "resources_links",
+        "plantName",
+        "coverImage",
+        "species",
+        "plantType",
+        "vendor",
+        "lotNumber",
+        "taste",
+        "aroma",
+        "mouthfeel",
+        "lifecycleInformation",
+        "growthInformation",
+        "growingConditionsAndRequirements",
+        "plantingInformation",
+        "propagationMethods",
+        "harvestingInformation",
+        "storageTips",
+        "usesAndBenefits",
+        "attractingPollinators",
+        "nutritionalInformation",
+        "environmentalImpact",
+        "specialFeatures",
+        "culturalInformation",
+        "historicalInformation",
+        "sustainableGrowingPractices",
+        "resourcesAndLinks",
+        "pestManagement",
+        "diseaseManagement"
+      ]
+    },
+    {
+      "collection": "planting_log",
+      "count": 6,
+      "fields": [
+        "_id",
+        "plant_name",
+        "date",
+        "time",
+        "planting_batch_number",
+        "seed_batch_number",
+        "logged_by",
+        "seed_id",
+        "location_id",
+        "plant_form_id",
+        "container_id",
+        "lighting_id",
+        "sun_direction_id",
+        "sun_exposure",
+        "planted_outdoors",
+        "planted_indoors",
+        "notes"
+      ]
+    },
+    {
+      "collection": "garden_wishlist",
+      "count": 0,
+      "fields": []
+    },
+    {
+      "collection": "budgets",
+      "count": 7,
+      "fields": [
+        "_id",
+        "description",
+        "category_id",
+        "amount",
+        "date"
+      ]
+    },
+    {
+      "collection": "hydro_systems",
+      "count": 0,
+      "fields": []
+    },
+    {
+      "collection": "plant_deaths",
+      "count": 34,
+      "fields": [
+        "_id",
+        "plant_instance_id",
+        "date_planted",
+        "date_death",
+        "notes",
+        "updatedAt"
+      ]
+    },
+    {
+      "collection": "peppers",
+      "count": 26,
+      "fields": [
+        "_id",
+        "name",
+        "scovilleUnits"
+      ]
+    },
+    {
+      "collection": "supplies",
+      "count": 0,
+      "fields": []
+    },
+    {
+      "collection": "plant_instances",
+      "count": 35,
+      "fields": [
+        "_id",
+        "sourceType",
+        "sourceModel",
+        "source_id",
+        "plantings",
+        "currentCycleNumber",
+        "updatedAt"
+      ]
+    },
+    {
+      "collection": "seasons",
+      "count": 4,
+      "fields": [
+        "_id",
+        "vendor_id",
+        "seasons",
+        "month_start",
+        "month_end",
+        "open_hours",
+        "close_hours",
+        "planting_season"
+      ]
+    },
+    {
+      "collection": "soil_types",
+      "count": 20,
+      "fields": [
+        "_id",
+        "name",
+        "soil"
+      ]
+    },
+    {
+      "collection": "audit_logs",
+      "count": 60,
+      "fields": [
+        "_id",
+        "action",
+        "actor_username",
+        "target_type",
+        "target_id",
+        "message",
+        "createdAt"
+      ]
+    },
+    {
+      "collection": "pests",
+      "count": 10,
+      "fields": [
+        "_id",
+        "description",
+        "name",
+        "pestName"
+      ]
+    },
+    {
+      "collection": "user_roles",
+      "count": 7,
+      "fields": [
+        "_id",
+        "role",
+        "description"
+      ]
+    },
+    {
+      "collection": "plant_categories",
+      "count": 0,
+      "fields": []
+    },
+    {
+      "collection": "lighting",
+      "count": 22,
+      "fields": [
+        "_id",
+        "description",
+        "lightingtype",
+        "name"
+      ]
+    },
+    {
+      "collection": "life_cycle",
+      "count": 9,
+      "fields": [
+        "_id",
+        "cycle_type"
+      ]
+    },
+    {
+      "collection": "plant_equipment_vendors",
+      "count": 27,
+      "fields": [
+        "_id",
+        "name",
+        "contactperson",
+        "phone",
+        "email",
+        "address",
+        "city",
+        "state_id",
+        "zip",
+        "country",
+        "region",
+        "updatedAt",
+        "website"
+      ]
+    },
+    {
+      "collection": "fruit_calendar",
+      "count": 0,
+      "fields": []
+    },
+    {
+      "collection": "plant_area_types",
+      "count": 9,
+      "fields": [
+        "_id",
+        "id",
+        "name",
+        "description"
+      ]
+    },
+    {
+      "collection": "usda_zones",
+      "count": 26,
+      "fields": [
+        "_id",
+        "description",
+        "region",
+        "states",
+        "tempC",
+        "tempF",
+        "temperatureRange",
+        "zone"
+      ]
+    },
+    {
+      "collection": "plant_pollination",
+      "count": 0,
+      "fields": []
+    },
+    {
+      "collection": "fertilizer_types",
+      "count": 23,
+      "fields": [
+        "_id",
+        "description",
+        "fertilizer_category",
+        "fertilizer_type",
+        "name"
+      ]
+    },
+    {
+      "collection": "families",
+      "count": 13,
+      "fields": [
+        "_id",
+        "name"
+      ]
+    },
+    {
+      "collection": "companion_planting",
+      "count": 0,
+      "fields": []
+    },
+    {
+      "collection": "garden_overview",
+      "count": 4,
+      "fields": [
+        "_id",
+        "name",
+        "description",
+        "purpose",
+        "reason",
+        "notes"
+      ]
+    },
+    {
+      "collection": "task_statuses",
+      "count": 0,
+      "fields": []
+    },
+    {
+      "collection": "pesticides",
+      "count": 40,
+      "fields": [
+        "_id",
+        "pesticide_type",
+        "pesticide_category"
+      ]
+    },
+    {
+      "collection": "garden_types",
+      "count": 8,
+      "fields": [
+        "_id",
+        "name",
+        "__v",
+        "createdAt",
+        "description",
+        "isActive",
+        "updatedAt"
+      ]
+    },
+    {
+      "collection": "frost_dates",
+      "count": 0,
+      "fields": []
+    },
+    {
+      "collection": "plantings",
+      "count": 65,
+      "fields": [
+        "_id",
+        "container_id",
+        "date",
+        "instanceName",
+        "lighting_id",
+        "location_id",
+        "logged_by",
+        "notes",
+        "plant_form_id",
+        "plant_name",
+        "plantedDate",
+        "planted_indoors",
+        "planted_outdoors",
+        "planting_batch_number",
+        "seed",
+        "seed_batch_number",
+        "seed_id",
+        "sourceName",
+        "sourceType",
+        "sun_direction_id",
+        "sun_exposure",
+        "time"
+      ]
+    },
+    {
+      "collection": "weatherOutlook",
+      "count": 0,
+      "fields": []
+    },
+    {
+      "collection": "plant_stages",
+      "count": 0,
+      "fields": []
+    },
+    {
+      "collection": "disease_logs",
+      "count": 0,
+      "fields": []
+    },
+    {
+      "collection": "planting_depths",
+      "count": 15,
+      "fields": [
+        "_id",
+        "description",
+        "depth",
+        "label"
+      ]
+    },
+    {
+      "collection": "supply_categories",
+      "count": 0,
+      "fields": []
+    },
+    {
+      "collection": "life_cycles",
+      "count": 9,
+      "fields": [
+        "_id",
+        "cycle_type",
+        "name"
+      ]
+    },
+    {
+      "collection": "plant_monitoring",
+      "count": 4,
+      "fields": [
+        "_id",
+        "plant_instance_id",
+        "date",
+        "growth_stage",
+        "height_cm",
+        "leaves_count",
+        "health_status",
+        "applied_fertilizer",
+        "applied_nutrients",
+        "watering_id",
+        "pests_found",
+        "notes"
+      ]
+    },
+    {
+      "collection": "observations",
+      "count": 4,
+      "fields": [
+        "_id",
+        "applied_fertilizer",
+        "applied_nutrients",
+        "date",
+        "details",
+        "growth_stage",
+        "health_status",
+        "height_cm",
+        "leaves_count",
+        "name",
+        "notes",
+        "observationType",
+        "observedAt",
+        "pests_found",
+        "plant_instance_id",
+        "planting",
+        "watering_id"
+      ]
+    },
+    {
+      "collection": "lifespans",
+      "count": 0,
+      "fields": []
+    },
+    {
+      "collection": "directions",
+      "count": 17,
+      "fields": [
+        "_id",
+        "direction",
+        "description"
+      ]
+    },
+    {
+      "collection": "frost_season",
+      "count": 0,
+      "fields": []
+    },
+    {
+      "collection": "maintenance_log",
+      "count": 5,
+      "fields": [
+        "_id",
+        "title",
+        "type",
+        "date",
+        "system",
+        "frequency",
+        "nextDueDate",
+        "completed",
+        "notes"
+      ]
+    },
+    {
+      "collection": "hardiness_zones",
+      "count": 26,
+      "fields": [
+        "_id",
+        "zone",
+        "tempF",
+        "tempC",
+        "region",
+        "states"
+      ]
+    },
+    {
+      "collection": "fertilizer_applications",
+      "count": 0,
+      "fields": []
+    },
+    {
+      "collection": "tasks",
+      "count": 8,
+      "fields": [
+        "_id",
+        "task_type",
+        "targetType",
+        "targetModel",
+        "target_id",
+        "plant_id",
+        "task_date",
+        "task_name",
+        "task_time_end",
+        "description",
+        "start_date",
+        "due_date",
+        "assigned_to",
+        "priority",
+        "category",
+        "notes",
+        "is_completed",
+        "createdAt",
+        "updatedAt",
+        "name",
+        "dueDate",
+        "status"
+      ]
+    },
+    {
+      "collection": "plant_spacing",
+      "count": 9,
+      "fields": [
+        "_id",
+        "space",
+        "description"
+      ]
+    },
+    {
+      "collection": "pepper_forms",
+      "count": 8,
+      "fields": [
+        "_id",
+        "pepperNameFresh",
+        "pepperNameDry",
+        "region",
+        "scovilleUnits",
+        "color",
+        "type",
+        "typicalUses"
+      ]
+    },
+    {
+      "collection": "equipment_categories",
+      "count": 0,
+      "fields": []
+    },
+    {
+      "collection": "food_costs",
+      "count": 4,
+      "fields": [
+        "_id",
+        "item_id",
+        "vendor_id",
+        "unit",
+        "price_per_unit",
+        "effective_date",
+        "source"
+      ]
+    },
+    {
+      "collection": "plant_soil_temps",
+      "count": 6,
+      "fields": [
+        "_id",
+        "temperature_f_min",
+        "temperature_f_max",
+        "temperature_c_min",
+        "temperature_c_max",
+        "description",
+        "optimal_for_plants",
+        "stress_risk_id"
+      ]
+    },
+    {
+      "collection": "disease_ref_treatments",
+      "count": 0,
+      "fields": []
+    },
+    {
+      "collection": "locations",
+      "count": 39,
+      "fields": [
+        "_id",
+        "location_name"
+      ]
+    },
+    {
+      "collection": "growing_methods",
+      "count": 5,
+      "fields": [
+        "_id",
+        "MethodName"
+      ]
+    },
+    {
+      "collection": "plant_relationship_types",
+      "count": 12,
+      "fields": [
+        "_id",
+        "name",
+        "description"
+      ]
+    },
+    {
+      "collection": "pest_ref_treatments",
+      "count": 14,
+      "fields": [
+        "_id",
+        "name",
+        "pest_control_solution"
+      ]
+    },
+    {
+      "collection": "pest_types",
+      "count": 0,
+      "fields": []
+    },
+    {
+      "collection": "page_access",
+      "count": 89,
+      "fields": [
+        "_id",
+        "path",
+        "access",
+        "category",
+        "createdAt",
+        "hidden_in_nav",
+        "label",
+        "perm",
+        "updatedAt"
+      ]
+    },
+    {
+      "collection": "genus",
+      "count": 37,
+      "fields": [
+        "_id",
+        "family",
+        "familyId",
+        "name"
+      ]
+    },
+    {
+      "collection": "plant_lighting",
+      "count": 22,
+      "fields": [
+        "_id",
+        "lightingtype",
+        "description"
+      ]
+    },
+    {
+      "collection": "plant_pests",
+      "count": 10,
+      "fields": [
+        "_id",
+        "pestName",
+        "description"
+      ]
+    }
+  ]
+}

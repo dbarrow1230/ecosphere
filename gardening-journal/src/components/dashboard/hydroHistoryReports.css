@@ -1,0 +1,26 @@
+@page hydroResearch {
+  size: landscape;
+  margin: 12mm;
+}
+
+@media print {
+  .hydro-research-report {
+    page: hydroResearch;
+  }
+
+  .hydro-research-report table {
+    width: 100%;
+    table-layout: fixed;
+    font-size: 8pt;
+  }
+
+  .hydro-research-report th,
+  .hydro-research-report td {
+    overflow-wrap: anywhere;
+    white-space: normal;
+  }
+
+  .hydro-research-report thead {
+    display: table-header-group;
+  }
+}

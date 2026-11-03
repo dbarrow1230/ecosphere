@@ -1,0 +1,29 @@
+import mongoose from "mongoose";
+import businessInfoConnection from "../../db/businessInfoConnection.js";
+
+const {Schema}=mongoose;
+
+const inventoryTransactionSchema=new Schema({
+ business_id:{type:Schema.Types.ObjectId,ref:"Business",required:true,index:true},
+ transactionDate:{type:Date,default:Date.now,index:true},
+ transactionType:{type:String,enum:["receipt","productionUse","productionOutput","sale","adjustment","count","waste","transfer","return"],required:true,index:true},
+ itemName:{type:String,required:true,trim:true,index:true},
+ itemType:{type:String,enum:["ingredient","packaging","finishedProduct","marketSupply","beverage","other"],default:"ingredient",index:true},
+ productRef:{type:Schema.Types.ObjectId,ref:"Product",default:null,index:true},
+ ingredientRef:{type:Schema.Types.ObjectId,ref:"Ingredient",default:null,index:true},
+ beverageItemRef:{type:Schema.Types.ObjectId,ref:"BeverageItem",default:null,index:true},
+ locationRef:{type:Schema.Types.ObjectId,ref:"Location",default:null,index:true},
+ lotRef:{type:Schema.Types.ObjectId,ref:"InventoryLot",default:null,index:true},
+ quantity:{type:Number,required:true},
+ unit:{type:String,trim:true,default:""},
+ unitCost:{type:Number,default:0,min:0},
+ referenceType:{type:String,trim:true,default:""},
+ referenceId:{type:Schema.Types.ObjectId,default:null,index:true},
+ createdByRef:{type:Schema.Types.ObjectId,ref:"User",default:null},
+ notes:{type:String,trim:true,default:""}
+},{timestamps:true,collection:"inventory_transactions"});
+
+inventoryTransactionSchema.index({business_id:1,transactionDate:-1});
+inventoryTransactionSchema.index({business_id:1,referenceType:1,referenceId:1});
+
+export default businessInfoConnection.models.InventoryTransaction||businessInfoConnection.model("InventoryTransaction",inventoryTransactionSchema);

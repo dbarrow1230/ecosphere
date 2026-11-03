@@ -1,0 +1,148 @@
+/* src/pages/referance/SettingExplorationPage.css */
+
+.setting-exploration-page{
+ width:100%;
+ min-height:100%;
+ padding:1.5rem 0 2rem;
+ background:transparent;
+ color:var(--text);
+}
+
+.setting-exploration-page .container-fluid{
+ width:100%;
+ max-width:100%;
+ padding-left:1rem;
+ padding-right:1rem;
+}
+
+.setting-hero{
+ margin-bottom:2rem;
+ text-align:left;
+}
+
+.setting-badge{
+ display:inline-flex;
+ align-items:center;
+ width:auto;
+ margin-bottom:1rem;
+ background:var(--primary)!important;
+ color:var(--text-inverse)!important;
+ border:0;
+ border-radius:.35rem;
+ padding:.45rem .75rem;
+}
+
+.setting-title{
+ margin:0 0 .75rem;
+ color:var(--primary);
+ font-size:clamp(2.25rem,4vw,3.75rem);
+ font-weight:800;
+ line-height:1;
+ text-transform:uppercase;
+}
+
+.setting-title span{
+ font-style:italic;
+ text-transform:lowercase;
+}
+
+.setting-lead{
+ max-width:none;
+ margin:0 0 .75rem;
+ color:var(--text);
+ font-size:1.15rem;
+}
+
+.setting-text{
+ max-width:none;
+ margin:0;
+ color:var(--muted);
+}
+
+.setting-atlas{
+ display:flex;
+ flex-direction:column;
+ border-top:2px solid color-mix(in srgb,var(--primary) 35%,var(--border));
+}
+
+.setting-atlas-row{
+ display:grid;
+ grid-template-columns:4.5rem 3.5rem minmax(13rem,20rem) 1fr;
+ align-items:start;
+ gap:1rem;
+ padding:1.25rem 0;
+ border-bottom:1px solid color-mix(in srgb,var(--primary) 22%,var(--border));
+}
+
+.setting-atlas-row:nth-child(even){
+ background:linear-gradient(90deg,color-mix(in srgb,var(--primary) 7%,transparent),transparent);
+}
+
+.setting-atlas-number{
+ color:color-mix(in srgb,var(--primary) 45%,var(--muted));
+ font-size:1.75rem;
+ font-weight:800;
+ line-height:1;
+ letter-spacing:-.06em;
+}
+
+.setting-atlas-icon{
+ width:2.75rem;
+ height:2.75rem;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ color:var(--primary);
+ border:1px solid color-mix(in srgb,var(--primary) 40%,var(--border));
+ border-radius:999px;
+}
+
+.setting-atlas-heading h2{
+ margin:0;
+ color:var(--primary);
+ font-size:1rem;
+ font-weight:800;
+ line-height:1.2;
+ text-transform:uppercase;
+}
+
+.setting-atlas-copy p{
+ max-width:72rem;
+ margin:0;
+ color:var(--text);
+ font-size:1rem;
+ line-height:1.6;
+}
+
+@media(max-width:767.98px){
+ .setting-atlas-row{
+  grid-template-columns:3.5rem 3rem 1fr;
+ }
+
+ .setting-atlas-copy{
+  grid-column:3;
+ }
+
+ .setting-atlas-number{
+  font-size:1.35rem;
+ }
+}
+
+@media(max-width:575.98px){
+ .setting-atlas-row{
+  grid-template-columns:2.75rem 1fr;
+ }
+
+ .setting-atlas-number{
+  display:none;
+ }
+
+ .setting-atlas-icon{
+  width:2.35rem;
+  height:2.35rem;
+ }
+
+ .setting-atlas-copy{
+  grid-column:2;
+ }
+}

@@ -1,0 +1,109 @@
+/* src/styles/Programs.css */
+
+.programs-page{
+ padding:4rem 1rem;
+}
+
+.programs-page-container{
+ width:min(100%,var(--max-width));
+ margin:0 auto;
+}
+
+.programs-page-hero{
+ max-width:1080px;
+ margin:0 0 2.5rem;
+}
+
+.programs-page-eyebrow{
+ margin:0 0 .5rem;
+ font-size:.85rem;
+ font-weight:700;
+ letter-spacing:.16em;
+ text-transform:uppercase;
+ color:var(--brand-accent);
+}
+
+.programs-page-title{
+ margin:0 0 1rem;
+ font-size:clamp(2.2rem,5vw,3.5rem);
+ line-height:1.1;
+}
+
+.programs-page-lead{
+ margin:0;
+ max-width:1080px;
+ font-size:1rem;
+ line-height:1.75;
+ color:var(--brand-text-muted);
+}
+
+.programs-page-grid{
+ display:grid;
+ grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:1.5rem;
+ align-items:stretch;
+}
+
+.programs-page-card{
+ min-width:0;
+ height:100%;
+}
+
+.programs-page-card .card-body{
+ height:100%;
+ display:flex;
+ flex-direction:column;
+}
+
+.programs-page-heading{
+ margin:0 0 .85rem;
+ font-size:1.4rem;
+}
+
+.programs-page-text{
+ margin:0 0 1rem;
+ line-height:1.75;
+}
+
+.programs-page-list{
+ margin:0;
+ padding-left:1.2rem;
+}
+
+.programs-page-list li{
+ margin-bottom:.6rem;
+ line-height:1.65;
+}
+
+.programs-page-list li:last-child{
+ margin-bottom:0;
+}
+
+@media (max-width:1199.98px){
+ .programs-page-hero{
+  max-width:900px;
+ }
+
+ .programs-page-title{
+  white-space:normal;
+ }
+}
+
+@media (max-width:767.98px){
+ .programs-page{
+  padding:3rem 1rem;
+ }
+
+ .programs-page-grid{
+  grid-template-columns:1fr;
+ }
+
+ .programs-page-hero,
+ .programs-page-lead{
+  max-width:100%;
+ }
+
+ .programs-page-title{
+  white-space:normal;
+ }
+}

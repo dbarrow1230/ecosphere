@@ -1,0 +1,337 @@
+[
+  {
+    "image": "http://127.0.0.1:6012/seed/fenugreek.jpg",
+    "loaded": true,
+    "name": "Fenugreek"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/Acorn%20Squash.jpg",
+    "loaded": true,
+    "name": "Acorn Squash"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/Bell%20Pepper.jpg",
+    "loaded": true,
+    "name": "Bell Pepper"
+  },
+  {
+    "loaded": false,
+    "message": "Saved image file unavailable",
+    "name": "Garlic"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/echinacea.jpg",
+    "loaded": true,
+    "name": "Echinacea (Purple Coneflower)"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/pennyroyal-mint.png",
+    "loaded": true,
+    "name": "Pennyroyal Mint"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/holy%20basil.webp",
+    "loaded": true,
+    "name": "Holy Basil (Tulsi)"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/calendula.jpg",
+    "loaded": true,
+    "name": "Calendula (Pot Marigold)"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/spearmint.jpg",
+    "loaded": true,
+    "name": "Spearmint"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/jalapeno%20Pepper.jpg",
+    "loaded": true,
+    "name": "Jalapeño Pepper"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/peppermint.jpg",
+    "loaded": true,
+    "name": "Peppermint"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/hyssop.jpg",
+    "loaded": true,
+    "name": "Hyssop"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/lemon-seedlings.jpg",
+    "loaded": true,
+    "name": "Lemon (grown from seed)"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/sage.jpg",
+    "loaded": true,
+    "name": "Broad Leaf Sage (Garden Sage)"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/Buttercrunch%20Lettuce.jpg",
+    "loaded": true,
+    "name": "Butter Crunch Lettuce"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/chocolate%20beauty%20pepper.jpg",
+    "loaded": true,
+    "name": "Chocolate Beauty Pepper"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/lemon%20balm.jpg",
+    "loaded": true,
+    "name": "Lemon Balm"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/thai-basil.jpg",
+    "loaded": true,
+    "name": "Thai Basil"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/mini-sweet-pepper-mix.jpg",
+    "loaded": true,
+    "name": "Mini Sweet Peppers"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/Lemongrass.jpg",
+    "loaded": true,
+    "name": "Lemongrass"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/California%20Wonder%20Pepper.jpg",
+    "loaded": true,
+    "name": "California Wonder Pepper"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/scotch%20bonnet.jpg",
+    "loaded": true,
+    "name": "Scotch Bonnet Pepper"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/basil%20sweet.jpg",
+    "loaded": true,
+    "name": "Sweet Basil"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/tomato.jpg",
+    "loaded": true,
+    "name": "Tomato"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/Chervil%20Curled.jpg",
+    "loaded": true,
+    "name": "Chervil (Curled)"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/fennel%20florence.jpg",
+    "loaded": true,
+    "name": "Fennel (Florence)"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/parsley%20italian%20giant.jpg",
+    "loaded": true,
+    "name": "Parsley (Italian Giant)"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/rosemary.jpg",
+    "loaded": true,
+    "name": "Rosemary"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/chives.jpg",
+    "loaded": true,
+    "name": "Chives"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/Roses.jpg",
+    "loaded": true,
+    "name": "Roses"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/carrot.jpg",
+    "loaded": true,
+    "name": "Carrots"
+  },
+  {
+    "loaded": false,
+    "message": "Saved image file unavailable",
+    "name": "Oats"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/scallion.jpg",
+    "loaded": true,
+    "name": "Scallion"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/cilantro.jpg",
+    "loaded": true,
+    "name": "Cilantro"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/anise.jpg",
+    "loaded": true,
+    "name": "Anise"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/rainbow%20carrot.jpg",
+    "loaded": true,
+    "name": "Rainbow Carrots"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/chives%20garlic.jpg",
+    "loaded": true,
+    "name": "Garlic Chives"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/basil-genovese.jpg",
+    "loaded": true,
+    "name": "Genovese Basil"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/pepper%20sunbright.jpg",
+    "loaded": true,
+    "name": "Sunbright Pepper"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/thyme%20common.jpg",
+    "loaded": true,
+    "name": "Thyme"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/spearmint.jpg",
+    "loaded": true,
+    "name": "Mint (Spearmint)"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/purple%20beauty%20pepper.jpg",
+    "loaded": true,
+    "name": "Purple Beauty Pepper"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/Orange%20sun%20pepper.jpg",
+    "loaded": true,
+    "name": "Orange Sun Pepper"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/dill%20bouquet.jpg",
+    "loaded": true,
+    "name": "Dill Bouquet"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/Oregano.jpg",
+    "loaded": true,
+    "name": "Oregano"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/sweet%20snaps%20peppers.jpg",
+    "loaded": true,
+    "name": "Sweet Snap Pepper"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/rue.jpg",
+    "loaded": true,
+    "name": "Rue"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/bell%20pepper%20mix.jpg",
+    "loaded": true,
+    "name": "Mixed Bell Peppers"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/Celery.jpg",
+    "loaded": true,
+    "name": "Celery"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/boston%20Lettuce.jpg",
+    "loaded": true,
+    "name": "Boston Lettuce"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/lemon%20mint.jpg",
+    "loaded": true,
+    "name": "Lemon mint"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/habanero%20pepper%20orange.jpg",
+    "loaded": true,
+    "name": "Habanero Pepper"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/spinach%20bloomsdale.webp",
+    "loaded": true,
+    "name": "Spinach"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/basil%20lemon.jpg",
+    "loaded": true,
+    "name": "Lemon Basil"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/chamomile%20roman.jpg",
+    "loaded": true,
+    "name": "Chamomile (Roman)"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/borage.jpg",
+    "loaded": true,
+    "name": "Borage"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/English%20Lavender.jpg",
+    "loaded": true,
+    "name": "English Lavender"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/Russet%20Potato.jpeg",
+    "loaded": true,
+    "name": "Russet Potato"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/collards%20gergia%20southern.jpg",
+    "loaded": true,
+    "name": "Georgia Southern Collards"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/cabbage.jpg",
+    "loaded": true,
+    "name": "Cabbage"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/Brussels%20Sprouts.jpg",
+    "loaded": true,
+    "name": "Brussels Sprouts"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/Zucchini.jpg",
+    "loaded": true,
+    "name": "Zucchini"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/tarragon.jpg",
+    "loaded": true,
+    "name": "Tarragon"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/Oranage%20Pepper.jpg",
+    "loaded": true,
+    "name": "Orange Bright Pepper"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/Cucumber.jpg",
+    "loaded": true,
+    "name": "Cucumber"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/bok-choy.jpg",
+    "loaded": true,
+    "name": "Bok Choy"
+  },
+  {
+    "image": "http://127.0.0.1:6012/seed/corn.jpg",
+    "loaded": true,
+    "name": "Corn (Maize)"
+  }
+]

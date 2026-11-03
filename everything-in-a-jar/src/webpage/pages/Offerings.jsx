@@ -1,0 +1,5 @@
+import {Link} from "react-router-dom";
+import {usePublicSite} from "../../../../shared/public/PublicSiteContext.jsx";
+const copy=s=><>{s.text?.map(t=><p key={t}>{t}</p>)}{s.items&&<ul>{s.items.map(t=><li key={t}>{t}</li>)}</ul>}{s.note&&<p className="pw-note">{s.note}</p>}</>;
+const contact=s=>"/contact?topic="+encodeURIComponent(s.title);
+export default function Offerings({pageKey}){const {site}=usePublicSite();const page=site.pages.find(p=>p.slug===pageKey);if(!page)return <main><h1>Page not found</h1><Link to="/">Return home</Link></main>;return (<div className="pantry-label-pages"><header><p>Notes from the pantry</p><h1>{page.title}</h1><p>{page.intro}</p></header><div className="pantry-label-shelf">{page.sections.map((s,i)=><article key={s.title} id={s.anchor||'offering-'+(i+1)}><header><span>Pantry record {String(i+1).padStart(2,'0')}</span><h2>{s.title}</h2></header><div>{copy(s)}</div><footer><Link to={contact(s)}>Ask about {s.title.toLowerCase()} →</Link></footer></article>)}</div></div>);}
