@@ -1,0 +1,48 @@
+.plot-editor,.plot-lines,.plot-rows{display:grid;gap:.7rem}
+.plot-editor>section,.plot-rows fieldset{display:grid;gap:.7rem;border:1px solid var(--border);border-radius:.35rem;padding:.75rem}
+.plot-editor h3,.plot-lines h4,.plot-rows h3{margin:0;color:var(--heading);font-family:var(--font-heading)}
+.plot-lines>header,.plot-rows>header{display:flex;align-items:center;justify-content:space-between;gap:1rem;border-bottom:1px solid var(--border);padding-bottom:.4rem}
+.plot-rows legend{float:none;width:auto;margin:0;padding:0 .3rem;color:var(--heading);font-family:var(--font-heading)}
+.plot-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem 1rem;align-items:start}
+.plot-field{display:grid;grid-template-columns:minmax(10rem,max-content) minmax(0,1fr);gap:.55rem;align-items:start;color:var(--heading);white-space:nowrap}
+.plot-field input,.plot-field textarea,.plot-lines input{min-width:0;width:100%;padding:.4rem .55rem;border:1px solid var(--border);border-radius:.3rem;background:var(--surface-2);color:var(--text)}
+.plot-lines>div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.5rem;align-items:center}
+@media(max-width:900px){.plot-grid{grid-template-columns:1fr}.plot-field{grid-template-columns:minmax(8rem,35%) minmax(0,1fr)}}
+.plot-view{display:grid;gap:1rem;color:var(--text)}
+.plot-view-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.plot-view-card,.plot-view-block,.plot-view-table,.plot-view-questions{display:grid;gap:.65rem;border:1px solid var(--border);border-radius:.35rem;background:var(--surface);padding:.75rem}
+.plot-view-card header p,.plot-view-card header h3,.plot-view-block h4,.plot-view-table h3,.plot-view-questions h3,.plot-view-questions h4{margin:0}
+.plot-view-card header h3,.plot-view-block h4,.plot-view-table h3,.plot-view-questions h3{color:var(--heading);font-family:var(--font-heading)}
+.plot-view-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.65rem;margin:0}
+.plot-view-facts div{border-bottom:1px solid var(--border);padding-bottom:.35rem}
+.plot-view-facts dt{color:var(--heading);font-family:var(--font-heading)}
+.plot-view-facts dd{margin:.15rem 0 0;white-space:pre-wrap;color:var(--text)}
+.plot-view-columns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem}
+.plot-view-table{overflow-x:auto}
+.plot-view-table-head,.plot-view-table-row{display:grid;gap:.65rem;padding:.45rem;min-width:52rem}
+.plot-view-table-head{color:var(--heading);font-family:var(--font-heading);border-bottom:1px solid var(--border-strong)}
+.plot-view-table-row{border-bottom:1px solid var(--border)}
+.plot-view-columns-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.plot-view-columns-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.plot-view-columns-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.plot-view-columns-5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.plot-view-columns-6{grid-template-columns:repeat(6,minmax(0,1fr))}
+.plot-view-columns-7{grid-template-columns:repeat(7,minmax(0,1fr))}
+.plot-view-questions article{border-bottom:1px solid var(--border);padding:.45rem 0}
+@media(max-width:900px){.plot-view-grid,.plot-view-facts,.plot-view-columns{grid-template-columns:1fr}}
+.plot-view{display:grid;gap:1rem;color:var(--text)}
+.plot-view-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.plot-view-card,.plot-view-block,.plot-view-table,.plot-view-questions{display:grid;gap:.65rem;border:1px solid var(--border);border-radius:.35rem;background:var(--surface);padding:.75rem}
+.plot-view-card header p,.plot-view-card header h3,.plot-view-block h4,.plot-view-table h3,.plot-view-questions h3,.plot-view-questions h4{margin:0}
+.plot-view-card header h3,.plot-view-block h4,.plot-view-table h3,.plot-view-questions h3{color:var(--heading);font-family:var(--font-heading)}
+.plot-view-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.65rem;margin:0}
+.plot-view-facts div{border-bottom:1px solid var(--border);padding-bottom:.35rem}
+.plot-view-facts dt{color:var(--heading);font-family:var(--font-heading)}
+.plot-view-facts dd{margin:.15rem 0 0;white-space:pre-wrap;color:var(--text)}
+.plot-view-columns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem}
+.plot-view-table{overflow-x:auto}
+.plot-view-table-head,.plot-view-table-row{display:grid;gap:.65rem;padding:.45rem;min-width:52rem}
+.plot-view-table-head{color:var(--heading);font-family:var(--font-heading);border-bottom:1px solid var(--border-strong)}
+.plot-view-table-row{border-bottom:1px solid var(--border)}
+.plot-view-questions article{border-bottom:1px solid var(--border);padding:.45rem 0}
+@media(max-width:900px){.plot-view-grid,.plot-view-facts,.plot-view-columns{grid-template-columns:1fr}}

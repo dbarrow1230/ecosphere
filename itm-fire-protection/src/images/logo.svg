@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 92" role="img" aria-labelledby="title desc">
+  <title id="title">ITM Fire Protection &amp; Equipment</title>
+  <desc id="desc">Red flame mark with ITM wordmark and company descriptor.</desc>
+  <g transform="translate(6 7)">
+    <path fill="#e11d2e" d="M39 76C16 69 6 54 10 38c3-11 10-19 20-30-1 12 3 19 10 25 3-12 10-21 21-31-2 16 4 25 10 33 7 9 7 22 1 31-7 11-19 15-33 10z"/>
+    <path fill="#fff" d="M43 69c-9-4-14-12-12-20 1-6 5-10 10-16 0 7 2 11 6 14 2-7 6-12 12-18-1 9 2 14 6 19 4 5 4 12 0 17-4 6-11 8-22 4z"/>
+  </g>
+  <text x="92" y="48" font-family="Arial, Helvetica, sans-serif" font-size="43" font-weight="800" fill="#d7192d">ITM</text>
+  <text x="177" y="32" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="800" fill="#101820">Fire Protection</text>
+  <text x="177" y="54" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="800" fill="#101820">&amp; Equipment</text>
+  <text x="94" y="76" font-family="Arial, Helvetica, sans-serif" font-size="8" letter-spacing="2.3" fill="#687280">INSPECTION • TESTING • MAINTENANCE</text>
+</svg>

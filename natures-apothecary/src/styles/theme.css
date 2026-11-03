@@ -1,0 +1,902 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+:root{
+ --font-heading:'Sora',sans-serif;
+ --font-body:'Inter',sans-serif;
+
+ --bg:#DCE7DF;
+ --bg-alt:#BFD3C2;
+ --surface:#EEF3EA;
+ --surface-2:#A7B8A5;
+
+ --heading:#07110C;
+ --text:#276F3D;
+ --text-soft:#156634;
+ --text-muted:#4A7059;
+ --text-inverse:#FFF4E6;
+
+ --primary:#1F3D33;
+ --primary-hover:#172E27;
+ --secondary:#7D8F63;
+
+ --accent:#D99A2B;
+ --accent-2:#C45A30;
+ --success:#2E7A58;
+
+ --border:#AFA083;
+
+ --shadow:0 10px 30px rgba(26,34,28,.18);
+ --shadow-sm:0 6px 18px rgba(26,34,28,.12);
+
+ --radius-sm:4px;
+ --radius-md:6px;
+ --radius-lg:8px;
+
+ --page-x:clamp(1.25rem,4vw,4rem);
+ --page-y:clamp(2rem,4vw,3.5rem);
+ --page-title:clamp(2.15rem,3.7vw,3.65rem);
+ --page-title-lg:clamp(2.4rem,4.5vw,4.25rem);
+ --page-lead:clamp(1rem,1.2vw,1.15rem);
+ --transition:all .2s ease;
+}
+
+*,
+*::before,
+*::after{
+ box-sizing:border-box;
+}
+
+html{
+ height:100%;
+}
+
+body{
+ min-height:100%;
+ margin:0;
+ background:var(--bg);
+ color:var(--text);
+ font-family:var(--font-body);
+}
+
+#root{
+ min-height:100vh;
+}
+
+.app-layout{
+ min-height:100vh;
+ display:flex;
+ flex-direction:column;
+}
+
+.app-content{
+ flex:1 0 auto;
+ width:100%;
+ display:block;
+}
+
+main{
+ flex:1;
+ width:100%;
+}
+
+h1,h2,h3,h4,h5,h6,
+.logo,
+.brand-mark{
+ font-family:var(--font-heading);
+ color:var(--heading);
+ letter-spacing:-0.035em;
+ font-variation-settings:"SOFT" 50,"WONK" 0;
+ margin-top:0;
+}
+
+h1{
+ font-weight:750;
+ line-height:1.04;
+}
+
+h2,h3{
+ font-weight:700;
+ line-height:1.12;
+}
+
+p,li,label,input,button,textarea,select,th,td{
+ font-family:var(--font-body);
+}
+
+p,
+li{
+ color:var(--text-soft);
+}
+
+label,
+.form-label{
+ display:inline-block;
+ margin-bottom:.4rem;
+ color:var(--text);
+ font-weight:600;
+ line-height:1.2;
+}
+
+[class$="-page"]{
+ min-height:100vh;
+ background:var(--bg);
+ color:var(--text);
+}
+
+[class$="-page-hero"]{
+ width:100%;
+ padding:var(--page-y) var(--page-x);
+ background:linear-gradient(135deg,var(--surface),var(--bg));
+ border-bottom:1px solid var(--border);
+}
+
+[class$="-page-hero-main"],
+[class$="-page-hero-text"]{
+ max-width:1100px;
+}
+
+[class$="-page-eyebrow"]{
+ margin:0 0 .55rem;
+ font-size:.78rem;
+ font-weight:800;
+ letter-spacing:.14em;
+ text-transform:uppercase;
+ color:var(--accent);
+ font-family:var(--font-accent,var(--font-body));
+}
+
+[class$="-page-title"]{
+ margin:0;
+ max-width:none;
+ width:fit-content;
+ font-size:var(--page-title);
+ font-weight:750;
+ line-height:1.05;
+ letter-spacing:-.045em;
+ color:var(--heading);
+ font-family:var(--font-heading);
+ text-wrap:normal;
+ white-space:normal;
+ overflow-wrap:normal;
+ word-break:normal;
+}
+
+[class$="-page-lead"]{
+ max-width:920px;
+ margin:1rem 0 0;
+ font-size:var(--page-lead);
+ line-height:1.7;
+ color:var(--text-soft);
+ font-family:var(--font-body);
+}
+
+.about-page-title,
+.contact-page-title,
+.faq-page-title{
+ font-size:var(--page-title);
+ max-width:none;
+ width:auto;
+}
+
+.about-page-title,
+.contact-page-title{
+ white-space:nowrap;
+}
+
+.faq-page-title{
+ font-size:var(--page-title-lg);
+}
+
+.about-page-hero,
+.contact-page-hero,
+.faq-hero{
+ display:grid;
+ grid-template-columns:minmax(320px,.9fr) minmax(420px,1.1fr);
+ border-bottom:1px solid var(--border);
+ background:var(--bg);
+}
+
+.about-page-hero-main,
+.contact-page-hero-main,
+.faq-hero-left{
+ padding:var(--page-y) var(--page-x);
+ background:var(--surface);
+ border-right:1px solid var(--border);
+}
+
+.about-page-source,
+.contact-page-info,
+.faq-hero-right{
+ display:flex;
+ flex-direction:column;
+ justify-content:center;
+ padding:var(--page-y) var(--page-x);
+}
+
+.about-page-content,
+.contact-page-content,
+.faq-workspace{
+ display:grid;
+ grid-template-columns:260px 1fr;
+}
+
+.about-page-sidebar,
+.contact-page-sidebar,
+.faq-topic-nav{
+ padding:2rem;
+ background:var(--surface);
+ border-right:1px solid var(--border);
+}
+
+.about-page-sections,
+.contact-page-form,
+.faq-panel{
+ padding:2.25rem var(--page-x) 3.5rem;
+}
+
+.about-page-source-title,
+.contact-page-info h2,
+.faq-source-box h2,
+.about-page-sidebar-title,
+.contact-page-sidebar-title,
+.faq-panel-header h2{
+ color:var(--heading);
+ font-family:var(--font-heading);
+}
+
+.about-page-text,
+.about-page-list li,
+.contact-page-info p,
+.contact-page-sidebar-text,
+.faq-source-box p,
+.faq-item p{
+ color:var(--text-soft);
+ font-family:var(--font-body);
+}
+
+form{
+ --form-label-width:9.5rem;
+ --form-label-gap:.75rem;
+ --form-field-width:calc(100% - var(--form-label-width) - var(--form-label-gap));
+ --form-help-offset:calc(var(--form-label-width) + var(--form-label-gap));
+}
+
+.modal-lg,
+.modal-xl{
+ --bs-modal-width:min(1200px,calc(100vw - 2rem));
+}
+
+form .row > [class*="col-md-6"],
+form .row > [class*="col-lg-6"],
+form .row > [class*="col-xl-6"]{
+ --form-label-width:8.5rem;
+}
+
+form .row > [class*="col-md-4"],
+form .row > [class*="col-lg-4"],
+form .row > [class*="col-xl-4"]{
+ --form-label-width:7rem;
+}
+
+form .row > [class*="col-md-3"],
+form .row > [class*="col-lg-3"],
+form .row > [class*="col-xl-3"]{
+ --form-label-width:6.25rem;
+}
+
+form .row > [class*="col-md-2"],
+form .row > [class*="col-lg-2"],
+form .row > [class*="col-xl-2"]{
+ --form-label-width:5rem;
+}
+
+form .row > [class*="col-md-1"],
+form .row > [class*="col-lg-1"],
+form .row > [class*="col-xl-1"]{
+ --form-label-width:4rem;
+ --form-label-gap:.5rem;
+}
+
+form .form-label:has(+ .form-control),
+form .form-label:has(+ .form-select),
+form .form-label:has(+ .input-group),
+form .form-label:has(+ .date-with-today),
+form .form-label:has(+ textarea),
+form .form-label:has(+ select),
+form .form-label:has(+ input:not([type="checkbox"]):not([type="radio"])){
+ display:inline-flex;
+ align-items:center;
+ width:var(--form-label-width);
+ margin-bottom:0;
+ white-space:nowrap;
+ vertical-align:top;
+}
+
+form .form-label:has(+ .form-control)::after,
+form .form-label:has(+ .form-select)::after,
+form .form-label:has(+ .input-group)::after,
+form .form-label:has(+ .date-with-today)::after,
+form .form-label:has(+ textarea)::after,
+form .form-label:has(+ select)::after,
+form .form-label:has(+ input:not([type="checkbox"]):not([type="radio"]))::after{
+ content:":";
+}
+
+form .form-label + .form-control,
+form .form-label + .form-select,
+form .form-label + .input-group,
+form .form-label + .date-with-today,
+form .form-label + textarea,
+form .form-label + select,
+form .form-label + input:not([type="checkbox"]):not([type="radio"]){
+ display:inline-block;
+ width:var(--form-field-width);
+ min-width:0;
+ vertical-align:top;
+}
+
+form .form-label + .input-group{
+ display:inline-flex;
+}
+
+form .form-label + .date-with-today{
+ display:inline-flex;
+ width:var(--form-field-width);
+ min-width:0;
+ vertical-align:top;
+ gap:.5rem;
+}
+
+.date-with-today .form-control{
+ flex:1 1 auto;
+ min-width:0;
+}
+
+.date-with-today .btn{
+ flex:0 0 auto;
+ white-space:nowrap;
+}
+
+form .form-label + .form-control[type="checkbox"],
+form .form-label + .form-control[type="radio"]{
+ width:auto;
+}
+
+form .form-label + .form-select[multiple]{
+ min-height:7rem;
+}
+
+form .form-label + .form-control + .form-text,
+form .form-label + .form-select + .form-text,
+form .form-label + .input-group + .form-text,
+form .form-label + .date-with-today + .form-text,
+form .form-label + textarea + .form-text,
+form .form-label + select + .form-text,
+form .form-label + input:not([type="checkbox"]):not([type="radio"]) + .form-text{
+ display:block;
+ margin-left:var(--form-help-offset);
+}
+
+.form-compact-row{
+ display:flex;
+ flex-wrap:wrap;
+ gap:1rem 1.25rem;
+ align-items:center;
+}
+
+.form-compact-field{
+ display:inline-flex;
+ align-items:center;
+ gap:.5rem;
+ flex:0 1 auto;
+ min-width:0;
+}
+
+.form-compact-field.form-date-field{
+ flex-basis:auto;
+ min-width:0;
+}
+
+.form-compact-field .form-label:has(+ .form-control),
+.form-compact-field .form-label:has(+ .form-select),
+.form-compact-field .form-label:has(+ input:not([type="checkbox"]):not([type="radio"])){
+ display:inline-flex;
+ flex:0 0 auto;
+ width:auto;
+ margin-bottom:0;
+ white-space:nowrap;
+}
+
+.form-compact-field .form-label:has(+ .form-control)::after,
+.form-compact-field .form-label:has(+ .form-select)::after,
+.form-compact-field .form-label:has(+ input:not([type="checkbox"]):not([type="radio"]))::after{
+ content:":";
+}
+
+.form-compact-field .form-label + .form-control,
+.form-compact-field .form-label + .form-select,
+.form-compact-field .form-label + input:not([type="checkbox"]):not([type="radio"]){
+ display:inline-block;
+ flex:0 0 auto;
+ width:7.25rem;
+ min-width:0;
+}
+
+.form-compact-field.form-date-field .form-label + .form-control,
+.form-compact-field.form-date-field .form-label + input:not([type="checkbox"]):not([type="radio"]){
+ width:10.5rem;
+}
+
+.text-label,
+.field-hint,
+.helper-text,
+small{
+ color:var(--text-soft);
+ font-size:.92rem;
+ line-height:1.35;
+}
+
+.form-inline-alert{
+ display:block;
+ margin-left:var(--form-help-offset,10.25rem);
+ font-size:.86rem;
+ font-weight:600;
+ line-height:1.25;
+}
+
+a{
+ color:var(--primary);
+ text-decoration:none;
+}
+
+a:hover{
+ color:var(--secondary);
+}
+
+button,
+.btn-primary{
+ display:inline-flex;
+ align-items:center;
+ justify-content:center;
+ gap:.5rem;
+ background:var(--primary);
+ color:var(--text-inverse);
+ border:1px solid var(--primary);
+ border-radius:var(--radius-sm);
+ padding:.7rem 1rem;
+ font-weight:600;
+ cursor:pointer;
+ transition:background .2s ease,border-color .2s ease,color .2s ease,transform .2s ease,box-shadow .2s ease;
+}
+
+button:hover,
+.btn-primary:hover{
+ background:var(--primary-hover);
+ border-color:var(--primary-hover);
+}
+
+button:focus-visible,
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible{
+ outline:none;
+ box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 45%,transparent);
+}
+
+button:disabled,
+.btn-primary:disabled,
+.btn-secondary:disabled{
+ cursor:not-allowed;
+ opacity:.7;
+}
+
+.btn-secondary{
+ display:inline-flex;
+ align-items:center;
+ justify-content:center;
+ gap:.5rem;
+ background:var(--secondary);
+ color:var(--text-inverse);
+ border:1px solid var(--secondary);
+ border-radius:var(--radius-sm);
+ padding:.7rem 1rem;
+ font-weight:600;
+ cursor:pointer;
+ transition:background .2s ease,border-color .2s ease,color .2s ease,transform .2s ease,box-shadow .2s ease;
+}
+
+.btn-secondary:hover{
+ background:var(--accent-2);
+ border-color:var(--accent-2);
+}
+
+.card,
+.panel{
+ background:var(--surface);
+ border:1px solid var(--border);
+ box-shadow:var(--shadow);
+ border-radius:var(--radius-md);
+}
+
+.modal-content{
+ background:var(--surface);
+ border:1px solid var(--border);
+ box-shadow:var(--shadow);
+ border-radius:var(--radius-md);
+}
+
+.card{
+ padding:1.25rem;
+}
+
+.card-header{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:1rem;
+ margin-bottom:1rem;
+ padding-bottom:.85rem;
+ border-bottom:1px solid var(--border);
+}
+
+.card-title{
+ margin:0;
+ color:var(--heading);
+ font-family:var(--font-heading);
+ font-weight:700;
+ line-height:1.08;
+}
+
+.card-body{
+ color:var(--text-soft);
+}
+
+.card-footer{
+ margin-top:1rem;
+ padding-top:1rem;
+ border-top:1px solid var(--border);
+}
+
+input,
+textarea,
+select{
+ width:100%;
+ background:var(--surface-2);
+ color:var(--text);
+ border:1px solid var(--border);
+ border-radius:var(--radius-sm);
+ padding:.75rem .9rem;
+ line-height:1.35;
+ transition:border-color .2s ease,box-shadow .2s ease,background .2s ease,color .2s ease;
+}
+
+input::placeholder,
+textarea::placeholder{
+ color:var(--text-soft);
+ opacity:1;
+}
+
+input:hover,
+textarea:hover,
+select:hover{
+ border-color:var(--secondary);
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+ outline:none;
+ border-color:var(--accent);
+ box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 30%,transparent);
+}
+
+input:disabled,
+textarea:disabled,
+select:disabled{
+ background:var(--bg-alt);
+ color:var(--text-soft);
+ cursor:not-allowed;
+}
+
+textarea{
+ min-height:120px;
+ resize:vertical;
+}
+
+select{
+ appearance:none;
+}
+
+input[type="checkbox"]{
+ appearance:none;
+ -webkit-appearance:none;
+ width:1.1rem;
+ height:1.1rem;
+ min-width:1.1rem;
+ padding:0;
+ border:1px solid var(--border);
+ border-radius:2px;
+ background:var(--surface-2);
+ display:inline-grid;
+ place-content:center;
+ vertical-align:middle;
+ cursor:pointer;
+}
+
+input[type="checkbox"]::after{
+ content:"";
+ width:.3rem;
+ height:.6rem;
+ border-right:2px solid var(--text);
+ border-bottom:2px solid var(--text);
+ transform:rotate(45deg) scale(0);
+ transform-origin:center;
+ transition:transform .15s ease-in-out;
+ margin-top:-1px;
+}
+
+input[type="checkbox"]:checked{
+ background:var(--accent);
+ border-color:var(--accent);
+}
+
+input[type="checkbox"]:checked::after{
+ transform:rotate(45deg) scale(1);
+}
+
+input[type="checkbox"]:focus{
+ outline:none;
+ box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 30%,transparent);
+}
+
+.checkbox-group,
+.checkbox-label{
+ display:flex;
+ align-items:center;
+ gap:.6rem;
+ color:var(--text);
+ cursor:pointer;
+}
+
+.checkbox-label label{
+ margin-bottom:0;
+ cursor:pointer;
+}
+
+table{
+ width:100%;
+ border-collapse:separate;
+ border-spacing:0;
+ background:var(--surface);
+ color:var(--text);
+ border:1px solid var(--border);
+ border-radius:var(--radius-md);
+ overflow:hidden;
+ box-shadow:var(--shadow);
+}
+
+thead{
+ background:var(--surface-2);
+}
+
+th{
+ color:var(--heading);
+ font-family:var(--font-heading);
+ font-weight:700;
+ text-align:left;
+ padding:.9rem 1rem;
+ border-bottom:1px solid var(--border);
+ vertical-align:middle;
+}
+
+td{
+ color:var(--text-soft);
+ padding:.9rem 1rem;
+ border-bottom:1px solid var(--border);
+ vertical-align:top;
+}
+
+tbody tr{
+ background:var(--surface);
+ transition:background .2s ease;
+}
+
+tbody tr:hover{
+ background:var(--bg-alt);
+}
+
+tbody tr:last-child td{
+ border-bottom:none;
+}
+
+.table-wrap{
+ width:100%;
+ overflow-x:auto;
+ border-radius:var(--radius-md);
+}
+
+.form-group{
+ margin-bottom:1rem;
+}
+
+.form-row{
+ display:flex;
+ flex-wrap:wrap;
+ gap:1rem;
+}
+
+.form-row > *{
+ flex:1 1 240px;
+}
+
+.badge-accent{
+ background:var(--accent);
+ color:var(--text);
+}
+
+.badge-rust{
+ background:var(--accent-2);
+ color:var(--text-inverse);
+}
+
+.badge-plum{
+ background:var(--secondary);
+ color:var(--text-inverse);
+}
+
+.badge-accent,
+.badge-rust,
+.badge-plum{
+ display:inline-flex;
+ align-items:center;
+ justify-content:center;
+ min-height:2rem;
+ padding:.35rem .75rem;
+ border-radius:999px;
+ font-size:.85rem;
+ font-weight:600;
+ border:1px solid var(--border);
+}
+
+@media (max-width:1100px){
+ .about-page-title,
+ .contact-page-title{
+  white-space:normal;
+ }
+
+ .about-page-hero,
+ .contact-page-hero,
+ .faq-hero,
+ .about-page-content,
+ .contact-page-content,
+ .faq-workspace{
+  grid-template-columns:1fr;
+ }
+
+ .about-page-hero-main,
+ .contact-page-hero-main,
+ .faq-hero-left{
+  border-right:0;
+  border-bottom:1px solid var(--border);
+ }
+
+ .about-page-source,
+ .contact-page-info,
+ .faq-hero-right,
+ .about-page-sections,
+ .contact-page-form,
+ .faq-panel{
+  padding:2rem 1.5rem;
+ }
+
+ .about-page-sidebar,
+ .contact-page-sidebar,
+ .faq-topic-nav{
+  padding:1.5rem;
+  border-right:0;
+  border-bottom:1px solid var(--border);
+ }
+}
+
+@media (max-width:768px){
+ :root{
+  --page-x:1.25rem;
+  --page-y:2rem;
+  --page-title:clamp(2rem,9vw,2.85rem);
+  --page-title-lg:clamp(2.35rem,11vw,3.25rem);
+ }
+
+ .card,
+ .panel,
+ .modal-content{
+  border-radius:var(--radius-sm);
+ }
+
+ .card{
+  padding:1rem;
+ }
+
+ th,
+ td{
+  padding:.75rem .8rem;
+ }
+
+ form .form-label:has(+ .form-control),
+ form .form-label:has(+ .form-select),
+ form .form-label:has(+ .input-group),
+ form .form-label:has(+ .date-with-today),
+ form .form-label:has(+ textarea),
+ form .form-label:has(+ select),
+ form .form-label:has(+ input:not([type="checkbox"]):not([type="radio"])){
+  width:100%;
+  margin-bottom:.35rem;
+ }
+
+ form .form-label + .form-control,
+ form .form-label + .form-select,
+ form .form-label + .input-group,
+ form .form-label + .date-with-today,
+ form .form-label + textarea,
+ form .form-label + select,
+ form .form-label + input:not([type="checkbox"]):not([type="radio"]){
+  width:100%;
+ }
+
+ form .form-label + .form-control + .form-text,
+ form .form-label + .form-select + .form-text,
+ form .form-label + .input-group + .form-text,
+ form .form-label + .date-with-today + .form-text,
+ form .form-label + textarea + .form-text,
+ form .form-label + select + .form-text,
+ form .form-label + input:not([type="checkbox"]):not([type="radio"]) + .form-text{
+  margin-left:0;
+ }
+
+ .form-compact-field,
+ .form-compact-field.form-date-field{
+  flex:1 1 100%;
+  justify-content:space-between;
+ }
+
+ .form-compact-field .form-label + .form-control,
+ .form-compact-field .form-label + .form-select,
+ .form-compact-field .form-label + input:not([type="checkbox"]):not([type="radio"]),
+ .form-compact-field.form-date-field .form-label + .form-control,
+ .form-compact-field.form-date-field .form-label + input:not([type="checkbox"]):not([type="radio"]){
+  width:calc(100% - 10.25rem);
+ }
+}
+
+/* Public website: layout inherits the assigned business theme above. */
+@scope (.public-site) {
+/* experience.css layout */
+.pc-sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}.pc-basket-link{display:inline-flex;align-items:center;gap:.5rem;font-weight:600;text-decoration:none;white-space:nowrap}.pc-basket-link span{border:1px solid var(--border,currentColor);min-width:1.6rem;min-height:1.6rem;text-align:center;border-radius:50%}.pc-catalog{padding-block:3rem}.pc-catalog-heading,.pc-shop-tools{display:flex;align-items:center;justify-content:space-between;gap:1.5rem}.pc-catalog-heading h2{margin-bottom:.5rem}.pc-shop-tools{padding-block:1.4rem;border-bottom:1px solid var(--border,currentColor);margin-bottom:2rem}.pc-shop-tools label{display:flex;align-items:center;gap:.8rem}.pc-shop-tools input,.pc-shop-tools select{color:var(--text,FieldText);background:var(--surface,Field);border:1px solid var(--border,currentColor);padding:.7rem 1rem;max-width:100%;min-width:0}.pc-product-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:2rem}.pc-product{min-width:0;border-bottom:1px solid var(--border,currentColor);padding-bottom:1.3rem}.pc-product-image{display:flex;align-items:center;justify-content:center;aspect-ratio:1;background:var(--surface,Canvas);overflow:hidden;text-decoration:none}.pc-product-image img{width:100%;height:100%;object-fit:contain}.pc-image-unavailable{display:grid;justify-items:center;gap:.8rem;color:var(--text-soft,inherit)}.pc-product-copy{padding-top:1rem}.pc-product-copy h3{font-size:1.25rem;line-height:1.25}.pc-product-copy h3 a{text-decoration:none}.pc-category{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text-soft,inherit)}.pc-add{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--primary,currentColor);color:var(--primary,ButtonText);background:var(--surface,ButtonFace);padding:.65rem .9rem;cursor:pointer;font:inherit;font-size:.9rem}.pc-notice{min-height:1.5em;font-size:.9rem;margin-top:1rem!important}.pc-empty{padding:2.5rem 0;max-width:700px}.pc-shop-banner{padding-top:3.5rem}.pc-shop-banner p{max-width:70ch}.pc-detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:2rem}.pc-detail-grid>img{width:100%;max-height:620px;object-fit:contain}.pc-product-detail{padding-block:3rem}.pc-detail-price{font-size:1.5rem;font-weight:600}.pc-detail-grid h2{font-size:1.5rem;margin-top:2rem}.pc-basket{padding-block:3rem}.pc-checkout-grid,.pc-builder-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:4rem}.pc-basket-row{display:flex;align-items:start;justify-content:space-between;gap:2rem;border-bottom:1px solid var(--border,currentColor);padding:1.4rem 0}.pc-basket-row h2{font-size:1.3rem}.pc-quantity{display:flex;gap:.7rem;align-items:center}.pc-quantity button{background:var(--surface,ButtonFace);color:var(--text,ButtonText);padding:.5rem;border:1px solid var(--border,currentColor);cursor:pointer}.pc-subtotal{font-weight:700;font-size:1.2rem;margin-top:2rem!important}.pc-customer-form{padding:2rem;background:var(--surface,Canvas);border:1px solid var(--border,currentColor)}.pc-customer-form label{display:block;margin-bottom:1rem;font-size:.95rem}.pc-customer-form input,.pc-customer-form textarea{display:block;width:100%;padding:.7rem .9rem;margin-top:.45rem;border:1px solid var(--border,currentColor);color:var(--text,FieldText);background:var(--bg,Field)}.pc-customer-form textarea{resize:vertical}.pc-result{padding:1.5rem;border:1px solid var(--border,currentColor);margin-block:1.5rem}.pc-builder{padding-block:3rem}.pc-builder header{max-width:900px;margin-bottom:3rem}.pc-knife-option{display:flex;justify-content:space-between;align-items:center;gap:1rem;border-bottom:1px solid var(--border,currentColor);padding:1rem 0}.pc-knife-option small{display:block;color:var(--text-soft,inherit)}.pc-knife-option input{width:5rem;padding:.5rem;background:var(--surface,Field);color:var(--text,FieldText);border:1px solid var(--border,currentColor)}.pw-identity-coffee .pc-product-grid{grid-template-columns:repeat(3,1fr)}.pw-identity-coffee .pc-product{display:grid;grid-template-columns:110px 1fr;gap:1.3rem;align-items:start}.pw-identity-coffee .pc-product-copy{padding:0}.pw-identity-coffee .pc-product h3{margin-bottom:.5rem}.pw-identity-coffee .pc-product p{margin-bottom:.7rem}.pw-identity-market .pc-catalog{padding-top:1rem}.pw-identity-apothecary .pc-product-image{aspect-ratio:4/5}
+@media(max-width:1000px){.pc-product-grid{grid-template-columns:repeat(3,1fr)}.pw-identity-coffee .pc-product-grid{grid-template-columns:repeat(2,1fr)}.pc-shop-tools{flex-wrap:wrap}}
+@media(max-width:700px){.pc-product-grid,.pw-identity-coffee .pc-product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem}.pw-identity-coffee .pc-product{display:block}.pw-identity-coffee .pc-product-copy{padding-top:1rem}.pc-catalog-heading{align-items:start}.pc-shop-tools label{width:100%}.pc-shop-tools input,.pc-shop-tools select{width:100%}.pc-detail-grid,.pc-checkout-grid,.pc-builder-grid{grid-template-columns:1fr;gap:2rem}.pc-customer-form{padding:1.5rem}.pc-basket-row{flex-direction:column;gap:1rem}.pc-add{font-size:.8rem}.pc-product-copy h3{font-size:1.1rem}}
+
+.pc-product.without-image{border:1px solid var(--border,currentColor);background:var(--surface,Canvas);padding:1.3rem;display:flex;flex-direction:column}.pc-product.without-image .pc-product-copy{padding-top:0}.pc-product-summary{font-size:.88rem;line-height:1.65;color:var(--text-soft,inherit)}
+
+/* site.css layout */
+:scope{min-height:100vh;background:var(--public-background,var(--bg));color:var(--text);font-family:var(--font-body);font-size:16px;line-height:1.7;overflow-wrap:break-word}:scope *{box-sizing:border-box}:scope h1,:scope h2,:scope h3{font-family:var(--font-heading);color:var(--heading);line-height:1.12;letter-spacing:-.04em;font-weight:500}:scope h1{font-size:clamp(2.7rem,4.7vw,5rem);margin:0 0 1.5rem}:scope h2{font-size:clamp(1.9rem,3vw,3rem)}:scope h3{font-size:1.5rem}:scope p{color:inherit}:scope a{color:inherit}:scope a:focus-visible,:scope button:focus-visible,:scope input:focus-visible,:scope select:focus-visible,:scope summary:focus-visible{outline:3px solid var(--accent);outline-offset:4px}.pw-wrap{width:100%;padding-inline:5%;margin:0}.pw-eyebrow{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;display:flex;align-items:center;gap:.5rem}.pw-lead{font-size:1.1rem;line-height:1.8}.pw-button{display:inline-flex;justify-content:center;align-items:center;gap:1rem;background:var(--primary);color:var(--text-inverse)!important;border:1px solid var(--primary);padding:.9rem 1.2rem;font:600 .85rem var(--font-body);text-decoration:none;cursor:pointer}.pw-button:hover{background:var(--primary-hover)}.pw-text-link{display:inline-flex;align-items:center;gap:.75rem;text-underline-offset:.4em;font-size:.9rem}.pw-note{font-size:.8rem;color:var(--text-soft)}.pw-actions{display:flex;flex-wrap:wrap;align-items:center;gap:1rem}.brand{display:flex;align-items:center;gap:1rem;font-family:var(--font-heading);font-size:1.3rem;font-weight:600;text-decoration:none;line-height:1.3;max-width:600px}.brand img{width:75px;height:75px;object-fit:contain;flex-shrink:0}.brand small{display:block;font-family:var(--font-body);font-size:.7rem;margin-top:.5rem;font-weight:400}.site-navigation{display:flex;flex-wrap:wrap;align-items:center;gap:1.4rem}.site-navigation>a{text-decoration:none;font-size:.8rem;white-space:nowrap;padding:.3rem 0;border-bottom:2px solid transparent}.site-navigation>a.active{border-color:var(--accent)}.menu-button{display:none;background:transparent;border:1px solid currentColor;color:inherit;padding:.65rem}:scope footer nav{display:flex;flex-wrap:wrap;gap:1.5rem}:scope footer a{display:inline-flex;align-items:center;gap:.7rem;text-underline-offset:.3em}:scope footer small{display:block;margin-top:1rem}.site-skip{position:fixed;top:-100px;left:1rem;z-index:100;background:var(--surface);padding:1rem}.site-skip:focus{top:1rem}.site-heading{padding:3rem 5% 1rem}.site-heading h1{max-width:1100px}.site-heading>p{max-width:800px}.site-faq{padding:1rem 5% 4rem}.site-faq details{border-bottom:1px solid var(--border);padding-block:1.3rem}.site-faq summary{display:flex;justify-content:space-between;gap:2rem;font-size:1.2rem;cursor:pointer;list-style:none}.site-faq details p{max-width:800px;margin-top:1rem}.site-offerings{padding:1rem 5% 4rem}.site-offerings article{padding:2rem 0;border-top:1px solid var(--border)}.site-offerings li{margin-block:.5rem}.about-values article{padding-block:1rem;border-top:1px solid var(--border)}.about-values h2{font-size:1.5rem}.business-about h1{font-size:clamp(2.4rem,4vw,4rem)}.business-about img{max-width:100%;object-fit:cover}.business-about figure{margin:0}
+.botanical-sigil{display:flex;justify-content:center;align-items:center;gap:.7rem;border-bottom:1px solid var(--border);font-size:.65rem;letter-spacing:.12em;padding:.65rem}.botanical-brand{display:flex;justify-content:space-between;align-items:center;padding:1.5rem 4%;gap:1rem}.botanical-brand .brand{font-size:clamp(1.5rem,3vw,2.7rem);max-width:none;font-weight:400}.botanical-cabinet>.site-navigation{justify-content:center;padding:.8rem;border-block:1px solid var(--border)}.botanical .pc-product.without-image{border:0;border-bottom:2px solid var(--border);background:transparent;padding:1rem 0}.botanical .pc-product-copy h3{font-size:1.35rem}.botanical .pc-category{font-size:.65rem;letter-spacing:.13em}.botanical-journal{display:grid;grid-template-columns:.7fr 1.3fr;gap:4rem;padding:4rem 5%}.botanical-journal aside{border-top:4px double var(--primary);padding-top:2rem}.botanical-journal article>img{float:right;width:42%;height:300px;object-fit:cover;border-radius:50% 50% 0 0;margin:0 0 1rem 2rem}.botanical-journal dl{clear:both;margin-top:2rem}.botanical-journal dl>div{padding:1rem 0;border-top:1px solid var(--border)}.botanical-endnotes{text-align:center;background:var(--surface);padding:3rem 5%;border-top:4px double var(--primary)}.botanical-endnotes>strong{display:block;font-family:var(--font-heading);font-size:2rem;margin:1rem}.botanical-endnotes nav{justify-content:center}
+@media(max-width:800px){:scope h1{font-size:clamp(2.4rem,9vw,3.5rem)}.menu-button{display:grid;place-items:center;margin-left:auto}.site-navigation{display:none;width:100%;padding-block:1rem;gap:1rem}.site-navigation.is-open{display:flex;flex-direction:column;align-items:start}.brand{font-size:1.1rem;max-width:calc(100% - 50px)}.brand img{width:55px;height:55px}:scope header{position:relative}:scope header>.site-navigation{grid-column:1/-1}:scope header .brand{font-size:1.2rem}.cafe-sign,.cravings-wordmark{justify-content:space-between}.press-masthead>.brand,.journal-nameplate>.brand{font-size:2rem;padding-block:1rem}.press-rule,.journal-navigation{display:flex;flex-wrap:wrap}.pantry-label,.protection-dispatch{display:block}.pantry-brand,.protection-brand,.occasion-brand{display:flex;align-items:center;justify-content:space-between}.pantry-categories{justify-items:start}.occasion-navigation{display:block}.occasion-enquire{margin-top:1rem;display:inline-flex}.grocer-shop-bar{flex-wrap:wrap}.grocer-search{order:4;flex-basis:100%}.grocer-top{font-size:.65rem}.precision-toolbar{display:block}.precision-brand{display:flex;align-items:center}.precision-tools{padding-block:.75rem}.botanical-brand{flex-wrap:wrap}.botanical-sigil{font-size:.55rem}.cafe-story,.press-principles,.pantry-origin,.kitchen-notebook,.renewal-pillars,.grocer-mission-body,.protection-company-body,.botanical-journal,.precision-notes,.precision-specs{display:block}.cafe-story>*,.pantry-origin>*,.kitchen-notebook>*,.botanical-journal>*{margin-bottom:2rem}.cafe-story aside,.cravings-values,.occasion-details,.grocer-principles{display:block}.press-columns,.renewal-story{columns:1}.journal-author>img{width:100%;float:none;margin:0 0 2rem}:scope footer{padding:2rem 5%}:scope footer>div,:scope footer nav{flex-wrap:wrap;gap:1rem}.occasion-invitation>div{flex-direction:column}:scope .pc-product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}.cravings-story>img{width:240px;height:240px;margin-inline:0}.kitchen-notebook img{height:350px}}.botanical .ingredient-records article{display:grid;grid-template-columns:1fr 1.4fr;gap:3rem;border-top:3px double var(--border)}.botanical .ingredient-records article h2{font-style:italic}.botanical .site-faq{max-width:1000px;margin:auto}.botanical .site-faq details{border-bottom:3px double var(--border)}
+@media(max-width:800px){:scope .site-offerings,:scope .site-offerings article{display:block}}
+
+#site-main:focus{outline:none}
+
+/* home.css layout */
+.apothecary-frontispiece{display:flex;align-items:center;justify-content:space-between;gap:2rem;padding:2.5rem 5%;border-bottom:4px double var(--primary)}.apothecary-frontispiece h1{font-size:clamp(2.5rem,4.2vw,4.4rem);margin:.5rem 0}.apothecary-frontispiece p{margin:.5rem 0}.apothecary-frontispiece>a{display:flex;align-items:center;gap:.7rem;font-size:.8rem;max-width:180px}.apothecary-shelf-room>.pc-catalog{padding-top:2rem}.apothecary-specimen-note{display:grid;grid-template-columns:220px 1fr 1fr;gap:1rem 3rem;align-items:center;background:var(--surface);border-block:4px double var(--primary);padding:2rem 5%}.apothecary-specimen-note img{width:220px;height:280px;object-fit:cover;grid-column:1;grid-row:1/5;border-radius:50% 50% 0 0}.apothecary-specimen-note .pw-eyebrow{grid-column:2/4;margin:0}.apothecary-specimen-note h2{grid-column:2;grid-row:2/4;font-size:2.5rem;margin:0}.apothecary-specimen-note>p:not(.pw-eyebrow){grid-column:3;font-size:.9rem}.apothecary-specimen-note>a{grid-column:3;display:flex;align-items:center;gap:.75rem;font-size:.85rem}.botanical .pc-product-grid{grid-template-columns:repeat(4,minmax(0,1fr))}@media(max-width:1000px){.botanical .pc-product-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:800px){.apothecary-frontispiece{flex-wrap:wrap;padding:2rem 5%;gap:1rem}.apothecary-frontispiece>svg{display:none}.apothecary-frontispiece h1{font-size:2.7rem}.apothecary-specimen-note{display:block}.apothecary-specimen-note img{width:130px;height:180px;float:right;margin:0 0 1rem 1rem}.apothecary-specimen-note h2{font-size:2rem;margin-block:1rem}.apothecary-specimen-note>a{clear:both}.botanical .pc-product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* contact.css layout */
+.apothecary-correspondence{display:grid;grid-template-columns:.8fr 1.2fr;gap:3rem;padding:3rem 5%}.apothecary-correspondence>aside{align-self:start}.apothecary-correspondence aside>img{width:180px;height:230px;object-fit:cover;border-radius:50% 50% 0 0;float:right;margin:0 0 1rem 1rem}.apothecary-correspondence h1{font-size:clamp(2.6rem,3.5vw,3.8rem);clear:both;padding-top:1rem}.apothecary-correspondence aside>a{display:block;font-size:.85rem;margin-top:1rem;overflow-wrap:anywhere}.apothecary-correspondence article{border-block:4px double var(--primary);padding:2rem;background:var(--surface)}.apothecary-correspondence form{display:grid;gap:1.25rem}.apothecary-correspondence label{display:grid;gap:.4rem;font-size:.8rem}.apothecary-correspondence input,.apothecary-correspondence textarea{padding:.8rem;background:transparent;color:var(--text);border:0;border-bottom:1px solid var(--border);width:100%;font:inherit}.apothecary-correspondence fieldset{border:1px solid var(--border);padding:1rem;display:grid;gap:1rem}.apothecary-correspondence legend{font-size:.8rem}.apothecary-correspondence small{font-size:.7rem}@media(max-width:800px){.apothecary-correspondence{grid-template-columns:1fr;padding:2rem 5%;gap:2rem}.apothecary-correspondence aside>img{width:130px;height:170px}.apothecary-correspondence article{padding:1.5rem}}
+.prepared-draft{display:flex;align-items:center;gap:.7rem;padding:1rem;border:1px solid var(--border);margin-top:1rem;text-underline-offset:.3em}
+}
+
+/* natures-apothecary: local service and question page compositions. */
+@scope (.public-site) {
+.botanical-study-pages{padding:4rem 7%}.botanical-study-pages>header{max-width:800px;margin:0 auto 3rem;text-align:center}.botanical-study-leaves{columns:2;column-gap:5rem}.botanical-study-leaves section{break-inside:avoid;border-top:1px solid var(--primary);padding:2rem 0 3rem}.botanical-leaf-number{display:block;font-style:italic;margin-bottom:1.5rem;color:var(--text-soft)}.botanical-study-leaves h2{font-size:2.3rem}.botanical-reference-notes{max-width:1150px;margin:auto;padding:4rem 7%}.botanical-reference-notes>header{border-bottom:1px solid var(--primary);padding-bottom:2rem}.botanical-reference-notes dl>div{display:grid;grid-template-columns:1fr 1.2fr;gap:4rem;padding:2rem 0;border-bottom:1px solid var(--border)}.botanical-reference-notes dt{font-size:1.3rem;font-family:var(--font-heading)}.botanical-reference-notes dt span{display:block;font-size:.8rem;margin-bottom:1rem}.botanical-reference-notes dd{margin:0}.botanical-reference-notes aside{padding:2rem;background:var(--surface)}@media(max-width:800px){.botanical-study-leaves{columns:1}.botanical-reference-notes dl>div{display:block}.botanical-reference-notes dd{margin-top:1rem}}
+}
+
+/* natures-apothecary: storefront composition. */
+@scope (.public-site) {
+.botanical-cabinet-shop>header{max-width:900px;text-align:center;margin:auto;padding:4rem 6% 2rem}.botanical-cabinet-body{display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:3rem;padding:0 5% 4rem}.botanical-cabinet-body .pc-catalog{width:100%}.botanical-cabinet-body>aside{align-self:start;margin-top:3rem;border-block:1px solid var(--primary);padding:2rem 0}.botanical-cabinet-body aside h2{font-size:1.8rem}.botanical-cabinet-body aside a{display:block;margin-top:1.5rem}.botanical-cabinet-body .pc-product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:3rem}.botanical-cabinet-body .pc-product{border:0;border-bottom:1px solid var(--border);padding:0 0 2rem}.botanical-cabinet-body .pc-product-image{aspect-ratio:3/4;background:var(--surface)}.botanical-cabinet-body .pc-category{font-style:italic}@media(max-width:800px){.botanical-cabinet-body{display:block}.botanical-cabinet-body .pc-product-grid{grid-template-columns:1fr}}
+}

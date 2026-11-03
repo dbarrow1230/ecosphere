@@ -1,0 +1,242 @@
+/* src/components/booksdashboard/BookQuickAccess.css */
+
+body.book-quick-access-open{
+ overflow:hidden;
+}
+
+body.book-quick-access-open #root{
+ pointer-events:none!important;
+}
+
+body.book-quick-access-open #root *{
+ pointer-events:none!important;
+}
+
+.book-quick-access-backdrop,
+.book-quick-access-tab,
+.book-quick-access-drawer,
+.book-quick-access-drawer *{
+ pointer-events:auto!important;
+}
+
+.book-quick-access-backdrop{
+ position:fixed;
+ inset:0;
+ z-index:2147483000;
+ display:block;
+ width:100vw;
+ height:100vh;
+ border:0;
+ background:rgba(0,0,0,.18);
+ cursor:default!important;
+}
+
+.book-quick-access-tab{
+ position:fixed;
+ top:42%;
+ right:0;
+ z-index:2147483020;
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ justify-content:center;
+ gap:.45rem;
+ width:2.6rem;
+ min-height:10.5rem;
+ border:1px solid color-mix(in srgb,var(--primary) 30%,var(--border));
+ border-right:0;
+ border-radius:.65rem 0 0 .65rem;
+ padding:.75rem .35rem;
+ background:var(--primary);
+ color:var(--text-inverse);
+ box-shadow:var(--shadow);
+ font-weight:900;
+ cursor:pointer;
+}
+
+.book-quick-access-tab svg{
+ flex:0 0 auto;
+}
+
+.book-quick-access-tab span{
+ writing-mode:vertical-rl;
+ text-orientation:mixed;
+ letter-spacing:.04em;
+ line-height:1;
+}
+
+.book-quick-access-tab.open{
+ right:22rem;
+ border-radius:.65rem 0 0 .65rem;
+}
+
+.book-quick-access-drawer{
+ position:fixed;
+ top:0;
+ right:0;
+ z-index:2147483010;
+ width:min(22rem,calc(100vw - 2rem));
+ height:100vh;
+ padding:1rem;
+ transform:translateX(105%);
+ transition:transform .22s ease;
+ border-left:1px solid var(--border);
+ background:
+  linear-gradient(180deg,var(--surface),color-mix(in srgb,var(--surface-2) 48%,var(--surface)));
+ box-shadow:-18px 0 42px rgba(0,0,0,.18);
+ overflow-y:auto;
+}
+
+.book-quick-access-drawer.open{
+ transform:translateX(0);
+}
+
+.book-quick-access-header{
+ display:flex;
+ align-items:flex-start;
+ justify-content:space-between;
+ gap:1rem;
+ padding-bottom:.9rem;
+ border-bottom:1px solid color-mix(in srgb,var(--primary) 18%,var(--border));
+}
+
+.book-quick-access-header p{
+ margin:0 0 .25rem;
+ color:var(--accent);
+ font-size:.72rem;
+ font-weight:900;
+ letter-spacing:.1em;
+ text-transform:uppercase;
+}
+
+.book-quick-access-header h2{
+ margin:0;
+ color:var(--heading);
+ font-size:1.4rem;
+ font-weight:900;
+ line-height:1.1;
+}
+
+.book-quick-access-header button{
+ flex:0 0 auto;
+ display:inline-flex;
+ align-items:center;
+ justify-content:center;
+ width:2.15rem;
+ height:2.15rem;
+ border:1px solid var(--border);
+ border-radius:.45rem;
+ background:var(--surface-2);
+ color:var(--primary);
+}
+
+.book-quick-access-book{
+ display:flex;
+ align-items:center;
+ gap:.75rem;
+ margin:1rem 0;
+ padding:.85rem;
+ border:1px solid color-mix(in srgb,var(--primary) 14%,var(--border));
+ border-radius:.75rem;
+ background:color-mix(in srgb,var(--surface-2) 45%,transparent);
+}
+
+.book-quick-access-book svg{
+ flex:0 0 auto;
+ color:var(--primary);
+}
+
+.book-quick-access-book strong{
+ display:block;
+ color:var(--heading);
+ font-size:1rem;
+ font-weight:900;
+ line-height:1.15;
+}
+
+.book-quick-access-book span{
+ display:block;
+ margin-top:.2rem;
+ color:var(--text-soft);
+ font-size:.82rem;
+}
+
+.book-quick-access-list{
+ display:flex;
+ flex-direction:column;
+ gap:.45rem;
+}
+
+.book-quick-access-link{
+ display:flex;
+ align-items:center;
+ gap:.65rem;
+ width:100%;
+ padding:.72rem .8rem;
+ border:1px solid color-mix(in srgb,var(--primary) 14%,var(--border));
+ border-radius:.65rem;
+ background:transparent;
+ color:var(--text);
+ font-size:.94rem;
+ font-weight:800;
+ line-height:1.2;
+ text-decoration:none;
+}
+
+.book-quick-access-link svg{
+ flex:0 0 auto;
+ color:var(--text-soft);
+}
+
+.book-quick-access-link span{
+ display:block;
+ min-width:0;
+ overflow:hidden;
+ text-overflow:ellipsis;
+ white-space:nowrap;
+}
+
+.book-quick-access-link:hover,
+.book-quick-access-link:focus{
+ background:color-mix(in srgb,var(--primary) 8%,transparent);
+ border-color:color-mix(in srgb,var(--primary) 30%,var(--border));
+ color:var(--primary);
+ outline:none;
+}
+
+.book-quick-access-link:hover svg,
+.book-quick-access-link:focus svg{
+ color:var(--primary);
+}
+
+.book-quick-access-link.disabled{
+ cursor:not-allowed;
+ opacity:.55;
+}
+
+@media (max-width:650px){
+ .book-quick-access-tab{
+  top:auto;
+  right:1rem;
+  bottom:1rem;
+  flex-direction:row;
+  width:auto;
+  min-height:auto;
+  border:1px solid color-mix(in srgb,var(--primary) 28%,var(--border));
+  border-radius:.65rem;
+  padding:.7rem .9rem;
+ }
+
+ .book-quick-access-tab span{
+  writing-mode:horizontal-tb;
+ }
+
+ .book-quick-access-tab.open{
+  right:1rem;
+  border-radius:.65rem;
+ }
+
+ .book-quick-access-drawer{
+  width:100vw;
+ }
+}

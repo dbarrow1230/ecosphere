@@ -1,0 +1,5 @@
+import {Link} from "react-router-dom";
+import {usePublicSite} from "../../../../shared/public/PublicSiteContext.jsx";
+const copy=s=><>{s.text?.map(t=><p key={t}>{t}</p>)}{s.items&&<ul>{s.items.map(t=><li key={t}>{t}</li>)}</ul>}{s.note&&<p className="pw-note">{s.note}</p>}</>;
+const contact=s=>"/contact?topic="+encodeURIComponent(s.title);
+export default function Offerings({pageKey}){const {site}=usePublicSite();const page=site.pages.find(p=>p.slug===pageKey);if(!page)return <main><h1>Page not found</h1><Link to="/">Return home</Link></main>;return (<div className="protection-service-pages"><header><span>Inspection / Testing / Maintenance</span><h1>{page.title}</h1><p>{page.intro}</p><Link to="/service-request">Request a service visit →</Link></header><div className="protection-service-register">{page.sections.map((s,i)=><section key={s.title} id={s.anchor||'offering-'+(i+1)}><div className="protection-register-code">{String(i+1).padStart(2,'0')}</div><div><h2>{s.title}</h2>{copy(s)}</div><aside><Link to={contact(s)}>Discuss service scope ↗</Link></aside></section>)}</div></div>);}

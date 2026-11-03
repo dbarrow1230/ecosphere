@@ -1,0 +1,3 @@
+import {Link} from "react-router-dom";
+import {usePublicSite} from "../../../../shared/public/PublicSiteContext.jsx";
+export default function Questions(){const {site}=usePublicSite();return (<div className="protection-service-reference"><header><p>Service reference</p><h1>{site.faqTitle||'Before the service visit'}</h1><p>{site.faqIntro}</p></header><nav aria-label="Service questions">{site.faq.map(([q],i)=><a href={'#service-answer-'+i} key={q}>{String(i+1).padStart(2,'0')} / {q}</a>)}</nav><div>{site.faq.map(([q,a],i)=><section id={'service-answer-'+i} key={q}><h2>{q}</h2><p>{a}</p></section>)}</div><footer><Link to="/service-request">Arrange inspection, testing or maintenance →</Link></footer></div>);}

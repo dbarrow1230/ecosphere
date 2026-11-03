@@ -1,0 +1,98 @@
+.meeting-method-modal-backdrop{
+ background:rgb(0 0 0/.48);
+}
+
+.meeting-method-modal{
+ width:min(680px,calc(100vw - 2rem));
+ max-width:none;
+ margin:2rem auto;
+}
+
+.meeting-method-modal .modal-content{
+ overflow:hidden;
+ border:1px solid var(--border);
+ border-radius:var(--radius-md);
+ background:var(--surface);
+}
+
+.meeting-method-modal .modal-header{
+ padding:.8rem 1.1rem;
+}
+
+.meeting-method-form{
+ display:flex;
+ flex-direction:column;
+ gap:.75rem;
+ padding:0;
+}
+
+.meeting-method-form>.app-feedback{
+ margin:0;
+}
+
+.meeting-method-row.row{
+ --bs-gutter-x:0;
+ flex-wrap:nowrap;
+ gap:1rem;
+ width:100%;
+ margin:0;
+}
+
+.meeting-method-row>label,
+.meeting-method-label{
+ width:120px;
+ margin:0;
+ color:var(--accent);
+ font-weight:700;
+ text-align:right;
+ white-space:nowrap;
+}
+
+.meeting-method-control{
+ flex:0 1 440px;
+}
+
+.meeting-method-control .form-control{
+ width:100%;
+ max-width:440px;
+ border:1px solid var(--border);
+ border-radius:var(--radius-sm);
+ background:var(--surface);
+ color:var(--text);
+}
+
+.meeting-method-control input.form-control{
+ height:var(--input-height,38px);
+ padding:.4rem .6rem;
+}
+
+.meeting-method-status-toggle{
+ display:inline-flex;
+ align-items:center;
+ gap:.45rem;
+ width:max-content;
+ min-height:var(--button-height);
+ padding:.32rem .6rem;
+ border:1px solid currentColor;
+ border-radius:var(--radius-sm);
+ cursor:pointer;
+ user-select:none;
+}
+
+.meeting-method-status-toggle.is-active{background:var(--success);color:var(--text-inverse)}
+.meeting-method-status-toggle.is-inactive{background:var(--surface);color:var(--danger)}
+.meeting-method-status-toggle span{font-size:1rem;font-weight:800;line-height:1}
+
+.meeting-method-actions{
+ display:flex;
+ justify-content:flex-end;
+ gap:.5rem;
+ margin-top:.25rem;
+ padding-top:.8rem;
+}
+
+@media(max-width:600px){
+ .meeting-method-form{padding:1rem}
+ .meeting-method-row>label,
+ .meeting-method-label{width:100px}
+}

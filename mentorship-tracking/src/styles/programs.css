@@ -1,0 +1,108 @@
+.program-page-container{
+ width:100%;
+}
+
+.program-card{
+ border:1px solid var(--border);
+ border-radius:12px;
+ background:var(--surface);
+ box-shadow:var(--shadow);
+}
+
+.program-header{
+ gap:1rem;
+}
+
+.program-actions{
+ display:flex;
+ gap:0.5rem;
+ flex-shrink:0;
+ align-items:flex-start;
+}
+
+.program-actions .btn{
+ white-space:nowrap;
+ padding:4px 10px;
+}
+
+.program-title{
+ font-weight:600;
+ margin-top:2px;
+ color:var(--text);
+}
+
+.program-table{
+ font-size:.9rem;
+ color:var(--text);
+ border-color:var(--border);
+}
+
+.program-table thead th{
+ background:var(--bg-alt);
+ color:var(--text);
+ border-bottom:1px solid var(--border);
+}
+
+.program-table td{
+ vertical-align:middle;
+ color:var(--text);
+ border-color:var(--border);
+ background:var(--surface);
+}
+
+.program-card hr{
+ border-color:var(--border);
+ opacity:1;
+}
+
+.program-card .text-muted,
+.program-card .small{
+ color:var(--text-soft)!important;
+}
+
+.program-filter-card{
+ padding:0;
+}
+
+.program-filter-card .form-label{
+ color:var(--text);
+ font-weight:600;
+}
+
+.program-filter-card .form-control,
+.program-filter-card .form-select{
+ border:1px solid var(--border);
+ background:var(--surface);
+ color:var(--text);
+}
+
+.program-filter-card .form-control:focus,
+.program-filter-card .form-select:focus{
+ border-color:var(--accent);
+ box-shadow:0 0 0 .2rem rgba(37,99,235,.15);
+}
+
+.program-tabs{
+ border-bottom:1px solid var(--border);
+}
+
+.program-tabs .nav-link{
+ color:var(--text-soft);
+ background:transparent;
+ border:none;
+ border-bottom:2px solid transparent;
+ border-radius:0;
+}
+
+.program-tabs .nav-link:hover{
+ color:var(--text);
+ border-bottom-color:var(--border);
+}
+
+.program-tabs .nav-link.active{
+ color:var(--accent);
+ background:transparent;
+ border:none;
+ border-bottom:2px solid var(--accent);
+ font-weight:600;
+}

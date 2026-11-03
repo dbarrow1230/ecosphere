@@ -1,0 +1,31 @@
+.admin-catalog-page{padding:2.5rem var(--page-x) 4rem;background:var(--bg);}
+.admin-catalog-header{display:flex;align-items:flex-end;justify-content:space-between;gap:1.5rem;margin-bottom:1.25rem;}
+.admin-catalog-header p{margin:0 0 .3rem;color:var(--accent-2);font-size:.75rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;}
+.admin-catalog-header h1{margin:0;font-size:var(--page-title);}
+.admin-catalog-header span{display:block;margin-top:.4rem;color:var(--text-muted);}
+.admin-catalog-toolbar{display:grid;grid-template-columns:minmax(16rem,24rem) 12rem auto;align-items:center;justify-content:start;gap:.75rem;padding:1rem;background:var(--surface);border:1px solid var(--border);border-bottom:0;border-radius:var(--radius-lg) var(--radius-lg) 0 0;}
+.admin-catalog-toolbar>span{color:var(--text-muted);font-size:.85rem;font-weight:700;white-space:nowrap;}
+.admin-catalog-shell{display:grid;grid-template-columns:minmax(18rem,24rem) minmax(0,1fr);height:clamp(30rem,60vh,42rem);overflow:hidden;background:var(--surface);border:1px solid var(--border);border-left:.5rem solid var(--accent);border-radius:0 0 var(--radius-lg) var(--radius-lg);box-shadow:var(--shadow);}
+.admin-catalog-index{overflow-y:scroll;background:var(--bg-alt);border-right:1px solid var(--border);scrollbar-color:var(--secondary) transparent;scrollbar-width:thin;}
+.admin-catalog-item{position:relative;display:grid;align-content:start;align-items:start;justify-content:stretch;justify-items:start;gap:.1rem;width:100%;padding:1rem 5rem 1rem 1rem;text-align:left;background:transparent;color:var(--text);border:0;border-bottom:1px solid var(--border);border-radius:0;}
+.admin-catalog-item:hover,.admin-catalog-item.is-selected{background:var(--surface);color:var(--text);}
+.admin-catalog-item strong{color:var(--text);font-family:monospace;font-size:.72rem;font-weight:700;}
+.admin-catalog-item span{color:var(--heading);font-size:.95rem;font-weight:800;}
+.admin-catalog-status-badge{position:absolute;top:1rem;right:.75rem;display:inline-flex;align-items:center;justify-content:center;padding:.3rem .6rem;border:1px solid var(--border);border-radius:var(--radius-md);font-size:.78rem;font-weight:800;}
+.admin-catalog-status-badge.is-active{background:var(--success);color:var(--text-inverse);}
+.admin-catalog-status-badge.is-inactive{background:var(--surface-2);color:var(--heading);}
+.admin-catalog-empty{padding:1rem;color:var(--text-muted);}
+.admin-catalog-detail{min-width:0;overflow-y:auto;}
+.admin-catalog-detail>header{display:flex;align-items:flex-start;justify-content:space-between;gap:1.5rem;padding:1.5rem;}
+.admin-catalog-detail>header>div:first-child{flex:1 1 auto;min-width:0;}
+.admin-catalog-detail h2{margin:0 0 .35rem;font-size:clamp(1.6rem,2.5vw,2.35rem);}
+.admin-catalog-detail code{color:var(--text);}
+.admin-catalog-detail p{max-width:55rem;line-height:1.7;white-space:pre-wrap;}
+.admin-catalog-detail-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%;margin-top:1.25rem;border:1px solid var(--border);border-radius:var(--radius-md);overflow:hidden;}
+.admin-catalog-detail-grid>div{display:flex;flex-direction:column;align-items:flex-start;gap:.35rem;min-width:0;padding:1rem;border-right:1px solid var(--border);border-bottom:1px solid var(--border);}
+.admin-catalog-detail-grid strong{overflow-wrap:anywhere;}
+.admin-catalog-context-filter{display:flex;justify-content:flex-end;padding:0 var(--page-x) .75rem;background:var(--bg);}
+.admin-catalog-context-filter .form-select{width:min(100%,20rem);}
+.admin-catalog-feature-text{font-size:1.15rem;color:var(--heading);}
+.admin-catalog-actions{flex:0 0 auto;}
+@media(max-width:800px){.admin-catalog-toolbar{grid-template-columns:1fr;}.admin-catalog-shell{grid-template-columns:1fr;max-height:none;}.admin-catalog-index{max-height:18rem;border-right:0;border-bottom:1px solid var(--border);}.admin-catalog-detail>header,.admin-catalog-header{align-items:stretch;flex-direction:column;}.admin-catalog-detail-grid{grid-template-columns:1fr;}.admin-catalog-context-filter{justify-content:stretch;}.admin-catalog-context-filter .form-select{width:100%;}.admin-catalog-actions{display:flex;flex-wrap:wrap;}}

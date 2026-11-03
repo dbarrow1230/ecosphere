@@ -1,0 +1,3 @@
+import {Link} from "react-router-dom";
+import {usePublicSite} from "../../../../shared/public/PublicSiteContext.jsx";
+export default function Questions(){const {site}=usePublicSite();return (<article className="botanical-reference-notes"><header><p>The apothecary reference desk</p><h1>{site.faqTitle||'Questions from the shelves'}</h1><p>{site.faqIntro}</p></header><dl>{site.faq.map(([q,a],i)=><div key={q}><dt><span>{String(i+1).padStart(2,'0')}</span>{q}</dt><dd>{a}</dd></div>)}</dl><aside><p>Looking for a particular preparation or ingredient?</p><Link to="/contact">Ask the apothecary →</Link></aside></article>);}

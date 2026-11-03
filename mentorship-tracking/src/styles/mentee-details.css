@@ -1,0 +1,292 @@
+.mentee-details-modal{
+ max-width:1120px;
+}
+
+.timesheet-history-modal{
+ width:calc(100vw - 2rem);
+ max-width:1800px;
+}
+
+.timesheet-history-modal .modal-body{
+ max-height:calc(100vh - 8rem);
+ overflow:auto;
+}
+
+.timesheet-history-modal .table-responsive{
+ overflow-x:auto;
+}
+
+.timesheet-history-modal table{
+ width:max-content;
+ min-width:100%;
+}
+
+.timesheet-history-modal th,
+.timesheet-history-modal td{
+ white-space:nowrap;
+}
+
+.mentee-name-link{
+ display:inline;
+ width:auto;
+ padding:0;
+ border:0;
+ border-radius:0;
+ background:transparent;
+ color:var(--primary);
+ font:inherit;
+ font-weight:700;
+ line-height:inherit;
+ text-align:left;
+ text-decoration:underline;
+ text-decoration-thickness:1px;
+ text-underline-offset:3px;
+}
+
+.mentee-name-link:hover{
+ border:0;
+ background:transparent;
+ color:var(--primary-hover);
+ text-decoration-thickness:2px;
+}
+
+.mentee-website-link{
+ display:block;
+ width:max-content;
+ color:var(--secondary);
+ font-size:.875rem;
+ white-space:nowrap;
+ text-decoration:underline;
+ text-underline-offset:3px;
+}
+
+.mentee-website-link:hover{
+ color:var(--accent);
+ text-decoration-thickness:2px;
+}
+
+.mentee-detail-row .mentee-website-link{
+ display:inline;
+ font-size:inherit;
+}
+
+.mentee-email-link{
+ color:var(--info,var(--secondary));
+ white-space:nowrap;
+ text-decoration:underline;
+ text-underline-offset:3px;
+}
+
+.mentee-email-link:hover{
+ color:var(--accent);
+ text-decoration-thickness:2px;
+}
+
+.mentee-details-modal .modal-body{
+ padding:1.75rem;
+ overflow-x:auto;
+}
+
+.mentee-details-layout{
+ display:grid;
+ grid-template-columns:240px minmax(0,1fr);
+ gap:2rem;
+ align-items:start;
+}
+
+.mentee-details-identity{
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ text-align:center;
+ gap:1rem;
+ padding:1rem;
+ border:1px solid var(--bs-border-color);
+ border-radius:.75rem;
+ background:var(--bs-light);
+}
+
+.mentee-details-avatar{
+ flex:0 0 140px;
+ width:140px;
+ height:140px;
+ border-radius:50%;
+ object-fit:cover;
+}
+
+.mentee-details-initials{
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ font-size:2rem;
+ font-weight:700;
+}
+
+.mentee-details-name{
+ min-width:0;
+}
+
+.mentee-details-name h4{
+ font-size:1.35rem;
+}
+
+.mentee-details-fields{
+ display:grid;
+ grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:.65rem 1.5rem;
+}
+
+.mentee-detail-row{
+ display:grid;
+ grid-template-columns:max-content minmax(0,1fr);
+ align-items:baseline;
+ gap:.65rem;
+ min-height:2.25rem;
+ padding:.45rem .65rem;
+}
+
+.mentee-detail-row>span{
+ font-weight:700;
+ white-space:nowrap;
+}
+
+.mentee-detail-row>strong{
+ min-width:0;
+ font-weight:400;
+ white-space:nowrap;
+}
+
+.mentee-detail-wide{
+ grid-column:1/-1;
+}
+
+@media (max-width:767.98px){
+ .mentee-details-layout{
+  grid-template-columns:1fr;
+ }
+
+ .mentee-details-fields{
+  min-width:760px;
+ }
+}
+
+.mentee-details-actions{
+ display:flex;
+ flex-wrap:wrap;
+ justify-content:space-between;
+ gap:.75rem;
+ padding:1rem 1.75rem;
+}
+
+.mentee-details-action-group{
+ display:flex;
+ flex-wrap:nowrap;
+ gap:.5rem;
+}
+
+.mentee-details-action-group:first-child{
+ flex:1 1 auto;
+ min-width:0;
+ overflow-x:auto;
+ padding-bottom:.2rem;
+}
+
+.mentee-details-action-group .mentee-workflow-button{
+ flex:0 0 auto;
+ padding:.42rem .65rem;
+ border:0;
+ background:var(--bg-alt);
+ color:var(--primary);
+ font-size:.84rem;
+ font-weight:700;
+ white-space:nowrap;
+ box-shadow:none;
+}
+
+.mentee-details-action-group .mentee-workflow-button:hover,
+.mentee-details-action-group .mentee-workflow-button:focus{
+ border:0;
+ background:var(--primary);
+ color:var(--text-inverse);
+ box-shadow:none;
+}
+
+@media (max-width:575.98px){
+ .mentee-details-modal .modal-body{
+  padding:1rem;
+ }
+
+ .mentee-details-actions,
+ .mentee-details-action-group{
+  width:100%;
+ }
+
+ .mentee-details-action-group .btn{
+  flex:1 1 auto;
+ }
+}
+.mentorship-agreement{display:grid;gap:1.25rem;color:var(--text)}
+.mentorship-agreement-modal .modal-header{padding:1rem 1.5rem}
+.mentorship-agreement-modal .modal-body{padding:1.35rem 1.5rem}
+.mentorship-agreement-modal .modal-footer{padding:.85rem 1.5rem}
+.mentorship-agreement-modal{max-width:1180px}
+.mentorship-agreement-heading{display:flex;justify-content:space-between;align-items:start;gap:1rem;padding-bottom:1rem;border-bottom:1px solid var(--border)}
+.mentorship-agreement-heading p{margin:0 0 .2rem;color:var(--text-soft);font-size:.75rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase}
+.mentorship-agreement-heading h2{margin:0;color:var(--primary)}
+.mentorship-agreement-terms{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem 1.25rem}
+.mentorship-agreement-terms>div,.mentorship-agreement-signature>div{display:flex;align-items:baseline;gap:.45rem;min-width:0}
+.mentorship-agreement-terms strong,.mentorship-agreement-signature strong{color:var(--primary);white-space:nowrap}
+.mentorship-agreement-terms span,.mentorship-agreement-signature span{white-space:normal;overflow-wrap:anywhere}
+.mentorship-agreement-progress{display:flex;align-items:center;gap:1.25rem;overflow-x:auto;padding:.15rem 0 .35rem}
+.mentorship-agreement-progress>div{display:flex;align-items:center;gap:.4rem;flex:0 0 auto;color:var(--primary)}
+.mentorship-agreement-progress>div>span{display:grid;place-items:center;width:1.7rem;height:1.7rem;border:2px solid var(--border);border-radius:50%;background:var(--surface);color:var(--primary);font-weight:800}
+.mentorship-agreement-progress>div>strong{font-size:.78rem;line-height:1.2;white-space:nowrap}
+.mentorship-agreement-progress>div.is-complete>span{border-color:var(--success);background:var(--success);color:var(--text-inverse)}
+.mentorship-agreement-progress>div.is-complete>strong{color:var(--success)}
+.mentorship-agreement-progress>div.is-current>span{border-color:var(--primary);background:var(--primary);color:var(--text-inverse)}
+.mentorship-agreement-progress>div.is-current>strong{color:var(--primary);font-weight:800}
+.mentorship-agreement-signature{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding-top:1rem;border-top:1px solid var(--border)}
+.mentorship-agreement-edit{display:grid;gap:.85rem}
+.mentorship-agreement-edit label{display:grid;grid-template-columns:105px minmax(0,1fr);align-items:center;gap:.65rem;margin:0}
+.mentorship-agreement-edit select,.mentorship-agreement-edit input{height:40px;padding:.4rem .65rem}
+.mentorship-agreement-error{margin:0;color:var(--danger,#b42318);font-weight:700}
+
+@media(max-width:640px){
+ .mentorship-agreement-terms{grid-template-columns:1fr}
+}
+
+.smart-goals-modal{
+ width:calc(100vw - 2rem);
+ max-width:1500px;
+ margin:1rem auto;
+}
+
+.smart-goals-modal-content{
+ height:calc(100vh - 2rem);
+ max-height:calc(100vh - 2rem);
+}
+
+.smart-goals-modal-content>.modal-header{
+ flex:0 0 auto;
+}
+
+.smart-goals-modal-content>.modal-body{
+ min-height:0;
+ overflow-y:auto;
+ padding:1.25rem;
+}
+
+@media(max-width:575.98px){
+ .smart-goals-modal{
+  width:100%;
+  max-width:none;
+  height:100%;
+  margin:0;
+ }
+
+ .smart-goals-modal-content{
+  height:100%;
+  max-height:100%;
+  border-radius:0;
+ }
+}

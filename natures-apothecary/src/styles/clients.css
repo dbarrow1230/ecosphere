@@ -1,0 +1,126 @@
+/* src/styles/clients.css */
+
+.clients-page{
+ background:var(--bg);
+ color:var(--text);
+}
+
+.clients-page .card{
+ background:var(--surface);
+ border:1px solid var(--border);
+ border-radius:var(--radius-md);
+ box-shadow:var(--shadow);
+}
+
+.clients-page h1,
+.clients-page h2{
+ font-family:var(--font-heading);
+ color:var(--text);
+}
+
+.clients-page p{
+ color:var(--text-soft);
+}
+
+.clients-page .table-responsive{
+ overflow-x:auto;
+}
+
+.clients-page table{
+ width:100%;
+ min-width:0;
+ table-layout:auto;
+}
+
+.clients-page th,
+.clients-page td{
+ white-space:normal;
+ vertical-align:middle;
+ font-family:var(--font-body);
+ color:var(--text);
+ word-break:break-word;
+}
+
+.clients-page thead th{
+ background:var(--surface-2);
+ border-bottom:1px solid var(--border);
+ font-weight:600;
+ white-space:nowrap;
+}
+
+.clients-page tbody tr{
+ transition:background .2s ease;
+}
+
+.clients-page tbody tr:hover{
+ background:var(--bg-alt);
+}
+
+.clients-page .badge{
+ display:inline-flex;
+ align-items:center;
+ justify-content:center;
+ min-width:72px;
+ text-align:center;
+ font-weight:600;
+}
+
+.clients-page .btn{
+ white-space:nowrap;
+}
+
+.clients-page .btn-primary{
+ background:var(--primary);
+ border-color:var(--primary);
+ color:var(--text-inverse);
+}
+
+.clients-page .btn-primary:hover,
+.clients-page .btn-primary:focus,
+.clients-page .btn-primary:active{
+ background:var(--primary-hover);
+ border-color:var(--primary-hover);
+ color:var(--text-inverse);
+}
+
+.clients-page .btn-outline-primary{
+ color:var(--primary);
+ border-color:var(--primary);
+}
+
+.clients-page .btn-outline-primary:hover,
+.clients-page .btn-outline-primary:focus,
+.clients-page .btn-outline-primary:active{
+ background:var(--primary);
+ border-color:var(--primary);
+ color:var(--text-inverse);
+}
+
+.clients-page .btn-outline-danger{
+ color:var(--accent-2);
+ border-color:var(--accent-2);
+}
+
+.clients-page .btn-outline-danger:hover,
+.clients-page .btn-outline-danger:focus,
+.clients-page .btn-outline-danger:active{
+ background:var(--accent-2);
+ border-color:var(--accent-2);
+ color:var(--text-inverse);
+}
+
+@media (max-width:991.98px){
+ .clients-page .table-responsive{
+  overflow-x:auto;
+ }
+
+ .clients-page table{
+  min-width:980px;
+ }
+
+ .clients-page th,
+ .clients-page td{
+  white-space:nowrap;
+  word-break:normal;
+ }
+}
